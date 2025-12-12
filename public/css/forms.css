@@ -1,0 +1,471 @@
+/* ============ FORMULAIRES ============ */
+.page-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--secondary-dark) 100%);
+    color: var(--white);
+    padding: 120px 0 60px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Form Container */
+.form-section {
+    padding: 60px 0;
+    background: var(--gray-100);
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.form-progress {
+    display: flex;
+    background: var(--gray-100);
+    padding: 20px;
+}
+
+.progress-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.progress-step::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--gray-300);
+}
+
+.progress-step:last-child::after {
+    display: none;
+}
+
+.progress-step.active .step-dot,
+.progress-step.completed .step-dot {
+    background: var(--secondary);
+    color: var(--white);
+}
+
+.progress-step.active::after,
+.progress-step.completed::after {
+    background: var(--secondary);
+}
+
+.step-dot {
+    width: 40px;
+    height: 40px;
+    background: var(--gray-300);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    transition: var(--transition);
+}
+
+.step-label {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+
+.progress-step.active .step-label {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* Form Content */
+.form-body {
+    padding: 40px;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.form-step-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.form-step-subtitle {
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+}
+
+/* Form Groups */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-row.three-cols {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.form-group label .required {
+    color: var(--error);
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    transition: var(--transition);
+    background: var(--white);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--secondary);
+}
+
+.form-control.error {
+    border-color: var(--error);
+}
+
+.form-control::placeholder {
+    color: var(--gray-400);
+}
+
+select.form-control {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234b5563' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-hint {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin-top: 5px;
+}
+
+.form-error {
+    font-size: 0.85rem;
+    color: var(--error);
+    margin-top: 5px;
+    display: none;
+}
+
+.form-group.has-error .form-error {
+    display: block;
+}
+
+/* Radio & Checkbox Groups */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.radio-option,
+.checkbox-option {
+    flex: 1;
+    min-width: 120px;
+}
+
+.radio-option input,
+.checkbox-option input {
+    display: none;
+}
+
+.radio-option label,
+.checkbox-option label {
+    display: block;
+    padding: 15px 20px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.radio-option input:checked + label,
+.checkbox-option input:checked + label {
+    border-color: var(--secondary);
+    background: var(--secondary);
+    color: var(--white);
+}
+
+.radio-option label:hover,
+.checkbox-option label:hover {
+    border-color: var(--secondary-light);
+}
+
+/* Rating Stars */
+.rating-group {
+    display: flex;
+    gap: 15px;
+}
+
+.rating-option {
+    flex: 1;
+}
+
+.rating-option input {
+    display: none;
+}
+
+.rating-option label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.rating-option label .icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.rating-option label .text {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+
+.rating-option input:checked + label {
+    border-color: var(--secondary);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.rating-option input:checked + label .text {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* File Upload */
+.file-upload {
+    border: 2px dashed var(--gray-300);
+    border-radius: var(--radius);
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--gray-50);
+}
+
+.file-upload:hover {
+    border-color: var(--secondary);
+    background: rgba(59, 130, 246, 0.02);
+}
+
+.file-upload.dragover {
+    border-color: var(--secondary);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.file-upload-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.file-upload-text {
+    color: var(--gray-600);
+    margin-bottom: 0.5rem;
+}
+
+.file-upload-hint {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+}
+
+.file-upload input {
+    display: none;
+}
+
+.file-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.file-preview-item {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+}
+
+.file-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.file-preview-item .remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background: var(--error);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid var(--gray-200);
+}
+
+.btn-prev {
+    background: var(--gray-200);
+    color: var(--gray-700);
+}
+
+.btn-prev:hover {
+    background: var(--gray-300);
+}
+
+/* Success State */
+.form-success {
+    text-align: center;
+    padding: 60px 40px;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2.5rem;
+}
+
+.form-success h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.form-success p {
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+}
+
+.reference-number {
+    background: var(--gray-100);
+    padding: 15px 25px;
+    border-radius: var(--radius);
+    display: inline-block;
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-row,
+    .form-row.three-cols {
+        grid-template-columns: 1fr;
+    }
+
+    .form-body {
+        padding: 25px;
+    }
+
+    .rating-group {
+        flex-wrap: wrap;
+    }
+
+    .rating-option {
+        min-width: calc(50% - 8px);
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    .progress-step .step-label {
+        font-size: 0.75rem;
+    }
+}

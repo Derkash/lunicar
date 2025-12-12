@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - LUNICAR</title>
+    <meta name="description" content="LUNICAR - Contactez notre équipe pour toute question sur la reprise de votre véhicule. Nous sommes disponibles par téléphone, email ou formulaire.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages.css">
+    <link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <svg class="logo-svg" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="50" height="50" rx="10" fill="#0F172A"/>
+                    <path d="M10 28C10 28 14 20 25 20C36 20 40 28 40 28" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="17" cy="32" r="5" fill="#F59E0B"/>
+                    <circle cx="17" cy="32" r="2" fill="#0F172A"/>
+                    <circle cx="33" cy="32" r="5" fill="#F59E0B"/>
+                    <circle cx="33" cy="32" r="2" fill="#0F172A"/>
+                    <path d="M14 24L18 16H32L36 24" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="20" y="17" width="10" height="6" rx="1" fill="#3B82F6" fill-opacity="0.3" stroke="#3B82F6" stroke-width="1"/>
+                </svg>
+                <div class="logo-text">LUNI<span>CAR</span></div>
+            </a>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/reprise">Faire reprendre</a></li>
+                    <li><a href="/garanties">Nos garanties</a></li>
+                    <li><a href="/articles">Actualités</a></li>
+                    <li><a href="/contact" class="active">Contact</a></li>
+                </ul>
+                <a href="/reprise" class="btn btn-primary nav-cta">Estimation gratuite</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contactez-nous</h1>
+            <p>Notre équipe est à votre disposition pour répondre à toutes vos questions</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h2>Parlons de votre projet</h2>
+                    <p>Vous avez une question sur la reprise de votre véhicule ? Notre équipe d'experts est disponible pour vous accompagner.</p>
+
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <div class="icon">📍</div>
+                            <div>
+                                <h4>Adresse</h4>
+                                <p>12 rue de l'Automobile<br>75001 Paris, France</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon">📞</div>
+                            <div>
+                                <h4>Téléphone</h4>
+                                <p>01 23 45 67 89</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="icon">✉️</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contact@lunicar.fr</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-hours">
+                        <h3>Horaires d'ouverture</h3>
+                        <ul class="hours-list">
+                            <li><span>Lundi - Vendredi</span><span>9h00 - 19h00</span></li>
+                            <li><span>Samedi</span><span>10h00 - 18h00</span></li>
+                            <li><span>Dimanche</span><span>Fermé</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-card">
+                    <h2>Envoyez-nous un message</h2>
+                    <p>Remplissez le formulaire ci-dessous et nous vous répondrons sous 24h.</p>
+
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nom">Nom <span class="required">*</span></label>
+                                <input type="text" id="nom" name="nom" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone" class="form-control" placeholder="06 12 34 56 78">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sujet">Sujet <span class="required">*</span></label>
+                            <select id="sujet" name="sujet" class="form-control" required>
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="estimation">Question sur une estimation</option>
+                                <option value="reprise">Suivi de reprise en cours</option>
+                                <option value="paiement">Question sur le paiement</option>
+                                <option value="documents">Documents administratifs</option>
+                                <option value="reclamation">Réclamation</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message <span class="required">*</span></label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Décrivez votre demande..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="rgpd" name="rgpd" required>
+                                <span>J'accepte que mes données soient traitées pour traiter ma demande. <a href="/politique-confidentialite" style="color: var(--primary);">Politique de confidentialité</a></span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer le message</button>
+                    </form>
+
+                    <!-- Success Message -->
+                    <div id="contactSuccess" style="display: none; text-align: center; padding: 40px 0;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+                        <h3>Message envoyé !</h3>
+                        <p style="color: var(--gray-600);">Nous vous répondrons dans les plus brefs délais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div style="text-align: center;">
+            📍 Carte interactive - 12 rue de l'Automobile, 75001 Paris
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="/" class="logo">
+                        <svg class="logo-svg" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="50" height="50" rx="10" fill="#0F172A"/>
+                            <path d="M10 28C10 28 14 20 25 20C36 20 40 28 40 28" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="17" cy="32" r="5" fill="#F59E0B"/>
+                            <circle cx="17" cy="32" r="2" fill="#0F172A"/>
+                            <circle cx="33" cy="32" r="5" fill="#F59E0B"/>
+                            <circle cx="33" cy="32" r="2" fill="#0F172A"/>
+                            <path d="M14 24L18 16H32L36 24" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="20" y="17" width="10" height="6" rx="1" fill="#3B82F6" fill-opacity="0.3" stroke="#3B82F6" stroke-width="1"/>
+                        </svg>
+                        <div class="logo-text">LUNI<span>CAR</span></div>
+                    </a>
+                    <p>LUNICAR - Leader de la reprise automobile en France.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/reprise">Faire reprendre</a></li>
+                        <li><a href="/garanties">Nos garanties</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="/articles">Actualités</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📞 01 23 45 67 89</li>
+                        <li>✉️ contact@lunicar.fr</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LUNICAR. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script>
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
+
+            try {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    form.style.display = 'none';
+                    document.getElementById('contactSuccess').style.display = 'block';
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                window.AppUtils.showNotification('Une erreur est survenue. Veuillez réessayer.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer le message';
+            }
+        });
+    </script>
+</body>
+</html>

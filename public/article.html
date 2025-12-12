@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - LUNICAR</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <svg class="logo-svg" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="50" height="50" rx="10" fill="#0F172A"/>
+                    <path d="M10 28C10 28 14 20 25 20C36 20 40 28 40 28" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="17" cy="32" r="5" fill="#F59E0B"/>
+                    <circle cx="17" cy="32" r="2" fill="#0F172A"/>
+                    <circle cx="33" cy="32" r="5" fill="#F59E0B"/>
+                    <circle cx="33" cy="32" r="2" fill="#0F172A"/>
+                    <path d="M14 24L18 16H32L36 24" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="20" y="17" width="10" height="6" rx="1" fill="#3B82F6" fill-opacity="0.3" stroke="#3B82F6" stroke-width="1"/>
+                </svg>
+                <div class="logo-text">LUNI<span>CAR</span></div>
+            </a>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/reprise">Faire reprendre</a></li>
+                    <li><a href="/garanties">Nos garanties</a></li>
+                    <li><a href="/articles" class="active">Actualités</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <a href="/reprise" class="btn btn-primary nav-cta">Estimation gratuite</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="article-single">
+        <div class="container">
+            <div class="article-header" id="articleHeader">
+                <!-- Chargé dynamiquement -->
+            </div>
+            <div class="article-body" id="articleBody">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Chargement de l'article...</p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Articles -->
+    <section class="section related-articles">
+        <div class="container">
+            <h2 class="section-title">Articles similaires</h2>
+            <div class="articles-grid" id="relatedArticles">
+                <!-- Chargés dynamiquement -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prêt à vendre votre véhicule ?</h2>
+            <p>Obtenez votre estimation gratuite en moins de 2 minutes</p>
+            <a href="/reprise" class="btn">Commencer l'estimation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="/" class="logo">
+                        <svg class="logo-svg" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="50" height="50" rx="10" fill="#0F172A"/>
+                            <path d="M10 28C10 28 14 20 25 20C36 20 40 28 40 28" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="17" cy="32" r="5" fill="#F59E0B"/>
+                            <circle cx="17" cy="32" r="2" fill="#0F172A"/>
+                            <circle cx="33" cy="32" r="5" fill="#F59E0B"/>
+                            <circle cx="33" cy="32" r="2" fill="#0F172A"/>
+                            <path d="M14 24L18 16H32L36 24" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="20" y="17" width="10" height="6" rx="1" fill="#3B82F6" fill-opacity="0.3" stroke="#3B82F6" stroke-width="1"/>
+                        </svg>
+                        <div class="logo-text">LUNI<span>CAR</span></div>
+                    </a>
+                    <p>LUNICAR - Leader de la reprise automobile en France.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/reprise">Faire reprendre</a></li>
+                        <li><a href="/garanties">Nos garanties</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="/articles">Actualités</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📞 01 23 45 67 89</li>
+                        <li>✉️ contact@lunicar.fr</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LUNICAR. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/article-single.js"></script>
+</body>
+</html>

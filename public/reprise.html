@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faire reprendre mon véhicule - LUNICAR</title>
+    <meta name="description" content="LUNICAR - Remplissez notre formulaire pour obtenir une estimation de reprise de votre véhicule. Processus simple et rapide.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <svg class="logo-svg" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="50" height="50" rx="10" fill="#0F172A"/>
+                    <path d="M10 28C10 28 14 20 25 20C36 20 40 28 40 28" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="17" cy="32" r="5" fill="#F59E0B"/>
+                    <circle cx="17" cy="32" r="2" fill="#0F172A"/>
+                    <circle cx="33" cy="32" r="5" fill="#F59E0B"/>
+                    <circle cx="33" cy="32" r="2" fill="#0F172A"/>
+                    <path d="M14 24L18 16H32L36 24" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="20" y="17" width="10" height="6" rx="1" fill="#3B82F6" fill-opacity="0.3" stroke="#3B82F6" stroke-width="1"/>
+                </svg>
+                <div class="logo-text">LUNI<span>CAR</span></div>
+            </a>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/reprise" class="active">Faire reprendre</a></li>
+                    <li><a href="/garanties">Nos garanties</a></li>
+                    <li><a href="/articles">Actualités</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <a href="/reprise" class="btn btn-primary nav-cta">Estimation gratuite</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Faire reprendre mon véhicule</h1>
+            <p>Remplissez ce formulaire pour recevoir une estimation personnalisée sous 24h</p>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container form-container">
+            <div class="form-card">
+                <!-- Progress Bar -->
+                <div class="form-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-dot">1</div>
+                        <div class="step-label">Véhicule</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-dot">2</div>
+                        <div class="step-label">État</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-dot">3</div>
+                        <div class="step-label">Photos</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-dot">4</div>
+                        <div class="step-label">Contact</div>
+                    </div>
+                </div>
+
+                <form id="repriseForm" enctype="multipart/form-data">
+                    <!-- Step 1: Infos véhicule -->
+                    <div class="form-body">
+                        <div class="form-step active" data-step="1">
+                            <h2 class="form-step-title">Informations du véhicule</h2>
+                            <p class="form-step-subtitle">Renseignez les caractéristiques de votre véhicule</p>
+
+                            <div class="form-group">
+                                <label for="plaque">Plaque d'immatriculation <span class="required">*</span></label>
+                                <input type="text" id="plaque" name="plaque" class="form-control" placeholder="AA-123-AA" maxlength="9" required>
+                                <p class="form-hint">Format nouveau (AA-123-AA) ou ancien</p>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="marque">Marque <span class="required">*</span></label>
+                                    <select id="marque" name="marque" class="form-control" required>
+                                        <option value="">Sélectionnez</option>
+                                        <option value="Renault">Renault</option>
+                                        <option value="Peugeot">Peugeot</option>
+                                        <option value="Citroën">Citroën</option>
+                                        <option value="Volkswagen">Volkswagen</option>
+                                        <option value="BMW">BMW</option>
+                                        <option value="Mercedes">Mercedes</option>
+                                        <option value="Audi">Audi</option>
+                                        <option value="Toyota">Toyota</option>
+                                        <option value="Ford">Ford</option>
+                                        <option value="Opel">Opel</option>
+                                        <option value="Fiat">Fiat</option>
+                                        <option value="Nissan">Nissan</option>
+                                        <option value="Hyundai">Hyundai</option>
+                                        <option value="Kia">Kia</option>
+                                        <option value="Autre">Autre</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="modele">Modèle <span class="required">*</span></label>
+                                    <input type="text" id="modele" name="modele" class="form-control" placeholder="Ex: Clio, 308, Golf..." required>
+                                </div>
+                            </div>
+
+                            <div class="form-row three-cols">
+                                <div class="form-group">
+                                    <label for="annee">Année <span class="required">*</span></label>
+                                    <select id="annee" name="annee" class="form-control" required>
+                                        <option value="">Année</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="carburant">Carburant <span class="required">*</span></label>
+                                    <select id="carburant" name="carburant" class="form-control" required>
+                                        <option value="">Sélectionnez</option>
+                                        <option value="essence">Essence</option>
+                                        <option value="diesel">Diesel</option>
+                                        <option value="hybride">Hybride</option>
+                                        <option value="electrique">Électrique</option>
+                                        <option value="gpl">GPL</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="boite">Boîte de vitesses <span class="required">*</span></label>
+                                    <select id="boite" name="boite" class="form-control" required>
+                                        <option value="">Sélectionnez</option>
+                                        <option value="manuelle">Manuelle</option>
+                                        <option value="automatique">Automatique</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kilometrage">Kilométrage <span class="required">*</span></label>
+                                <input type="number" id="kilometrage" name="kilometrage" class="form-control" placeholder="Ex: 85000" min="0" max="500000" required>
+                                <p class="form-hint">Kilométrage actuel au compteur</p>
+                            </div>
+
+                            <div class="form-actions">
+                                <div></div>
+                                <button type="button" class="btn btn-primary btn-next">Continuer</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: État du véhicule -->
+                        <div class="form-step" data-step="2">
+                            <h2 class="form-step-title">État du véhicule</h2>
+                            <p class="form-step-subtitle">Évaluez l'état général de votre véhicule</p>
+
+                            <div class="form-group">
+                                <label>État extérieur <span class="required">*</span></label>
+                                <div class="rating-group">
+                                    <div class="rating-option">
+                                        <input type="radio" id="ext-excellent" name="etatExterieur" value="excellent" required>
+                                        <label for="ext-excellent">
+                                            <span class="icon">✨</span>
+                                            <span class="text">Excellent</span>
+                                        </label>
+                                    </div>
+                                    <div class="rating-option">
+                                        <input type="radio" id="ext-bon" name="etatExterieur" value="bon">
+                                        <label for="ext-bon">
+                                            <span class="icon">👍</span>
+                                            <span class="text">Bon</span>
+                                        </label>
+                                    </div>
+                                    <div class="rating-option">
+                                        <input type="radio" id="ext-moyen" name="etatExterieur" value="moyen">
+                                        <label for="ext-moyen">
+                                            <span class="icon">👌</span>
+                                            <span class="text">Moyen</span>
+                                        </label>
+                                    </div>
+                                    <div class="rating-option">
+                                        <input type="radio" id="ext-mauvais" name="etatExterieur" value="mauvais">
+                                        <label for="ext-mauvais">
+                                            <span class="icon">⚠️</span>
+                                            <span class="text">Mauvais</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>État intérieur <span class="required">*</span></label>
+                                <div class="rating-group">
+                                    <div class="rating-option">
+                                        <input type="radio" id="int-excellent" name="etatInterieur" value="excellent" required>
+                                        <label for="int-excellent">
+                                            <span class="icon">✨</span>
+                                            <span class="text">Excellent</span>
+                                        </label>
+                                    </div>
+                                    <div class="rating-option">
+                                        <input type="radio" id="int-bon" name="etatInterieur" value="bon">
+                                        <label for="int-bon">
+                                            <span class="icon">👍</span>
+                                            <span class="text">Bon</span>
+                                        </label>
+                                    </div>
+                                    <div class="rating-option">
+                                        <input type="radio" id="int-moyen" name="etatInterieur" value="moyen">
+                                        <label for="int-moyen">
+                                            <span class="icon">👌</span>
+                                            <span class="text">Moyen</span>
+                                        </label>
+                                    </div>
+                                    <div class="rating-option">
+                                        <input type="radio" id="int-mauvais" name="etatInterieur" value="mauvais">
+                                        <label for="int-mauvais">
+                                            <span class="icon">⚠️</span>
+                                            <span class="text">Mauvais</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>État mécanique <span class="required">*</span></label>
+                                <div class="rating-group">
+                                    <div class="rating-option">
+                                        <input type="radio" id="mec-excellent" name="etatMecanique" value="excellent" required>
+                                        <label for="mec-excellent">
+                                            <span class="icon">✨</span>
+                                            <span class="text">Excellent</span>
+                                        </label>
+                                    </div>
+                                    <div class="rating-option">
+                                        <input type="radio" id="mec-bon" name="etatMecanique" value="bon">
+                                        <label for="mec-bon">
+                                            <span class="icon">👍</span>
+                                            <span class="text">Bon</span>
+                                        </label>
+                                    </div>
+                                    <div class="rating-option">
+                                        <input type="radio" id="mec-moyen" name="etatMecanique" value="moyen">
+                                        <label for="mec-moyen">
+                                            <span class="icon">👌</span>
+                                            <span class="text">Moyen</span>
+                                        </label>
+                                    </div>
+                                    <div class="rating-option">
+                                        <input type="radio" id="mec-mauvais" name="etatMecanique" value="mauvais">
+                                        <label for="mec-mauvais">
+                                            <span class="icon">⚠️</span>
+                                            <span class="text">Mauvais</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="commentaires">Commentaires (optionnel)</label>
+                                <textarea id="commentaires" name="commentaires" class="form-control" placeholder="Décrivez l'état général, les éventuels dommages, options particulières..."></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-prev">Retour</button>
+                                <button type="button" class="btn btn-primary btn-next">Continuer</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Photos -->
+                        <div class="form-step" data-step="3">
+                            <h2 class="form-step-title">Photos du véhicule</h2>
+                            <p class="form-step-subtitle">Ajoutez des photos pour une estimation plus précise (optionnel)</p>
+
+                            <div class="form-group">
+                                <div class="file-upload" id="fileUpload">
+                                    <div class="file-upload-icon">📷</div>
+                                    <p class="file-upload-text">Glissez vos photos ici ou cliquez pour sélectionner</p>
+                                    <p class="file-upload-hint">JPG, PNG ou WEBP - Max 5 Mo par fichier - 10 photos maximum</p>
+                                    <input type="file" id="photos" name="photos" multiple accept="image/jpeg,image/png,image/webp">
+                                </div>
+                                <div class="file-preview" id="filePreview"></div>
+                            </div>
+
+                            <div class="form-hint" style="margin-bottom: 20px;">
+                                <strong>Conseils pour de bonnes photos :</strong>
+                                <ul style="margin-top: 10px; padding-left: 20px; list-style: disc;">
+                                    <li>Photos extérieures : avant, arrière, côtés</li>
+                                    <li>Photos intérieures : tableau de bord, sièges</li>
+                                    <li>Kilométrage au compteur</li>
+                                    <li>Éventuels dégâts ou défauts</li>
+                                </ul>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-prev">Retour</button>
+                                <button type="button" class="btn btn-primary btn-next">Continuer</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Coordonnées -->
+                        <div class="form-step" data-step="4">
+                            <h2 class="form-step-title">Vos coordonnées</h2>
+                            <p class="form-step-subtitle">Pour vous contacter avec notre offre de reprise</p>
+
+                            <div class="form-group">
+                                <label>Civilité <span class="required">*</span></label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="civ-m" name="civilite" value="M." required>
+                                        <label for="civ-m">M.</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="civ-mme" name="civilite" value="Mme">
+                                        <label for="civ-mme">Mme</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="prenom">Prénom <span class="required">*</span></label>
+                                    <input type="text" id="prenom" name="prenom" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nom">Nom <span class="required">*</span></label>
+                                    <input type="text" id="nom" name="nom" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telephone">Téléphone <span class="required">*</span></label>
+                                    <input type="tel" id="telephone" name="telephone" class="form-control" placeholder="06 12 34 56 78" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="codePostal">Code postal <span class="required">*</span></label>
+                                <input type="text" id="codePostal" name="codePostal" class="form-control" placeholder="75001" maxlength="5" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="rgpd" name="rgpd" required>
+                                    <span>J'accepte que mes données soient traitées pour ma demande de reprise. <a href="/politique-confidentialite" style="color: var(--primary);">Politique de confidentialité</a></span>
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-prev">Retour</button>
+                                <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+                            </div>
+                        </div>
+
+                        <!-- Success -->
+                        <div class="form-step form-success" data-step="success">
+                            <div class="success-icon">✓</div>
+                            <h2>Demande envoyée avec succès !</h2>
+                            <p>Nous avons bien reçu votre demande de reprise. Notre équipe va l'analyser et vous recontactera sous 24h avec une offre personnalisée.</p>
+                            <div class="reference-number" id="referenceNumber">REF-XXXXXX</div>
+                            <p>Conservez ce numéro de référence pour le suivi de votre demande.</p>
+                            <a href="/" class="btn btn-primary">Retour à l'accueil</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="/" class="logo">
+                        <svg class="logo-svg" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="50" height="50" rx="10" fill="#0F172A"/>
+                            <path d="M10 28C10 28 14 20 25 20C36 20 40 28 40 28" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="17" cy="32" r="5" fill="#F59E0B"/>
+                            <circle cx="17" cy="32" r="2" fill="#0F172A"/>
+                            <circle cx="33" cy="32" r="5" fill="#F59E0B"/>
+                            <circle cx="33" cy="32" r="2" fill="#0F172A"/>
+                            <path d="M14 24L18 16H32L36 24" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="20" y="17" width="10" height="6" rx="1" fill="#3B82F6" fill-opacity="0.3" stroke="#3B82F6" stroke-width="1"/>
+                        </svg>
+                        <div class="logo-text">LUNI<span>CAR</span></div>
+                    </a>
+                    <p>Leader de la reprise automobile en France. LUNICAR rachète votre véhicule au meilleur prix.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/reprise">Faire reprendre</a></li>
+                        <li><a href="/garanties">Nos garanties</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Informations</h4>
+                    <ul>
+                        <li><a href="/articles">Actualités</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📞 01 23 45 67 89</li>
+                        <li>✉️ contact@lunicar.fr</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LUNICAR. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/reprise.js"></script>
+</body>
+</html>
