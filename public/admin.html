@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Administration - LUNICAR</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pages.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .login-box {
+            max-width: 400px;
+            margin: 100px auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        .login-box .form-group {
+            margin-bottom: 20px;
+        }
+        .login-box label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius);
+            font-size: 1rem;
+        }
+        .login-box input:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        .login-box .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .login-error {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+        }
+        .admin-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: var(--radius-lg);
+            margin-bottom: 30px;
+        }
+        .admin-header h1 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        .stat-card .label {
+            color: var(--gray-600);
+            margin-top: 5px;
+        }
+
+        /* Articles Table */
+        .articles-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .section-header h2 {
+            font-size: 1.3rem;
+        }
+        .articles-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .articles-table th,
+        .articles-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .articles-table th {
+            background: var(--gray-50);
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        .articles-table tr:hover {
+            background: var(--gray-50);
+        }
+        .articles-table .actions {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.85rem;
+        }
+        .btn-edit {
+            background: var(--secondary);
+            color: white;
+        }
+        .btn-delete {
+            background: #dc2626;
+            color: white;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: var(--secondary-light);
+            color: var(--secondary-dark);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .modal-header h3 {
+            font-size: 1.3rem;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-500);
+        }
+        .modal-body {
+            padding: 25px;
+        }
+        .modal-body .form-group {
+            margin-bottom: 20px;
+        }
+        .modal-body label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .modal-body input,
+        .modal-body select,
+        .modal-body textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .modal-body textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+        .modal-body input:focus,
+        .modal-body select:focus,
+        .modal-body textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            padding: 20px 25px;
+            border-top: 1px solid var(--gray-200);
+        }
+        .btn-cancel {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-500);
+        }
+        .empty-state .icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .articles-table {
+                display: block;
+                overflow-x: auto;
+            }
+            .admin-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div id="loginSection">
+        <div class="login-box">
+            <h2>Administration LUNICAR</h2>
+            <div class="login-error" id="loginError">Mot de passe incorrect</div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required placeholder="Entrez le mot de passe admin">
+                </div>
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px; color: var(--gray-500);">
+                <a href="/" style="color: var(--secondary);">Retour au site</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>
+                    <svg width="30" height="30" viewBox="0 0 50 50" fill="none">
+                        <rect width="50" height="50" rx="10" fill="#0F172A"/>
+                        <path d="M10 28C10 28 14 20 25 20C36 20 40 28 40 28" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="17" cy="32" r="5" fill="#F59E0B"/>
+                        <circle cx="33" cy="32" r="5" fill="#F59E0B"/>
+                    </svg>
+                    Admin LUNICAR
+                </h1>
+                <button class="btn btn-outline" onclick="logout()" style="border-color: white; color: white;">Déconnexion</button>
+            </div>
+
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <div class="value" id="totalArticles">0</div>
+                    <div class="label">Articles publiés</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value" id="totalDemandes">0</div>
+                    <div class="label">Demandes de reprise</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value" id="totalMessages">0</div>
+                    <div class="label">Messages contact</div>
+                </div>
+            </div>
+
+            <div class="articles-section">
+                <div class="section-header">
+                    <h2>Gestion des articles</h2>
+                    <button class="btn btn-primary" onclick="openModal()">+ Nouvel article</button>
+                </div>
+                <div id="articlesContainer">
+                    <table class="articles-table">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Catégorie</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="articlesList">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Article -->
+    <div class="modal" id="articleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Nouvel article</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="articleForm">
+                <div class="modal-body">
+                    <input type="hidden" id="articleId">
+
+                    <div class="form-group">
+                        <label for="titre">Titre *</label>
+                        <input type="text" id="titre" name="titre" required placeholder="Titre de l'article">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="extrait">Résumé *</label>
+                        <input type="text" id="extrait" name="extrait" required placeholder="Court résumé de l'article">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categorie">Catégorie *</label>
+                        <select id="categorie" name="categorie" required>
+                            <option value="">Sélectionnez</option>
+                            <option value="Conseils">Conseils</option>
+                            <option value="Marché">Marché</option>
+                            <option value="Actualités">Actualités</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emoji">Emoji (icône)</label>
+                        <input type="text" id="emoji" name="emoji" placeholder="Ex: 🚗" maxlength="5">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contenu">Contenu (HTML) *</label>
+                        <textarea id="contenu" name="contenu" required placeholder="<h2>Titre</h2><p>Contenu...</p>"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="auteur">Auteur</label>
+                        <input type="text" id="auteur" name="auteur" placeholder="Nom de l'auteur" value="Équipe LUNICAR">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let authToken = localStorage.getItem('adminToken');
+        let articles = [];
+
+        // Check auth on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (authToken) {
+                checkAuth();
+            }
+        });
+
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    authToken = data.token;
+                    localStorage.setItem('adminToken', authToken);
+                    showAdminPanel();
+                } else {
+                    document.getElementById('loginError').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/admin/articles', {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                if (response.ok) {
+                    showAdminPanel();
+                } else {
+                    logout();
+                }
+            } catch (error) {
+                logout();
+            }
+        }
+
+        function showAdminPanel() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            loadArticles();
+            loadStats();
+        }
+
+        function logout() {
+            localStorage.removeItem('adminToken');
+            authToken = null;
+            document.getElementById('loginSection').style.display = 'block';
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/admin/stats', {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const stats = await response.json();
+                document.getElementById('totalArticles').textContent = stats.articles || 0;
+                document.getElementById('totalDemandes').textContent = stats.demandes || 0;
+                document.getElementById('totalMessages').textContent = stats.messages || 0;
+            } catch (error) {
+                console.error('Erreur stats:', error);
+            }
+        }
+
+        async function loadArticles() {
+            try {
+                const response = await fetch('/api/admin/articles', {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                articles = await response.json();
+                renderArticles();
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+
+        function renderArticles() {
+            const tbody = document.getElementById('articlesList');
+
+            if (articles.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4">
+                            <div class="empty-state">
+                                <div class="icon">📝</div>
+                                <p>Aucun article pour le moment</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = articles.map(article => `
+                <tr>
+                    <td>
+                        <strong>${article.emoji || '📰'} ${article.titre}</strong>
+                        <br><small style="color: var(--gray-500);">${article.slug}</small>
+                    </td>
+                    <td><span class="category-badge">${article.categorie}</span></td>
+                    <td>${article.date}</td>
+                    <td class="actions">
+                        <button class="btn btn-sm btn-edit" onclick="editArticle('${article.slug}')">Modifier</button>
+                        <button class="btn btn-sm btn-delete" onclick="deleteArticle('${article.slug}')">Supprimer</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function openModal(article = null) {
+            document.getElementById('modalTitle').textContent = article ? 'Modifier l\'article' : 'Nouvel article';
+            document.getElementById('articleForm').reset();
+            document.getElementById('articleId').value = '';
+
+            if (article) {
+                document.getElementById('articleId').value = article.slug;
+                document.getElementById('titre').value = article.titre;
+                document.getElementById('extrait').value = article.extrait;
+                document.getElementById('categorie').value = article.categorie;
+                document.getElementById('emoji').value = article.emoji || '';
+                document.getElementById('contenu').value = article.contenu;
+                document.getElementById('auteur').value = article.auteur || '';
+            }
+
+            document.getElementById('articleModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('articleModal').classList.remove('active');
+        }
+
+        function editArticle(slug) {
+            const article = articles.find(a => a.slug === slug);
+            if (article) {
+                openModal(article);
+            }
+        }
+
+        async function deleteArticle(slug) {
+            if (!confirm('Supprimer cet article ?')) return;
+
+            try {
+                const response = await fetch(`/api/admin/articles/${slug}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+
+                if (response.ok) {
+                    loadArticles();
+                    loadStats();
+                } else {
+                    alert('Erreur lors de la suppression');
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                alert('Erreur lors de la suppression');
+            }
+        }
+
+        document.getElementById('articleForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const articleId = document.getElementById('articleId').value;
+            const formData = {
+                titre: document.getElementById('titre').value,
+                extrait: document.getElementById('extrait').value,
+                categorie: document.getElementById('categorie').value,
+                emoji: document.getElementById('emoji').value,
+                contenu: document.getElementById('contenu').value,
+                auteur: document.getElementById('auteur').value
+            };
+
+            try {
+                const url = articleId ? `/api/admin/articles/${articleId}` : '/api/admin/articles';
+                const method = articleId ? 'PUT' : 'POST';
+
+                const response = await fetch(url, {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    closeModal();
+                    loadArticles();
+                    loadStats();
+                } else {
+                    const error = await response.json();
+                    alert(error.error || 'Erreur lors de l\'enregistrement');
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                alert('Erreur lors de l\'enregistrement');
+            }
+        });
+
+        // Close modal on outside click
+        document.getElementById('articleModal').addEventListener('click', (e) => {
+            if (e.target.id === 'articleModal') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

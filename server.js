@@ -376,6 +376,205 @@ app.get('/api/valider-plaque/:plaque', (req, res) => {
     });
 });
 
+// ============ API ADMIN ============
+
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'lunicar2024';
+const adminTokens = new Set();
+
+// Middleware d'authentification admin
+function authAdmin(req, res, next) {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return res.status(401).json({ error: 'Non autorisé' });
+    }
+    const token = authHeader.split(' ')[1];
+    if (!adminTokens.has(token)) {
+        return res.status(401).json({ error: 'Token invalide' });
+    }
+    next();
+}
+
+// Login admin
+app.post('/api/admin/login', (req, res) => {
+    const { password } = req.body;
+    if (password === ADMIN_PASSWORD) {
+        const token = uuidv4();
+        adminTokens.add(token);
+        res.json({ success: true, token });
+    } else {
+        res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
+    }
+});
+
+// Stats admin
+app.get('/api/admin/stats', authAdmin, (req, res) => {
+    const articles = readJSON('articles.json');
+    const demandes = readJSON('demandes.json');
+    const messages = readJSON('messages.json');
+    res.json({
+        articles: articles.length,
+        demandes: demandes.length,
+        messages: messages.length
+    });
+});
+
+// Liste articles admin
+app.get('/api/admin/articles', authAdmin, (req, res) => {
+    const articles = readJSON('articles.json');
+    res.json(articles);
+});
+
+// Créer article
+app.post('/api/admin/articles', authAdmin, (req, res) => {
+    const articles = readJSON('articles.json');
+    const { titre, extrait, categorie, emoji, contenu, auteur } = req.body;
+
+    if (!titre || !extrait || !categorie || !contenu) {
+        return res.status(400).json({ error: 'Champs obligatoires manquants' });
+    }
+
+    // Générer slug
+    const slug = titre
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+
+    // Vérifier unicité slug
+    if (articles.some(a => a.slug === slug)) {
+        return res.status(400).json({ error: 'Un article avec ce titre existe déjà' });
+    }
+
+    const nouvelArticle = {
+        slug,
+        titre,
+        extrait,
+        categorie,
+        categorieSlug: categorie.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+        date: new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }),
+        tempsLecture: Math.max(1, Math.ceil(contenu.replace(/<[^>]*>/g, '').split(/\s+/).length / 200)),
+        emoji: emoji || '📰',
+        auteur: auteur || 'Équipe LUNICAR',
+        contenu
+    };
+
+    articles.unshift(nouvelArticle);
+    writeJSON('articles.json', articles);
+
+    res.json({ success: true, article: nouvelArticle });
+});
+
+// Modifier article
+app.put('/api/admin/articles/:slug', authAdmin, (req, res) => {
+    const articles = readJSON('articles.json');
+    const index = articles.findIndex(a => a.slug === req.params.slug);
+
+    if (index === -1) {
+        return res.status(404).json({ error: 'Article non trouvé' });
+    }
+
+    const { titre, extrait, categorie, emoji, contenu, auteur } = req.body;
+
+    articles[index] = {
+        ...articles[index],
+        titre: titre || articles[index].titre,
+        extrait: extrait || articles[index].extrait,
+        categorie: categorie || articles[index].categorie,
+        categorieSlug: (categorie || articles[index].categorie).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+        emoji: emoji || articles[index].emoji,
+        auteur: auteur || articles[index].auteur,
+        contenu: contenu || articles[index].contenu,
+        tempsLecture: contenu ? Math.max(1, Math.ceil(contenu.replace(/<[^>]*>/g, '').split(/\s+/).length / 200)) : articles[index].tempsLecture
+    };
+
+    writeJSON('articles.json', articles);
+    res.json({ success: true, article: articles[index] });
+});
+
+// Supprimer article
+app.delete('/api/admin/articles/:slug', authAdmin, (req, res) => {
+    let articles = readJSON('articles.json');
+    const initialLength = articles.length;
+    articles = articles.filter(a => a.slug !== req.params.slug);
+
+    if (articles.length === initialLength) {
+        return res.status(404).json({ error: 'Article non trouvé' });
+    }
+
+    writeJSON('articles.json', articles);
+    res.json({ success: true });
+});
+
+// ============ SEO - SITEMAP & ROBOTS ============
+
+app.get('/sitemap.xml', (req, res) => {
+    const baseUrl = process.env.SITE_URL || `http://localhost:${PORT}`;
+    const articles = readJSON('articles.json');
+
+    const staticPages = [
+        { url: '/', priority: '1.0', changefreq: 'weekly' },
+        { url: '/reprise', priority: '0.9', changefreq: 'monthly' },
+        { url: '/garanties', priority: '0.8', changefreq: 'monthly' },
+        { url: '/articles', priority: '0.8', changefreq: 'weekly' },
+        { url: '/contact', priority: '0.7', changefreq: 'monthly' },
+        { url: '/mentions-legales', priority: '0.3', changefreq: 'yearly' },
+        { url: '/politique-confidentialite', priority: '0.3', changefreq: 'yearly' }
+    ];
+
+    let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+`;
+
+    staticPages.forEach(page => {
+        sitemap += `  <url>
+    <loc>${baseUrl}${page.url}</loc>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>
+`;
+    });
+
+    articles.forEach(article => {
+        sitemap += `  <url>
+    <loc>${baseUrl}/article/${article.slug}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+`;
+    });
+
+    sitemap += `</urlset>`;
+
+    res.header('Content-Type', 'application/xml');
+    res.send(sitemap);
+});
+
+app.get('/robots.txt', (req, res) => {
+    const baseUrl = process.env.SITE_URL || `http://localhost:${PORT}`;
+    const robots = `# LUNICAR - Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: ${baseUrl}/sitemap.xml
+
+# Disallow admin
+Disallow: /admin
+Disallow: /api/admin/
+
+# Disallow uploads
+Disallow: /uploads/
+`;
+    res.header('Content-Type', 'text/plain');
+    res.send(robots);
+});
+
+// Route admin page
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
+
 // Démarrage serveur
 app.listen(PORT, () => {
     console.log(`\n🚗 LUNICAR Server démarré sur http://localhost:${PORT}\n`);
