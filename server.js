@@ -379,7 +379,55 @@ app.get('/api/valider-plaque/:plaque', (req, res) => {
 // ============ API ADMIN ============
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'lunicar2024';
-const adminTokens = new Set();
+const SESSION_EXPIRY = 60 * 60 * 1000; // 1 heure
+const MAX_LOGIN_ATTEMPTS = 5;
+const LOCKOUT_DURATION = 15 * 60 * 1000; // 15 minutes
+
+// Stockage des tokens avec expiration
+const adminSessions = new Map(); // token -> { createdAt, lastActivity }
+
+// Stockage des tentatives de connexion par IP
+const loginAttempts = new Map(); // ip -> { count, lockedUntil }
+
+// Nettoyage périodique des sessions expirées
+setInterval(() => {
+    const now = Date.now();
+    for (const [token, session] of adminSessions.entries()) {
+        if (now - session.lastActivity > SESSION_EXPIRY) {
+            adminSessions.delete(token);
+        }
+    }
+    // Nettoyage des blocages expirés
+    for (const [ip, attempt] of loginAttempts.entries()) {
+        if (attempt.lockedUntil && now > attempt.lockedUntil) {
+            loginAttempts.delete(ip);
+        }
+    }
+}, 60000); // Vérifie chaque minute
+
+// Middleware de rate limiting pour login
+function loginRateLimiter(req, res, next) {
+    const ip = req.ip || req.connection.remoteAddress;
+    const now = Date.now();
+    const attempt = loginAttempts.get(ip);
+
+    if (attempt) {
+        // Vérifier si l'IP est bloquée
+        if (attempt.lockedUntil && now < attempt.lockedUntil) {
+            const remainingMinutes = Math.ceil((attempt.lockedUntil - now) / 60000);
+            return res.status(429).json({
+                success: false,
+                error: `Trop de tentatives. Réessayez dans ${remainingMinutes} minute(s).`,
+                lockedUntil: attempt.lockedUntil
+            });
+        }
+        // Réinitialiser si le blocage est expiré
+        if (attempt.lockedUntil && now >= attempt.lockedUntil) {
+            loginAttempts.delete(ip);
+        }
+    }
+    next();
+}
 
 // Middleware d'authentification admin
 function authAdmin(req, res, next) {
@@ -388,21 +436,61 @@ function authAdmin(req, res, next) {
         return res.status(401).json({ error: 'Non autorisé' });
     }
     const token = authHeader.split(' ')[1];
-    if (!adminTokens.has(token)) {
+    const session = adminSessions.get(token);
+
+    if (!session) {
         return res.status(401).json({ error: 'Token invalide' });
     }
+
+    // Vérifier expiration de session (1h d'inactivité)
+    const now = Date.now();
+    if (now - session.lastActivity > SESSION_EXPIRY) {
+        adminSessions.delete(token);
+        return res.status(401).json({ error: 'Session expirée' });
+    }
+
+    // Mettre à jour l'activité
+    session.lastActivity = now;
     next();
 }
 
-// Login admin
-app.post('/api/admin/login', (req, res) => {
+// Login admin avec rate limiting
+app.post('/api/admin/login', loginRateLimiter, (req, res) => {
     const { password } = req.body;
+    const ip = req.ip || req.connection.remoteAddress;
+
     if (password === ADMIN_PASSWORD) {
+        // Connexion réussie - réinitialiser les tentatives
+        loginAttempts.delete(ip);
+
         const token = uuidv4();
-        adminTokens.add(token);
-        res.json({ success: true, token });
+        const now = Date.now();
+        adminSessions.set(token, {
+            createdAt: now,
+            lastActivity: now
+        });
+        res.json({ success: true, token, expiresIn: SESSION_EXPIRY });
     } else {
-        res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
+        // Échec de connexion - incrémenter les tentatives
+        const attempt = loginAttempts.get(ip) || { count: 0, lockedUntil: null };
+        attempt.count++;
+
+        if (attempt.count >= MAX_LOGIN_ATTEMPTS) {
+            attempt.lockedUntil = Date.now() + LOCKOUT_DURATION;
+            loginAttempts.set(ip, attempt);
+            return res.status(429).json({
+                success: false,
+                error: 'Trop de tentatives. Compte bloqué pendant 15 minutes.',
+                lockedUntil: attempt.lockedUntil
+            });
+        }
+
+        loginAttempts.set(ip, attempt);
+        const remaining = MAX_LOGIN_ATTEMPTS - attempt.count;
+        res.status(401).json({
+            success: false,
+            error: `Mot de passe incorrect. ${remaining} tentative(s) restante(s).`
+        });
     }
 });
 
@@ -559,8 +647,9 @@ Allow: /
 # Sitemap
 Sitemap: ${baseUrl}/sitemap.xml
 
-# Disallow admin
+# Disallow admin areas
 Disallow: /admin
+Disallow: /admino
 Disallow: /api/admin/
 
 # Disallow uploads
@@ -570,9 +659,14 @@ Disallow: /uploads/
     res.send(robots);
 });
 
-// Route admin page
+// Bloquer l'ancienne URL /admin - retourne 404
 app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+    res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Route admin cachée (nouvelle URL)
+app.get('/admino', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'admino.html'));
 });
 
 // Démarrage serveur
