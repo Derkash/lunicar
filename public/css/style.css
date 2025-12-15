@@ -164,23 +164,18 @@ img {
 }
 
 .logo-svg {
-    height: 45px;
+    height: 40px;
     width: auto;
 }
 
-.logo-text {
-    font-size: 1.6rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    color: var(--primary);
+/* Footer logo - inverser les couleurs pour fond sombre */
+.footer .logo-svg text tspan:first-child {
+    fill: var(--white);
 }
 
-.logo-text span {
-    color: var(--accent);
-}
-
-.footer .logo-text {
-    color: var(--white);
+.footer .logo-svg path:last-child {
+    stroke: var(--white);
+    opacity: 0.3;
 }
 
 .nav {
@@ -304,36 +299,39 @@ img {
     margin-right: auto;
 }
 
-/* Barre de recherche plaque */
+/* Barre de recherche plaque - Version agrandie */
 .search-box {
     background: var(--white);
     border-radius: var(--radius-lg);
-    padding: 20px;
-    max-width: 600px;
+    padding: 30px;
+    max-width: 700px;
+    width: 100%;
     margin: 0 auto 2rem;
     box-shadow: var(--shadow-xl);
 }
 
 .search-box-inner {
     display: flex;
-    gap: 10px;
+    gap: 15px;
+    align-items: stretch;
 }
 
 .plaque-input-wrapper {
     flex: 1;
     position: relative;
+    min-width: 0;
 }
 
 .plaque-input {
     width: 100%;
-    padding: 16px 20px;
-    font-size: 1.2rem;
-    font-weight: 600;
+    padding: 20px 25px;
+    font-size: 1.4rem;
+    font-weight: 700;
     text-transform: uppercase;
-    border: 2px solid var(--gray-200);
+    border: 3px solid var(--gray-200);
     border-radius: var(--radius);
     text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     transition: var(--transition);
     background: var(--gray-100);
 }
@@ -342,6 +340,7 @@ img {
     outline: none;
     border-color: var(--secondary);
     background: var(--white);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
 .plaque-input::placeholder {
@@ -349,6 +348,7 @@ img {
     letter-spacing: normal;
     font-weight: 400;
     color: var(--gray-400);
+    font-size: 1.1rem;
 }
 
 .plaque-input.valid {
@@ -360,14 +360,18 @@ img {
 }
 
 .search-btn {
-    padding: 16px 30px;
+    padding: 20px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
     white-space: nowrap;
+    min-width: 200px;
 }
 
 .search-hint {
     color: var(--gray-600);
-    font-size: 0.85rem;
-    margin-top: 10px;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    text-align: center;
 }
 
 /* Stats hero */
@@ -854,8 +858,27 @@ img {
         gap: 20px;
     }
 
+    .search-box {
+        padding: 20px;
+        max-width: 100%;
+    }
+
     .search-box-inner {
         flex-direction: column;
+        gap: 12px;
+    }
+
+    .plaque-input {
+        padding: 18px 20px;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
+
+    .search-btn {
+        width: 100%;
+        padding: 18px 30px;
+        font-size: 1rem;
+        min-width: auto;
     }
 
     .section-title {
