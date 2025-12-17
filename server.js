@@ -123,6 +123,47 @@ app.get('/reprise-auto-:slug', (req, res) => {
     }
 });
 
+// Routes dynamiques pour les pages thématiques SEO
+const thematicRoutes = [
+    // Rapidité
+    'reprise-auto-24h', 'reprise-auto-immediate', 'rachat-voiture-rapide',
+    'vendre-sa-voiture-rapidement', 'reprise-voiture-48h',
+    // Sans contraintes
+    'rachat-voiture-sans-controle-technique', 'reprise-auto-sans-ct',
+    'vendre-voiture-sans-ct', 'rachat-vehicule-sans-revision',
+    'reprise-voiture-en-panne', 'rachat-voiture-accidentee',
+    'reprise-voiture-non-roulante', 'rachat-voiture-moteur-hs',
+    'reprise-auto-sans-carte-grise',
+    // Paiement
+    'reprise-auto-paiement-immediat', 'rachat-voiture-paiement-cash',
+    'vendre-voiture-paiement-comptant', 'reprise-auto-cheque-de-banque',
+    'rachat-voiture-virement-immediat',
+    // Type de véhicule
+    'reprise-voiture-occasion', 'rachat-voiture-ancienne',
+    'reprise-voiture-haut-kilometrage', 'rachat-vehicule-utilitaire',
+    'reprise-suv', 'rachat-berline', 'reprise-citadine', 'rachat-monospace',
+    'reprise-voiture-diesel', 'reprise-voiture-essence', 'rachat-voiture-hybride',
+    'reprise-voiture-electrique', 'rachat-voiture-gpl',
+    // Marques
+    'reprise-renault', 'reprise-peugeot', 'reprise-citroen', 'reprise-volkswagen',
+    'reprise-toyota', 'reprise-ford', 'reprise-opel', 'reprise-audi',
+    'reprise-bmw', 'reprise-mercedes', 'reprise-nissan', 'reprise-fiat',
+    'reprise-dacia', 'reprise-hyundai', 'reprise-kia',
+    // Situations
+    'vendre-voiture-particulier', 'rachat-voiture-professionnel',
+    'reprise-voiture-leasing', 'vendre-voiture-credit', 'reprise-voiture-succession',
+    'rachat-voiture-divorce', 'vendre-voiture-demenagement', 'reprise-voiture-expatriation',
+    // Alternatives
+    'alternative-leboncoin', 'alternative-lacentrale',
+    'mieux-que-concessionnaire', 'comparatif-reprise-auto'
+];
+
+thematicRoutes.forEach(route => {
+    app.get(`/${route}`, (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', 'reprise-theme.html'));
+    });
+});
+
 app.get('/articles', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'articles.html'));
 });
@@ -161,6 +202,23 @@ app.get('/api/villes/:slug', (req, res) => {
         res.json(city);
     } else {
         res.status(404).json({ error: 'Ville non trouvée' });
+    }
+});
+
+// ============ API THEMES ============
+
+app.get('/api/themes', (req, res) => {
+    const themes = readJSON('themes.json');
+    res.json(themes);
+});
+
+app.get('/api/themes/:slug', (req, res) => {
+    const themes = readJSON('themes.json');
+    const theme = themes.find(t => t.slug === req.params.slug);
+    if (theme) {
+        res.json(theme);
+    } else {
+        res.status(404).json({ error: 'Page non trouvée' });
     }
 });
 
@@ -628,6 +686,7 @@ app.get('/sitemap.xml', (req, res) => {
     const baseUrl = process.env.SITE_URL || 'https://lunicar.fr';
     const articles = readJSON('articles.json');
     const cities = readJSON('cities.json');
+    const themes = readJSON('themes.json');
 
     const staticPages = [
         { url: '/', priority: '1.0', changefreq: 'weekly' },
@@ -658,6 +717,16 @@ app.get('/sitemap.xml', (req, res) => {
     <loc>${baseUrl}/reprise-auto-${city.slug}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+`;
+    });
+
+    // Pages thématiques SEO
+    themes.forEach(theme => {
+        sitemap += `  <url>
+    <loc>${baseUrl}/${theme.slug}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 `;
     });

@@ -1,0 +1,182 @@
+/**
+ * LUNICAR - Thematic SEO Pages Styles
+ */
+
+/* Hero Section */
+.theme-hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    padding: 100px 0 80px;
+    margin-top: 70px;
+}
+
+.theme-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.theme-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.theme-hero-subtitle {
+    font-size: 1.25rem;
+    color: #94A3B8;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Advantages Section */
+.theme-advantages {
+    background: #F8FAFC;
+}
+
+.theme-advantages h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #0F172A;
+    margin-bottom: 50px;
+}
+
+.theme-advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.theme-advantage-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.theme-advantage-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    text-transform: uppercase;
+}
+
+.theme-advantage-card h3 {
+    font-size: 1.1rem;
+    color: #0F172A;
+    margin-bottom: 10px;
+}
+
+.theme-advantage-card p {
+    font-size: 0.95rem;
+    color: #64748B;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* FAQ Section */
+.theme-faq {
+    background: #ffffff;
+}
+
+.theme-faq h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #0F172A;
+    margin-bottom: 50px;
+}
+
+.theme-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.theme-faq-item {
+    background: #F8FAFC;
+    padding: 25px 30px;
+    border-radius: 12px;
+    border-left: 4px solid #F59E0B;
+}
+
+.theme-faq-item h3 {
+    font-size: 1.1rem;
+    color: #0F172A;
+    margin-bottom: 12px;
+}
+
+.theme-faq-item p {
+    font-size: 0.95rem;
+    color: #64748B;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .theme-advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .theme-hero {
+        padding: 80px 0 60px;
+    }
+
+    .theme-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .theme-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .theme-advantages-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .theme-advantages h2,
+    .theme-faq h2 {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    .theme-advantage-card {
+        padding: 25px;
+    }
+
+    .theme-faq-item {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .theme-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .theme-advantage-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1rem;
+    }
+}
