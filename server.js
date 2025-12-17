@@ -625,7 +625,7 @@ app.delete('/api/admin/articles/:slug', authAdmin, (req, res) => {
 // ============ SEO - SITEMAP & ROBOTS ============
 
 app.get('/sitemap.xml', (req, res) => {
-    const baseUrl = process.env.SITE_URL || `http://localhost:${PORT}`;
+    const baseUrl = process.env.SITE_URL || 'https://lunicar.fr';
     const articles = readJSON('articles.json');
     const cities = readJSON('cities.json');
 
@@ -678,7 +678,7 @@ app.get('/sitemap.xml', (req, res) => {
 });
 
 app.get('/robots.txt', (req, res) => {
-    const baseUrl = process.env.SITE_URL || `http://localhost:${PORT}`;
+    const baseUrl = process.env.SITE_URL || 'https://lunicar.fr';
     const robots = `# LUNICAR - Robots.txt
 User-agent: *
 Allow: /
