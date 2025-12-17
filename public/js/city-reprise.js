@@ -38,7 +38,7 @@
         const { nom, codePostal, departement, region } = city;
 
         // Update page title
-        document.title = `Reprise Auto ${nom} (${codePostal}) | LUNICAR - Estimation Gratuite`;
+        document.title = `Reprise Auto ${nom} | LUNICAR - Estimation Gratuite`;
 
         // Update meta description
         const metaDesc = document.querySelector('meta[name="description"]');
@@ -57,7 +57,7 @@
         if (ogUrl) ogUrl.content = `https://lunicar.fr/reprise-auto-${city.slug}`;
 
         const ogTitle = document.querySelector('meta[property="og:title"]');
-        if (ogTitle) ogTitle.content = `Reprise Auto ${nom} (${codePostal}) | LUNICAR`;
+        if (ogTitle) ogTitle.content = `Reprise Auto ${nom} | LUNICAR`;
 
         const ogDesc = document.querySelector('meta[property="og:description"]');
         if (ogDesc) ogDesc.content = `Vendez votre voiture à ${nom}. Estimation gratuite, paiement sous 24h.`;
@@ -89,7 +89,7 @@
         // Update subtitle
         const subtitle = document.getElementById('citySubtitle');
         if (subtitle) {
-            subtitle.textContent = `Vendez votre voiture à ${nom} (${codePostal}) rapidement. Estimation gratuite en 2 minutes, paiement immédiat.`;
+            subtitle.textContent = `Vendez votre voiture à ${nom} rapidement. Estimation gratuite en 2 minutes, paiement immédiat.`;
         }
 
         // Update section titles
