@@ -112,6 +112,17 @@ app.get('/reprise', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'reprise.html'));
 });
 
+// Route dynamique pour les pages villes SEO
+app.get('/reprise-auto-:slug', (req, res) => {
+    const cities = readJSON('cities.json');
+    const city = cities.find(c => c.slug === req.params.slug);
+    if (city) {
+        res.sendFile(path.join(__dirname, 'public', 'reprise-ville.html'));
+    } else {
+        res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
+    }
+});
+
 app.get('/articles', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'articles.html'));
 });
@@ -134,6 +145,23 @@ app.get('/mentions-legales', (req, res) => {
 
 app.get('/politique-confidentialite', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'politique-confidentialite.html'));
+});
+
+// ============ API VILLES ============
+
+app.get('/api/villes', (req, res) => {
+    const cities = readJSON('cities.json');
+    res.json(cities);
+});
+
+app.get('/api/villes/:slug', (req, res) => {
+    const cities = readJSON('cities.json');
+    const city = cities.find(c => c.slug === req.params.slug);
+    if (city) {
+        res.json(city);
+    } else {
+        res.status(404).json({ error: 'Ville non trouvée' });
+    }
 });
 
 // ============ API ARTICLES ============
@@ -599,6 +627,7 @@ app.delete('/api/admin/articles/:slug', authAdmin, (req, res) => {
 app.get('/sitemap.xml', (req, res) => {
     const baseUrl = process.env.SITE_URL || `http://localhost:${PORT}`;
     const articles = readJSON('articles.json');
+    const cities = readJSON('cities.json');
 
     const staticPages = [
         { url: '/', priority: '1.0', changefreq: 'weekly' },
@@ -619,6 +648,16 @@ app.get('/sitemap.xml', (req, res) => {
     <loc>${baseUrl}${page.url}</loc>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
+  </url>
+`;
+    });
+
+    // Pages villes SEO locales
+    cities.forEach(city => {
+        sitemap += `  <url>
+    <loc>${baseUrl}/reprise-auto-${city.slug}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 `;
     });

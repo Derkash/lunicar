@@ -1,0 +1,456 @@
+/**
+ * LUNICAR - City SEO Pages Styles
+ */
+
+/* Hero Section */
+.city-hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    padding: 100px 0 80px;
+    margin-top: 70px;
+}
+
+.city-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.city-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.city-hero-subtitle {
+    font-size: 1.25rem;
+    color: #94A3B8;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Search Box */
+.city-search-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.city-search-form {
+    width: 100%;
+}
+
+.city-search-input-wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: stretch;
+}
+
+.city-search-input {
+    flex: 1;
+    padding: 16px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #E2E8F0;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.city-search-input:focus {
+    border-color: #F59E0B;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+.city-search-input.invalid {
+    border-color: #EF4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.city-search-input::placeholder {
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    color: #94A3B8;
+}
+
+.city-search-btn {
+    padding: 16px 32px;
+    background: #F59E0B;
+    color: #0F172A;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.city-search-btn:hover {
+    background: #D97706;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+.city-search-hint {
+    text-align: center;
+    color: #64748B;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+/* Why Section */
+.city-why {
+    background: #F8FAFC;
+}
+
+.city-why h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #0F172A;
+    margin-bottom: 50px;
+}
+
+.city-why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.city-why-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.city-why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.city-why-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.city-why-card h3 {
+    font-size: 1.1rem;
+    color: #0F172A;
+    margin-bottom: 10px;
+}
+
+.city-why-card p {
+    font-size: 0.95rem;
+    color: #64748B;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Advantages Section */
+.city-advantages h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #0F172A;
+    margin-bottom: 50px;
+}
+
+.city-advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.city-advantage {
+    display: flex;
+    gap: 20px;
+    padding: 25px;
+    background: #F8FAFC;
+    border-radius: 12px;
+    transition: background 0.3s ease;
+}
+
+.city-advantage:hover {
+    background: #F1F5F9;
+}
+
+.city-advantage-icon {
+    width: 50px;
+    height: 50px;
+    background: #0F172A;
+    color: #F59E0B;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.city-advantage-content h3 {
+    font-size: 1.1rem;
+    color: #0F172A;
+    margin-bottom: 8px;
+}
+
+.city-advantage-content p {
+    font-size: 0.95rem;
+    color: #64748B;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Steps Section */
+.city-steps {
+    background: #0F172A;
+    color: #ffffff;
+}
+
+.city-steps h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 50px;
+}
+
+.city-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.city-step {
+    text-align: center;
+    position: relative;
+}
+
+.city-step-number {
+    width: 60px;
+    height: 60px;
+    background: #F59E0B;
+    color: #0F172A;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.city-step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.city-step p {
+    font-size: 0.95rem;
+    color: #94A3B8;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.city-steps-cta {
+    text-align: center;
+}
+
+/* FAQ Section */
+.city-faq {
+    background: #F8FAFC;
+}
+
+.city-faq h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #0F172A;
+    margin-bottom: 50px;
+}
+
+.city-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.city-faq-item {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.city-faq-item h3 {
+    font-size: 1.1rem;
+    color: #0F172A;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.city-faq-item h3::before {
+    content: "?";
+    width: 24px;
+    height: 24px;
+    background: #F59E0B;
+    color: #0F172A;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.city-faq-item p {
+    font-size: 0.95rem;
+    color: #64748B;
+    line-height: 1.7;
+    margin: 0;
+    padding-left: 34px;
+}
+
+/* CTA Section */
+.city-cta {
+    background: #ffffff;
+}
+
+.city-cta-box {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    padding: 60px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.city-cta-box h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.city-cta-box p {
+    font-size: 1.1rem;
+    color: #94A3B8;
+    margin-bottom: 30px;
+}
+
+/* Button Large */
+.btn-lg {
+    padding: 16px 40px;
+    font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .city-why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .city-steps-grid {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .city-hero {
+        padding: 80px 0 60px;
+    }
+
+    .city-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .city-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .city-search-box {
+        padding: 20px;
+    }
+
+    .city-search-input-wrapper {
+        flex-direction: column;
+    }
+
+    .city-search-btn {
+        width: 100%;
+    }
+
+    .city-why-grid,
+    .city-advantages-grid,
+    .city-faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .city-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .city-step::after {
+        display: none;
+    }
+
+    .city-cta-box {
+        padding: 40px 25px;
+    }
+
+    .city-cta-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn-lg {
+        padding: 14px 30px;
+        font-size: 1rem;
+    }
+
+    .city-why h2,
+    .city-advantages h2,
+    .city-steps h2,
+    .city-faq h2 {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .city-search-input {
+        padding: 14px 16px;
+        font-size: 1rem;
+    }
+
+    .city-why-card,
+    .city-faq-item {
+        padding: 20px;
+    }
+
+    .city-advantage {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .city-advantage-icon {
+        margin: 0 auto 15px;
+    }
+}
