@@ -128,7 +128,7 @@
 
         const ctaText = document.getElementById('ctaText');
         if (ctaText) {
-            ctaText.textContent = `Estimation gratuite en 2 minutes à ${nom}. Paiement sous 24h. Rejoignez les milliers de clients satisfaits en ${region}.`;
+            ctaText.textContent = `Estimation gratuite en 2 minutes à ${nom}. Paiement sous 24h. Service professionnel et sécurisé en ${region}.`;
         }
     }
 
