@@ -912,3 +912,288 @@ img {
         text-align: center;
     }
 }
+
+/* ============ SERVICES LINKS SECTION ============ */
+.services-links {
+    background: var(--gray-100);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.service-category {
+    background: var(--white);
+    padding: 25px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.service-category h3 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+}
+
+.service-category ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.service-category ul li a {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+    transition: var(--transition);
+    display: block;
+    padding: 5px 0;
+}
+
+.service-category ul li a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+/* ============ FAQ SECTION (Homepage) ============ */
+.faq-section {
+    background: var(--white);
+}
+
+.faq-grid {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--gray-100);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-align: left;
+    transition: var(--transition);
+}
+
+.faq-question:hover {
+    background: var(--gray-200);
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+    transition: var(--transition);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+.faq-answer p {
+    padding: 0 24px 20px;
+    color: var(--gray-600);
+    line-height: 1.7;
+}
+
+/* ============ ADVANTAGES GRID 6 COLUMNS ============ */
+.advantages-grid-6 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ============ STEPS CTA ============ */
+.steps-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ============ RESPONSIVE UPDATES ============ */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .advantages-grid-6 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .advantages-grid-6 {
+        grid-template-columns: 1fr;
+    }
+    
+    .faq-question {
+        padding: 15px 18px;
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer p {
+        padding: 0 18px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ============ INTRO SECTION ============ */
+.intro-section {
+    background: var(--gray-100);
+    padding: 50px 0;
+}
+
+.intro-content {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.intro-content h2 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.intro-content p {
+    color: var(--gray-600);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.intro-advantages {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro-advantage {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--white);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.intro-advantage-icon {
+    font-size: 1.5rem;
+}
+
+.intro-advantage strong {
+    display: block;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.intro-advantage p {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    margin: 0;
+}
+
+/* ============ DOCUMENTS SECTION ============ */
+.documents-section {
+    background: var(--gray-100);
+}
+
+.documents-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.document-card {
+    background: var(--white);
+    padding: 30px 25px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.document-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.document-card h3 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.document-card p {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+}
+
+.documents-note {
+    background: var(--white);
+    padding: 20px 25px;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--accent);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.documents-note p {
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* ============ RESPONSIVE UPDATES 2 ============ */
+@media (max-width: 1024px) {
+    .intro-advantages {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .documents-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-advantages {
+        grid-template-columns: 1fr;
+    }
+    
+    .documents-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .intro-content h2 {
+        font-size: 1.5rem;
+    }
+}

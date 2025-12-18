@@ -454,3 +454,64 @@
         margin: 0 auto 15px;
     }
 }
+
+/* ============ CITY INTRO SECTION ============ */
+.city-intro {
+    background: var(--white);
+    padding: 40px 0;
+}
+
+.city-intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.city-intro-content p {
+    color: var(--gray-600);
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+.city-intro-content strong {
+    color: var(--primary);
+}
+
+/* ============ NEARBY CITIES SECTION ============ */
+.nearby-cities {
+    background: var(--gray-100);
+    padding: 40px 0;
+}
+
+.nearby-cities-content h3 {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.nearby-cities-content ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.nearby-cities-content ul li a {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--white);
+    border-radius: var(--radius);
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.nearby-cities-content ul li a:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
