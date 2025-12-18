@@ -846,6 +846,366 @@
     ]
   },
   {
+    "slug": "reprise-ds",
+    "category": "marques",
+    "title": "Reprise DS | DS3, DS4, DS7...",
+    "h1": "Reprise DS Automobiles",
+    "subtitle": "Vendez votre DS : DS3, DS4, DS7 Crossback, DS9...",
+    "metaDescription": "Reprise DS tous modèles. LUNICAR rachète votre DS3, DS4, DS7 Crossback, DS9. Estimation gratuite pour votre premium français.",
+    "advantages": [
+      {"icon": "ds", "title": "Expert DS", "text": "Tous modèles DS repris."},
+      {"icon": "premium", "title": "Premium français", "text": "Marque haut de gamme."},
+      {"icon": "value", "title": "Bonne cote", "text": "DS conserve sa valeur."}
+    ],
+    "faq": [
+      {"question": "Quels modèles DS reprenez-vous ?", "answer": "Tous : DS3, DS3 Crossback, DS4, DS7 Crossback, DS9."},
+      {"question": "Les DS sont-elles bien valorisées ?", "answer": "Oui, c'est le premium de Stellantis avec une bonne valeur résiduelle."},
+      {"question": "J'ai une ancienne DS3 (Citroën), la reprenez-vous ?", "answer": "Oui, nous reprenons les DS3 de l'époque Citroën également."}
+    ]
+  },
+  {
+    "slug": "reprise-alpine",
+    "category": "marques",
+    "title": "Reprise Alpine | A110, A290...",
+    "h1": "Reprise Alpine",
+    "subtitle": "Vendez votre Alpine : A110, A110 S, A290...",
+    "metaDescription": "Reprise Alpine tous modèles. LUNICAR rachète votre A110, A110 S, A290. Estimation gratuite pour votre sportive française.",
+    "advantages": [
+      {"icon": "alpine", "title": "Alpine acceptée", "text": "Spécialiste Alpine."},
+      {"icon": "sport", "title": "Sportive française", "text": "Marque iconique."},
+      {"icon": "value", "title": "Excellente cote", "text": "Les Alpine sont très recherchées."}
+    ],
+    "faq": [
+      {"question": "Les Alpine sont-elles bien cotées ?", "answer": "Oui, les Alpine sont des véhicules de collection moderne très recherchés."},
+      {"question": "Reprenez-vous les A110 ?", "answer": "Oui, toutes les versions : Pure, Légende, S, GT, R."},
+      {"question": "J'ai une ancienne Alpine, la reprenez-vous ?", "answer": "Oui, contactez-nous pour les modèles anciens."}
+    ]
+  },
+  {
+    "slug": "reprise-porsche",
+    "category": "marques",
+    "title": "Reprise Porsche | 911, Cayenne, Macan...",
+    "h1": "Reprise Porsche",
+    "subtitle": "Vendez votre Porsche : 911, Cayenne, Macan, Panamera, Taycan...",
+    "metaDescription": "Reprise Porsche tous modèles. LUNICAR rachète votre 911, Cayenne, Macan, Panamera, Taycan. Estimation gratuite.",
+    "advantages": [
+      {"icon": "porsche", "title": "Expert Porsche", "text": "Tous modèles Porsche."},
+      {"icon": "prestige", "title": "Prestige allemand", "text": "La référence sportive."},
+      {"icon": "value", "title": "Valeur préservée", "text": "Les Porsche gardent leur cote."}
+    ],
+    "faq": [
+      {"question": "Les Porsche gardent-elles leur valeur ?", "answer": "Oui, Porsche est une des marques avec la meilleure valeur résiduelle."},
+      {"question": "Quels modèles Porsche reprenez-vous ?", "answer": "Tous : 718, 911, Cayenne, Macan, Panamera, Taycan."},
+      {"question": "J'ai une Porsche ancienne, la valorisez-vous bien ?", "answer": "Oui, les Porsche anciennes sont souvent des collectors très recherchés."}
+    ]
+  },
+  {
+    "slug": "reprise-mini",
+    "category": "marques",
+    "title": "Reprise Mini | Cooper, Countryman...",
+    "h1": "Reprise Mini",
+    "subtitle": "Vendez votre Mini : Cooper, Countryman, Clubman...",
+    "metaDescription": "Reprise Mini tous modèles. LUNICAR rachète votre Mini Cooper, Countryman, Clubman, Electric. Estimation gratuite.",
+    "advantages": [
+      {"icon": "mini", "title": "Mini acceptée", "text": "Toute la gamme Mini."},
+      {"icon": "style", "title": "Style unique", "text": "La citadine chic."},
+      {"icon": "popular", "title": "Très demandée", "text": "Mini se revend bien."}
+    ],
+    "faq": [
+      {"question": "Les Mini sont-elles bien cotées ?", "answer": "Oui, Mini a une image premium et ses véhicules gardent leur valeur."},
+      {"question": "Quels modèles Mini reprenez-vous ?", "answer": "Tous : Mini 3 portes, 5 portes, Cabrio, Clubman, Countryman, Electric."},
+      {"question": "Les Mini anciennes (avant BMW) sont-elles reprises ?", "answer": "Contactez-nous pour les modèles vintage."}
+    ]
+  },
+  {
+    "slug": "reprise-honda",
+    "category": "marques",
+    "title": "Reprise Honda | Civic, Jazz, CR-V...",
+    "h1": "Reprise Honda",
+    "subtitle": "Vendez votre Honda : Civic, Jazz, CR-V, HR-V, e...",
+    "metaDescription": "Reprise Honda tous modèles. LUNICAR rachète votre Civic, Jazz, CR-V, HR-V. Estimation gratuite.",
+    "advantages": [
+      {"icon": "honda", "title": "Honda reprise", "text": "Tous modèles Honda."},
+      {"icon": "reliable", "title": "Fiabilité japonaise", "text": "Marque très fiable."},
+      {"icon": "value", "title": "Bonne cote", "text": "Honda garde sa valeur."}
+    ],
+    "faq": [
+      {"question": "Les Honda sont-elles fiables ?", "answer": "Oui, Honda est réputée pour sa fiabilité légendaire."},
+      {"question": "Quels modèles Honda reprenez-vous ?", "answer": "Tous : Jazz, Civic, CR-V, HR-V, Honda e, ZR-V."},
+      {"question": "Les Honda hybrides sont-elles bien valorisées ?", "answer": "Oui, les versions e:HEV sont très demandées."}
+    ]
+  },
+  {
+    "slug": "reprise-mazda",
+    "category": "marques",
+    "title": "Reprise Mazda | Mazda2, Mazda3, CX-5...",
+    "h1": "Reprise Mazda",
+    "subtitle": "Vendez votre Mazda : Mazda2, Mazda3, CX-5, CX-30, MX-5...",
+    "metaDescription": "Reprise Mazda tous modèles. LUNICAR rachète votre Mazda2, Mazda3, CX-5, CX-30, MX-5. Estimation gratuite.",
+    "advantages": [
+      {"icon": "mazda", "title": "Mazda acceptée", "text": "Toute la gamme Mazda."},
+      {"icon": "design", "title": "Design Kodo", "text": "Esthétique primée."},
+      {"icon": "drive", "title": "Plaisir de conduite", "text": "Mazda, le plaisir au volant."}
+    ],
+    "faq": [
+      {"question": "Les Mazda sont-elles bien cotées ?", "answer": "Oui, Mazda a une excellente image et une bonne valeur résiduelle."},
+      {"question": "Reprenez-vous les MX-5 ?", "answer": "Oui, le roadster Mazda est très recherché."},
+      {"question": "Quels Mazda rachetez-vous ?", "answer": "Tous : Mazda2, Mazda3, Mazda6, CX-3, CX-30, CX-5, CX-60, MX-5, MX-30."}
+    ]
+  },
+  {
+    "slug": "reprise-suzuki",
+    "category": "marques",
+    "title": "Reprise Suzuki | Swift, Vitara, Ignis...",
+    "h1": "Reprise Suzuki",
+    "subtitle": "Vendez votre Suzuki : Swift, Vitara, Ignis, S-Cross, Jimny...",
+    "metaDescription": "Reprise Suzuki tous modèles. LUNICAR rachète votre Swift, Vitara, Ignis, S-Cross, Jimny. Estimation gratuite.",
+    "advantages": [
+      {"icon": "suzuki", "title": "Suzuki reprise", "text": "Tous modèles Suzuki."},
+      {"icon": "compact", "title": "Compactes fiables", "text": "Petites mais robustes."},
+      {"icon": "hybrid", "title": "Hybrides légers", "text": "Technologie Smart Hybrid."}
+    ],
+    "faq": [
+      {"question": "Les Suzuki sont-elles fiables ?", "answer": "Oui, Suzuki propose des véhicules simples et très fiables."},
+      {"question": "Reprenez-vous le Jimny ?", "answer": "Oui, le Jimny est très recherché et bien coté."},
+      {"question": "Quels Suzuki rachetez-vous ?", "answer": "Tous : Swift, Ignis, Vitara, S-Cross, Jimny, Swace."}
+    ]
+  },
+  {
+    "slug": "reprise-mitsubishi",
+    "category": "marques",
+    "title": "Reprise Mitsubishi | ASX, Eclipse Cross, Outlander...",
+    "h1": "Reprise Mitsubishi",
+    "subtitle": "Vendez votre Mitsubishi : ASX, Eclipse Cross, Outlander PHEV...",
+    "metaDescription": "Reprise Mitsubishi tous modèles. LUNICAR rachète votre ASX, Eclipse Cross, Outlander, Space Star. Estimation gratuite.",
+    "advantages": [
+      {"icon": "mitsubishi", "title": "Mitsubishi reprise", "text": "Tous modèles Mitsubishi."},
+      {"icon": "4x4", "title": "SUV experts", "text": "Spécialiste du 4x4."},
+      {"icon": "phev", "title": "PHEV pionnier", "text": "Outlander PHEV très demandé."}
+    ],
+    "faq": [
+      {"question": "Les Outlander PHEV sont-ils bien cotés ?", "answer": "Oui, c'est le pionnier du SUV hybride rechargeable, très recherché."},
+      {"question": "Mitsubishi existe-t-elle encore en France ?", "answer": "Oui, via le réseau Renault, avec une gamme renouvelée."},
+      {"question": "Quels Mitsubishi reprenez-vous ?", "answer": "Tous : Space Star, ASX, Eclipse Cross, Outlander, L200."}
+    ]
+  },
+  {
+    "slug": "reprise-lexus",
+    "category": "marques",
+    "title": "Reprise Lexus | IS, NX, RX, UX...",
+    "h1": "Reprise Lexus",
+    "subtitle": "Vendez votre Lexus : IS, NX, RX, UX, ES, LC...",
+    "metaDescription": "Reprise Lexus tous modèles. LUNICAR rachète votre IS, NX, RX, UX, ES, LC. Estimation gratuite pour votre premium japonais.",
+    "advantages": [
+      {"icon": "lexus", "title": "Expert Lexus", "text": "Tous modèles Lexus."},
+      {"icon": "luxury", "title": "Premium japonais", "text": "Le luxe selon Toyota."},
+      {"icon": "hybrid", "title": "100% hybride", "text": "Pionnier de l'hybride premium."}
+    ],
+    "faq": [
+      {"question": "Les Lexus sont-elles fiables ?", "answer": "Oui, Lexus est régulièrement en tête des classements de fiabilité."},
+      {"question": "Reprenez-vous les Lexus hybrides ?", "answer": "Oui, tous les modèles hybrides Lexus sont repris."},
+      {"question": "Quels Lexus rachetez-vous ?", "answer": "Tous : UX, NX, RX, ES, IS, LC, LS, LBX."}
+    ]
+  },
+  {
+    "slug": "reprise-tesla",
+    "category": "marques",
+    "title": "Reprise Tesla | Model 3, Model Y, Model S...",
+    "h1": "Reprise Tesla",
+    "subtitle": "Vendez votre Tesla : Model 3, Model Y, Model S, Model X...",
+    "metaDescription": "Reprise Tesla tous modèles. LUNICAR rachète votre Model 3, Model Y, Model S, Model X. Estimation incluant l'état batterie.",
+    "advantages": [
+      {"icon": "tesla", "title": "Expert Tesla", "text": "Tous modèles Tesla."},
+      {"icon": "electric", "title": "Leader électrique", "text": "La référence EV."},
+      {"icon": "battery", "title": "Batterie évaluée", "text": "On évalue l'état de la batterie."}
+    ],
+    "faq": [
+      {"question": "Comment évaluez-vous une Tesla ?", "answer": "Nous prenons en compte le modèle, le kilométrage et l'état de santé de la batterie."},
+      {"question": "Les Tesla gardent-elles leur valeur ?", "answer": "Relativement bien, surtout les Model 3 et Model Y très demandés."},
+      {"question": "Quels modèles Tesla reprenez-vous ?", "answer": "Tous : Model 3, Model Y, Model S, Model X, Cybertruck."}
+    ]
+  },
+  {
+    "slug": "reprise-jeep",
+    "category": "marques",
+    "title": "Reprise Jeep | Renegade, Compass, Wrangler...",
+    "h1": "Reprise Jeep",
+    "subtitle": "Vendez votre Jeep : Renegade, Compass, Wrangler, Grand Cherokee...",
+    "metaDescription": "Reprise Jeep tous modèles. LUNICAR rachète votre Renegade, Compass, Wrangler, Cherokee. Estimation gratuite.",
+    "advantages": [
+      {"icon": "jeep", "title": "Jeep acceptée", "text": "Tous modèles Jeep."},
+      {"icon": "offroad", "title": "Légende tout-terrain", "text": "L'authentique 4x4."},
+      {"icon": "style", "title": "Style iconique", "text": "Design reconnaissable."}
+    ],
+    "faq": [
+      {"question": "Les Jeep sont-elles bien cotées ?", "answer": "Oui, surtout le Wrangler qui est une icône très recherchée."},
+      {"question": "Reprenez-vous les Wrangler ?", "answer": "Oui, le Wrangler est un des modèles les mieux cotés."},
+      {"question": "Quels Jeep rachetez-vous ?", "answer": "Tous : Renegade, Compass, Cherokee, Grand Cherokee, Wrangler, Gladiator."}
+    ]
+  },
+  {
+    "slug": "reprise-alfa-romeo",
+    "category": "marques",
+    "title": "Reprise Alfa Romeo | Giulia, Stelvio, Tonale...",
+    "h1": "Reprise Alfa Romeo",
+    "subtitle": "Vendez votre Alfa Romeo : Giulia, Stelvio, Tonale, Giulietta...",
+    "metaDescription": "Reprise Alfa Romeo tous modèles. LUNICAR rachète votre Giulia, Stelvio, Tonale, Giulietta. Estimation gratuite.",
+    "advantages": [
+      {"icon": "alfa", "title": "Alfa Romeo reprise", "text": "Tous modèles Alfa."},
+      {"icon": "italian", "title": "Passion italienne", "text": "Le style et l'émotion."},
+      {"icon": "sport", "title": "Sportives", "text": "Quadrifoglio bienvenus."}
+    ],
+    "faq": [
+      {"question": "Les Alfa Romeo sont-elles bien cotées ?", "answer": "Oui, Alfa Romeo a une image sportive premium appréciée."},
+      {"question": "Reprenez-vous les Quadrifoglio ?", "answer": "Oui, les versions sportives sont bien valorisées."},
+      {"question": "Quels modèles Alfa reprenez-vous ?", "answer": "Tous : MiTo, Giulietta, Giulia, Stelvio, Tonale."}
+    ]
+  },
+  {
+    "slug": "reprise-land-rover",
+    "category": "marques",
+    "title": "Reprise Land Rover | Range Rover, Defender, Evoque...",
+    "h1": "Reprise Land Rover",
+    "subtitle": "Vendez votre Land Rover : Range Rover, Defender, Evoque, Discovery...",
+    "metaDescription": "Reprise Land Rover tous modèles. LUNICAR rachète votre Range Rover, Defender, Evoque, Discovery, Velar. Estimation gratuite.",
+    "advantages": [
+      {"icon": "landrover", "title": "Expert Land Rover", "text": "Tous modèles Land Rover."},
+      {"icon": "luxury4x4", "title": "Luxe tout-terrain", "text": "La référence premium 4x4."},
+      {"icon": "value", "title": "Forte cote", "text": "Land Rover très recherchés."}
+    ],
+    "faq": [
+      {"question": "Les Land Rover gardent-elles leur valeur ?", "answer": "Oui, surtout le Range Rover et le Defender, très demandés."},
+      {"question": "Reprenez-vous les Defender ?", "answer": "Oui, l'ancien et le nouveau Defender sont bien cotés."},
+      {"question": "Quels Land Rover rachetez-vous ?", "answer": "Tous : Defender, Discovery, Range Rover, Range Rover Sport, Evoque, Velar."}
+    ]
+  },
+  {
+    "slug": "reprise-jaguar",
+    "category": "marques",
+    "title": "Reprise Jaguar | XE, XF, F-Pace, E-Pace...",
+    "h1": "Reprise Jaguar",
+    "subtitle": "Vendez votre Jaguar : XE, XF, F-Pace, E-Pace, I-Pace, F-Type...",
+    "metaDescription": "Reprise Jaguar tous modèles. LUNICAR rachète votre XE, XF, F-Pace, E-Pace, I-Pace, F-Type. Estimation gratuite.",
+    "advantages": [
+      {"icon": "jaguar", "title": "Jaguar acceptée", "text": "Tous modèles Jaguar."},
+      {"icon": "british", "title": "Élégance britannique", "text": "Le luxe sportif anglais."},
+      {"icon": "sport", "title": "F-Type expert", "text": "Sportives bien valorisées."}
+    ],
+    "faq": [
+      {"question": "Les Jaguar sont-elles bien cotées ?", "answer": "Oui, Jaguar est une marque de prestige avec une bonne valeur résiduelle."},
+      {"question": "Reprenez-vous la F-Type ?", "answer": "Oui, la F-Type est une sportive très recherchée."},
+      {"question": "Quels Jaguar rachetez-vous ?", "answer": "Tous : XE, XF, E-Pace, F-Pace, I-Pace, F-Type."}
+    ]
+  },
+  {
+    "slug": "reprise-mg",
+    "category": "marques",
+    "title": "Reprise MG | ZS, MG4, MG5, HS...",
+    "h1": "Reprise MG",
+    "subtitle": "Vendez votre MG : ZS EV, MG4, MG5, HS, Marvel R...",
+    "metaDescription": "Reprise MG tous modèles. LUNICAR rachète votre ZS EV, MG4, MG5, HS. Estimation gratuite pour votre électrique chinoise.",
+    "advantages": [
+      {"icon": "mg", "title": "MG reprise", "text": "Tous modèles MG."},
+      {"icon": "electric", "title": "Électriques abordables", "text": "Le bon rapport qualité/prix."},
+      {"icon": "growing", "title": "Marque en croissance", "text": "MG se développe vite."}
+    ],
+    "faq": [
+      {"question": "Les MG sont-elles bien cotées ?", "answer": "Elles sont récentes sur le marché, mais leur rapport qualité/prix les rend attractives."},
+      {"question": "Reprenez-vous les MG électriques ?", "answer": "Oui, ZS EV, MG4, MG5 et Marvel R avec évaluation batterie."},
+      {"question": "Quels MG rachetez-vous ?", "answer": "Tous : ZS, ZS EV, MG4, MG5, HS, Marvel R, Cyberster."}
+    ]
+  },
+  {
+    "slug": "reprise-volvo",
+    "category": "marques",
+    "title": "Reprise Volvo | XC40, XC60, XC90...",
+    "h1": "Reprise Volvo",
+    "subtitle": "Vendez votre Volvo : XC40, XC60, XC90, V60, S60...",
+    "metaDescription": "Reprise Volvo tous modèles. LUNICAR rachète votre XC40, XC60, XC90, V60, S60. Estimation gratuite.",
+    "advantages": [
+      {"icon": "volvo", "title": "Expert Volvo", "text": "Tous modèles Volvo."},
+      {"icon": "safety", "title": "Sécurité suédoise", "text": "La référence en sécurité."},
+      {"icon": "value", "title": "Bonne cote", "text": "Volvo garde sa valeur."}
+    ],
+    "faq": [
+      {"question": "Les Volvo sont-elles bien valorisées ?", "answer": "Oui, Volvo est synonyme de sécurité et qualité, très recherchée."},
+      {"question": "Reprenez-vous les Volvo Recharge ?", "answer": "Oui, les versions hybrides rechargeables et électriques."},
+      {"question": "Quels Volvo rachetez-vous ?", "answer": "Tous : XC40, XC60, XC90, V60, V90, S60, S90, C40, EX30, EX90."}
+    ]
+  },
+  {
+    "slug": "reprise-seat",
+    "category": "marques",
+    "title": "Reprise Seat | Ibiza, Leon, Arona, Ateca...",
+    "h1": "Reprise Seat",
+    "subtitle": "Vendez votre Seat : Ibiza, Leon, Arona, Ateca, Tarraco...",
+    "metaDescription": "Reprise Seat tous modèles. LUNICAR rachète votre Ibiza, Leon, Arona, Ateca, Tarraco. Estimation gratuite.",
+    "advantages": [
+      {"icon": "seat", "title": "Seat acceptée", "text": "Tous modèles Seat."},
+      {"icon": "sporty", "title": "Sportive espagnole", "text": "Le dynamisme à prix doux."},
+      {"icon": "vw", "title": "Base Volkswagen", "text": "Fiabilité VW Group."}
+    ],
+    "faq": [
+      {"question": "Les Seat sont-elles fiables ?", "answer": "Oui, elles partagent les plateformes Volkswagen, gages de fiabilité."},
+      {"question": "Seat et Cupra, quelle différence ?", "answer": "Cupra est la marque sportive issue de Seat, nous reprenons les deux."},
+      {"question": "Quels Seat rachetez-vous ?", "answer": "Tous : Mii, Ibiza, Leon, Arona, Ateca, Tarraco."}
+    ]
+  },
+  {
+    "slug": "reprise-cupra",
+    "category": "marques",
+    "title": "Reprise Cupra | Formentor, Born, Leon...",
+    "h1": "Reprise Cupra",
+    "subtitle": "Vendez votre Cupra : Formentor, Born, Leon, Ateca...",
+    "metaDescription": "Reprise Cupra tous modèles. LUNICAR rachète votre Formentor, Born, Leon, Ateca. Estimation gratuite.",
+    "advantages": [
+      {"icon": "cupra", "title": "Cupra reprise", "text": "Tous modèles Cupra."},
+      {"icon": "sport", "title": "Performance", "text": "La sportive du groupe VW."},
+      {"icon": "design", "title": "Design affirmé", "text": "Style unique et moderne."}
+    ],
+    "faq": [
+      {"question": "Les Cupra sont-elles bien cotées ?", "answer": "Oui, c'est une marque jeune et dynamique avec une bonne image."},
+      {"question": "Reprenez-vous le Formentor ?", "answer": "Oui, le Formentor est le best-seller de Cupra, très demandé."},
+      {"question": "Quels Cupra rachetez-vous ?", "answer": "Tous : Leon, Ateca, Formentor, Born, Tavascan."}
+    ]
+  },
+  {
+    "slug": "reprise-skoda",
+    "category": "marques",
+    "title": "Reprise Skoda | Fabia, Octavia, Kodiaq...",
+    "h1": "Reprise Skoda",
+    "subtitle": "Vendez votre Skoda : Fabia, Octavia, Kodiaq, Karoq, Superb...",
+    "metaDescription": "Reprise Skoda tous modèles. LUNICAR rachète votre Fabia, Octavia, Kodiaq, Karoq, Superb, Enyaq. Estimation gratuite.",
+    "advantages": [
+      {"icon": "skoda", "title": "Expert Skoda", "text": "Tous modèles Skoda."},
+      {"icon": "value", "title": "Rapport qualité/prix", "text": "Le meilleur du groupe VW."},
+      {"icon": "space", "title": "Habitabilité", "text": "Les Skoda sont spacieuses."}
+    ],
+    "faq": [
+      {"question": "Les Skoda sont-elles bien valorisées ?", "answer": "Oui, excellent rapport qualité/prix et fiabilité VW Group."},
+      {"question": "Skoda et Volkswagen, même fiabilité ?", "answer": "Oui, Skoda utilise les mêmes plateformes et moteurs VW."},
+      {"question": "Quels Skoda rachetez-vous ?", "answer": "Tous : Fabia, Scala, Octavia, Superb, Kamiq, Karoq, Kodiaq, Enyaq."}
+    ]
+  },
+  {
+    "slug": "reprise-byd",
+    "category": "marques",
+    "title": "Reprise BYD | Atto 3, Han, Tang, Seal...",
+    "h1": "Reprise BYD",
+    "subtitle": "Vendez votre BYD : Atto 3, Han, Tang, Seal, Dolphin...",
+    "metaDescription": "Reprise BYD tous modèles. LUNICAR rachète votre Atto 3, Han, Tang, Seal, Dolphin. Estimation gratuite pour votre électrique chinoise.",
+    "advantages": [
+      {"icon": "byd", "title": "BYD acceptée", "text": "Tous modèles BYD."},
+      {"icon": "electric", "title": "100% électrique", "text": "Leader mondial EV."},
+      {"icon": "battery", "title": "Batterie Blade", "text": "Technologie innovante."}
+    ],
+    "faq": [
+      {"question": "Les BYD sont-elles bien cotées ?", "answer": "C'est une marque récente en France, mais très prometteuse."},
+      {"question": "Comment évaluez-vous la batterie BYD ?", "answer": "Nous analysons l'état de santé de la batterie Blade LFP."},
+      {"question": "Quels BYD rachetez-vous ?", "answer": "Tous : Atto 3, Dolphin, Seal, Han, Tang."}
+    ]
+  },
+  {
     "slug": "vendre-voiture-particulier",
     "category": "situations",
     "title": "Vendre Voiture entre Particuliers | Alternative",
