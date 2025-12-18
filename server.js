@@ -99,6 +99,11 @@ async function sendEmail(options) {
         html: options.html
     };
 
+    // Ajouter les pièces jointes si présentes
+    if (options.attachments && options.attachments.length > 0) {
+        mailOptions.attachments = options.attachments;
+    }
+
     return transporter.sendMail(mailOptions);
 }
 
@@ -261,6 +266,7 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             etatInterieur: req.body.etatInterieur,
             etatMecanique: req.body.etatMecanique,
             commentaires: req.body.commentaires,
+            delaiVente: req.body.delaiVente,
             civilite: req.body.civilite,
             nom: req.body.nom,
             prenom: req.body.prenom,
@@ -272,6 +278,26 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
 
         demandes.push(nouvelleDemande);
         writeJSON('demandes.json', demandes);
+
+        // Préparer les pièces jointes (images)
+        const attachments = [];
+        if (req.files && req.files.length > 0) {
+            req.files.forEach((file, index) => {
+                attachments.push({
+                    filename: `photo_${index + 1}${path.extname(file.originalname)}`,
+                    path: file.path,
+                    cid: `photo${index + 1}`
+                });
+            });
+        }
+
+        // Fonction pour déterminer la couleur du badge délai
+        const getDelaiColor = (delai) => {
+            if (delai === 'Des que possible') return '#EF4444';
+            if (delai === 'Dans la semaine') return '#F59E0B';
+            if (delai === 'Dans le mois') return '#3B82F6';
+            return '#6B7280';
+        };
 
         // Envoi email de notification
         const emailHtml = `
@@ -290,6 +316,9 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
         .value { color: #333; }
         .footer { background: #0F172A; color: #999; padding: 15px; text-align: center; font-size: 12px; border-radius: 0 0 8px 8px; }
         .ref { background: #F59E0B; color: #0F172A; padding: 10px 20px; border-radius: 4px; font-weight: bold; display: inline-block; }
+        .urgence { background: ${getDelaiColor(nouvelleDemande.delaiVente)}; color: white; padding: 12px 20px; border-radius: 8px; text-align: center; margin-bottom: 15px; }
+        .urgence-label { font-size: 12px; text-transform: uppercase; opacity: 0.9; }
+        .urgence-value { font-size: 18px; font-weight: bold; margin-top: 4px; }
     </style>
 </head>
 <body>
@@ -301,21 +330,26 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
         <div class="content">
             <p style="text-align: center;"><span class="ref">REF: ${referenceId.substring(0, 8).toUpperCase()}</span></p>
 
-            <div class="section">
-                <h3>🚗 Véhicule</h3>
-                <p><span class="label">Plaque:</span> <span class="value">${nouvelleDemande.plaque}</span></p>
-                <p><span class="label">Marque / Modèle:</span> <span class="value">${nouvelleDemande.marque} ${nouvelleDemande.modele}</span></p>
-                <p><span class="label">Année:</span> <span class="value">${nouvelleDemande.annee}</span></p>
-                <p><span class="label">Kilométrage:</span> <span class="value">${nouvelleDemande.kilometrage} km</span></p>
-                <p><span class="label">Carburant:</span> <span class="value">${nouvelleDemande.carburant}</span></p>
-                <p><span class="label">Boîte:</span> <span class="value">${nouvelleDemande.boite}</span></p>
+            <div class="urgence">
+                <div class="urgence-label">Delai de vente souhaite</div>
+                <div class="urgence-value">${nouvelleDemande.delaiVente || 'Non specifie'}</div>
             </div>
 
             <div class="section">
-                <h3>📋 État du véhicule</h3>
-                <p><span class="label">Extérieur:</span> <span class="value">${nouvelleDemande.etatExterieur}</span></p>
-                <p><span class="label">Intérieur:</span> <span class="value">${nouvelleDemande.etatInterieur}</span></p>
-                <p><span class="label">Mécanique:</span> <span class="value">${nouvelleDemande.etatMecanique}</span></p>
+                <h3>🚗 Vehicule</h3>
+                <p><span class="label">Plaque:</span> <span class="value">${nouvelleDemande.plaque}</span></p>
+                <p><span class="label">Marque / Modele:</span> <span class="value">${nouvelleDemande.marque} ${nouvelleDemande.modele}</span></p>
+                <p><span class="label">Annee:</span> <span class="value">${nouvelleDemande.annee}</span></p>
+                <p><span class="label">Kilometrage:</span> <span class="value">${nouvelleDemande.kilometrage} km</span></p>
+                <p><span class="label">Carburant:</span> <span class="value">${nouvelleDemande.carburant}</span></p>
+                <p><span class="label">Boite:</span> <span class="value">${nouvelleDemande.boite}</span></p>
+            </div>
+
+            <div class="section">
+                <h3>📋 Etat du vehicule</h3>
+                <p><span class="label">Exterieur:</span> <span class="value">${nouvelleDemande.etatExterieur}</span></p>
+                <p><span class="label">Interieur:</span> <span class="value">${nouvelleDemande.etatInterieur}</span></p>
+                <p><span class="label">Mecanique:</span> <span class="value">${nouvelleDemande.etatMecanique}</span></p>
                 ${nouvelleDemande.commentaires ? `<p><span class="label">Commentaires:</span> <span class="value">${nouvelleDemande.commentaires}</span></p>` : ''}
             </div>
 
@@ -323,20 +357,21 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
                 <h3>👤 Contact</h3>
                 <p><span class="label">Nom:</span> <span class="value">${nouvelleDemande.civilite} ${nouvelleDemande.prenom} ${nouvelleDemande.nom}</span></p>
                 <p><span class="label">Email:</span> <span class="value"><a href="mailto:${nouvelleDemande.email}">${nouvelleDemande.email}</a></span></p>
-                <p><span class="label">Téléphone:</span> <span class="value"><a href="tel:${nouvelleDemande.telephone}">${nouvelleDemande.telephone}</a></span></p>
+                <p><span class="label">Telephone:</span> <span class="value"><a href="tel:${nouvelleDemande.telephone}">${nouvelleDemande.telephone}</a></span></p>
                 <p><span class="label">Code postal:</span> <span class="value">${nouvelleDemande.codePostal}</span></p>
             </div>
 
-            ${nouvelleDemande.photos.length > 0 ? `
+            ${attachments.length > 0 ? `
             <div class="section">
                 <h3>📷 Photos</h3>
-                <p>${nouvelleDemande.photos.length} photo(s) jointe(s)</p>
+                <p><strong>${attachments.length} photo(s) jointe(s) a cet email</strong></p>
+                <p style="color: #666; font-size: 13px;">Les images sont disponibles en pieces jointes de cet email.</p>
             </div>
             ` : ''}
         </div>
         <div class="footer">
             <p>LUNICAR - Reprise automobile professionnelle</p>
-            <p>Email reçu le ${new Date().toLocaleDateString('fr-FR')} à ${new Date().toLocaleTimeString('fr-FR')}</p>
+            <p>Email recu le ${new Date().toLocaleDateString('fr-FR')} a ${new Date().toLocaleTimeString('fr-FR')}</p>
         </div>
     </div>
 </body>
@@ -345,9 +380,10 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
         try {
             await sendEmail({
                 subject: `🚗 Nouvelle demande de reprise - ${nouvelleDemande.marque} ${nouvelleDemande.modele} - REF: ${referenceId.substring(0, 8).toUpperCase()}`,
-                html: emailHtml
+                html: emailHtml,
+                attachments: attachments
             });
-            console.log('✅ Email de notification envoyé');
+            console.log('✅ Email de notification envoyé avec ' + attachments.length + ' pièce(s) jointe(s)');
         } catch (emailError) {
             console.error('❌ Erreur envoi email:', emailError.message);
         }
