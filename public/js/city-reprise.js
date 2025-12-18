@@ -65,7 +65,6 @@
                 "name": `LUNICAR ${nom}`,
                 "description": `Service de reprise automobile a ${nom}. Rachat de voiture avec estimation gratuite et paiement sous 24h.`,
                 "url": `${baseUrl}/reprise-auto-${slug}`,
-                "telephone": "+33123456789",
                 "email": "contact@lunicar.fr",
                 "areaServed": {
                     "@type": "City",
