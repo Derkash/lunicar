@@ -190,12 +190,37 @@ function showNotification(message, type = 'success') {
     }, 5000);
 }
 
+// ============ SERVICES SEE MORE TOGGLE ============
+function initServicesToggle() {
+    const seeMoreBtns = $$('.see-more-btn');
+    if (!seeMoreBtns.length) return;
+
+    seeMoreBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.closest('.service-category');
+            const textSpan = btn.querySelector('.see-more-text');
+            const isExpanded = btn.getAttribute('data-expanded') === 'true';
+
+            if (isExpanded) {
+                category.classList.remove('expanded');
+                btn.setAttribute('data-expanded', 'false');
+                textSpan.textContent = 'Voir plus';
+            } else {
+                category.classList.add('expanded');
+                btn.setAttribute('data-expanded', 'true');
+                textSpan.textContent = 'Voir moins';
+            }
+        });
+    });
+}
+
 // ============ INIT ============
 document.addEventListener('DOMContentLoaded', () => {
     initHeader();
     initMobileMenu();
     initPlaqueInput();
     initScrollAnimations();
+    initServicesToggle();
     loadArticles(3);
 });
 
