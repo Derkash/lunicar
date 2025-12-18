@@ -291,12 +291,13 @@ img {
 }
 
 .hero-subtitle {
-    font-size: 1.3rem;
+    font-size: 1rem;
     opacity: 0.9;
-    margin-bottom: 3rem;
-    max-width: 600px;
+    margin-bottom: 1.5rem;
     margin-left: auto;
     margin-right: auto;
+    white-space: nowrap;
+    text-align: center;
 }
 
 /* Barre de recherche plaque - Version agrandie */
@@ -851,6 +852,13 @@ img {
 
     .hero h1 {
         font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        white-space: normal;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        padding: 0 10px;
     }
 
     .hero-stats {
