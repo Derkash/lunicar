@@ -4,26 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO Meta Tags -->
-    <title>Actualités & Conseils Automobile | Blog LUNICAR</title>
-    <meta name="description" content="Conseils pour vendre votre voiture, tendances du marché automobile, actualités du secteur. Le blog LUNICAR vous guide dans la vente de votre véhicule.">
-    <meta name="keywords" content="conseils vente voiture, actualités automobile, marché occasion, blog auto, LUNICAR actualités">
+    <title>Blog Auto | Conseils Reprise & Vente de Voiture | LUNICAR</title>
+    <meta name="description" content="Decouvrez nos conseils d'experts pour vendre votre voiture au meilleur prix. Guides pratiques, tendances du marche automobile et astuces pour reussir votre reprise.">
+    <meta name="keywords" content="conseils vente voiture, blog automobile, reprise auto, vendre sa voiture, marche occasion, estimation voiture, LUNICAR">
     <meta name="author" content="LUNICAR">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://lunicar.fr/articles">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lunicar.fr/articles">
-    <meta property="og:title" content="Actualités & Conseils Automobile | LUNICAR">
-    <meta property="og:description" content="Conseils pour vendre votre voiture et actualités du marché automobile.">
+    <meta property="og:title" content="Blog Auto | Conseils Reprise & Vente de Voiture | LUNICAR">
+    <meta property="og:description" content="Guides et conseils pour vendre votre voiture au meilleur prix. Expertise automobile et tendances du marche.">
     <meta property="og:image" content="https://lunicar.fr/images/og-articles.jpg">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="LUNICAR">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Blog LUNICAR - Conseils Automobile">
-    <meta name="twitter:description" content="Conseils pour vendre votre voiture et actualités du marché.">
+    <meta name="twitter:url" content="https://lunicar.fr/articles">
+    <meta name="twitter:title" content="Blog Auto | Conseils Reprise & Vente de Voiture">
+    <meta name="twitter:description" content="Guides et conseils pour vendre votre voiture au meilleur prix.">
+    <meta name="twitter:image" content="https://lunicar.fr/images/og-articles.jpg">
+    <!-- Schema.org BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://lunicar.fr/"},
+            {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://lunicar.fr/articles"}
+        ]
+    }
+    </script>
+    <!-- Schema.org ItemList -->
+    <script type="application/ld+json" id="schemaItemList">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Articles LUNICAR",
+        "description": "Conseils et actualites pour vendre votre voiture",
+        "itemListElement": []
+    }
+    </script>
+    <!-- Schema.org Blog -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog LUNICAR",
+        "description": "Conseils d'experts pour vendre votre voiture au meilleur prix",
+        "url": "https://lunicar.fr/articles",
+        "publisher": {
+            "@type": "Organization",
+            "name": "LUNICAR",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://lunicar.fr/images/logo.png"
+            }
+        }
+    }
+    </script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/pages.css">
+    <link rel="stylesheet" href="/css/articles.css">
     <link rel="stylesheet" href="/css/cookie-consent.css">
 </head>
 <body>
@@ -45,7 +87,7 @@
                     <li><a href="/">Accueil</a></li>
                     <li><a href="/reprise">Faire reprendre</a></li>
                     <li><a href="/garanties">Nos garanties</a></li>
-                    <li><a href="/articles" class="active">Actualités</a></li>
+                    <li><a href="/articles" class="active">Actualites</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
                 <a href="/reprise" class="btn btn-primary nav-cta">Estimation gratuite</a>
@@ -58,41 +100,100 @@
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Fil d'ariane">
         <div class="container">
-            <h1>Actualités & Conseils</h1>
-            <p>Restez informé sur le marché automobile et nos conseils pour bien vendre votre véhicule</p>
+            <ol class="breadcrumb-list">
+                <li><a href="/">Accueil</a></li>
+                <li aria-current="page">Articles</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header articles-header">
+        <div class="container">
+            <h1>Nos conseils pour vendre votre voiture</h1>
+            <p class="header-subtitle">Guides pratiques, tendances du marche et conseils d'experts</p>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="articles-intro">
+        <div class="container">
+            <div class="intro-content">
+                <p>Bienvenue sur le <strong>blog LUNICAR</strong>, votre source d'information pour tout savoir sur la <strong>vente de voiture</strong> et la <strong>reprise automobile</strong>. Nos experts partagent leurs conseils pour vous aider a vendre votre vehicule au meilleur prix. Decouvrez nos guides pratiques sur la preparation de votre voiture, les tendances du marche de l'occasion, et les demarches administratives. Que vous souhaitiez estimer la valeur de votre auto ou comprendre le processus de reprise, nos articles vous accompagnent a chaque etape.</p>
+            </div>
         </div>
     </section>
 
     <!-- Articles Section -->
     <section class="section articles-page">
         <div class="container">
-            <!-- Filtres -->
-            <div class="articles-filters">
-                <button class="filter-btn active" data-filter="all">Tous</button>
-                <button class="filter-btn" data-filter="conseils">Conseils</button>
-                <button class="filter-btn" data-filter="marche">Marché</button>
-                <button class="filter-btn" data-filter="actualites">Actualités</button>
-            </div>
+            <div class="articles-layout">
+                <!-- Main Content -->
+                <main class="articles-main">
+                    <!-- Filtres -->
+                    <div class="articles-filters">
+                        <button class="filter-btn active" data-filter="all">Tous les articles</button>
+                        <button class="filter-btn" data-filter="conseils">Conseils vente</button>
+                        <button class="filter-btn" data-filter="marche">Marche auto</button>
+                        <button class="filter-btn" data-filter="actualites">Actualites</button>
+                        <button class="filter-btn" data-filter="guides">Guides pratiques</button>
+                    </div>
 
-            <!-- Grid articles -->
-            <div class="articles-grid" id="articlesGrid">
-                <!-- Articles chargés dynamiquement -->
-            </div>
+                    <!-- Grid articles -->
+                    <div class="articles-grid" id="articlesGrid">
+                        <!-- Articles charges dynamiquement -->
+                    </div>
 
-            <!-- Loading -->
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p>Chargement des articles...</p>
-            </div>
+                    <!-- Loading -->
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Chargement des articles...</p>
+                    </div>
 
-            <!-- Empty State -->
-            <div class="empty-state" id="emptyState" style="display: none;">
-                <div class="empty-icon">📰</div>
-                <h3>Aucun article trouvé</h3>
-                <p>Revenez bientôt pour découvrir nos prochains articles.</p>
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState" style="display: none;">
+                        <div class="empty-icon">📰</div>
+                        <h3>Aucun article trouve</h3>
+                        <p>Revenez bientot pour decouvrir nos prochains articles.</p>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav class="pagination" id="pagination" aria-label="Pagination des articles">
+                        <!-- Pagination dynamique -->
+                    </nav>
+                </main>
+
+                <!-- Sidebar -->
+                <aside class="articles-sidebar">
+                    <!-- Popular Articles -->
+                    <div class="sidebar-section">
+                        <h3>Articles populaires</h3>
+                        <div class="popular-articles" id="popularArticles">
+                            <!-- Charges dynamiquement -->
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-section">
+                        <h3>Categories</h3>
+                        <ul class="category-list">
+                            <li><a href="#" data-filter="conseils">Conseils vente</a></li>
+                            <li><a href="#" data-filter="marche">Marche automobile</a></li>
+                            <li><a href="#" data-filter="actualites">Actualites</a></li>
+                            <li><a href="#" data-filter="guides">Guides pratiques</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="sidebar-cta">
+                        <h4>Vendez votre voiture</h4>
+                        <p>Estimation gratuite en 2 minutes</p>
+                        <a href="/reprise" class="btn btn-primary btn-block">Estimer mon vehicule</a>
+                    </div>
+                </aside>
             </div>
         </div>
     </section>
@@ -101,10 +202,10 @@
     <section class="newsletter-section">
         <div class="container">
             <div class="newsletter-content">
-                <h2>Restez informé</h2>
-                <p>Recevez nos derniers articles et conseils directement dans votre boîte mail</p>
+                <h2>Restez informe</h2>
+                <p>Recevez nos derniers articles et conseils directement dans votre boite mail</p>
                 <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" placeholder="Votre adresse email" required>
+                    <input type="email" placeholder="Votre adresse email" required aria-label="Adresse email">
                     <button type="submit" class="btn btn-primary">S'inscrire</button>
                 </form>
             </div>
@@ -138,7 +239,7 @@
                 <div class="footer-column">
                     <h4>Informations</h4>
                     <ul>
-                        <li><a href="/articles">Actualités</a></li>
+                        <li><a href="/articles">Actualites</a></li>
                         <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>

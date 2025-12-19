@@ -154,6 +154,11 @@ const thematicRoutes = [
     'reprise-toyota', 'reprise-ford', 'reprise-opel', 'reprise-audi',
     'reprise-bmw', 'reprise-mercedes', 'reprise-nissan', 'reprise-fiat',
     'reprise-dacia', 'reprise-hyundai', 'reprise-kia',
+    'reprise-ds', 'reprise-alpine', 'reprise-porsche', 'reprise-mini',
+    'reprise-honda', 'reprise-mazda', 'reprise-suzuki', 'reprise-mitsubishi',
+    'reprise-lexus', 'reprise-tesla', 'reprise-jeep', 'reprise-alfa-romeo',
+    'reprise-land-rover', 'reprise-jaguar', 'reprise-mg', 'reprise-volvo',
+    'reprise-seat', 'reprise-cupra', 'reprise-skoda', 'reprise-byd',
     // Situations
     'vendre-voiture-particulier', 'rachat-voiture-professionnel',
     'reprise-voiture-leasing', 'vendre-voiture-credit', 'reprise-voiture-succession',
@@ -637,7 +642,7 @@ app.get('/api/admin/articles', authAdmin, (req, res) => {
 // Créer article
 app.post('/api/admin/articles', authAdmin, (req, res) => {
     const articles = readJSON('articles.json');
-    const { titre, extrait, categorie, emoji, contenu, auteur } = req.body;
+    const { titre, metaTitle, metaDescription, extrait, categorie, tags, emoji, image, imageAlt, contenu, auteur } = req.body;
 
     if (!titre || !extrait || !categorie || !contenu) {
         return res.status(400).json({ error: 'Champs obligatoires manquants' });
@@ -656,16 +661,26 @@ app.post('/api/admin/articles', authAdmin, (req, res) => {
         return res.status(400).json({ error: 'Un article avec ce titre existe déjà' });
     }
 
+    const now = new Date();
+    const dateFormatted = now.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+    const dateISO = now.toISOString().split('T')[0];
+
     const nouvelArticle = {
         slug,
         titre,
+        metaTitle: metaTitle || null,
+        metaDescription: metaDescription || extrait,
         extrait,
         categorie,
         categorieSlug: categorie.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
-        date: new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }),
+        tags: tags ? tags.split(',').map(t => t.trim()) : [categorie],
+        date: dateFormatted,
+        dateISO,
         tempsLecture: Math.max(1, Math.ceil(contenu.replace(/<[^>]*>/g, '').split(/\s+/).length / 200)),
         emoji: emoji || '📰',
-        auteur: auteur || 'Équipe LUNICAR',
+        image: image || null,
+        imageAlt: imageAlt || null,
+        auteur: auteur || 'Equipe LUNICAR',
         contenu
     };
 
@@ -684,18 +699,27 @@ app.put('/api/admin/articles/:slug', authAdmin, (req, res) => {
         return res.status(404).json({ error: 'Article non trouvé' });
     }
 
-    const { titre, extrait, categorie, emoji, contenu, auteur } = req.body;
+    const { titre, metaTitle, metaDescription, extrait, categorie, tags, emoji, image, imageAlt, contenu, auteur } = req.body;
+
+    const now = new Date();
+    const dateModified = now.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 
     articles[index] = {
         ...articles[index],
         titre: titre || articles[index].titre,
+        metaTitle: metaTitle !== undefined ? metaTitle : articles[index].metaTitle,
+        metaDescription: metaDescription || articles[index].metaDescription,
         extrait: extrait || articles[index].extrait,
         categorie: categorie || articles[index].categorie,
         categorieSlug: (categorie || articles[index].categorie).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+        tags: tags ? tags.split(',').map(t => t.trim()) : articles[index].tags,
         emoji: emoji || articles[index].emoji,
+        image: image !== undefined ? image : articles[index].image,
+        imageAlt: imageAlt !== undefined ? imageAlt : articles[index].imageAlt,
         auteur: auteur || articles[index].auteur,
         contenu: contenu || articles[index].contenu,
-        tempsLecture: contenu ? Math.max(1, Math.ceil(contenu.replace(/<[^>]*>/g, '').split(/\s+/).length / 200)) : articles[index].tempsLecture
+        tempsLecture: contenu ? Math.max(1, Math.ceil(contenu.replace(/<[^>]*>/g, '').split(/\s+/).length / 200)) : articles[index].tempsLecture,
+        dateModified: dateModified
     };
 
     writeJSON('articles.json', articles);
@@ -768,10 +792,12 @@ app.get('/sitemap.xml', (req, res) => {
     });
 
     articles.forEach(article => {
+        const lastmod = article.dateISO || new Date().toISOString().split('T')[0];
         sitemap += `  <url>
     <loc>${baseUrl}/article/${article.slug}</loc>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 `;
     });

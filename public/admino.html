@@ -354,38 +354,67 @@
                     <input type="hidden" id="articleId">
 
                     <div class="form-group">
-                        <label for="titre">Titre *</label>
-                        <input type="text" id="titre" name="titre" required placeholder="Titre de l'article">
+                        <label for="titre">Titre (H1) *</label>
+                        <input type="text" id="titre" name="titre" required placeholder="Titre de l'article" maxlength="70">
+                        <small style="color: var(--gray-500);">50-60 caracteres recommandes pour le SEO</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="extrait">Résumé *</label>
-                        <input type="text" id="extrait" name="extrait" required placeholder="Court résumé de l'article">
+                        <label for="metaTitle">Meta Title (si different du H1)</label>
+                        <input type="text" id="metaTitle" name="metaTitle" placeholder="Titre pour les moteurs de recherche" maxlength="60">
                     </div>
 
                     <div class="form-group">
-                        <label for="categorie">Catégorie *</label>
+                        <label for="metaDescription">Meta Description *</label>
+                        <input type="text" id="metaDescription" name="metaDescription" placeholder="Description pour Google (150-160 caracteres)" maxlength="160">
+                        <small style="color: var(--gray-500);">150-160 caracteres recommandes</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="extrait">Extrait (pour la liste) *</label>
+                        <input type="text" id="extrait" name="extrait" required placeholder="Court resume affiche dans la liste" maxlength="200">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categorie">Categorie *</label>
                         <select id="categorie" name="categorie" required>
-                            <option value="">Sélectionnez</option>
-                            <option value="Conseils">Conseils</option>
-                            <option value="Marché">Marché</option>
-                            <option value="Actualités">Actualités</option>
+                            <option value="">Selectionnez</option>
+                            <option value="Conseils">Conseils vente</option>
+                            <option value="Marche">Marche auto</option>
+                            <option value="Actualites">Actualites</option>
+                            <option value="Guides">Guides pratiques</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="emoji">Emoji (icône)</label>
+                        <label for="tags">Tags (separes par virgule)</label>
+                        <input type="text" id="tags" name="tags" placeholder="Ex: Conseils, Vente, Preparation">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emoji">Emoji (icone)</label>
                         <input type="text" id="emoji" name="emoji" placeholder="Ex: 🚗" maxlength="5">
                     </div>
 
                     <div class="form-group">
+                        <label for="image">URL Image principale</label>
+                        <input type="text" id="image" name="image" placeholder="https://lunicar.fr/images/article.jpg">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imageAlt">Texte alternatif image</label>
+                        <input type="text" id="imageAlt" name="imageAlt" placeholder="Description de l'image pour le SEO">
+                    </div>
+
+                    <div class="form-group">
                         <label for="contenu">Contenu (HTML) *</label>
-                        <textarea id="contenu" name="contenu" required placeholder="<h2>Titre</h2><p>Contenu...</p>"></textarea>
+                        <textarea id="contenu" name="contenu" required placeholder="<h2>Titre section</h2><p>Contenu avec des mots-cles...</p>"></textarea>
+                        <small style="color: var(--gray-500);">Utilisez H2 et H3 pour structurer. Temps de lecture calcule auto.</small>
                     </div>
 
                     <div class="form-group">
                         <label for="auteur">Auteur</label>
-                        <input type="text" id="auteur" name="auteur" placeholder="Nom de l'auteur" value="Équipe LUNICAR">
+                        <input type="text" id="auteur" name="auteur" placeholder="Nom de l'auteur" value="Equipe LUNICAR">
                     </div>
                 </div>
                 <div class="modal-footer">
