@@ -290,6 +290,11 @@ img {
     color: var(--accent);
 }
 
+/* Mobile line breaks - hidden on desktop */
+.mobile-br {
+    display: none;
+}
+
 .hero-subtitle {
     font-size: 1rem;
     opacity: 0.9;
@@ -851,7 +856,11 @@ img {
     }
 
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+    }
+
+    .mobile-br {
+        display: block;
     }
 
     .hero-subtitle {
