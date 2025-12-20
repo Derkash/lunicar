@@ -1270,3 +1270,250 @@ img {
 .service-category.expanded .see-more-icon {
     transform: rotate(45deg);
 }
+
+/* ============ BRANDS SECTION ============ */
+.brands-section {
+    background: var(--gray-100);
+}
+
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.brand-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 25px 15px;
+    text-align: center;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.brand-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.brand-card.hidden-brand {
+    display: none;
+}
+
+.brands-section.expanded .brand-card.hidden-brand {
+    display: block;
+}
+
+.brand-logo {
+    width: 80px;
+    height: 60px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.brand-card span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.brands-toggle,
+.cities-toggle {
+    text-align: center;
+}
+
+/* ============ COMPARISON TABLE ============ */
+.comparison-section {
+    background: var(--white);
+}
+
+.comparison-table-wrapper {
+    overflow-x: auto;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 18px 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.comparison-table th {
+    background: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.comparison-table th:first-child {
+    text-align: left;
+}
+
+.comparison-table th.highlight {
+    background: var(--accent);
+}
+
+.comparison-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table tr:hover td {
+    background: var(--gray-100);
+}
+
+.check-icon {
+    color: var(--success);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.cross-icon {
+    color: var(--error);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* Mobile Accordion for comparison */
+.comparison-accordion {
+    display: none;
+}
+
+.comparison-accordion-item {
+    background: var(--white);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.comparison-accordion-header {
+    padding: 18px 20px;
+    background: var(--gray-100);
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comparison-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.comparison-accordion-item.active .comparison-accordion-content {
+    max-height: 300px;
+}
+
+.comparison-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.comparison-row:last-child {
+    border-bottom: none;
+}
+
+/* ============ CITIES SECTION ============ */
+.cities-section {
+    background: var(--gray-100);
+}
+
+.cities-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.city-link {
+    background: var(--white);
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-weight: 500;
+    transition: var(--transition);
+    border: 1px solid var(--gray-200);
+}
+
+.city-link:hover {
+    background: var(--secondary);
+    color: var(--white);
+    border-color: var(--secondary);
+}
+
+.city-link.hidden-city {
+    display: none;
+}
+
+.cities-section.expanded .city-link.hidden-city {
+    display: inline-block;
+}
+
+/* ============ RESPONSIVE SECTIONS ============ */
+@media (max-width: 1024px) {
+    .brands-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .brands-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .brand-card {
+        padding: 15px 10px;
+    }
+
+    .brand-logo {
+        width: 50px;
+        height: 40px;
+    }
+
+    .comparison-table-wrapper {
+        display: none;
+    }
+
+    .comparison-accordion {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
