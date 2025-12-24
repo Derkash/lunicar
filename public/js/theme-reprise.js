@@ -190,7 +190,7 @@
         const twitterDesc = document.querySelector('meta[name="twitter:description"]');
         if (twitterDesc) twitterDesc.content = metaDescription;
 
-        // Update Schema.org
+        // Update Schema.org Service
         const schemaScript = document.getElementById('schemaService');
         if (schemaScript) {
             try {
@@ -201,6 +201,24 @@
             } catch (e) {
                 console.error('Error updating schema:', e);
             }
+        }
+
+        // Update Schema.org FAQPage
+        const faqSchema = document.getElementById('schemaFAQ');
+        if (faqSchema && faq && faq.length > 0) {
+            const schema = {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faq.map(item => ({
+                    "@type": "Question",
+                    "name": item.question,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": item.answer
+                    }
+                }))
+            };
+            faqSchema.textContent = JSON.stringify(schema, null, 2);
         }
 
         // Update H1
