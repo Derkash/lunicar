@@ -5,6 +5,7 @@ const fs = require('fs');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
+const { supabase } = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -263,12 +264,10 @@ app.get('/api/articles/:slug', (req, res) => {
 
 app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
     try {
-        const demandes = readJSON('demandes.json');
         const referenceId = uuidv4();
 
         const nouvelleDemande = {
             id: referenceId,
-            date: new Date().toISOString(),
             statut: 'nouvelle',
             plaque: req.body.plaque,
             marque: req.body.marque,
@@ -277,22 +276,28 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             kilometrage: req.body.kilometrage,
             carburant: req.body.carburant,
             boite: req.body.boite,
-            etatExterieur: req.body.etatExterieur,
-            etatInterieur: req.body.etatInterieur,
-            etatMecanique: req.body.etatMecanique,
-            commentaires: req.body.commentaires,
-            delaiVente: req.body.delaiVente,
+            etat_exterieur: req.body.etatExterieur,
+            etat_interieur: req.body.etatInterieur,
+            etat_mecanique: req.body.etatMecanique,
+            commentaires: req.body.commentaires || '',
+            delai_vente: req.body.delaiVente || '',
             civilite: req.body.civilite,
             nom: req.body.nom,
             prenom: req.body.prenom,
             email: req.body.email,
             telephone: req.body.telephone,
-            codePostal: req.body.codePostal,
+            code_postal: req.body.codePostal,
             photos: req.files ? req.files.map(f => f.filename) : []
         };
 
-        demandes.push(nouvelleDemande);
-        writeJSON('demandes.json', demandes);
+        const { error } = await supabase
+            .from('demandes')
+            .insert([nouvelleDemande]);
+
+        if (error) {
+            console.error('Erreur Supabase:', error);
+            return res.status(500).json({ error: 'Erreur lors de l\'enregistrement' });
+        }
 
         // Préparer les pièces jointes (images)
         const attachments = [];
@@ -314,6 +319,16 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             return '#6B7280';
         };
 
+        // Préparer les données pour l'email (camelCase)
+        const demandeEmail = {
+            ...nouvelleDemande,
+            etatExterieur: nouvelleDemande.etat_exterieur,
+            etatInterieur: nouvelleDemande.etat_interieur,
+            etatMecanique: nouvelleDemande.etat_mecanique,
+            delaiVente: nouvelleDemande.delai_vente,
+            codePostal: nouvelleDemande.code_postal
+        };
+
         // Envoi email de notification
         const emailHtml = `
 <!DOCTYPE html>
@@ -331,7 +346,7 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
         .value { color: #333; }
         .footer { background: #0F172A; color: #999; padding: 15px; text-align: center; font-size: 12px; border-radius: 0 0 8px 8px; }
         .ref { background: #F59E0B; color: #0F172A; padding: 10px 20px; border-radius: 4px; font-weight: bold; display: inline-block; }
-        .urgence { background: ${getDelaiColor(nouvelleDemande.delaiVente)}; color: white; padding: 12px 20px; border-radius: 8px; text-align: center; margin-bottom: 15px; }
+        .urgence { background: ${getDelaiColor(demandeEmail.delaiVente)}; color: white; padding: 12px 20px; border-radius: 8px; text-align: center; margin-bottom: 15px; }
         .urgence-label { font-size: 12px; text-transform: uppercase; opacity: 0.9; }
         .urgence-value { font-size: 18px; font-weight: bold; margin-top: 4px; }
     </style>
@@ -347,33 +362,33 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
 
             <div class="urgence">
                 <div class="urgence-label">Delai de vente souhaite</div>
-                <div class="urgence-value">${nouvelleDemande.delaiVente || 'Non specifie'}</div>
+                <div class="urgence-value">${demandeEmail.delaiVente || 'Non specifie'}</div>
             </div>
 
             <div class="section">
                 <h3>🚗 Vehicule</h3>
-                <p><span class="label">Plaque:</span> <span class="value">${nouvelleDemande.plaque}</span></p>
-                <p><span class="label">Marque / Modele:</span> <span class="value">${nouvelleDemande.marque} ${nouvelleDemande.modele}</span></p>
-                <p><span class="label">Annee:</span> <span class="value">${nouvelleDemande.annee}</span></p>
-                <p><span class="label">Kilometrage:</span> <span class="value">${nouvelleDemande.kilometrage} km</span></p>
-                <p><span class="label">Carburant:</span> <span class="value">${nouvelleDemande.carburant}</span></p>
-                <p><span class="label">Boite:</span> <span class="value">${nouvelleDemande.boite}</span></p>
+                <p><span class="label">Plaque:</span> <span class="value">${demandeEmail.plaque}</span></p>
+                <p><span class="label">Marque / Modele:</span> <span class="value">${demandeEmail.marque} ${demandeEmail.modele}</span></p>
+                <p><span class="label">Annee:</span> <span class="value">${demandeEmail.annee}</span></p>
+                <p><span class="label">Kilometrage:</span> <span class="value">${demandeEmail.kilometrage} km</span></p>
+                <p><span class="label">Carburant:</span> <span class="value">${demandeEmail.carburant}</span></p>
+                <p><span class="label">Boite:</span> <span class="value">${demandeEmail.boite}</span></p>
             </div>
 
             <div class="section">
                 <h3>📋 Etat du vehicule</h3>
-                <p><span class="label">Exterieur:</span> <span class="value">${nouvelleDemande.etatExterieur}</span></p>
-                <p><span class="label">Interieur:</span> <span class="value">${nouvelleDemande.etatInterieur}</span></p>
-                <p><span class="label">Mecanique:</span> <span class="value">${nouvelleDemande.etatMecanique}</span></p>
-                ${nouvelleDemande.commentaires ? `<p><span class="label">Commentaires:</span> <span class="value">${nouvelleDemande.commentaires}</span></p>` : ''}
+                <p><span class="label">Exterieur:</span> <span class="value">${demandeEmail.etatExterieur}</span></p>
+                <p><span class="label">Interieur:</span> <span class="value">${demandeEmail.etatInterieur}</span></p>
+                <p><span class="label">Mecanique:</span> <span class="value">${demandeEmail.etatMecanique}</span></p>
+                ${demandeEmail.commentaires ? `<p><span class="label">Commentaires:</span> <span class="value">${demandeEmail.commentaires}</span></p>` : ''}
             </div>
 
             <div class="section">
                 <h3>👤 Contact</h3>
-                <p><span class="label">Nom:</span> <span class="value">${nouvelleDemande.civilite} ${nouvelleDemande.prenom} ${nouvelleDemande.nom}</span></p>
-                <p><span class="label">Email:</span> <span class="value"><a href="mailto:${nouvelleDemande.email}">${nouvelleDemande.email}</a></span></p>
-                <p><span class="label">Telephone:</span> <span class="value"><a href="tel:${nouvelleDemande.telephone}">${nouvelleDemande.telephone}</a></span></p>
-                <p><span class="label">Code postal:</span> <span class="value">${nouvelleDemande.codePostal}</span></p>
+                <p><span class="label">Nom:</span> <span class="value">${demandeEmail.civilite} ${demandeEmail.prenom} ${demandeEmail.nom}</span></p>
+                <p><span class="label">Email:</span> <span class="value"><a href="mailto:${demandeEmail.email}">${demandeEmail.email}</a></span></p>
+                <p><span class="label">Telephone:</span> <span class="value"><a href="tel:${demandeEmail.telephone}">${demandeEmail.telephone}</a></span></p>
+                <p><span class="label">Code postal:</span> <span class="value">${demandeEmail.codePostal}</span></p>
             </div>
 
             ${attachments.length > 0 ? `
@@ -394,7 +409,7 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
 
         try {
             await sendEmail({
-                subject: `🚗 Nouvelle demande de reprise - ${nouvelleDemande.marque} ${nouvelleDemande.modele} - REF: ${referenceId.substring(0, 8).toUpperCase()}`,
+                subject: `🚗 Nouvelle demande de reprise - ${demandeEmail.marque} ${demandeEmail.modele} - REF: ${referenceId.substring(0, 8).toUpperCase()}`,
                 html: emailHtml,
                 attachments: attachments
             });
@@ -418,22 +433,26 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
 
 app.post('/api/contact', async (req, res) => {
     try {
-        const messages = readJSON('messages.json');
         const messageId = uuidv4();
 
         const nouveauMessage = {
             id: messageId,
-            date: new Date().toISOString(),
             lu: false,
             nom: req.body.nom,
             email: req.body.email,
-            telephone: req.body.telephone,
+            telephone: req.body.telephone || '',
             sujet: req.body.sujet,
             message: req.body.message
         };
 
-        messages.push(nouveauMessage);
-        writeJSON('messages.json', messages);
+        const { error } = await supabase
+            .from('messages')
+            .insert([nouveauMessage]);
+
+        if (error) {
+            console.error('Erreur Supabase:', error);
+            return res.status(500).json({ error: 'Erreur lors de l\'envoi' });
+        }
 
         // Envoi email de notification
         const emailHtml = `
@@ -632,15 +651,32 @@ app.post('/api/admin/login', loginRateLimiter, (req, res) => {
 });
 
 // Stats admin
-app.get('/api/admin/stats', authAdmin, (req, res) => {
-    const articles = readJSON('articles.json');
-    const demandes = readJSON('demandes.json');
-    const messages = readJSON('messages.json');
-    res.json({
-        articles: articles.length,
-        demandes: demandes.length,
-        messages: messages.length
-    });
+app.get('/api/admin/stats', authAdmin, async (req, res) => {
+    try {
+        const articles = readJSON('articles.json');
+
+        const { count: demandesCount, error: demandesError } = await supabase
+            .from('demandes')
+            .select('*', { count: 'exact', head: true });
+
+        const { count: messagesCount, error: messagesError } = await supabase
+            .from('messages')
+            .select('*', { count: 'exact', head: true });
+
+        if (demandesError || messagesError) {
+            console.error('Erreur stats:', demandesError || messagesError);
+            return res.status(500).json({ error: 'Erreur lors de la récupération des stats' });
+        }
+
+        res.json({
+            articles: articles.length,
+            demandes: demandesCount || 0,
+            messages: messagesCount || 0
+        });
+    } catch (error) {
+        console.error('Erreur:', error);
+        res.status(500).json({ error: 'Erreur serveur' });
+    }
 });
 
 // Liste articles admin
