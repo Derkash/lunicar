@@ -72,6 +72,12 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Helpers pour fichiers JSON
 const dataPath = path.join(__dirname, 'data');
 
+// Créer le dossier data s'il n'existe pas
+if (!fs.existsSync(dataPath)) {
+    fs.mkdirSync(dataPath, { recursive: true });
+    console.log('✅ Dossier data créé');
+}
+
 function readJSON(filename) {
     const filePath = path.join(dataPath, filename);
     if (!fs.existsSync(filePath)) {
@@ -82,6 +88,10 @@ function readJSON(filename) {
 
 function writeJSON(filename, data) {
     const filePath = path.join(dataPath, filename);
+    // S'assurer que le dossier existe
+    if (!fs.existsSync(dataPath)) {
+        fs.mkdirSync(dataPath, { recursive: true });
+    }
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
 }
 
