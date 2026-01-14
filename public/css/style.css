@@ -1264,6 +1264,9 @@ img {
 .see-more-icon {
     font-size: 1.1rem;
     font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
     transition: transform 0.3s ease;
 }
 
