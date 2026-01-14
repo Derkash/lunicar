@@ -959,7 +959,6 @@ img {
 .service-category ul {
     display: flex;
     flex-direction: column;
-    gap: 8px;
 }
 
 .service-category ul li a {
