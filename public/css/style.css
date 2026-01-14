@@ -1219,7 +1219,14 @@ img {
 .service-links-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+}
+
+.service-links-list li {
+    margin-bottom: 8px;
+}
+
+.service-links-list li:last-child {
+    margin-bottom: 0;
 }
 
 .service-links-list li.hidden-link {
@@ -1234,6 +1241,10 @@ img {
 .service-category.expanded .service-links-list li.hidden-link {
     max-height: 50px;
     opacity: 1;
+    margin-bottom: 8px;
+}
+
+.service-category.expanded .service-links-list li.hidden-link:last-child {
     margin-bottom: 0;
 }
 
