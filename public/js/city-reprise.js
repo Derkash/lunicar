@@ -47,44 +47,44 @@
         const { nom, departement, region } = city;
         return [
             {
-                question: `Comment faire reprendre ma voiture a ${nom} ?`,
-                answer: `Pour faire reprendre votre voiture a ${nom}, c'est simple et rapide avec LUNICAR. Commencez par remplir notre formulaire d'estimation en ligne en renseignant votre plaque d'immatriculation et quelques informations sur votre vehicule. En 2 minutes, vous obtenez une premiere estimation. Un conseiller LUNICAR vous recontacte ensuite sous 24h pour affiner l'offre et repondre a vos questions. Si vous acceptez, nous gerons toutes les demarches administratives et le paiement est effectue sous 24h par virement securise.`
+                question: `Comment faire reprendre ma voiture à ${nom} ?`,
+                answer: `Pour faire reprendre votre voiture à ${nom}, c'est simple et rapide avec LUNICAR. Commencez par remplir notre formulaire d'estimation en ligne en renseignant votre plaque d'immatriculation et quelques informations sur votre véhicule. En 2 minutes, vous obtenez une première estimation. Un conseiller LUNICAR vous recontacte ensuite sous 24h pour affiner l'offre et répondre à vos questions. Si vous acceptez, nous gérons toutes les démarches administratives et le paiement est effectué sous 24h par virement sécurisé.`
             },
             {
-                question: `Quel est le prix de reprise de ma voiture a ${nom} ?`,
-                answer: `Le prix de reprise de votre voiture a ${nom} depend de plusieurs criteres : la marque, le modele, l'annee de mise en circulation, le kilometrage, l'etat general du vehicule et ses equipements. Notre algorithme analyse le marche automobile local du ${departement} pour vous proposer le meilleur prix. L'estimation est gratuite et sans engagement. Vous pouvez obtenir une premiere estimation en 2 minutes sur notre site.`
+                question: `Quel est le prix de reprise de ma voiture à ${nom} ?`,
+                answer: `Le prix de reprise de votre voiture à ${nom} dépend de plusieurs critères : la marque, le modèle, l'année de mise en circulation, le kilométrage, l'état général du véhicule et ses équipements. Notre algorithme analyse le marché automobile local pour vous proposer le meilleur prix. L'estimation est gratuite et sans engagement. Vous pouvez obtenir une première estimation en 2 minutes sur notre site.`
             },
             {
-                question: `Faut-il un controle technique pour vendre sa voiture a ${nom} ?`,
-                answer: `Non, le controle technique n'est pas obligatoire pour vendre votre voiture a LUNICAR a ${nom}. Contrairement a une vente entre particuliers ou le CT de moins de 6 mois est requis, nous rachetons votre vehicule avec ou sans controle technique valide. Que votre CT soit expire, presente des defaillances majeures ou meme s'il n'a jamais ete realise, nous reprenons votre vehicule. C'est un gain de temps et d'argent considerable pour vous.`
+                question: `Faut-il un contrôle technique pour vendre sa voiture à ${nom} ?`,
+                answer: `Non, le contrôle technique n'est pas obligatoire pour vendre votre voiture à LUNICAR à ${nom}. Contrairement à une vente entre particuliers où le CT de moins de 6 mois est requis, nous rachetons votre véhicule avec ou sans contrôle technique valide. Que votre CT soit expiré, présente des défaillances majeures ou même s'il n'a jamais été réalisé, nous reprenons votre véhicule. C'est un gain de temps et d'argent considérable pour vous.`
             },
             {
-                question: `Comment se passe le paiement lors d'une reprise a ${nom} ?`,
-                answer: `Le paiement de votre vehicule a ${nom} est effectue sous 24 heures apres validation de la vente. Nous procedons exclusivement par virement bancaire securise directement sur votre compte. Pas de cheque, pas d'especes, donc aucun risque d'arnaque. Le montant correspond exactement a l'offre acceptee, sans frais caches ni deduction de derniere minute. C'est simple, rapide et totalement securise.`
+                question: `Comment se passe le paiement lors d'une reprise à ${nom} ?`,
+                answer: `Le paiement de votre véhicule à ${nom} est effectué sous 24 heures après validation de la vente. Nous procédons exclusivement par virement bancaire sécurisé directement sur votre compte. Pas de chèque, pas d'espèces, donc aucun risque d'arnaque. Le montant correspond exactement à l'offre acceptée, sans frais cachés ni déduction de dernière minute. C'est simple, rapide et totalement sécurisé.`
             },
             {
-                question: `LUNICAR reprend-il les voitures en panne a ${nom} ?`,
-                answer: `Oui, LUNICAR reprend les voitures en panne a ${nom} et dans tout le ${departement}. Que votre vehicule ait un probleme moteur, une panne electrique, un embrayage defaillant ou tout autre probleme mecanique, nous l'achetons. Nous reprenons egalement les vehicules accidentes, avec moteur HS ou hors d'usage. L'etat de votre voiture est pris en compte dans l'estimation, mais cela ne vous empeche pas de la vendre rapidement.`
+                question: `LUNICAR reprend-il les voitures en panne à ${nom} ?`,
+                answer: `Oui, LUNICAR reprend les voitures en panne à ${nom} et ses environs. Que votre véhicule ait un problème moteur, une panne électrique, un embrayage défaillant ou tout autre problème mécanique, nous l'achetons. Nous reprenons également les véhicules accidentés, avec moteur HS ou hors d'usage. L'état de votre voiture est pris en compte dans l'estimation, mais cela ne vous empêche pas de la vendre rapidement.`
             },
             {
-                question: `Quels sont les delais de reprise a ${nom} ?`,
-                answer: `Les delais de reprise a ${nom} sont tres courts avec LUNICAR. Apres avoir rempli le formulaire d'estimation (2 minutes), vous recevez une offre sous 24h. Si vous acceptez, nous organisons la recuperation de votre vehicule dans les jours qui suivent, selon vos disponibilites. Le paiement est effectue sous 24h apres validation. Au total, vous pouvez vendre votre voiture en moins d'une semaine, parfois en 48h seulement.`
+                question: `Quels sont les délais de reprise à ${nom} ?`,
+                answer: `Les délais de reprise à ${nom} sont très courts avec LUNICAR. Après avoir rempli le formulaire d'estimation (2 minutes), vous recevez une offre sous 24h. Si vous acceptez, nous organisons la récupération de votre véhicule dans les jours qui suivent, selon vos disponibilités. Le paiement est effectué sous 24h après validation. Au total, vous pouvez vendre votre voiture en moins d'une semaine, parfois en 48h seulement.`
             },
             {
-                question: `Reprenez-vous les voitures accidentees a ${nom} ?`,
-                answer: `Absolument, nous reprenons les voitures accidentees a ${nom}. Que votre vehicule ait subi un accident de la route, un sinistre, une inondation ou tout autre dommage, LUNICAR peut vous faire une offre de rachat. L'etat du vehicule est evalue lors de l'estimation et le prix propose tient compte des reparations necessaires. C'est une solution ideale pour vous debarrasser d'un vehicule accidente sans avoir a chercher un acheteur.`
+                question: `Reprenez-vous les voitures accidentées à ${nom} ?`,
+                answer: `Absolument, nous reprenons les voitures accidentées à ${nom}. Que votre véhicule ait subi un accident de la route, un sinistre, une inondation ou tout autre dommage, LUNICAR peut vous faire une offre de rachat. L'état du véhicule est évalué lors de l'estimation et le prix proposé tient compte des réparations nécessaires. C'est une solution idéale pour vous débarrasser d'un véhicule accidenté sans avoir à chercher un acheteur.`
             },
             {
-                question: `Les demarches administratives sont-elles prises en charge a ${nom} ?`,
-                answer: `Oui, toutes les demarches administratives sont 100% prises en charge par LUNICAR a ${nom}. Nous nous occupons du certificat de cession, de la declaration de vente sur le site de l'ANTS, du changement de carte grise et de toutes les formalites necessaires. Vous n'avez qu'a nous fournir les documents de base (carte grise, piece d'identite, RIB) et nous gerons tout le reste. C'est un gain de temps considerable.`
+                question: `Les démarches administratives sont-elles prises en charge à ${nom} ?`,
+                answer: `Oui, toutes les démarches administratives sont 100% prises en charge par LUNICAR à ${nom}. Nous nous occupons du certificat de cession, de la déclaration de vente sur le site de l'ANTS, du changement de carte grise et de toutes les formalités nécessaires. Vous n'avez qu'à nous fournir les documents de base (carte grise, pièce d'identité, RIB) et nous gérons tout le reste. C'est un gain de temps considérable.`
             },
             {
-                question: `Puis-je faire reprendre ma voiture sans acheter de nouveau vehicule a ${nom} ?`,
-                answer: `Bien sur ! Contrairement aux concessions automobiles qui conditionnent souvent la reprise a l'achat d'un nouveau vehicule, LUNICAR rachete votre voiture a ${nom} sans aucune obligation d'achat. Vous vendez simplement votre vehicule et recevez votre argent. Aucune contrepartie, aucune condition. C'est un service de reprise pure, adapte a tous ceux qui veulent vendre sans racheter.`
+                question: `Puis-je faire reprendre ma voiture sans acheter de nouveau véhicule à ${nom} ?`,
+                answer: `Bien sûr ! Contrairement aux concessions automobiles qui conditionnent souvent la reprise à l'achat d'un nouveau véhicule, LUNICAR rachète votre voiture à ${nom} sans aucune obligation d'achat. Vous vendez simplement votre véhicule et recevez votre argent. Aucune contrepartie, aucune condition. C'est un service de reprise pure, adapté à tous ceux qui veulent vendre sans racheter.`
             },
             {
-                question: `Comment obtenir une estimation gratuite a ${nom} ?`,
-                answer: `Pour obtenir une estimation gratuite de votre vehicule a ${nom}, rendez-vous sur notre formulaire en ligne. Entrez votre plaque d'immatriculation et repondez a quelques questions simples sur l'etat de votre voiture (kilometrage, etat general, options). En 2 minutes, vous obtenez une premiere estimation. Un conseiller LUNICAR vous recontacte ensuite pour affiner l'offre. L'estimation est totalement gratuite et sans aucun engagement de votre part.`
+                question: `Comment obtenir une estimation gratuite à ${nom} ?`,
+                answer: `Pour obtenir une estimation gratuite de votre véhicule à ${nom}, rendez-vous sur notre formulaire en ligne. Entrez votre plaque d'immatriculation et répondez à quelques questions simples sur l'état de votre voiture (kilométrage, état général, options). En 2 minutes, vous obtenez une première estimation. Un conseiller LUNICAR vous recontacte ensuite pour affiner l'offre. L'estimation est totalement gratuite et sans aucun engagement de votre part.`
             }
         ];
     }
@@ -93,15 +93,15 @@
         const { nom, departement, region } = city;
         const hasZfe = hasZFE(city.slug);
 
-        let intro = `<p>Vous souhaitez <strong>vendre votre voiture a ${nom}</strong> dans le ${departement} ? LUNICAR est votre partenaire de confiance pour la <strong>reprise automobile a ${nom}</strong> et dans toute la region ${region}. Notre service de rachat de vehicules vous permet d'obtenir une estimation gratuite en seulement 2 minutes, de beneficier d'une offre de prix garantie pendant 7 jours et de recevoir votre paiement sous 24 heures par virement bancaire securise.</p>`;
+        let intro = `<p>Vous souhaitez <strong>vendre votre voiture à ${nom}</strong> ? LUNICAR est votre partenaire de confiance pour la <strong>reprise automobile à ${nom}</strong> et dans toute la région ${region}. Notre service de rachat de véhicules vous permet d'obtenir une estimation gratuite en seulement 2 minutes, de bénéficier d'une offre de prix garantie pendant 7 jours et de recevoir votre paiement sous 24 heures par virement bancaire sécurisé.</p>`;
 
-        intro += `<p>Specialiste du <strong>rachat de voiture a ${nom}</strong>, LUNICAR simplifie toutes les etapes de la vente de votre vehicule. Pas besoin de controle technique valide, nous rachetons votre voiture meme avec un CT expire ou presentant des defaillances. Toutes les marques sont acceptees : Renault, Peugeot, Citroen, Volkswagen, BMW, Mercedes, Audi, Toyota, et bien d'autres. Que votre vehicule soit en parfait etat, en panne ou meme accidente, nous avons une solution pour vous.</p>`;
+        intro += `<p>Spécialiste du <strong>rachat de voiture à ${nom}</strong>, LUNICAR simplifie toutes les étapes de la vente de votre véhicule. Pas besoin de contrôle technique valide, nous rachetons votre voiture même avec un CT expiré ou présentant des défaillances. Toutes les marques sont acceptées : Renault, Peugeot, Citroën, Volkswagen, BMW, Mercedes, Audi, Toyota, et bien d'autres. Que votre véhicule soit en parfait état, en panne ou même accidenté, nous avons une solution pour vous.</p>`;
 
         if (hasZfe) {
-            intro += `<p>La ville de ${nom} fait partie des villes concernees par la <strong>Zone a Faibles Emissions (ZFE)</strong>. Si votre vehicule ne repond plus aux criteres Crit'Air necessaires pour circuler, LUNICAR vous offre une solution rapide pour le vendre et financer l'achat d'un vehicule conforme. Ne laissez pas votre voiture perdre de la valeur, agissez maintenant.</p>`;
+            intro += `<p>La ville de ${nom} fait partie des villes concernées par la <strong>Zone à Faibles Émissions (ZFE)</strong>. Si votre véhicule ne répond plus aux critères Crit'Air nécessaires pour circuler, LUNICAR vous offre une solution rapide pour le vendre et financer l'achat d'un véhicule conforme. Ne laissez pas votre voiture perdre de la valeur, agissez maintenant.</p>`;
         }
 
-        intro += `<p>Les demarches administratives vous semblent compliquees ? Avec LUNICAR, c'est de l'histoire ancienne. Nous prenons en charge 100% des formalites : certificat de cession, declaration de vente, changement de carte grise. Vous n'avez qu'a nous fournir les documents de base et nous nous occupons du reste. <strong>Vendre sa voiture a ${nom}</strong> n'a jamais ete aussi simple et rapide.</p>`;
+        intro += `<p>Les démarches administratives vous semblent compliquées ? Avec LUNICAR, c'est de l'histoire ancienne. Nous prenons en charge 100% des formalités : certificat de cession, déclaration de vente, changement de carte grise. Vous n'avez qu'à nous fournir les documents de base et nous nous occupons du reste. <strong>Vendre sa voiture à ${nom}</strong> n'a jamais été aussi simple et rapide.</p>`;
 
         return intro;
     }
@@ -115,11 +115,11 @@
         html += `
             <div class="local-info-card">
                 <h4>Localisation</h4>
-                <p><strong>${nom}</strong> est situee dans le departement du <strong>${departement}</strong>, en region <strong>${region}</strong>${codePostal ? ` (code postal : ${codePostal})` : ''}. Notre service de reprise automobile couvre l'ensemble de la ville et ses environs. Que vous habitiez en centre-ville ou en peripherie, nous pouvons organiser la recuperation de votre vehicule a l'adresse de votre choix.</p>
+                <p><strong>${nom}</strong> est située dans le département <strong>${departement}</strong>, en région <strong>${region}</strong>${codePostal ? ` (code postal : ${codePostal})` : ''}. Notre service de reprise automobile couvre l'ensemble de la ville et ses environs. Que vous habitiez en centre-ville ou en périphérie, nous pouvons organiser la récupération de votre véhicule à l'adresse de votre choix.</p>
             </div>
             <div class="local-info-card">
                 <h4>Zones desservies</h4>
-                <p>LUNICAR intervient dans toutes les communes du ${departement}. Notre reseau couvre egalement les villes limitrophes et l'ensemble de la region ${region}. Vous beneficiez du meme service de qualite, des memes garanties et des memes delais de paiement, ou que vous soyez situe.</p>
+                <p>LUNICAR intervient dans toutes les communes autour de ${nom}. Notre réseau couvre également les villes limitrophes et l'ensemble de la région ${region}. Vous bénéficiez du même service de qualité, des mêmes garanties et des mêmes délais de paiement, où que vous soyez situé.</p>
             </div>
         `;
 
@@ -128,8 +128,8 @@
         if (hasZfe) {
             html += `
                 <div class="zfe-warning">
-                    <h4>Zone a Faibles Emissions (ZFE) a ${nom}</h4>
-                    <p>${nom} fait partie des villes concernees par la ZFE. Les vehicules les plus polluants (Crit'Air 4, 5 et non classes) ne peuvent plus circuler dans certaines zones. Si votre voiture est concernee, c'est le moment ideal pour la vendre avant qu'elle ne perde davantage de valeur. LUNICAR rachete tous les vehicules, y compris ceux qui ne sont plus autorises a circuler dans la ZFE.</p>
+                    <h4>Zone à Faibles Émissions (ZFE) à ${nom}</h4>
+                    <p>${nom} fait partie des villes concernées par la ZFE. Les véhicules les plus polluants (Crit'Air 4, 5 et non classés) ne peuvent plus circuler dans certaines zones. Si votre voiture est concernée, c'est le moment idéal pour la vendre avant qu'elle ne perde davantage de valeur. LUNICAR rachète tous les véhicules, y compris ceux qui ne sont plus autorisés à circuler dans la ZFE.</p>
                 </div>
             `;
         }
@@ -143,12 +143,12 @@
         const { nom, slug, departement, region } = city;
 
         // Update page title - SEO optimized
-        document.title = `Reprise Voiture ${nom} | Rachat Auto Immediat Paiement 24h | LUNICAR`;
+        document.title = `Reprise Voiture ${nom} (${departement}) | Rachat Auto Paiement 24h | LUNICAR`;
 
         // Update meta description
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
-            metaDesc.content = `Vendez votre voiture a ${nom} (${departement}) avec LUNICAR. Estimation gratuite, reprise immediate sans CT, paiement securise 24h. Toutes marques acceptees. Service professionnel.`;
+            metaDesc.content = `Vendez votre voiture à ${nom} (${departement}) avec LUNICAR. Estimation gratuite, reprise immédiate sans CT, paiement sécurisé sous 24h. Toutes marques acceptées.`;
         }
 
         // Update canonical URL
@@ -163,14 +163,14 @@
         if (ogTitle) ogTitle.content = `Reprise Voiture ${nom} | Rachat Auto | LUNICAR`;
 
         const ogDesc = document.querySelector('meta[property="og:description"]');
-        if (ogDesc) ogDesc.content = `Rachat de voiture a ${nom}. Estimation gratuite, paiement sous 24h, sans CT.`;
+        if (ogDesc) ogDesc.content = `Rachat de voiture à ${nom}. Estimation gratuite, paiement sous 24h, sans CT.`;
 
         // Update Twitter tags
         const twitterTitle = document.querySelector('meta[name="twitter:title"]');
         if (twitterTitle) twitterTitle.content = `Reprise Voiture ${nom} | LUNICAR`;
 
         const twitterDesc = document.querySelector('meta[name="twitter:description"]');
-        if (twitterDesc) twitterDesc.content = `Rachat de voiture a ${nom}. Estimation gratuite.`;
+        if (twitterDesc) twitterDesc.content = `Rachat de voiture à ${nom}. Estimation gratuite.`;
 
         // Update Schema.org LocalBusiness
         const schemaScript = document.getElementById('schemaLocalBusiness');
@@ -179,7 +179,7 @@
                 "@context": "https://schema.org",
                 "@type": "LocalBusiness",
                 "name": `LUNICAR - Reprise Auto ${nom}`,
-                "description": `Service de reprise automobile a ${nom}. Rachat de voiture avec estimation gratuite et paiement sous 24h. Sans controle technique obligatoire.`,
+                "description": `Service de reprise automobile à ${nom}. Rachat de voiture avec estimation gratuite et paiement sous 24h. Sans contrôle technique obligatoire.`,
                 "url": `${BASE_URL}/reprise-auto-${slug}`,
                 "email": "contact@lunicar.fr",
                 "areaServed": {"@type": "City", "name": nom},
@@ -232,7 +232,7 @@
                 "serviceType": "Reprise automobile",
                 "provider": {"@type": "Organization", "name": "LUNICAR", "url": BASE_URL},
                 "areaServed": {"@type": "City", "name": nom},
-                "description": `Service de reprise et rachat automobile a ${nom}. Estimation gratuite, paiement sous 24h.`
+                "description": `Service de reprise et rachat automobile à ${nom}. Estimation gratuite, paiement sous 24h.`
             };
             serviceSchema.textContent = JSON.stringify(schema);
         }
@@ -243,12 +243,12 @@
 
         // Update H1
         const h1 = document.getElementById('cityH1');
-        if (h1) h1.textContent = `Reprise Voiture a ${nom} | Rachat Immediat & Paiement 24h`;
+        if (h1) h1.textContent = `Reprise Voiture à ${nom} - Rachat Auto Paiement 24h`;
 
         // Update subtitle
         const subtitle = document.getElementById('citySubtitle');
         if (subtitle) {
-            subtitle.textContent = `Vendez votre voiture a ${nom} rapidement. Estimation gratuite en 2 min, paiement sous 24h, sans controle technique. Service disponible dans tout le ${departement}.`;
+            subtitle.textContent = `Vendez votre voiture à ${nom} rapidement. Estimation gratuite en 2 minutes, paiement sous 24h, sans contrôle technique. Service disponible à ${nom} et ses environs.`;
         }
 
         // Update introduction

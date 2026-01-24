@@ -142,13 +142,13 @@ app.get('/reprise-auto-:slug', (req, res) => {
         // Remplacer le title
         html = html.replace(
             /<title>.*?<\/title>/,
-            `<title>Reprise Voiture ${nom} | Rachat Auto Immediat Paiement 24h | LUNICAR</title>`
+            `<title>Reprise Voiture ${nom} (${departement}) | Rachat Auto Paiement 24h | LUNICAR</title>`
         );
 
         // Remplacer meta description
         html = html.replace(
             /<meta name="description" content=".*?">/,
-            `<meta name="description" content="Vendez votre voiture a ${nom} (${departement}) avec LUNICAR. Estimation gratuite, reprise immediate sans CT, paiement securise 24h. Toutes marques acceptees.">`
+            `<meta name="description" content="Vendez votre voiture à ${nom} (${departement}) avec LUNICAR. Estimation gratuite, reprise immédiate sans CT, paiement sécurisé sous 24h. Toutes marques acceptées.">`
         );
 
         // Remplacer canonical
@@ -168,7 +168,7 @@ app.get('/reprise-auto-:slug', (req, res) => {
         );
         html = html.replace(
             /<meta property="og:description" content=".*?">/,
-            `<meta property="og:description" content="Rachat de voiture a ${nom}. Estimation gratuite, paiement sous 24h, sans CT.">`
+            `<meta property="og:description" content="Rachat de voiture à ${nom}. Estimation gratuite, paiement sous 24h, sans CT.">`
         );
 
         // Remplacer Twitter
@@ -178,19 +178,19 @@ app.get('/reprise-auto-:slug', (req, res) => {
         );
         html = html.replace(
             /<meta name="twitter:description" content=".*?">/,
-            `<meta name="twitter:description" content="Rachat de voiture a ${nom}. Estimation gratuite.">`
+            `<meta name="twitter:description" content="Rachat de voiture à ${nom}. Estimation gratuite.">`
         );
 
         // Remplacer H1 par defaut
         html = html.replace(
             /<h1 id="cityH1">.*?<\/h1>/,
-            `<h1 id="cityH1">Reprise Voiture a ${nom} | Rachat Immediat & Paiement 24h</h1>`
+            `<h1 id="cityH1">Reprise Voiture à ${nom} - Rachat Auto Paiement 24h</h1>`
         );
 
         // Remplacer le subtitle par defaut
         html = html.replace(
             /<p class="city-hero-subtitle" id="citySubtitle">.*?<\/p>/,
-            `<p class="city-hero-subtitle" id="citySubtitle">Vendez votre voiture a ${nom} rapidement. Estimation gratuite en 2 minutes, paiement sous 24h, sans controle technique. Service disponible dans tout le ${departement}.</p>`
+            `<p class="city-hero-subtitle" id="citySubtitle">Vendez votre voiture à ${nom} rapidement. Estimation gratuite en 2 minutes, paiement sous 24h, sans contrôle technique. Service disponible à ${nom} et ses environs.</p>`
         );
 
         // Remplacer le breadcrumb
