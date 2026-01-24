@@ -127,12 +127,79 @@ app.get('/reprise', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'reprise.html'));
 });
 
-// Route dynamique pour les pages villes SEO
+// Route dynamique pour les pages villes SEO avec injection meta tags SSR
 app.get('/reprise-auto-:slug', (req, res) => {
     const cities = readJSON('cities.json');
     const city = cities.find(c => c.slug === req.params.slug);
     if (city) {
-        res.sendFile(path.join(__dirname, 'public', 'reprise-ville.html'));
+        // Lire le template HTML
+        const templatePath = path.join(__dirname, 'public', 'reprise-ville.html');
+        let html = fs.readFileSync(templatePath, 'utf-8');
+
+        const baseUrl = 'https://lunicar.fr';
+        const { nom, slug, departement, region } = city;
+
+        // Remplacer le title
+        html = html.replace(
+            /<title>.*?<\/title>/,
+            `<title>Reprise Voiture ${nom} | Rachat Auto Immediat Paiement 24h | LUNICAR</title>`
+        );
+
+        // Remplacer meta description
+        html = html.replace(
+            /<meta name="description" content=".*?">/,
+            `<meta name="description" content="Vendez votre voiture a ${nom} (${departement}) avec LUNICAR. Estimation gratuite, reprise immediate sans CT, paiement securise 24h. Toutes marques acceptees.">`
+        );
+
+        // Remplacer canonical
+        html = html.replace(
+            /<link rel="canonical" href=".*?">/,
+            `<link rel="canonical" href="${baseUrl}/reprise-auto-${slug}">`
+        );
+
+        // Remplacer Open Graph
+        html = html.replace(
+            /<meta property="og:url" content=".*?">/,
+            `<meta property="og:url" content="${baseUrl}/reprise-auto-${slug}">`
+        );
+        html = html.replace(
+            /<meta property="og:title" content=".*?">/,
+            `<meta property="og:title" content="Reprise Voiture ${nom} | Rachat Auto | LUNICAR">`
+        );
+        html = html.replace(
+            /<meta property="og:description" content=".*?">/,
+            `<meta property="og:description" content="Rachat de voiture a ${nom}. Estimation gratuite, paiement sous 24h, sans CT.">`
+        );
+
+        // Remplacer Twitter
+        html = html.replace(
+            /<meta name="twitter:title" content=".*?">/,
+            `<meta name="twitter:title" content="Reprise Voiture ${nom} | LUNICAR">`
+        );
+        html = html.replace(
+            /<meta name="twitter:description" content=".*?">/,
+            `<meta name="twitter:description" content="Rachat de voiture a ${nom}. Estimation gratuite.">`
+        );
+
+        // Remplacer H1 par defaut
+        html = html.replace(
+            /<h1 id="cityH1">.*?<\/h1>/,
+            `<h1 id="cityH1">Reprise Voiture a ${nom} | Rachat Immediat & Paiement 24h</h1>`
+        );
+
+        // Remplacer le subtitle par defaut
+        html = html.replace(
+            /<p class="city-hero-subtitle" id="citySubtitle">.*?<\/p>/,
+            `<p class="city-hero-subtitle" id="citySubtitle">Vendez votre voiture a ${nom} rapidement. Estimation gratuite en 2 minutes, paiement sous 24h, sans controle technique. Service disponible dans tout le ${departement}.</p>`
+        );
+
+        // Remplacer le breadcrumb
+        html = html.replace(
+            /<li id="breadcrumbCity">.*?<\/li>/,
+            `<li id="breadcrumbCity">${nom}</li>`
+        );
+
+        res.send(html);
     } else {
         res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
     }
