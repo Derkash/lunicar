@@ -5,7 +5,6 @@ const fs = require('fs');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
-const { supabase } = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -287,17 +286,14 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             email: req.body.email,
             telephone: req.body.telephone,
             code_postal: req.body.codePostal,
-            photos: req.files ? req.files.map(f => f.filename) : []
+            photos: req.files ? req.files.map(f => f.filename) : [],
+            createdAt: new Date().toISOString()
         };
 
-        const { error } = await supabase
-            .from('demandes')
-            .insert([nouvelleDemande]);
-
-        if (error) {
-            console.error('Erreur Supabase:', error);
-            return res.status(500).json({ error: 'Erreur lors de l\'enregistrement' });
-        }
+        // Sauvegarder dans le fichier JSON local
+        const demandes = readJSON('demandes.json');
+        demandes.unshift(nouvelleDemande);
+        writeJSON('demandes.json', demandes);
 
         // Préparer les pièces jointes (images)
         const attachments = [];
@@ -442,17 +438,14 @@ app.post('/api/contact', async (req, res) => {
             email: req.body.email,
             telephone: req.body.telephone || '',
             sujet: req.body.sujet,
-            message: req.body.message
+            message: req.body.message,
+            createdAt: new Date().toISOString()
         };
 
-        const { error } = await supabase
-            .from('messages')
-            .insert([nouveauMessage]);
-
-        if (error) {
-            console.error('Erreur Supabase:', error);
-            return res.status(500).json({ error: 'Erreur lors de l\'envoi' });
-        }
+        // Sauvegarder dans le fichier JSON local
+        const messages = readJSON('messages.json');
+        messages.unshift(nouveauMessage);
+        writeJSON('messages.json', messages);
 
         // Envoi email de notification
         const emailHtml = `
@@ -651,27 +644,16 @@ app.post('/api/admin/login', loginRateLimiter, (req, res) => {
 });
 
 // Stats admin
-app.get('/api/admin/stats', authAdmin, async (req, res) => {
+app.get('/api/admin/stats', authAdmin, (req, res) => {
     try {
         const articles = readJSON('articles.json');
-
-        const { count: demandesCount, error: demandesError } = await supabase
-            .from('demandes')
-            .select('*', { count: 'exact', head: true });
-
-        const { count: messagesCount, error: messagesError } = await supabase
-            .from('messages')
-            .select('*', { count: 'exact', head: true });
-
-        if (demandesError || messagesError) {
-            console.error('Erreur stats:', demandesError || messagesError);
-            return res.status(500).json({ error: 'Erreur lors de la récupération des stats' });
-        }
+        const demandes = readJSON('demandes.json');
+        const messages = readJSON('messages.json');
 
         res.json({
             articles: articles.length,
-            demandes: demandesCount || 0,
-            messages: messagesCount || 0
+            demandes: demandes.length,
+            messages: messages.length
         });
     } catch (error) {
         console.error('Erreur:', error);
