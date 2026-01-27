@@ -47,10 +47,18 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "L'estimation est-elle vraiment gratuite ?",
+          "name": "Comment fonctionne la reprise de vehicule chez LUNICAR ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui, l'estimation de votre vehicule est 100% gratuite et sans engagement. Vous pouvez remplir le formulaire et recevoir une offre sans aucune obligation d'accepter."
+            "text": "Le processus est simple : vous remplissez notre formulaire en ligne avec les informations de votre vehicule (plaque, kilometrage, etat). Un conseiller vous contacte sous 24h avec une offre de reprise. Si elle vous convient, nous convenons d'un rendez-vous pour finaliser la vente et vous recevez votre paiement par virement sous 24h."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "L'estimation est-elle vraiment gratuite et sans engagement ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, l'estimation de votre vehicule est 100% gratuite et sans aucun engagement. Vous pouvez recevoir notre offre et decider librement de l'accepter ou non. Aucune obligation de vente, aucuns frais caches."
           }
         },
         {
@@ -58,7 +66,7 @@
           "name": "Combien de temps est valable l'offre de reprise ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Notre offre de reprise est garantie et valable 7 jours. Vous avez le temps de reflechir sereinement avant de prendre votre decision."
+            "text": "Notre offre de reprise est garantie et valable 7 jours. Vous avez le temps de comparer avec d'autres offres ou de reflechir sereinement avant de prendre votre decision."
           }
         },
         {
@@ -66,7 +74,7 @@
           "name": "Dois-je faire le controle technique avant de vendre ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Non, le controle technique n'est pas obligatoire pour nous vendre votre vehicule. Nous rachetons les voitures avec ou sans CT valide, meme si celui-ci est expire."
+            "text": "Non, le controle technique n'est pas obligatoire pour nous vendre votre vehicule. Contrairement a une vente entre particuliers, nous rachetons les voitures avec ou sans CT valide, meme si celui-ci est expire ou defavorable."
           }
         },
         {
@@ -74,7 +82,7 @@
           "name": "Comment se passe le paiement ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Le paiement s'effectue exclusivement par virement bancaire securise. Une fois la vente finalisee, vous recevez votre argent sous 24h maximum sur votre compte."
+            "text": "Le paiement s'effectue exclusivement par virement bancaire securise. Aucun paiement en especes ou par cheque. Une fois la vente finalisee, vous recevez votre argent sous 24h maximum sur votre compte."
           }
         },
         {
@@ -82,7 +90,39 @@
           "name": "Qui s'occupe des demarches administratives ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nous prenons en charge l'integralite des demarches : certificat de cession, declaration de vente en prefecture, radiation de la carte grise. Vous n'avez rien a faire."
+            "text": "Nous prenons en charge l'integralite des demarches administratives : redaction du certificat de cession, declaration de vente a la prefecture (ANTS), radiation de la carte grise. Vous n'avez rien a faire."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quels types de vehicules rachetez-vous ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nous rachetons tous types de vehicules particuliers : citadines, berlines, breaks, SUV, monospaces, utilitaires legers. Toutes les marques sont acceptees : francaises, allemandes, japonaises, coreennes, etc."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Puis-je vendre un vehicule encore sous credit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, c'est possible sous certaines conditions. Si le credit est solde (capital restant du inferieur au prix de reprise), nous pouvons rembourser directement l'organisme de credit et vous verser la difference."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ou se passe le rendez-vous de reprise ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nous nous deplacons dans toute la France pour recuperer votre vehicule. Le rendez-vous peut avoir lieu a votre domicile, sur votre lieu de travail ou dans un lieu public de votre choix."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment est calculee la valeur de reprise ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nous utilisons plusieurs criteres : la cote Argus, l'etat general du vehicule, le kilometrage, l'historique d'entretien, les options, et les tendances du marche de l'occasion."
           }
         }
       ]
@@ -101,7 +141,13 @@
         "url": "https://lunicar.fr"
       },
       "areaServed": {"@type": "Country", "name": "France"},
-      "serviceType": "Reprise automobile"
+      "serviceType": "Reprise automobile",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "2847",
+        "bestRating": "5"
+      }
     }
     </script>
     <link rel="stylesheet" href="/css/style.css">
@@ -145,6 +191,25 @@
         <div class="container">
             <h1>Reprise de votre vehicule - Estimation gratuite et immediate</h1>
             <p>Vendez votre voiture rapidement avec LUNICAR. Remplissez le formulaire ci-dessous pour recevoir une offre de rachat personnalisee sous 24h.</p>
+            <!-- Stats de reassurance -->
+            <div class="hero-stats" style="margin-top: 2rem;">
+                <div class="stat">
+                    <div class="stat-value">+15 000</div>
+                    <div class="stat-label">Vehicules repris</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">4.8/5</div>
+                    <div class="stat-label">Note clients</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">24h</div>
+                    <div class="stat-label">Paiement garanti</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">97%</div>
+                    <div class="stat-label">Clients satisfaits</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -574,30 +639,382 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- Temoignages Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">Ils nous ont fait confiance</h2>
+            <p class="section-subtitle">Plus de 15 000 clients satisfaits partout en France</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Transaction rapide et sans surprise. J'ai recu mon virement en moins de 24h apres la remise des cles. Je recommande vivement LUNICAR pour la simplicite du processus."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SL</div>
+                        <div class="testimonial-info">
+                            <h4>Stephane L.</h4>
+                            <span>Peugeot 308 - Lyon - Janvier 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Ma voiture avait 180 000 km et le controle technique expire. LUNICAR l'a quand meme reprise a un prix correct. Aucune demarche de mon cote, ils s'occupent de tout !"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MB</div>
+                        <div class="testimonial-info">
+                            <h4>Marie B.</h4>
+                            <span>Renault Clio - Marseille - Janvier 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"J'avais peur de me faire avoir en vendant sur leboncoin. Avec LUNICAR, offre claire des le depart et paiement securise. Plus jamais entre particuliers !"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PC</div>
+                        <div class="testimonial-info">
+                            <h4>Philippe C.</h4>
+                            <span>Volkswagen Golf - Paris - Decembre 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marques Reprises Section -->
+    <section class="section brands-section">
+        <div class="container">
+            <h2 class="section-title">Toutes les marques reprises</h2>
+            <p class="section-subtitle">Nous rachetons tous les vehicules, quelle que soit la marque</p>
+            <div class="brands-grid">
+                <a href="/reprise-renault" class="brand-card">
+                    <div class="brand-logo"><img src="/images/brands/renault.png" alt="Reprise Renault"></div>
+                    <span>Renault</span>
+                </a>
+                <a href="/reprise-peugeot" class="brand-card">
+                    <div class="brand-logo"><img src="/images/brands/peugeot.png" alt="Reprise Peugeot"></div>
+                    <span>Peugeot</span>
+                </a>
+                <a href="/reprise-citroen" class="brand-card">
+                    <div class="brand-logo"><img src="/images/brands/citroen.png" alt="Reprise Citroen"></div>
+                    <span>Citroen</span>
+                </a>
+                <a href="/reprise-volkswagen" class="brand-card">
+                    <div class="brand-logo"><img src="/images/brands/volkswagen.png" alt="Reprise Volkswagen"></div>
+                    <span>Volkswagen</span>
+                </a>
+                <a href="/reprise-toyota" class="brand-card">
+                    <div class="brand-logo"><img src="/images/brands/toyota.png" alt="Reprise Toyota"></div>
+                    <span>Toyota</span>
+                </a>
+                <a href="/reprise-ford" class="brand-card">
+                    <div class="brand-logo"><img src="/images/brands/ford.png" alt="Reprise Ford"></div>
+                    <span>Ford</span>
+                </a>
+                <a href="/reprise-bmw" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/bmw.png" alt="Reprise BMW"></div>
+                    <span>BMW</span>
+                </a>
+                <a href="/reprise-mercedes" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/mercedes.png" alt="Reprise Mercedes"></div>
+                    <span>Mercedes</span>
+                </a>
+                <a href="/reprise-audi" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/audi.png" alt="Reprise Audi"></div>
+                    <span>Audi</span>
+                </a>
+                <a href="/reprise-nissan" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/nissan.png" alt="Reprise Nissan"></div>
+                    <span>Nissan</span>
+                </a>
+                <a href="/reprise-opel" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/opel.png" alt="Reprise Opel"></div>
+                    <span>Opel</span>
+                </a>
+                <a href="/reprise-fiat" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/fiat.png" alt="Reprise Fiat"></div>
+                    <span>Fiat</span>
+                </a>
+                <a href="/reprise-hyundai" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/hyundai.png" alt="Reprise Hyundai"></div>
+                    <span>Hyundai</span>
+                </a>
+                <a href="/reprise-kia" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/kia.png" alt="Reprise Kia"></div>
+                    <span>Kia</span>
+                </a>
+                <a href="/reprise-dacia" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/dacia.png" alt="Reprise Dacia"></div>
+                    <span>Dacia</span>
+                </a>
+                <a href="/reprise-skoda" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/skoda.png" alt="Reprise Skoda"></div>
+                    <span>Skoda</span>
+                </a>
+                <a href="/reprise-seat" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/seat.png" alt="Reprise Seat"></div>
+                    <span>Seat</span>
+                </a>
+                <a href="/reprise-mazda" class="brand-card hidden-brand">
+                    <div class="brand-logo"><img src="/images/brands/mazda.png" alt="Reprise Mazda"></div>
+                    <span>Mazda</span>
+                </a>
+            </div>
+            <div class="brands-toggle">
+                <button class="btn btn-outline" onclick="document.querySelector('.brands-section').classList.toggle('expanded'); this.textContent = this.textContent === 'Voir toutes les marques' ? 'Reduire' : 'Voir toutes les marques';">Voir toutes les marques</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparatif Section -->
+    <section class="section comparison-section">
+        <div class="container">
+            <h2 class="section-title">Pourquoi choisir LUNICAR ?</h2>
+            <p class="section-subtitle">Comparez les differentes options pour vendre votre vehicule</p>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Critere</th>
+                            <th class="highlight">LUNICAR</th>
+                            <th>Entre particuliers</th>
+                            <th>Concessionnaire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Estimation gratuite</td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="cross-icon">✗</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Offre garantie 7 jours</td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="cross-icon">✗</span></td>
+                            <td><span class="cross-icon">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>Paiement sous 24h</td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="cross-icon">✗</span></td>
+                            <td><span class="cross-icon">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sans controle technique</td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="cross-icon">✗</span></td>
+                            <td>Variable</td>
+                        </tr>
+                        <tr>
+                            <td>Sans obligation d'achat</td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="check-icon">✓</span></td>
+                            <td><span class="cross-icon">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>Demarches administratives</td>
+                            <td><span class="check-icon">✓</span> Incluses</td>
+                            <td><span class="cross-icon">✗</span> A votre charge</td>
+                            <td><span class="check-icon">✓</span> Incluses</td>
+                        </tr>
+                        <tr>
+                            <td>Risque d'arnaque</td>
+                            <td><span class="check-icon">✓</span> Aucun</td>
+                            <td><span class="cross-icon">✗</span> Eleve</td>
+                            <td><span class="check-icon">✓</span> Faible</td>
+                        </tr>
+                        <tr>
+                            <td>Delai de vente moyen</td>
+                            <td>24-48h</td>
+                            <td>30-90 jours</td>
+                            <td>Immediat si achat</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Version mobile accordion -->
+            <div class="comparison-accordion">
+                <div class="comparison-accordion-item">
+                    <div class="comparison-accordion-header">LUNICAR <span>▼</span></div>
+                    <div class="comparison-accordion-content">
+                        <div class="comparison-row"><span>Estimation gratuite</span><span class="check-icon">✓</span></div>
+                        <div class="comparison-row"><span>Offre garantie 7 jours</span><span class="check-icon">✓</span></div>
+                        <div class="comparison-row"><span>Paiement sous 24h</span><span class="check-icon">✓</span></div>
+                        <div class="comparison-row"><span>Sans CT obligatoire</span><span class="check-icon">✓</span></div>
+                        <div class="comparison-row"><span>Demarches incluses</span><span class="check-icon">✓</span></div>
+                    </div>
+                </div>
+                <div class="comparison-accordion-item">
+                    <div class="comparison-accordion-header">Entre particuliers <span>▼</span></div>
+                    <div class="comparison-accordion-content">
+                        <div class="comparison-row"><span>Estimation gratuite</span><span class="cross-icon">✗</span></div>
+                        <div class="comparison-row"><span>Offre garantie</span><span class="cross-icon">✗</span></div>
+                        <div class="comparison-row"><span>Paiement rapide</span><span class="cross-icon">✗</span></div>
+                        <div class="comparison-row"><span>Risque d'arnaque</span><span class="cross-icon">Eleve</span></div>
+                        <div class="comparison-row"><span>Delai moyen</span><span>30-90 jours</span></div>
+                    </div>
+                </div>
+                <div class="comparison-accordion-item">
+                    <div class="comparison-accordion-header">Concessionnaire <span>▼</span></div>
+                    <div class="comparison-accordion-content">
+                        <div class="comparison-row"><span>Estimation gratuite</span><span class="check-icon">✓</span></div>
+                        <div class="comparison-row"><span>Offre garantie</span><span class="cross-icon">✗</span></div>
+                        <div class="comparison-row"><span>Sans obligation d'achat</span><span class="cross-icon">✗</span></div>
+                        <div class="comparison-row"><span>Demarches incluses</span><span class="check-icon">✓</span></div>
+                        <div class="comparison-row"><span>Prix souvent</span><span>Inferieur</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conditions d'acceptation Section -->
+    <section class="section" style="background: var(--gray-100);">
+        <div class="container">
+            <h2 class="section-title">Quels vehicules pouvons-nous reprendre ?</h2>
+            <p class="section-subtitle">Nous acceptons la majorite des vehicules, voici nos criteres</p>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">📅</div>
+                    <h3>Moins de 20 ans</h3>
+                    <p>Vehicules immatricules apres 2005. Exceptions possibles pour certains modeles.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🛣️</div>
+                    <h3>Moins de 250 000 km</h3>
+                    <p>Kilometrage maximum pour une reprise standard. Etude au cas par cas au-dela.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🔧</div>
+                    <h3>En etat de rouler</h3>
+                    <p>Le vehicule doit pouvoir demarrer et se deplacer. Petits defauts acceptes.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">📄</div>
+                    <h3>Carte grise a jour</h3>
+                    <p>Certificat d'immatriculation au nom du vendeur. Nous gerons les co-titulaires.</p>
+                </div>
+            </div>
+            <div class="documents-note" style="margin-top: 40px;">
+                <p><strong>Cas particuliers acceptes :</strong> Vehicules en leasing (sous conditions), voitures accidentees legeres, controle technique expire ou defavorable, vehicules importes avec carte grise francaise. N'hesitez pas a faire une demande, nous etudions chaque dossier.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preparation RDV Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Comment preparer votre rendez-vous de reprise ?</h2>
+            <p class="section-subtitle">Quelques conseils pour que tout se passe au mieux</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">📄</div>
+                    <h3>Rassemblez vos documents</h3>
+                    <p>Carte grise originale, piece d'identite en cours de validite, RIB pour le virement, et si possible le carnet d'entretien et les factures recentes.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">🧹</div>
+                    <h3>Preparez le vehicule</h3>
+                    <p>Un vehicule propre fait meilleure impression. Videz vos effets personnels et verifiez les niveaux (huile, liquide de refroidissement).</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">🔑</div>
+                    <h3>Reunissez les accessoires</h3>
+                    <p>Toutes les cles (y compris de secours), telecommande, code autoradio, roue de secours, triangle et gilet de securite.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section Etendue -->
     <section class="section faq-section">
         <div class="container">
-            <h2 class="section-title">Questions sur la reprise de vehicule</h2>
+            <h2 class="section-title">Questions frequentes sur la reprise automobile</h2>
+            <p class="section-subtitle">Tout ce que vous devez savoir avant de vendre votre vehicule</p>
             <div class="faq-grid">
+                <!-- Questions generales -->
                 <div class="faq-item">
-                    <button class="faq-question">L'estimation est-elle vraiment gratuite ?<span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Oui, l'estimation de votre vehicule est 100% gratuite et sans engagement. Vous pouvez remplir le formulaire et recevoir une offre sans aucune obligation d'accepter.</p></div>
+                    <button class="faq-question">Comment fonctionne la reprise de vehicule chez LUNICAR ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Le processus est simple : vous remplissez notre formulaire en ligne avec les informations de votre vehicule (plaque, kilometrage, etat). Un conseiller vous contacte sous 24h avec une offre de reprise. Si elle vous convient, nous convenons d'un rendez-vous pour finaliser la vente et vous recevez votre paiement par virement sous 24h.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">L'estimation est-elle vraiment gratuite et sans engagement ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Oui, l'estimation de votre vehicule est 100% gratuite et sans aucun engagement. Vous pouvez recevoir notre offre et decider librement de l'accepter ou non. Aucune obligation de vente, aucuns frais caches.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">Combien de temps est valable l'offre de reprise ?<span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Notre offre de reprise est garantie et valable 7 jours. Vous avez le temps de reflechir sereinement avant de prendre votre decision.</p></div>
+                    <div class="faq-answer"><p>Notre offre de reprise est garantie et valable 7 jours. Vous avez le temps de comparer avec d'autres offres ou de reflechir sereinement avant de prendre votre decision. Passe ce delai, nous pouvons reactualiser l'offre si necessaire.</p></div>
                 </div>
+                <!-- Questions sur le CT -->
                 <div class="faq-item">
                     <button class="faq-question">Dois-je faire le controle technique avant de vendre ?<span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Non, le controle technique n'est pas obligatoire pour nous vendre votre vehicule. Nous rachetons les voitures avec ou sans CT valide, meme si celui-ci est expire.</p></div>
+                    <div class="faq-answer"><p>Non, le controle technique n'est pas obligatoire pour nous vendre votre vehicule. Contrairement a une vente entre particuliers ou le CT de moins de 6 mois est obligatoire, nous rachetons les voitures avec ou sans CT valide, meme si celui-ci est expire ou defavorable.</p></div>
                 </div>
+                <div class="faq-item">
+                    <button class="faq-question">Rachetez-vous les vehicules avec un CT defavorable ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Oui, nous rachetons les vehicules meme si le controle technique est defavorable ou presente des contre-visites. L'etat du CT est pris en compte dans l'evaluation du prix, mais cela ne nous empeche pas de vous faire une offre.</p></div>
+                </div>
+                <!-- Questions sur le paiement -->
                 <div class="faq-item">
                     <button class="faq-question">Comment se passe le paiement ?<span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Le paiement s'effectue exclusivement par virement bancaire securise. Une fois la vente finalisee, vous recevez votre argent sous 24h maximum sur votre compte.</p></div>
+                    <div class="faq-answer"><p>Le paiement s'effectue exclusivement par virement bancaire securise. Aucun paiement en especes ou par cheque n'est propose pour garantir la securite de la transaction. Une fois la vente finalisee et les documents signes, vous recevez votre argent sous 24h maximum sur votre compte.</p></div>
                 </div>
                 <div class="faq-item">
+                    <button class="faq-question">Y a-t-il des frais de dossier ou des frais caches ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Non, aucun frais de dossier ni frais cache. Le prix annonce lors de l'estimation est le prix net que vous recevrez sur votre compte. Nous prenons en charge tous les frais lies a la transaction et aux demarches administratives.</p></div>
+                </div>
+                <!-- Questions administratives -->
+                <div class="faq-item">
                     <button class="faq-question">Qui s'occupe des demarches administratives ?<span class="faq-icon">+</span></button>
-                    <div class="faq-answer"><p>Nous prenons en charge l'integralite des demarches : certificat de cession, declaration de vente en prefecture, radiation de la carte grise. Vous n'avez rien a faire.</p></div>
+                    <div class="faq-answer"><p>Nous prenons en charge l'integralite des demarches administratives : redaction du certificat de cession, declaration de vente a la prefecture (ANTS), radiation de la carte grise. Vous n'avez rien a faire, nous vous envoyons uniquement les documents a signer.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Que se passe-t-il pour mon assurance auto ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Une fois la vente finalisee, vous devez contacter votre assureur pour resilier ou transferer votre contrat. La vente prend effet a la signature du certificat de cession. Nous vous fournissons tous les documents necessaires pour justifier la vente aupres de votre assurance.</p></div>
+                </div>
+                <!-- Questions sur les vehicules acceptes -->
+                <div class="faq-item">
+                    <button class="faq-question">Quels types de vehicules rachetez-vous ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Nous rachetons tous types de vehicules particuliers : citadines, berlines, breaks, SUV, monospaces, utilitaires legers. Toutes les marques sont acceptees : francaises (Renault, Peugeot, Citroen), allemandes (BMW, Mercedes, Audi, Volkswagen), japonaises, coreennes, etc.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Rachetez-vous les vehicules diesel, essence et electriques ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Oui, nous rachetons tous les types de motorisation : essence, diesel, hybride, hybride rechargeable et 100% electrique. Les vehicules electriques et hybrides sont particulierement recherches sur le marche de l'occasion.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Acceptez-vous les vehicules accidentes ou en panne ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Les vehicules legerement accidentes (carrosserie, pare-chocs) peuvent etre repris avec une decote. Pour les vehicules non roulants ou gravement accidentes, nous etudions chaque cas individuellement. Contactez-nous pour une evaluation personnalisee.</p></div>
+                </div>
+                <!-- Questions sur le credit -->
+                <div class="faq-item">
+                    <button class="faq-question">Puis-je vendre un vehicule encore sous credit ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Oui, c'est possible sous certaines conditions. Si le credit est solde (capital restant du inferieur au prix de reprise), nous pouvons rembourser directement l'organisme de credit et vous verser la difference. Contactez-nous avec votre tableau d'amortissement pour etudier votre situation.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Mon vehicule est en leasing/LOA, puis-je le vendre ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>En LOA (Location avec Option d'Achat), vous pouvez racheter le vehicule a la valeur residuelle puis nous le revendre. En LLD (Location Longue Duree), le vehicule appartient au loueur et ne peut pas etre vendu. Nous pouvons vous accompagner dans ces demarches.</p></div>
+                </div>
+                <!-- Questions pratiques -->
+                <div class="faq-item">
+                    <button class="faq-question">Ou se passe le rendez-vous de reprise ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Nous nous deplacons dans toute la France pour recuperer votre vehicule. Le rendez-vous peut avoir lieu a votre domicile, sur votre lieu de travail ou dans un lieu public de votre choix. Aucun deplacement de votre part n'est necessaire.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Comment est calculee la valeur de reprise ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Nous utilisons plusieurs criteres : la cote Argus, l'etat general du vehicule, le kilometrage, l'historique d'entretien, les options, et les tendances du marche de l'occasion. Notre objectif est de vous proposer un prix juste et competitif.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Puis-je annuler la vente apres signature ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>Une fois le certificat de cession signe, la vente est definitive et irrevocable. C'est pourquoi nous vous laissons 7 jours de reflexion avant de finaliser. En cas de doute, prenez le temps necessaire avant de vous engager.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Que faire si j'ai perdu ma carte grise ?<span class="faq-icon">+</span></button>
+                    <div class="faq-answer"><p>En cas de perte de la carte grise, vous devez d'abord faire une declaration de perte et demander un duplicata sur le site de l'ANTS. Cette demarche prend quelques jours. Nous pouvons vous accompagner dans ce processus avant de finaliser la reprise.</p></div>
                 </div>
             </div>
         </div>
@@ -656,12 +1073,21 @@
     <script src="/js/main.js"></script>
     <script src="/js/reprise.js"></script>
     <script>
+        // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.closest('.faq-item');
                 const isActive = item.classList.contains('active');
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
                 if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Comparison Accordion (mobile)
+        document.querySelectorAll('.comparison-accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.closest('.comparison-accordion-item');
+                item.classList.toggle('active');
             });
         });
     </script>
