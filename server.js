@@ -247,7 +247,76 @@ const thematicRoutes = [
 
 thematicRoutes.forEach(route => {
     app.get(`/${route}`, (req, res) => {
-        res.sendFile(path.join(__dirname, 'public', 'reprise-theme.html'));
+        const themes = readJSON('themes.json');
+        const theme = themes.find(t => t.slug === route);
+
+        if (theme) {
+            // Lire le template HTML
+            const templatePath = path.join(__dirname, 'public', 'reprise-theme.html');
+            let html = fs.readFileSync(templatePath, 'utf-8');
+
+            const baseUrl = 'https://lunicar.fr';
+            const { slug, title, h1, subtitle, metaDescription } = theme;
+
+            // Remplacer le title
+            html = html.replace(
+                /<title>.*?<\/title>/,
+                `<title>${title}</title>`
+            );
+
+            // Remplacer meta description
+            html = html.replace(
+                /<meta name="description" content=".*?">/,
+                `<meta name="description" content="${metaDescription}">`
+            );
+
+            // Remplacer canonical - FIX pour Google Search Console
+            html = html.replace(
+                /<link rel="canonical" href=".*?">/,
+                `<link rel="canonical" href="${baseUrl}/${slug}">`
+            );
+
+            // Remplacer Open Graph
+            html = html.replace(
+                /<meta property="og:url" content=".*?">/,
+                `<meta property="og:url" content="${baseUrl}/${slug}">`
+            );
+            html = html.replace(
+                /<meta property="og:title" content=".*?">/,
+                `<meta property="og:title" content="${title}">`
+            );
+            html = html.replace(
+                /<meta property="og:description" content=".*?">/,
+                `<meta property="og:description" content="${metaDescription}">`
+            );
+
+            // Remplacer Twitter
+            html = html.replace(
+                /<meta name="twitter:title" content=".*?">/,
+                `<meta name="twitter:title" content="${title}">`
+            );
+            html = html.replace(
+                /<meta name="twitter:description" content=".*?">/,
+                `<meta name="twitter:description" content="${metaDescription}">`
+            );
+
+            // Remplacer H1
+            html = html.replace(
+                /<h1 id="themeH1">.*?<\/h1>/,
+                `<h1 id="themeH1">${h1}</h1>`
+            );
+
+            // Remplacer le subtitle
+            html = html.replace(
+                /<p class="theme-hero-subtitle" id="themeSubtitle">.*?<\/p>/,
+                `<p class="theme-hero-subtitle" id="themeSubtitle">${subtitle}</p>`
+            );
+
+            res.send(html);
+        } else {
+            // Fallback si le theme n'existe pas dans le JSON
+            res.sendFile(path.join(__dirname, 'public', 'reprise-theme.html'));
+        }
     });
 });
 
