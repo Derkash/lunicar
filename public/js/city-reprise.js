@@ -241,14 +241,14 @@
         const breadcrumbCity = document.getElementById('breadcrumbCity');
         if (breadcrumbCity) breadcrumbCity.textContent = nom;
 
-        // Update H1
+        // Update H1 (format editorial : titre + italique sur la ville)
         const h1 = document.getElementById('cityH1');
-        if (h1) h1.textContent = `Reprise Voiture à ${nom} - Rachat Auto Paiement 24h`;
+        if (h1) h1.innerHTML = `Reprise voiture<br><span>à ${nom}.</span>`;
 
         // Update subtitle
         const subtitle = document.getElementById('citySubtitle');
         if (subtitle) {
-            subtitle.textContent = `Vendez votre voiture à ${nom} rapidement. Estimation gratuite en 2 minutes, paiement sous 24h, sans contrôle technique. Service disponible à ${nom} et ses environs.`;
+            subtitle.textContent = `Estimation gratuite en 2 minutes, paiement sécurisé sous 24 heures, sans contrôle technique. Service disponible à ${nom} et ses environs.`;
         }
 
         // Update introduction

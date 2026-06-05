@@ -196,16 +196,16 @@ app.get('/reprise-auto-:slug', (req, res) => {
             `<meta name="twitter:description" content="Rachat de voiture à ${nom}. Estimation gratuite.">`
         );
 
-        // Remplacer H1 par defaut
+        // Remplacer H1 par defaut (italique partiel pour le redesign editorial)
         html = html.replace(
             /<h1 id="cityH1">.*?<\/h1>/,
-            `<h1 id="cityH1">Reprise Voiture à ${nom} - Rachat Auto Paiement 24h</h1>`
+            `<h1 id="cityH1">Reprise voiture<br><span>à ${nom}.</span></h1>`
         );
 
         // Remplacer le subtitle par defaut
         html = html.replace(
             /<p class="city-hero-subtitle" id="citySubtitle">.*?<\/p>/,
-            `<p class="city-hero-subtitle" id="citySubtitle">Vendez votre voiture à ${nom} rapidement. Estimation gratuite en 2 minutes, paiement sous 24h, sans contrôle technique. Service disponible à ${nom} et ses environs.</p>`
+            `<p class="city-hero-subtitle" id="citySubtitle">Estimation gratuite en 2 minutes, paiement sécurisé sous 24 heures, sans contrôle technique. Service disponible à ${nom} et ses environs.</p>`
         );
 
         // Remplacer le breadcrumb
