@@ -66,6 +66,17 @@ const upload = multer({
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Security headers (SEO best practices + Lighthouse)
+app.use((req, res, next) => {
+    res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -138,17 +149,21 @@ app.get('/reprise-auto-:slug', (req, res) => {
 
         const baseUrl = 'https://lunicar.fr';
         const { nom, slug, departement, region } = city;
+        // Eviter doublon "Paris (Paris)" quand la ville est son propre departement
+        const localite = (nom && departement && nom !== departement)
+            ? `${nom} (${departement})`
+            : nom;
 
         // Remplacer le title
         html = html.replace(
             /<title>.*?<\/title>/,
-            `<title>Reprise Voiture ${nom} (${departement}) | Rachat Auto Paiement 24h | LUNICAR</title>`
+            `<title>Reprise Voiture ${localite} | Rachat Auto Paiement 24h | LUNICAR</title>`
         );
 
         // Remplacer meta description
         html = html.replace(
             /<meta name="description" content=".*?">/,
-            `<meta name="description" content="Vendez votre voiture à ${nom} (${departement}) avec LUNICAR. Estimation gratuite, reprise immédiate sans CT, paiement sécurisé sous 24h. Toutes marques acceptées.">`
+            `<meta name="description" content="Vendez votre voiture à ${localite} avec LUNICAR. Estimation gratuite, reprise immédiate sans CT, paiement sécurisé sous 24h. Toutes marques acceptées.">`
         );
 
         // Remplacer canonical
@@ -199,27 +214,126 @@ app.get('/reprise-auto-:slug', (req, res) => {
             `<li id="breadcrumbCity">${nom}</li>`
         );
 
+        // Injecter ville dans JSON-LD LocalBusiness + Service (placeholders vides corriges)
+        const localBusinessJson = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": `LUNICAR - Reprise auto ${nom}`,
+            "description": `Service de reprise et rachat automobile a ${nom}. Estimation gratuite, paiement sous 24h, sans controle technique.`,
+            "url": `${baseUrl}/reprise-auto-${slug}`,
+            "email": "contact@lunicar.fr",
+            "priceRange": "$$",
+            "areaServed": {
+                "@type": "City",
+                "name": nom,
+                "containedInPlace": { "@type": "AdministrativeArea", "name": departement }
+            },
+            "serviceType": "Reprise automobile"
+        });
+        html = html.replace(
+            /<script type="application\/ld\+json" id="schemaLocalBusiness">[\s\S]*?<\/script>/,
+            `<script type="application/ld+json" id="schemaLocalBusiness">${localBusinessJson}</script>`
+        );
+
+        const serviceJson = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": `Reprise automobile a ${nom}`,
+            "serviceType": "Reprise automobile",
+            "provider": { "@type": "Organization", "name": "LUNICAR", "url": baseUrl },
+            "areaServed": { "@type": "City", "name": nom }
+        });
+        html = html.replace(
+            /<script type="application\/ld\+json" id="schemaService">[\s\S]*?<\/script>/,
+            `<script type="application/ld+json" id="schemaService">${serviceJson}</script>`
+        );
+
+        // FAQ generique injectee cote serveur (3 Q/R)
+        const faqJson = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": `Combien de temps prend la reprise d'une voiture a ${nom} ?`,
+                    "acceptedAnswer": { "@type": "Answer", "text": `Estimation en 2 minutes en ligne, offre sous 24h. La transaction complete peut etre finalisee en 48 a 72 heures pour les vendeurs a ${nom} et alentours.` }
+                },
+                {
+                    "@type": "Question",
+                    "name": `Le controle technique est-il obligatoire pour vendre ma voiture a ${nom} ?`,
+                    "acceptedAnswer": { "@type": "Answer", "text": "Non. LUNICAR rachete les vehicules avec ou sans controle technique valide, meme expire." }
+                },
+                {
+                    "@type": "Question",
+                    "name": `Comment se passe le paiement apres la reprise a ${nom} ?`,
+                    "acceptedAnswer": { "@type": "Answer", "text": "Le paiement est effectue par virement bancaire securise sous 24h apres validation de la vente. Aucun cheque ni especes." }
+                }
+            ]
+        });
+        html = html.replace(
+            /<script type="application\/ld\+json" id="schemaFAQ">[\s\S]*?<\/script>/,
+            `<script type="application/ld+json" id="schemaFAQ">${faqJson}</script>`
+        );
+
+        // BreadcrumbList
+        const breadcrumbJson = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${baseUrl}/` },
+                { "@type": "ListItem", "position": 2, "name": "Reprise", "item": `${baseUrl}/reprise` },
+                { "@type": "ListItem", "position": 3, "name": `Reprise auto ${nom}`, "item": `${baseUrl}/reprise-auto-${slug}` }
+            ]
+        });
+        html = html.replace(
+            /<script type="application\/ld\+json" id="schemaBreadcrumb">[\s\S]*?<\/script>/,
+            `<script type="application/ld+json" id="schemaBreadcrumb">${breadcrumbJson}</script>`
+        );
+
         res.send(html);
     } else {
         res.status(404).sendFile(path.join(__dirname, 'public', 'index.html'));
     }
 });
 
+// ============ REDIRECTIONS 301 anti-cannibalisation SEO ============
+// Map: ancienne URL -> URL canonique gardee. Reduit la dispersion de l'autorite SEO.
+const SEO_REDIRECTS = {
+    // Cluster "rapidite" -> rachat-voiture-rapide
+    'reprise-auto-24h': 'rachat-voiture-rapide',
+    'reprise-auto-immediate': 'rachat-voiture-rapide',
+    'vendre-sa-voiture-rapidement': 'rachat-voiture-rapide',
+    'reprise-voiture-48h': 'rachat-voiture-rapide',
+    // Cluster "sans CT" -> rachat-voiture-sans-controle-technique
+    'reprise-auto-sans-ct': 'rachat-voiture-sans-controle-technique',
+    'vendre-voiture-sans-ct': 'rachat-voiture-sans-controle-technique',
+    'rachat-vehicule-sans-revision': 'rachat-voiture-sans-controle-technique',
+    // Cluster "panne / accident" -> rachat-voiture-accidentee
+    'reprise-voiture-en-panne': 'rachat-voiture-accidentee',
+    'reprise-voiture-non-roulante': 'rachat-voiture-accidentee',
+    'rachat-voiture-moteur-hs': 'rachat-voiture-accidentee',
+    // Cluster "paiement cash" -> rachat-voiture-paiement-cash
+    'vendre-voiture-paiement-comptant': 'rachat-voiture-paiement-cash',
+    'rachat-voiture-virement-immediat': 'rachat-voiture-paiement-cash',
+    'reprise-auto-paiement-immediat': 'rachat-voiture-paiement-cash'
+};
+
+Object.keys(SEO_REDIRECTS).forEach(oldSlug => {
+    app.get(`/${oldSlug}`, (req, res) => {
+        res.redirect(301, `/${SEO_REDIRECTS[oldSlug]}`);
+    });
+});
+
 // Routes dynamiques pour les pages thématiques SEO
 const thematicRoutes = [
-    // Rapidité
-    'reprise-auto-24h', 'reprise-auto-immediate', 'rachat-voiture-rapide',
-    'vendre-sa-voiture-rapidement', 'reprise-voiture-48h',
-    // Sans contraintes
-    'rachat-voiture-sans-controle-technique', 'reprise-auto-sans-ct',
-    'vendre-voiture-sans-ct', 'rachat-vehicule-sans-revision',
-    'reprise-voiture-en-panne', 'rachat-voiture-accidentee',
-    'reprise-voiture-non-roulante', 'rachat-voiture-moteur-hs',
+    // Rapidite (canonique unique apres redirections 301)
+    'rachat-voiture-rapide',
+    // Sans contraintes (canoniques uniques)
+    'rachat-voiture-sans-controle-technique',
+    'rachat-voiture-accidentee',
     'reprise-auto-sans-carte-grise',
-    // Paiement
-    'reprise-auto-paiement-immediat', 'rachat-voiture-paiement-cash',
-    'vendre-voiture-paiement-comptant', 'reprise-auto-cheque-de-banque',
-    'rachat-voiture-virement-immediat',
+    // Paiement (canoniques uniques)
+    'rachat-voiture-paiement-cash', 'reprise-auto-cheque-de-banque',
     // Type de véhicule
     'reprise-voiture-occasion', 'rachat-voiture-ancienne',
     'reprise-voiture-haut-kilometrage', 'rachat-vehicule-utilitaire',
@@ -311,6 +425,41 @@ thematicRoutes.forEach(route => {
                 /<p class="theme-hero-subtitle" id="themeSubtitle">.*?<\/p>/,
                 `<p class="theme-hero-subtitle" id="themeSubtitle">${subtitle}</p>`
             );
+
+            // Injecter FAQ dynamique depuis themes.json (theme.faq[])
+            if (Array.isArray(theme.faq) && theme.faq.length > 0) {
+                const faqJson = JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": theme.faq.map(q => ({
+                        "@type": "Question",
+                        "name": q.question,
+                        "acceptedAnswer": { "@type": "Answer", "text": q.answer }
+                    }))
+                });
+                html = html.replace(
+                    /<script type="application\/ld\+json" id="schemaFAQ">[\s\S]*?<\/script>/,
+                    `<script type="application/ld+json" id="schemaFAQ">${faqJson}</script>`
+                );
+            }
+
+            // Injecter BreadcrumbList
+            const breadcrumbJson = JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `${baseUrl}/` },
+                    { "@type": "ListItem", "position": 2, "name": "Reprise", "item": `${baseUrl}/reprise` },
+                    { "@type": "ListItem", "position": 3, "name": (h1 || title), "item": `${baseUrl}/${slug}` }
+                ]
+            });
+            // Inserer juste avant </head> si pas deja present
+            if (!html.includes('id="schemaBreadcrumb"')) {
+                html = html.replace(
+                    /<\/head>/,
+                    `    <script type="application/ld+json" id="schemaBreadcrumb">${breadcrumbJson}</script>\n</head>`
+                );
+            }
 
             res.send(html);
         } else {
@@ -945,8 +1094,9 @@ app.get('/sitemap.xml', (req, res) => {
 `;
     });
 
-    // Pages thématiques SEO
+    // Pages thématiques SEO (exclut les slugs redirigés en 301 pour anti-cannibalisation)
     themes.forEach(theme => {
+        if (SEO_REDIRECTS[theme.slug]) return;
         sitemap += `  <url>
     <loc>${baseUrl}/${theme.slug}</loc>
     <changefreq>monthly</changefreq>
