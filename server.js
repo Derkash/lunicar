@@ -5,6 +5,13 @@ const fs = require('fs');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
+const seoContent = require('./lib/seo-content');
+
+// Remplace le contenu interne de l'element portant l'id donne (rendu SSR).
+function replaceById(html, id, inner) {
+    const re = new RegExp(`(<[a-zA-Z0-9]+[^>]*id="${id}"[^>]*>)([\\s\\S]*?)(</[a-zA-Z0-9]+>)`);
+    return html.replace(re, `$1${inner}$3`);
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -140,6 +147,13 @@ app.get('/reprise', (req, res) => {
 
 // Route dynamique pour les pages villes SEO avec injection meta tags SSR
 app.get('/reprise-auto-:slug', (req, res) => {
+    // Les slugs "reprise-auto-*" cibles par une redirection 301 anti-cannibalisation
+    // seraient sinon interceptes ici (404) avant d'atteindre les routes de redirection.
+    const fullSlug = `reprise-auto-${req.params.slug}`;
+    if (SEO_REDIRECTS[fullSlug]) {
+        return res.redirect(301, `/${SEO_REDIRECTS[fullSlug]}`);
+    }
+
     const cities = readJSON('cities.json');
     const city = cities.find(c => c.slug === req.params.slug);
     if (city) {
@@ -248,27 +262,16 @@ app.get('/reprise-auto-:slug', (req, res) => {
             `<script type="application/ld+json" id="schemaService">${serviceJson}</script>`
         );
 
-        // FAQ generique injectee cote serveur (3 Q/R)
+        // FAQ riche (10 Q/R) injectee cote serveur, identique au rendu client
+        const cityFaqs = seoContent.generateFAQ(city);
         const faqJson = JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [
-                {
-                    "@type": "Question",
-                    "name": `Combien de temps prend la reprise d'une voiture a ${nom} ?`,
-                    "acceptedAnswer": { "@type": "Answer", "text": `Estimation en 2 minutes en ligne, offre sous 24h. La transaction complete peut etre finalisee en 48 a 72 heures pour les vendeurs a ${nom} et alentours.` }
-                },
-                {
-                    "@type": "Question",
-                    "name": `Le controle technique est-il obligatoire pour vendre ma voiture a ${nom} ?`,
-                    "acceptedAnswer": { "@type": "Answer", "text": "Non. LUNICAR rachete les vehicules avec ou sans controle technique valide, meme expire." }
-                },
-                {
-                    "@type": "Question",
-                    "name": `Comment se passe le paiement apres la reprise a ${nom} ?`,
-                    "acceptedAnswer": { "@type": "Answer", "text": "Le paiement est effectue par virement bancaire securise sous 24h apres validation de la vente. Aucun cheque ni especes." }
-                }
-            ]
+            "mainEntity": cityFaqs.map(q => ({
+                "@type": "Question",
+                "name": q.question,
+                "acceptedAnswer": { "@type": "Answer", "text": q.answer }
+            }))
         });
         html = html.replace(
             /<script type="application\/ld\+json" id="schemaFAQ">[\s\S]*?<\/script>/,
@@ -289,6 +292,40 @@ app.get('/reprise-auto-:slug', (req, res) => {
             /<script type="application\/ld\+json" id="schemaBreadcrumb">[\s\S]*?<\/script>/,
             `<script type="application/ld+json" id="schemaBreadcrumb">${breadcrumbJson}</script>`
         );
+
+        // ===== Contenu unique par ville rendu cote serveur (SEO/GEO) =====
+        // Ces blocs etaient auparavant remplis uniquement par city-reprise.js,
+        // donc invisibles pour les crawlers. On les injecte ici.
+        html = html.replace(
+            '<div class="city-intro-content" id="introText"></div>',
+            `<div class="city-intro-content" id="introText">${seoContent.generateIntroText(city)}</div>`
+        );
+        html = html.replace(
+            '<div class="city-local-content" id="localInfoContent"></div>',
+            `<div class="city-local-content" id="localInfoContent">${seoContent.generateLocalInfo(city)}</div>`
+        );
+        html = html.replace(
+            '<div class="city-faq-accordion" id="faqAccordion"></div>',
+            `<div class="city-faq-accordion" id="faqAccordion">${seoContent.renderCityFAQAccordion(cityFaqs)}</div>`
+        );
+        html = html.replace(
+            '<div class="nearby-cities-content" id="nearbyCitiesLinks"></div>',
+            `<div class="nearby-cities-content" id="nearbyCitiesLinks">${seoContent.generateNearbyCities(city, cities)}</div>`
+        );
+
+        // Titres de section personnalises par ville (mirroir de city-reprise.js)
+        html = replaceById(html, 'howItWorksTitle', `Comment ca marche a ${nom}`);
+        html = replaceById(html, 'whyTitle', `Pourquoi choisir LUNICAR a ${nom} ?`);
+        html = replaceById(html, 'vehiclesTitle', `Quels vehicules reprenons-nous a ${nom} ?`);
+        html = replaceById(html, 'vehiclesIntro', `LUNICAR rachete une large gamme de vehicules a ${nom} et dans le ${departement}, quel que soit leur etat ou leur age. Notre objectif est de vous proposer une solution simple et rapide pour vendre votre voiture, sans les contraintes habituelles des ventes entre particuliers ou en concession.`);
+        html = replaceById(html, 'estimationTitle', `Estimation gratuite de votre vehicule a ${nom}`);
+        html = replaceById(html, 'estimationText', `Pour vous proposer le meilleur prix de rachat a ${nom}, notre algorithme analyse plusieurs criteres essentiels de votre vehicule. Cette estimation est basee sur les donnees du marche automobile actuel dans le ${departement} et tient compte de la cote Argus et des transactions recentes dans votre region.`);
+        html = replaceById(html, 'localInfoTitle', `Informations pratiques a ${nom}`);
+        html = replaceById(html, 'faqTitle', `Questions frequentes sur la reprise auto a ${nom}`);
+        html = replaceById(html, 'brandsTitle', `Marques de voitures reprises a ${nom}`);
+        html = replaceById(html, 'nearbyCitiesTitle', `Reprise auto dans les villes proches de ${nom}`);
+        html = replaceById(html, 'ctaTitle', `Vendez votre voiture a ${nom} maintenant`);
+        html = replaceById(html, 'ctaText', `Estimation gratuite en 2 minutes. Prix garanti 7 jours. Paiement sous 24h par virement securise. Sans controle technique obligatoire. Service disponible dans tout le ${departement}.`);
 
         res.send(html);
     } else {
@@ -459,6 +496,15 @@ thematicRoutes.forEach(route => {
                     /<\/head>/,
                     `    <script type="application/ld+json" id="schemaBreadcrumb">${breadcrumbJson}</script>\n</head>`
                 );
+            }
+
+            // ===== Contenu visible rendu cote serveur (avantages + FAQ) =====
+            // Auparavant remplis uniquement par theme-reprise.js (invisible crawler).
+            if (Array.isArray(theme.advantages) && theme.advantages.length > 0) {
+                html = replaceById(html, 'advantagesGrid', seoContent.renderThemeAdvantages(theme.advantages));
+            }
+            if (Array.isArray(theme.faq) && theme.faq.length > 0) {
+                html = replaceById(html, 'faqGrid', seoContent.renderThemeFAQ(theme.faq));
             }
 
             res.send(html);
@@ -1141,6 +1187,34 @@ Disallow: /uploads/
 `;
     res.header('Content-Type', 'text/plain');
     res.send(robots);
+});
+
+// llms.txt - guide les moteurs IA (ChatGPT, Perplexity, Claude) vers le contenu cle
+app.get('/llms.txt', (req, res) => {
+    const baseUrl = process.env.SITE_URL || 'https://lunicar.fr';
+    const llms = `# LUNICAR
+
+> LUNICAR est un service francais de reprise et de rachat de voitures. Estimation gratuite en 2 minutes, offre de prix garantie 7 jours, paiement par virement securise sous 24h, sans controle technique obligatoire, toutes marques acceptees (y compris vehicules en panne ou accidentes).
+
+## Points cles
+- Estimation gratuite et sans engagement en 2 minutes
+- Paiement sous 24h par virement bancaire securise
+- Rachat sans controle technique valide (meme expire)
+- Prise en charge de toutes les demarches administratives
+- Couverture France entiere (440+ villes)
+
+## Pages principales
+- [Faire estimer ma voiture](${baseUrl}/reprise) : formulaire d'estimation et de reprise
+- [Nos garanties](${baseUrl}/garanties) : engagements et FAQ
+- [Actualites / Blog](${baseUrl}/articles) : conseils pour vendre sa voiture
+- [Contact](${baseUrl}/contact)
+
+## Contact
+- Email : contact@lunicar.fr
+- Horaires : du lundi au samedi, 9h-19h
+`;
+    res.header('Content-Type', 'text/plain; charset=utf-8');
+    res.send(llms);
 });
 
 // Bloquer l'ancienne URL /admin - retourne 404

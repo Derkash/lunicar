@@ -142,13 +142,16 @@
 
         const { nom, slug, departement, region } = city;
 
+        // Eviter le doublon "Paris (Paris)" quand la ville est son propre departement
+        const localite = (nom && departement && nom !== departement) ? `${nom} (${departement})` : nom;
+
         // Update page title - SEO optimized
-        document.title = `Reprise Voiture ${nom} (${departement}) | Rachat Auto Paiement 24h | LUNICAR`;
+        document.title = `Reprise Voiture ${localite} | Rachat Auto Paiement 24h | LUNICAR`;
 
         // Update meta description
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
-            metaDesc.content = `Vendez votre voiture à ${nom} (${departement}) avec LUNICAR. Estimation gratuite, reprise immédiate sans CT, paiement sécurisé sous 24h. Toutes marques acceptées.`;
+            metaDesc.content = `Vendez votre voiture à ${localite} avec LUNICAR. Estimation gratuite, reprise immédiate sans CT, paiement sécurisé sous 24h. Toutes marques acceptées.`;
         }
 
         // Update canonical URL
