@@ -1,123 +1,69 @@
-# LUNICAR - Site de Reprise Automobile
+# LUNICAR
 
-Site web professionnel de reprise de vehicules automobiles.
+Site de rachat de voitures aux particuliers et aux professionnels (lunicar.fr), centré sur Paris et l'Île-de-France.
 
-## Fonctionnalites
+Node.js + Express, sans base de données : tout le HTML public est rendu côté serveur à partir de gabarits JavaScript et de fichiers JSON.
 
-- **Page d'accueil** : Hero, statistiques, etapes, avantages, temoignages
-- **Formulaire de reprise** : Multi-etapes avec upload photos
-- **Articles/Blog** : Systeme d'articles avec filtres par categorie
-- **Page garanties** : Engagements et FAQ
-- **Page contact** : Formulaire de contact
-- **Pages legales** : Mentions legales et politique de confidentialite
-- **Envoi d'emails** : Notifications par email via Nodemailer
-
-## Technologies
-
-- **Backend** : Node.js, Express.js
-- **Frontend** : HTML5, CSS3, JavaScript vanilla
-- **Email** : Nodemailer (SMTP Gmail)
-- **Stockage** : Fichiers JSON
-
-## Installation locale
+## Lancer en local
 
 ```bash
-# Cloner le projet
-git clone <url-du-repo>
-cd lunicar
-
-# Installer les dependances
 npm install
-
-# Configurer les variables d'environnement (optionnel pour les emails)
-cp .env.example .env
-# Editer .env avec vos identifiants SMTP
-
-# Lancer le serveur
-npm start
+npm run dev        # http://localhost:3000
 ```
 
-Le site sera accessible sur http://localhost:3000
+## Déploiement
 
-## Configuration Email (optionnel)
+Render, déploiement automatique à chaque push sur `main` (`Derkash/lunicar`).
 
-Pour activer l'envoi d'emails, creez un fichier `.env` :
+Variables d'environnement à définir sur Render (voir `.env.example`) :
 
-```env
-EMAIL_TO=votre-email@gmail.com
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=votre-email@gmail.com
-SMTP_PASS=votre-mot-de-passe-application
-SMTP_FROM_NAME=LUNICAR
-```
+| Variable | Rôle |
+|---|---|
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `EMAIL_TO` | Envoi des demandes par e-mail. Sans elles, les demandes ne sont visibles que dans les journaux Render. |
+| `LUNICAR_PHONE` | Numéro affiché (en-tête, formulaire, barre mobile). Vide = aucun bouton d'appel. |
+| `LUNICAR_WHATSAPP` | Numéro WhatsApp. Vide = aucun bouton WhatsApp. |
+| `ADMIN_PASSWORD` | Mot de passe de `/admino`. Non défini en production = admin fermé. |
 
-> **Note** : Pour Gmail, utilisez un [mot de passe d'application](https://support.google.com/accounts/answer/185833)
+Le disque de Render est effacé à chaque déploiement : `data/demandes.json` n'est pas une archive fiable. L'e-mail est le canal de référence, les journaux le filet de sécurité.
 
-## Deploiement sur Render
-
-### Option 1 : Deploiement automatique
-
-1. Connectez votre repo GitHub a Render
-2. Le fichier `render.yaml` configurera automatiquement le service
-
-### Option 2 : Deploiement manuel
-
-1. Creez un nouveau **Web Service** sur Render
-2. Connectez votre repository
-3. Configuration :
-   - **Build Command** : `npm install`
-   - **Start Command** : `npm start`
-   - **Environment** : Node
-4. Ajoutez les variables d'environnement (optionnel) :
-   - `EMAIL_TO`
-   - `SMTP_HOST`
-   - `SMTP_PORT`
-   - `SMTP_USER`
-   - `SMTP_PASS`
-   - `SMTP_FROM_NAME`
-
-## Structure du projet
+## Organisation
 
 ```
-lunicar/
-├── server.js              # Serveur Express
-├── package.json           # Dependances
-├── render.yaml            # Configuration Render
-├── .env.example           # Template variables d'environnement
-├── public/                # Fichiers statiques
-│   ├── index.html         # Page d'accueil
-│   ├── reprise.html       # Formulaire de reprise
-│   ├── articles.html      # Liste des articles
-│   ├── article.html       # Page article
-│   ├── garanties.html     # Page garanties
-│   ├── contact.html       # Page contact
-│   ├── mentions-legales.html
-│   ├── politique-confidentialite.html
-│   ├── css/
-│   │   ├── style.css      # Styles principaux
-│   │   ├── pages.css      # Styles des pages
-│   │   └── forms.css      # Styles des formulaires
-│   └── js/
-│       ├── main.js        # JavaScript principal
-│       ├── reprise.js     # Script formulaire reprise
-│       ├── articles.js    # Script liste articles
-│       └── article-single.js  # Script page article
-├── data/
-│   └── articles.json      # Articles du blog
-└── uploads/               # Photos uploadees (gitignore)
+server.js            routes, redirections 301, API demandes/contact/admin, sitemap, robots, llms.txt
+lib/config.js        constantes du site, téléphone, utilitaires
+lib/layout.js        gabarit commun : <head>, en-tête, pied, barre mobile, formulaire, sections partagées
+lib/pages.js         une fonction par type de page
+lib/idf.js           départements d'Île-de-France et pages par situation (contenu rédigé)
+data/cities.json     441 villes (150 en Île-de-France)
+data/themes.json     pages thématiques nationales (marques, types, situations)
+data/articles.json   articles de conseils
+content/*.html       corps des pages légales
+public/css/app.css   feuille unique des pages publiques
+public/js/app.js     menu, formulaire de demande, rappel, contact
+public/admino.html   espace d'administration des articles (utilise style.css + pages.css)
 ```
 
-## API Endpoints
+## Pages
 
-| Methode | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/articles` | Liste tous les articles |
-| GET | `/api/articles/:slug` | Detail d'un article |
-| POST | `/api/reprise` | Soumettre une demande de reprise |
-| POST | `/api/contact` | Envoyer un message de contact |
-| GET | `/api/valider-plaque/:plaque` | Valider un format de plaque |
+| Type | Adresse | Source |
+|---|---|---|
+| Accueil, estimation | `/`, `/reprise` | `pages.home`, `pages.reprise` |
+| Région | `/rachat-voiture-ile-de-france` | `pages.hub` |
+| Départements (7) | `/rachat-voiture-hauts-de-seine-92`… | `idf.DEPARTMENTS` |
+| Situations (5) | `/rachat-voiture-en-panne-paris`… | `idf.SITUATIONS` |
+| Villes (441) | `/reprise-auto-{slug}` | `data/cities.json` |
+| Thématiques | `/{slug}` | `data/themes.json` |
 
-## Licence
+Règle : une intention de recherche = une page. Les variantes proches sont regroupées, les anciennes adresses redirigées en 301 (`SEO_REDIRECTS` dans `server.js`).
 
-MIT
+## Formulaire de demande
+
+Deux étapes : le véhicule (plaque facultative, marque et modèle, année, kilométrage, particularités), puis les coordonnées (prénom, téléphone, code postal, e-mail facultatif). Une voie courte « Être rappelé » (prénom + téléphone) est présente sur chaque page.
+
+`POST /api/reprise` accepte du JSON. La demande est envoyée par e-mail, journalisée, et enregistrée dans `data/demandes.json`. Champ piège anti-robots et limite d'envois par adresse IP.
+
+## Règles de contenu
+
+- Aucune preuve sociale inventée : pas de note, pas de nombre d'avis, pas de volume de véhicules tant qu'ils ne sont pas réels et vérifiables.
+- Aucun numéro de téléphone factice : les boutons d'appel n'apparaissent que si le numéro est configuré.
+- L'adresse postale n'apparaît que dans les mentions légales.

@@ -19,5 +19,13 @@ services:
         sync: false
       - key: SMTP_FROM_NAME
         sync: false
+      - key: LUNICAR_PHONE
+        sync: false
+      - key: LUNICAR_WHATSAPP
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SITE_URL
+        value: https://lunicar.fr
     healthCheckPath: /
     autoDeploy: true
