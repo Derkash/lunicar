@@ -8,6 +8,7 @@ const nodemailer = require('nodemailer');
 const { SITE, esc, parsePhone } = require('./lib/config');
 const pages = require('./lib/pages');
 const idf = require('./lib/idf');
+const fichePlaque = require('./lib/vehicule');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -289,6 +290,40 @@ app.get('/api/articles/:slug', (req, res) => {
     }
 });
 
+// ============ API PLAQUE ============
+
+// Datation maison toujours ; caractéristiques SIV si une clé API est configurée.
+app.get('/api/vehicule/:plaque', async (req, res) => {
+    if (tooManySends(`plaque:${req.ip || ''}`, 12)) return res.status(429).json({ error: 'Trop de recherches.' });
+    const r = await fichePlaque.rechercher(req.params.plaque);
+    res.set('Cache-Control', 'no-store').json(r);
+});
+
+// Le vendeur nous transmet le lien de partage de son rapport Histovec.
+app.post('/api/reprise/histovec', async (req, res) => {
+    const b = req.body || {};
+    const id = String(b.id || '').trim();
+    const lien = String(b.lien || '').trim().slice(0, 600);
+    if (tooManySends(`histovec:${req.ip || ''}`, 6)) return res.status(429).json({ error: 'Trop d\'envois.' });
+    const ok = /^https:\/\/histovec\.interieur\.gouv\.fr\/\S+$/.test(lien) || /^[A-Za-z0-9_-]{6,64}$/.test(lien);
+    if (!ok) return res.status(400).json({ error: 'Collez le lien de partage Histovec (il commence par https://histovec.interieur.gouv.fr).' });
+    const demandes = readJSON('demandes.json');
+    const d = demandes.find(x => x.id === id);
+    if (d) { d.histovec = lien; writeJSON('demandes.json', demandes); }
+    const ref = id.substring(0, 8).toUpperCase() || 'INCONNUE';
+    try {
+        await sendEmail({
+            subject: `📄 Histovec reçu · réf. ${ref}${d ? ` · ${d.vehicule} · ${d.telephone}` : ''}`,
+            html: `<div style="font-family:Arial,sans-serif;max-width:560px">
+<p>Le vendeur de la demande <strong>${esc(ref)}</strong>${d ? ` (${esc(d.prenom)}, ${esc(d.vehicule)}, ${esc(d.telephone)})` : ''} a transmis son rapport Histovec :</p>
+<p><a href="${esc(lien.startsWith('http') ? lien : 'https://histovec.interieur.gouv.fr')}" style="font-weight:700">${esc(lien)}</a></p>
+<p style="color:#6F6B64;font-size:13px">À ouvrir dans le navigateur. Lien valable jusqu'au 8 du mois suivant son partage : à consulter rapidement.</p></div>`
+        });
+    } catch (e) { console.error('❌ Erreur envoi email:', e.message); }
+    console.log(`Histovec reçu pour ${ref}: ${lien}`);
+    res.json({ success: true });
+});
+
 // ============ API DEMANDES (estimation + rappel) ============
 
 const ETAT_LABELS = { panne: 'En panne / ne roule plus', accident: 'Accidentée', ct: 'Sans CT valide' };
@@ -312,6 +347,7 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
         if (type === 'estimation' && !vehicule) return res.status(400).json({ error: 'Indiquez la marque et le modèle.', field: 'vehicule' });
 
         const etat = [].concat(b.etat || []).map(e => ETAT_LABELS[e]).filter(Boolean);
+        const plaqueInfo = b.plaque ? fichePlaque.analyser(b.plaque) : null;
         const referenceId = uuidv4();
         const ref = referenceId.substring(0, 8).toUpperCase();
 
@@ -323,6 +359,8 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             vehicule,
             annee: clean(b.annee, 12),
             kilometrage: clean(b.kilometrage, 12).replace(/[^\d]/g, ''),
+            plaque_datation: plaqueInfo && plaqueInfo.libelle ? plaqueInfo.libelle : '',
+            fiche_confirmee: clean(b.fiche, 300),
             prix_souhaite: clean(b.prix, 10).replace(/[^\d]/g, ''),
             etat,
             prenom: clean(b.prenom, 60),
@@ -357,7 +395,8 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
       ${row('Année', esc(demande.annee))}
       ${row('Kilométrage', demande.kilometrage ? `${Number(demande.kilometrage).toLocaleString('fr-FR')} km` : '')}
       ${row('Prix souhaité', demande.prix_souhaite ? `${Number(demande.prix_souhaite).toLocaleString('fr-FR')} €` : '')}
-      ${row('Plaque', esc(demande.plaque))}
+      ${row('Plaque', esc(demande.plaque) + (demande.plaque_datation ? `<br><span style="font-weight:400;color:#6F6B64">${esc(demande.plaque_datation)}</span>` : ''))}
+      ${row('Fiche plaque', esc(demande.fiche_confirmee))}
       ${row('Particularités', esc(etat.join(', ')))}
       ${row('Code postal', demande.code_postal ? `${esc(demande.code_postal)}${idfCp ? ' · Île-de-France' : ''}` : '')}
       ${row('E-mail', demande.email ? `<a href="mailto:${esc(demande.email)}">${esc(demande.email)}</a>` : '')}

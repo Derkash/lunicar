@@ -91,6 +91,37 @@
             plaque.value = v;
         });
 
+        // Plaque reconnue : datation immédiate (décodeur local), puis fiche SIV si le serveur en a une.
+        const info = form.querySelector('#plateInfo');
+        let derniere = '';
+        let anneeAuto = false;
+        const showInfo = (txt, muted) => { info.textContent = txt; info.classList.toggle('muted', !!muted); info.hidden = !txt; };
+        async function lirePlaque() {
+            const P = window.LunicarPlaque;
+            if (!P) return;
+            const a = P.analyser(plaque.value);
+            if (a.format === 'inconnu' || a.plaque === derniere) { if (a.format === 'inconnu') showInfo(''); return; }
+            derniere = a.plaque;
+            showInfo(a.libelle, a.format !== 'siv');
+            const sel = form.elements.annee;
+            if (a.annee && (!sel.value || anneeAuto)) { sel.value = String(a.annee); anneeAuto = true; }
+            track('plaque_reconnue', { format: a.format });
+            try {
+                const r = await fetch('/api/vehicule/' + encodeURIComponent(a.plaque)).then(x => x.ok ? x.json() : null);
+                const f = r && r.fiche;
+                if (!f || derniere !== a.plaque) return;
+                const nom = [f.marque, f.modele, f.version].filter(Boolean).join(' ');
+                const veh = form.elements.vehicule;
+                if (nom && !veh.value.trim()) veh.value = nom;
+                if (f.annee && (!sel.value || anneeAuto)) sel.value = f.annee;
+                const det = [nom, f.energie, f.puissanceFiscale ? f.puissanceFiscale + ' CV' : '', f.miseEnCirculation ? 'mise en circulation ' + f.miseEnCirculation : ''].filter(Boolean).join(' · ');
+                form.elements.fiche.value = det;
+                showInfo('Véhicule reconnu : ' + det + '. Corrigez si besoin.');
+            } catch (e) { /* la datation locale suffit */ }
+        }
+        plaque.addEventListener('input', lirePlaque);
+        form.elements.annee.addEventListener('change', () => { anneeAuto = false; });
+
         // Kilométrage : espaces de milliers pendant la saisie.
         const km = form.elements.kilometrage;
         km.addEventListener('input', () => {
@@ -143,6 +174,7 @@
                     annee: f.annee.value,
                     kilometrage: f.kilometrage.value,
                     prix: f.prix.value,
+                    fiche: f.fiche.value,
                     etat: Array.from(form.querySelectorAll('input[name="etat"]:checked')).map(i => i.value),
                     prenom: f.prenom.value,
                     telephone: f.telephone.value,
@@ -154,6 +186,7 @@
                     provenance: provenance()
                 });
                 form.querySelector('[data-ref]').textContent = String(out.id).slice(0, 8).toUpperCase();
+                form.dataset.demande = out.id;
                 show('done');
                 track('generate_lead', { type: 'estimation', page: location.pathname, source: form.dataset.source });
             } catch (err) {
@@ -163,6 +196,32 @@
                 btn.disabled = false;
                 btn.textContent = label;
             }
+        });
+    }
+
+    // ---------- Lien Histovec transmis après la demande ----------
+    const hv = document.getElementById('histovecForm');
+    if (hv && form) {
+        const btn = hv.querySelector('[data-histovec]');
+        const input = hv.querySelector('input[name="lien"]');
+        const msg = hv.querySelector('.callback-msg');
+        btn.addEventListener('click', async () => {
+            const lien = input.value.trim();
+            if (!lien) { markInvalid(input, true); return; }
+            btn.disabled = true;
+            try {
+                await post('/api/reprise/histovec', { id: form.dataset.demande || '', lien });
+                msg.textContent = 'Rapport transmis, merci : il sera joint à votre dossier.';
+                msg.classList.remove('err');
+                input.closest('.field').hidden = true;
+                btn.hidden = true;
+                track('histovec_transmis', { page: location.pathname });
+            } catch (err) {
+                msg.textContent = err.message;
+                msg.classList.add('err');
+                btn.disabled = false;
+            }
+            msg.hidden = false;
         });
     }
 

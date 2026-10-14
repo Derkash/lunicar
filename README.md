@@ -23,6 +23,7 @@ Variables d'environnement à définir sur Render (voir `.env.example`) :
 | `LUNICAR_PHONE` | Numéro affiché (en-tête, formulaire, barre mobile). Vide = aucun bouton d'appel. |
 | `LUNICAR_WHATSAPP` | Numéro WhatsApp. Vide = aucun bouton WhatsApp. |
 | `ADMIN_PASSWORD` | Mot de passe de `/admino`. Non défini en production = admin fermé. |
+| `PLAQUE_API_KEY`, `PLAQUE_API_QUOTA` | Caractéristiques SIV par plaque via une API licenciée (facultatif), plafonnées par mois. |
 
 Le disque de Render est effacé à chaque déploiement : `data/demandes.json` n'est pas une archive fiable. L'e-mail est le canal de référence, les journaux le filet de sécurité.
 
@@ -61,6 +62,13 @@ Règle : une intention de recherche = une page. Les variantes proches sont regro
 Deux étapes : le véhicule (plaque facultative, marque et modèle, année, kilométrage, particularités), puis les coordonnées (prénom, téléphone, code postal, e-mail facultatif). Une voie courte « Être rappelé » (prénom + téléphone) est présente sur chaque page.
 
 `POST /api/reprise` accepte du JSON. La demande est envoyée par e-mail, journalisée, et enregistrée dans `data/demandes.json`. Champ piège anti-robots et limite d'envois par adresse IP.
+
+## Recherche par plaque
+
+- `public/js/plaque.js` : décodeur maison, partagé navigateur/serveur. Les plaques SIV sont attribuées dans l'ordre depuis avril 2009 ; à partir de jalons datés, il donne le mois d'attribution. Ancien format = immatriculé avant 2009, `WW` = provisoire. Gratuit, sans appel externe. Jalons à compléter chaque année (`JALONS`).
+- `lib/vehicule.js` : en option, caractéristiques techniques via une API licenciée SIV (marque, modèle, énergie, CV, 1re mise en circulation). Désactivé sans `PLAQUE_API_KEY`, plafonné par mois, réponses gardées 24 h en mémoire seulement : sans licence SIV propre, ces données ne doivent pas être stockées (guide ministériel de réutilisation, §5.2).
+- Historique : le vendeur génère son rapport sur Histovec (service de l'État) et colle le lien après sa demande (`POST /api/reprise/histovec`). Le lien est transmis par e-mail et se consulte à la main ; il expire le 8 du mois suivant son partage.
+- Pas d'accès direct au SIV ni d'extraction de services tiers : le SIV n'expose pas d'API, la licence de réutilisation coûte plusieurs dizaines de milliers d'euros, et l'extraction de données d'un autre service est pénalement sanctionnée.
 
 ## Règles de contenu
 
