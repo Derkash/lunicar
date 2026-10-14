@@ -199,6 +199,26 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .histovec-form .callback-msg { color: var(--green); margin-top: 8px; }
 .histovec-form .callback-msg.err { color: var(--red); }
 
+.check { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 14px; font-size: .93rem; color: var(--ink-600); cursor: pointer; }
+.check input { width: 20px; height: 20px; flex: none; margin: 1px 0 0; accent-color: var(--marine-900); }
+.cg { border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--cream-50); margin: 0 0 14px; }
+.cg > summary { cursor: pointer; list-style: none; padding: 13px 40px 13px 14px; font-weight: 600; font-size: .95rem; color: var(--marine-900); position: relative; }
+.cg > summary::-webkit-details-marker, .cg-help > summary::-webkit-details-marker { display: none; }
+.cg > summary em { font-style: normal; font-weight: 400; color: var(--ink-400); }
+.cg > summary::after { content: "+"; position: absolute; right: 14px; top: 9px; font-size: 1.3rem; color: var(--gold-600); }
+.cg[open] > summary::after { content: "–"; }
+.cg[open] { padding: 0 14px 4px; }
+.cg[open] > summary { padding-left: 0; padding-right: 26px; }
+.cg[open] > summary::after { right: 0; }
+.cg-intro { font-size: .88rem; color: var(--ink-600); margin: 0 0 12px; }
+.cg .field input { background: var(--white); }
+.cg-help { margin: -2px 0 14px; }
+.cg-help > summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px; font-size: .88rem; font-weight: 600; color: var(--marine-600); text-decoration: underline; text-underline-offset: 3px; }
+.cg-help > summary::before { content: "?"; display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--marine-900); color: var(--white); font-size: .72rem; text-decoration: none; }
+.cg-help[open] > summary { margin-bottom: 10px; }
+.cg-svg { display: block; width: 100%; height: auto; margin-bottom: 10px; }
+.cg-help ul { display: grid; gap: 6px; font-size: .86rem; color: var(--ink-600); }
+
 /* La plaque : le seul élément décoratif du formulaire, reconnaissable au premier regard. */
 .plate { display: flex; align-items: stretch; border: 2px solid var(--ink-900); border-radius: 8px; overflow: hidden; background: var(--white); }
 .plate-eu { flex: none; width: 34px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px; background: #1F3F95; color: var(--white); font: 700 .78rem/1 var(--font-ui); position: relative; }

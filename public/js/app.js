@@ -129,6 +129,19 @@
             km.value = d.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
         });
 
+        // Date du certificat : JJ/MM/AAAA pendant la saisie ; n° de formule en majuscules.
+        const dc = form.elements.dateCertificat;
+        dc.addEventListener('input', () => {
+            const d = dc.value.replace(/\D/g, '').slice(0, 8);
+            dc.value = [d.slice(0, 2), d.slice(2, 4), d.slice(4)].filter(Boolean).join('/');
+        });
+        const nf = form.elements.numeroFormule;
+        nf.addEventListener('input', () => { nf.value = nf.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); });
+        // Le nom saisi pré-remplit le nom du titulaire, tant qu'il n'a pas été modifié à la main.
+        const nt = form.elements.nomTitulaire;
+        form.elements.nom.addEventListener('input', e => { if (!nt.dataset.touched) nt.value = e.target.value.toUpperCase(); });
+        nt.addEventListener('input', () => { nt.dataset.touched = '1'; });
+
         // Prix souhaité : mêmes espaces de milliers.
         const prix = form.elements.prix;
         prix.addEventListener('input', () => {
@@ -177,8 +190,15 @@
                     fiche: f.fiche.value,
                     etat: Array.from(form.querySelectorAll('input[name="etat"]:checked')).map(i => i.value),
                     prenom: f.prenom.value,
+                    nom: f.nom.value,
                     telephone: f.telephone.value,
                     codePostal: f.codePostal.value,
+                    whatsapp: f.whatsapp.checked ? 'oui' : '',
+                    titulaire: (form.querySelector('input[name="titulaire"]:checked') || {}).value || '',
+                    nomTitulaire: f.nomTitulaire.value,
+                    dateCertificat: f.dateCertificat.value,
+                    numeroFormule: f.numeroFormule.value,
+                    consentHistovec: f.consentHistovec.checked ? 'oui' : '',
                     email: f.email.value,
                     site_web: f.site_web.value,
                     source: form.dataset.source,

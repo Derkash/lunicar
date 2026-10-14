@@ -364,6 +364,13 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             prix_souhaite: clean(b.prix, 10).replace(/[^\d]/g, ''),
             etat,
             prenom: clean(b.prenom, 60),
+            nom: clean(b.nom, 80),
+            whatsapp_ok: b.whatsapp === 'oui',
+            titulaire: ['oui', 'non'].includes(b.titulaire) ? b.titulaire : '',
+            nom_titulaire: clean(b.nomTitulaire, 80),
+            date_certificat: clean(b.dateCertificat, 10),
+            numero_formule: clean(b.numeroFormule, 14).toUpperCase().replace(/[^A-Z0-9]/g, ''),
+            consent_histovec: b.consentHistovec === 'oui',
             telephone: phone.display,
             email: clean(b.email, 120),
             code_postal: clean(b.codePostal, 5).replace(/[^\d]/g, ''),
@@ -385,11 +392,11 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
 <div style="max-width:560px;margin:0 auto;padding:20px">
   <div style="background:#0D2541;color:#fff;padding:18px 22px;border-radius:10px 10px 0 0">
     <div style="font-size:13px;letter-spacing:1px;color:#D4B26A">LUNICAR · ${type === 'rappel' ? 'DEMANDE DE RAPPEL' : 'DEMANDE D\'ESTIMATION'}</div>
-    <div style="font-size:22px;font-weight:700;margin-top:6px">${esc(demande.prenom || 'Sans prénom')} · <a href="tel:+${phone.intl}" style="color:#fff">${phone.display}</a></div>
+    <div style="font-size:22px;font-weight:700;margin-top:6px">${esc([demande.prenom, demande.nom].filter(Boolean).join(' ') || 'Sans nom')} · <a href="tel:+${phone.intl}" style="color:#fff">${phone.display}</a></div>
   </div>
   <div style="background:#fff;padding:20px 22px;border-radius:0 0 10px 10px">
     <p style="margin:0 0 16px"><a href="tel:+${phone.intl}" style="display:inline-block;background:#B8923A;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px">Appeler ${phone.display}</a>
-    &nbsp; <a href="https://wa.me/${phone.intl}" style="color:#0D2541;font-weight:700">WhatsApp</a></p>
+    &nbsp; ${demande.whatsapp_ok ? `<a href="https://wa.me/${phone.intl}" style="color:#0D2541;font-weight:700">WhatsApp ✓ accepté</a>` : '<span style="color:#9C978E">WhatsApp non autorisé</span>'}</p>
     <table style="border-collapse:collapse;font-size:15px;width:100%">
       ${row('Véhicule', esc(demande.vehicule))}
       ${row('Année', esc(demande.annee))}
@@ -404,6 +411,16 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
       ${row('Provenance', esc(demande.provenance))}
       ${row('Photos', attachments.length ? `${attachments.length} en pièce jointe` : '')}
     </table>
+    ${(demande.numero_formule || demande.date_certificat || demande.nom_titulaire) ? `<div style="margin-top:16px;padding:14px 16px;background:#F5F1E8;border-radius:8px">
+      <div style="font-weight:700;color:#0D2541;margin-bottom:6px">Carte grise · Histovec ${demande.consent_histovec ? '<span style="color:#2C7A4B">· consultation autorisée</span>' : '<span style="color:#A8423F">· consultation NON autorisée</span>'}</div>
+      <table style="border-collapse:collapse;font-size:14px">
+        ${row('Titulaire de la CG', demande.titulaire ? (demande.titulaire === 'oui' ? 'Oui' : 'Non') : '')}
+        ${row('Nom (C.1)', esc(demande.nom_titulaire))}
+        ${row('Date du certificat (I)', esc(demande.date_certificat))}
+        ${row('N° de formule', esc(demande.numero_formule))}
+      </table>
+      ${demande.consent_histovec ? `<p style="margin:10px 0 0"><a href="https://histovec.interieur.gouv.fr/histovec/proprietaire" style="font-weight:700;color:#0D2541">Ouvrir Histovec (espace propriétaire) →</a></p>` : ''}
+    </div>` : ''}
     <p style="margin:16px 0 0;font-size:13px;color:#6F6B64">Historique officiel : demander au vendeur son rapport <a href="https://histovec.interieur.gouv.fr">Histovec</a> (gratuit, généré avec sa carte grise).</p>
     <p style="margin:18px 0 0;font-size:12px;color:#9C978E">Réf. ${ref} · reçue le ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}</p>
   </div>
