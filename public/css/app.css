@@ -167,6 +167,17 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--red); background: #FCF3F2; }
 .field-cp { max-width: 100%; }
 
+.money { display: flex; align-items: center; border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--cream-50); }
+.money input { border: 0 !important; background: transparent !important; box-shadow: none !important; }
+.money span { padding: 0 14px; font-weight: 600; color: var(--ink-400); }
+.money:focus-within { border-color: var(--marine-600); background: var(--white); box-shadow: 0 0 0 4px rgba(36, 80, 127, .12); }
+.lead-next { text-align: left; background: var(--cream-100); border-radius: var(--radius-sm); padding: 16px 18px; margin-top: 18px; font-size: .95rem; }
+.lead-next-title { font-weight: 700; color: var(--marine-900); margin: 0 0 10px; }
+.lead-next ol { list-style: decimal; margin: 0 0 0 1.2em; display: grid; gap: 10px; color: var(--ink-600); }
+.lead-next strong { color: var(--ink-900); }
+.lead-next-link { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; color: var(--marine-900); margin-top: 4px; }
+.lead-next-link svg { width: 17px; height: 17px; color: var(--green); }
+
 /* La plaque : le seul élément décoratif du formulaire, reconnaissable au premier regard. */
 .plate { display: flex; align-items: stretch; border: 2px solid var(--ink-900); border-radius: 8px; overflow: hidden; background: var(--white); }
 .plate-eu { flex: none; width: 34px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px; background: #1F3F95; color: var(--white); font: 700 .78rem/1 var(--font-ui); position: relative; }

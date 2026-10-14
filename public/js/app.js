@@ -98,6 +98,12 @@
             km.value = d.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
         });
 
+        // Prix souhaité : mêmes espaces de milliers.
+        const prix = form.elements.prix;
+        prix.addEventListener('input', () => {
+            prix.value = prix.value.replace(/\D/g, '').slice(0, 6).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        });
+
         const validate = (stepName) => {
             const step = form.querySelector(`.lead-step[data-step="${stepName}"]`);
             let ok = true;
@@ -136,6 +142,7 @@
                     vehicule: f.vehicule.value,
                     annee: f.annee.value,
                     kilometrage: f.kilometrage.value,
+                    prix: f.prix.value,
                     etat: Array.from(form.querySelectorAll('input[name="etat"]:checked')).map(i => i.value),
                     prenom: f.prenom.value,
                     telephone: f.telephone.value,

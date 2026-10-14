@@ -323,6 +323,7 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             vehicule,
             annee: clean(b.annee, 12),
             kilometrage: clean(b.kilometrage, 12).replace(/[^\d]/g, ''),
+            prix_souhaite: clean(b.prix, 10).replace(/[^\d]/g, ''),
             etat,
             prenom: clean(b.prenom, 60),
             telephone: phone.display,
@@ -355,6 +356,7 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
       ${row('Véhicule', esc(demande.vehicule))}
       ${row('Année', esc(demande.annee))}
       ${row('Kilométrage', demande.kilometrage ? `${Number(demande.kilometrage).toLocaleString('fr-FR')} km` : '')}
+      ${row('Prix souhaité', demande.prix_souhaite ? `${Number(demande.prix_souhaite).toLocaleString('fr-FR')} €` : '')}
       ${row('Plaque', esc(demande.plaque))}
       ${row('Particularités', esc(etat.join(', ')))}
       ${row('Code postal', demande.code_postal ? `${esc(demande.code_postal)}${idfCp ? ' · Île-de-France' : ''}` : '')}
@@ -363,6 +365,7 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
       ${row('Provenance', esc(demande.provenance))}
       ${row('Photos', attachments.length ? `${attachments.length} en pièce jointe` : '')}
     </table>
+    <p style="margin:16px 0 0;font-size:13px;color:#6F6B64">Historique officiel : demander au vendeur son rapport <a href="https://histovec.interieur.gouv.fr">Histovec</a> (gratuit, généré avec sa carte grise).</p>
     <p style="margin:18px 0 0;font-size:12px;color:#9C978E">Réf. ${ref} · reçue le ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}</p>
   </div>
 </div></body></html>`;
