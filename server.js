@@ -9,6 +9,8 @@ const { SITE, esc, parsePhone } = require('./lib/config');
 const pages = require('./lib/pages');
 const idf = require('./lib/idf');
 const fichePlaque = require('./lib/vehicule');
+const zones = require('./lib/zones');
+const crypto = require('crypto');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -160,69 +162,81 @@ setInterval(() => sendLog.clear(), 6 * 60 * 60 * 1000).unref();
 
 // ============ ROUTES PAGES ============
 
-const html = (res, doc, status = 200) => res.status(status).type('html').send(doc);
+const CSP = [
+    "default-src 'self'",
+    "script-src 'self' https://www.googletagmanager.com",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com",
+    "font-src 'self'",
+    "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
+    "frame-ancestors 'self'",
+    "base-uri 'self'",
+    "form-action 'self'"
+].join('; ');
+
+const html = (res, doc, status = 200) => {
+    res.set('Content-Security-Policy', CSP);
+    res.set('Cache-Control', status === 200 ? 'public, max-age=300, stale-while-revalidate=86400' : 'no-store');
+    return res.status(status).type('html').send(doc);
+};
+
+// Contenus rédigés, lus une fois au démarrage (ils ne changent qu'au déploiement).
+const GUIDES = readJSON('guides.json');
+const LOCAL = readJSON('local.json');
+const CITIES = readJSON('cities.json');
+
+// ============ REDIRECTIONS 301 : une intention = une page ============
+// Anciennes pages de gabarit -> page qui couvre réellement l'intention (lib/zones.js).
+const REDIRECTS = { ...zones.PAGE_REDIRECTS };
+CITIES.forEach(c => {
+    const to = zones.cityRedirect(c, name => (idf.deptByName(name) || {}).slug);
+    if (to) REDIRECTS[`reprise-auto-${c.slug}`] = to;
+});
+
+// Adresse canonique : sans www, en minuscules, sans « / » final, avant toute autre route.
+app.use((req, res, next) => {
+    if (req.method !== 'GET' && req.method !== 'HEAD') return next();
+    const host = (req.headers.host || '').toLowerCase();
+    let p = req.path;
+    const qs = req.originalUrl.slice(req.path.length);
+    let changed = false;
+    if (host.startsWith('www.')) changed = true;
+    if (p.length > 1 && p.endsWith('/')) { p = p.replace(/\/+$/, ''); changed = true; }
+    if (/[A-Z]/.test(p) && !p.startsWith('/api/') && !/\.[a-z0-9]+$/i.test(p)) { p = p.toLowerCase(); changed = true; }
+    const target = REDIRECTS[p.slice(1)];
+    if (target) return res.redirect(301, `${SITE.baseUrl}/${target}${qs}`);
+    if (changed) return res.redirect(301, `${host.startsWith('www.') ? SITE.baseUrl : ''}${p || '/'}${qs}`);
+    next();
+});
 
 app.get('/', (req, res) => {
-    html(res, pages.home({ cities: readJSON('cities.json'), themes: readJSON('themes.json'), articles: readJSON('articles.json') }));
+    html(res, pages.home({ cities: CITIES, guides: GUIDES, articles: readJSON('articles.json') }));
 });
 
 app.get('/reprise', (req, res) => html(res, pages.reprise()));
 
-// ============ REDIRECTIONS 301 anti-cannibalisation SEO ============
-// Map: ancienne URL -> URL canonique gardée. Une intention = une page.
-const SEO_REDIRECTS = {
-    // Cluster "rapidité" -> rachat-voiture-rapide
-    'reprise-auto-24h': 'rachat-voiture-rapide',
-    'reprise-auto-immediate': 'rachat-voiture-rapide',
-    'vendre-sa-voiture-rapidement': 'rachat-voiture-rapide',
-    'reprise-voiture-48h': 'rachat-voiture-rapide',
-    // Cluster "sans CT" -> rachat-voiture-sans-controle-technique
-    'reprise-auto-sans-ct': 'rachat-voiture-sans-controle-technique',
-    'reprise-auto-sans-controle-technique': 'rachat-voiture-sans-controle-technique',
-    'vendre-voiture-sans-ct': 'rachat-voiture-sans-controle-technique',
-    'rachat-vehicule-sans-revision': 'rachat-voiture-sans-controle-technique',
-    // Cluster "panne / HS / non roulante" -> page dédiée
-    'reprise-voiture-en-panne': 'rachat-voiture-en-panne-paris',
-    'reprise-voiture-non-roulante': 'rachat-voiture-en-panne-paris',
-    'rachat-voiture-moteur-hs': 'rachat-voiture-en-panne-paris',
-    // Cluster "paiement cash" -> rachat-voiture-paiement-cash
-    'vendre-voiture-paiement-comptant': 'rachat-voiture-paiement-cash',
-    'rachat-voiture-virement-immediat': 'rachat-voiture-paiement-cash',
-    'reprise-auto-paiement-immediat': 'rachat-voiture-paiement-cash'
-};
-
-Object.keys(SEO_REDIRECTS).forEach(oldSlug => {
-    app.get(`/${oldSlug}`, (req, res) => {
-        res.redirect(301, `/${SEO_REDIRECTS[oldSlug]}`);
-    });
-});
-
 // Île-de-France : région, départements, pages par situation
-app.get(`/${idf.HUB_SLUG}`, (req, res) => html(res, pages.hub(readJSON('cities.json'))));
+app.get(`/${idf.HUB_SLUG}`, (req, res) => html(res, pages.hub(CITIES)));
 idf.DEPARTMENTS.forEach(d => {
-    app.get(`/${d.slug}`, (req, res) => html(res, pages.department(d, readJSON('cities.json'))));
+    app.get(`/${d.slug}`, (req, res) => html(res, pages.department(d, CITIES)));
 });
 idf.SITUATIONS.forEach(s => {
     app.get(`/${s.slug}`, (req, res) => html(res, pages.situation(s)));
 });
 
-// Pages thématiques (data/themes.json), hors slugs redirigés
-readJSON('themes.json').forEach(({ slug }) => {
-    if (SEO_REDIRECTS[slug]) return;
-    app.get(`/${slug}`, (req, res) => {
-        const themes = readJSON('themes.json');
-        const theme = themes.find(t => t.slug === slug);
-        if (!theme) return html(res, pages.notFound(), 404);
-        html(res, pages.theme(theme, themes));
-    });
+// Guides rédigés : marques, toutes les voitures, situations, comparatif
+GUIDES.forEach(g => {
+    app.get(`/${g.slug}`, (req, res) => html(res, pages.guide(g, GUIDES)));
 });
 
-// Pages villes (déclarées après les redirections et les thématiques en "reprise-auto-*")
+if (LOCAL.france) app.get(`/${zones.FRANCE_SLUG}`, (req, res) => html(res, pages.france(LOCAL.france, CITIES)));
+if (LOCAL.aPropos) app.get('/a-propos', (req, res) => html(res, pages.aPropos(LOCAL.aPropos)));
+
+// Pages villes gardées (les autres sont redirigées plus haut)
 app.get('/reprise-auto-:slug', (req, res) => {
-    const cities = readJSON('cities.json');
-    const city = cities.find(c => c.slug === req.params.slug);
-    if (!city) return html(res, pages.notFound(), 404);
-    html(res, pages.city(city, cities));
+    const city = CITIES.find(c => c.slug === req.params.slug);
+    if (!city || !zones.isKeptCity(city)) return html(res, pages.notFound(), 404);
+    html(res, pages.city(city, CITIES, LOCAL));
 });
 
 app.get('/articles', (req, res) => html(res, pages.articles(readJSON('articles.json'))));
@@ -236,42 +250,8 @@ app.get('/article/:slug', (req, res) => {
 
 app.get('/garanties', (req, res) => html(res, pages.garanties()));
 app.get('/contact', (req, res) => html(res, pages.contact()));
-app.get('/mentions-legales', (req, res) => html(res, pages.legal('mentions-legales', 'Mentions légales | LUNICAR', 'Mentions légales du site lunicar.fr, édité par GUIRAK SERVICES.')));
-app.get('/politique-confidentialite', (req, res) => html(res, pages.legal('politique-confidentialite', 'Politique de confidentialité | LUNICAR', 'Comment LUNICAR collecte, utilise et protège vos données personnelles.')));
-
-// ============ API VILLES ============
-
-app.get('/api/villes', (req, res) => {
-    const cities = readJSON('cities.json');
-    res.json(cities);
-});
-
-app.get('/api/villes/:slug', (req, res) => {
-    const cities = readJSON('cities.json');
-    const city = cities.find(c => c.slug === req.params.slug);
-    if (city) {
-        res.json(city);
-    } else {
-        res.status(404).json({ error: 'Ville non trouvée' });
-    }
-});
-
-// ============ API THEMES ============
-
-app.get('/api/themes', (req, res) => {
-    const themes = readJSON('themes.json');
-    res.json(themes);
-});
-
-app.get('/api/themes/:slug', (req, res) => {
-    const themes = readJSON('themes.json');
-    const theme = themes.find(t => t.slug === req.params.slug);
-    if (theme) {
-        res.json(theme);
-    } else {
-        res.status(404).json({ error: 'Page non trouvée' });
-    }
-});
+app.get('/mentions-legales', (req, res) => html(res, pages.legal('mentions-legales', 'Mentions légales | LUNICAR', 'Mentions légales du site lunicar.fr : éditeur GUIRAK SERVICES (SAS), hébergement, propriété intellectuelle et contact pour toute question.')));
+app.get('/politique-confidentialite', (req, res) => html(res, pages.legal('politique-confidentialite', 'Politique de confidentialité | LUNICAR', 'Comment LUNICAR collecte, utilise et protège vos données personnelles lors d\'une demande d\'offre de rachat : finalités, durée de conservation, vos droits.')));
 
 // ============ API ARTICLES ============
 
@@ -756,44 +736,47 @@ app.delete('/api/admin/articles/:slug', authAdmin, (req, res) => {
     res.json({ success: true });
 });
 
-// ============ SEO - SITEMAP & ROBOTS ============
+// ============ SEO - SITEMAP, ROBOTS, LLMS.TXT, INDEXNOW ============
 
-// Date du dernier déploiement : sert de <lastmod> aux pages générées par gabarit.
-const DEPLOY_DATE = new Date().toISOString().split('T')[0];
-
-app.get('/sitemap.xml', (req, res) => {
-    const baseUrl = SITE.baseUrl;
+// Toutes les pages indexables, avec leur vraie date de mise à jour (contenu rédigé ou gabarit).
+function indexablePages() {
+    const T = pages.TEMPLATE_DATE;
     const articles = readJSON('articles.json');
-    const cities = readJSON('cities.json');
-    const themes = readJSON('themes.json');
-    const urls = [];
-    const add = (loc, priority, lastmod = DEPLOY_DATE) => urls.push({ loc, priority, lastmod });
-
+    const list = [];
+    const add = (loc, priority, lastmod = T) => list.push({ loc, priority, lastmod });
     add('/', '1.0');
     add('/reprise', '0.9');
+    add('/reprise-auto-paris', '0.9', (LOCAL.paris && LOCAL.paris.updated) || T);
     add(`/${idf.HUB_SLUG}`, '0.9');
-    idf.SITUATIONS.forEach(s => add(`/${s.slug}`, '0.9'));
-    idf.DEPARTMENTS.forEach(d => add(`/${d.slug}`, '0.9'));
-    cities.filter(idf.isIdf).forEach(c => add(`/reprise-auto-${c.slug}`, '0.8'));
-    themes.forEach(t => { if (!SEO_REDIRECTS[t.slug]) add(`/${t.slug}`, '0.6'); });
-    cities.filter(c => !idf.isIdf(c)).forEach(c => add(`/reprise-auto-${c.slug}`, '0.5'));
+    idf.DEPARTMENTS.forEach(d => add(`/${d.slug}`, '0.8'));
+    idf.SITUATIONS.forEach(s => add(`/${s.slug}`, '0.8'));
+    GUIDES.forEach(g => add(`/${g.slug}`, g.brand ? '0.6' : '0.8', g.updated || T));
+    zones.IDF_CITIES.filter(s => s !== 'paris').forEach(s => add(`/reprise-auto-${s}`, '0.7'));
+    if (LOCAL.france) add(`/${zones.FRANCE_SLUG}`, '0.5');
+    zones.FRANCE_CITIES.forEach(s => add(`/reprise-auto-${s}`, '0.4'));
+    if (LOCAL.aPropos) add('/a-propos', '0.5');
     add('/garanties', '0.5');
-    add('/articles', '0.5');
-    articles.forEach(a => add(`/article/${a.slug}`, '0.5', a.dateISO || DEPLOY_DATE));
-    add('/contact', '0.4');
+    add('/articles', '0.6');
+    articles.forEach(a => add(`/article/${a.slug}`, '0.6', a.dateModified || a.dateISO || T));
+    add('/contact', '0.3');
     add('/mentions-legales', '0.1');
     add('/politique-confidentialite', '0.1');
+    return list;
+}
 
+app.get('/sitemap.xml', (req, res) => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${baseUrl}${u.loc}</loc><lastmod>${u.lastmod}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}
+${indexablePages().map(u => `  <url><loc>${SITE.baseUrl}${u.loc === '/' ? '/' : u.loc}</loc><lastmod>${u.lastmod}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}
 </urlset>`;
     res.header('Content-Type', 'application/xml');
     res.send(xml);
 });
 
+// Robots d'IA cités explicitement : leur accès est voulu (citations ChatGPT, Perplexity, Claude…).
 app.get('/robots.txt', (req, res) => {
-    const robots = `# LUNICAR - Robots.txt
+    const aiBots = ['OAI-SearchBot', 'ChatGPT-User', 'GPTBot', 'PerplexityBot', 'Perplexity-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'Google-Extended', 'Applebot-Extended', 'Bingbot', 'DuckAssistBot', 'MistralAI-User'];
+    const robots = `# LUNICAR - robots.txt
 User-agent: *
 Allow: /
 Disallow: /admin
@@ -801,43 +784,100 @@ Disallow: /admino
 Disallow: /api/
 Disallow: /uploads/
 
+# Moteurs de recherche et assistants IA : bienvenus.
+${aiBots.map(b => `User-agent: ${b}`).join('\n')}
+Allow: /
+Disallow: /admino
+Disallow: /api/
+
 Sitemap: ${SITE.baseUrl}/sitemap.xml
 `;
-    res.header('Content-Type', 'text/plain');
+    res.header('Content-Type', 'text/plain; charset=utf-8');
     res.send(robots);
 });
 
-// llms.txt - guide les moteurs IA (ChatGPT, Perplexity, Claude) vers le contenu clé
+const strip = h => String(h || '').replace(/<li>/g, '\n- ').replace(/<\/(p|h2|h3|ul|ol|table|tr)>/g, '\n').replace(/<(td|th)[^>]*>/g, ' | ').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n\n').trim();
+const title = t => String(t || '').replace(/<[^>]+>/g, '');
+
+const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels à Paris et en Île-de-France (75, 92, 93, 94, 95, 91, 78, 77). Ailleurs en France, les demandes sont étudiées au cas par cas. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de GUIRAK SERVICES (SAS, SIRET 947 982 856 00017).`;
+
 app.get('/llms.txt', (req, res) => {
-    const baseUrl = SITE.baseUrl;
+    const b = SITE.baseUrl;
+    const articles = readJSON('articles.json');
     const llms = `# LUNICAR
 
-> LUNICAR rachète les voitures d'occasion des particuliers et des professionnels à Paris, en Île-de-France et, sur demande, dans le reste de la France. Offre de prix sous 24 h ouvrées, valable 7 jours, déplacement à l'adresse du vendeur, paiement par virement bancaire. Les véhicules en panne, accidentés, non roulants ou sans contrôle technique valide sont acceptés.
+> ${LLMS_SUMMARY}
 
-## Points clés
-- Demande d'estimation gratuite et sans engagement, en deux minutes
+Dernière mise à jour : ${pages.TEMPLATE_DATE}
+
+## Faits clés
+- Véhicules rachetés : récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, fort kilométrage, en panne, accidentés, sans contrôle technique
 - Contrôle technique non exigé : il n'est obligatoire que pour une vente entre particuliers
-- Véhicules en panne, moteur HS, accidentés ou non roulants rachetés en l'état, enlèvement sur place
-- Paiement par virement bancaire uniquement (ni espèces ni chèque)
-- Certificat de cession et déclaration de cession préparés avec le vendeur
-- Zone prioritaire : Paris (75), Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94), Val-d'Oise (95), Essonne (91), Yvelines (78), Seine-et-Marne (77)
+- Offre gratuite et sans engagement, valable 7 jours ; refus possible même le jour du rendez-vous, sans frais
+- Déplacement et enlèvement à la charge de LUNICAR en Île-de-France, y compris véhicule non roulant ou en parking souterrain
+- Paiement par virement bancaire uniquement, le jour de la vente (ni espèces ni chèque)
+- Certificat de cession (Cerfa 15776) et déclaration de cession ANTS préparés avec le vendeur
+- Aucune obligation d'acheter un autre véhicule
+- Horaires : ${SITE.hours} ; contact : ${SITE.email}
 
 ## Pages principales
-- [Faire estimer ma voiture](${baseUrl}/reprise)
-- [Rachat de voiture en Île-de-France](${baseUrl}/${idf.HUB_SLUG})
-${idf.SITUATIONS.map(s => `- [${s.h1.replace(/<[^>]+>/g, '')}](${baseUrl}/${s.slug})`).join('\n')}
-${idf.DEPARTMENTS.map(d => `- [Rachat de voiture ${d.dans} (${d.code})](${baseUrl}/${d.slug})`).join('\n')}
-- [Rachat de voiture à Paris](${baseUrl}/reprise-auto-paris)
-- [Nos garanties](${baseUrl}/garanties)
-- [Conseils pour vendre sa voiture](${baseUrl}/articles)
+- [Accueil](${b}/): présentation, déroulé, comparatif, FAQ
+- [Estimation gratuite](${b}/reprise): formulaire de demande d'offre
+- [Toutes les voitures](${b}/reprise-voiture-occasion): ce que LUNICAR rachète et ce qui fait le prix
+- [Qui sommes-nous](${b}/a-propos): société, méthode, engagements
+- [Garanties](${b}/garanties): les six engagements
+- [Comparer particulier, concession et professionnel](${b}/comparatif-reprise-auto)
 
-## Contact
-- E-mail : ${SITE.email}${SITE.phone ? `\n- Téléphone : ${SITE.phone.display}` : ''}
-- Horaires : ${SITE.hours}
+## Paris et Île-de-France
+- [Rachat de voiture à Paris](${b}/reprise-auto-paris)
+- [Rachat de voiture en Île-de-France](${b}/${idf.HUB_SLUG})
+${idf.DEPARTMENTS.map(d => `- [Rachat de voiture ${d.dans} (${d.code})](${b}/${d.slug})`).join('\n')}
+
+## Situations
+${idf.SITUATIONS.map(s => `- [${title(s.h1)}](${b}/${s.slug}): ${s.description}`).join('\n')}
+${GUIDES.filter(g => !g.brand).map(g => `- [${title(g.h1)}](${b}/${g.slug}): ${g.description}`).join('\n')}
+
+## Marques
+${GUIDES.filter(g => g.brand).map(g => `- [${g.brand}](${b}/${g.slug}): ${g.description}`).join('\n')}
+
+## Conseils
+${articles.map(a => `- [${a.titre}](${b}/article/${a.slug}): ${a.extrait}`).join('\n')}
+
+## Optional
+- [Texte intégral des pages clés](${b}/llms-full.txt)
+- [Rachat de voiture ailleurs en France](${b}/${zones.FRANCE_SLUG})
+- [Plan du site](${b}/sitemap.xml)
 `;
     res.header('Content-Type', 'text/plain; charset=utf-8');
     res.send(llms);
 });
+
+// Version longue : le texte des pages piliers, pour les assistants qui lisent un seul fichier.
+app.get('/llms-full.txt', (req, res) => {
+    const b = SITE.baseUrl;
+    const block = (url, h, lede, sections, faq) => `# ${title(h)}\nURL : ${url}\n\n${lede ? lede + '\n\n' : ''}${(sections || []).map(s => `## ${title(s.h2)}\n\n${strip(s.html)}`).join('\n\n')}${faq && faq.length ? '\n\n## Questions fréquentes\n\n' + faq.map(f => `**${f.question}**\n${strip(f.answer)}`).join('\n\n') : ''}\n`;
+    const parts = [`# LUNICAR\n\n> ${LLMS_SUMMARY}\n\nDernière mise à jour : ${pages.TEMPLATE_DATE}\n`];
+    if (LOCAL.aPropos) parts.push(block(`${b}/a-propos`, LOCAL.aPropos.h1, LOCAL.aPropos.lede, LOCAL.aPropos.sections, LOCAL.aPropos.faq));
+    if (LOCAL.paris) parts.push(block(`${b}/reprise-auto-paris`, LOCAL.paris.h1, LOCAL.paris.lede, LOCAL.paris.sections, LOCAL.paris.faq));
+    idf.SITUATIONS.forEach(s => parts.push(block(`${b}/${s.slug}`, s.h1, s.lede, s.sections, s.faq)));
+    GUIDES.filter(g => !g.brand).forEach(g => parts.push(block(`${b}/${g.slug}`, g.h1, g.lede, g.sections, g.faq)));
+    res.header('Content-Type', 'text/plain; charset=utf-8');
+    res.send(parts.join('\n---\n\n'));
+});
+
+// IndexNow (Bing, Yandex, Seznam… ; Bing alimente ChatGPT) : clé publique servie à la racine,
+// soumission de toutes les URL au démarrage en production, donc à chaque déploiement.
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY || crypto.createHash('sha256').update('lunicar-indexnow-' + SITE.baseUrl).digest('hex').slice(0, 32);
+app.get(`/${INDEXNOW_KEY}.txt`, (req, res) => res.type('text/plain').send(INDEXNOW_KEY));
+
+function pingIndexNow() {
+    const urlList = indexablePages().map(u => SITE.baseUrl + (u.loc === '/' ? '/' : u.loc));
+    const body = JSON.stringify({ host: new URL(SITE.baseUrl).host, key: INDEXNOW_KEY, keyLocation: `${SITE.baseUrl}/${INDEXNOW_KEY}.txt`, urlList });
+    fetch('https://api.indexnow.org/indexnow', { method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body })
+        .then(r => console.log(`IndexNow : ${urlList.length} URL soumises (HTTP ${r.status})`))
+        .catch(e => console.log('IndexNow indisponible :', e.message));
+}
+if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_PING === '1')) setTimeout(pingIndexNow, 30000).unref();
 
 // Route admin cachée
 app.get('/admino', (req, res) => {

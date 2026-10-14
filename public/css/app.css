@@ -5,6 +5,32 @@
    Parti   : le formulaire d'abord, lisible au pouce sur mobile
    ============================================================ */
 
+/* Polices hébergées sur le site (sous-ensemble latin), plus d'appel à Google Fonts. */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(/fonts/dmsans-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/fonts/fraunces-italic.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(/fonts/fraunces-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
     --cream-50: #FBF8F1;
     --cream-100: #F5F1E8;
@@ -394,6 +420,66 @@ body { padding-bottom: var(--bar-h); }
 /* Bandeau cookies au-dessus de la barre d'action */
 #cookieBanner { z-index: 70; }
 
+
+/* ---------- Accueil : vitrine (texte + plaque à gauche, la voiture en grand à droite) ---------- */
+.showcase { display: grid; background: var(--marine-900); color: var(--white); position: relative; overflow: hidden; }
+.showcase-text { order: 2; padding: 30px 0 40px; background:
+    radial-gradient(700px 380px at 0% 0%, rgba(212, 178, 106, .16), transparent 60%),
+    linear-gradient(180deg, var(--marine-900), var(--marine-800)); }
+.showcase-in { padding: 0 20px; max-width: 640px; }
+.showcase h1 { color: var(--white); font-size: clamp(2.15rem, 5vw, 3.6rem); margin-bottom: .4em; }
+.showcase h1 em { color: var(--gold-400); }
+.showcase .eyebrow { color: var(--gold-400); }
+.showcase .hero-lede { margin-bottom: 26px; }
+.showcase .promises { margin-top: 26px; grid-template-columns: 1fr 1fr; column-gap: 18px; font-size: .96rem; }
+.showcase-photo { order: 1; margin: 0; position: relative; }
+.showcase-img img { display: block; width: 100%; height: clamp(230px, 62vw, 420px); object-fit: cover; object-position: 72% 60%; }
+.showcase-photo::after { content: ""; position: absolute; inset: auto 0 0 0; height: 40%; background: linear-gradient(180deg, transparent, var(--marine-900)); pointer-events: none; }
+
+.quick { background: var(--white); color: var(--ink-900); border-radius: 18px; padding: 16px; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .6); }
+.quick-label { display: block; font-size: .84rem; font-weight: 600; color: var(--ink-600); margin-bottom: 8px; }
+.quick-row { display: grid; gap: 10px; }
+.quick .plate input { font-size: 1.45rem; padding: 13px 8px; width: 100%; }
+.quick .btn { width: 100%; padding: 17px 22px; font-size: 1.05rem; }
+.quick-alt { display: inline-block; margin-top: 10px; font-size: .9rem; color: var(--ink-400); }
+
+/* ---------- Toutes les voitures : cartes photo ---------- */
+.types { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+.types a { display: grid; gap: 4px; text-decoration: none; color: var(--ink-600); height: 100%; }
+.type-img img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); margin-bottom: 8px; transition: transform .35s ease, filter .35s ease; }
+.types a:hover .type-img img { transform: scale(1.02); filter: saturate(1.08); }
+.type-img { overflow: hidden; border-radius: var(--radius); display: block; }
+.types strong { font: 500 1.16rem/1.2 var(--font-display); color: var(--marine-900); }
+.types span:last-child { font-size: .92rem; line-height: 1.45; }
+
+/* ---------- Accueil : section « votre offre » ---------- */
+.offer-in { display: grid; gap: 28px; }
+.offer-text h2 { color: var(--white); }
+.offer-text .eyebrow { color: var(--gold-400); }
+.offer-points { display: grid; gap: 14px; margin-top: 22px; }
+.offer-points li { padding-left: 18px; border-left: 2px solid var(--gold-400); color: rgba(255, 255, 255, .8); }
+.offer-points strong { color: var(--white); }
+.offer .lead-alt { color: rgba(255, 255, 255, .78); }
+.section-ink .lead-form p { color: inherit; }
+.section-ink .lead-form .lead-title { color: var(--marine-900); }
+.section-ink .lead-form .lead-sub, .section-ink .lead-form .lead-legal, .section-ink .lead-form .lead-ref { color: var(--ink-400); }
+
+/* ---------- Méta éditoriales ---------- */
+.updated { font-size: .84rem; color: var(--ink-400); margin: 18px 0 0; }
+.prose .updated { margin-top: 1.6em; }
+.article-meta { font-size: .9rem; color: var(--ink-400); }
+.article-meta .updated { display: inline; }
+.section-sources { padding: 34px 0; border-top: 1px solid var(--line); }
+.section-sources .sub { margin-top: 0; }
+.sources { display: grid; gap: 8px; }
+.sources a { font-size: .95rem; }
+.commune-list { color: var(--ink-400); font-size: .93rem; line-height: 1.9; }
+.commune-list a { color: var(--marine-600); }
+.commune-list span { font-size: .78rem; color: var(--ink-400); }
+.cases a { grid-template-columns: 1fr; }
+.cases strong { grid-column: 1; }
+.cases a > span:last-child { grid-column: 1; }
+
 /* ---------- Tablette et plus ---------- */
 @media (max-width: 919px) {
     .site-nav { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; margin: 0; background: var(--cream-50); border-bottom: 1px solid var(--line); padding: 6px 20px 14px; display: none; box-shadow: var(--shadow); }
@@ -406,6 +492,9 @@ body { padding-bottom: var(--bar-h); }
 }
 @media (min-width: 620px) {
     .city-links { columns: 3; }
+    .types { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .quick-row { grid-template-columns: 1fr auto; }
+    .quick .btn { width: auto; }
     .steps { grid-template-columns: repeat(3, 1fr); }
     .cases { grid-template-columns: 1fr 1fr; column-gap: 40px; }
     .pledges { grid-template-columns: 1fr 1fr; column-gap: 40px; }
@@ -430,6 +519,15 @@ body { padding-bottom: var(--bar-h); }
     .contact-grid { grid-template-columns: .8fr 1.2fr; gap: 56px; }
     .footer-grid { grid-template-columns: 1.5fr 1fr 1fr .8fr; gap: 44px; }
     .pledges { grid-template-columns: repeat(3, 1fr); }
+    .showcase { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); min-height: 620px; }
+    .showcase-text { order: 1; display: flex; align-items: center; padding: 64px 0; }
+    .showcase-in { margin-left: max(20px, calc((100vw - var(--wrap)) / 2 + 20px)); padding: 0 48px 0 0; max-width: 620px; }
+    .showcase-photo { order: 2; }
+    .showcase-img, .showcase-img img { height: 100%; }
+    .showcase-img img { position: absolute; inset: 0; object-position: 70% 55%; }
+    .showcase-photo::after { inset: 0 auto 0 0; width: 28%; height: auto; background: linear-gradient(90deg, var(--marine-800), transparent); }
+    .offer-in { grid-template-columns: minmax(0, 1fr) minmax(380px, 460px); gap: 64px; align-items: start; }
+    .offer-text { padding-top: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

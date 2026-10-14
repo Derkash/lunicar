@@ -22,12 +22,14 @@ PRIX_2K = 0.101  # $ par image 2K (1 680 jetons à 60 $/M)
 
 # Variante retenue par scène après relecture (numéro du fichier dans .image-raw).
 RETENUES = {
-    "accueil": 1, "panne": 1, "sans-ct": 1, "accidentee": 2,
+    "accueil": 5, "recente": 2, "electrique": 1, "panne": 1, "sans-ct": 1, "accidentee": 2,
     "cash": 1, "utilitaire": 2, "ile-de-france": 1, "signature": 2,
 }
 
 SCENES = {
-    "accueil": "a used-car buyer seen from behind, in a dark navy jacket, walking around a silver compact hatchback parked along a Parisian street lined with cream-coloured Haussmann stone buildings and wrought-iron balconies, holding a tablet at his side, soft early-morning light",
+    "accueil": "a dark grey 2017 Peugeot 308 hatchback (second generation, facelift: slim swept-back headlights with LED signature, full-width black grille) in very clean condition, parked along a Parisian street lined with cream-coloured Haussmann stone buildings and wrought-iron balconies; a used-car buyer in a dark navy jacket seen from behind walks towards it holding a tablet at his side; soft early-morning light, the car is the hero of the frame, three-quarter front view",
+    "recente": "a nearly new white compact SUV parked in a bright modern residential car park in the Paris suburbs, two people seen only from the shoulders down standing by the open driver door, one handing a car key to the other; clean contemporary architecture, daylight",
+    "electrique": "a modern dark blue electric hatchback plugged into a public charging station on a quiet tree-lined Paris street in the late afternoon, a person seen strictly from behind unplugging the charging cable, wet pavement reflecting warm light",
     "panne": "an old grey compact car being slowly winched onto the tilted bed of a flatbed tow truck in a quiet residential street of a Paris suburb, a man seen from behind operating the winch lever, late-afternoon light",
     "sans-ct": "a tight close-up of a man's two hands lifting the open bonnet of a car and checking the engine oil dipstick, engine bay in sharp focus — cropped at the forearms, no head anywhere in the frame",
     "accidentee": "a dark blue unbadged generic hatchback with a crumpled front bumper and a cracked headlight, parked in a clean concrete underground car park; in the foreground only the back of a man's shoulder and his hand holding up a smartphone to photograph the damage — the man is seen strictly from behind, his head is cut off by the top of the frame, the car front grille is plain with no emblem",

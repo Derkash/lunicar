@@ -51,8 +51,14 @@
     const bar = document.getElementById('ctaBar');
     const lead = document.getElementById('estimation');
     if (bar) {
-        if (lead && 'IntersectionObserver' in window) {
-            new IntersectionObserver(([e]) => bar.classList.toggle('show', !e.isIntersecting), { threshold: 0.15 }).observe(lead);
+        const targets = [lead, document.getElementById('quickStart')].filter(Boolean);
+        if (targets.length && 'IntersectionObserver' in window) {
+            const seen = new Map();
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => seen.set(e.target, e.isIntersecting));
+                bar.classList.toggle('show', ![...seen.values()].some(Boolean));
+            }, { threshold: 0.15 });
+            targets.forEach(t => io.observe(t));
         } else {
             bar.classList.add('show');
         }
@@ -64,6 +70,42 @@
 
     // ---------- Formulaire de demande ----------
     const form = document.getElementById('leadForm');
+
+    // Plaque transmise par l'adresse (?immat=) : reprise dans le formulaire puis retirée de l'URL.
+    try {
+        const q = new URLSearchParams(location.search);
+        const immat = q.get('immat') || q.get('plaque');
+        if (immat || q.has('immat') || q.has('plaque')) {
+            q.delete('immat'); q.delete('plaque');
+            history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + location.hash);
+        }
+        if (immat && form) {
+            form.elements.plaque.value = immat;
+            setTimeout(() => form.elements.plaque.dispatchEvent(new Event('input', { bubbles: true })), 0);
+        }
+    } catch (e) { /* navigateur ancien */ }
+
+    // Accueil : la saisie de plaque du bandeau alimente le formulaire complet.
+    const quick = document.getElementById('quickStart');
+    if (quick && form) {
+        const qp = quick.querySelector('input');
+        qp.addEventListener('input', () => {
+            let v = qp.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+            if (/^[A-Z]{2}\d{0,3}[A-Z]{0,2}$/.test(v)) v = [v.slice(0, 2), v.slice(2, 5), v.slice(5, 7)].filter(Boolean).join('-');
+            qp.value = v;
+        });
+        quick.addEventListener('submit', e => {
+            e.preventDefault();
+            track('plaque_saisie', { page: location.pathname, renseignee: qp.value ? 'oui' : 'non' });
+            if (qp.value) {
+                form.elements.plaque.value = qp.value;
+                form.elements.plaque.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+            document.getElementById('estimation').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => (qp.value ? form.elements.vehicule : form.elements.plaque).focus({ preventScroll: true }), 450);
+        });
+    }
+
     if (form) {
         const steps = form.querySelectorAll('.lead-step');
         const dots = form.querySelectorAll('.lead-progress span');
@@ -79,7 +121,7 @@
         };
 
         form.addEventListener('input', e => {
-            if (!started) { started = true; track('form_start', { page: location.pathname }); }
+            if (!started) { started = true; track('lead_form_start', { page: location.pathname }); }
             markInvalid(e.target, false);
         });
 

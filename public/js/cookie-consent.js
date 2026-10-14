@@ -49,7 +49,10 @@
         function gtag() { dataLayer.push(arguments); }
         window.gtag = gtag;
         gtag('js', new Date());
-        gtag('config', GA_ID);
+        // Jamais de plaque d'immatriculation dans les adresses envoyées à Google (donnée personnelle).
+        const loc = new URL(location.href);
+        ['plaque', 'immat'].forEach(k => loc.searchParams.delete(k));
+        gtag('config', GA_ID, { page_location: loc.toString() });
 
         window.gaLoaded = true;
     }
