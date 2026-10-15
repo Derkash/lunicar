@@ -230,6 +230,9 @@ GUIDES.forEach(g => {
 });
 
 if (LOCAL.france) app.get(`/${zones.FRANCE_SLUG}`, (req, res) => html(res, pages.france(LOCAL.france, CITIES)));
+Object.values(LOCAL.regions || {}).forEach(r => {
+    app.get(`/${r.slug}`, (req, res) => html(res, pages.region(r, CITIES)));
+});
 if (LOCAL.aPropos) app.get('/a-propos', (req, res) => html(res, pages.aPropos(LOCAL.aPropos)));
 
 // Pages villes gardées (les autres sont redirigées plus haut)
@@ -752,8 +755,9 @@ function indexablePages() {
     idf.SITUATIONS.forEach(s => add(`/${s.slug}`, '0.8'));
     GUIDES.forEach(g => add(`/${g.slug}`, g.brand ? '0.6' : '0.8', g.updated || T));
     zones.IDF_CITIES.filter(s => s !== 'paris').forEach(s => add(`/reprise-auto-${s}`, '0.7'));
-    if (LOCAL.france) add(`/${zones.FRANCE_SLUG}`, '0.5');
-    zones.FRANCE_CITIES.forEach(s => add(`/reprise-auto-${s}`, '0.4'));
+    if (LOCAL.france) add(`/${zones.FRANCE_SLUG}`, '0.9', LOCAL.france.updated || T);
+    Object.values(LOCAL.regions || {}).forEach(r => add(`/${r.slug}`, '0.8', r.updated || T));
+    zones.FRANCE_CITIES.forEach(s => add(`/reprise-auto-${s}`, '0.7'));
     if (LOCAL.aPropos) add('/a-propos', '0.5');
     add('/garanties', '0.5');
     add('/articles', '0.6');
@@ -799,7 +803,7 @@ Sitemap: ${SITE.baseUrl}/sitemap.xml
 const strip = h => String(h || '').replace(/<li>/g, '\n- ').replace(/<\/(p|h2|h3|ul|ol|table|tr)>/g, '\n').replace(/<(td|th)[^>]*>/g, ' | ').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n\n').trim();
 const title = t => String(t || '').replace(/<[^>]+>/g, '');
 
-const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels à Paris et en Île-de-France (75, 92, 93, 94, 95, 91, 78, 77). Ailleurs en France, les demandes sont étudiées au cas par cas. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de GUIRAK SERVICES (SAS, SIRET 947 982 856 00017).`;
+const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels partout en France (Paris, Lyon, Marseille, Bordeaux, Toulouse, Lille, Nantes, Nice, Montpellier…). En Île-de-France, le déplacement et l'enlèvement sont à sa charge. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de GUIRAK SERVICES (SAS, SIRET 947 982 856 00017).`;
 
 app.get('/llms.txt', (req, res) => {
     const b = SITE.baseUrl;
@@ -828,6 +832,11 @@ Dernière mise à jour : ${pages.TEMPLATE_DATE}
 - [Garanties](${b}/garanties): les six engagements
 - [Comparer particulier, concession et professionnel](${b}/comparatif-reprise-auto)
 
+## Partout en France
+- [Rachat de voiture partout en France](${b}/${zones.FRANCE_SLUG})
+${Object.values(LOCAL.regions || {}).map(r => `- [Rachat de voiture en ${r.region}](${b}/${r.slug}): ${r.description}`).join('\n')}
+${zones.FRANCE_CITIES.slice(0, 40).map(s => { const c = CITIES.find(x => x.slug === s); return c ? `- [Rachat de voiture à ${c.nom}](${b}/reprise-auto-${s})` : ''; }).filter(Boolean).join('\n')}
+
 ## Paris et Île-de-France
 - [Rachat de voiture à Paris](${b}/reprise-auto-paris)
 - [Rachat de voiture en Île-de-France](${b}/${idf.HUB_SLUG})
@@ -845,7 +854,6 @@ ${articles.map(a => `- [${a.titre}](${b}/article/${a.slug}): ${a.extrait}`).join
 
 ## Optional
 - [Texte intégral des pages clés](${b}/llms-full.txt)
-- [Rachat de voiture ailleurs en France](${b}/${zones.FRANCE_SLUG})
 - [Plan du site](${b}/sitemap.xml)
 `;
     res.header('Content-Type', 'text/plain; charset=utf-8');
@@ -858,6 +866,7 @@ app.get('/llms-full.txt', (req, res) => {
     const block = (url, h, lede, sections, faq) => `# ${title(h)}\nURL : ${url}\n\n${lede ? lede + '\n\n' : ''}${(sections || []).map(s => `## ${title(s.h2)}\n\n${strip(s.html)}`).join('\n\n')}${faq && faq.length ? '\n\n## Questions fréquentes\n\n' + faq.map(f => `**${f.question}**\n${strip(f.answer)}`).join('\n\n') : ''}\n`;
     const parts = [`# LUNICAR\n\n> ${LLMS_SUMMARY}\n\nDernière mise à jour : ${pages.TEMPLATE_DATE}\n`];
     if (LOCAL.aPropos) parts.push(block(`${b}/a-propos`, LOCAL.aPropos.h1, LOCAL.aPropos.lede, LOCAL.aPropos.sections, LOCAL.aPropos.faq));
+    if (LOCAL.france) parts.push(block(`${b}/${zones.FRANCE_SLUG}`, LOCAL.france.h1, LOCAL.france.lede, LOCAL.france.sections, LOCAL.france.faq));
     if (LOCAL.paris) parts.push(block(`${b}/reprise-auto-paris`, LOCAL.paris.h1, LOCAL.paris.lede, LOCAL.paris.sections, LOCAL.paris.faq));
     idf.SITUATIONS.forEach(s => parts.push(block(`${b}/${s.slug}`, s.h1, s.lede, s.sections, s.faq)));
     GUIDES.filter(g => !g.brand).forEach(g => parts.push(block(`${b}/${g.slug}`, g.h1, g.lede, g.sections, g.faq)));

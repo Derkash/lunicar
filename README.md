@@ -1,6 +1,6 @@
 # LUNICAR
 
-Site de rachat de voitures aux particuliers et aux professionnels (lunicar.fr), centré sur Paris et l'Île-de-France.
+Site de rachat de voitures toutes marques aux particuliers et aux professionnels (lunicar.fr), partout en France, avec une présence renforcée à Paris et en Île-de-France (déplacement et enlèvement offerts).
 
 Node.js + Express, sans base de données : tout le HTML public est rendu côté serveur à partir de gabarits JavaScript et de fichiers JSON.
 
@@ -57,16 +57,18 @@ tools/generate_images.py  photos du site (Gemini), originaux dans .image-raw/
 | Situations IDF (5) | `/rachat-voiture-en-panne-paris`… | `lib/idf.js` |
 | Guides et marques (20) | `/reprise-voiture-occasion`, `/reprise-renault`… | `data/guides.json` |
 | Villes IDF (40) | `/reprise-auto-{slug}` | `lib/zones.js` + `data/local.json` (villes) |
-| Villes hors IDF (33) | `/reprise-auto-{slug}` | page honnête : demande étudiée au cas par cas |
+| Villes hors IDF (69) | `/reprise-auto-{slug}` | `lib/zones.js` + `data/local.json` (villes) |
+| Régions (11) | `/rachat-voiture-occitanie`… | `data/local.json` (regions) |
+| Situations nationales (5) | `/rachat-voiture-en-panne`, `/rachat-voiture-accidentee`, `/rachat-voiture-sans-controle-technique`, `/rachat-voiture-rapide`, `/rachat-vehicule-utilitaire` | `data/guides.json` |
 | France, à propos | `/rachat-voiture-france`, `/a-propos` | `data/local.json` |
 
 ## Périmètre indexé (décision du 2026-10-14)
 
 Avant : 533 pages, dont 441 villes et 54 marques en gabarit identique à 90 %. Google commençait à les écarter (« explorée, non indexée ») et les positions reculaient sur tout le site.
 
-Après : une page n'existe que si elle a un texte propre. Les communes d'IDF sans page renvoient en 301 vers leur département (où elles restent listées), les villes hors IDF sans trafic vers `/rachat-voiture-france`, les marques secondaires vers `/reprise-voiture-occasion`, les variantes thématiques vers la page qui couvre l'intention. Toute la table est dans `lib/zones.js` ; aucune chaîne de redirection.
+Après : une page n'existe que si elle a un texte propre. Les communes d'IDF sans page renvoient en 301 vers leur département (où elles restent listées), les autres communes vers leur page région (où elles restent listées), les marques secondaires vers `/reprise-voiture-occasion`, les variantes thématiques vers la page qui couvre l'intention. Toute la table est dans `lib/zones.js` ; aucune chaîne de redirection.
 
-Une ville hors IDF est gardée si elle avait au moins 2 clics ou 100 impressions en 16 mois de Search Console, ou si ChatGPT y envoie des visiteurs (GA4). Pour en ajouter une : l'ajouter à `FRANCE_CITIES` ; pour une ville d'IDF, l'ajouter à `IDF_CITIES` **avec** son texte dans `data/local.json`.
+Positionnement national depuis le 2026-10-15 : grandes villes de France + villes qui reçoivent déjà du trafic (Search Console, ChatGPT). Pour ajouter une ville : l'ajouter à `FRANCE_CITIES` (ou `IDF_CITIES`) **avec** son texte local dans `data/local.json`. Hors IDF, aucun texte ne promet de déplacement ou d'enlèvement gratuit : la remise du véhicule est « organisée avec le vendeur ».
 
 Contrôle avant chaque déploiement :
 

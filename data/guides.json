@@ -21,7 +21,7 @@
   "sections": [
    {
     "h2": "Quelles voitures LUNICAR rachète-t-il ?",
-    "html": "<p>LUNICAR rachète toutes les voitures, de la récente à celle qui ne roule plus : citadines, berlines, SUV, monospaces, breaks, modèles premium, électriques, hybrides, GPL, utilitaires, véhicules à fort kilométrage, en panne, accidentés ou sans contrôle technique. Les particuliers comme les professionnels peuvent vendre, à Paris et en Île-de-France.</p><ul class=\"ticks\"><li><strong>Toutes les marques</strong> : généralistes comme <a href=\"/reprise-renault\">Renault</a>, <a href=\"/reprise-peugeot\">Peugeot</a>, <a href=\"/reprise-citroen\">Citroën</a>, <a href=\"/reprise-dacia\">Dacia</a>, <a href=\"/reprise-volkswagen\">Volkswagen</a>, <a href=\"/reprise-toyota\">Toyota</a>, <a href=\"/reprise-ford\">Ford</a>, <a href=\"/reprise-fiat\">Fiat</a> ou <a href=\"/reprise-seat\">Seat</a>, et premium comme <a href=\"/reprise-mercedes\">Mercedes</a>, <a href=\"/reprise-bmw\">BMW</a> ou <a href=\"/reprise-audi\">Audi</a>.</li><li><strong>Tous les âges</strong> : de la voiture de quelques mois à celle qui a vingt ans de service.</li><li><strong>Tous les états</strong> : roulante, en panne, accidentée, sans contrôle technique valide.</li></ul><p>LUNICAR n’est pas un service d’enlèvement d’épaves : chaque véhicule fait l’objet d’une offre chiffrée, calculée sur sa valeur réelle. Les professionnels qui renouvellent un véhicule de société ou un utilitaire bénéficient du même déroulé que les particuliers. En dehors de l’Île-de-France, une demande peut être étudiée au cas par cas.</p>"
+    "html": "<p>LUNICAR rachète toutes les voitures, de la récente à celle qui ne roule plus : citadines, berlines, SUV, monospaces, breaks, modèles premium, électriques, hybrides, GPL, utilitaires, véhicules à fort kilométrage, en panne, accidentés ou sans contrôle technique. Les particuliers comme les professionnels peuvent vendre, à Paris et en Île-de-France.</p><ul class=\"ticks\"><li><strong>Toutes les marques</strong> : généralistes comme <a href=\"/reprise-renault\">Renault</a>, <a href=\"/reprise-peugeot\">Peugeot</a>, <a href=\"/reprise-citroen\">Citroën</a>, <a href=\"/reprise-dacia\">Dacia</a>, <a href=\"/reprise-volkswagen\">Volkswagen</a>, <a href=\"/reprise-toyota\">Toyota</a>, <a href=\"/reprise-ford\">Ford</a>, <a href=\"/reprise-fiat\">Fiat</a> ou <a href=\"/reprise-seat\">Seat</a>, et premium comme <a href=\"/reprise-mercedes\">Mercedes</a>, <a href=\"/reprise-bmw\">BMW</a> ou <a href=\"/reprise-audi\">Audi</a>.</li><li><strong>Tous les âges</strong> : de la voiture de quelques mois à celle qui a vingt ans de service.</li><li><strong>Tous les états</strong> : roulante, en panne, accidentée, sans contrôle technique valide.</li></ul><p>LUNICAR n’est pas un service d’enlèvement d’épaves : chaque véhicule fait l’objet d’une offre chiffrée, calculée sur sa valeur réelle. Les professionnels qui renouvellent un véhicule de société ou un utilitaire bénéficient du même déroulé que les particuliers. Partout ailleurs en France, nous rachetons aussi votre voiture et organisons la vente avec vous.</p>"
    },
    {
     "h2": "Peut-on vendre une voiture récente, encore sous garantie constructeur ?",
@@ -71,8 +71,8 @@
     "answer": "Par virement bancaire le jour de la vente, une fois le véhicule vérifié et le certificat de cession signé. LUNICAR ne paie jamais en espèces ni par chèque et ne facture aucun frais de dossier."
    },
    {
-    "question": "LUNICAR intervient-il en dehors de Paris ?",
-    "answer": "LUNICAR intervient à Paris et dans les sept autres départements d’Île-de-France : Hauts-de-Seine, Seine-Saint-Denis, Val-de-Marne, Val-d’Oise, Essonne, Yvelines et Seine-et-Marne. Ailleurs en France, une demande peut être étudiée au cas par cas."
+    "question": "LUNICAR rachète-t-il les voitures partout en France ?",
+    "answer": "Oui, partout en France. En Île-de-France, à Paris et dans les sept autres départements, le déplacement et l’enlèvement sont à notre charge. Ailleurs, la remise du véhicule est organisée avec vous lors de l’appel."
    },
    {
     "question": "Quels documents préparer pour vendre ma voiture ?",
@@ -1693,5 +1693,455 @@
    }
   ],
   "updated": "2026-10-14"
+ },
+ {
+  "slug": "rachat-voiture-en-panne",
+  "image": "panne",
+  "nav": "Voiture en panne",
+  "title": "Rachat de voiture en panne partout en France | LUNICAR",
+  "description": "Moteur HS, boîte cassée, voiture qui ne démarre plus : LUNICAR la rachète en l'état partout en France. Offre sous 24 h ouvrées, virement le jour de la vente.",
+  "h1": "Rachat de voiture en panne, <em>partout en France et dans l'état où elle est</em>",
+  "lede": "Votre voiture ne roule plus et le devis du garage dépasse ce qu'elle vaut ? Inutile d'avancer les réparations. Décrivez la panne en ligne, où que vous soyez en France, et recevez une offre chiffrée sous 24 h ouvrées.",
+  "points": [
+   "Véhicule non roulant accepté",
+   "Aucune réparation à avancer",
+   "Contrôle technique non exigé",
+   "Virement le jour de la vente"
+  ],
+  "etat": [
+   "panne"
+  ],
+  "sections": [
+   {
+    "h2": "Peut-on vendre une voiture en panne, où que l'on soit en France ?",
+    "html": "<p>Oui. LUNICAR rachète les voitures en panne partout en France, dans l'état où elles se trouvent. Vous décrivez le véhicule et les symptômes en ligne, un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours, puis la vente est organisée avec vous. Aucune réparation n'est à prévoir.</p>\n<p>Une voiture en panne garde une valeur. Elle correspond au prix du véhicule une fois remis en état, moins le coût de la réparation, ou à la valeur de ses éléments quand la réparation n'est pas raisonnable. Entre particuliers, cette valeur se négocie mal : peu d'acheteurs acceptent une voiture qu'ils ne peuvent pas essayer. Vendre à un professionnel du rachat évite cette impasse.</p>"
+   },
+   {
+    "h2": "Dans quelles situations vendre une voiture en panne ?",
+    "html": "<p>Les situations les plus courantes sont un devis de réparation trop élevé, une panne que personne n'arrive à diagnostiquer, une voiture immobilisée depuis longtemps ou un véhicule tombé en panne loin de chez soi. Dans tous ces cas, la vente en l'état évite d'investir dans une voiture dont vous voulez vous séparer.</p>\n<ul class=\"ticks\">\n<li><strong>Devis trop lourd</strong> : moteur, boîte de vitesses, turbo ou distribution à refaire pour un montant proche de la valeur de la voiture.</li>\n<li><strong>Panne non identifiée</strong> : voyants allumés, perte de puissance, mode dégradé, sans diagnostic clair.</li>\n<li><strong>Immobilisation longue</strong> : voiture restée au garage, dans une cour ou chez un proche, batterie à plat et pneus dégonflés.</li>\n<li><strong>Panne loin de chez soi</strong> : véhicule resté en vacances ou chez un garagiste d'une autre région. Indiquez simplement où il se trouve.</li>\n<li><strong>Voiture d'un proche</strong> : véhicule hérité qui ne roule plus. Voir la page <a href=\"/reprise-voiture-succession\">reprise d'une voiture de succession</a>.</li>\n</ul>"
+   },
+   {
+    "h2": "Faut-il réparer avant de vendre ou vendre en l'état ?",
+    "html": "<p>Comparez trois montants : le coût de la réparation, la valeur de la voiture une fois réparée et l'offre de rachat en l'état. Si la réparation coûte presque autant que ce qu'elle rapporterait, vendre en l'état est plus simple et vous évite d'avancer de l'argent, de patienter au garage et de prendre le risque d'une nouvelle panne.</p>\n<p>Une réparation se justifie quand la panne est légère et la voiture recherchée, par exemple un embrayage sur un modèle récent et peu kilométré. Elle se justifie beaucoup moins sur un véhicule ancien, très kilométré, ou quand plusieurs organes sont fatigués. L'offre valable 7 jours vous laisse le temps de demander un devis et de faire le calcul calmement.</p>\n<p class=\"note\">Gardez le devis du garage s'il existe. Joint à votre demande, il aide à établir une offre précise et cohérente avec la panne réelle.</p>"
+   },
+   {
+    "h2": "Comment décrire une voiture en panne pour obtenir une offre fiable ?",
+    "html": "<p>Décrivez ce que vous constatez, sans chercher le diagnostic exact : symptômes, voyants, bruits, date de la panne, kilométrage et état général. Ajoutez le devis du garage si vous en avez un. Le prix annoncé n'est revu que si l'état réel diffère de la description, donc une description précise protège votre offre.</p>\n<ul class=\"ticks\">\n<li><strong>Symptômes</strong> : ne démarre plus, fumée, bruit métallique, surchauffe, vitesses qui ne passent plus.</li>\n<li><strong>Contexte</strong> : panne soudaine ou progressive, voiture qui a roulé après la panne ou non.</li>\n<li><strong>Reste du véhicule</strong> : carrosserie, intérieur, pneus, entretien récent.</li>\n<li><strong>Papiers</strong> : carte grise à votre nom, situation administrative nette. Le rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>, gratuit, la confirme.</li>\n<li><strong>Accès</strong> : lieu où se trouve la voiture, clés disponibles, roues qui tournent ou non.</li>\n</ul>"
+   },
+   {
+    "h2": "Comment se passe la remise d'une voiture qui ne roule pas ?",
+    "html": "<p>Partout en France, la remise du véhicule est organisée avec vous au moment de l'offre : lieu, date, accès, présence des clés. En Île-de-France, le déplacement et l'enlèvement sont à la charge de LUNICAR, y compris pour un véhicule non roulant ou stationné en parking souterrain. Tout est précisé avant que vous vous engagiez.</p>\n<p>Si la voiture est immobilisée chez un garagiste, prévenez-le de la vente. Certains garages facturent le stationnement d'un véhicule qui reste longtemps sur leur parc : renseignez-vous auprès du vôtre pour éviter les mauvaises surprises.</p>\n<p>Vous êtes à Paris ou en Île-de-France ? La page <a href=\"/rachat-voiture-en-panne-paris\">rachat de voiture en panne à Paris et en Île-de-France</a> détaille l'enlèvement sur place, y compris en parking souterrain. Pour les autres situations, consultez la page <a href=\"/rachat-voiture-france\">rachat de voiture partout en France</a>.</p>"
+   },
+   {
+    "h2": "Quelles démarches et quel paiement pour une voiture en panne ?",
+    "html": "<p>Les démarches sont les mêmes que pour une voiture qui roule. Le contrôle technique n'est pas exigé. Le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession</a> (Cerfa 15776) est rempli avec vous, la cession est déclarée sur le site de l'<a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">ANTS</a>, et le paiement se fait par virement bancaire le jour de la vente, sans frais de dossier.</p>\n<p>Vous pouvez refuser l'offre jusqu'au jour du rendez-vous, sans frais, et vous n'avez aucun autre véhicule à acheter. Pensez à résilier votre assurance à compter de la vente et à conserver votre exemplaire du certificat de cession.</p>"
+   }
+  ],
+  "faqTitle": "Questions fréquentes sur le rachat de voiture en panne",
+  "faq": [
+   {
+    "question": "Rachetez-vous une voiture qui ne démarre plus du tout ?",
+    "answer": "Oui. Une voiture qui ne démarre plus, même immobilisée depuis longtemps, est rachetée partout en France. Décrivez les symptômes, depuis quand elle ne roule plus et l'endroit où elle se trouve."
+   },
+   {
+    "question": "Ma voiture est tombée en panne dans une autre région : puis-je la vendre ?",
+    "answer": "Oui. Indiquez dans votre demande où se trouve le véhicule, par exemple chez un garagiste ou sur un lieu de vacances. L'offre chiffrée arrive sous 24 h ouvrées et la remise est organisée avec vous."
+   },
+   {
+    "question": "Faut-il connaître le diagnostic exact de la panne ?",
+    "answer": "Non. Décrivez ce que vous constatez : voyants, bruits, fumée, perte de puissance. Si un garage a établi un devis, joignez-le. Ces informations suffisent pour une première offre chiffrée."
+   },
+   {
+    "question": "L'enlèvement d'une voiture en panne est-il à votre charge ?",
+    "answer": "En Île-de-France, oui : le déplacement et l'enlèvement sont à la charge de LUNICAR, y compris pour un véhicule non roulant. Dans les autres régions, les modalités de remise sont précisées avec vous au moment de l'offre."
+   },
+   {
+    "question": "Une voiture en panne a-t-elle besoin d'un contrôle technique pour être vendue ?",
+    "answer": "Non. LUNICAR n'exige pas de contrôle technique. Il n'est obligatoire que pour une vente entre particuliers, ce qui rend d'ailleurs ce type de vente très difficile pour une voiture qui ne roule plus."
+   },
+   {
+    "question": "Comment suis-je payé pour une voiture en panne ?",
+    "answer": "Par virement bancaire, le jour de la vente, comme pour toute autre voiture. Jamais d'espèces ni de chèque, et aucun frais de dossier n'est déduit du prix annoncé."
+   }
+  ],
+  "sources": [
+   {
+    "label": "Certificat de cession (Cerfa 15776), service-public.fr",
+    "url": "https://www.service-public.fr/particuliers/vosdroits/R20300"
+   },
+   {
+    "label": "Déclaration de cession, ANTS",
+    "url": "https://ants.gouv.fr/"
+   },
+   {
+    "label": "Histovec, historique d'un véhicule",
+    "url": "https://histovec.interieur.gouv.fr/"
+   }
+  ],
+  "updated": "2026-10-15"
+ },
+ {
+  "slug": "rachat-voiture-accidentee",
+  "image": "accidentee",
+  "nav": "Voiture accidentée",
+  "title": "Rachat de voiture accidentée partout en France | LUNICAR",
+  "description": "Choc avant, carrosserie enfoncée, airbags déclenchés : LUNICAR rachète votre voiture accidentée partout en France. Offre sous 24 h ouvrées, virement.",
+  "h1": "Rachat de voiture accidentée, <em>sans réparer ni attendre</em>",
+  "lede": "Après un accrochage ou un accident, réparer n'est pas toujours la bonne décision. Où que vous soyez en France, décrivez les dégâts en ligne et recevez une offre chiffrée sous 24 h ouvrées pour votre voiture en l'état.",
+  "points": [
+   "Voiture accidentée rachetée en l'état",
+   "Offre chiffrée sous 24 h ouvrées",
+   "Offre valable 7 jours",
+   "Virement le jour de la vente"
+  ],
+  "etat": [
+   "accident"
+  ],
+  "sections": [
+   {
+    "h2": "Peut-on vendre une voiture accidentée sans la réparer ?",
+    "html": "<p>Oui. LUNICAR rachète les voitures accidentées partout en France, sans réparation préalable. Vous décrivez les dommages en ligne, photos à l'appui si possible, et un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours. La vente est ensuite organisée avec vous, avec un paiement par virement.</p>\n<p>Réparer avant de vendre n'est pas toujours rentable. Une réparation de carrosserie et de structure peut coûter cher, immobiliser la voiture longtemps, et un acheteur particulier reste méfiant devant un véhicule réparé. La vente en l'état transfère ce travail et ce risque au repreneur.</p>"
+   },
+   {
+    "h2": "Quels types de dommages acceptez-vous ?",
+    "html": "<p>Tous. Les petits chocs de carrosserie, les accidents plus sérieux avec airbags déclenchés, les dégâts de grêle, les actes de vandalisme ou les dommages structurels sont acceptés. Ce qui change d'un cas à l'autre, c'est l'estimation. Une voiture accidentée garde une valeur, liée à son modèle et à ce qui reste sain.</p>\n<ul class=\"ticks\">\n<li><strong>Choc léger</strong> : pare-chocs, aile, portière, rétroviseur, phare.</li>\n<li><strong>Choc avant ou arrière important</strong> : radiateur, train roulant, airbags, longerons.</li>\n<li><strong>Grêle</strong> : impacts sur le toit, le capot et le coffre, parfois vitres touchées.</li>\n<li><strong>Vandalisme</strong> : rayures profondes, vitres cassées, intérieur dégradé.</li>\n<li><strong>Dommages mécaniques liés au choc</strong> : direction faussée, suspension cassée, voiture qui ne roule plus. Voir aussi la page <a href=\"/rachat-voiture-en-panne\">rachat de voiture en panne</a>.</li>\n</ul>"
+   },
+   {
+    "h2": "Que faire avec son assurance avant de vendre une voiture accidentée ?",
+    "html": "<p>Déclarez le sinistre à votre assureur dans les délais prévus par votre contrat, puis attendez sa position sur l'indemnisation avant de vendre. Une fois cette position connue, vous savez ce que vous percevez de l'assurance et pouvez comparer avec une offre de rachat en l'état. Signalez toute procédure ouverte par l'assureur.</p>\n<p>Quand la réparation dépasse la valeur du véhicule, l'assureur peut le classer comme économiquement irréparable et vous proposer une indemnisation. Certaines procédures, notamment pour un véhicule déclaré gravement endommagé, encadrent la circulation et la revente du véhicule. Si vous êtes concerné, indiquez-le dès votre demande et vérifiez les règles applicables sur <a href=\"https://www.service-public.fr\" rel=\"noopener\" target=\"_blank\">service-public.fr</a>.</p>\n<p class=\"note\">Conservez le rapport transmis par votre assureur et les photos des dégâts. Ils permettent une offre précise et évitent toute révision du prix le jour de la vente.</p>"
+   },
+   {
+    "h2": "Qu'est-ce qui fait le prix d'une voiture accidentée ?",
+    "html": "<p>Le prix dépend de la valeur de la voiture avant l'accident, de l'étendue des dommages et de ce qui reste en bon état : moteur, boîte, intérieur, éléments de carrosserie intacts. Un modèle récent et recherché garde une valeur importante même après un choc sérieux. Un modèle ancien vaut surtout par ses éléments réutilisables.</p>\n<ul class=\"ticks\">\n<li><strong>Zone touchée</strong> : un choc arrière léger pèse moins qu'un choc avant qui touche le moteur ou la structure.</li>\n<li><strong>Airbags</strong> : leur déclenchement augmente fortement le coût de remise en état.</li>\n<li><strong>Mécanique</strong> : une voiture qui roule encore après le choc conserve plus de valeur.</li>\n<li><strong>Historique</strong> : entretien, kilométrage, papiers en règle. Le rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>, gratuit, éclaire l'historique.</li>\n</ul>"
+   },
+   {
+    "h2": "Comment se passe la remise d'une voiture accidentée ?",
+    "html": "<p>Partout en France, la vente et la remise du véhicule sont organisées avec vous au moment de l'offre : lieu, date et accès au véhicule, qu'il soit chez vous, chez un carrossier ou sur un parc. En Île-de-France, le déplacement et l'enlèvement sont à la charge de LUNICAR, même si la voiture ne roule plus.</p>\n<p>Si la voiture se trouve chez un réparateur ou dans un lieu de stockage après l'accident, prévenez-le de la vente et renseignez-vous sur d'éventuels frais de stationnement. Le jour de la vente, la voiture est vérifiée, le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession</a> (Cerfa 15776) est rempli avec vous et la cession est déclarée sur le site de l'<a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">ANTS</a>.</p>\n<p>Vous êtes en région parisienne ? La page <a href=\"/rachat-voiture-accidentee-paris\">rachat de voiture accidentée à Paris et en Île-de-France</a> détaille l'enlèvement sur place.</p>"
+   },
+   {
+    "h2": "Comment le paiement est-il effectué ?",
+    "html": "<p>Le paiement se fait par virement bancaire, le jour de la vente. LUNICAR ne paie jamais en espèces ni par chèque. Il n'y a pas de frais de dossier, et le prix annoncé n'est revu que si l'état réel diffère de votre description. Vous pouvez refuser l'offre à tout moment, sans frais.</p>\n<p>Vous n'avez aucune obligation d'acheter un autre véhicule. Si vous remplacez votre voiture accidentée par un modèle neuf ou d'occasion, la page <a href=\"/rachat-voiture-france\">rachat de voiture partout en France</a> et la page <a href=\"/comparatif-reprise-auto\">comparatif des solutions de reprise</a> vous aident à comparer les options.</p>"
+   }
+  ],
+  "faqTitle": "Questions fréquentes sur le rachat de voiture accidentée",
+  "faq": [
+   {
+    "question": "Rachetez-vous une voiture dont les airbags se sont déclenchés ?",
+    "answer": "Oui. Les voitures avec airbags déclenchés sont rachetées partout en France. Le coût de remise en état entre dans l'estimation. Décrivez le choc, la zone touchée et indiquez si la voiture roule encore."
+   },
+   {
+    "question": "Dois-je attendre la décision de mon assureur avant de vendre ?",
+    "answer": "C'est préférable. Connaître la position de l'assureur vous permet de comparer son indemnisation avec une offre de rachat en l'état. L'offre LUNICAR reste valable 7 jours, ce qui vous laisse le temps de décider."
+   },
+   {
+    "question": "Ma voiture a été abîmée par la grêle : est-elle rachetée ?",
+    "answer": "Oui. Une voiture grêlée est rachetée en l'état. Précisez l'étendue des impacts, les éléments touchés et si les vitres sont atteintes. Des photos prises à la lumière du jour aident beaucoup."
+   },
+   {
+    "question": "Ma voiture accidentée est chez un carrossier : comment faire ?",
+    "answer": "Indiquez-le dans votre demande. La remise du véhicule est organisée avec vous au moment de l'offre. Prévenez le carrossier de la vente et vérifiez s'il facture le stationnement du véhicule."
+   },
+   {
+    "question": "Faut-il un contrôle technique pour vendre une voiture accidentée ?",
+    "answer": "Non. LUNICAR n'exige pas de contrôle technique. Il n'est obligatoire que pour une vente entre particuliers. Votre voiture accidentée peut être vendue en l'état, sans visite préalable."
+   },
+   {
+    "question": "Le prix peut-il baisser le jour de la vente ?",
+    "answer": "Seulement si l'état réel diffère de votre description. Décrivez honnêtement les dégâts, avec photos et rapport de l'assureur si vous l'avez : l'offre restera celle qui vous a été annoncée."
+   },
+   {
+    "question": "Rachetez-vous une voiture accidentée qui ne roule plus ?",
+    "answer": "Oui. Une voiture accidentée qui ne roule plus est rachetée partout en France. La remise du véhicule est organisée avec vous au moment de l'offre. En Île-de-France, le déplacement et l'enlèvement sont à la charge de LUNICAR."
+   }
+  ],
+  "sources": [
+   {
+    "label": "Démarches liées au véhicule, service-public.fr",
+    "url": "https://www.service-public.fr"
+   },
+   {
+    "label": "Certificat de cession (Cerfa 15776), service-public.fr",
+    "url": "https://www.service-public.fr/particuliers/vosdroits/R20300"
+   },
+   {
+    "label": "Déclaration de cession, ANTS",
+    "url": "https://ants.gouv.fr/"
+   },
+   {
+    "label": "Histovec, historique d'un véhicule",
+    "url": "https://histovec.interieur.gouv.fr/"
+   }
+  ],
+  "updated": "2026-10-15"
+ },
+ {
+  "slug": "rachat-voiture-sans-controle-technique",
+  "image": "sans-ct",
+  "nav": "Sans contrôle technique",
+  "title": "Vendre sa voiture sans contrôle technique | LUNICAR",
+  "description": "Contrôle technique expiré, contre-visite ou défaillance critique : LUNICAR rachète votre voiture partout en France. Offre sous 24 h ouvrées, virement.",
+  "h1": "Vendre sa voiture sans contrôle technique, <em>partout en France</em>",
+  "lede": "Le contrôle technique est obligatoire pour vendre à un particulier, pas pour vendre à un professionnel. Où que vous soyez, décrivez votre voiture en ligne et recevez une offre chiffrée sous 24 h ouvrées, sans passer par le centre de contrôle.",
+  "points": [
+   "Contrôle technique non exigé",
+   "Contre-visite non faite acceptée",
+   "Offre valable 7 jours",
+   "Virement le jour de la vente"
+  ],
+  "etat": [
+   "ct"
+  ],
+  "sections": [
+   {
+    "h2": "Peut-on vendre une voiture sans contrôle technique ?",
+    "html": "<p>Oui, à un professionnel. Le contrôle technique de moins de six mois est obligatoire pour vendre une voiture de plus de quatre ans à un particulier. Il ne l'est pas pour une vente à un professionnel de l'automobile. LUNICAR rachète donc partout en France des voitures au contrôle expiré, défavorable ou jamais présenté.</p>\n<p>Cette règle explique pourquoi tant de voitures sans contrôle valable restent au garage : leur propriétaire ne peut pas les vendre facilement entre particuliers sans engager des frais de réparation. La vente à un professionnel du rachat lève ce blocage. Les règles du contrôle technique sont détaillées sur <a href=\"https://www.service-public.fr\" rel=\"noopener\" target=\"_blank\">service-public.fr</a>.</p>"
+   },
+   {
+    "h2": "Contrôle expiré, contre-visite ou défaillance critique : qu'est-ce qui change ?",
+    "html": "<p>Pour la vente à LUNICAR, rien ne bloque : les trois situations sont acceptées. Elles diffèrent surtout pour la circulation. Un contrôle expiré ou une contre-visite non faite exposent à une amende en cas de contrôle routier. Une défaillance critique interdit de circuler au-delà du jour du contrôle.</p>\n<ul class=\"ticks\">\n<li><strong>Contrôle expiré</strong> : la voiture a simplement dépassé la date de sa prochaine visite. Elle peut être en parfait état.</li>\n<li><strong>Contre-visite non faite</strong> : des défaillances majeures ont été relevées et les réparations n'ont pas été faites.</li>\n<li><strong>Défaillance critique</strong> : la voiture ne doit plus circuler après la date limite indiquée sur le procès-verbal.</li>\n<li><strong>Jamais contrôlée</strong> : véhicule importé, longtemps immobilisé ou hérité, il est accepté aussi.</li>\n</ul>\n<p>Joignez le dernier procès-verbal si vous l'avez : il liste les défaillances et aide à établir une offre précise.</p>"
+   },
+   {
+    "h2": "Pourquoi un professionnel peut-il racheter sans contrôle technique ?",
+    "html": "<p>Parce que le contrôle technique sert à informer un acheteur particulier sur l'état du véhicule. Un professionnel du rachat vérifie lui-même la voiture, évalue les réparations nécessaires et intègre ce coût dans son offre. La loi n'impose donc pas de contrôle préalable pour une vente à un professionnel.</p>\n<p>Pour vous, cela supprime plusieurs étapes : la prise de rendez-vous au centre de contrôle, la visite, les réparations pour lever une contre-visite, puis une deuxième visite. Vous vendez la voiture telle qu'elle est, au prix annoncé, à condition que l'état réel corresponde à votre description.</p>\n<p class=\"note\">Faire réparer uniquement pour obtenir un contrôle favorable avant de vendre à un professionnel est rarement rentable : le coût des réparations dépasse souvent ce qu'elles ajoutent au prix de rachat.</p>"
+   },
+   {
+    "h2": "Vendre sans contrôle technique à un particulier : quels risques ?",
+    "html": "<p>Vendre à un particulier sans contrôle technique valable expose le vendeur. Le procès-verbal de moins de six mois doit être remis à l'acheteur. Sans lui, la carte grise ne peut pas être établie au nom du nouveau propriétaire, et la vente peut être remise en cause. Le vendeur reste aussi exposé au titre de la garantie légale des vices cachés.</p>\n<p>Certaines annonces proposent une voiture « vendue en l'état pour pièces » ou « sans contrôle » à un particulier. Cette formule ne dispense pas des obligations du vendeur et laisse souvent la vente dans une zone grise. Vendre à un professionnel du rachat, qui vérifie lui-même le véhicule, évite ces difficultés.</p>\n<ul class=\"ticks\">\n<li><strong>Pour l'acheteur particulier</strong> : impossible d'immatriculer la voiture à son nom sans contrôle valable.</li>\n<li><strong>Pour le vendeur</strong> : vente fragile, contestations possibles, visites et négociations à répétition.</li>\n<li><strong>Avec LUNICAR</strong> : contrôle non exigé, prix annoncé à l'avance, virement le jour de la vente.</li>\n</ul>"
+   },
+   {
+    "h2": "Qu'est-ce qui fait le prix d'une voiture sans contrôle technique ?",
+    "html": "<p>L'absence de contrôle ne fixe pas le prix à elle seule. Ce qui compte, ce sont les défaillances réelles : une voiture au contrôle simplement expiré et en bon état garde presque toute sa valeur, une voiture avec plusieurs défaillances majeures vaut ce qu'elle vaut une fois les réparations déduites. Le modèle et le kilométrage pèsent aussi.</p>\n<ul class=\"ticks\">\n<li><strong>Défaillances relevées</strong> : freinage, direction, pollution, corrosion, éclairage. Leur coût de réparation entre dans l'offre.</li>\n<li><strong>Entretien</strong> : carnet et factures rassurent sur le reste du véhicule.</li>\n<li><strong>Kilométrage et âge</strong> : voir aussi la page <a href=\"/reprise-voiture-haut-kilometrage\">reprise d'une voiture à fort kilométrage</a>.</li>\n<li><strong>Historique</strong> : le rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>, gratuit, retrace notamment les contrôles techniques passés.</li>\n</ul>"
+   },
+   {
+    "h2": "Comment se passent la remise et la vente d'une voiture sans contrôle technique ?",
+    "html": "<p>Partout en France, la vente et la remise du véhicule sont organisées avec vous au moment de l'offre. Si votre voiture ne peut plus circuler après une défaillance critique, signalez-le dès la demande. En Île-de-France, le déplacement et l'enlèvement sont à la charge de LUNICAR, même pour un véhicule qui ne doit plus rouler.</p>\n<p>Le jour de la vente, la voiture est vérifiée, le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession</a> (Cerfa 15776) est rempli avec vous et la cession est déclarée sur le site de l'<a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">ANTS</a>. Le paiement se fait par virement bancaire le jour de la vente, sans frais de dossier.</p>\n<p>Vous êtes à Paris ou en Île-de-France ? Consultez la page <a href=\"/vendre-voiture-sans-controle-technique-paris\">vendre sa voiture sans contrôle technique à Paris</a>. Le fonctionnement général est décrit sur la page <a href=\"/rachat-voiture-france\">rachat de voiture partout en France</a>.</p>"
+   }
+  ],
+  "faqTitle": "Questions fréquentes sur la vente sans contrôle technique",
+  "faq": [
+   {
+    "question": "Est-il légal de vendre une voiture sans contrôle technique ?",
+    "answer": "Oui, à un professionnel de l'automobile. Le contrôle technique de moins de six mois n'est obligatoire que pour vendre une voiture de plus de quatre ans à un particulier. LUNICAR rachète donc des voitures sans contrôle valable partout en France."
+   },
+   {
+    "question": "Ma voiture a une contre-visite en attente : puis-je la vendre ?",
+    "answer": "Oui. Une voiture avec contre-visite non faite est rachetée en l'état. Joignez le procès-verbal du dernier contrôle : il liste les défaillances relevées et permet d'établir une offre précise."
+   },
+   {
+    "question": "Ma voiture a une défaillance critique : comment la vendre ?",
+    "answer": "Signalez-le dès votre demande. La voiture ne doit plus circuler au-delà de la date indiquée sur le procès-verbal. La remise du véhicule est alors organisée avec vous, et en Île-de-France l'enlèvement est à la charge de LUNICAR."
+   },
+   {
+    "question": "Dois-je faire les réparations avant de vendre ?",
+    "answer": "Non. Les réparations demandées par le contrôle sont intégrées dans l'offre. Les faire avant la vente est rarement rentable, car leur coût dépasse souvent ce qu'elles ajoutent au prix de rachat."
+   },
+   {
+    "question": "Le prix est-il beaucoup plus bas sans contrôle technique ?",
+    "answer": "Pas forcément. Une voiture au contrôle simplement expiré et en bon état garde l'essentiel de sa valeur. Le prix baisse surtout en fonction des défaillances réelles et du coût de leur réparation."
+   },
+   {
+    "question": "Comment suis-je payé ?",
+    "answer": "Par virement bancaire, le jour de la vente. Jamais d'espèces ni de chèque. Il n'y a pas de frais de dossier et vous pouvez refuser l'offre jusqu'au jour du rendez-vous, sans frais."
+   },
+   {
+    "question": "Rachetez-vous une voiture qui n'a jamais passé le contrôle technique ?",
+    "answer": "Oui. Une voiture jamais présentée au contrôle, par exemple longtemps immobilisée ou héritée, est rachetée en l'état. Décrivez son état, son kilométrage et depuis quand elle n'a pas roulé pour obtenir une offre précise."
+   }
+  ],
+  "sources": [
+   {
+    "label": "Démarches liées au véhicule, service-public.fr",
+    "url": "https://www.service-public.fr"
+   },
+   {
+    "label": "Certificat de cession (Cerfa 15776), service-public.fr",
+    "url": "https://www.service-public.fr/particuliers/vosdroits/R20300"
+   },
+   {
+    "label": "Déclaration de cession, ANTS",
+    "url": "https://ants.gouv.fr/"
+   },
+   {
+    "label": "Histovec, historique d'un véhicule",
+    "url": "https://histovec.interieur.gouv.fr/"
+   }
+  ],
+  "updated": "2026-10-15"
+ },
+ {
+  "slug": "rachat-voiture-rapide",
+  "image": "cash",
+  "nav": "Vente rapide",
+  "title": "Vendre sa voiture rapidement, payé le jour même | LUNICAR",
+  "description": "Vendez votre voiture vite, partout en France : offre chiffrée sous 24 h ouvrées, valable 7 jours, paiement par virement le jour de la vente, sans frais.",
+  "h1": "Vendre sa voiture rapidement, <em>payé par virement le jour de la vente</em>",
+  "lede": "Déménagement, nouveau véhicule déjà commandé, besoin de trésorerie : quand il faut vendre vite, l'annonce entre particuliers prend trop de temps. Décrivez votre voiture en ligne et recevez une offre chiffrée sous 24 h ouvrées.",
+  "points": [
+   "Offre chiffrée sous 24 h ouvrées",
+   "Offre valable 7 jours",
+   "Virement le jour de la vente",
+   "Aucun frais de dossier"
+  ],
+  "etat": [],
+  "sections": [
+   {
+    "h2": "Comment vendre sa voiture rapidement ?",
+    "html": "<p>Le plus rapide est de vendre directement à un professionnel du rachat. Avec LUNICAR, vous décrivez la voiture en ligne en deux minutes, un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, et vous êtes payé par virement bancaire le jour de la vente. Ce parcours fonctionne partout en France.</p>\n<p>Une vente entre particuliers impose de nombreuses étapes : photos, annonce, réponses aux messages, visites, essais, négociation, contrôle technique de moins de six mois, puis vérification du paiement. Chacune peut prendre du temps, et l'issue reste incertaine. Le rachat direct remplace ces étapes par un interlocuteur unique et un prix connu à l'avance.</p>"
+   },
+   {
+    "h2": "Combien de temps prend une vente, étape par étape ?",
+    "html": "<p>Le premier délai est connu : un conseiller vous rappelle sous 24 h ouvrées après votre demande, avec une offre chiffrée. Ensuite, c'est vous qui fixez le rythme. L'offre est valable 7 jours, la date de la vente est choisie avec vous, et le paiement intervient par virement le jour même de la vente.</p>\n<ul class=\"ticks\">\n<li><strong>Demande en ligne</strong> : deux minutes, plaque facultative.</li>\n<li><strong>Offre chiffrée</strong> : sous 24 h ouvrées, du lundi au vendredi de 9 h à 19 h et le samedi de 10 h à 18 h.</li>\n<li><strong>Décision</strong> : jusqu'à 7 jours pour accepter, sans engagement avant votre accord.</li>\n<li><strong>Vente</strong> : vérification du véhicule et documents de cession préparés avec vous.</li>\n<li><strong>Paiement</strong> : virement bancaire le jour de la vente.</li>\n</ul>\n<p>Pour aller plus vite encore, préparez vos documents avant le rappel du conseiller.</p>"
+   },
+   {
+    "h2": "Quels documents préparer pour vendre plus vite ?",
+    "html": "<p>Préparez la carte grise à votre nom, une pièce d'identité, les doubles des clés, le carnet d'entretien et les factures. Ajoutez le rapport Histovec, gratuit, qui confirme la situation administrative du véhicule. Avec ces éléments réunis, l'offre est plus précise et la vente se conclut sans aller-retour.</p>\n<ul class=\"ticks\">\n<li><strong>Carte grise</strong> : à votre nom. Si elle est au nom d'un proche ou d'une société, signalez-le dès la demande.</li>\n<li><strong>Rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a></strong> : il indique notamment l'absence de gage ou d'opposition.</li>\n<li><strong>Crédit en cours</strong> : la vente reste possible, voir la page <a href=\"/vendre-voiture-credit\">vendre une voiture à crédit</a>.</li>\n<li><strong>Location avec option d'achat</strong> : voir la page <a href=\"/reprise-voiture-leasing\">reprise d'une voiture en leasing</a>.</li>\n</ul>"
+   },
+   {
+    "h2": "Pourquoi être payé par virement plutôt qu'en espèces ou par chèque ?",
+    "html": "<p>Le virement bancaire est traçable et sûr. Il laisse une preuve du paiement, au nom d'une société identifiée, et il évite les fraudes au faux chèque de banque, fréquentes dans les ventes de voitures entre particuliers. C'est pourquoi LUNICAR paie uniquement par virement, le jour de la vente, jamais en espèces ni par chèque.</p>\n<p>LUNICAR est une marque de GUIRAK SERVICES, SAS immatriculée sous le SIRET 947 982 856 00017. Vous savez à qui vous vendez. Il n'y a pas de frais de dossier : le montant annoncé est celui que vous recevez, tant que l'état du véhicule correspond à votre description.</p>\n<p class=\"note\">Méfiez-vous des acheteurs qui proposent de payer plus que le prix demandé, insistent pour un chèque de banque remis en dehors des heures d'ouverture ou demandent à récupérer la voiture avant le paiement.</p>"
+   },
+   {
+    "h2": "Que se passe-t-il le jour de la vente ?",
+    "html": "<p>Le jour de la vente, la voiture est vérifiée pour confirmer qu'elle correspond à votre description. Le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession</a> (Cerfa 15776) est rempli avec vous en deux exemplaires, la cession est déclarée sur le site de l'<a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">ANTS</a>, puis le virement bancaire est effectué. Vous repartez avec votre exemplaire du certificat.</p>\n<ul class=\"ticks\">\n<li><strong>Vérification</strong> : état général, kilométrage, équipements, conformité avec la description.</li>\n<li><strong>Carte grise</strong> : barrée et signée, avec la mention de la vente, la date et l'heure.</li>\n<li><strong>Déclaration de cession</strong> : faite en ligne, elle protège le vendeur pour ce qui se passe après la vente.</li>\n<li><strong>Paiement</strong> : virement bancaire le jour de la vente, sans frais de dossier.</li>\n</ul>\n<p>Après la vente, pensez à résilier votre assurance à compter de la date de cession et à conserver vos documents. Si l'état réel correspond à la description, le prix annoncé ne bouge pas.</p>"
+   },
+   {
+    "h2": "Vendre vite, est-ce forcément vendre moins cher ?",
+    "html": "<p>Pas forcément. Le prix d'une offre de rachat dépend du modèle, de l'année, du kilométrage, de l'état réel et de l'entretien prouvé, pas de votre urgence. Une offre valable 7 jours vous laisse le temps de comparer avec d'autres solutions, même si vous êtes pressé. Vous pouvez aussi refuser, sans frais.</p>\n<p>Pour comparer sereinement, consultez la page <a href=\"/comparatif-reprise-auto\">comparatif des solutions de reprise</a>. Pour les questions sur l'estimation selon votre véhicule, voyez la page <a href=\"/reprise-voiture-occasion\">reprise de voiture d'occasion</a>.</p>\n<p>Vous êtes à Paris ou en Île-de-France ? La page <a href=\"/rachat-voiture-cash-paris\">vendre sa voiture rapidement à Paris</a> détaille le rendez-vous sur place, avec déplacement à la charge de LUNICAR. Le fonctionnement national est présenté sur la page <a href=\"/rachat-voiture-france\">rachat de voiture partout en France</a>.</p>"
+   }
+  ],
+  "faqTitle": "Questions fréquentes sur la vente rapide d'une voiture",
+  "faq": [
+   {
+    "question": "En combien de temps puis-je recevoir une offre ?",
+    "answer": "Un conseiller vous rappelle sous 24 h ouvrées après votre demande en ligne, avec une offre chiffrée. Cette offre reste valable 7 jours, partout en France."
+   },
+   {
+    "question": "Suis-je payé le jour même ?",
+    "answer": "Oui. Le paiement se fait par virement bancaire le jour de la vente. LUNICAR ne paie jamais en espèces ni par chèque, et aucun frais de dossier n'est déduit."
+   },
+   {
+    "question": "Pourquoi ne payez-vous pas en espèces ?",
+    "answer": "Le virement est traçable, il prouve le paiement et il protège les deux parties. Il évite aussi de transporter une somme importante et les fraudes au faux chèque de banque, fréquentes dans les ventes entre particuliers."
+   },
+   {
+    "question": "Puis-je vendre rapidement une voiture encore à crédit ?",
+    "answer": "Oui, dans la plupart des cas. Signalez le crédit dès votre demande. La page consacrée à la vente d'une voiture à crédit explique les démarches à prévoir avec votre organisme de financement."
+   },
+   {
+    "question": "Puis-je refuser l'offre si je trouve mieux ailleurs ?",
+    "answer": "Oui. L'offre est valable 7 jours et vous pouvez la refuser à tout moment, même le jour du rendez-vous, sans frais. Vous n'avez aucun autre véhicule à acheter."
+   },
+   {
+    "question": "Faut-il un contrôle technique pour vendre vite ?",
+    "answer": "Non. LUNICAR n'exige pas de contrôle technique. Il n'est obligatoire que pour une vente entre particuliers. C'est une étape de moins, et souvent une économie de temps importante."
+   },
+   {
+    "question": "Que dois-je faire après la vente ?",
+    "answer": "Conservez votre exemplaire du certificat de cession et le code de cession, puis résiliez votre assurance à compter de la date de la vente. La déclaration de cession sur le site de l'ANTS est faite avec vous le jour même."
+   }
+  ],
+  "sources": [
+   {
+    "label": "Certificat de cession (Cerfa 15776), service-public.fr",
+    "url": "https://www.service-public.fr/particuliers/vosdroits/R20300"
+   },
+   {
+    "label": "Déclaration de cession, ANTS",
+    "url": "https://ants.gouv.fr/"
+   },
+   {
+    "label": "Histovec, historique d'un véhicule",
+    "url": "https://histovec.interieur.gouv.fr/"
+   }
+  ],
+  "updated": "2026-10-15"
+ },
+ {
+  "slug": "rachat-vehicule-utilitaire",
+  "image": "utilitaire",
+  "nav": "Véhicule utilitaire",
+  "title": "Rachat de véhicule utilitaire partout en France | LUNICAR",
+  "description": "Fourgon, fourgonnette, benne, plateau ou utilitaire aménagé : LUNICAR rachète votre utilitaire partout en France. Offre sous 24 h ouvrées, virement.",
+  "h1": "Rachat de véhicule utilitaire, <em>de la fourgonnette au plateau benne</em>",
+  "lede": "Artisan qui renouvelle son véhicule, entreprise qui allège sa flotte ou particulier qui n'a plus besoin de son fourgon : LUNICAR rachète les utilitaires partout en France. Décrivez le vôtre, l'offre arrive sous 24 h ouvrées.",
+  "points": [
+   "Particuliers et professionnels",
+   "Utilitaires aménagés acceptés",
+   "Offre valable 7 jours",
+   "Virement le jour de la vente"
+  ],
+  "etat": [],
+  "sections": [
+   {
+    "h2": "Quels utilitaires rachetez-vous ?",
+    "html": "<p>Tous les véhicules utilitaires légers. LUNICAR rachète partout en France les fourgonnettes, fourgons, grands volumes, plateaux, bennes, châssis-cabines et pick-up, qu'ils soient récents, très kilométrés, en panne, accidentés ou sans contrôle technique. Les utilitaires aménagés sont acceptés, auprès des particuliers comme des professionnels.</p>\n<ul class=\"ticks\">\n<li><strong>Fourgonnette</strong> : petit utilitaire de livraison ou d'intervention, souvent dérivé d'une voiture.</li>\n<li><strong>Fourgon et grand volume</strong> : artisans du bâtiment, déménagement, livraison.</li>\n<li><strong>Plateau, benne, châssis-cabine</strong> : chantiers, espaces verts, travaux publics.</li>\n<li><strong>Pick-up</strong> : exploitations agricoles, forestières, viticoles.</li>\n<li><strong>Utilitaire aménagé</strong> : atelier, étagères, galerie, hayon, caisse isotherme ou frigorifique.</li>\n</ul>"
+   },
+   {
+    "h2": "Qu'est-ce qui fait le prix d'un utilitaire d'occasion ?",
+    "html": "<p>Le prix d'un utilitaire dépend de sa carrosserie, de son volume utile ou de sa charge utile, de sa motorisation, de son kilométrage et de son entretien. L'état du plancher, des flancs et de l'embrayage compte aussi beaucoup, car ces éléments s'usent vite avec la charge et les arrêts fréquents. Un modèle recherché se revend plus vite.</p>\n<ul class=\"ticks\">\n<li><strong>Volume et longueur</strong> : un format courant intéresse plus de repreneurs.</li>\n<li><strong>Embrayage et boîte</strong> : très sollicités par la charge et les petits trajets. Signalez les remplacements récents.</li>\n<li><strong>Caisse intérieure</strong> : plancher, habillage, points d'arrimage, traces de chocs.</li>\n<li><strong>Entretien</strong> : factures et carnet, surtout pour un utilitaire très kilométré.</li>\n<li><strong>Motorisation</strong> : beaucoup d'utilitaires roulent au diesel. Voir la page <a href=\"/reprise-voiture-diesel\">reprise d'une voiture diesel</a>.</li>\n</ul>"
+   },
+   {
+    "h2": "Faut-il retirer l'aménagement avant de vendre ?",
+    "html": "<p>Non, ce n'est pas nécessaire. Un aménagement en bon état, comme des étagères, une galerie, un hayon ou une caisse isotherme, peut intéresser le repreneur et se décrit tel quel. Si vous préférez récupérer certains équipements amovibles pour votre prochain véhicule, précisez-le dès la demande pour que l'offre en tienne compte.</p>\n<p>Pour un utilitaire frigorifique ou équipé d'un matériel spécifique, joignez les documents liés à l'équipement si vous les avez. Pour un véhicule avec marquage publicitaire ou logo d'entreprise, signalez-le aussi. Ces informations permettent une offre précise, qui n'est revue que si l'état réel diffère de votre description.</p>\n<p class=\"note\">Videz le véhicule de vos outils, marchandises et documents professionnels avant la vente, et retirez les badges ou cartes carburant liés à votre entreprise.</p>"
+   },
+   {
+    "h2": "Quand vaut-il mieux vendre son utilitaire ?",
+    "html": "<p>Le bon moment est souvent celui où les frais à venir dépassent l'usage que vous en avez : gros entretien en vue, contrôle technique à repasser, embrayage fatigué, changement d'activité ou véhicule devenu trop petit. Vendre avant ces dépenses évite d'investir dans un utilitaire dont vous allez vous séparer.</p>\n<ul class=\"ticks\">\n<li><strong>Renouvellement</strong> : vous changez de véhicule et voulez vendre l'ancien sans dépendre d'une reprise chez le vendeur du nouveau.</li>\n<li><strong>Fin ou changement d'activité</strong> : départ en retraite, cessation, reconversion, réorganisation de la flotte.</li>\n<li><strong>Gros frais en vue</strong> : distribution, embrayage, pneus, contre-visite à lever.</li>\n<li><strong>Véhicule inadapté</strong> : volume trop juste, charge utile insuffisante, motorisation peu adaptée à vos trajets.</li>\n</ul>\n<p>Vous n'avez aucune obligation d'acheter un autre véhicule chez LUNICAR. L'offre valable 7 jours vous laisse le temps de comparer avec une reprise proposée par un concessionnaire, voir la page <a href=\"/comparatif-reprise-auto\">comparatif des solutions de reprise</a>.</p>"
+   },
+   {
+    "h2": "Vendre l'utilitaire d'une entreprise : qu'est-ce qui change ?",
+    "html": "<p>Le parcours est le même que pour un particulier. La différence porte sur les documents : la carte grise est au nom de la société, et le certificat de cession est signé par une personne habilitée à la représenter. Pour l'écriture comptable de la cession, rapprochez-vous de votre comptable.</p>\n<p>LUNICAR rachète un seul utilitaire comme plusieurs véhicules d'une même flotte. Décrivez chaque véhicule, avec son kilométrage, son état et son entretien. Le paiement se fait par virement bancaire sur le compte de l'entreprise, le jour de la vente. Il n'y a pas de frais de dossier ni d'obligation d'acheter un autre véhicule.</p>\n<p>Si votre utilitaire est financé en crédit-bail ou en location, consultez la page <a href=\"/reprise-voiture-leasing\">reprise d'un véhicule en leasing</a> avant d'engager la vente.</p>"
+   },
+   {
+    "h2": "Comment se passent la remise et les démarches ?",
+    "html": "<p>Partout en France, la vente et la remise de l'utilitaire sont organisées avec vous au moment de l'offre : lieu, date, accès. En Île-de-France, le déplacement et l'enlèvement sont à la charge de LUNICAR, y compris pour un utilitaire qui ne roule plus. Le contrôle technique n'est pas exigé.</p>\n<p>Le jour de la vente, le véhicule est vérifié, le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession</a> (Cerfa 15776) est rempli avec vous et la cession est déclarée sur le site de l'<a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">ANTS</a>. Vous pouvez transmettre le rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>, gratuit, pour éclairer l'historique.</p>\n<p>Vous êtes à Paris ou en Île-de-France ? La page <a href=\"/rachat-utilitaire-paris\">rachat d'utilitaire à Paris et en Île-de-France</a> détaille le rendez-vous sur place. Le fonctionnement national est présenté sur la page <a href=\"/rachat-voiture-france\">rachat de voiture partout en France</a>.</p>"
+   }
+  ],
+  "faqTitle": "Questions fréquentes sur le rachat d'utilitaire",
+  "faq": [
+   {
+    "question": "Rachetez-vous les utilitaires des particuliers ?",
+    "answer": "Oui. LUNICAR rachète les utilitaires des particuliers comme ceux des artisans et des entreprises. Le parcours est le même : description en ligne, offre chiffrée sous 24 h ouvrées, virement le jour de la vente."
+   },
+   {
+    "question": "Mon fourgon a plus de 300 000 km : est-il racheté ?",
+    "answer": "Oui. Les utilitaires très kilométrés sont rachetés. Un entretien suivi, un embrayage ou une distribution remplacés récemment soutiennent l'estimation. Joignez vos factures à la description."
+   },
+   {
+    "question": "Rachetez-vous un utilitaire frigorifique ?",
+    "answer": "Oui. Les utilitaires à caisse isotherme ou frigorifique sont rachetés. Indiquez l'état du groupe froid, son fonctionnement et joignez les documents liés à l'équipement si vous les avez."
+   },
+   {
+    "question": "Puis-je vendre plusieurs utilitaires de ma flotte ?",
+    "answer": "Oui. Décrivez chaque véhicule avec son kilométrage, son état et son entretien. Une offre chiffrée vous est faite pour chacun, et le paiement se fait par virement sur le compte de l'entreprise le jour de la vente."
+   },
+   {
+    "question": "Mon utilitaire n'a plus de contrôle technique : puis-je le vendre ?",
+    "answer": "Oui. LUNICAR n'exige pas de contrôle technique pour racheter un utilitaire. Il n'est obligatoire que pour une vente entre particuliers. Joignez le dernier procès-verbal si vous l'avez."
+   },
+   {
+    "question": "Combien de temps l'offre reste-t-elle valable ?",
+    "answer": "L'offre chiffrée est valable 7 jours. Vous pouvez comparer, en parler avec votre comptable ou votre associé, ou refuser sans frais, y compris le jour du rendez-vous. Aucun frais de dossier n'est appliqué."
+   },
+   {
+    "question": "Puis-je garder mes étagères ou ma galerie ?",
+    "answer": "Oui. Si vous souhaitez récupérer des équipements amovibles pour votre prochain véhicule, indiquez-le dès votre demande. L'offre chiffrée est alors établie pour l'utilitaire sans ces équipements, ce qui évite toute surprise le jour de la vente."
+   }
+  ],
+  "sources": [
+   {
+    "label": "Certificat de cession (Cerfa 15776), service-public.fr",
+    "url": "https://www.service-public.fr/particuliers/vosdroits/R20300"
+   },
+   {
+    "label": "Déclaration de cession, ANTS",
+    "url": "https://ants.gouv.fr/"
+   },
+   {
+    "label": "Histovec, historique d'un véhicule",
+    "url": "https://histovec.interieur.gouv.fr/"
+   }
+  ],
+  "updated": "2026-10-15"
  }
 ]
