@@ -22,12 +22,12 @@ PRIX_2K = 0.101  # $ par image 2K (1 680 jetons à 60 $/M)
 
 # Variante retenue par scène après relecture (numéro du fichier dans .image-raw).
 RETENUES = {
-    "accueil": 5, "recente": 2, "electrique": 1, "panne": 1, "sans-ct": 1, "accidentee": 2,
+    "accueil": 8, "recente": 2, "electrique": 1, "panne": 1, "sans-ct": 1, "accidentee": 2,
     "cash": 1, "utilitaire": 2, "ile-de-france": 1, "signature": 2,
 }
 
 SCENES = {
-    "accueil": "a dark grey 2017 Peugeot 308 hatchback (second generation, facelift: slim swept-back headlights with LED signature, full-width black grille) in very clean condition, parked along a Parisian street lined with cream-coloured Haussmann stone buildings and wrought-iron balconies; a used-car buyer in a dark navy jacket seen from behind walks towards it holding a tablet at his side; soft early-morning light, the car is the hero of the frame, three-quarter front view",
+    "accueil": "a 2018 Renault Clio IV hatchback (fourth generation, 2016 facelift: C-shaped LED daytime running lights, chrome-trimmed grille with large diamond-shaped badge area, smooth rounded bodywork, five doors with hidden rear door handles in the window frame), metallic dark grey, very clean condition, parked along a Parisian street lined with cream-coloured Haussmann stone buildings and wrought-iron balconies; a used-car buyer in a dark navy jacket seen from behind walks towards it holding a tablet at his side; soft early-morning light, the car is the hero of the frame, three-quarter front view, the car on the right half of the frame",
     "recente": "a nearly new white compact SUV parked in a bright modern residential car park in the Paris suburbs, two people seen only from the shoulders down standing by the open driver door, one handing a car key to the other; clean contemporary architecture, daylight",
     "electrique": "a modern dark blue electric hatchback plugged into a public charging station on a quiet tree-lined Paris street in the late afternoon, a person seen strictly from behind unplugging the charging cable, wet pavement reflecting warm light",
     "panne": "an old grey compact car being slowly winched onto the tilted bed of a flatbed tow truck in a quiet residential street of a Paris suburb, a man seen from behind operating the winch lever, late-afternoon light",
