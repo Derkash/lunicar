@@ -273,6 +273,24 @@ app.get('/api/articles/:slug', (req, res) => {
     }
 });
 
+// ============ API VILLE (code postal -> communes, geo.api.gouv.fr) ============
+
+const villesCache = new Map();
+app.get('/api/ville/:cp', async (req, res) => {
+    const cp = String(req.params.cp || '').replace(/\D/g, '');
+    if (cp.length !== 5) return res.json({ villes: [] });
+    if (villesCache.has(cp)) return res.set('Cache-Control', 'public, max-age=86400').json({ villes: villesCache.get(cp) });
+    if (tooManySends(`ville:${req.ip || ''}`, 60)) return res.status(429).json({ villes: [] });
+    try {
+        const r = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${cp}&fields=nom&format=json`, { signal: AbortSignal.timeout(5000) });
+        const villes = r.ok ? (await r.json()).map(c => c.nom).sort((a, b) => a.localeCompare(b, 'fr')) : [];
+        villesCache.set(cp, villes);
+        res.set('Cache-Control', 'public, max-age=86400').json({ villes });
+    } catch (e) {
+        res.json({ villes: [] });
+    }
+});
+
 // ============ API PLAQUE ============
 
 // Datation maison toujours ; caractéristiques SIV si une clé API est configurée.
@@ -380,7 +398,9 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             plaque_datation: plaqueInfo && plaqueInfo.libelle ? plaqueInfo.libelle : '',
             fiche_confirmee: clean(b.fiche, 300),
             prix_souhaite: clean(b.prix, 10).replace(/[^\d]/g, ''),
-            etat: b.roule === 'oui' ? ['Roule, aucun souci signalé'] : etat,
+            etat,
+            mecanique: { ok: 'Roule, aucun souci', soucis: 'Roule, avec des soucis mécaniques', panne: 'Ne roule plus (en panne)', accident: 'Accidentée', ct: 'Sans contrôle technique valide' }[b.mecanique] || '',
+            carrosserie: { tbe: 'Très bon état', rayures: 'Quelques rayures ou petits chocs', abimee: 'Abîmée' }[b.carrosserie] || '',
             delai: { vite: 'Le plus vite possible', mois: 'Dans le mois', '3mois': 'Dans les 3 mois', info: 'Se renseigne' }[b.delai] || '',
             projet_achat: { oui: 'Oui, prévoit d\'acheter', deja: 'Déjà acheté ou commandé', non: 'Non' }[b.achat] || '',
             prenom: clean(b.prenom, 60),
@@ -394,6 +414,7 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             telephone: phone.display,
             email: clean(b.email, 120),
             code_postal: clean(b.codePostal, 5).replace(/[^\d]/g, ''),
+            ville: clean(b.ville, 80),
             source: clean(b.source, 80),
             page: clean(b.page, 200),
             provenance: clean(b.provenance, 300),
@@ -428,24 +449,24 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
       ${row('Prix souhaité', demande.prix_souhaite ? `${Number(demande.prix_souhaite).toLocaleString('fr-FR')} €` : '')}
       ${row('Plaque', esc(demande.plaque) + (demande.plaque_datation ? `<br><span style="font-weight:400;color:#6F6B64">${esc(demande.plaque_datation)}</span>` : ''))}
       ${row('Fiche plaque', esc(demande.fiche_confirmee))}
-      ${row('État', esc(demande.etat.join(', ')))}
+      ${row('VIN', apiBrut && apiBrut.vin ? `<span style="font-family:monospace">${esc(apiBrut.vin)}</span>` : '')}
+      ${row('État mécanique', esc(demande.mecanique || demande.etat.join(', ')))}
+      ${row('Carrosserie', esc(demande.carrosserie))}
       ${row('Vendre quand', esc(demande.delai))}
       ${row('Autre voiture', esc(demande.projet_achat))}
-      ${row('Code postal', demande.code_postal ? `${esc(demande.code_postal)}${idfCp ? ' · Île-de-France' : ''}` : '')}
+      ${row('Ville', [demande.code_postal, demande.ville].filter(Boolean).map(esc).join(' ') + (idfCp ? ' · Île-de-France' : ''))}
       ${row('E-mail', demande.email ? `<a href="mailto:${esc(demande.email)}">${esc(demande.email)}</a>` : '')}
       ${row('Page', esc(demande.page))}
       ${row('Provenance', esc(demande.provenance))}
       ${row('Photos', attachments.length ? `${attachments.length} en pièce jointe` : '')}
     </table>
-    ${(demande.numero_formule || demande.date_certificat || demande.nom_titulaire) ? `<div style="margin-top:16px;padding:14px 16px;background:#F5F1E8;border-radius:8px">
-      <div style="font-weight:700;color:#0D2541;margin-bottom:6px">Carte grise · Histovec ${demande.consent_histovec ? '<span style="color:#2C7A4B">· consultation autorisée</span>' : '<span style="color:#A8423F">· consultation NON autorisée</span>'}</div>
+    ${(demande.titulaire || demande.numero_formule || demande.nom_titulaire) ? `<div style="margin-top:16px;padding:14px 16px;background:#F5F1E8;border-radius:8px">
+      <div style="font-weight:700;color:#0D2541;margin-bottom:6px">Carte grise</div>
       <table style="border-collapse:collapse;font-size:14px">
-        ${row('Titulaire de la CG', demande.titulaire ? (demande.titulaire === 'oui' ? 'Oui' : 'Non') : '')}
-        ${row('Nom (C.1)', esc(demande.nom_titulaire))}
-        ${row('Date du certificat (I)', esc(demande.date_certificat))}
-        ${row('N° de formule', esc(demande.numero_formule))}
+        ${row('Titulaire de la carte grise', demande.titulaire ? (demande.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : '')}
+        ${row('Nom du titulaire', esc(demande.nom_titulaire))}
+        ${row('N° du certificat', esc(demande.numero_formule))}
       </table>
-      ${demande.consent_histovec ? `<p style="margin:10px 0 0"><a href="https://histovec.interieur.gouv.fr/histovec/proprietaire" style="font-weight:700;color:#0D2541">Ouvrir Histovec (espace propriétaire) →</a></p>` : ''}
     </div>` : ''}
     ${apiBrut ? apiSection(apiBrut) : ''}
     <p style="margin:16px 0 0;font-size:13px;color:#6F6B64">Historique officiel : demander au vendeur son rapport <a href="https://histovec.interieur.gouv.fr">Histovec</a> (gratuit, généré avec sa carte grise).</p>

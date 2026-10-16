@@ -446,6 +446,17 @@ select.q-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://
 .q-warn { margin: 10px 0 0; padding: 12px 14px; border-radius: var(--radius-sm); background: #E8F0F8; border: 1px solid #BFD3E8; color: var(--marine-800); font-size: .92rem; }
 .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .choices-3 { grid-template-columns: repeat(3, 1fr); }
+.choices-1 { grid-template-columns: 1fr; }
+.choices-1 .choice span { justify-content: flex-start; text-align: left; min-height: 50px; padding: 10px 16px; }
+.choices.invalid .choice span { border-color: var(--red); }
+.q-sub { margin-top: 12px; }
+.cp-ville { margin: 6px 0 0; font-weight: 600; color: var(--green); }
+.cp-ville::before { content: "Commune : "; font-weight: 500; color: var(--ink-400); }
+.cp-ville.err { color: var(--red); }
+.cp-ville.err::before { content: ""; }
+.cp-ville select { font: 600 1rem var(--font-ui); color: var(--marine-900); border: 1.5px solid var(--line); border-radius: var(--radius-sm); padding: 8px 10px; background: var(--white); }
+.cg-photo { display: block; width: 100%; height: auto; border-radius: var(--radius-sm); margin: 4px 0 10px; border: 1px solid var(--line); }
+.q .cg-help { margin: 10px 0 0; }
 .choice { position: relative; cursor: pointer; }
 .choice input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
 .choice span { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 52px; padding: 10px 12px; border-radius: var(--radius-sm); border: 1.5px solid var(--line); background: var(--cream-50); font-weight: 600; font-size: .95rem; color: var(--ink-600); transition: all .15s; }

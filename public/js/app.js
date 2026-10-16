@@ -118,7 +118,7 @@
             meterBar.style.width = pct + '%';
             meterPct.textContent = pct + ' %';
         };
-        const progress = () => meter(Math.round(100 * qs.filter(q => q.classList.contains('done')).length / qs.length));
+        const progress = () => meter(Math.min(99, Math.round(100 * qs.filter(q => q.classList.contains('done')).length / qs.length)));
 
         // Valide les champs obligatoires d'une question ; la première erreur prend le focus.
         const valid = q => {
@@ -129,16 +129,32 @@
                 if (!bad && input.name === 'codePostal') bad = !/^\d{5}$/.test(input.value.trim());
                 if (!markInvalid(input, bad)) { ok = false; first = first || input; }
             });
+            q.querySelectorAll('.choices[data-required]').forEach(g => {
+                const bad = !g.querySelector('input:checked');
+                g.classList.toggle('invalid', bad);
+                if (bad) ok = false;
+            });
             if (first) first.focus();
             return ok;
+        };
+
+        // La carrosserie n'est demandée que si la voiture roule.
+        const roule = () => ['ok', 'soucis'].includes((form.querySelector('input[name="mecanique"]:checked') || {}).value);
+        const qCarrosserie = form.querySelector('.q[data-q="carrosserie"]');
+        const skipCarrosserie = () => {
+            const skip = !roule();
+            qCarrosserie.hidden = skip;
+            if (skip) form.querySelectorAll('input[name="carrosserie"]').forEach(i => { i.checked = false; });
+            return skip;
         };
 
         // Révèle la question suivante sous celle qui vient d'être remplie.
         const next = q => {
             if (!valid(q)) return;
             q.classList.add('done');
-            const i = qs.indexOf(q);
-            const n = qs[i + 1];
+            let i = qs.indexOf(q);
+            let n = qs[i + 1];
+            if (n === qCarrosserie && skipCarrosserie()) { n.classList.add('done', 'on'); n = qs[i + 2]; }
             if (n && !n.classList.contains('on')) {
                 n.classList.add('on');
                 track('lead_question', { question: n.dataset.q, page: location.pathname });
@@ -157,8 +173,21 @@
                 q.querySelectorAll('input[name=prix]').forEach(i => { i.value = ''; });
                 next(q);
             }));
-            // Choix uniques : on avance dès la réponse.
-            q.querySelectorAll('.choice input[type=radio]').forEach(el => el.addEventListener('change', () => next(q)));
+            // Choix uniques : on avance dès la réponse (sauf « titulaire : non », qui demande un nom).
+            q.querySelectorAll('.choice input[type=radio]').forEach(el => el.addEventListener('change', () => {
+                el.closest('.choices').classList.remove('invalid');
+                if (q.dataset.q === 'mecanique' && qCarrosserie.classList.contains('on')) {
+                    const skip = skipCarrosserie();
+                    qCarrosserie.classList.toggle('done', skip);
+                    if (!skip) { qCarrosserie.hidden = false; qCarrosserie.classList.add('on'); }
+                }
+                if (q.dataset.q === 'titulaire') {
+                    const sub = q.querySelector('.q-sub');
+                    sub.hidden = el.value !== 'non';
+                    if (el.value === 'non') { sub.querySelector('input').focus(); return; }
+                }
+                next(q);
+            }));
             // Entrée = Continuer.
             q.addEventListener('keydown', e => {
                 if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'submit' && q.dataset.q !== 'fin') {
@@ -172,12 +201,6 @@
             if (!started) { started = true; track('lead_form_start', { page: location.pathname }); }
             markInvalid(e.target, false);
         });
-
-        // État : « aucun souci » exclut les autres cases, et inversement.
-        const etatOk = form.elements.etatOk;
-        const etats = Array.from(form.querySelectorAll('input[name="etat"]'));
-        etatOk.addEventListener('change', () => { if (etatOk.checked) etats.forEach(c => { c.checked = false; }); });
-        etats.forEach(c => c.addEventListener('change', () => { if (c.checked) etatOk.checked = false; }));
 
         // Plaque : majuscules et tirets au format AB-123-CD.
         const plaque = form.elements.plaque;
@@ -244,18 +267,38 @@
             warn.hidden = !(kms && age && (kms / age > 45000 || (age > 3 && kms / age < 1500)));
         });
 
-        // Date du certificat : JJ/MM/AAAA pendant la saisie ; n° de formule en majuscules.
-        const dc = form.elements.dateCertificat;
-        dc.addEventListener('input', () => {
-            const d = dc.value.replace(/\D/g, '').slice(0, 8);
-            dc.value = [d.slice(0, 2), d.slice(2, 4), d.slice(4)].filter(Boolean).join('/');
-        });
+        // N° du certificat en majuscules.
         const nf = form.elements.numeroFormule;
         nf.addEventListener('input', () => { nf.value = nf.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); });
-        // Le nom saisi pré-remplit le nom du titulaire, tant qu'il n'a pas été modifié à la main.
-        const nt = form.elements.nomTitulaire;
-        form.elements.nom.addEventListener('input', e => { if (!nt.dataset.touched) nt.value = e.target.value.toUpperCase(); });
-        nt.addEventListener('input', () => { nt.dataset.touched = '1'; });
+
+        // Code postal -> commune(s) affichée(s) ; plusieurs communes : le vendeur choisit.
+        const cp = form.elements.codePostal;
+        const villeBox = form.querySelector('.cp-ville');
+        const villeInput = form.elements.ville;
+        let cpCherche = '';
+        async function chercherVille() {
+            const v = cp.value.replace(/\D/g, '').slice(0, 5);
+            cp.value = v;
+            if (v.length !== 5) { villeBox.hidden = true; villeInput.value = ''; cpCherche = ''; return; }
+            if (v === cpCherche) return;
+            cpCherche = v;
+            try {
+                const r = await fetch('/api/ville/' + v).then(x => x.ok ? x.json() : { villes: [] });
+                if (cp.value !== v) return;
+                const villes = r.villes || [];
+                if (!villes.length) { villeBox.textContent = 'Code postal inconnu, vérifiez-le.'; villeBox.className = 'cp-ville err'; villeBox.hidden = false; villeInput.value = ''; return; }
+                villeInput.value = villes[0];
+                villeBox.className = 'cp-ville';
+                villeBox.innerHTML = villes.length === 1
+                    ? '<span>' + villes[0].replace(/</g, '&lt;') + '</span>'
+                    : '<select aria-label="Votre commune">' + villes.map(n => '<option>' + n.replace(/</g, '&lt;') + '</option>').join('') + '</select>';
+                const sel = villeBox.querySelector('select');
+                if (sel) sel.addEventListener('change', () => { villeInput.value = sel.value; });
+                villeBox.hidden = false;
+            } catch (e) { villeBox.hidden = true; }
+        }
+        cp.addEventListener('input', chercherVille);
+        if (cp.value) chercherVille();
 
         // Prix souhaité : mêmes espaces de milliers.
         const prix = form.elements.prix;
@@ -266,7 +309,7 @@
         form.addEventListener('submit', async e => {
             e.preventDefault();
             // Toutes les questions obligatoires doivent avoir été franchies.
-            const missing = qs.find(q => q.dataset.q !== 'fin' && (!q.classList.contains('on') || !valid(q)));
+            const missing = qs.find(q => q.dataset.q !== 'fin' && !q.hidden && (!q.classList.contains('on') || !valid(q)));
             if (missing) { missing.classList.add('on'); missing.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
             const btn = form.querySelector('button[type="submit"]');
             const label = btn.textContent;
@@ -284,20 +327,18 @@
                     kilometrage: f.kilometrage.value,
                     prix: f.prix.value,
                     fiche: f.fiche.value,
-                    etat: etats.filter(i => i.checked).map(i => i.value),
-                    roule: f.etatOk.checked ? 'oui' : '',
+                    mecanique: radio('mecanique'),
+                    carrosserie: radio('carrosserie'),
                     delai: radio('delai'),
                     achat: radio('achat'),
                     prenom: f.prenom.value,
                     nom: f.nom.value,
                     telephone: f.telephone.value,
                     codePostal: f.codePostal.value,
-                    whatsapp: f.whatsapp.checked ? 'oui' : '',
+                    ville: f.ville.value,
                     titulaire: radio('titulaire'),
-                    nomTitulaire: f.nomTitulaire.value,
-                    dateCertificat: f.dateCertificat.value,
+                    nomTitulaire: radio('titulaire') === 'non' ? f.nomTitulaire.value : '',
                     numeroFormule: f.numeroFormule.value,
-                    consentHistovec: f.consentHistovec.checked ? 'oui' : '',
                     email: f.email.value,
                     site_web: f.site_web.value,
                     source: form.dataset.source,

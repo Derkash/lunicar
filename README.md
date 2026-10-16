@@ -91,7 +91,7 @@ PORT=3123 node server.js &  node tools/check_seo.js http://localhost:3123
 
 ## Formulaire de demande
 
-Deux étapes : le véhicule (plaque facultative, marque et modèle, année, kilométrage, particularités), puis les coordonnées (prénom, téléphone, code postal, e-mail facultatif). Une voie courte « Être rappelé » (prénom + téléphone) est présente sur chaque page.
+Questions progressives avec jauge : véhicule (plaque facultative qui remplit le reste, modèle, année, km), état mécanique, carrosserie (si elle roule), délai, projet d'achat, prix (facultatif), identité, téléphone et code postal (commune affichée via geo.api.gouv.fr), titulaire de la carte grise (nom facultatif si non), n° du certificat (facultatif), e-mail (facultatif). Une voie courte « Être rappelé » (prénom + téléphone) est présente sur chaque page.
 
 `POST /api/reprise` accepte du JSON. La demande est envoyée par e-mail, journalisée, et enregistrée dans `data/demandes.json`. Champ piège anti-robots et limite d'envois par adresse IP.
 
