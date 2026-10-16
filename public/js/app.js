@@ -148,8 +148,10 @@
             const sel = form.elements.annee;
             if (a.annee && (!sel.value || anneeAuto)) { sel.value = String(a.annee); anneeAuto = true; }
             track('plaque_reconnue', { format: a.format });
+            if (a.format === 'siv' || a.format === 'fni') showInfo(a.libelle + ' · recherche des caractéristiques du véhicule…', true);
             try {
                 const r = await fetch('/api/vehicule/' + encodeURIComponent(a.plaque)).then(x => x.ok ? x.json() : null);
+                if (derniere === a.plaque && !(r && r.fiche)) showInfo(a.libelle, a.format !== 'siv');
                 const f = r && r.fiche;
                 if (!f || derniere !== a.plaque) return;
                 const nom = [f.marque, f.modele, f.version].filter(Boolean).join(' ');
