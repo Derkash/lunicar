@@ -100,11 +100,9 @@
             if (qp.value) {
                 form.elements.plaque.value = qp.value;
                 form.elements.plaque.dispatchEvent(new Event('input', { bubbles: true }));
-                form.querySelector('.q[data-q="plaque"] [data-ok]').click();
-            } else {
-                document.getElementById('estimation').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                setTimeout(() => form.elements.plaque.focus({ preventScroll: true }), 450);
             }
+            document.getElementById('estimation').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => (qp.value ? form.elements.kilometrage : form.elements.plaque).focus({ preventScroll: true }), 450);
         });
     }
 
@@ -156,11 +154,11 @@
         qs.forEach(q => {
             q.querySelectorAll('[data-ok]').forEach(b => b.addEventListener('click', () => next(q)));
             q.querySelectorAll('[data-skip]').forEach(b => b.addEventListener('click', () => {
-                q.querySelectorAll('input[name=plaque], input[name=prix]').forEach(i => { i.value = ''; });
+                q.querySelectorAll('input[name=prix]').forEach(i => { i.value = ''; });
                 next(q);
             }));
-            // Choix uniques et listes : on avance dès la réponse.
-            q.querySelectorAll('input[type=radio], select').forEach(el => el.addEventListener('change', () => next(q)));
+            // Choix uniques : on avance dès la réponse.
+            q.querySelectorAll('.choice input[type=radio]').forEach(el => el.addEventListener('change', () => next(q)));
             // Entrée = Continuer.
             q.addEventListener('keydown', e => {
                 if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'submit' && q.dataset.q !== 'fin') {
