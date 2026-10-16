@@ -156,7 +156,7 @@
                 const veh = form.elements.vehicule;
                 if (nom && !veh.value.trim()) veh.value = nom;
                 if (f.annee && (!sel.value || anneeAuto)) sel.value = f.annee;
-                const det = [nom, f.energie, f.puissanceFiscale ? f.puissanceFiscale + ' CV' : '', f.miseEnCirculation ? 'mise en circulation ' + f.miseEnCirculation : ''].filter(Boolean).join(' · ');
+                const det = [nom, f.energie, f.boite, f.puissanceFiscale ? f.puissanceFiscale + ' CV' : '', f.miseEnCirculation ? 'mise en circulation ' + f.miseEnCirculation : ''].filter(Boolean).join(' · ');
                 form.elements.fiche.value = det;
                 showInfo('Véhicule reconnu : ' + det + '. Corrigez si besoin.');
             } catch (e) { /* la datation locale suffit */ }

@@ -1,6 +1,6 @@
 # LUNICAR
 
-Site de rachat de voitures toutes marques aux particuliers et aux professionnels (lunicar.fr), partout en France, avec une présence renforcée à Paris et en Île-de-France (déplacement et enlèvement offerts).
+Site de rachat de voitures toutes marques aux particuliers et aux professionnels (lunicar.fr), partout en France, déplacement et enlèvement offerts partout en France.
 
 Node.js + Express, sans base de données : tout le HTML public est rendu côté serveur à partir de gabarits JavaScript et de fichiers JSON.
 
@@ -23,7 +23,7 @@ Variables d'environnement à définir sur Render (voir `.env.example`) :
 | `LUNICAR_PHONE` | Numéro affiché (en-tête, formulaire, barre mobile). Vide = aucun bouton d'appel. |
 | `LUNICAR_WHATSAPP` | Numéro WhatsApp. Vide = aucun bouton WhatsApp. |
 | `ADMIN_PASSWORD` | Mot de passe de `/admino`. Non défini en production = admin fermé. |
-| `PLAQUE_API_KEY`, `PLAQUE_API_QUOTA` | Caractéristiques SIV par plaque via une API licenciée (facultatif), plafonnées par mois. |
+| `PLAQUE_API_KEY`, `PLAQUE_API_PROVIDER`, `PLAQUE_API_QUOTA` | Fiche véhicule par plaque (apiplaqueimmatriculation.com par défaut), plafonnée par mois. |
 
 Le disque de Render est effacé à chaque déploiement : `data/demandes.json` n'est pas une archive fiable. L'e-mail est le canal de référence, les journaux le filet de sécurité.
 
@@ -68,7 +68,7 @@ Avant : 533 pages, dont 441 villes et 54 marques en gabarit identique à 90 %. G
 
 Après : une page n'existe que si elle a un texte propre. Les communes d'IDF sans page renvoient en 301 vers leur département (où elles restent listées), les autres communes vers leur page région (où elles restent listées), les marques secondaires vers `/reprise-voiture-occasion`, les variantes thématiques vers la page qui couvre l'intention. Toute la table est dans `lib/zones.js` ; aucune chaîne de redirection.
 
-Positionnement national depuis le 2026-10-15 : grandes villes de France + villes qui reçoivent déjà du trafic (Search Console, ChatGPT). Pour ajouter une ville : l'ajouter à `FRANCE_CITIES` (ou `IDF_CITIES`) **avec** son texte local dans `data/local.json`. Hors IDF, aucun texte ne promet de déplacement ou d'enlèvement gratuit : la remise du véhicule est « organisée avec le vendeur ».
+Positionnement national depuis le 2026-10-15 : grandes villes de France + villes qui reçoivent déjà du trafic (Search Console, ChatGPT). Pour ajouter une ville : l'ajouter à `FRANCE_CITIES` (ou `IDF_CITIES`) **avec** son texte local dans `data/local.json`. 
 
 Contrôle avant chaque déploiement :
 
@@ -98,7 +98,7 @@ Deux étapes : le véhicule (plaque facultative, marque et modèle, année, kilo
 ## Recherche par plaque
 
 - `public/js/plaque.js` : décodeur maison, partagé navigateur/serveur. Les plaques SIV sont attribuées dans l'ordre depuis avril 2009 ; à partir de jalons datés, il donne le mois d'attribution. Ancien format = immatriculé avant 2009, `WW` = provisoire. Gratuit, sans appel externe. Jalons à compléter chaque année (`JALONS`).
-- `lib/vehicule.js` : en option, caractéristiques techniques via une API licenciée SIV (marque, modèle, énergie, CV, 1re mise en circulation). Désactivé sans `PLAQUE_API_KEY`, plafonné par mois, réponses gardées 24 h en mémoire seulement : sans licence SIV propre, ces données ne doivent pas être stockées (guide ministériel de réutilisation, §5.2).
+- `lib/vehicule.js` : en option, caractéristiques techniques via une API payante (par défaut apiplaqueimmatriculation.com : `PLAQUE_API_KEY` = token, `PLAQUE_API_PROVIDER=apiplaque`) : marque, modèle, version, énergie, boîte, CV, 1re mise en circulation. Désactivé sans clé, plafonné par `PLAQUE_API_QUOTA` appels par mois, 12 recherches par heure et par visiteur, réponses gardées 24 h en mémoire seulement (jamais stockées). Test : `PLAQUE_API_KEY=… node tools/test_plaque.js AB-123-CD` (1 appel).
 - Historique : le vendeur génère son rapport sur Histovec (service de l'État) et colle le lien après sa demande (`POST /api/reprise/histovec`). Le lien est transmis par e-mail et se consulte à la main ; il expire le 8 du mois suivant son partage.
 - Pas d'accès direct au SIV ni d'extraction de services tiers : le SIV n'expose pas d'API, la licence de réutilisation coûte plusieurs dizaines de milliers d'euros, et l'extraction de données d'un autre service est pénalement sanctionnée.
 

@@ -253,7 +253,7 @@ app.get('/article/:slug', (req, res) => {
 
 app.get('/garanties', (req, res) => html(res, pages.garanties()));
 app.get('/contact', (req, res) => html(res, pages.contact()));
-app.get('/mentions-legales', (req, res) => html(res, pages.legal('mentions-legales', 'Mentions légales | LUNICAR', 'Mentions légales du site lunicar.fr : éditeur GUIRAK SERVICES (SAS), hébergement, propriété intellectuelle et contact pour toute question.')));
+app.get('/mentions-legales', (req, res) => html(res, pages.legal('mentions-legales', 'Mentions légales | LUNICAR', 'Mentions légales du site lunicar.fr : éditeur et propriétaire OPTIMERCH (SAS), hébergement, propriété intellectuelle et contact pour toute question.')));
 app.get('/politique-confidentialite', (req, res) => html(res, pages.legal('politique-confidentialite', 'Politique de confidentialité | LUNICAR', 'Comment LUNICAR collecte, utilise et protège vos données personnelles lors d\'une demande d\'offre de rachat : finalités, durée de conservation, vos droits.')));
 
 // ============ API ARTICLES ============
@@ -803,7 +803,7 @@ Sitemap: ${SITE.baseUrl}/sitemap.xml
 const strip = h => String(h || '').replace(/<li>/g, '\n- ').replace(/<\/(p|h2|h3|ul|ol|table|tr)>/g, '\n').replace(/<(td|th)[^>]*>/g, ' | ').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n\n').trim();
 const title = t => String(t || '').replace(/<[^>]+>/g, '');
 
-const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels partout en France (Paris, Lyon, Marseille, Bordeaux, Toulouse, Lille, Nantes, Nice, Montpellier…). En Île-de-France, le déplacement et l'enlèvement sont à sa charge. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de GUIRAK SERVICES (SAS, SIRET 947 982 856 00017).`;
+const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels partout en France (Paris, Lyon, Marseille, Bordeaux, Toulouse, Lille, Nantes, Nice, Montpellier…). Le déplacement et l'enlèvement sont à sa charge partout en France. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de GUIRAK SERVICES (SAS, SIRET 947 982 856 00017).`;
 
 app.get('/llms.txt', (req, res) => {
     const b = SITE.baseUrl;
@@ -818,7 +818,7 @@ Dernière mise à jour : ${pages.TEMPLATE_DATE}
 - Véhicules rachetés : récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, fort kilométrage, en panne, accidentés, sans contrôle technique
 - Contrôle technique non exigé : il n'est obligatoire que pour une vente entre particuliers
 - Offre gratuite et sans engagement, valable 7 jours ; refus possible même le jour du rendez-vous, sans frais
-- Déplacement et enlèvement à la charge de LUNICAR en Île-de-France, y compris véhicule non roulant ou en parking souterrain
+- Déplacement et enlèvement à la charge de LUNICAR partout en France, y compris véhicule non roulant ou en parking souterrain
 - Paiement par virement bancaire uniquement, le jour de la vente (ni espèces ni chèque)
 - Certificat de cession (Cerfa 15776) et déclaration de cession ANTS préparés avec le vendeur
 - Aucune obligation d'acheter un autre véhicule
