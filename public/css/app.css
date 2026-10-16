@@ -467,6 +467,19 @@ select.q-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://
 .q .field-row { margin-bottom: 0; }
 .q .field { margin-bottom: 6px; }
 
+/* ---------- Étape photos ---------- */
+.lead-photos-intro { font-size: .94rem; color: var(--ink-600); margin: -2px 0 14px; }
+.photo-actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.photo-btn { padding: 14px 16px; font-size: 1rem; gap: 10px; cursor: pointer; }
+.photo-btn svg { width: 20px; height: 20px; }
+.photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0 4px; }
+.photo-grid:empty { display: none; }
+.photo-grid li { position: relative; }
+.photo-grid img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; }
+.photo-del { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; border: 0; border-radius: 50%; background: rgba(13, 37, 65, .85); color: var(--white); font: 700 1rem/1 var(--font-ui); cursor: pointer; }
+.lead-photos .btn-block { margin-top: 14px; }
+.lead-photos .btn-block[disabled] { opacity: .45; cursor: not-allowed; }
+
 /* ---------- Accueil : vitrine (texte + plaque à gauche, la voiture en grand à droite) ---------- */
 .showcase { display: grid; background: var(--marine-900); color: var(--white); position: relative; overflow: hidden; }
 .showcase-text { order: 2; padding: 30px 0 40px; background:

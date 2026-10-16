@@ -91,9 +91,12 @@ PORT=3123 node server.js &  node tools/check_seo.js http://localhost:3123
 
 ## Formulaire de demande
 
-Questions progressives avec jauge : véhicule (plaque facultative qui remplit le reste, modèle, année, km), état mécanique, carrosserie (si elle roule), délai, projet d'achat, prix (facultatif), identité, téléphone et code postal (commune affichée via geo.api.gouv.fr), titulaire de la carte grise (nom facultatif si non), n° du certificat (facultatif), e-mail (facultatif). Une voie courte « Être rappelé » (prénom + téléphone) est présente sur chaque page.
+Questions progressives avec jauge : véhicule (plaque facultative qui remplit le reste, modèle, année, km), état mécanique, carrosserie (si elle roule), contrôle technique, délai, projet d'achat, prix (facultatif), identité, téléphone et code postal (commune via geo.api.gouv.fr), titulaire de la carte grise (nom facultatif si non), n° du certificat (facultatif, photo d'aide), e-mail (facultatif). Puis étape photos facultative (prise ou import, réduites à 1600 px dans le navigateur), puis confirmation.
 
-`POST /api/reprise` accepte du JSON. La demande est envoyée par e-mail, journalisée, et enregistrée dans `data/demandes.json`. Champ piège anti-robots et limite d'envois par adresse IP.
+- `POST /api/reprise` : demande complète, e-mail immédiat avec toute la fiche API (VIN compris).
+- `POST /api/reprise/brouillon` : dès que le téléphone est saisi, l'état du formulaire est sauvegardé à chaque étape (et à la fermeture de la page). Sans envoi final après `ABANDON_MINUTES` (15 par défaut), un e-mail « Demande abandonnée » part avec tout ce qui a été rempli. Les brouillons sont en mémoire : à l'arrêt du serveur (redéploiement), ils partent tout de suite.
+- `POST /api/reprise/:id/photos` : photos envoyées après coup, dans un second e-mail, puis effacées du disque.
+- Champ piège anti-robots et limite d'envois par adresse IP.
 
 ## Recherche par plaque
 

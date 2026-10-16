@@ -62,7 +62,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage,
-    limits: { fileSize: 5 * 1024 * 1024 },
+    limits: { fileSize: 8 * 1024 * 1024, files: 12 },
     fileFilter: (req, file, cb) => {
         const allowedTypes = /jpeg|jpg|png|webp/;
         const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
@@ -166,7 +166,7 @@ const CSP = [
     "default-src 'self'",
     "script-src 'self' https://www.googletagmanager.com",
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com",
+    "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com",
     "font-src 'self'",
     "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
     "frame-ancestors 'self'",
@@ -301,30 +301,6 @@ app.get('/api/vehicule/:plaque', async (req, res) => {
 });
 
 // Le vendeur nous transmet le lien de partage de son rapport Histovec.
-app.post('/api/reprise/histovec', async (req, res) => {
-    const b = req.body || {};
-    const id = String(b.id || '').trim();
-    const lien = String(b.lien || '').trim().slice(0, 600);
-    if (tooManySends(`histovec:${req.ip || ''}`, 6)) return res.status(429).json({ error: 'Trop d\'envois.' });
-    const ok = /^https:\/\/histovec\.interieur\.gouv\.fr\/\S+$/.test(lien) || /^[A-Za-z0-9_-]{6,64}$/.test(lien);
-    if (!ok) return res.status(400).json({ error: 'Collez le lien de partage Histovec (il commence par https://histovec.interieur.gouv.fr).' });
-    const demandes = readJSON('demandes.json');
-    const d = demandes.find(x => x.id === id);
-    if (d) { d.histovec = lien; writeJSON('demandes.json', demandes); }
-    const ref = id.substring(0, 8).toUpperCase() || 'INCONNUE';
-    try {
-        await sendEmail({
-            subject: `📄 Histovec reçu · réf. ${ref}${d ? ` · ${d.vehicule} · ${d.telephone}` : ''}`,
-            html: `<div style="font-family:Arial,sans-serif;max-width:560px">
-<p>Le vendeur de la demande <strong>${esc(ref)}</strong>${d ? ` (${esc(d.prenom)}, ${esc(d.vehicule)}, ${esc(d.telephone)})` : ''} a transmis son rapport Histovec :</p>
-<p><a href="${esc(lien.startsWith('http') ? lien : 'https://histovec.interieur.gouv.fr')}" style="font-weight:700">${esc(lien)}</a></p>
-<p style="color:#6F6B64;font-size:13px">À ouvrir dans le navigateur. Lien valable jusqu'au 8 du mois suivant son partage : à consulter rapidement.</p></div>`
-        });
-    } catch (e) { console.error('❌ Erreur envoi email:', e.message); }
-    console.log(`Histovec reçu pour ${ref}: ${lien}`);
-    res.json({ success: true });
-});
-
 // ============ API DEMANDES (estimation + rappel) ============
 
 const ETAT_LABELS = { panne: 'En panne / ne roule plus', accident: 'Accidentée', ct: 'Sans CT valide' };
@@ -364,142 +340,201 @@ function apiSection(d) {
     </div>`;
 }
 
-app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
+// Une demande à partir des champs reçus (formulaire complet, brouillon ou rappel).
+function construireDemande(b, id) {
+    const clean = (v, max = 200) => String(v == null ? '' : v).trim().slice(0, max);
+    const phone = parsePhone(b.telephone);
+    const plaqueInfo = b.plaque ? fichePlaque.analyser(b.plaque) : null;
+    return {
+        id,
+        type: b.type === 'rappel' ? 'rappel' : 'estimation',
+        plaque: clean(b.plaque, 12).toUpperCase(),
+        vehicule: clean(b.vehicule || [b.marque, b.modele].filter(Boolean).join(' ')),
+        annee: clean(b.annee, 12),
+        kilometrage: clean(b.kilometrage, 12).replace(/[^\d]/g, ''),
+        plaque_datation: plaqueInfo && plaqueInfo.libelle ? plaqueInfo.libelle : '',
+        fiche_confirmee: clean(b.fiche, 300),
+        prix_souhaite: clean(b.prix, 10).replace(/[^\d]/g, ''),
+        etat: [].concat(b.etat || []).map(e => ETAT_LABELS[e]).filter(Boolean),
+        mecanique: { ok: 'Roule, aucun souci', soucis: 'Roule, avec des soucis mécaniques', panne: 'Ne roule plus (en panne)', accident: 'Accidentée' }[b.mecanique] || '',
+        carrosserie: { tbe: 'Très bon état', rayures: 'Quelques rayures ou petits chocs', abimee: 'Abîmée' }[b.carrosserie] || '',
+        controle_technique: { oui: 'À jour', non: 'Pas à jour', nsp: 'Ne sait pas' }[b.ct] || '',
+        delai: { vite: 'Le plus vite possible', mois: 'Dans le mois', '3mois': 'Dans les 3 mois', info: 'Se renseigne' }[b.delai] || '',
+        projet_achat: { oui: 'Oui, prévoit d\'acheter', deja: 'Déjà acheté ou commandé', non: 'Non' }[b.achat] || '',
+        prenom: clean(b.prenom, 60),
+        nom: clean(b.nom, 80),
+        titulaire: ['oui', 'non'].includes(b.titulaire) ? b.titulaire : '',
+        nom_titulaire: clean(b.nomTitulaire, 80),
+        numero_formule: clean(b.numeroFormule, 14).toUpperCase().replace(/[^A-Z0-9]/g, ''),
+        telephone: phone ? phone.display : '',
+        telephone_intl: phone ? phone.intl : '',
+        email: clean(b.email, 120),
+        code_postal: clean(b.codePostal, 5).replace(/[^\d]/g, ''),
+        ville: clean(b.ville, 80),
+        source: clean(b.source, 80),
+        page: clean(b.page, 200),
+        provenance: clean(b.provenance, 300),
+        etape: clean(b.etape, 40),
+        createdAt: new Date().toISOString()
+    };
+}
+
+// E-mail d'une demande : complète, abandonnée ou rappel. Toute la fiche API y figure.
+function emailDemande(d, apiBrut, opts = {}) {
+    const ref = d.id.substring(0, 8).toUpperCase();
+    const row = (label, value) => value ? `<tr><td style="padding:6px 12px 6px 0;color:#6F6B64;white-space:nowrap;vertical-align:top">${label}</td><td style="padding:6px 0;color:#0D1B2A;font-weight:600">${value}</td></tr>` : '';
+    const idfCp = /^(75|77|78|91|92|93|94|95)/.test(d.code_postal);
+    const titre = opts.abandon ? 'DEMANDE ABANDONNÉE' : d.type === 'rappel' ? 'DEMANDE DE RAPPEL' : 'DEMANDE D\'ESTIMATION';
+    return `<!DOCTYPE html><html><body style="margin:0;background:#F5F1E8;font-family:Arial,Helvetica,sans-serif">
+<div style="max-width:560px;margin:0 auto;padding:20px">
+  <div style="background:${opts.abandon ? '#7A3B12' : '#0D2541'};color:#fff;padding:18px 22px;border-radius:10px 10px 0 0">
+    <div style="font-size:13px;letter-spacing:1px;color:#D4B26A">LUNICAR · ${titre}</div>
+    <div style="font-size:22px;font-weight:700;margin-top:6px">${esc([d.prenom, d.nom].filter(Boolean).join(' ') || 'Sans nom')} · <a href="tel:+${d.telephone_intl}" style="color:#fff">${esc(d.telephone)}</a></div>
+  </div>
+  <div style="background:#fff;padding:20px 22px;border-radius:0 0 10px 10px">
+    ${opts.abandon ? `<p style="margin:0 0 14px;padding:10px 12px;background:#FCF3E8;border-radius:8px;color:#7A3B12">Le vendeur a quitté le formulaire à l'étape <strong>${esc(d.etape || 'inconnue')}</strong> sans l'envoyer. Voici tout ce qu'il avait rempli.</p>` : ''}
+    <p style="margin:0 0 16px"><a href="tel:+${d.telephone_intl}" style="display:inline-block;background:#B8923A;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px">Appeler ${esc(d.telephone)}</a>
+    &nbsp; <a href="https://wa.me/${d.telephone_intl}" style="color:#0D2541;font-weight:700">WhatsApp</a></p>
+    <table style="border-collapse:collapse;font-size:15px;width:100%">
+      ${row('Véhicule', esc(d.vehicule))}
+      ${row('Plaque', esc(d.plaque) + (d.plaque_datation ? `<br><span style="font-weight:400;color:#6F6B64">${esc(d.plaque_datation)}</span>` : ''))}
+      ${row('VIN', apiBrut && apiBrut.vin ? `<span style="font-family:monospace">${esc(apiBrut.vin)}</span>` : '')}
+      ${row('Année', esc(d.annee))}
+      ${row('Kilométrage', d.kilometrage ? `${Number(d.kilometrage).toLocaleString('fr-FR')} km` : '')}
+      ${row('État mécanique', esc(d.mecanique || d.etat.join(', ')))}
+      ${row('Carrosserie', esc(d.carrosserie))}
+      ${row('Contrôle technique', esc(d.controle_technique))}
+      ${row('Vendre quand', esc(d.delai))}
+      ${row('Autre voiture', esc(d.projet_achat))}
+      ${row('Prix souhaité', d.prix_souhaite ? `${Number(d.prix_souhaite).toLocaleString('fr-FR')} €` : '')}
+      ${row('Ville', [d.code_postal, d.ville].filter(Boolean).map(esc).join(' ') + (idfCp ? ' · Île-de-France' : ''))}
+      ${row('E-mail', d.email ? `<a href="mailto:${esc(d.email)}">${esc(d.email)}</a>` : '')}
+      ${row('Page', esc(d.page))}
+      ${row('Provenance', esc(d.provenance))}
+      ${row('Photos', opts.photos ? `${opts.photos} en pièce jointe` : '')}
+    </table>
+    ${(d.titulaire || d.numero_formule || d.nom_titulaire) ? `<div style="margin-top:16px;padding:14px 16px;background:#F5F1E8;border-radius:8px">
+      <div style="font-weight:700;color:#0D2541;margin-bottom:6px">Carte grise</div>
+      <table style="border-collapse:collapse;font-size:14px">
+        ${row('Titulaire de la carte grise', d.titulaire ? (d.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : '')}
+        ${row('Nom du titulaire', esc(d.nom_titulaire))}
+        ${row('N° du certificat', esc(d.numero_formule))}
+      </table>
+    </div>` : ''}
+    ${apiBrut ? apiSection(apiBrut) : ''}
+    <p style="margin:18px 0 0;font-size:12px;color:#9C978E">Réf. ${ref} · ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}</p>
+  </div>
+</div></body></html>`;
+}
+
+async function envoyerDemande(d, opts = {}) {
+    let apiBrut = null;
+    if (d.plaque) { try { apiBrut = await fichePlaque.ficheComplete(d.plaque); } catch (e) { apiBrut = null; } }
+    const ref = d.id.substring(0, 8).toUpperCase();
+    const prefixe = opts.abandon ? '⚠️ Abandonnée' : d.type === 'rappel' ? '📞 Rappel' : '🚗 Estimation';
+    let emailed = false;
+    try {
+        const result = await sendEmail({
+            subject: `${prefixe} ${d.code_postal || ''} ${d.ville || ''} · ${d.vehicule || d.prenom || d.plaque} ${d.annee || ''} · ${d.telephone}`.replace(/\s+/g, ' '),
+            html: emailDemande(d, apiBrut, opts),
+            replyTo: d.email || undefined
+        });
+        emailed = !result.simulated;
+    } catch (e) {
+        console.error('❌ Erreur envoi email:', e.message);
+    }
+    // Le disque de Render est effacé à chaque déploiement : on journalise toujours la demande en entier.
+    console.log(`${emailed ? '✅' : '🚨 NON ENVOYÉE PAR E-MAIL'} ${opts.abandon ? 'Abandon' : 'Demande'} ${ref}: ${JSON.stringify(d)}`);
+    return emailed;
+}
+
+// ---------- Brouillons : demandes commencées mais pas envoyées ----------
+// Dès que le téléphone est saisi, le formulaire envoie son état à chaque étape.
+// Sans envoi final après ABANDON_MS d'inactivité, la demande part en « abandonnée ».
+const brouillons = new Map();
+const ABANDON_MS = (parseFloat(process.env.ABANDON_MINUTES) || 15) * 60 * 1000;
+const terminees = new Map(); // id -> { demande, t } : pour rattacher les photos envoyées après coup
+
+app.post('/api/reprise/brouillon', express.text({ type: '*/*', limit: '20kb' }), (req, res) => {
+    let b = req.body;
+    if (typeof b === 'string') { try { b = JSON.parse(b); } catch (e) { b = {}; } }
+    b = b || {};
+    const id = String(b.draftId || '');
+    if (!/^[0-9a-f-]{36}$/.test(id) || b.site_web) return res.status(204).end();
+    if (terminees.has(id)) return res.status(204).end();
+    if (!parsePhone(b.telephone)) return res.status(204).end();
+    if (tooManySends(`brouillon:${req.ip || ''}`, 120)) return res.status(204).end();
+    brouillons.set(id, { b, t: Date.now() });
+    res.status(204).end();
+});
+
+async function traiterAbandons(tout) {
+    const now = Date.now();
+    for (const [id, { b, t }] of brouillons) {
+        if (!tout && now - t < ABANDON_MS) continue;
+        brouillons.delete(id);
+        await envoyerDemande(construireDemande(b, id), { abandon: true });
+    }
+    for (const [id, v] of terminees) if (now - v.t > 6 * 60 * 60 * 1000) terminees.delete(id);
+}
+setInterval(() => traiterAbandons(false), Math.min(60 * 1000, ABANDON_MS / 2)).unref();
+// Redéploiement Render : on envoie les brouillons en cours plutôt que de les perdre.
+process.on('SIGTERM', async () => {
+    try { await traiterAbandons(true); } finally { process.exit(0); }
+});
+
+app.post('/api/reprise', async (req, res) => {
     try {
         const b = req.body || {};
         // Champ piège : rempli uniquement par les robots. On répond "ok" sans rien enregistrer.
         if (b.site_web) return res.json({ success: true, id: uuidv4() });
+        if (tooManySends(req.ip || '')) return res.status(429).json({ error: 'Trop de demandes. Réessayez plus tard ou écrivez-nous à contact@lunicar.fr.' });
+        if (!parsePhone(b.telephone)) return res.status(400).json({ error: 'Numéro de téléphone invalide.', field: 'telephone' });
 
-        const ip = req.ip || '';
-        if (tooManySends(ip)) return res.status(429).json({ error: 'Trop de demandes. Réessayez plus tard ou écrivez-nous à contact@lunicar.fr.' });
-
-        const clean = (v, max = 200) => String(v == null ? '' : v).trim().slice(0, max);
-        const phone = parsePhone(b.telephone);
-        if (!phone) return res.status(400).json({ error: 'Numéro de téléphone invalide.', field: 'telephone' });
-
-        const type = b.type === 'rappel' ? 'rappel' : 'estimation';
-        // Ancien formulaire : marque + modèle séparés.
-        const vehicule = clean(b.vehicule || [b.marque, b.modele].filter(Boolean).join(' '));
-        if (type === 'estimation' && !vehicule) return res.status(400).json({ error: 'Indiquez la marque et le modèle.', field: 'vehicule' });
-
-        const etat = [].concat(b.etat || []).map(e => ETAT_LABELS[e]).filter(Boolean);
-        const plaqueInfo = b.plaque ? fichePlaque.analyser(b.plaque) : null;
-        const referenceId = uuidv4();
-        const ref = referenceId.substring(0, 8).toUpperCase();
-
-        const demande = {
-            id: referenceId,
-            statut: 'nouvelle',
-            type,
-            plaque: clean(b.plaque, 12).toUpperCase(),
-            vehicule,
-            annee: clean(b.annee, 12),
-            kilometrage: clean(b.kilometrage, 12).replace(/[^\d]/g, ''),
-            plaque_datation: plaqueInfo && plaqueInfo.libelle ? plaqueInfo.libelle : '',
-            fiche_confirmee: clean(b.fiche, 300),
-            prix_souhaite: clean(b.prix, 10).replace(/[^\d]/g, ''),
-            etat,
-            mecanique: { ok: 'Roule, aucun souci', soucis: 'Roule, avec des soucis mécaniques', panne: 'Ne roule plus (en panne)', accident: 'Accidentée' }[b.mecanique] || '',
-            controle_technique: { oui: 'À jour', non: 'Pas à jour', nsp: 'Ne sait pas' }[b.ct] || '',
-            carrosserie: { tbe: 'Très bon état', rayures: 'Quelques rayures ou petits chocs', abimee: 'Abîmée' }[b.carrosserie] || '',
-            delai: { vite: 'Le plus vite possible', mois: 'Dans le mois', '3mois': 'Dans les 3 mois', info: 'Se renseigne' }[b.delai] || '',
-            projet_achat: { oui: 'Oui, prévoit d\'acheter', deja: 'Déjà acheté ou commandé', non: 'Non' }[b.achat] || '',
-            prenom: clean(b.prenom, 60),
-            nom: clean(b.nom, 80),
-            whatsapp_ok: b.whatsapp === 'oui',
-            titulaire: ['oui', 'non'].includes(b.titulaire) ? b.titulaire : '',
-            nom_titulaire: clean(b.nomTitulaire, 80),
-            date_certificat: clean(b.dateCertificat, 10),
-            numero_formule: clean(b.numeroFormule, 14).toUpperCase().replace(/[^A-Z0-9]/g, ''),
-            consent_histovec: b.consentHistovec === 'oui',
-            telephone: phone.display,
-            email: clean(b.email, 120),
-            code_postal: clean(b.codePostal, 5).replace(/[^\d]/g, ''),
-            ville: clean(b.ville, 80),
-            source: clean(b.source, 80),
-            page: clean(b.page, 200),
-            provenance: clean(b.provenance, 300),
-            photos: req.files ? req.files.map(f => f.filename) : [],
-            createdAt: new Date().toISOString()
-        };
+        const draftId = /^[0-9a-f-]{36}$/.test(String(b.draftId || '')) ? b.draftId : null;
+        const d = construireDemande(b, draftId || uuidv4());
+        if (d.type === 'estimation' && !d.vehicule) return res.status(400).json({ error: 'Indiquez la marque et le modèle.', field: 'vehicule' });
+        if (draftId) brouillons.delete(draftId);
+        terminees.set(d.id, { demande: d, t: Date.now() });
 
         const demandes = readJSON('demandes.json');
-        demandes.unshift(demande);
+        demandes.unshift({ ...d, statut: 'nouvelle' });
         writeJSON('demandes.json', demandes);
 
-        // Toutes les informations renvoyées par l'API plaque (jamais stockées, seulement envoyées).
-        let apiBrut = null;
-        if (demande.plaque) { try { apiBrut = await fichePlaque.ficheComplete(demande.plaque); } catch (e) { apiBrut = null; } }
-
-        const attachments = (req.files || []).map((file, i) => ({ filename: `photo_${i + 1}${path.extname(file.originalname)}`, path: file.path }));
-        const row = (label, value) => value ? `<tr><td style="padding:6px 12px 6px 0;color:#6F6B64;white-space:nowrap;vertical-align:top">${label}</td><td style="padding:6px 0;color:#0D1B2A;font-weight:600">${value}</td></tr>` : '';
-        const idfCp = /^(75|77|78|91|92|93|94|95)/.test(demande.code_postal);
-        const emailHtml = `<!DOCTYPE html><html><body style="margin:0;background:#F5F1E8;font-family:Arial,Helvetica,sans-serif">
-<div style="max-width:560px;margin:0 auto;padding:20px">
-  <div style="background:#0D2541;color:#fff;padding:18px 22px;border-radius:10px 10px 0 0">
-    <div style="font-size:13px;letter-spacing:1px;color:#D4B26A">LUNICAR · ${type === 'rappel' ? 'DEMANDE DE RAPPEL' : 'DEMANDE D\'ESTIMATION'}</div>
-    <div style="font-size:22px;font-weight:700;margin-top:6px">${esc([demande.prenom, demande.nom].filter(Boolean).join(' ') || 'Sans nom')} · <a href="tel:+${phone.intl}" style="color:#fff">${phone.display}</a></div>
-  </div>
-  <div style="background:#fff;padding:20px 22px;border-radius:0 0 10px 10px">
-    <p style="margin:0 0 16px"><a href="tel:+${phone.intl}" style="display:inline-block;background:#B8923A;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px">Appeler ${phone.display}</a>
-    &nbsp; ${demande.whatsapp_ok ? `<a href="https://wa.me/${phone.intl}" style="color:#0D2541;font-weight:700">WhatsApp ✓ accepté</a>` : '<span style="color:#9C978E">WhatsApp non autorisé</span>'}</p>
-    <table style="border-collapse:collapse;font-size:15px;width:100%">
-      ${row('Véhicule', esc(demande.vehicule))}
-      ${row('Année', esc(demande.annee))}
-      ${row('Kilométrage', demande.kilometrage ? `${Number(demande.kilometrage).toLocaleString('fr-FR')} km` : '')}
-      ${row('Prix souhaité', demande.prix_souhaite ? `${Number(demande.prix_souhaite).toLocaleString('fr-FR')} €` : '')}
-      ${row('Plaque', esc(demande.plaque) + (demande.plaque_datation ? `<br><span style="font-weight:400;color:#6F6B64">${esc(demande.plaque_datation)}</span>` : ''))}
-      ${row('Fiche plaque', esc(demande.fiche_confirmee))}
-      ${row('VIN', apiBrut && apiBrut.vin ? `<span style="font-family:monospace">${esc(apiBrut.vin)}</span>` : '')}
-      ${row('État mécanique', esc(demande.mecanique || demande.etat.join(', ')))}
-      ${row('Carrosserie', esc(demande.carrosserie))}
-      ${row('Contrôle technique', esc(demande.controle_technique))}
-      ${row('Vendre quand', esc(demande.delai))}
-      ${row('Autre voiture', esc(demande.projet_achat))}
-      ${row('Ville', [demande.code_postal, demande.ville].filter(Boolean).map(esc).join(' ') + (idfCp ? ' · Île-de-France' : ''))}
-      ${row('E-mail', demande.email ? `<a href="mailto:${esc(demande.email)}">${esc(demande.email)}</a>` : '')}
-      ${row('Page', esc(demande.page))}
-      ${row('Provenance', esc(demande.provenance))}
-      ${row('Photos', attachments.length ? `${attachments.length} en pièce jointe` : '')}
-    </table>
-    ${(demande.titulaire || demande.numero_formule || demande.nom_titulaire) ? `<div style="margin-top:16px;padding:14px 16px;background:#F5F1E8;border-radius:8px">
-      <div style="font-weight:700;color:#0D2541;margin-bottom:6px">Carte grise</div>
-      <table style="border-collapse:collapse;font-size:14px">
-        ${row('Titulaire de la carte grise', demande.titulaire ? (demande.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : '')}
-        ${row('Nom du titulaire', esc(demande.nom_titulaire))}
-        ${row('N° du certificat', esc(demande.numero_formule))}
-      </table>
-    </div>` : ''}
-    ${apiBrut ? apiSection(apiBrut) : ''}
-    <p style="margin:16px 0 0;font-size:13px;color:#6F6B64">Historique officiel : demander au vendeur son rapport <a href="https://histovec.interieur.gouv.fr">Histovec</a> (gratuit, généré avec sa carte grise).</p>
-    <p style="margin:18px 0 0;font-size:12px;color:#9C978E">Réf. ${ref} · reçue le ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}</p>
-  </div>
-</div></body></html>`;
-
-        let emailed = false;
-        try {
-            const result = await sendEmail({
-                subject: `${type === 'rappel' ? '📞 Rappel' : '🚗 Estimation'} ${demande.code_postal || ''} · ${demande.vehicule || demande.prenom} ${demande.annee || ''} · ${phone.display}`.replace(/\s+/g, ' '),
-                html: emailHtml,
-                replyTo: demande.email || undefined,
-                attachments
-            });
-            emailed = !result.simulated;
-        } catch (emailError) {
-            console.error('❌ Erreur envoi email:', emailError.message);
-        }
-        // Le disque de Render est effacé à chaque déploiement : sans e-mail, la demande
-        // ne survit que dans les journaux. On la journalise donc toujours en entier.
-        console.log(`${emailed ? '✅' : '🚨 NON ENVOYÉE PAR E-MAIL'} Demande ${ref}: ${JSON.stringify(demande)}`);
-
-        res.json({ success: true, id: referenceId });
+        await envoyerDemande(d);
+        res.json({ success: true, id: d.id });
     } catch (error) {
         console.error('Erreur:', error);
         res.status(500).json({ error: 'Erreur lors de l\'enregistrement' });
     }
 });
 
-// ============ API CONTACT ============
+// Photos envoyées après la demande (étape facultative) : un e-mail avec les pièces jointes.
+app.post('/api/reprise/:id/photos', upload.array('photos', 12), async (req, res) => {
+    const files = req.files || [];
+    const cleanup = () => files.forEach(f => fs.unlink(f.path, () => {}));
+    try {
+        const id = String(req.params.id || '');
+        const fini = terminees.get(id);
+        if (!fini || !files.length) { cleanup(); return res.status(fini ? 400 : 404).json({ error: fini ? 'Aucune photo reçue.' : 'Demande introuvable, envoyez vos photos à contact@lunicar.fr.' }); }
+        if (tooManySends(`photos:${req.ip || ''}`, 6)) { cleanup(); return res.status(429).json({ error: 'Trop d\'envois.' }); }
+        const d = fini.demande;
+        const ref = id.substring(0, 8).toUpperCase();
+        await sendEmail({
+            subject: `📷 ${files.length} photo${files.length > 1 ? 's' : ''} · réf. ${ref} · ${d.vehicule} · ${d.telephone}`,
+            html: `<div style="font-family:Arial,sans-serif;max-width:560px"><p>Photos de la demande <strong>${esc(ref)}</strong> : ${esc([d.prenom, d.nom].filter(Boolean).join(' '))}, ${esc(d.vehicule)} ${esc(d.annee)}, ${esc(d.telephone)}.</p></div>`,
+            replyTo: d.email || undefined,
+            attachments: files.map((f, i) => ({ filename: `${ref}_photo_${i + 1}${path.extname(f.originalname) || '.jpg'}`, path: f.path }))
+        });
+        console.log(`📷 ${files.length} photo(s) reçues pour ${ref}`);
+        res.json({ success: true });
+    } catch (e) {
+        console.error('Erreur photos:', e.message);
+        res.status(500).json({ error: 'Envoi impossible, réessayez ou écrivez à contact@lunicar.fr.' });
+    } finally {
+        setTimeout(cleanup, 60 * 1000);
+    }
+});
 
 app.post('/api/contact', async (req, res) => {
     try {

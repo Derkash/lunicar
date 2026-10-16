@@ -108,6 +108,11 @@
 
     if (form) {
         const qs = Array.from(form.querySelectorAll('.q'));
+        // Identifiant du brouillon : relie les sauvegardes intermédiaires à la demande finale.
+        const draftId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+            : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => { const r = Math.random() * 16 | 0; return (c === 'x' ? r : (r & 3 | 8)).toString(16); });
+        let envoyee = false;
+        let etape = 'vehicule';
         const errorBox = form.querySelector('.lead-error');
         const meterBar = form.querySelector('.lead-meter-bar i');
         const meterPct = form.querySelector('.lead-meter-pct');
@@ -152,6 +157,7 @@
         const next = q => {
             if (!valid(q)) return;
             q.classList.add('done');
+            etape = q.dataset.q;
             let i = qs.indexOf(q);
             let n = qs[i + 1];
             if (n === qCarrosserie && skipCarrosserie()) { n.classList.add('done', 'on'); n = qs[i + 2]; }
@@ -165,6 +171,7 @@
                 }, 60);
             }
             progress();
+            sauverBrouillon();
         };
 
         qs.forEach(q => {
@@ -306,6 +313,31 @@
             prix.value = prix.value.replace(/\D/g, '').slice(0, 6).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
         });
 
+        const radio = name => (form.querySelector(`input[name="${name}"]:checked`) || {}).value || '';
+        const collecte = () => {
+            const f = form.elements;
+            return {
+                type: 'estimation', draftId, etape,
+                plaque: f.plaque.value, vehicule: f.vehicule.value, annee: f.annee.value, kilometrage: f.kilometrage.value,
+                prix: f.prix.value, fiche: f.fiche.value,
+                mecanique: radio('mecanique'), carrosserie: radio('carrosserie'), ct: radio('ct'), delai: radio('delai'), achat: radio('achat'),
+                prenom: f.prenom.value, nom: f.nom.value, telephone: f.telephone.value, codePostal: f.codePostal.value, ville: f.ville.value,
+                titulaire: radio('titulaire'), nomTitulaire: radio('titulaire') === 'non' ? f.nomTitulaire.value : '', numeroFormule: f.numeroFormule.value,
+                email: f.email.value, site_web: f.site_web.value,
+                source: form.dataset.source, page: location.pathname, provenance: provenance()
+            };
+        };
+        // Dès que le téléphone est connu, l'état du formulaire est gardé côté serveur :
+        // une demande quittée en cours de route vous parvient comme « abandonnée ».
+        function sauverBrouillon(beacon) {
+            if (envoyee || !phoneOk(form.elements.telephone.value)) return;
+            const body = JSON.stringify(collecte());
+            if (beacon && navigator.sendBeacon) { navigator.sendBeacon('/api/reprise/brouillon', new Blob([body], { type: 'text/plain' })); return; }
+            fetch('/api/reprise/brouillon', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, keepalive: true }).catch(() => {});
+        }
+        document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') sauverBrouillon(true); });
+        window.addEventListener('pagehide', () => sauverBrouillon(true));
+
         form.addEventListener('submit', async e => {
             e.preventDefault();
             // Toutes les questions obligatoires doivent avoir été franchies.
@@ -317,40 +349,14 @@
             btn.textContent = 'Envoi…';
             errorBox.hidden = true;
             const f = form.elements;
-            const radio = name => (form.querySelector(`input[name="${name}"]:checked`) || {}).value || '';
             try {
-                const out = await post('/api/reprise', {
-                    type: 'estimation',
-                    plaque: f.plaque.value,
-                    vehicule: f.vehicule.value,
-                    annee: f.annee.value,
-                    kilometrage: f.kilometrage.value,
-                    prix: f.prix.value,
-                    fiche: f.fiche.value,
-                    mecanique: radio('mecanique'),
-                    carrosserie: radio('carrosserie'),
-                    ct: radio('ct'),
-                    delai: radio('delai'),
-                    achat: radio('achat'),
-                    prenom: f.prenom.value,
-                    nom: f.nom.value,
-                    telephone: f.telephone.value,
-                    codePostal: f.codePostal.value,
-                    ville: f.ville.value,
-                    titulaire: radio('titulaire'),
-                    nomTitulaire: radio('titulaire') === 'non' ? f.nomTitulaire.value : '',
-                    numeroFormule: f.numeroFormule.value,
-                    email: f.email.value,
-                    site_web: f.site_web.value,
-                    source: form.dataset.source,
-                    page: location.pathname,
-                    provenance: provenance()
-                });
+                const out = await post('/api/reprise', collecte());
+                envoyee = true;
                 form.querySelector('[data-ref]').textContent = String(out.id).slice(0, 8).toUpperCase();
                 form.dataset.demande = out.id;
                 qs.forEach(q => { q.hidden = true; });
-                form.querySelector('.lead-done').hidden = false;
-                meter(100);
+                form.querySelector('.lead-photos').hidden = false;
+                meter(95);
                 form.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 track('generate_lead', { type: 'estimation', page: location.pathname, source: form.dataset.source });
             } catch (err) {
@@ -363,30 +369,72 @@
         });
     }
 
-    // ---------- Lien Histovec transmis après la demande ----------
-    const hv = document.getElementById('histovecForm');
-    if (hv && form) {
-        const btn = hv.querySelector('[data-histovec]');
-        const input = hv.querySelector('input[name="lien"]');
-        const msg = hv.querySelector('.callback-msg');
-        btn.addEventListener('click', async () => {
-            const lien = input.value.trim();
-            if (!lien) { markInvalid(input, true); return; }
-            btn.disabled = true;
-            try {
-                await post('/api/reprise/histovec', { id: form.dataset.demande || '', lien });
-                msg.textContent = 'Rapport transmis, merci : il sera joint à votre dossier.';
-                msg.classList.remove('err');
-                input.closest('.field').hidden = true;
-                btn.hidden = true;
-                track('histovec_transmis', { page: location.pathname });
-            } catch (err) {
-                msg.textContent = err.message;
-                msg.classList.add('err');
-                btn.disabled = false;
-            }
-            msg.hidden = false;
+    // ---------- Photos après la demande (facultatif) ----------
+    const photosBox = form && form.querySelector('.lead-photos');
+    if (photosBox) {
+        const grid = photosBox.querySelector('.photo-grid');
+        const sendBtn = photosBox.querySelector('[data-photos-send]');
+        const err = photosBox.querySelector('.photo-error');
+        const fichiers = [];
+        const terminer = () => {
+            photosBox.hidden = true;
+            form.querySelector('.lead-done').hidden = false;
+            const bar = form.querySelector('.lead-meter-bar i');
+            bar.style.width = '100%';
+            form.querySelector('.lead-meter-pct').textContent = '100 %';
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+        // Réduit chaque photo (1600 px max, JPEG) : envoi rapide même en 4G.
+        const reduire = file => new Promise(resolve => {
+            const img = new Image();
+            img.onload = () => {
+                const k = Math.min(1, 1600 / Math.max(img.width, img.height));
+                const c = document.createElement('canvas');
+                c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+                c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+                c.toBlob(b => { URL.revokeObjectURL(img.src); resolve(b || file); }, 'image/jpeg', 0.82);
+            };
+            img.onerror = () => resolve(file);
+            img.src = URL.createObjectURL(file);
         });
+        const afficher = () => {
+            grid.innerHTML = '';
+            fichiers.forEach((f, i) => {
+                const li = document.createElement('li');
+                const im = document.createElement('img');
+                im.src = URL.createObjectURL(f); im.alt = 'Photo ' + (i + 1);
+                const del = document.createElement('button');
+                del.type = 'button'; del.className = 'photo-del'; del.setAttribute('aria-label', 'Retirer la photo ' + (i + 1)); del.textContent = '×';
+                del.addEventListener('click', () => { fichiers.splice(i, 1); afficher(); });
+                li.append(im, del); grid.append(li);
+            });
+            sendBtn.disabled = !fichiers.length;
+        };
+        photosBox.querySelectorAll('[data-photos]').forEach(input => input.addEventListener('change', async () => {
+            for (const f of Array.from(input.files || []).slice(0, 12 - fichiers.length)) fichiers.push(await reduire(f));
+            input.value = '';
+            afficher();
+        }));
+        sendBtn.addEventListener('click', async () => {
+            if (!fichiers.length) return;
+            sendBtn.disabled = true;
+            const label = sendBtn.innerHTML;
+            sendBtn.textContent = 'Envoi des photos…';
+            err.hidden = true;
+            const fd = new FormData();
+            fichiers.forEach((f, i) => fd.append('photos', f, 'photo-' + (i + 1) + '.jpg'));
+            try {
+                const r = await fetch('/api/reprise/' + encodeURIComponent(form.dataset.demande) + '/photos', { method: 'POST', body: fd });
+                const j = await r.json().catch(() => ({}));
+                if (!r.ok || !j.success) throw new Error(j.error || 'Envoi impossible, réessayez.');
+                track('photos_envoyees', { nombre: fichiers.length });
+                terminer();
+            } catch (e) {
+                err.textContent = e.message; err.hidden = false;
+                sendBtn.disabled = false; sendBtn.innerHTML = label;
+            }
+        });
+        photosBox.querySelector('[data-photos-skip]').addEventListener('click', terminer);
     }
 
     // ---------- Rappel et contact : même mécanique ----------
