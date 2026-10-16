@@ -311,6 +311,41 @@ app.post('/api/reprise/histovec', async (req, res) => {
 
 const ETAT_LABELS = { panne: 'En panne / ne roule plus', accident: 'Accidentée', ct: 'Sans CT valide' };
 
+// Libellés des champs de l'API plaque ; les champs inconnus gardent leur nom brut.
+const API_LABELS = {
+    marque: 'Marque', modele: 'Modèle', modele_en: 'Modèle (court)', version: 'Version', sra_commercial: 'Version commerciale',
+    date1erCir_fr: '1re mise en circulation', debut_modele: 'Début du modèle', fin_modele: 'Fin du modèle',
+    energieNGC: 'Énergie', type_moteur: 'Type de moteur', code_moteur: 'Code moteur', puisFisc: 'Puissance fiscale (CV)',
+    puisFiscReelCH: 'Puissance (ch)', puisFiscReelKW: 'Puissance (kW)', ccm: 'Cylindrée', capacite_litres: 'Cylindrée (L)',
+    cylindres: 'Cylindres', valves: 'Soupapes', systeme_alimentation: 'Alimentation', type_compression: 'Compression',
+    boite_vitesse: 'Boîte de vitesses', code_boite_vitesse: 'Code boîte', type_transmission: 'Transmission', propulsion: 'Propulsion',
+    carrosserieCG: 'Carrosserie (carte grise)', carrosserie: 'Carrosserie', nb_portes: 'Portes', nr_passagers: 'Places',
+    genreVCGNGC: 'Genre', couleur: 'Couleur', co2: 'CO2 (g/km)', poids: 'Poids', ptac: 'PTAC',
+    longueur: 'Longueur', largeur: 'Largeur', hauteur: 'Hauteur', empattement: 'Empattement',
+    vin: 'VIN', numero_serie: 'N° de série', type_mine: 'Type mine', cnit: 'CNIT', variante: 'Variante',
+    codes_platforme: 'Plateforme', collection: 'Collection', k_type: 'K-Type', sra_id: 'SRA id', sra_group: 'SRA groupe',
+    tecdoc_manu_id: 'TecDoc constructeur', tecdoc_model_id: 'TecDoc modèle', tecdoc_car_id: 'TecDoc véhicule',
+    tecdoc_vehicules_compatible: 'TecDoc compatibles', pneus: 'Pneus d\'origine', immat: 'Immatriculation', pays: 'Pays',
+    date1erCir_us: '1re mise en circulation (ISO)', energie: 'Code énergie', genreVCG: 'Code genre',
+    code_carrosserie: 'Code carrosserie', code_type_transmission: 'Code transmission', code_systeme_alimentation: 'Code alimentation'
+};
+const API_SKIP = ['erreur', 'logo_marque', 'photo_modele', 'liste_sra_commercial'];
+
+function apiSection(d) {
+    const fmt = v => Array.isArray(v) ? v.map(x => (x && typeof x === 'object') ? (x.name || JSON.stringify(x)) : x).join(' · ')
+        : (v && typeof v === 'object') ? JSON.stringify(v) : String(v);
+    const known = Object.keys(API_LABELS).filter(k => k in d);
+    const keys = [...known, ...Object.keys(d).filter(k => !(k in API_LABELS))]
+        .filter(k => !API_SKIP.includes(k) && d[k] !== null && d[k] !== '' && !(Array.isArray(d[k]) && !d[k].length));
+    const rows = keys.map(k => `<tr><td style="padding:4px 12px 4px 0;color:#6F6B64;white-space:nowrap;vertical-align:top">${esc(API_LABELS[k] || k)}</td><td style="padding:4px 0;color:#0D1B2A">${esc(fmt(d[k]))}</td></tr>`).join('');
+    const photo = typeof d.photo_modele === 'string' && /^https:\/\//.test(d.photo_modele) ? `<img src="${esc(d.photo_modele)}" alt="" style="max-width:220px;border-radius:6px;margin:0 0 10px">` : '';
+    return `<div style="margin-top:16px;padding:14px 16px;background:#F5F1E8;border-radius:8px">
+      <div style="font-weight:700;color:#0D2541;margin-bottom:8px">Fiche véhicule (API plaque)</div>
+      ${photo}
+      <table style="border-collapse:collapse;font-size:13px;width:100%">${rows}</table>
+    </div>`;
+}
+
 app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
     try {
         const b = req.body || {};
@@ -345,7 +380,9 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             plaque_datation: plaqueInfo && plaqueInfo.libelle ? plaqueInfo.libelle : '',
             fiche_confirmee: clean(b.fiche, 300),
             prix_souhaite: clean(b.prix, 10).replace(/[^\d]/g, ''),
-            etat,
+            etat: b.roule === 'oui' ? ['Roule, aucun souci signalé'] : etat,
+            delai: { vite: 'Le plus vite possible', mois: 'Dans le mois', '3mois': 'Dans les 3 mois', info: 'Se renseigne' }[b.delai] || '',
+            projet_achat: { oui: 'Oui, prévoit d\'acheter', deja: 'Déjà acheté ou commandé', non: 'Non' }[b.achat] || '',
             prenom: clean(b.prenom, 60),
             nom: clean(b.nom, 80),
             whatsapp_ok: b.whatsapp === 'oui',
@@ -368,6 +405,10 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
         demandes.unshift(demande);
         writeJSON('demandes.json', demandes);
 
+        // Toutes les informations renvoyées par l'API plaque (jamais stockées, seulement envoyées).
+        let apiBrut = null;
+        if (demande.plaque) { try { apiBrut = await fichePlaque.ficheComplete(demande.plaque); } catch (e) { apiBrut = null; } }
+
         const attachments = (req.files || []).map((file, i) => ({ filename: `photo_${i + 1}${path.extname(file.originalname)}`, path: file.path }));
         const row = (label, value) => value ? `<tr><td style="padding:6px 12px 6px 0;color:#6F6B64;white-space:nowrap;vertical-align:top">${label}</td><td style="padding:6px 0;color:#0D1B2A;font-weight:600">${value}</td></tr>` : '';
         const idfCp = /^(75|77|78|91|92|93|94|95)/.test(demande.code_postal);
@@ -387,7 +428,9 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
       ${row('Prix souhaité', demande.prix_souhaite ? `${Number(demande.prix_souhaite).toLocaleString('fr-FR')} €` : '')}
       ${row('Plaque', esc(demande.plaque) + (demande.plaque_datation ? `<br><span style="font-weight:400;color:#6F6B64">${esc(demande.plaque_datation)}</span>` : ''))}
       ${row('Fiche plaque', esc(demande.fiche_confirmee))}
-      ${row('Particularités', esc(etat.join(', ')))}
+      ${row('État', esc(demande.etat.join(', ')))}
+      ${row('Vendre quand', esc(demande.delai))}
+      ${row('Autre voiture', esc(demande.projet_achat))}
       ${row('Code postal', demande.code_postal ? `${esc(demande.code_postal)}${idfCp ? ' · Île-de-France' : ''}` : '')}
       ${row('E-mail', demande.email ? `<a href="mailto:${esc(demande.email)}">${esc(demande.email)}</a>` : '')}
       ${row('Page', esc(demande.page))}
@@ -404,6 +447,7 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
       </table>
       ${demande.consent_histovec ? `<p style="margin:10px 0 0"><a href="https://histovec.interieur.gouv.fr/histovec/proprietaire" style="font-weight:700;color:#0D2541">Ouvrir Histovec (espace propriétaire) →</a></p>` : ''}
     </div>` : ''}
+    ${apiBrut ? apiSection(apiBrut) : ''}
     <p style="margin:16px 0 0;font-size:13px;color:#6F6B64">Historique officiel : demander au vendeur son rapport <a href="https://histovec.interieur.gouv.fr">Histovec</a> (gratuit, généré avec sa carte grise).</p>
     <p style="margin:18px 0 0;font-size:12px;color:#9C978E">Réf. ${ref} · reçue le ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}</p>
   </div>

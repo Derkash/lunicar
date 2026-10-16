@@ -421,6 +421,40 @@ body { padding-bottom: var(--bar-h); }
 #cookieBanner { z-index: 70; }
 
 
+
+/* ---------- Formulaire progressif ---------- */
+.lead-meter { display: flex; align-items: center; gap: 12px; margin: 4px 0 14px; }
+.lead-meter-bar { flex: 1; height: 6px; border-radius: 6px; background: var(--cream-200); overflow: hidden; }
+.lead-meter-bar i { display: block; height: 100%; width: 0; border-radius: 6px; background: linear-gradient(90deg, var(--gold-600), var(--green)); transition: width .45s ease; }
+.lead-meter-pct { font: 700 .9rem/1 var(--font-ui); color: var(--marine-900); min-width: 3.4em; text-align: right; font-variant-numeric: tabular-nums; }
+.q { display: none; padding: 14px 0 16px; border-top: 1px solid var(--line); }
+.q:first-of-type { border-top: 0; padding-top: 4px; }
+.q.on { display: block; animation: stepIn .3s ease both; }
+.q-label { display: block; font: 600 1.06rem/1.3 var(--font-ui); color: var(--marine-900); margin: 0 0 10px; }
+.q-label em { font-style: normal; font-weight: 400; font-size: .86rem; color: var(--ink-400); }
+.q.done .q-label::before { content: "✓"; display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 8px; border-radius: 50%; background: var(--green); color: var(--white); font-size: .72rem; vertical-align: 1px; }
+.q.done [data-ok], .q.done .q-skip { display: none; }
+.q-input, .q .money { width: 100%; }
+.q-input { font: 500 1.05rem/1.3 var(--font-ui); color: var(--ink-900); background: var(--cream-50); border: 1.5px solid var(--line); border-radius: var(--radius-sm); padding: 13px 14px; appearance: none; -webkit-appearance: none; }
+select.q-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230D2541' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px; padding-right: 36px; }
+.q-input:focus { outline: none; border-color: var(--marine-600); background: var(--white); box-shadow: 0 0 0 4px rgba(36, 80, 127, .12); }
+.q .money input:focus-visible { outline: none; }
+.q .money input { width: 100%; font: 500 1.05rem/1.3 var(--font-ui); padding: 13px 14px; }
+.q .btn-block { margin-top: 12px; }
+.q .chips { margin-top: 2px; }
+.q-skip { display: block; margin: 10px auto 0; background: none; border: 0; font: 500 .9rem var(--font-ui); color: var(--ink-400); text-decoration: underline; cursor: pointer; }
+.q-warn { margin: 10px 0 0; padding: 12px 14px; border-radius: var(--radius-sm); background: #E8F0F8; border: 1px solid #BFD3E8; color: var(--marine-800); font-size: .92rem; }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.choices-3 { grid-template-columns: repeat(3, 1fr); }
+.choice { position: relative; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.choice span { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 52px; padding: 10px 12px; border-radius: var(--radius-sm); border: 1.5px solid var(--line); background: var(--cream-50); font-weight: 600; font-size: .95rem; color: var(--ink-600); transition: all .15s; }
+.choice:hover span { border-color: var(--marine-600); }
+.choice input:checked + span { background: var(--white); border-color: var(--marine-900); box-shadow: inset 0 0 0 1px var(--marine-900); color: var(--marine-900); }
+.choice input:focus-visible + span { outline: 3px solid var(--gold-600); outline-offset: 2px; }
+.q .field-row { margin-bottom: 0; }
+.q .field { margin-bottom: 6px; }
+
 /* ---------- Accueil : vitrine (texte + plaque à gauche, la voiture en grand à droite) ---------- */
 .showcase { display: grid; background: var(--marine-900); color: var(--white); position: relative; overflow: hidden; }
 .showcase-text { order: 2; padding: 30px 0 40px; background:

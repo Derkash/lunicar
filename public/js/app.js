@@ -100,30 +100,86 @@
             if (qp.value) {
                 form.elements.plaque.value = qp.value;
                 form.elements.plaque.dispatchEvent(new Event('input', { bubbles: true }));
+                form.querySelector('.q[data-q="plaque"] [data-ok]').click();
+            } else {
+                document.getElementById('estimation').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(() => form.elements.plaque.focus({ preventScroll: true }), 450);
             }
-            document.getElementById('estimation').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            setTimeout(() => (qp.value ? form.elements.vehicule : form.elements.plaque).focus({ preventScroll: true }), 450);
         });
     }
 
     if (form) {
-        const steps = form.querySelectorAll('.lead-step');
-        const dots = form.querySelectorAll('.lead-progress span');
+        const qs = Array.from(form.querySelectorAll('.q'));
         const errorBox = form.querySelector('.lead-error');
+        const meterBar = form.querySelector('.lead-meter-bar i');
+        const meterPct = form.querySelector('.lead-meter-pct');
         let started = false;
 
-        const show = name => {
-            steps.forEach(s => s.classList.toggle('on', s.dataset.step === String(name)));
-            dots.forEach((d, i) => d.classList.toggle('on', name === 'done' || i < Number(name)));
-            if (name === 'done') form.querySelector('.lead-head').hidden = true;
-            const top = form.getBoundingClientRect().top;
-            if (top < 70) window.scrollBy({ top: top - 84, behavior: 'smooth' });
+        // Jauge : part des questions déjà franchies.
+        const meter = pct => {
+            meterBar.style.width = pct + '%';
+            meterPct.textContent = pct + ' %';
         };
+        const progress = () => meter(Math.round(100 * qs.filter(q => q.classList.contains('done')).length / qs.length));
+
+        // Valide les champs obligatoires d'une question ; la première erreur prend le focus.
+        const valid = q => {
+            let ok = true; let first = null;
+            q.querySelectorAll('[required]').forEach(input => {
+                let bad = !input.value.trim();
+                if (!bad && input.name === 'telephone') bad = !phoneOk(input.value);
+                if (!bad && input.name === 'codePostal') bad = !/^\d{5}$/.test(input.value.trim());
+                if (!markInvalid(input, bad)) { ok = false; first = first || input; }
+            });
+            if (first) first.focus();
+            return ok;
+        };
+
+        // Révèle la question suivante sous celle qui vient d'être remplie.
+        const next = q => {
+            if (!valid(q)) return;
+            q.classList.add('done');
+            const i = qs.indexOf(q);
+            const n = qs[i + 1];
+            if (n && !n.classList.contains('on')) {
+                n.classList.add('on');
+                track('lead_question', { question: n.dataset.q, page: location.pathname });
+                const field = n.querySelector('input:not([type=hidden]):not([type=checkbox]):not([type=radio]), select');
+                setTimeout(() => {
+                    n.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    if (field && !field.value) field.focus({ preventScroll: true });
+                }, 60);
+            }
+            progress();
+        };
+
+        qs.forEach(q => {
+            q.querySelectorAll('[data-ok]').forEach(b => b.addEventListener('click', () => next(q)));
+            q.querySelectorAll('[data-skip]').forEach(b => b.addEventListener('click', () => {
+                q.querySelectorAll('input[name=plaque], input[name=prix]').forEach(i => { i.value = ''; });
+                next(q);
+            }));
+            // Choix uniques et listes : on avance dès la réponse.
+            q.querySelectorAll('input[type=radio], select').forEach(el => el.addEventListener('change', () => next(q)));
+            // Entrée = Continuer.
+            q.addEventListener('keydown', e => {
+                if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'submit' && q.dataset.q !== 'fin') {
+                    e.preventDefault();
+                    next(q);
+                }
+            });
+        });
 
         form.addEventListener('input', e => {
             if (!started) { started = true; track('lead_form_start', { page: location.pathname }); }
             markInvalid(e.target, false);
         });
+
+        // État : « aucun souci » exclut les autres cases, et inversement.
+        const etatOk = form.elements.etatOk;
+        const etats = Array.from(form.querySelectorAll('input[name="etat"]'));
+        etatOk.addEventListener('change', () => { if (etatOk.checked) etats.forEach(c => { c.checked = false; }); });
+        etats.forEach(c => c.addEventListener('change', () => { if (c.checked) etatOk.checked = false; }));
 
         // Plaque : majuscules et tirets au format AB-123-CD.
         const plaque = form.elements.plaque;
@@ -133,7 +189,7 @@
             plaque.value = v;
         });
 
-        // Plaque reconnue : datation immédiate (décodeur local), puis fiche SIV si le serveur en a une.
+        // Plaque reconnue : datation immédiate (décodeur local), puis fiche véhicule si le serveur en a une.
         const info = form.querySelector('#plateInfo');
         let derniere = '';
         let anneeAuto = false;
@@ -166,11 +222,16 @@
         plaque.addEventListener('input', lirePlaque);
         form.elements.annee.addEventListener('change', () => { anneeAuto = false; });
 
-        // Kilométrage : espaces de milliers pendant la saisie.
+        // Kilométrage : espaces de milliers, alerte si incohérent avec l'année (sans bloquer).
         const km = form.elements.kilometrage;
+        const warn = form.querySelector('.q-warn');
         km.addEventListener('input', () => {
             const d = km.value.replace(/\D/g, '').slice(0, 7);
             km.value = d.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+            const kms = parseInt(d, 10) || 0;
+            const an = parseInt(form.elements.annee.value, 10);
+            const age = an ? Math.max(0.5, new Date().getFullYear() - an + 0.5) : 0;
+            warn.hidden = !(kms && age && (kms / age > 45000 || (age > 3 && kms / age < 1500)));
         });
 
         // Date du certificat : JJ/MM/AAAA pendant la saisie ; n° de formule en majuscules.
@@ -192,37 +253,18 @@
             prix.value = prix.value.replace(/\D/g, '').slice(0, 6).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
         });
 
-        const validate = (stepName) => {
-            const step = form.querySelector(`.lead-step[data-step="${stepName}"]`);
-            let ok = true;
-            let first = null;
-            step.querySelectorAll('[required]').forEach(input => {
-                let bad = !input.value.trim();
-                if (!bad && input.name === 'telephone') bad = !phoneOk(input.value);
-                if (!bad && input.name === 'codePostal') bad = !/^\d{5}$/.test(input.value.trim());
-                if (!markInvalid(input, bad)) { ok = false; first = first || input; }
-            });
-            if (first) first.focus();
-            return ok;
-        };
-
-        form.querySelector('[data-next]').addEventListener('click', () => {
-            if (!validate(1)) return;
-            track('form_step2', { page: location.pathname });
-            show(2);
-            form.elements.prenom.focus({ preventScroll: true });
-        });
-        form.querySelector('[data-prev]').addEventListener('click', () => show(1));
-
         form.addEventListener('submit', async e => {
             e.preventDefault();
-            if (!validate(2)) return;
+            // Toutes les questions obligatoires doivent avoir été franchies.
+            const missing = qs.find(q => q.dataset.q !== 'fin' && (!q.classList.contains('on') || !valid(q)));
+            if (missing) { missing.classList.add('on'); missing.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
             const btn = form.querySelector('button[type="submit"]');
             const label = btn.textContent;
             btn.disabled = true;
             btn.textContent = 'Envoi…';
             errorBox.hidden = true;
             const f = form.elements;
+            const radio = name => (form.querySelector(`input[name="${name}"]:checked`) || {}).value || '';
             try {
                 const out = await post('/api/reprise', {
                     type: 'estimation',
@@ -232,13 +274,16 @@
                     kilometrage: f.kilometrage.value,
                     prix: f.prix.value,
                     fiche: f.fiche.value,
-                    etat: Array.from(form.querySelectorAll('input[name="etat"]:checked')).map(i => i.value),
+                    etat: etats.filter(i => i.checked).map(i => i.value),
+                    roule: f.etatOk.checked ? 'oui' : '',
+                    delai: radio('delai'),
+                    achat: radio('achat'),
                     prenom: f.prenom.value,
                     nom: f.nom.value,
                     telephone: f.telephone.value,
                     codePostal: f.codePostal.value,
                     whatsapp: f.whatsapp.checked ? 'oui' : '',
-                    titulaire: (form.querySelector('input[name="titulaire"]:checked') || {}).value || '',
+                    titulaire: radio('titulaire'),
                     nomTitulaire: f.nomTitulaire.value,
                     dateCertificat: f.dateCertificat.value,
                     numeroFormule: f.numeroFormule.value,
@@ -251,7 +296,10 @@
                 });
                 form.querySelector('[data-ref]').textContent = String(out.id).slice(0, 8).toUpperCase();
                 form.dataset.demande = out.id;
-                show('done');
+                qs.forEach(q => { q.hidden = true; });
+                form.querySelector('.lead-done').hidden = false;
+                meter(100);
+                form.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 track('generate_lead', { type: 'estimation', page: location.pathname, source: form.dataset.source });
             } catch (err) {
                 errorBox.textContent = err.message;
