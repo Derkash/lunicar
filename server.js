@@ -399,7 +399,8 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
             fiche_confirmee: clean(b.fiche, 300),
             prix_souhaite: clean(b.prix, 10).replace(/[^\d]/g, ''),
             etat,
-            mecanique: { ok: 'Roule, aucun souci', soucis: 'Roule, avec des soucis mécaniques', panne: 'Ne roule plus (en panne)', accident: 'Accidentée', ct: 'Sans contrôle technique valide' }[b.mecanique] || '',
+            mecanique: { ok: 'Roule, aucun souci', soucis: 'Roule, avec des soucis mécaniques', panne: 'Ne roule plus (en panne)', accident: 'Accidentée' }[b.mecanique] || '',
+            controle_technique: { oui: 'À jour', non: 'Pas à jour', nsp: 'Ne sait pas' }[b.ct] || '',
             carrosserie: { tbe: 'Très bon état', rayures: 'Quelques rayures ou petits chocs', abimee: 'Abîmée' }[b.carrosserie] || '',
             delai: { vite: 'Le plus vite possible', mois: 'Dans le mois', '3mois': 'Dans les 3 mois', info: 'Se renseigne' }[b.delai] || '',
             projet_achat: { oui: 'Oui, prévoit d\'acheter', deja: 'Déjà acheté ou commandé', non: 'Non' }[b.achat] || '',
@@ -452,6 +453,7 @@ app.post('/api/reprise', upload.array('photos', 10), async (req, res) => {
       ${row('VIN', apiBrut && apiBrut.vin ? `<span style="font-family:monospace">${esc(apiBrut.vin)}</span>` : '')}
       ${row('État mécanique', esc(demande.mecanique || demande.etat.join(', ')))}
       ${row('Carrosserie', esc(demande.carrosserie))}
+      ${row('Contrôle technique', esc(demande.controle_technique))}
       ${row('Vendre quand', esc(demande.delai))}
       ${row('Autre voiture', esc(demande.projet_achat))}
       ${row('Ville', [demande.code_postal, demande.ville].filter(Boolean).map(esc).join(' ') + (idfCp ? ' · Île-de-France' : ''))}

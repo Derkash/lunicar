@@ -329,6 +329,7 @@
                     fiche: f.fiche.value,
                     mecanique: radio('mecanique'),
                     carrosserie: radio('carrosserie'),
+                    ct: radio('ct'),
                     delai: radio('delai'),
                     achat: radio('achat'),
                     prenom: f.prenom.value,
