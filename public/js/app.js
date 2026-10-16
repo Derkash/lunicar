@@ -196,7 +196,14 @@
             const P = window.LunicarPlaque;
             if (!P) return;
             const a = P.analyser(plaque.value);
-            if (a.format === 'inconnu' || a.plaque === derniere) { if (a.format === 'inconnu') showInfo(''); return; }
+            if (a.format === 'inconnu' || a.plaque === derniere) {
+                if (a.format === 'inconnu') {
+                    // Plaque complète mais illisible : on le dit, la saisie manuelle reste possible.
+                    const brut = plaque.value.replace(/[^A-Z0-9]/gi, '');
+                    showInfo(brut.length >= 7 ? 'Format de plaque non reconnu. Vérifiez-la, ou renseignez simplement la marque et le modèle ci-dessous.' : '', true);
+                }
+                return;
+            }
             derniere = a.plaque;
             showInfo(a.libelle, a.format !== 'siv');
             const sel = form.elements.annee;
@@ -205,12 +212,16 @@
             if (a.format === 'siv' || a.format === 'fni') showInfo(a.libelle + ' · recherche des caractéristiques du véhicule…', true);
             try {
                 const r = await fetch('/api/vehicule/' + encodeURIComponent(a.plaque)).then(x => x.ok ? x.json() : null);
-                if (derniere === a.plaque && !(r && r.fiche)) showInfo(a.libelle, a.format !== 'siv');
+                if (derniere === a.plaque && !(r && r.fiche)) {
+                    showInfo(a.libelle + '. Véhicule non trouvé automatiquement : renseignez la marque, le modèle et le kilométrage ci-dessous.', true);
+                    form.elements.vehicule.focus({ preventScroll: true });
+                }
                 const f = r && r.fiche;
                 if (!f || derniere !== a.plaque) return;
                 const nom = [f.marque, f.modele, f.version].filter(Boolean).join(' ');
                 const veh = form.elements.vehicule;
-                if (nom && !veh.value.trim()) veh.value = nom;
+                // Remplace un modèle déjà rempli par une plaque précédente, jamais une saisie manuelle.
+                if (nom && (!veh.value.trim() || veh.dataset.auto === '1')) { veh.value = nom; veh.dataset.auto = '1'; }
                 if (f.annee && (!sel.value || anneeAuto)) sel.value = f.annee;
                 const det = [nom, f.energie, f.boite, f.puissanceFiscale ? f.puissanceFiscale + ' CV' : '', f.miseEnCirculation ? 'mise en circulation ' + f.miseEnCirculation : ''].filter(Boolean).join(' · ');
                 form.elements.fiche.value = det;
@@ -218,6 +229,7 @@
             } catch (e) { /* la datation locale suffit */ }
         }
         plaque.addEventListener('input', lirePlaque);
+        form.elements.vehicule.addEventListener('input', e => { e.target.dataset.auto = ''; });
         form.elements.annee.addEventListener('change', () => { anneeAuto = false; });
 
         // Kilométrage : espaces de milliers, alerte si incohérent avec l'année (sans bloquer).
