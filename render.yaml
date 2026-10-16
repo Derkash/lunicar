@@ -30,7 +30,9 @@ services:
       - key: PLAQUE_API_PROVIDER
         value: apiplaque
       - key: PLAQUE_API_QUOTA
-        value: "300"
+        value: "380"
+      - key: PLAQUE_API_QUOTA_JOUR
+        value: "20"
       - key: SITE_URL
         value: https://lunicar.fr
     healthCheckPath: /
