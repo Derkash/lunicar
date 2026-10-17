@@ -40,7 +40,7 @@ def main():
     d = ImageDraw.Draw(img)
     # Logo officiel, version blanche (public/images/logo-lunicar-blanc-h.png, tiré du kit logo).
     logo = Image.open(ROOT / 'public' / 'images' / 'logo-lunicar-blanc-h.png').convert('RGBA')
-    lh = 58
+    lh = 84
     logo = logo.resize((round(logo.width * lh / logo.height), lh), Image.LANCZOS)
     img.paste(logo, (64, 70), logo)
 
