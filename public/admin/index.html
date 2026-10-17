@@ -264,6 +264,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
     <form id="loginForm">
         <h1>LUNICAR</h1>
         <p>Espace administrateur</p>
+        <input type="text" id="ident" placeholder="Identifiant" autocomplete="username" autocapitalize="none" spellcheck="false" required>
         <input type="password" id="pwd" placeholder="Mot de passe" autocomplete="current-password" required>
         <p class="err" id="loginErr"></p>
         <button class="btn btn-p" style="width:100%;justify-content:center">Se connecter</button>
@@ -410,7 +411,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
     $('#loginForm').addEventListener('submit', async e => {
         e.preventDefault();
         $('#loginErr').textContent = '';
-        const r = await fetch('/api/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: $('#pwd').value }) });
+        const r = await fetch('/api/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ identifiant: $('#ident').value, password: $('#pwd').value }) });
         const j = await r.json().catch(() => ({}));
         if (!j.success) { $('#loginErr').textContent = j.error || 'Connexion impossible'; return; }
         token = j.token; try { localStorage.setItem('lunicarAdmin', token); } catch (e) {}

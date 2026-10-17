@@ -656,6 +656,7 @@ app.get('/api/valider-plaque/:plaque', (req, res) => {
 // Sans ADMIN_PASSWORD défini sur l'hébergeur, la connexion à l'admin est fermée.
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || (process.env.NODE_ENV === 'production' ? null : 'lunicar2024');
 if (!ADMIN_PASSWORD) console.log('⚠️  ADMIN_PASSWORD non défini : espace /admino désactivé');
+const ADMIN_USER = process.env.ADMIN_USER || 'Elbagui224';
 const SESSION_EXPIRY = 60 * 60 * 1000; // 1 heure
 const MAX_LOGIN_ATTEMPTS = 5;
 const LOCKOUT_DURATION = 15 * 60 * 1000; // 15 minutes
@@ -734,10 +735,10 @@ function authAdmin(req, res, next) {
 
 // Login admin avec rate limiting
 app.post('/api/admin/login', loginRateLimiter, (req, res) => {
-    const { password } = req.body;
+    const { identifiant, password } = req.body;
     const ip = req.ip || req.connection.remoteAddress;
 
-    if (ADMIN_PASSWORD && password === ADMIN_PASSWORD) {
+    if (ADMIN_PASSWORD && String(identifiant || '').trim().toLowerCase() === ADMIN_USER.toLowerCase() && password === ADMIN_PASSWORD) {
         // Connexion réussie - réinitialiser les tentatives
         loginAttempts.delete(ip);
 
@@ -767,7 +768,7 @@ app.post('/api/admin/login', loginRateLimiter, (req, res) => {
         const remaining = MAX_LOGIN_ATTEMPTS - attempt.count;
         res.status(401).json({
             success: false,
-            error: `Mot de passe incorrect. ${remaining} tentative(s) restante(s).`
+            error: `Identifiant ou mot de passe incorrect. ${remaining} tentative(s) restante(s).`
         });
     }
 });

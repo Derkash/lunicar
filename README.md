@@ -22,6 +22,7 @@ Variables d'environnement à définir sur Render (voir `.env.example`) :
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `EMAIL_TO` | Envoi des demandes par e-mail. Sans elles, les demandes ne sont visibles que dans les journaux Render. |
 | `LUNICAR_PHONE` | Numéro affiché (en-tête, formulaire, barre mobile). Vide = aucun bouton d'appel. |
 | `LUNICAR_WHATSAPP` | Numéro WhatsApp. Vide = aucun bouton WhatsApp. |
+| `ADMIN_USER` | Identifiant de `/admino` (par défaut `Elbagui224`, majuscules indifférentes). |
 | `ADMIN_PASSWORD` | Mot de passe de `/admino`. Non défini en production = admin fermé. |
 | `PLAQUE_API_KEY`, `PLAQUE_API_PROVIDER`, `PLAQUE_API_QUOTA` | Fiche véhicule par plaque (apiplaqueimmatriculation.com par défaut), plafonnée par mois. |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_KEY` | Stockage durable de l'admin (demandes, suivi, photos). |
