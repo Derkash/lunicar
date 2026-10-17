@@ -335,7 +335,7 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
     }
     function afficherAvis() {
         const a = [];
-        if (etat.stockage !== 'supabase') a.push('<div class="notice">Stockage local : sur Render, les demandes et photos sont effacées à chaque déploiement. Renseignez SUPABASE_URL et SUPABASE_SERVICE_KEY (voir README).</div>');
+        if (etat.stockage === 'local') a.push('<div class="notice">Stockage local : sur Render, les demandes et photos sont effacées à chaque déploiement. Renseignez SUPABASE_URL et SUPABASE_SERVICE_KEY (voir README).</div>');
         if (!etat.estimation.actif) a.push('<div class="notice">Estimation automatique désactivée : ANTHROPIC_API_KEY n\'est pas défini sur le serveur.</div>');
         if (!etat.email) a.push('<div class="notice">E-mail non configuré : les demandes ne partent pas par e-mail.</div>');
         $('#notices').innerHTML = a.join('');

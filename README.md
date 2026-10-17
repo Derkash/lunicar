@@ -48,7 +48,9 @@ Code : `lib/store.js` (stockage), `lib/estimation.js`, `lib/gmail-import.js`, `l
 2. Sur Render : `SUPABASE_URL`, `SUPABASE_SERVICE_KEY` (clé service_role), `ANTHROPIC_API_KEY`, `ADMIN_PASSWORD`.
 3. Dans l'admin : Réglages → vérifier les marges → « Lancer l'import » Gmail → « Estimer » les anciennes demandes si voulu (≈ 0,15 à 0,30 € par estimation avec Sonnet 5.5).
 
-Sans Supabase, tout fonctionne en local (`data/crm.json`, `uploads/demandes/`), mais Render efface ces fichiers à chaque déploiement.
+Alternative sans Supabase : un disque persistant Render monté sur `/var/data` + `DATA_DIR=/var/data` (demandes dans `crm.json`, photos dans `photos/`).
+
+Sans Supabase ni disque, tout fonctionne en local (`data/crm.json`, `uploads/demandes/`), mais Render efface ces fichiers à chaque déploiement.
 
 ## Organisation
 
