@@ -170,6 +170,16 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
 .lien { border: 0; background: none; padding: 4px 0 0; color: var(--marine-7); font-weight: 600; font-size: .85rem; }
 @media (max-width: 900px) { .calc-strip { grid-template-columns: 1fr 1fr; } .calc-strip div { border-bottom: 1px solid var(--line); } }
 
+.appel { border: 1px solid var(--line); background: var(--white); border-radius: 10px; padding: 12px 14px; }
+.appel-tete { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; margin-bottom: 8px; }
+.appel-tete span { font-size: .88rem; color: var(--ink-4); }
+.appel-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+.retard { color: var(--red); }
+.rappel { display: block; margin-top: 4px; font-size: .74rem; color: var(--ink-4); }
+.rappel.jour { color: var(--orange); font-weight: 700; }
+.rappel.retard { color: var(--red); font-weight: 700; }
+.st-vendue_ailleurs { background: #F1EEEA; color: var(--ink-4); }
+
 /* ---------- Dossiers photos ---------- */
 .folders { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
 .folder { background: var(--white); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; }
@@ -259,6 +269,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
                     <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option>
                 </select>
                 <select class="in" id="fType"><option value="">Estimations et rappels</option><option value="estimation">Estimations</option><option value="rappel">Rappels</option></select>
+                <select class="in" id="fRelance"><option value="">Toutes les relances</option><option value="dues">À rappeler aujourd'hui (et retard)</option><option value="semaine">À rappeler sous 7 jours</option><option value="jamais">Jamais appelées</option><option value="sans">Actives sans relance prévue</option></select>
                 <select class="in" id="fTri"><option value="recent">Plus récentes d'abord</option><option value="ancien">Plus anciennes d'abord</option><option value="distance">Plus proches de Paris</option><option value="prix">Prix max d'achat décroissant</option></select>
                 <select class="in" id="fPeriode"><option value="">Toute la période</option><option value="1">Aujourd'hui</option><option value="7">7 derniers jours</option><option value="30">30 derniers jours</option><option value="90">3 derniers mois</option><option value="365">12 derniers mois</option></select>
                 <select class="in" id="fRegion"><option value="">Toutes les régions</option></select>
@@ -400,6 +411,10 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
         $('#cDem').textContent = demandes.filter(d => d.statut === 'nouvelle').length || '';
         kpis(); liste();
     }
+    const ACTIFS = ['nouvelle', 'contactee', 'offre', 'rdv'];
+    const jourIso = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
+    const rappel = d => ACTIFS.includes(d.statut) ? ((d.suivi || {}).rappel_le || '').slice(0, 10) : '';
+    const jj = iso => iso ? iso.split('-').reverse().slice(0, 2).join('/') : '';
     const idf = d => /^(75|77|78|91|92|93|94|95)/.test((d.data || {}).code_postal || '');
     const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || ((d.estimation || {}).prix || {}).max_achat || 0;
     function kpis() {
@@ -408,10 +423,12 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
         const engage = achetees.reduce((s, d) => s + (Number((d.suivi || {}).prix_achat) || 0), 0);
         $('#kpis').innerHTML = [
             [demandes.length, 'demandes au total'], [j30.length, 'sur les 30 derniers jours'],
-            [demandes.filter(d => d.statut === 'nouvelle').length, 'à traiter'],
+            [`<a href="#" id="kpiRappel" style="color:inherit;text-decoration:none">${demandes.filter(d => rappel(d) && rappel(d) <= jourIso()).length}</a>`, 'à rappeler aujourd\'hui'],
+            [demandes.filter(d => d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels && Date.now() - new Date(d.created_at) < 14 * 864e5).length, 'nouvelles jamais appelées (14 j)'],
             [demandes.filter(d => !d.estimation && d.type !== 'rappel').length, 'sans estimation'],
             [achetees.length, 'véhicules achetés'], [engage ? eur(engage) : '—', 'payés aux vendeurs']
         ].map(([v, l]) => `<div class="kpi"><b class="num">${v}</b><span>${l}</span></div>`).join('');
+        const k = $('#kpiRappel'); if (k) k.onclick = e => { e.preventDefault(); $('#fRelance').value = 'dues'; liste(); };
     }
     function filtrees() {
         const q = $('#q').value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -425,6 +442,11 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
             if (reg === 'hors-idf' ? (!g || g.region === 'IDF') : (reg && (!g || g.region !== reg))) return false;
             if (dist && (!g || g.km == null || g.km > dist)) return false;
             if (per && Date.now() - new Date(d.created_at) > per * 864e5) return false;
+            const rl = $('#fRelance').value, r = rappel(d), auj = jourIso();
+            if (rl === 'dues' && !(r && r <= auj)) return false;
+            if (rl === 'semaine' && !(r && r <= new Date(Date.now() + 7 * 864e5).toISOString().slice(0, 10))) return false;
+            if (rl === 'jamais' && !(d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels)) return false;
+            if (rl === 'sans' && !(ACTIFS.includes(d.statut) && !r)) return false;
             if ($('#fPhotos').checked && !(d.photos || []).length) return false;
             if ($('#fSansEst').checked && d.estimation) return false;
             if (!q) return true;
@@ -446,17 +468,17 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
             const pub = /^Google Ads/.test(x.origine || '') ? ' <span class="tag rappel">Pub</span>' : '';
             const tag = d.origine === 'abandon' ? '<span class="tag">Abandon</span>' : d.type === 'rappel' ? '<span class="tag rappel">Rappel</span>' : d.origine === 'gmail' ? '<span class="tag" style="color:var(--ink-4)">Importée</span>' : '';
             return `<div class="row" data-ref="${esc(d.ref)}">
-                <div class="d"><b>${date(d.created_at, false)}</b>${new Date(d.created_at).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })} · ${esc(d.ref)}</div>
+                <div class="d"><b>${date(d.created_at, false)}</b>${esc(d.ref)}</div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span></div>
                 <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km · ' : ''}${esc(x.mecanique || '')} ${tag}${pub}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${(g => g ? `<small style="display:block;color:var(--ink-4);font-size:.78rem">${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : '')(geo(x.code_postal))}</div>
                 <div class="price num">${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
-                <div><span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span></div>
+                <div><span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${(r => r ? `<small class="rappel ${r < jourIso() ? 'retard' : r === jourIso() ? 'jour' : ''}">${r < jourIso() ? 'Rappel en retard · ' + jj(r) : r === jourIso() ? "Rappeler aujourd'hui" : 'Rappel ' + jj(r)}</small>` : '')(rappel(d))}</div>
                 <div class="ph num">${(d.photos || []).length || ''}</div>
             </div>`;
         }).join('') : '<div class="empty">Aucune demande ne correspond.</div>');
     }
-    ['#q', '#fStatut', '#fOrigine', '#fType', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
+    ['#q', '#fStatut', '#fOrigine', '#fType', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
     $('#list').addEventListener('click', e => { const r = e.target.closest('.row[data-ref]'); if (r) ouvrir(r.dataset.ref); });
     $('#csv').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/export.csv'); });
     $('#csvAds').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/conversions-ads.csv'); });
@@ -509,6 +531,12 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
             <button class="close" id="closeSheet" aria-label="Fermer">×</button>
         </div>
         <div class="sh-body">
+            <div class="appel">
+                <div class="appel-tete"><b>Après l'appel</b>
+                    <span>${(s.nb_appels ? `${s.nb_appels} appel${s.nb_appels > 1 ? 's' : ''}, dernier le ${date(s.dernier_appel, false)}` : 'Jamais appelé')}${rappel(d) ? ` · prochaine relance <b class="${rappel(d) < jourIso() ? 'retard' : ''}">${jj(rappel(d))}</b>` : ''}</span></div>
+                <div class="appel-btns">${Object.entries(etat.resultats || {}).map(([k, v]) => `<button class="btn btn-s" data-appel="${k}">${esc(v)}</button>`).join('')}</div>
+                <input class="in" id="appelNote" placeholder="Note rapide sur l'appel (facultatif) : prix proposé ailleurs, délai…" style="width:100%;margin-top:8px">
+            </div>
             ${s.notes ? `<div class="ma-note"><span>Ta note</span><p class="clamp" id="noteTxt">${esc(s.notes)}</p>${s.notes.length > 220 ? '<button class="lien" id="noteMore">Voir plus</button>' : ''}</div>` : ''}
             <section class="sec">
                 <h3>Estimation</h3>
@@ -617,7 +645,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
                         <label class="f">Prix d'achat final (€)<input class="in num" name="prix_achat" inputmode="numeric" value="${esc(s.prix_achat || '')}"></label>
                         <label class="f">Prix max retenu (€)<input class="in num" name="prix_manuel_max" inputmode="numeric" value="${esc(s.prix_manuel_max || '')}" placeholder="${p.max_achat || ''}"></label>
                         <label class="f">Prix de vente retenu (€)<input class="in num" name="prix_manuel_vente" inputmode="numeric" value="${esc(s.prix_manuel_vente || '')}" placeholder="${p.vente_estime || ''}"></label>
-                        <label class="f">Rappeler le<input class="in" name="rappel_le" type="datetime-local" value="${esc(s.rappel_le || '')}"></label>
+                        <label class="f">Rappeler le<input class="in" name="rappel_le" type="date" value="${esc((s.rappel_le || '').slice(0, 10))}"></label>
                     </div>
                     <label class="f" style="margin-top:10px">Notes<textarea class="in" name="notes" rows="4">${esc(s.notes || '')}</textarea></label>
                     <div class="filters" style="margin-top:10px">
@@ -634,6 +662,11 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
         if (eb) eb.onclick = async () => {
             try { await api('/api/admin/demandes/' + d.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; fiche(); surveiller(true); } catch (err) { toast(err.message); }
         };
+        $('#sheetIn').querySelectorAll('[data-appel]').forEach(b => b.onclick = async () => {
+            try { courant = await api('/api/admin/demandes/' + d.ref + '/appel', { method: 'POST', body: JSON.stringify({ resultat: b.dataset.appel, note: $('#appelNote').value }) });
+                fiche(); maj(courant); toast((courant.suivi || {}).rappel_le ? 'Noté · relance le ' + jj(courant.suivi.rappel_le) : 'Noté'); }
+            catch (e) { toast(e.message); }
+        });
         if ($('#noteMore')) $('#noteMore').onclick = ev => { const p = $('#noteTxt'); p.classList.toggle('clamp'); ev.target.textContent = p.classList.contains('clamp') ? 'Voir plus' : 'Voir moins'; };
         $('#plaqueBtn').onclick = async () => {
             const b = $('#plaqueBtn'); b.disabled = true; $('#plaqueMsg').textContent = 'Interrogation…';
