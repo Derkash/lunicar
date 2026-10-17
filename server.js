@@ -388,7 +388,7 @@ function emailDemande(d, apiBrut, opts = {}) {
     <div style="font-size:22px;font-weight:700;margin-top:6px">${esc([d.prenom, d.nom].filter(Boolean).join(' ') || 'Sans nom')} · <a href="tel:+${d.telephone_intl}" style="color:#fff">${esc(d.telephone)}</a></div>
   </div>
   <div style="background:#fff;padding:20px 22px;border-radius:0 0 10px 10px">
-    ${opts.estimation ? blocEstimation(opts.estimation, ref) : opts.estimationEnAttente ? `<p style="margin:0 0 14px;padding:10px 12px;background:#EEF3F8;border-radius:8px;color:#0D2541">Estimation automatique en cours : elle apparaîtra dans <a href="${SITE.baseUrl}/admino#${ref}">l'espace admin</a>.</p>` : ''}
+    ${opts.estimation ? blocEstimation(opts.estimation, ref) : opts.estimationEnAttente ? `<p style="margin:0 0 14px;padding:10px 12px;background:#EEF3F8;border-radius:8px;color:#0D2541">Estimation automatique en cours : elle apparaîtra dans <a href="${SITE.baseUrl}/admino#${ref}">l'espace admin</a>.</p>` : d.type !== 'rappel' ? `<p style="margin:0 0 14px"><a href="${SITE.baseUrl}/admino#${ref}" style="color:#B8923A;font-weight:700">Ouvrir la fiche et lancer l'estimation →</a></p>` : ''}
     ${opts.abandon ? `<p style="margin:0 0 14px;padding:10px 12px;background:#FCF3E8;border-radius:8px;color:#7A3B12">Le vendeur a quitté le formulaire à l'étape <strong>${esc(d.etape || 'inconnue')}</strong> sans l'envoyer. Voici tout ce qu'il avait rempli.</p>` : ''}
     <p style="margin:0 0 16px"><a href="tel:+${d.telephone_intl}" style="display:inline-block;background:#B8923A;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px">Appeler ${esc(d.telephone)}</a>
     &nbsp; <a href="https://wa.me/${d.telephone_intl}" style="color:#0D2541;font-weight:700">WhatsApp</a></p>
@@ -472,8 +472,9 @@ async function envoyerDemande(d, opts = {}) {
     } catch (e) {
         console.error(`🚨 Demande ${ref} non enregistrée en base :`, e.message);
     }
-    // L'estimation (recherche d'annonces) prend une à deux minutes : l'e-mail l'attend, dans une limite.
-    if (estimation.actif() && d.type !== 'rappel' && d.vehicule && !opts.rapide) {
+    // Estimation lancée à la main depuis l'admin (décision du 2026-10-17).
+    // ESTIMATION_AUTO=1 sur Render la relance automatiquement à chaque demande.
+    if (process.env.ESTIMATION_AUTO === '1' && estimation.actif() && d.type !== 'rappel' && d.vehicule && !opts.rapide) {
         const fin = estimation.planifier(ref);
         await Promise.race([fin, new Promise(r => setTimeout(r, ESTIMATION_ATTENTE).unref())]);
         const ligne = await store.lireDemande(ref).catch(() => null);
