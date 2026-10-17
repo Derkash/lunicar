@@ -187,6 +187,19 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
 .row.choisie { background: #EEF3F8; }
 .row input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; }
 
+.suivi-chiffres { grid-template-columns: repeat(5, 1fr) auto; align-items: end; }
+.fil { list-style: none; margin: 16px 0 0; padding: 0; border-left: 2px solid var(--line); }
+.fil li { position: relative; padding: 6px 0 6px 16px; }
+.fil li::before { content: ""; position: absolute; left: -6px; top: 12px; width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.fil .quand { font-size: .76rem; color: var(--ink-4); margin-right: 8px; }
+.fil .action { font-size: .86rem; color: var(--ink-6); }
+.fil .note::before { background: var(--gold); }
+.fil .note p { margin: 4px 0 0; padding: 10px 12px; background: var(--white); border: 1px solid var(--line); border-radius: 8px; white-space: pre-wrap; font-size: .95rem; }
+.fil .vide { color: var(--ink-4); font-size: .88rem; }
+.ajout-note { display: flex; gap: 8px; align-items: flex-end; margin-top: 12px; }
+.ajout-note textarea { flex: 1; resize: vertical; }
+@media (max-width: 900px) { .suivi-chiffres { grid-template-columns: 1fr 1fr; } }
+
 /* ---------- Dossiers photos ---------- */
 .folders { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
 .folder { background: var(--white); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; }
@@ -592,7 +605,6 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
                 <div class="appel-btns">${Object.entries(etat.resultats || {}).map(([k, v]) => `<button class="btn btn-s" data-appel="${k}">${esc(v)}</button>`).join('')}</div>
                 <input class="in" id="appelNote" placeholder="Note rapide sur l'appel (facultatif) : prix proposé ailleurs, délai…" style="width:100%;margin-top:8px">
             </div>
-            ${s.notes ? `<div class="ma-note"><span>Ta note</span><p class="clamp" id="noteTxt">${esc(s.notes)}</p>${s.notes.length > 220 ? '<button class="lien" id="noteMore">Voir plus</button>' : ''}</div>` : ''}
             <section class="sec">
                 <h3>Estimation</h3>
                 <div class="prices">
@@ -629,6 +641,29 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
                     ${e.annonces.map(a => `<tr><td>${/^https?:\/\//.test(a.url || '') ? `<a href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(a.titre || 'Annonce')}</a>` : esc(a.titre || 'Annonce')}${a.lieu ? ` <span style="color:var(--ink-4)">· ${esc(a.lieu)}</span>` : ''}</td><td>${esc(a.source || '')}</td><td class="n">${esc(a.annee || '')}</td><td class="n">${a.km ? Number(a.km).toLocaleString('fr-FR') : ''}</td><td class="n"><b>${eur(a.prix)}</b></td></tr>`).join('')}</table></details>` : ''}
                 ${(e.sources || []).length ? `<details><summary>${e.sources.length} pages consultées</summary><div class="sources">${e.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.titre || s.url)}</a>`).join('')}</div></details>` : ''}
                 </details>` : ''}
+            </section>
+
+            <section class="sec">
+                <h3>Suivi</h3>
+                <form id="suiviForm" class="form-grid suivi-chiffres">
+                    <label class="f">Offre faite (€)<input class="in num" name="offre" inputmode="numeric" value="${esc(s.offre || '')}"></label>
+                    <label class="f">Prix d'achat final (€)<input class="in num" name="prix_achat" inputmode="numeric" value="${esc(s.prix_achat || '')}"></label>
+                    <label class="f">Prix max retenu (€)<input class="in num" name="prix_manuel_max" inputmode="numeric" value="${esc(s.prix_manuel_max || '')}" placeholder="${p.max_achat || ''}"></label>
+                    <label class="f">Prix de vente retenu (€)<input class="in num" name="prix_manuel_vente" inputmode="numeric" value="${esc(s.prix_manuel_vente || '')}" placeholder="${p.vente_estime || ''}"></label>
+                    <label class="f">Relance prévue le<input class="in" name="rappel_le" type="date" value="${esc((s.rappel_le || '').slice(0, 10))}"></label>
+                    <div style="align-self:end"><button class="btn btn-p">Enregistrer</button></div>
+                </form>
+                <ol class="fil">
+                    ${s.notes ? `<li class="note"><span class="quand">Note</span><p>${esc(s.notes)}</p></li>` : ''}
+                    ${[...(s.historique || [])].reverse().map(h => h.type === 'note'
+                        ? `<li class="note"><span class="quand">${date(h.date)}</span><p>${esc(h.quoi)}</p></li>`
+                        : `<li class="action"><span class="quand">${date(h.date)}</span>${esc(h.quoi)}</li>`).join('')}
+                    ${!s.notes && !(s.historique || []).length ? '<li class="vide">Aucun échange pour l\'instant.</li>' : ''}
+                </ol>
+                <form id="noteForm" class="ajout-note">
+                    <textarea class="in" id="noteIn" rows="2" placeholder="Ajouter une note : ce que dit le vendeur, prix proposé ailleurs, documents…"></textarea>
+                    <button class="btn btn-p">Ajouter</button>
+                </form>
             </section>
 
             <div class="cols">
@@ -692,24 +727,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
                     ${(a.sources || []).length ? `<details><summary>${a.sources.length} sources</summary><div class="sources">${a.sources.map(z => `<a href="${esc(z.url)}" target="_blank" rel="noopener noreferrer">${esc(z.titre || z.url)}</a>`).join('')}</div></details>` : ''}</div>`).join('')}
             </section>
 
-            <section class="sec">
-                <h3>Suivi</h3>
-                <form id="suiviForm">
-                    <div class="form-grid">
-                        <label class="f">Offre faite (€)<input class="in num" name="offre" inputmode="numeric" value="${esc(s.offre || '')}"></label>
-                        <label class="f">Prix d'achat final (€)<input class="in num" name="prix_achat" inputmode="numeric" value="${esc(s.prix_achat || '')}"></label>
-                        <label class="f">Prix max retenu (€)<input class="in num" name="prix_manuel_max" inputmode="numeric" value="${esc(s.prix_manuel_max || '')}" placeholder="${p.max_achat || ''}"></label>
-                        <label class="f">Prix de vente retenu (€)<input class="in num" name="prix_manuel_vente" inputmode="numeric" value="${esc(s.prix_manuel_vente || '')}" placeholder="${p.vente_estime || ''}"></label>
-                        <label class="f">Rappeler le<input class="in" name="rappel_le" type="date" value="${esc((s.rappel_le || '').slice(0, 10))}"></label>
-                    </div>
-                    <label class="f" style="margin-top:10px">Notes<textarea class="in" name="notes" rows="4">${esc(s.notes || '')}</textarea></label>
-                    <div class="filters" style="margin-top:10px">
-                        <button class="btn btn-p">Enregistrer le suivi</button>
-                        <button type="button" class="btn btn-s btn-d" id="delDem" style="margin-left:auto">Supprimer la demande</button>
-                    </div>
-                </form>
-                ${(s.historique || []).length ? `<ul class="histo">${s.historique.map(h => `<li><b>${date(h.date)}</b> · ${esc(h.quoi)}</li>`).join('')}</ul>` : ''}
-            </section>
+            <div class="filters" style="justify-content:flex-end"><button type="button" class="btn btn-s btn-d" id="delDem">Supprimer la demande</button></div>
         </div>`;
         $('#closeSheet').onclick = fermer;
         $('#stSel').onchange = async ev => { await sauver({ statut: ev.target.value }); toast('Statut mis à jour'); };
@@ -722,7 +740,6 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
                 fiche(); maj(courant); toast((courant.suivi || {}).rappel_le ? 'Noté · relance le ' + jj(courant.suivi.rappel_le) : 'Noté'); }
             catch (e) { toast(e.message); }
         });
-        if ($('#noteMore')) $('#noteMore').onclick = ev => { const p = $('#noteTxt'); p.classList.toggle('clamp'); ev.target.textContent = p.classList.contains('clamp') ? 'Voir plus' : 'Voir moins'; };
         $('#plaqueBtn').onclick = async () => {
             const b = $('#plaqueBtn'); b.disabled = true; $('#plaqueMsg').textContent = 'Interrogation…';
             try { const r = await api('/api/admin/demandes/' + d.ref + '/plaque', { method: 'POST', body: JSON.stringify({ plaque: $('#plaqueIn').value.replace(/[^A-Za-z0-9]/g, '') }) });
@@ -741,8 +758,15 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
             ev.preventDefault();
             const f = Object.fromEntries(new FormData(ev.target));
             ['offre', 'prix_achat', 'prix_manuel_max', 'prix_manuel_vente'].forEach(k => f[k] = f[k].replace(/[^\d]/g, ''));
-            await sauver(f); toast('Suivi enregistré');
+            await sauver(f); toast('Enregistré');
         };
+        $('#noteForm').onsubmit = async ev => {
+            ev.preventDefault();
+            const texte = $('#noteIn').value.trim(); if (!texte) return;
+            try { courant = await api('/api/admin/demandes/' + d.ref + '/note', { method: 'POST', body: JSON.stringify({ texte }) }); fiche(); maj(courant); toast('Note ajoutée'); }
+            catch (e) { toast(e.message); }
+        };
+        $('#noteIn').onkeydown = e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) $('#noteForm').requestSubmit(); };
         $('#delDem').onclick = async () => {
             if (!confirm('Supprimer définitivement cette demande et ses photos ?')) return;
             await api('/api/admin/demandes/' + d.ref, { method: 'DELETE' }); fermer(); charger(); toast('Demande supprimée');
