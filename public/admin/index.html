@@ -72,7 +72,7 @@ label.f .in { display: block; width: 100%; margin-top: 4px; font-size: .95rem; c
 
 /* ---------- Liste ---------- */
 .list { background: var(--white); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
-.row { display: grid; grid-template-columns: 92px 1.3fr 1.5fr 1fr 110px 120px 62px; gap: 12px; align-items: center; padding: 12px 16px; border-bottom: 1px solid #F0EBDF; cursor: pointer; }
+.row { display: grid; grid-template-columns: 22px 92px 1.3fr 1.5fr 1fr 110px 120px 62px; gap: 12px; align-items: center; padding: 12px 16px; border-bottom: 1px solid #F0EBDF; cursor: pointer; }
 .row:hover { background: var(--cream-50); }
 .row.head { cursor: default; background: var(--cream); font-size: .75rem; font-weight: 700; color: var(--ink-4); letter-spacing: .5px; text-transform: uppercase; padding-top: 9px; padding-bottom: 9px; }
 .row .d { font-size: .82rem; color: var(--ink-4); }
@@ -180,6 +180,13 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
 .rappel.retard { color: var(--red); font-weight: 700; }
 .st-vendue_ailleurs { background: #F1EEEA; color: var(--ink-4); }
 
+.lot { position: sticky; top: 56px; z-index: 5; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 14px; margin: 0 0 10px; background: var(--marine); color: var(--white); border-radius: 10px; }
+.lot .in { padding: 6px 10px; font-size: .85rem; color: var(--ink); }
+.lot label.f { color: #C9D3E0; margin: 0; }
+.lot label.f .in { display: inline-block; width: auto; margin: 0; }
+.row.choisie { background: #EEF3F8; }
+.row input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; }
+
 /* ---------- Dossiers photos ---------- */
 .folders { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
 .folder { background: var(--white); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; }
@@ -212,13 +219,16 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
 @keyframes s { to { transform: rotate(360deg); } }
 
 @media (max-width: 900px) {
-    .row { grid-template-columns: 1fr auto; gap: 4px 12px; }
+    .row { grid-template-columns: 22px 1fr auto; gap: 4px 12px; }
+    .row > div:first-child { grid-row: 1 / span 4; align-self: start; }
+    .row .d, .row .who { grid-column: 2 / -1; }
+    .row > div:nth-child(7) { grid-column: 2 / -1; }
     .row.head { display: none; }
-    .row .d { grid-column: 1 / -1; display: flex; gap: 8px; }
+    .row .d { grid-column: 2 / -1; display: flex; gap: 8px; }
     .row .d b { display: inline; }
     .row .ville, .row .ph { display: none; }
-    .row .car { grid-column: 1; }
-    .row .price { grid-row: 2; grid-column: 2; }
+    .row .car { grid-column: 2; }
+    .row .price { grid-row: 2; grid-column: 3; }
     .cols { grid-template-columns: 1fr; }
     .prices { grid-template-columns: 1fr 1fr; }
     .pr:nth-child(2) { border-right: 0; }
@@ -269,6 +279,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
                     <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option>
                 </select>
                 <select class="in" id="fType"><option value="">Estimations et rappels</option><option value="estimation">Estimations</option><option value="rappel">Rappels</option></select>
+                <select class="in" id="fArchive"><option value="">Non archivées</option><option value="oui">Archivées</option><option value="tout">Toutes</option></select>
                 <select class="in" id="fRelance"><option value="">Toutes les relances</option><option value="dues">À rappeler aujourd'hui (et retard)</option><option value="semaine">À rappeler sous 7 jours</option><option value="jamais">Jamais appelées</option><option value="sans">Actives sans relance prévue</option></select>
                 <select class="in" id="fTri"><option value="recent">Plus récentes d'abord</option><option value="ancien">Plus anciennes d'abord</option><option value="distance">Plus proches de Paris</option><option value="prix">Prix max d'achat décroissant</option></select>
                 <select class="in" id="fPeriode"><option value="">Toute la période</option><option value="1">Aujourd'hui</option><option value="7">7 derniers jours</option><option value="30">30 derniers jours</option><option value="90">3 derniers mois</option><option value="365">12 derniers mois</option></select>
@@ -278,6 +289,17 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
                 <label class="chk"><input type="checkbox" id="fSansEst"> Sans estimation</label>
                 <a class="btn btn-s" id="csv" href="#">Export CSV</a>
                 <a class="btn btn-s" id="csvAds" href="#" title="Voitures achetées issues d'un clic Google Ads, à importer dans Google Ads">Conversions Google Ads</a>
+            </div>
+            <div class="lot" id="lot" hidden>
+                <b id="lotN"></b>
+                <select class="in" id="lotStatut"><option value="">Changer le statut…</option></select>
+                <label class="f" style="display:inline-flex;align-items:center;gap:6px">Relance le <input class="in" type="date" id="lotRappel"></label>
+                <button class="btn btn-s" data-lot="estimer">Estimer</button>
+                <button class="btn btn-s" data-lot="archiver">Archiver</button>
+                <button class="btn btn-s" data-lot="desarchiver">Désarchiver</button>
+                <button class="btn btn-s" data-lot="export">Exporter en CSV</button>
+                <button class="btn btn-s btn-d" data-lot="supprimer">Supprimer</button>
+                <button class="btn btn-s" data-lot="aucune" style="margin-left:auto">Tout désélectionner</button>
             </div>
             <div class="list" id="list"></div>
         </section>
@@ -352,6 +374,8 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
     }
     let token = null;
     try { token = localStorage.getItem('lunicarAdmin'); } catch (e) {}
+    const choisies = new Set();
+    let affichees = [];
     let etat = { statuts: {} }, demandes = [], messages = [], courant = null, poll = null;
 
     const toast = t => { const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
@@ -381,6 +405,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
     async function demarrer() {
         try { etat = await api('/api/admin/etat'); } catch (e) { return deconnecter(); }
         $('#login').hidden = true; $('#app').hidden = false;
+        $('#lotStatut').innerHTML = '<option value="">Changer le statut…</option>' + Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
         $('#fRegion').innerHTML = '<option value="">Toutes les régions</option><option value="hors-idf">Hors Île-de-France</option>' + Object.entries(REG).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
         $('#fStatut').innerHTML = '<option value="">Tous les statuts</option>' + Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
         afficherAvis();
@@ -413,7 +438,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
     }
     const ACTIFS = ['nouvelle', 'contactee', 'offre', 'rdv'];
     const jourIso = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
-    const rappel = d => ACTIFS.includes(d.statut) ? ((d.suivi || {}).rappel_le || '').slice(0, 10) : '';
+    const rappel = d => ACTIFS.includes(d.statut) && !(d.suivi || {}).archivee ? ((d.suivi || {}).rappel_le || '').slice(0, 10) : '';
     const jj = iso => iso ? iso.split('-').reverse().slice(0, 2).join('/') : '';
     const idf = d => /^(75|77|78|91|92|93|94|95)/.test((d.data || {}).code_postal || '');
     const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || ((d.estimation || {}).prix || {}).max_achat || 0;
@@ -442,6 +467,8 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
             if (reg === 'hors-idf' ? (!g || g.region === 'IDF') : (reg && (!g || g.region !== reg))) return false;
             if (dist && (!g || g.km == null || g.km > dist)) return false;
             if (per && Date.now() - new Date(d.created_at) > per * 864e5) return false;
+            const ar = $('#fArchive').value, archivee = !!(d.suivi || {}).archivee;
+            if ((ar === '' && archivee) || (ar === 'oui' && !archivee)) return false;
             const rl = $('#fRelance').value, r = rappel(d), auj = jourIso();
             if (rl === 'dues' && !(r && r <= auj)) return false;
             if (rl === 'semaine' && !(r && r <= new Date(Date.now() + 7 * 864e5).toISOString().slice(0, 10))) return false;
@@ -457,17 +484,17 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
     function liste() {
         const tri = $('#fTri').value;
         const km = d => { const g = geo((d.data || {}).code_postal); return g && g.km != null ? g.km : 1e6; };
-        const a = filtrees().sort(tri === 'ancien' ? (p, q) => p.created_at.localeCompare(q.created_at)
+        const a = affichees = filtrees().sort(tri === 'ancien' ? (p, q) => p.created_at.localeCompare(q.created_at)
             : tri === 'distance' ? (p, q) => km(p) - km(q) || q.created_at.localeCompare(p.created_at)
             : tri === 'prix' ? (p, q) => prixMax(q) - prixMax(p)
             : (p, q) => q.created_at.localeCompare(p.created_at));
-        const head = '<div class="row head"><div>Reçue</div><div>Vendeur</div><div>Véhicule</div><div class="ville">Ville</div><div style="text-align:right">Prix max</div><div>Statut</div><div class="ph" style="text-align:right">Photos</div></div>';
+        const head = '<div class="row head"><div><input type="checkbox" id="toutCocher" title="Tout sélectionner (liste filtrée)"></div><div>Reçue</div><div>Vendeur</div><div>Véhicule</div><div class="ville">Ville</div><div style="text-align:right">Prix max</div><div>Statut</div><div class="ph" style="text-align:right">Photos</div></div>';
         $('#list').innerHTML = head + (a.length ? a.map(d => {
             const x = d.data || {};
             const est = (d.suivi || {}).estimation_statut === 'en_cours' ? '<span class="spin"></span>' : (prixMax(d) ? eur(prixMax(d)) : '—');
             const pub = /^Google Ads/.test(x.origine || '') ? ' <span class="tag rappel">Pub</span>' : '';
             const tag = d.origine === 'abandon' ? '<span class="tag">Abandon</span>' : d.type === 'rappel' ? '<span class="tag rappel">Rappel</span>' : d.origine === 'gmail' ? '<span class="tag" style="color:var(--ink-4)">Importée</span>' : '';
-            return `<div class="row" data-ref="${esc(d.ref)}">
+            return `<div class="row${choisies.has(d.ref) ? ' choisie' : ''}" data-ref="${esc(d.ref)}"><div><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''}></div>
                 <div class="d"><b>${date(d.created_at, false)}</b>${esc(d.ref)}</div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span></div>
                 <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km · ' : ''}${esc(x.mecanique || '')} ${tag}${pub}</span></div>
@@ -477,9 +504,37 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
                 <div class="ph num">${(d.photos || []).length || ''}</div>
             </div>`;
         }).join('') : '<div class="empty">Aucune demande ne correspond.</div>');
+        barreLot();
     }
-    ['#q', '#fStatut', '#fOrigine', '#fType', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
-    $('#list').addEventListener('click', e => { const r = e.target.closest('.row[data-ref]'); if (r) ouvrir(r.dataset.ref); });
+    ['#q', '#fStatut', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
+    $('#list').addEventListener('click', e => {
+        if (e.target.id === 'toutCocher') { affichees.forEach(d => e.target.checked ? choisies.add(d.ref) : choisies.delete(d.ref)); liste(); return; }
+        if (e.target.classList.contains('choix')) { e.target.checked ? choisies.add(e.target.dataset.ref) : choisies.delete(e.target.dataset.ref); e.target.closest('.row').classList.toggle('choisie', e.target.checked); barreLot(); return; }
+        if (e.target.closest('.row.head')) return;
+        const r = e.target.closest('.row[data-ref]'); if (r) ouvrir(r.dataset.ref);
+    });
+    function barreLot() {
+        const n = choisies.size, b = $('#lot');
+        b.hidden = !n;
+        $('#lotN').textContent = `${n} sélectionnée${n > 1 ? 's' : ''}`;
+        const t = $('#toutCocher'); if (t) t.checked = affichees.length && affichees.every(d => choisies.has(d.ref));
+    }
+    async function lot(action, valeur) {
+        const refs = [...choisies];
+        if (action === 'supprimer' && !confirm(`Supprimer définitivement ${refs.length} demande(s) et leurs photos ? Cette action est irréversible.`)) return;
+        if (action === 'estimer' && !confirm(`Lancer l'estimation de ${refs.length} demande(s) ? (≈ 0,15 à 0,30 € chacune)`)) return;
+        try { const r = await api('/api/admin/lot', { method: 'POST', body: JSON.stringify({ refs, action, valeur }) });
+            toast(`${r.traitees} demande(s) traitée(s)`); if (action !== 'estimer') choisies.clear(); await charger(); barreLot(); }
+        catch (e) { toast(e.message); }
+    }
+    $('#lotStatut').onchange = e => { if (e.target.value) lot('statut', e.target.value); e.target.value = ''; };
+    $('#lotRappel').onchange = e => { if (e.target.value) lot('rappel', e.target.value); e.target.value = ''; };
+    $('#lot').addEventListener('click', e => {
+        const b = e.target.closest('[data-lot]'); if (!b) return;
+        if (b.dataset.lot === 'aucune') { choisies.clear(); liste(); barreLot(); return; }
+        if (b.dataset.lot === 'export') { location.href = lien('/api/admin/export.csv?refs=' + [...choisies].join(',')); return; }
+        lot(b.dataset.lot);
+    });
     $('#csv').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/export.csv'); });
     $('#csvAds').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/conversions-ads.csv'); });
 
