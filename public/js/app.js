@@ -22,6 +22,19 @@
     }
     provenance();
 
+    // Identifiant de clic Google Ads (gclid, ou gbraid/wbraid sur iOS), gardé 90 jours :
+    // il relie une voiture achetée au clic d'origine (import des conversions hors ligne).
+    function clicAds() {
+        try {
+            const q = new URLSearchParams(location.search);
+            const k = ['gclid', 'gbraid', 'wbraid'].find(x => q.get(x));
+            if (k) localStorage.setItem('lunicar_clic', JSON.stringify({ v: `${k}=${q.get(k)}`, t: Date.now() }));
+            const c = JSON.parse(localStorage.getItem('lunicar_clic') || 'null');
+            return c && Date.now() - c.t < 90 * 864e5 ? c.v : '';
+        } catch (e) { return ''; }
+    }
+    clicAds();
+
     async function post(url, data) {
         const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
         const json = await res.json().catch(() => ({}));
@@ -324,7 +337,7 @@
                 prenom: f.prenom.value, nom: f.nom.value, telephone: f.telephone.value, codePostal: f.codePostal.value, ville: f.ville.value,
                 titulaire: radio('titulaire'), nomTitulaire: radio('titulaire') === 'non' ? f.nomTitulaire.value : '', numeroFormule: f.numeroFormule.value,
                 email: f.email.value, message: f.message.value, site_web: f.site_web.value,
-                source: form.dataset.source, page: location.pathname, provenance: provenance()
+                source: form.dataset.source, page: location.pathname, provenance: provenance(), clicAds: clicAds()
             };
         };
         // Dès que le téléphone est connu, l'état du formulaire est gardé côté serveur :
@@ -473,7 +486,7 @@
 
     simpleForm('callbackForm', '/api/reprise', f => ({
         type: 'rappel', prenom: f.prenom.value, telephone: f.telephone.value, site_web: f.site_web.value,
-        source: 'rappel', page: location.pathname, provenance: provenance()
+        source: 'rappel', page: location.pathname, provenance: provenance(), clicAds: clicAds()
     }), 'C\'est noté : un conseiller vous rappelle sous 24 h ouvrées.', 'generate_lead');
 
     simpleForm('contactForm', '/api/contact', f => ({

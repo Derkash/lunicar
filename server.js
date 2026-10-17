@@ -367,6 +367,7 @@ function construireDemande(b, id) {
         message: clean(b.message, 2000),
         page: clean(b.page, 200),
         provenance: clean(b.provenance, 300),
+        clic_ads: /^(gclid|gbraid|wbraid)=[\w.-]{10,250}$/.test(String(b.clicAds || '')) ? String(b.clicAds) : '',
         etape: clean(b.etape, 40),
         createdAt: new Date().toISOString()
     };

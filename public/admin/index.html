@@ -239,6 +239,7 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
                 <label class="chk"><input type="checkbox" id="fPhotos"> Avec photos</label>
                 <label class="chk"><input type="checkbox" id="fSansEst"> Sans estimation</label>
                 <a class="btn btn-s" id="csv" href="#">Export CSV</a>
+                <a class="btn btn-s" id="csvAds" href="#" title="Voitures achetées issues d'un clic Google Ads, à importer dans Google Ads">Conversions Google Ads</a>
             </div>
             <div class="list" id="list"></div>
         </section>
@@ -406,6 +407,7 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
     ['#q', '#fStatut', '#fOrigine', '#fType', '#fIdf', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
     $('#list').addEventListener('click', e => { const r = e.target.closest('.row[data-ref]'); if (r) ouvrir(r.dataset.ref); });
     $('#csv').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/export.csv'); });
+    $('#csvAds').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/conversions-ads.csv'); });
 
     // ---------------- Fiche d'une demande
     function ouvrirDepuisHash() { const r = location.hash.slice(1).toUpperCase(); if (/^[0-9A-F]{8}$/.test(r)) ouvrir(r); }
@@ -509,7 +511,7 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
                         ['Ville', esc([x.code_postal, x.ville].filter(Boolean).join(' ')) + (idf(d) ? ' · Île-de-France' : '')],
                         ['Prix souhaité', x.prix_souhaite ? eur(x.prix_souhaite) : ''], ['Vendre quand', esc(x.delai)], ['Autre voiture', esc(x.projet_achat)],
                         ['Titulaire de la carte grise', x.titulaire ? (x.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : ''], ['Nom du titulaire', esc(x.nom_titulaire)], ['N° du certificat', esc(x.numero_formule)],
-                        ['Page', esc(x.page)], ['Provenance', esc(x.provenance)]
+                        ['Page', esc(x.page)], ['Provenance', esc(x.provenance)], ['Clic Google Ads', x.clic_ads ? '<span class="pill st-achetee">oui</span>' : '']
                     ])}
                     ${x.message ? `<p style="margin:12px 0 4px;font-weight:600">Message du vendeur</p><p class="msg">${esc(x.message)}</p>` : ''}
                 </section>
