@@ -1069,4 +1069,10 @@ app.use((req, res) => {
 // Démarrage serveur
 app.listen(PORT, () => {
     console.log(`\n🚗 LUNICAR Server démarré sur http://localhost:${PORT}\n`);
+    // Import Gmail demandé hors interface : fichier DATA_DIR/import.todo (créé depuis le shell Render).
+    const todo = path.join(process.env.DATA_DIR || dataPath, 'import.todo');
+    if (fs.existsSync(todo)) {
+        fs.unlinkSync(todo);
+        setTimeout(() => require('./lib/gmail-import').importer().catch(e => console.error('Import Gmail :', e.message)), 15000);
+    }
 });
