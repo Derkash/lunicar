@@ -46,7 +46,7 @@ Code : `lib/store.js` (stockage), `lib/estimation.js`, `lib/gmail-import.js`, `l
 
 1. Créer un projet Supabase, exécuter `supabase/schema.sql` dans le SQL Editor (tables + bucket privé `demandes`).
 2. Sur Render : `SUPABASE_URL`, `SUPABASE_SERVICE_KEY` (clé service_role), `ANTHROPIC_API_KEY`, `ADMIN_PASSWORD`.
-3. Dans l'admin : Réglages → vérifier les marges → « Lancer l'import » Gmail → « Estimer » les anciennes demandes si voulu (≈ 0,20 à 0,50 € par estimation).
+3. Dans l'admin : Réglages → vérifier les marges → « Lancer l'import » Gmail → « Estimer » les anciennes demandes si voulu (≈ 0,15 à 0,30 € par estimation avec Sonnet 5.5).
 
 Sans Supabase, tout fonctionne en local (`data/crm.json`, `uploads/demandes/`), mais Render efface ces fichiers à chaque déploiement.
 

@@ -40,7 +40,7 @@ services:
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: ESTIMATION_MODEL
-        value: claude-opus-5-5
+        value: claude-sonnet-5-5
       - key: SITE_URL
         value: https://lunicar.fr
     healthCheckPath: /
