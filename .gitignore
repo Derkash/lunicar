@@ -39,3 +39,6 @@ temp/
 
 # Images brutes générées (archives, non publiées)
 .image-raw/
+
+# Espace admin en local (production : Supabase)
+data/crm.json

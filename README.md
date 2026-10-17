@@ -24,8 +24,31 @@ Variables d'environnement à définir sur Render (voir `.env.example`) :
 | `LUNICAR_WHATSAPP` | Numéro WhatsApp. Vide = aucun bouton WhatsApp. |
 | `ADMIN_PASSWORD` | Mot de passe de `/admino`. Non défini en production = admin fermé. |
 | `PLAQUE_API_KEY`, `PLAQUE_API_PROVIDER`, `PLAQUE_API_QUOTA` | Fiche véhicule par plaque (apiplaqueimmatriculation.com par défaut), plafonnée par mois. |
+| `SUPABASE_URL`, `SUPABASE_SERVICE_KEY` | Stockage durable de l'admin (demandes, suivi, photos). |
+| `ANTHROPIC_API_KEY` | Estimation automatique des demandes. Vide = pas d'estimation. |
 
-Le disque de Render est effacé à chaque déploiement : `data/demandes.json` n'est pas une archive fiable. L'e-mail est le canal de référence, les journaux le filet de sécurité.
+Le disque de Render est effacé à chaque déploiement : avec Supabase configuré, les demandes et photos y sont conservées ; l'e-mail reste une copie, les journaux le filet de sécurité.
+
+## Espace admin `/admino`
+
+Toutes les demandes reçues (formulaire, abandons, rappels, anciennes demandes importées de Gmail), avec :
+
+- **Estimation automatique** à chaque demande : Claude cherche les annonces comparables (Leboncoin d'abord, sinon La Centrale / AutoScout24) et la cote, chiffre la remise en état d'après l'état déclaré, le message et les photos. Quatre prix : **prix max d'achat**, **prix constaté Leboncoin** (médiane des annonces), **cote Argus** (publiée ou déduite, la source est indiquée), **prix de vente estimé**. Le prix max est calculé par le serveur : revente − remise en état − frais fixes − marge (réglages dans l'admin). Les 4 prix figurent en tête de l'e-mail de demande ; l'e-mail attend l'estimation au plus `ESTIMATION_ATTENTE_S` secondes.
+- Fiche complète : caractéristiques, fiche SIV, message du vendeur, carte grise, annonces et pages consultées, points d'attention, questions à poser.
+- **Photos rangées par dossier** (`2026-10-17_AB12CD34_peugeot-308/`), visionneuse, ajout depuis l'admin, téléchargement du dossier en .zip. Les photos ne sont plus publiques.
+- Suivi : statut, offre faite, prix d'achat, prix retenus à la main, date de rappel, notes, historique. Export CSV.
+- **Import Gmail** (onglet Réglages, ou `node tools/import_gmail.js [AAAA-MM-JJ]`) : relit tous les formats d'e-mail envoyés par le site depuis décembre 2025, reconstruit les demandes, leurs photos et les messages de contact. Rejouable sans doublon.
+- Articles : `/admino/articles` (ancienne page).
+
+Code : `lib/store.js` (stockage), `lib/estimation.js`, `lib/gmail-import.js`, `lib/admin.js` (API), `public/admin/index.html` (interface).
+
+### Mise en route (une fois)
+
+1. Créer un projet Supabase, exécuter `supabase/schema.sql` dans le SQL Editor (tables + bucket privé `demandes`).
+2. Sur Render : `SUPABASE_URL`, `SUPABASE_SERVICE_KEY` (clé service_role), `ANTHROPIC_API_KEY`, `ADMIN_PASSWORD`.
+3. Dans l'admin : Réglages → vérifier les marges → « Lancer l'import » Gmail → « Estimer » les anciennes demandes si voulu (≈ 0,20 à 0,50 € par estimation).
+
+Sans Supabase, tout fonctionne en local (`data/crm.json`, `uploads/demandes/`), mais Render efface ces fichiers à chaque déploiement.
 
 ## Organisation
 

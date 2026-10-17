@@ -438,6 +438,7 @@ body { padding-bottom: var(--bar-h); }
 .q-input { font: 500 1.05rem/1.3 var(--font-ui); color: var(--ink-900); background: var(--cream-50); border: 1.5px solid var(--line); border-radius: var(--radius-sm); padding: 13px 14px; appearance: none; -webkit-appearance: none; }
 select.q-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230D2541' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px; padding-right: 36px; }
 .q-input:focus { outline: none; border-color: var(--marine-600); background: var(--white); box-shadow: 0 0 0 4px rgba(36, 80, 127, .12); }
+.q-text { display: block; resize: vertical; min-height: 84px; margin-bottom: 16px; font-weight: 400; font-size: 1rem; }
 .q .money input:focus-visible { outline: none; }
 .q .money input { width: 100%; font: 500 1.05rem/1.3 var(--font-ui); padding: 13px 14px; }
 .q .btn-block { margin-top: 12px; }

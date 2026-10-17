@@ -10,6 +10,9 @@ const pages = require('./lib/pages');
 const idf = require('./lib/idf');
 const fichePlaque = require('./lib/vehicule');
 const zones = require('./lib/zones');
+const store = require('./lib/store');
+const estimation = require('./lib/estimation');
+const adminRouter = require('./lib/admin');
 const crypto = require('crypto');
 
 const app = express();
@@ -46,19 +49,8 @@ if (!SITE.phone) console.log('ℹ️  LUNICAR_PHONE non défini : aucun bouton d
 if (!SITE.whatsapp) console.log('ℹ️  LUNICAR_WHATSAPP non défini : aucun bouton WhatsApp affiché');
 
 // Configuration Multer pour upload photos
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const uploadDir = path.join(__dirname, 'uploads');
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir, { recursive: true });
-        }
-        cb(null, uploadDir);
-    },
-    filename: (req, file, cb) => {
-        const uniqueName = `${Date.now()}-${uuidv4()}${path.extname(file.originalname)}`;
-        cb(null, uniqueName);
-    }
-});
+// Photos gardées en mémoire puis rangées dans le dossier de la demande (lib/store.js).
+const storage = multer.memoryStorage();
 
 const upload = multer({
     storage,
@@ -98,7 +90,7 @@ app.get('/:name.html', (req, res, next) => {
 
 // Les fichiers CSS/JS sont appelés avec ?v=<version> : cache long sans risque.
 app.use(express.static(path.join(__dirname, 'public'), { index: false, maxAge: '30d' }));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Les photos des vendeurs ne sont plus publiques : elles se consultent dans l'admin.
 
 // Helpers pour fichiers JSON
 const dataPath = path.join(__dirname, 'data');
@@ -372,6 +364,7 @@ function construireDemande(b, id) {
         code_postal: clean(b.codePostal, 5).replace(/[^\d]/g, ''),
         ville: clean(b.ville, 80),
         source: clean(b.source, 80),
+        message: clean(b.message, 2000),
         page: clean(b.page, 200),
         provenance: clean(b.provenance, 300),
         etape: clean(b.etape, 40),
@@ -392,6 +385,7 @@ function emailDemande(d, apiBrut, opts = {}) {
     <div style="font-size:22px;font-weight:700;margin-top:6px">${esc([d.prenom, d.nom].filter(Boolean).join(' ') || 'Sans nom')} · <a href="tel:+${d.telephone_intl}" style="color:#fff">${esc(d.telephone)}</a></div>
   </div>
   <div style="background:#fff;padding:20px 22px;border-radius:0 0 10px 10px">
+    ${opts.estimation ? blocEstimation(opts.estimation, ref) : opts.estimationEnAttente ? `<p style="margin:0 0 14px;padding:10px 12px;background:#EEF3F8;border-radius:8px;color:#0D2541">Estimation automatique en cours : elle apparaîtra dans <a href="${SITE.baseUrl}/admino#${ref}">l'espace admin</a>.</p>` : ''}
     ${opts.abandon ? `<p style="margin:0 0 14px;padding:10px 12px;background:#FCF3E8;border-radius:8px;color:#7A3B12">Le vendeur a quitté le formulaire à l'étape <strong>${esc(d.etape || 'inconnue')}</strong> sans l'envoyer. Voici tout ce qu'il avait rempli.</p>` : ''}
     <p style="margin:0 0 16px"><a href="tel:+${d.telephone_intl}" style="display:inline-block;background:#B8923A;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px">Appeler ${esc(d.telephone)}</a>
     &nbsp; <a href="https://wa.me/${d.telephone_intl}" style="color:#0D2541;font-weight:700">WhatsApp</a></p>
@@ -407,6 +401,7 @@ function emailDemande(d, apiBrut, opts = {}) {
       ${row('Vendre quand', esc(d.delai))}
       ${row('Autre voiture', esc(d.projet_achat))}
       ${row('Prix souhaité', d.prix_souhaite ? `${Number(d.prix_souhaite).toLocaleString('fr-FR')} €` : '')}
+      ${row('Message', d.message ? `<span style="font-weight:400;white-space:pre-wrap">${esc(d.message)}</span>` : '')}
       ${row('Ville', [d.code_postal, d.ville].filter(Boolean).map(esc).join(' ') + (idfCp ? ' · Île-de-France' : ''))}
       ${row('E-mail', d.email ? `<a href="mailto:${esc(d.email)}">${esc(d.email)}</a>` : '')}
       ${row('Page', esc(d.page))}
@@ -427,15 +422,49 @@ function emailDemande(d, apiBrut, opts = {}) {
 </div></body></html>`;
 }
 
+const euros = v => v ? `${Number(v).toLocaleString('fr-FR')} €` : '—';
+// Les 4 prix de l'estimation automatique, en tête de l'e-mail.
+function blocEstimation(e, ref) {
+    const p = e.prix || {};
+    const case_ = (label, v, fort) => `<td style="padding:10px 8px;text-align:center;width:25%;${fort ? 'background:#0D2541;color:#fff;' : 'background:#F5F1E8;color:#0D2541;'}border-radius:8px">
+        <div style="font-size:11px;letter-spacing:.5px;${fort ? 'color:#D4B26A' : 'color:#6F6B64'}">${label}</div>
+        <div style="font-size:18px;font-weight:700;margin-top:4px">${euros(v)}</div></td>`;
+    return `<div style="margin:0 0 18px">
+      <div style="font-weight:700;color:#0D2541;margin-bottom:8px">Estimation automatique <span style="font-weight:400;color:#6F6B64">· confiance ${esc(e.confiance || '?')}</span></div>
+      <table style="border-collapse:separate;border-spacing:6px 0;width:100%"><tr>
+        ${case_('PRIX MAX ACHAT', p.max_achat, true)}${case_('LEBONCOIN', p.leboncoin)}${case_('COTE ARGUS', p.argus)}${case_('PRIX DE VENTE', p.vente_estime)}
+      </tr></table>
+      ${e.resume ? `<p style="margin:10px 0 0;font-size:13px;color:#3B3833">${esc(e.resume)}</p>` : ''}
+      ${(e.questions_a_poser || []).length ? `<p style="margin:8px 0 0;font-size:13px;color:#3B3833"><strong>À demander :</strong> ${e.questions_a_poser.map(esc).join(' · ')}</p>` : ''}
+      <p style="margin:8px 0 0;font-size:13px"><a href="${SITE.baseUrl}/admino#${ref}" style="color:#B8923A;font-weight:700">Détail, annonces et sources dans l'admin →</a></p>
+    </div>`;
+}
+
+const ESTIMATION_ATTENTE = (parseFloat(process.env.ESTIMATION_ATTENTE_S) || 150) * 1000;
+
+// Une demande reçue : enregistrement durable, fiche plaque, estimation, puis e-mail.
 async function envoyerDemande(d, opts = {}) {
     let apiBrut = null;
     if (d.plaque) { try { apiBrut = await fichePlaque.ficheComplete(d.plaque); } catch (e) { apiBrut = null; } }
     const ref = d.id.substring(0, 8).toUpperCase();
+    try {
+        await store.enregistrerDemande(store.ligneDepuisDemande({ ...d, ...(apiBrut ? { fiche_api: apiBrut, vin: apiBrut.vin || '' } : {}) }, { origine: opts.abandon ? 'abandon' : 'site' }));
+    } catch (e) {
+        console.error(`🚨 Demande ${ref} non enregistrée en base :`, e.message);
+    }
+    // L'estimation (recherche d'annonces) prend une à deux minutes : l'e-mail l'attend, dans une limite.
+    if (estimation.actif() && d.type !== 'rappel' && d.vehicule && !opts.rapide) {
+        const fin = estimation.planifier(ref);
+        await Promise.race([fin, new Promise(r => setTimeout(r, ESTIMATION_ATTENTE).unref())]);
+        const ligne = await store.lireDemande(ref).catch(() => null);
+        if (ligne && ligne.estimation) opts = { ...opts, estimation: ligne.estimation };
+        else opts = { ...opts, estimationEnAttente: true };
+    }
     const prefixe = opts.abandon ? '⚠️ Abandonnée' : d.type === 'rappel' ? '📞 Rappel' : '🚗 Estimation';
     let emailed = false;
     try {
         const result = await sendEmail({
-            subject: `${prefixe} ${d.code_postal || ''} ${d.ville || ''} · ${d.vehicule || d.prenom || d.plaque} ${d.annee || ''} · ${d.telephone}`.replace(/\s+/g, ' '),
+            subject: `${prefixe} ${d.code_postal || ''} ${d.ville || ''} · ${d.vehicule || d.prenom || d.plaque} ${d.annee || ''} · ${d.telephone}${opts.estimation && opts.estimation.prix ? ` · max ${euros(opts.estimation.prix.max_achat)}` : ''}`.replace(/\s+/g, ' '),
             html: emailDemande(d, apiBrut, opts),
             replyTo: d.email || undefined
         });
@@ -473,7 +502,7 @@ async function traiterAbandons(tout) {
     for (const [id, { b, t }] of brouillons) {
         if (!tout && now - t < ABANDON_MS) continue;
         brouillons.delete(id);
-        await envoyerDemande(construireDemande(b, id), { abandon: true });
+        await envoyerDemande(construireDemande(b, id), { abandon: true, rapide: !!tout });
     }
     for (const [id, v] of terminees) if (now - v.t > 6 * 60 * 60 * 1000) terminees.delete(id);
 }
@@ -497,12 +526,10 @@ app.post('/api/reprise', async (req, res) => {
         if (draftId) brouillons.delete(draftId);
         terminees.set(d.id, { demande: d, t: Date.now() });
 
-        const demandes = readJSON('demandes.json');
-        demandes.unshift({ ...d, statut: 'nouvelle' });
-        writeJSON('demandes.json', demandes);
-
-        await envoyerDemande(d);
+        // Enregistrée tout de suite (les photos peuvent arriver avant la fin de l'estimation).
+        try { await store.enregistrerDemande(store.ligneDepuisDemande(d, { origine: 'site' })); } catch (e) { console.error('🚨 Enregistrement :', e.message); }
         res.json({ success: true, id: d.id });
+        envoyerDemande(d).catch(e => console.error('Erreur traitement demande:', e.message));
     } catch (error) {
         console.error('Erreur:', error);
         res.status(500).json({ error: 'Erreur lors de l\'enregistrement' });
@@ -512,27 +539,36 @@ app.post('/api/reprise', async (req, res) => {
 // Photos envoyées après la demande (étape facultative) : un e-mail avec les pièces jointes.
 app.post('/api/reprise/:id/photos', upload.array('photos', 12), async (req, res) => {
     const files = req.files || [];
-    const cleanup = () => files.forEach(f => fs.unlink(f.path, () => {}));
     try {
         const id = String(req.params.id || '');
-        const fini = terminees.get(id);
-        if (!fini || !files.length) { cleanup(); return res.status(fini ? 400 : 404).json({ error: fini ? 'Aucune photo reçue.' : 'Demande introuvable, envoyez vos photos à contact@lunicar.fr.' }); }
-        if (tooManySends(`photos:${req.ip || ''}`, 6)) { cleanup(); return res.status(429).json({ error: 'Trop d\'envois.' }); }
-        const d = fini.demande;
         const ref = id.substring(0, 8).toUpperCase();
+        const enBase = /^[0-9a-f-]{36}$/.test(id) ? await store.lireDemande(ref).catch(() => null) : null;
+        const fini = terminees.get(id) || (enBase && enBase.id === id && Date.now() - new Date(enBase.created_at) < 24 * 3600 * 1000 ? { demande: { ...enBase.data, id } } : null);
+        if (!fini || !files.length) return res.status(fini ? 400 : 404).json({ error: fini ? 'Aucune photo reçue.' : 'Demande introuvable, envoyez vos photos à contact@lunicar.fr.' });
+        if (tooManySends(`photos:${req.ip || ''}`, 6)) return res.status(429).json({ error: 'Trop d\'envois.' });
+        const d = fini.demande;
+        // Rangement dans le dossier de la demande (durable), avant l'e-mail.
+        try {
+            const ligne = enBase || await store.lireDemande(ref);
+            if (ligne) {
+                const jour = new Date().toISOString().slice(0, 10);
+                const ajout = [];
+                for (const [i, f] of files.entries()) ajout.push(await store.ajouterPhoto(ligne.dossier, `${jour}_${Date.now()}_${i + 1}${path.extname(f.originalname).toLowerCase() || '.jpg'}`, f.buffer));
+                const frais = await store.lireDemande(ref);
+                await store.majDemande(ref, { photos: [...((frais || ligne).photos || []), ...ajout] });
+            }
+        } catch (e) { console.error('🚨 Photos non rangées :', e.message); }
         await sendEmail({
             subject: `📷 ${files.length} photo${files.length > 1 ? 's' : ''} · réf. ${ref} · ${d.vehicule} · ${d.telephone}`,
             html: `<div style="font-family:Arial,sans-serif;max-width:560px"><p>Photos de la demande <strong>${esc(ref)}</strong> : ${esc([d.prenom, d.nom].filter(Boolean).join(' '))}, ${esc(d.vehicule)} ${esc(d.annee)}, ${esc(d.telephone)}.</p></div>`,
             replyTo: d.email || undefined,
-            attachments: files.map((f, i) => ({ filename: `${ref}_photo_${i + 1}${path.extname(f.originalname) || '.jpg'}`, path: f.path }))
+            attachments: files.map((f, i) => ({ filename: `${ref}_photo_${i + 1}${path.extname(f.originalname) || '.jpg'}`, content: f.buffer }))
         });
         console.log(`📷 ${files.length} photo(s) reçues pour ${ref}`);
         res.json({ success: true });
     } catch (e) {
         console.error('Erreur photos:', e.message);
         res.status(500).json({ error: 'Envoi impossible, réessayez ou écrivez à contact@lunicar.fr.' });
-    } finally {
-        setTimeout(cleanup, 60 * 1000);
     }
 });
 
@@ -556,9 +592,7 @@ app.post('/api/contact', async (req, res) => {
             return res.status(400).json({ error: 'Merci de renseigner votre nom, un e-mail valide et votre message.' });
         }
 
-        const messages = readJSON('messages.json');
-        messages.unshift(message);
-        writeJSON('messages.json', messages);
+        try { await store.ajouterMessage(message); } catch (e) { console.error('🚨 Message non enregistré :', e.message); }
 
         try {
             await sendEmail({
@@ -653,11 +687,12 @@ function loginRateLimiter(req, res, next) {
 
 // Middleware d'authentification admin
 function authAdmin(req, res, next) {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    const authHeader = req.headers.authorization || '';
+    // Images, zip et export s'ouvrent par lien : le jeton peut aussi passer en ?k=
+    const token = authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : String(req.query.k || '');
+    if (!token) {
         return res.status(401).json({ error: 'Non autorisé' });
     }
-    const token = authHeader.split(' ')[1];
     const session = adminSessions.get(token);
 
     if (!session) {
@@ -717,11 +752,11 @@ app.post('/api/admin/login', loginRateLimiter, (req, res) => {
 });
 
 // Stats admin
-app.get('/api/admin/stats', authAdmin, (req, res) => {
+app.get('/api/admin/stats', authAdmin, async (req, res) => {
     try {
         const articles = readJSON('articles.json');
-        const demandes = readJSON('demandes.json');
-        const messages = readJSON('messages.json');
+        const demandes = await store.listerDemandes();
+        const messages = await store.listerMessages();
 
         res.json({
             articles: articles.length,
@@ -733,6 +768,9 @@ app.get('/api/admin/stats', authAdmin, (req, res) => {
         res.status(500).json({ error: 'Erreur serveur' });
     }
 });
+
+// Demandes, estimations, photos, import Gmail, réglages : lib/admin.js
+app.use(adminRouter(authAdmin));
 
 // Liste articles admin
 app.get('/api/admin/articles', authAdmin, (req, res) => {
@@ -993,7 +1031,12 @@ if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_P
 // Route admin cachée
 app.get('/admino', (req, res) => {
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');
-    res.sendFile(path.join(__dirname, 'public', 'admino.html'));
+    res.set('Cache-Control', 'no-store');
+    res.sendFile(path.join(__dirname, 'public', 'admin', 'index.html'));
+});
+app.get('/admino/articles', (req, res) => {
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    res.sendFile(path.join(__dirname, 'public', 'admino-articles.html'));
 });
 
 // Tout le reste : vraie page 404

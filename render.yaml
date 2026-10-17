@@ -33,6 +33,14 @@ services:
         value: "380"
       - key: PLAQUE_API_QUOTA_JOUR
         value: "20"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ESTIMATION_MODEL
+        value: claude-opus-5-5
       - key: SITE_URL
         value: https://lunicar.fr
     healthCheckPath: /

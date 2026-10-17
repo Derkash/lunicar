@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · LUNICAR</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+@font-face { font-family: 'DM Sans'; font-weight: 300 800; font-display: swap; src: url(/fonts/dmsans-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-weight: 400 800; font-display: swap; src: url(/fonts/fraunces-normal.woff2) format('woff2'); }
+:root {
+    --marine: #0D2541; --marine-7: #24507F; --gold: #B8923A; --gold-l: #D4B26A;
+    --cream: #F5F1E8; --cream-50: #FBF8F1; --line: #E4DDCC; --ink: #0D1B2A; --ink-6: #3D4654; --ink-4: #6F6B64;
+    --green: #2F7D4F; --red: #B03A2E; --orange: #B8641E; --blue: #24507F; --white: #fff;
+    --font: 'DM Sans', system-ui, sans-serif; --serif: 'Fraunces', Georgia, serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--cream-50); color: var(--ink); font: 400 15px/1.45 var(--font); }
+a { color: var(--marine-7); }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---------- Connexion ---------- */
+.login { min-height: 100vh; display: grid; place-items: center; padding: 16px; background: var(--marine); }
+.login form { width: 100%; max-width: 360px; background: var(--white); padding: 32px 28px; border-radius: 14px; }
+.login h1 { font: 600 1.6rem var(--serif); color: var(--marine); margin: 0 0 4px; }
+.login p { color: var(--ink-4); margin: 0 0 20px; }
+.login input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 8px; margin-bottom: 12px; }
+.err { color: var(--red); font-size: .9rem; min-height: 1.2em; margin: 0 0 8px; }
+
+/* ---------- Structure ---------- */
+.top { position: sticky; top: 0; z-index: 20; background: var(--marine); color: var(--white); }
+.top-in { max-width: 1400px; margin: 0 auto; padding: 0 16px; display: flex; align-items: center; gap: 24px; height: 56px; }
+.brand { font: 600 1.15rem var(--serif); letter-spacing: .5px; white-space: nowrap; }
+.brand small { font: 500 .7rem var(--font); color: var(--gold-l); letter-spacing: 2px; margin-left: 8px; }
+.tabs { display: flex; gap: 2px; overflow-x: auto; flex: 1; scrollbar-width: none; }
+.tabs button, .tabs a { background: none; border: 0; color: #C9D3E0; padding: 18px 12px 16px; border-bottom: 2px solid transparent; white-space: nowrap; text-decoration: none; font-weight: 500; }
+.tabs .on { color: var(--white); border-bottom-color: var(--gold-l); }
+.tabs .count { font-size: .75rem; color: var(--gold-l); margin-left: 4px; }
+.logout { background: none; border: 1px solid rgba(255,255,255,.25); color: #C9D3E0; border-radius: 6px; padding: 6px 10px; font-size: .85rem; }
+main { max-width: 1400px; margin: 0 auto; padding: 20px 16px 80px; }
+.notice { padding: 10px 14px; border-radius: 8px; margin: 0 0 14px; font-size: .9rem; background: #FCF3E8; color: #7A3B12; border: 1px solid #F0D9BC; }
+.notice.info { background: #EEF3F8; color: var(--marine); border-color: #D3DFEC; }
+
+/* ---------- Boutons, champs ---------- */
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; border-radius: 8px; border: 1.5px solid var(--line); background: var(--white); font-weight: 600; font-size: .9rem; text-decoration: none; color: var(--marine); }
+.btn:hover { border-color: var(--marine-7); }
+.btn-p { background: var(--marine); border-color: var(--marine); color: var(--white); }
+.btn-g { background: var(--gold); border-color: var(--gold); color: var(--white); }
+.btn-d { color: var(--red); }
+.btn[disabled] { opacity: .5; cursor: wait; }
+.btn-s { padding: 5px 10px; font-size: .82rem; }
+.in { padding: 9px 12px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--white); min-width: 0; }
+.in:focus { outline: none; border-color: var(--marine-7); }
+label.f { display: block; font-size: .8rem; color: var(--ink-4); font-weight: 600; letter-spacing: .3px; }
+label.f .in { display: block; width: 100%; margin-top: 4px; font-size: .95rem; color: var(--ink); font-weight: 400; }
+
+/* ---------- Chiffres clés ---------- */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; margin: 0 0 18px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.kpi { padding: 14px 16px; border-right: 1px solid var(--line); }
+.kpi:last-child { border-right: 0; }
+.kpi b { display: block; font: 600 1.7rem var(--serif); color: var(--marine); }
+.kpi span { font-size: .8rem; color: var(--ink-4); letter-spacing: .3px; }
+
+/* ---------- Filtres ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; align-items: center; }
+.filters .grow { flex: 1 1 220px; }
+.chk { display: inline-flex; gap: 6px; align-items: center; font-size: .88rem; color: var(--ink-6); padding: 0 6px; }
+
+/* ---------- Liste ---------- */
+.list { background: var(--white); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.row { display: grid; grid-template-columns: 92px 1.3fr 1.5fr 1fr 110px 120px 62px; gap: 12px; align-items: center; padding: 12px 16px; border-bottom: 1px solid #F0EBDF; cursor: pointer; }
+.row:hover { background: var(--cream-50); }
+.row.head { cursor: default; background: var(--cream); font-size: .75rem; font-weight: 700; color: var(--ink-4); letter-spacing: .5px; text-transform: uppercase; padding-top: 9px; padding-bottom: 9px; }
+.row .d { font-size: .82rem; color: var(--ink-4); }
+.row .d b { display: block; color: var(--ink); font-weight: 600; font-size: .88rem; }
+.row .who b { display: block; }
+.row .who span, .row .car span { font-size: .84rem; color: var(--ink-4); }
+.row .car b { display: block; font-weight: 600; }
+.row .price { font-weight: 700; color: var(--marine); text-align: right; }
+.row .price small { display: block; font-weight: 400; color: var(--ink-4); font-size: .75rem; }
+.row .ph { font-size: .82rem; color: var(--ink-4); text-align: right; }
+.pill { display: inline-block; font-size: .75rem; font-weight: 700; padding: 3px 9px; border-radius: 99px; white-space: nowrap; background: var(--cream); color: var(--ink-6); }
+.st-nouvelle { background: #E6EEF7; color: var(--blue); }
+.st-contactee { background: #FFF2DC; color: #8A5A00; }
+.st-offre, .st-rdv { background: #F3EAD6; color: #7A5A12; }
+.st-achetee { background: #E2F1E7; color: var(--green); }
+.st-refusee, .st-sans_suite { background: #F1EEEA; color: var(--ink-4); }
+.tag { font-size: .7rem; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: var(--orange); }
+.tag.rappel { color: var(--blue); }
+.empty { padding: 40px; text-align: center; color: var(--ink-4); }
+
+/* ---------- Fiche ---------- */
+.sheet { position: fixed; inset: 0; z-index: 40; background: rgba(13,27,42,.35); display: flex; justify-content: flex-end; }
+.sheet-in { width: min(1080px, 100%); height: 100%; overflow-y: auto; background: var(--cream-50); box-shadow: -10px 0 40px rgba(0,0,0,.15); }
+.sh-top { position: sticky; top: 0; z-index: 2; background: var(--white); border-bottom: 1px solid var(--line); padding: 14px 20px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.sh-top h2 { margin: 0; font: 600 1.35rem var(--serif); color: var(--marine); flex: 1 1 240px; }
+.sh-top h2 small { display: block; font: 400 .85rem var(--font); color: var(--ink-4); }
+.close { border: 0; background: none; font-size: 1.6rem; line-height: 1; color: var(--ink-4); padding: 4px 8px; }
+.sh-body { padding: 20px; display: grid; gap: 22px; }
+.sec h3 { font: 600 .78rem var(--font); letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold); margin: 0 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.contact { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.prices { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--white); }
+.pr { padding: 14px 16px; border-right: 1px solid var(--line); }
+.pr:last-child { border-right: 0; }
+.pr span { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--ink-4); }
+.pr b { display: block; font: 600 1.6rem var(--serif); color: var(--marine); margin: 4px 0 2px; }
+.pr small { font-size: .8rem; color: var(--ink-4); }
+.pr.main { background: var(--marine); }
+.pr.main span { color: var(--gold-l); }
+.pr.main b, .pr.main small { color: var(--white); }
+.est-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: .85rem; color: var(--ink-4); margin: 10px 0 0; }
+.resume { font-size: 1rem; margin: 12px 0 0; color: var(--ink-6); }
+.calc { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.calc td { padding: 5px 0; border-bottom: 1px dashed var(--line); }
+.calc td:last-child { text-align: right; font-weight: 600; }
+.calc tr.tot td { border-bottom: 0; border-top: 2px solid var(--marine); font-weight: 700; color: var(--marine); padding-top: 8px; }
+.kv { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.kv td { padding: 6px 0; border-bottom: 1px solid #F0EBDF; vertical-align: top; }
+.kv td:first-child { color: var(--ink-4); width: 42%; padding-right: 12px; }
+.kv td:last-child { font-weight: 500; }
+.ads { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.ads th { text-align: left; font-size: .72rem; color: var(--ink-4); text-transform: uppercase; letter-spacing: .5px; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); }
+.ads td { padding: 7px 8px 7px 0; border-bottom: 1px solid #F0EBDF; }
+.ads td.n { text-align: right; white-space: nowrap; }
+ul.plain { margin: 0; padding-left: 18px; }
+ul.plain li { margin: 3px 0; }
+.msg { white-space: pre-wrap; background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin: 0; }
+details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; font-size: .9rem; margin: 6px 0; }
+.sources { font-size: .82rem; columns: 2; column-gap: 24px; }
+.sources a { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 2px 0; }
+
+.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+.gal figure { margin: 0; position: relative; aspect-ratio: 4/3; background: var(--cream); border-radius: 8px; overflow: hidden; }
+.gal img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; display: block; }
+.gal .pdf { display: grid; place-items: center; height: 100%; font-weight: 700; color: var(--marine); text-decoration: none; }
+.gal .del { position: absolute; top: 4px; right: 4px; border: 0; background: rgba(13,27,42,.7); color: #fff; border-radius: 6px; font-size: .75rem; padding: 3px 7px; opacity: 0; }
+.gal figure:hover .del { opacity: 1; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+.histo { font-size: .84rem; color: var(--ink-4); margin: 10px 0 0; padding: 0; list-style: none; }
+.histo li { padding: 3px 0; }
+.histo b { color: var(--ink-6); font-weight: 600; }
+
+/* ---------- Dossiers photos ---------- */
+.folders { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.folder { background: var(--white); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; }
+.folder .cov { aspect-ratio: 16/10; background: var(--cream); display: grid; grid-template-columns: 2fr 1fr; gap: 2px; }
+.folder .cov img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.folder .cov .side { display: grid; grid-template-rows: 1fr 1fr; gap: 2px; min-height: 0; }
+.folder .cov .side img { min-height: 0; }
+.folder .lab { padding: 10px 12px; }
+.folder .lab b { display: block; font-size: .92rem; }
+.folder .lab span { font-size: .78rem; color: var(--ink-4); font-family: ui-monospace, monospace; word-break: break-all; }
+
+/* ---------- Messages, réglages ---------- */
+.card { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin: 0 0 16px; }
+.card h3 { margin: 0 0 4px; font: 600 1.15rem var(--serif); color: var(--marine); }
+.card p.sub { margin: 0 0 14px; color: var(--ink-4); font-size: .9rem; }
+.m { border-bottom: 1px solid #F0EBDF; padding: 12px 0; }
+.m:last-child { border-bottom: 0; }
+.m.unread b.n::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin-right: 8px; vertical-align: 1px; }
+.m .h { display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; font-size: .88rem; color: var(--ink-4); }
+.m .h b { color: var(--ink); font-size: .95rem; }
+.m p { margin: 6px 0 0; white-space: pre-wrap; }
+
+.lightbox { position: fixed; inset: 0; z-index: 60; background: rgba(5,12,20,.92); display: grid; place-items: center; padding: 16px; }
+.lightbox img { max-width: 100%; max-height: 88vh; border-radius: 6px; }
+.lightbox .nav { position: absolute; top: 50%; transform: translateY(-50%); border: 0; background: rgba(255,255,255,.12); color: #fff; font-size: 2rem; width: 48px; height: 64px; border-radius: 8px; }
+.lightbox .prev { left: 12px; } .lightbox .next { right: 12px; }
+.lightbox .cap { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; color: #C9D3E0; font-size: .85rem; }
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--marine); color: #fff; padding: 10px 18px; border-radius: 8px; z-index: 80; font-size: .9rem; }
+.spin { display: inline-block; width: 14px; height: 14px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: s .8s linear infinite; vertical-align: -2px; }
+@keyframes s { to { transform: rotate(360deg); } }
+
+@media (max-width: 900px) {
+    .row { grid-template-columns: 1fr auto; gap: 4px 12px; }
+    .row.head { display: none; }
+    .row .d { grid-column: 1 / -1; display: flex; gap: 8px; }
+    .row .d b { display: inline; }
+    .row .ville, .row .ph { display: none; }
+    .row .car { grid-column: 1; }
+    .row .price { grid-row: 2; grid-column: 2; }
+    .cols { grid-template-columns: 1fr; }
+    .prices { grid-template-columns: 1fr 1fr; }
+    .pr:nth-child(2) { border-right: 0; }
+    .pr:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .sources { columns: 1; }
+    .kpi { border-right: 0; border-bottom: 1px solid var(--line); }
+    .top-in { gap: 12px; }
+    .brand small { display: none; }
+    .sh-top { padding-right: 52px; }
+    .close { position: absolute; top: 10px; right: 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="login" id="login" hidden>
+    <form id="loginForm">
+        <h1>LUNICAR</h1>
+        <p>Espace administrateur</p>
+        <input type="password" id="pwd" placeholder="Mot de passe" autocomplete="current-password" required>
+        <p class="err" id="loginErr"></p>
+        <button class="btn btn-p" style="width:100%;justify-content:center">Se connecter</button>
+    </form>
+</div>
+
+<div id="app" hidden>
+    <header class="top"><div class="top-in">
+        <div class="brand">LUNICAR<small>ADMIN</small></div>
+        <nav class="tabs" id="tabs">
+            <button data-tab="demandes" class="on">Demandes<span class="count" id="cDem"></span></button>
+            <button data-tab="photos">Photos</button>
+            <button data-tab="messages">Messages<span class="count" id="cMsg"></span></button>
+            <button data-tab="reglages">Réglages et import</button>
+            <a href="/admino/articles">Articles</a>
+        </nav>
+        <button class="logout" id="logout">Quitter</button>
+    </div></header>
+
+    <main>
+        <div id="notices"></div>
+
+        <section data-view="demandes">
+            <div class="kpis" id="kpis"></div>
+            <div class="filters">
+                <input class="in grow" id="q" type="search" placeholder="Nom, téléphone, plaque, véhicule, ville, réf.">
+                <select class="in" id="fStatut"><option value="">Tous les statuts</option></select>
+                <select class="in" id="fOrigine">
+                    <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option>
+                </select>
+                <select class="in" id="fType"><option value="">Estimations et rappels</option><option value="estimation">Estimations</option><option value="rappel">Rappels</option></select>
+                <label class="chk"><input type="checkbox" id="fIdf"> Île-de-France</label>
+                <label class="chk"><input type="checkbox" id="fPhotos"> Avec photos</label>
+                <label class="chk"><input type="checkbox" id="fSansEst"> Sans estimation</label>
+                <a class="btn btn-s" id="csv" href="#">Export CSV</a>
+            </div>
+            <div class="list" id="list"></div>
+        </section>
+
+        <section data-view="photos" hidden>
+            <div class="filters"><input class="in grow" id="qPhotos" type="search" placeholder="Chercher un dossier (réf., véhicule, date)"></div>
+            <div class="folders" id="folders"></div>
+        </section>
+
+        <section data-view="messages" hidden>
+            <div class="card" id="messages"></div>
+        </section>
+
+        <section data-view="reglages" hidden>
+            <div class="card">
+                <h3>Calcul du prix maximum d'achat</h3>
+                <p class="sub">Prix max = prix de vente estimé − remise en état − frais fixes − marge (en % du prix de vente, jamais sous la marge minimale), arrondi à l'inférieur.</p>
+                <form id="regForm" class="form-grid">
+                    <label class="f">Marge visée (%)<input class="in num" name="marge_pct" type="number" min="0" step="1"></label>
+                    <label class="f">Marge minimale (€)<input class="in num" name="marge_min" type="number" min="0" step="50"></label>
+                    <label class="f">Frais fixes par véhicule (€)<input class="in num" name="frais_fixes" type="number" min="0" step="10"></label>
+                    <label class="f">Arrondi (€)<input class="in num" name="arrondi" type="number" min="1" step="10"></label>
+                    <div style="align-self:end"><button class="btn btn-p">Enregistrer</button></div>
+                </form>
+                <p class="sub" style="margin:12px 0 0">Les nouvelles valeurs s'appliquent aux prochaines estimations (relancez une estimation pour la recalculer).</p>
+            </div>
+            <div class="card">
+                <h3>Reprendre les anciennes demandes depuis Gmail</h3>
+                <p class="sub">Lit la boîte qui reçoit les demandes (identifiants SMTP du serveur), reconstruit chaque demande, ses photos et les messages de contact. Rejouable sans doublon.</p>
+                <div class="filters">
+                    <label class="f">Depuis (facultatif)<input class="in" id="impDepuis" type="date"></label>
+                    <div style="align-self:end"><button class="btn btn-p" id="impBtn">Lancer l'import</button></div>
+                </div>
+                <div id="impEtat" class="sub"></div>
+            </div>
+            <div class="card">
+                <h3>Estimer les demandes qui n'ont pas d'estimation</h3>
+                <p class="sub">Chaque estimation lance plusieurs recherches web (annonces, cote) : compter environ 0,20 à 0,50 € par véhicule. Elles passent une par une.</p>
+                <div class="filters">
+                    <label class="f">Nombre maximum<input class="in num" id="estMax" type="number" min="1" max="200" value="20"></label>
+                    <div style="align-self:end"><button class="btn btn-g" id="estTout">Estimer</button></div>
+                </div>
+                <div id="estEtat" class="sub"></div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="sheet" id="sheet" hidden><div class="sheet-in" id="sheetIn"></div></div>
+<div class="lightbox" id="lb" hidden></div>
+
+<script>
+(() => {
+    const $ = s => document.querySelector(s);
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const eur = v => (v || v === 0) && Number(v) ? Number(v).toLocaleString('fr-FR') + ' €' : '—';
+    const date = (s, h = true) => s ? new Date(s).toLocaleString('fr-FR', h ? { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' } : { day: '2-digit', month: 'short', year: 'numeric' }) : '';
+    let token = null;
+    try { token = localStorage.getItem('lunicarAdmin'); } catch (e) {}
+    let etat = { statuts: {} }, demandes = [], messages = [], courant = null, poll = null;
+
+    const toast = t => { const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
+    async function api(url, opts = {}) {
+        const r = await fetch(url, { ...opts, headers: { Authorization: 'Bearer ' + token, ...(opts.body && !(opts.body instanceof FormData) ? { 'Content-Type': 'application/json' } : {}), ...(opts.headers || {}) } });
+        if (r.status === 401) { deconnecter(); throw new Error('Session expirée'); }
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(j.error || 'Erreur ' + r.status);
+        return j;
+    }
+    const lien = (url) => url + (url.includes('?') ? '&' : '?') + 'k=' + encodeURIComponent(token);
+    const photoUrl = p => lien('/api/admin/photo?path=' + encodeURIComponent(p));
+
+    // ---------------- Connexion
+    function deconnecter() { token = null; try { localStorage.removeItem('lunicarAdmin'); } catch (e) {} $('#app').hidden = true; $('#login').hidden = false; $('#sheet').hidden = true; }
+    $('#loginForm').addEventListener('submit', async e => {
+        e.preventDefault();
+        $('#loginErr').textContent = '';
+        const r = await fetch('/api/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: $('#pwd').value }) });
+        const j = await r.json().catch(() => ({}));
+        if (!j.success) { $('#loginErr').textContent = j.error || 'Connexion impossible'; return; }
+        token = j.token; try { localStorage.setItem('lunicarAdmin', token); } catch (e) {}
+        demarrer();
+    });
+    $('#logout').addEventListener('click', deconnecter);
+
+    async function demarrer() {
+        try { etat = await api('/api/admin/etat'); } catch (e) { return deconnecter(); }
+        $('#login').hidden = true; $('#app').hidden = false;
+        $('#fStatut').innerHTML = '<option value="">Tous les statuts</option>' + Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
+        afficherAvis();
+        await Promise.all([charger(), chargerMessages()]);
+        ouvrirDepuisHash();
+    }
+    function afficherAvis() {
+        const a = [];
+        if (etat.stockage !== 'supabase') a.push('<div class="notice">Stockage local : sur Render, les demandes et photos sont effacées à chaque déploiement. Renseignez SUPABASE_URL et SUPABASE_SERVICE_KEY (voir README).</div>');
+        if (!etat.estimation.actif) a.push('<div class="notice">Estimation automatique désactivée : ANTHROPIC_API_KEY n\'est pas défini sur le serveur.</div>');
+        if (!etat.email) a.push('<div class="notice">E-mail non configuré : les demandes ne partent pas par e-mail.</div>');
+        $('#notices').innerHTML = a.join('');
+    }
+
+    // ---------------- Onglets
+    $('#tabs').addEventListener('click', e => {
+        const b = e.target.closest('button[data-tab]'); if (!b) return;
+        document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x === b));
+        document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== b.dataset.tab);
+        if (b.dataset.tab === 'photos') dossiers();
+        if (b.dataset.tab === 'reglages') reglages();
+        if (b.dataset.tab === 'messages') rendreMessages();
+    });
+
+    // ---------------- Demandes
+    async function charger() {
+        demandes = await api('/api/admin/demandes');
+        $('#cDem').textContent = demandes.filter(d => d.statut === 'nouvelle').length || '';
+        kpis(); liste();
+    }
+    const idf = d => /^(75|77|78|91|92|93|94|95)/.test((d.data || {}).code_postal || '');
+    const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || ((d.estimation || {}).prix || {}).max_achat || 0;
+    function kpis() {
+        const now = Date.now(), j30 = demandes.filter(d => now - new Date(d.created_at) < 30 * 864e5);
+        const achetees = demandes.filter(d => d.statut === 'achetee');
+        const engage = achetees.reduce((s, d) => s + (Number((d.suivi || {}).prix_achat) || 0), 0);
+        $('#kpis').innerHTML = [
+            [demandes.length, 'demandes au total'], [j30.length, 'sur les 30 derniers jours'],
+            [demandes.filter(d => d.statut === 'nouvelle').length, 'à traiter'],
+            [demandes.filter(d => !d.estimation && d.type !== 'rappel').length, 'sans estimation'],
+            [achetees.length, 'véhicules achetés'], [engage ? eur(engage) : '—', 'payés aux vendeurs']
+        ].map(([v, l]) => `<div class="kpi"><b class="num">${v}</b><span>${l}</span></div>`).join('');
+    }
+    function filtrees() {
+        const q = $('#q').value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+        const st = $('#fStatut').value, or = $('#fOrigine').value, ty = $('#fType').value;
+        return demandes.filter(d => {
+            const x = d.data || {};
+            if (st && d.statut !== st) return false;
+            if (or && d.origine !== or) return false;
+            if (ty && d.type !== ty) return false;
+            if ($('#fIdf').checked && !idf(d)) return false;
+            if ($('#fPhotos').checked && !(d.photos || []).length) return false;
+            if ($('#fSansEst').checked && d.estimation) return false;
+            if (!q) return true;
+            const hay = [d.ref, x.prenom, x.nom, x.telephone, (x.telephone || '').replace(/\s/g, ''), x.email, x.plaque, x.vehicule, x.ville, x.code_postal, x.annee].join(' ').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+            return hay.includes(q);
+        });
+    }
+    function liste() {
+        const a = filtrees();
+        const head = '<div class="row head"><div>Reçue</div><div>Vendeur</div><div>Véhicule</div><div class="ville">Ville</div><div style="text-align:right">Prix max</div><div>Statut</div><div class="ph" style="text-align:right">Photos</div></div>';
+        $('#list').innerHTML = head + (a.length ? a.map(d => {
+            const x = d.data || {};
+            const est = (d.suivi || {}).estimation_statut === 'en_cours' ? '<span class="spin"></span>' : (prixMax(d) ? eur(prixMax(d)) : '—');
+            const tag = d.origine === 'abandon' ? '<span class="tag">Abandon</span>' : d.type === 'rappel' ? '<span class="tag rappel">Rappel</span>' : d.origine === 'gmail' ? '<span class="tag" style="color:var(--ink-4)">Importée</span>' : '';
+            return `<div class="row" data-ref="${esc(d.ref)}">
+                <div class="d"><b>${date(d.created_at, false)}</b>${esc(d.ref)}</div>
+                <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span></div>
+                <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km · ' : ''}${esc(x.mecanique || '')} ${tag}</span></div>
+                <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span></div>
+                <div class="price num">${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
+                <div><span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span></div>
+                <div class="ph num">${(d.photos || []).length || ''}</div>
+            </div>`;
+        }).join('') : '<div class="empty">Aucune demande ne correspond.</div>');
+    }
+    ['#q', '#fStatut', '#fOrigine', '#fType', '#fIdf', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
+    $('#list').addEventListener('click', e => { const r = e.target.closest('.row[data-ref]'); if (r) ouvrir(r.dataset.ref); });
+    $('#csv').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/export.csv'); });
+
+    // ---------------- Fiche d'une demande
+    function ouvrirDepuisHash() { const r = location.hash.slice(1).toUpperCase(); if (/^[0-9A-F]{8}$/.test(r)) ouvrir(r); }
+    window.addEventListener('hashchange', ouvrirDepuisHash);
+    async function ouvrir(ref) {
+        try { courant = await api('/api/admin/demandes/' + ref); } catch (e) { return toast(e.message); }
+        if (location.hash !== '#' + ref) history.replaceState(null, '', '#' + ref);
+        $('#sheet').hidden = false; document.body.style.overflow = 'hidden';
+        fiche();
+        surveiller();
+    }
+    function fermer() {
+        $('#sheet').hidden = true; document.body.style.overflow = ''; courant = null; clearInterval(poll);
+        history.replaceState(null, '', location.pathname);
+    }
+    $('#sheet').addEventListener('click', e => { if (e.target.id === 'sheet') fermer(); });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') { if (!$('#lb').hidden) $('#lb').hidden = true; else if (!$('#sheet').hidden) fermer(); }
+        if (!$('#lb').hidden && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) lbAller(e.key === 'ArrowRight' ? 1 : -1);
+    });
+
+    const kv = rows => `<table class="kv">${rows.filter(r => r[1]).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join('')}</table>`;
+    const ESTIM_DUREE = 'une à deux minutes';
+
+    function fiche() {
+        const d = courant, x = d.data || {}, s = d.suivi || {}, e = d.estimation;
+        const tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
+        const enCours = s.estimation_statut === 'en_cours';
+        const p = (e && e.prix) || {};
+        const siv = x.fiche_api || null;
+        $('#sheetIn').innerHTML = `
+        <div class="sh-top">
+            <h2>${esc(x.vehicule || 'Véhicule non précisé')} ${esc(x.annee || '')}
+                <small>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · réf. ${esc(d.ref)} · reçue le ${date(d.created_at)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : d.origine === 'gmail' ? ' · importée de Gmail' : ''}</small></h2>
+            <div class="contact">
+                ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}">Appeler ${esc(x.telephone)}</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
+                ${x.email ? `<a class="btn" href="mailto:${esc(x.email)}">E-mail</a>` : ''}
+            </div>
+            <select class="in" id="stSel">${Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}"${k === d.statut ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>
+            <button class="close" id="closeSheet" aria-label="Fermer">×</button>
+        </div>
+        <div class="sh-body">
+            <section class="sec">
+                <h3>Estimation</h3>
+                <div class="prices">
+                    <div class="pr main"><span>Prix max d'achat</span><b class="num">${enCours ? '<span class="spin"></span>' : eur(s.prix_manuel_max || p.max_achat)}</b><small>${s.prix_manuel_max ? 'retenu à la main · calcul ' + eur(p.max_achat) : 'calculé avec vos marges'}</small></div>
+                    <div class="pr"><span>Prix constaté Leboncoin</span><b class="num">${eur(p.leboncoin)}</b><small>${e && e.leboncoin ? (e.leboncoin.nb_annonces ? e.leboncoin.nb_annonces + ' annonces · ' : '') + (e.leboncoin.prix_bas ? eur(e.leboncoin.prix_bas) + ' à ' + eur(e.leboncoin.prix_haut) : '') : ''}</small></div>
+                    <div class="pr"><span>Cote Argus</span><b class="num">${eur(p.argus)}</b><small>${e && e.cote_argus ? esc(e.cote_argus.source || '') : ''}</small></div>
+                    <div class="pr"><span>Prix de vente estimé</span><b class="num">${eur(s.prix_manuel_vente || p.vente_estime)}</b><small>${e ? esc({ reparer_revendre: 'après remise en état', en_l_etat_marchand: 'en l\'état, à un marchand', export: 'à l\'export', pieces: 'pour pièces' }[e.canal_revente] || '') : ''}</small></div>
+                </div>
+                <div class="est-meta">
+                    <button class="btn btn-s ${e ? '' : 'btn-g'}" id="estBtn" ${enCours || !etat.estimation.actif ? 'disabled' : ''}>${enCours ? '<span class="spin"></span> Estimation en cours (' + ESTIM_DUREE + ')' : e ? 'Relancer l\'estimation' : 'Estimer maintenant'}</button>
+                    ${e ? `<span>Confiance <b>${esc(e.confiance || '?')}</b></span><span>${date(d.estimation_at)}</span><span>${esc(e.modele || '')} · ${e.duree_s || '?'} s · ${(e.usage || {}).recherches || 0} recherches</span>` : ''}
+                    ${s.estimation_statut === 'erreur' ? `<span style="color:var(--red)">Échec : ${esc(s.estimation_erreur)}</span>` : ''}
+                </div>
+                ${e && e.resume ? `<p class="resume">${esc(e.resume)}</p>` : ''}
+                ${e ? `<div class="cols" style="margin-top:16px">
+                    <div>
+                        <table class="calc">
+                            <tr><td>Prix de vente estimé</td><td class="num">${eur(e.calcul.prix_vente_estime)}</td></tr>
+                            <tr><td>− Remise en état</td><td class="num">${eur(e.calcul.frais_remise_en_etat)}</td></tr>
+                            <tr><td>− Frais fixes</td><td class="num">${eur(e.calcul.frais_fixes)}</td></tr>
+                            <tr><td>− Marge (${esc(e.reglages.marge_pct)} %, min. ${eur(e.reglages.marge_min)})</td><td class="num">${eur(e.calcul.marge)}</td></tr>
+                            <tr class="tot"><td>Prix max d'achat</td><td class="num">${eur(e.calcul.prix_max_achat)}</td></tr>
+                        </table>
+                        ${e.prix_max_achat_ia ? `<p class="sub" style="font-size:.84rem;color:var(--ink-4);margin:8px 0 0">Avis de l'IA sans vos marges : ${eur(e.prix_max_achat_ia)}</p>` : ''}
+                        ${(e.frais_remise_en_etat && e.frais_remise_en_etat.postes || []).length ? `<details open><summary>Remise en état chiffrée</summary>${kv(e.frais_remise_en_etat.postes.map(p => [p.libelle, '<span class="num">' + eur(p.montant) + '</span>']))}</details>` : ''}
+                    </div>
+                    <div>
+                        ${e.vehicule_identifie ? `<p style="margin:0 0 8px"><b>${esc(e.vehicule_identifie)}</b></p>` : ''}
+                        ${(e.points_attention || []).length ? `<p style="margin:0 0 4px;font-weight:600">Points d'attention</p><ul class="plain">${e.points_attention.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+                        ${(e.questions_a_poser || []).length ? `<p style="margin:10px 0 4px;font-weight:600">À demander au vendeur</p><ul class="plain">${e.questions_a_poser.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+                        ${(e.hypotheses || []).length ? `<p style="margin:10px 0 4px;font-weight:600">Hypothèses</p><ul class="plain">${e.hypotheses.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+                    </div>
+                </div>
+                ${e.leboncoin && e.leboncoin.commentaire ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Leboncoin :</b> ${esc(e.leboncoin.commentaire)}</p>` : ''}
+                ${e.cote_argus && e.cote_argus.commentaire ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Cote :</b> ${esc(e.cote_argus.commentaire)}</p>` : ''}
+                ${(e.annonces || []).length ? `<details open><summary>${e.annonces.length} annonces comparables</summary><table class="ads"><tr><th>Annonce</th><th>Source</th><th style="text-align:right">Année</th><th style="text-align:right">Km</th><th style="text-align:right">Prix</th></tr>
+                    ${e.annonces.map(a => `<tr><td>${/^https?:\/\//.test(a.url || '') ? `<a href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(a.titre || 'Annonce')}</a>` : esc(a.titre || 'Annonce')}${a.lieu ? ` <span style="color:var(--ink-4)">· ${esc(a.lieu)}</span>` : ''}</td><td>${esc(a.source || '')}</td><td class="n">${esc(a.annee || '')}</td><td class="n">${a.km ? Number(a.km).toLocaleString('fr-FR') : ''}</td><td class="n"><b>${eur(a.prix)}</b></td></tr>`).join('')}</table></details>` : ''}
+                ${(e.sources || []).length ? `<details><summary>${e.sources.length} pages consultées</summary><div class="sources">${e.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.titre || s.url)}</a>`).join('')}</div></details>` : ''}` : ''}
+            </section>
+
+            <div class="cols">
+                <section class="sec">
+                    <h3>Véhicule</h3>
+                    ${kv([
+                        ['Véhicule', esc(x.vehicule)], ['Année', esc(x.annee)], ['Kilométrage', x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''],
+                        ['Plaque', esc(x.plaque) + (x.plaque_datation ? `<br><span style="color:var(--ink-4);font-weight:400">${esc(x.plaque_datation)}</span>` : '')],
+                        ['VIN', x.vin || (siv && siv.vin) ? `<code>${esc(x.vin || siv.vin)}</code>` : ''], ['Fiche confirmée', esc(x.fiche_confirmee)],
+                        ['État mécanique', esc(x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : ''))], ['Carrosserie', esc(x.carrosserie)],
+                        ['Contrôle technique', esc(x.controle_technique)], ['Carburant', esc(x.carburant)], ['Boîte', esc(x.boite)],
+                        ['Extérieur', esc(x.etat_exterieur)], ['Intérieur', esc(x.etat_interieur)]
+                    ])}
+                    ${siv ? `<details><summary>Fiche SIV complète</summary>${kv(Object.entries(siv).filter(([k, v]) => v !== null && v !== '' && typeof v !== 'object').map(([k, v]) => [k, esc(v)]))}</details>` : ''}
+                    ${x.autres ? `<details><summary>Autres informations de l'e-mail</summary>${kv(Object.entries(x.autres).map(([k, v]) => [k, esc(v)]))}</details>` : ''}
+                </section>
+                <section class="sec">
+                    <h3>Vendeur et projet</h3>
+                    ${kv([
+                        ['Nom', esc([x.prenom, x.nom].filter(Boolean).join(' '))], ['Téléphone', esc(x.telephone)], ['E-mail', x.email ? `<a href="mailto:${esc(x.email)}">${esc(x.email)}</a>` : ''],
+                        ['Ville', esc([x.code_postal, x.ville].filter(Boolean).join(' ')) + (idf(d) ? ' · Île-de-France' : '')],
+                        ['Prix souhaité', x.prix_souhaite ? eur(x.prix_souhaite) : ''], ['Vendre quand', esc(x.delai)], ['Autre voiture', esc(x.projet_achat)],
+                        ['Titulaire de la carte grise', x.titulaire ? (x.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : ''], ['Nom du titulaire', esc(x.nom_titulaire)], ['N° du certificat', esc(x.numero_formule)],
+                        ['Page', esc(x.page)], ['Provenance', esc(x.provenance)]
+                    ])}
+                    ${x.message ? `<p style="margin:12px 0 4px;font-weight:600">Message du vendeur</p><p class="msg">${esc(x.message)}</p>` : ''}
+                </section>
+            </div>
+
+            <section class="sec">
+                <h3>Photos · ${(d.photos || []).length} · dossier <code style="text-transform:none;letter-spacing:0;color:var(--ink-4)">${esc(d.dossier)}</code></h3>
+                <div class="filters">
+                    <label class="btn btn-s">Ajouter des photos<input type="file" id="addPh" accept="image/*,application/pdf" multiple hidden></label>
+                    ${(d.photos || []).length ? `<a class="btn btn-s" href="${lien('/api/admin/demandes/' + d.ref + '/zip')}">Télécharger le dossier (.zip)</a>` : ''}
+                </div>
+                <div class="gal">${(d.photos || []).map((p, i) => `<figure>${/\.pdf$/i.test(p.name) ? `<a class="pdf" href="${photoUrl(p.path)}" target="_blank">PDF<br>${esc(p.name)}</a>` : `<img src="${photoUrl(p.path)}" alt="" loading="lazy" data-i="${i}">`}<button class="del" data-del="${esc(p.path)}">Supprimer</button></figure>`).join('')}</div>
+            </section>
+
+            <section class="sec">
+                <h3>Suivi</h3>
+                <form id="suiviForm">
+                    <div class="form-grid">
+                        <label class="f">Offre faite (€)<input class="in num" name="offre" inputmode="numeric" value="${esc(s.offre || '')}"></label>
+                        <label class="f">Prix d'achat final (€)<input class="in num" name="prix_achat" inputmode="numeric" value="${esc(s.prix_achat || '')}"></label>
+                        <label class="f">Prix max retenu (€)<input class="in num" name="prix_manuel_max" inputmode="numeric" value="${esc(s.prix_manuel_max || '')}" placeholder="${p.max_achat || ''}"></label>
+                        <label class="f">Prix de vente retenu (€)<input class="in num" name="prix_manuel_vente" inputmode="numeric" value="${esc(s.prix_manuel_vente || '')}" placeholder="${p.vente_estime || ''}"></label>
+                        <label class="f">Rappeler le<input class="in" name="rappel_le" type="datetime-local" value="${esc(s.rappel_le || '')}"></label>
+                    </div>
+                    <label class="f" style="margin-top:10px">Notes<textarea class="in" name="notes" rows="4">${esc(s.notes || '')}</textarea></label>
+                    <div class="filters" style="margin-top:10px">
+                        <button class="btn btn-p">Enregistrer le suivi</button>
+                        <button type="button" class="btn btn-s btn-d" id="delDem" style="margin-left:auto">Supprimer la demande</button>
+                    </div>
+                </form>
+                ${(s.historique || []).length ? `<ul class="histo">${s.historique.map(h => `<li><b>${date(h.date)}</b> · ${esc(h.quoi)}</li>`).join('')}</ul>` : ''}
+            </section>
+        </div>`;
+        $('#closeSheet').onclick = fermer;
+        $('#stSel').onchange = async ev => { await sauver({ statut: ev.target.value }); toast('Statut mis à jour'); };
+        const eb = $('#estBtn');
+        if (eb) eb.onclick = async () => {
+            try { await api('/api/admin/demandes/' + d.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; fiche(); surveiller(true); } catch (err) { toast(err.message); }
+        };
+        $('#suiviForm').onsubmit = async ev => {
+            ev.preventDefault();
+            const f = Object.fromEntries(new FormData(ev.target));
+            ['offre', 'prix_achat', 'prix_manuel_max', 'prix_manuel_vente'].forEach(k => f[k] = f[k].replace(/[^\d]/g, ''));
+            await sauver(f); toast('Suivi enregistré');
+        };
+        $('#delDem').onclick = async () => {
+            if (!confirm('Supprimer définitivement cette demande et ses photos ?')) return;
+            await api('/api/admin/demandes/' + d.ref, { method: 'DELETE' }); fermer(); charger(); toast('Demande supprimée');
+        };
+        $('#addPh').onchange = async ev => {
+            const fd = new FormData(); [...ev.target.files].forEach(f => fd.append('photos', f));
+            toast('Envoi…');
+            try { courant = await api('/api/admin/demandes/' + d.ref + '/photos', { method: 'POST', body: fd }); fiche(); maj(courant); } catch (err) { toast(err.message); }
+        };
+        $('#sheetIn').querySelectorAll('[data-del]').forEach(b => b.onclick = async () => {
+            if (!confirm('Supprimer cette photo ?')) return;
+            courant = await api('/api/admin/demandes/' + d.ref + '/photos?path=' + encodeURIComponent(b.dataset.del), { method: 'DELETE' }); fiche(); maj(courant);
+        });
+        $('#sheetIn').querySelectorAll('.gal img').forEach(img => img.onclick = () => lbOuvrir(+img.dataset.i));
+    }
+    async function sauver(champs) {
+        try { courant = await api('/api/admin/demandes/' + courant.ref, { method: 'PATCH', body: JSON.stringify(champs) }); fiche(); maj(courant); }
+        catch (e) { toast(e.message); }
+    }
+    function maj(d) { const i = demandes.findIndex(x => x.ref === d.ref); if (i >= 0) demandes[i] = d; else demandes.unshift(d); kpis(); liste(); }
+    // Pendant une estimation, la fiche se met à jour toute seule.
+    function surveiller(force) {
+        clearInterval(poll);
+        if (!courant || (!force && (courant.suivi || {}).estimation_statut !== 'en_cours')) return;
+        poll = setInterval(async () => {
+            if (!courant) return clearInterval(poll);
+            const d = await api('/api/admin/demandes/' + courant.ref).catch(() => null);
+            if (d && (d.suivi || {}).estimation_statut !== 'en_cours') { clearInterval(poll); courant = d; fiche(); maj(d); toast(d.estimation ? 'Estimation terminée' : 'Estimation impossible'); }
+        }, 5000);
+    }
+
+    // ---------------- Visionneuse
+    let lbI = 0;
+    const imgs = () => (courant.photos || []).filter(p => !/\.pdf$/i.test(p.name));
+    function lbOuvrir(i) { lbI = i; lbRendre(); $('#lb').hidden = false; }
+    function lbAller(n) { const a = imgs(); lbI = (lbI + n + a.length) % a.length; lbRendre(); }
+    function lbRendre() {
+        const a = imgs(), p = a[lbI]; if (!p) return;
+        $('#lb').innerHTML = `<img src="${photoUrl(p.path)}" alt=""><button class="nav prev">‹</button><button class="nav next">›</button><div class="cap">${lbI + 1} / ${a.length} · ${esc(p.name)} · <a href="${photoUrl(p.path)}" download="${esc(p.name)}" style="color:#D4B26A">télécharger</a></div>`;
+        $('#lb .prev').onclick = ev => { ev.stopPropagation(); lbAller(-1); };
+        $('#lb .next').onclick = ev => { ev.stopPropagation(); lbAller(1); };
+    }
+    $('#lb').addEventListener('click', e => { if (e.target.id === 'lb' || e.target.tagName === 'IMG') $('#lb').hidden = true; });
+
+    // ---------------- Dossiers photos
+    function dossiers() {
+        const q = $('#qPhotos').value.trim().toLowerCase();
+        const a = demandes.filter(d => (d.photos || []).length && (!q || (d.dossier + ' ' + ((d.data || {}).vehicule || '')).toLowerCase().includes(q)));
+        $('#folders').innerHTML = a.length ? a.map(d => {
+            const im = d.photos.filter(p => !/\.pdf$/i.test(p.name));
+            const x = d.data || {};
+            return `<button class="folder" data-ref="${esc(d.ref)}">
+                <div class="cov">${im[0] ? `<img src="${photoUrl(im[0].path)}" alt="" loading="lazy">` : '<div></div>'}<div class="side">${im[1] ? `<img src="${photoUrl(im[1].path)}" alt="" loading="lazy">` : '<div></div>'}${im[2] ? `<img src="${photoUrl(im[2].path)}" alt="" loading="lazy">` : '<div></div>'}</div></div>
+                <div class="lab"><b>${esc(x.vehicule || 'Véhicule')} ${esc(x.annee || '')} · ${d.photos.length} fichier${d.photos.length > 1 ? 's' : ''}</b><span>${esc(d.dossier)}</span></div>
+            </button>`;
+        }).join('') : '<div class="empty">Aucun dossier photo pour l\'instant.</div>';
+    }
+    $('#qPhotos').addEventListener('input', dossiers);
+    $('#folders').addEventListener('click', e => { const f = e.target.closest('.folder'); if (f) ouvrir(f.dataset.ref); });
+
+    // ---------------- Messages
+    async function chargerMessages() {
+        messages = await api('/api/admin/messages').catch(() => []);
+        $('#cMsg').textContent = messages.filter(m => !m.lu).length || '';
+    }
+    function rendreMessages() {
+        $('#messages').innerHTML = messages.length ? messages.map(m => {
+            const x = m.data || {};
+            return `<div class="m ${m.lu ? '' : 'unread'}"><div class="h"><b class="n">${esc(x.nom)}</b>${x.email ? `<a href="mailto:${esc(x.email)}">${esc(x.email)}</a>` : ''}${x.telephone ? `<a href="tel:${esc(x.telephone)}">${esc(x.telephone)}</a>` : ''}<span>${date(m.created_at)}</span>
+                <button class="btn btn-s" data-lu="${esc(m.id)}" data-v="${m.lu ? '' : '1'}" style="margin-left:auto">${m.lu ? 'Marquer non lu' : 'Marquer lu'}</button></div><p>${esc(x.message)}</p></div>`;
+        }).join('') : '<div class="empty">Aucun message.</div>';
+        $('#messages').querySelectorAll('[data-lu]').forEach(b => b.onclick = async () => {
+            await api('/api/admin/messages/' + b.dataset.lu, { method: 'PATCH', body: JSON.stringify({ lu: !!b.dataset.v }) });
+            await chargerMessages(); rendreMessages();
+        });
+    }
+
+    // ---------------- Réglages, import, estimation en masse
+    async function reglages() {
+        const r = await api('/api/admin/reglages');
+        const f = $('#regForm'); Object.entries(r).forEach(([k, v]) => { if (f.elements[k]) f.elements[k].value = v; });
+        etat = await api('/api/admin/etat'); etatImport();
+    }
+    $('#regForm').addEventListener('submit', async e => {
+        e.preventDefault();
+        await api('/api/admin/reglages', { method: 'PUT', body: JSON.stringify(Object.fromEntries(new FormData(e.target))) });
+        toast('Réglages enregistrés');
+    });
+    function etatImport() {
+        const i = etat.import_gmail || {}, b = i.dernier;
+        $('#impBtn').disabled = !!i.en_cours;
+        $('#impEtat').innerHTML = i.en_cours ? '<span class="spin"></span> Import en cours… (la page se met à jour)' : b ? (b.erreur ? `<span style="color:var(--red)">Dernier import le ${date(b.date)} : ${esc(b.erreur)}</span>`
+            : `Dernier import le ${date(b.date)} : ${b.demandes} demandes (${b.nouvelles} nouvelles), ${b.photos} photos, ${b.messages} messages${b.erreurs && b.erreurs.length ? `, ${b.erreurs.length} erreurs<ul class="plain">${b.erreurs.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}.`) : 'Aucun import pour l\'instant.';
+        $('#estEtat').innerHTML = etat.estimation.en_cours.length ? `<span class="spin"></span> ${etat.estimation.en_cours.length} estimation(s) en file` : '';
+    }
+    $('#impBtn').addEventListener('click', async () => {
+        try { await api('/api/admin/import-gmail', { method: 'POST', body: JSON.stringify({ depuis: $('#impDepuis').value || undefined }) }); }
+        catch (e) { return toast(e.message); }
+        etat.import_gmail = { ...etat.import_gmail, en_cours: true }; etatImport();
+        const t = setInterval(async () => {
+            etat = await api('/api/admin/etat'); etatImport();
+            if (!etat.import_gmail.en_cours) { clearInterval(t); charger(); chargerMessages(); toast('Import terminé'); }
+        }, 4000);
+    });
+    $('#estTout').addEventListener('click', async () => {
+        try { const r = await api('/api/admin/estimer-tout', { method: 'POST', body: JSON.stringify({ max: $('#estMax').value }) }); toast(r.planifiees + ' estimation(s) lancée(s)'); }
+        catch (e) { return toast(e.message); }
+        setTimeout(async () => { etat = await api('/api/admin/etat'); etatImport(); charger(); }, 1500);
+    });
+
+    // Rafraîchissement discret de la liste toutes les 60 s.
+    setInterval(() => { if (token && !$('#app').hidden && $('#sheet').hidden) charger().catch(() => {}); }, 60000);
+
+    if (token) demarrer(); else $('#login').hidden = false;
+})();
+</script>
+</body>
+</html>

@@ -323,7 +323,7 @@
                 mecanique: radio('mecanique'), carrosserie: radio('carrosserie'), ct: radio('ct'), delai: radio('delai'), achat: radio('achat'),
                 prenom: f.prenom.value, nom: f.nom.value, telephone: f.telephone.value, codePostal: f.codePostal.value, ville: f.ville.value,
                 titulaire: radio('titulaire'), nomTitulaire: radio('titulaire') === 'non' ? f.nomTitulaire.value : '', numeroFormule: f.numeroFormule.value,
-                email: f.email.value, site_web: f.site_web.value,
+                email: f.email.value, message: f.message.value, site_web: f.site_web.value,
                 source: form.dataset.source, page: location.pathname, provenance: provenance()
             };
         };
