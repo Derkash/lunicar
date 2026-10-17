@@ -188,6 +188,9 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
 .row input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; }
 
 .suivi-chiffres { grid-template-columns: repeat(5, 1fr) auto; align-items: end; }
+.decompte { margin: 0 0 14px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); font-size: .95rem; }
+.decompte.auj { border-color: #E2C27A; background: #FFF8E6; }
+.decompte.retard { border-color: #E6B1A8; background: #FDF0EE; color: #8A2E1E; }
 .fil { list-style: none; margin: 16px 0 0; padding: 0; border-left: 2px solid var(--line); }
 .fil li { position: relative; padding: 6px 0 6px 16px; }
 .fil li::before { content: ""; position: absolute; left: -6px; top: 12px; width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
@@ -452,6 +455,27 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
     const ACTIFS = ['nouvelle', 'contactee', 'offre', 'rdv'];
     const jourIso = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
     const rappel = d => ACTIFS.includes(d.statut) && !(d.suivi || {}).archivee ? ((d.suivi || {}).rappel_le || '').slice(0, 10) : '';
+    // Jours ouvrés (week-ends et jours fériés français exclus), comme côté serveur.
+    function feries(an) {
+        const a = an % 19, b = Math.floor(an / 100), c = an % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3);
+        const h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451);
+        const pq = Date.UTC(an, Math.floor((h + l - 7 * m + 114) / 31) - 1, ((h + l - 7 * m + 114) % 31) + 1), plus = n => new Date(pq + n * 864e5).toISOString().slice(0, 10);
+        return ['01-01', '05-01', '05-08', '07-14', '08-15', '11-01', '11-11', '12-25'].map(x => `${an}-${x}`).concat([plus(1), plus(39), plus(50)]);
+    }
+    const ouvre = iso => { const d = new Date(iso + 'T12:00:00Z'), j = d.getUTCDay(); return j && j !== 6 && !feries(d.getUTCFullYear()).includes(iso); };
+    function ouvresJusqua(cible) { // > 0 : jours ouvrés restants ; < 0 : jours ouvrés de retard
+        const auj = jourIso(); if (cible === auj) return 0;
+        const sens = cible > auj ? 1 : -1; let d = new Date(auj + 'T12:00:00Z'), n = 0;
+        for (let i = 0; i < 400; i++) { d = new Date(d.getTime() + sens * 864e5); const iso = d.toISOString().slice(0, 10); if (ouvre(iso)) n += sens; if (iso === cible) return n; }
+        return n;
+    }
+    function decompte(d) {
+        const r = rappel(d); if (!r) return '';
+        const n = ouvresJusqua(r), jour = new Date(r + 'T12:00:00Z').toLocaleDateString('fr-FR', { weekday: 'long', day: '2-digit', month: '2-digit', timeZone: 'UTC' });
+        const [cls, txt] = n > 0 ? ['', `Rappel dans <b>${n} jour${n > 1 ? 's' : ''} ouvré${n > 1 ? 's' : ''}</b> · ${jour}`]
+            : n === 0 ? ['auj', `<b>Rappeler aujourd'hui</b> · ${jour}`] : ['retard', `<b>Rappel en retard de ${-n} jour${n < -1 ? 's' : ''} ouvré${n < -1 ? 's' : ''}</b> · prévu ${jour}`];
+        return `<div class="decompte ${cls}">${txt}</div>`;
+    }
     const jj = iso => iso ? iso.split('-').reverse().slice(0, 2).join('/') : '';
     const idf = d => /^(75|77|78|91|92|93|94|95)/.test((d.data || {}).code_postal || '');
     const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || ((d.estimation || {}).prix || {}).max_achat || 0;
@@ -645,6 +669,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
 
             <section class="sec">
                 <h3>Suivi</h3>
+                ${decompte(d)}
                 <form id="suiviForm" class="form-grid suivi-chiffres">
                     <label class="f">Offre faite (€)<input class="in num" name="offre" inputmode="numeric" value="${esc(s.offre || '')}"></label>
                     <label class="f">Prix d'achat final (€)<input class="in num" name="prix_achat" inputmode="numeric" value="${esc(s.prix_achat || '')}"></label>
@@ -763,7 +788,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
         $('#noteForm').onsubmit = async ev => {
             ev.preventDefault();
             const texte = $('#noteIn').value.trim(); if (!texte) return;
-            try { courant = await api('/api/admin/demandes/' + d.ref + '/note', { method: 'POST', body: JSON.stringify({ texte }) }); fiche(); maj(courant); toast('Note ajoutée'); }
+            try { courant = await api('/api/admin/demandes/' + d.ref + '/note', { method: 'POST', body: JSON.stringify({ texte }) }); fiche(); maj(courant); toast(courant.suivi.rappel_le ? 'Note ajoutée · relance le ' + jj(courant.suivi.rappel_le) : 'Note ajoutée'); }
             catch (e) { toast(e.message); }
         };
         $('#noteIn').onkeydown = e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) $('#noteForm').requestSubmit(); };
