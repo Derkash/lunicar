@@ -388,7 +388,7 @@ function emailDemande(d, apiBrut, opts = {}) {
     <div style="font-size:22px;font-weight:700;margin-top:6px">${esc([d.prenom, d.nom].filter(Boolean).join(' ') || 'Sans nom')} · <a href="tel:+${d.telephone_intl}" style="color:#fff">${esc(d.telephone)}</a></div>
   </div>
   <div style="background:#fff;padding:20px 22px;border-radius:0 0 10px 10px">
-    ${opts.estimation ? blocEstimation(opts.estimation, ref) : opts.estimationEnAttente ? `<p style="margin:0 0 14px;padding:10px 12px;background:#EEF3F8;border-radius:8px;color:#0D2541">Estimation automatique en cours : elle apparaîtra dans <a href="${SITE.baseUrl}/admino#${ref}">l'espace admin</a>.</p>` : d.type !== 'rappel' ? `<p style="margin:0 0 14px"><a href="${SITE.baseUrl}/admino#${ref}" style="color:#B8923A;font-weight:700">Ouvrir la fiche et lancer l'estimation →</a></p>` : ''}
+    ${opts.estimation ? blocEstimation(opts.estimation, ref) : opts.estimationEnAttente ? `<p style="margin:0 0 14px;padding:10px 12px;background:#EEF3F8;border-radius:8px;color:#0D2541">Estimation automatique en cours : elle apparaîtra dans <a href="${SITE.baseUrl}/admino/demande/${ref}">l'espace admin</a>.</p>` : d.type !== 'rappel' ? `<p style="margin:0 0 14px"><a href="${SITE.baseUrl}/admino/demande/${ref}" style="color:#B8923A;font-weight:700">Ouvrir la fiche et lancer l'estimation →</a></p>` : ''}
     ${opts.abandon ? `<p style="margin:0 0 14px;padding:10px 12px;background:#FCF3E8;border-radius:8px;color:#7A3B12">Le vendeur a quitté le formulaire à l'étape <strong>${esc(d.etape || 'inconnue')}</strong> sans l'envoyer. Voici tout ce qu'il avait rempli.</p>` : ''}
     <p style="margin:0 0 16px"><a href="tel:+${d.telephone_intl}" style="display:inline-block;background:#B8923A;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px">Appeler ${esc(d.telephone)}</a>
     &nbsp; <a href="https://wa.me/${d.telephone_intl}" style="color:#0D2541;font-weight:700">WhatsApp</a></p>
@@ -456,7 +456,7 @@ function blocEstimation(e, ref) {
       </tr></table>
       ${e.resume ? `<p style="margin:10px 0 0;font-size:13px;color:#3B3833">${esc(e.resume)}</p>` : ''}
       ${(e.questions_a_poser || []).length ? `<p style="margin:8px 0 0;font-size:13px;color:#3B3833"><strong>À demander :</strong> ${e.questions_a_poser.map(esc).join(' · ')}</p>` : ''}
-      <p style="margin:8px 0 0;font-size:13px"><a href="${SITE.baseUrl}/admino#${ref}" style="color:#B8923A;font-weight:700">Détail, annonces et sources dans l'admin →</a></p>
+      <p style="margin:8px 0 0;font-size:13px"><a href="${SITE.baseUrl}/admino/demande/${ref}" style="color:#B8923A;font-weight:700">Détail, annonces et sources dans l'admin →</a></p>
     </div>`;
 }
 
@@ -1051,7 +1051,7 @@ function pingIndexNow() {
 if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_PING === '1')) setTimeout(pingIndexNow, 30000).unref();
 
 // Route admin cachée
-app.get('/admino', (req, res) => {
+app.get(['/admino', '/admino/demande/:ref'], (req, res) => {
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     res.set('Cache-Control', 'no-store');
     res.sendFile(path.join(__dirname, 'public', 'admin', 'index.html'));
@@ -1087,7 +1087,7 @@ setInterval(async () => {
         const neuves = actives.filter(d => d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels && Date.now() - new Date(d.created_at) < 14 * 864e5);
         if (!dues.length && !neuves.length) return;
         const ligne = d => { const x = d.data || {}; const r = (d.suivi || {}).rappel_le;
-            return `<tr><td style="padding:6px 10px 6px 0"><a href="${SITE.baseUrl}/admino#${d.ref}" style="color:#0D2541;font-weight:700">${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</a><br><span style="color:#6F6B64">${esc([x.vehicule, x.annee].filter(Boolean).join(' '))} · ${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span></td>
+            return `<tr><td style="padding:6px 10px 6px 0"><a href="${SITE.baseUrl}/admino/demande/${d.ref}" style="color:#0D2541;font-weight:700">${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</a><br><span style="color:#6F6B64">${esc([x.vehicule, x.annee].filter(Boolean).join(' '))} · ${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span></td>
             <td style="padding:6px 10px 6px 0;white-space:nowrap"><a href="tel:+${esc(x.telephone_intl || '')}">${esc(x.telephone || '')}</a></td>
             <td style="padding:6px 0;color:${r && r < jour ? '#B03A2E' : '#6F6B64'};white-space:nowrap">${r ? (r < jour ? 'en retard · ' : '') + r.split('-').reverse().join('/') : ''}</td></tr>`; };
         await sendEmail({
