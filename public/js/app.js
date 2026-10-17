@@ -13,7 +13,7 @@
             let p = sessionStorage.getItem('lunicar_prov');
             if (!p) {
                 const q = new URLSearchParams(location.search);
-                const utm = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'gclid'].filter(k => q.get(k)).map(k => `${k}=${q.get(k)}`).join('&');
+                const utm = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid'].filter(k => q.get(k)).map(k => `${k}=${q.get(k)}`).join('&');
                 p = [utm, document.referrer && !document.referrer.includes(location.host) ? `ref=${document.referrer}` : '', `entree=${location.pathname}`].filter(Boolean).join(' | ');
                 sessionStorage.setItem('lunicar_prov', p);
             }

@@ -392,11 +392,12 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
         $('#list').innerHTML = head + (a.length ? a.map(d => {
             const x = d.data || {};
             const est = (d.suivi || {}).estimation_statut === 'en_cours' ? '<span class="spin"></span>' : (prixMax(d) ? eur(prixMax(d)) : '—');
+            const pub = /^Google Ads/.test(x.origine || '') ? ' <span class="tag rappel">Pub</span>' : '';
             const tag = d.origine === 'abandon' ? '<span class="tag">Abandon</span>' : d.type === 'rappel' ? '<span class="tag rappel">Rappel</span>' : d.origine === 'gmail' ? '<span class="tag" style="color:var(--ink-4)">Importée</span>' : '';
             return `<div class="row" data-ref="${esc(d.ref)}">
                 <div class="d"><b>${date(d.created_at, false)}</b>${esc(d.ref)}</div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span></div>
-                <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km · ' : ''}${esc(x.mecanique || '')} ${tag}</span></div>
+                <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km · ' : ''}${esc(x.mecanique || '')} ${tag}${pub}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span></div>
                 <div class="price num">${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div><span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span></div>
@@ -511,7 +512,7 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
                         ['Ville', esc([x.code_postal, x.ville].filter(Boolean).join(' ')) + (idf(d) ? ' · Île-de-France' : '')],
                         ['Prix souhaité', x.prix_souhaite ? eur(x.prix_souhaite) : ''], ['Vendre quand', esc(x.delai)], ['Autre voiture', esc(x.projet_achat)],
                         ['Titulaire de la carte grise', x.titulaire ? (x.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : ''], ['Nom du titulaire', esc(x.nom_titulaire)], ['N° du certificat', esc(x.numero_formule)],
-                        ['Page', esc(x.page)], ['Provenance', esc(x.provenance)], ['Clic Google Ads', x.clic_ads ? '<span class="pill st-achetee">oui</span>' : '']
+                        ['Origine', esc(x.origine)], ['Page', esc(x.page)], ['Provenance', esc(x.provenance)], ['Clic Google Ads', x.clic_ads ? '<span class="pill st-achetee">oui</span>' : '']
                     ])}
                     ${x.message ? `<p style="margin:12px 0 4px;font-weight:600">Message du vendeur</p><p class="msg">${esc(x.message)}</p>` : ''}
                 </section>

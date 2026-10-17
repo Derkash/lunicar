@@ -337,7 +337,7 @@ function construireDemande(b, id) {
     const clean = (v, max = 200) => String(v == null ? '' : v).trim().slice(0, max);
     const phone = parsePhone(b.telephone);
     const plaqueInfo = b.plaque ? fichePlaque.analyser(b.plaque) : null;
-    return {
+    const d = {
         id,
         type: b.type === 'rappel' ? 'rappel' : 'estimation',
         plaque: clean(b.plaque, 12).toUpperCase(),
@@ -371,6 +371,8 @@ function construireDemande(b, id) {
         etape: clean(b.etape, 40),
         createdAt: new Date().toISOString()
     };
+    d.origine = origine(d);
+    return d;
 }
 
 // E-mail d'une demande : complète, abandonnée ou rappel. Toute la fiche API y figure.
@@ -405,6 +407,7 @@ function emailDemande(d, apiBrut, opts = {}) {
       ${row('Message', d.message ? `<span style="font-weight:400;white-space:pre-wrap">${esc(d.message)}</span>` : '')}
       ${row('Ville', [d.code_postal, d.ville].filter(Boolean).map(esc).join(' ') + (idfCp ? ' · Île-de-France' : ''))}
       ${row('E-mail', d.email ? `<a href="mailto:${esc(d.email)}">${esc(d.email)}</a>` : '')}
+      ${row('Origine', esc(origine(d)))}
       ${row('Page', esc(d.page))}
       ${row('Provenance', esc(d.provenance))}
       ${row('Photos', opts.photos ? `${opts.photos} en pièce jointe` : '')}
@@ -421,6 +424,22 @@ function emailDemande(d, apiBrut, opts = {}) {
     <p style="margin:18px 0 0;font-size:12px;color:#9C978E">Réf. ${ref} · ${new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}</p>
   </div>
 </div></body></html>`;
+}
+
+// Origine lisible d'une demande : pub Google Ads (campagne, groupe, mot-clé), ChatGPT, Google naturel…
+function origine(d) {
+    const p = String(d.provenance || '');
+    const q = k => { const m = p.match(new RegExp(`(?:^|[&| ])${k}=([^&|]+)`)); return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')).trim() : ''; };
+    if (d.clic_ads || /gclid=|gbraid=|wbraid=/.test(p) || /utm_medium=cpc/.test(p)) {
+        return ['Google Ads', q('utm_campaign') && `campagne « ${q('utm_campaign')} »`, q('utm_content') && `groupe « ${q('utm_content')} »`, q('utm_term') && `mot-clé « ${q('utm_term')} »`].filter(Boolean).join(' · ');
+    }
+    const ref = q('ref');
+    if (/chatgpt|openai/i.test(ref + q('utm_source'))) return 'ChatGPT';
+    if (/perplexity/i.test(ref)) return 'Perplexity';
+    if (/google\./i.test(ref)) return 'Google (résultats naturels)';
+    if (/bing\.|ecosia|qwant|duckduckgo/i.test(ref)) return 'Moteur de recherche (naturel)';
+    if (q('utm_source')) return q('utm_source');
+    return ref ? `Lien depuis ${ref.replace(/^https?:\/\//, '').split('/')[0]}` : 'Accès direct';
 }
 
 const euros = v => v ? `${Number(v).toLocaleString('fr-FR')} €` : '—';
@@ -461,7 +480,7 @@ async function envoyerDemande(d, opts = {}) {
         if (ligne && ligne.estimation) opts = { ...opts, estimation: ligne.estimation };
         else opts = { ...opts, estimationEnAttente: true };
     }
-    const prefixe = opts.abandon ? '⚠️ Abandonnée' : d.type === 'rappel' ? '📞 Rappel' : '🚗 Estimation';
+    const prefixe = (opts.abandon ? '⚠️ Abandonnée' : d.type === 'rappel' ? '📞 Rappel' : '🚗 Estimation') + (/^Google Ads/.test(origine(d)) ? ' [PUB]' : '');
     let emailed = false;
     try {
         const result = await sendEmail({
