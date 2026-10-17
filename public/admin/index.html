@@ -530,7 +530,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
             const x = d.data || {};
             const est = (d.suivi || {}).estimation_statut === 'en_cours' ? '<span class="spin"></span>' : (prixMax(d) ? eur(prixMax(d)) : '—');
             const pub = /^Google Ads/.test(x.origine || '') ? ' <span class="tag rappel">Pub</span>' : '';
-            const tag = d.origine === 'abandon' ? '<span class="tag">Abandon</span>' : d.type === 'rappel' ? '<span class="tag rappel">Rappel</span>' : d.origine === 'gmail' ? '<span class="tag" style="color:var(--ink-4)">Importée</span>' : '';
+            const tag = d.origine === 'abandon' ? '<span class="tag">Abandon</span>' : d.type === 'rappel' ? '<span class="tag rappel">Rappel</span>' : '';
             return `<div class="row${choisies.has(d.ref) ? ' choisie' : ''}" data-ref="${esc(d.ref)}"><div><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''}></div>
                 <div class="d"><b>${date(d.created_at, false)}</b>${esc(d.ref)}</div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span></div>
@@ -614,7 +614,7 @@ details.plus > summary { margin-top: 12px; font-size: .92rem; }
         $('#sheetIn').innerHTML = `
         <div class="sh-top">
             <h2>${esc(x.vehicule || 'Véhicule non précisé')} ${esc(x.annee || '')}
-                <small>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · réf. ${esc(d.ref)} · reçue le ${date(d.created_at)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : d.origine === 'gmail' ? ' · importée de Gmail' : ''}</small></h2>
+                <small>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · réf. ${esc(d.ref)} · reçue le ${date(d.created_at)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></h2>
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}">Appeler ${esc(x.telephone)}</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
                 ${x.email ? `<a class="btn" href="mailto:${esc(x.email)}">E-mail</a>` : ''}
