@@ -153,6 +153,23 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
 .assist .r { font-size: .92rem; color: var(--ink-6); }
 .assist .r h4 { margin: 12px 0 4px; font-size: .95rem; color: var(--marine); }
 
+.calc-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 14px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--white); }
+.calc-strip div { padding: 10px 14px; border-right: 1px solid var(--line); }
+.calc-strip div:last-child { border-right: 0; }
+.calc-strip span { display: block; font-size: .74rem; color: var(--ink-4); }
+.calc-strip b { font-size: 1.05rem; color: var(--marine); }
+.calc-strip .tot { background: var(--cream); }
+details.plus > summary { margin-top: 12px; font-size: .92rem; }
+.analyse { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 8px 28px; margin: 8px 0 4px; }
+.analyse h4 { margin: 8px 0 6px; font-size: .9rem; color: var(--marine); }
+.analyse ul.plain li { font-size: .9rem; margin: 4px 0; }
+.ma-note { background: #FFF8E6; border: 1px solid #F0DFB4; border-radius: 10px; padding: 10px 14px; }
+.ma-note span { font-size: .72rem; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--gold); }
+.ma-note p { margin: 4px 0 0; white-space: pre-wrap; }
+.clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.lien { border: 0; background: none; padding: 4px 0 0; color: var(--marine-7); font-weight: 600; font-size: .85rem; }
+@media (max-width: 900px) { .calc-strip { grid-template-columns: 1fr 1fr; } .calc-strip div { border-bottom: 1px solid var(--line); } }
+
 /* ---------- Dossiers photos ---------- */
 .folders { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
 .folder { background: var(--white); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; }
@@ -492,6 +509,7 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
             <button class="close" id="closeSheet" aria-label="Fermer">×</button>
         </div>
         <div class="sh-body">
+            ${s.notes ? `<div class="ma-note"><span>Ta note</span><p class="clamp" id="noteTxt">${esc(s.notes)}</p>${s.notes.length > 220 ? '<button class="lien" id="noteMore">Voir plus</button>' : ''}</div>` : ''}
             <section class="sec">
                 <h3>Estimation</h3>
                 <div class="prices">
@@ -506,30 +524,28 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
                     ${s.estimation_statut === 'erreur' ? `<span style="color:var(--red)">Échec : ${esc(s.estimation_erreur)}</span>` : ''}
                 </div>
                 ${e && e.resume ? `<p class="resume">${esc(e.resume)}</p>` : ''}
-                ${e ? `<div class="cols" style="margin-top:16px">
-                    <div>
-                        <table class="calc">
-                            <tr><td>Prix de vente estimé</td><td class="num">${eur(e.calcul.prix_vente_estime)}</td></tr>
-                            <tr><td>− Remise en état</td><td class="num">${eur(e.calcul.frais_remise_en_etat)}</td></tr>
-                            <tr><td>− Frais fixes</td><td class="num">${eur(e.calcul.frais_fixes)}</td></tr>
-                            <tr><td>− Marge (${esc(e.reglages.marge_pct)} %, min. ${eur(e.reglages.marge_min)})</td><td class="num">${eur(e.calcul.marge)}</td></tr>
-                            <tr class="tot"><td>Prix max d'achat</td><td class="num">${eur(e.calcul.prix_max_achat)}</td></tr>
-                        </table>
-                        ${e.prix_max_achat_ia ? `<p class="sub" style="font-size:.84rem;color:var(--ink-4);margin:8px 0 0">Avis de l'IA sans vos marges : ${eur(e.prix_max_achat_ia)}</p>` : ''}
-                        ${(e.frais_remise_en_etat && e.frais_remise_en_etat.postes || []).length ? `<details open><summary>Remise en état chiffrée</summary>${kv(e.frais_remise_en_etat.postes.map(p => [p.libelle, '<span class="num">' + eur(p.montant) + '</span>']))}</details>` : ''}
-                    </div>
-                    <div>
-                        ${e.vehicule_identifie ? `<p style="margin:0 0 8px"><b>${esc(e.vehicule_identifie)}</b></p>` : ''}
-                        ${(e.points_attention || []).length ? `<p style="margin:0 0 4px;font-weight:600">Points d'attention</p><ul class="plain">${e.points_attention.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
-                        ${(e.questions_a_poser || []).length ? `<p style="margin:10px 0 4px;font-weight:600">À demander au vendeur</p><ul class="plain">${e.questions_a_poser.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
-                        ${(e.hypotheses || []).length ? `<p style="margin:10px 0 4px;font-weight:600">Hypothèses</p><ul class="plain">${e.hypotheses.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
-                    </div>
+                ${e ? `<div class="calc-strip">
+                    <div><span>Vente estimée</span><b class="num">${eur(e.calcul.prix_vente_estime)}</b></div>
+                    <div><span>− Remise en état</span><b class="num">${eur(e.calcul.frais_remise_en_etat)}</b></div>
+                    <div><span>− Frais fixes</span><b class="num">${eur(e.calcul.frais_fixes)}</b></div>
+                    <div><span>− Marge (${esc(e.reglages.marge_pct)} %, min. ${eur(e.reglages.marge_min)})</span><b class="num">${eur(e.calcul.marge)}</b></div>
+                    <div class="tot"><span>= Prix max d'achat</span><b class="num">${eur(e.calcul.prix_max_achat)}</b></div>
+                </div>
+                ${e.vehicule_identifie ? `<p style="margin:12px 0 0;font-size:.9rem;color:var(--ink-6)"><b>Véhicule retenu :</b> ${esc(e.vehicule_identifie)}${e.prix_max_achat_ia ? ` · avis de l'IA sans vos marges : ${eur(e.prix_max_achat_ia)}` : ''}</p>` : ''}
+                ${(e.points_attention || []).length ? `<p style="margin:8px 0 0;font-size:.9rem;color:#7A3B12"><b>À surveiller :</b> ${e.points_attention.slice(0, 2).map(esc).join(' · ')}</p>` : ''}
+                <details class="plus"><summary>Voir l'analyse complète</summary>
+                <div class="analyse">
+                    ${(e.points_attention || []).length ? `<div><h4>Points d'attention</h4><ul class="plain">${e.points_attention.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
+                    ${(e.questions_a_poser || []).length ? `<div><h4>À demander au vendeur</h4><ul class="plain">${e.questions_a_poser.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
+                    ${(e.frais_remise_en_etat && e.frais_remise_en_etat.postes || []).length ? `<div><h4>Remise en état chiffrée</h4>${kv(e.frais_remise_en_etat.postes.map(p => [p.libelle, '<span class="num">' + eur(p.montant) + '</span>']))}</div>` : ''}
+                    ${(e.hypotheses || []).length ? `<div><h4>Hypothèses</h4><ul class="plain">${e.hypotheses.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
                 </div>
                 ${e.leboncoin && e.leboncoin.commentaire ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Leboncoin :</b> ${esc(e.leboncoin.commentaire)}</p>` : ''}
                 ${e.cote_argus && e.cote_argus.commentaire ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Cote :</b> ${esc(e.cote_argus.commentaire)}</p>` : ''}
-                ${(e.annonces || []).length ? `<details open><summary>${e.annonces.length} annonces comparables</summary><table class="ads"><tr><th>Annonce</th><th>Source</th><th style="text-align:right">Année</th><th style="text-align:right">Km</th><th style="text-align:right">Prix</th></tr>
+                ${(e.annonces || []).length ? `<details><summary>${e.annonces.length} annonces comparables</summary><table class="ads"><tr><th>Annonce</th><th>Source</th><th style="text-align:right">Année</th><th style="text-align:right">Km</th><th style="text-align:right">Prix</th></tr>
                     ${e.annonces.map(a => `<tr><td>${/^https?:\/\//.test(a.url || '') ? `<a href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(a.titre || 'Annonce')}</a>` : esc(a.titre || 'Annonce')}${a.lieu ? ` <span style="color:var(--ink-4)">· ${esc(a.lieu)}</span>` : ''}</td><td>${esc(a.source || '')}</td><td class="n">${esc(a.annee || '')}</td><td class="n">${a.km ? Number(a.km).toLocaleString('fr-FR') : ''}</td><td class="n"><b>${eur(a.prix)}</b></td></tr>`).join('')}</table></details>` : ''}
-                ${(e.sources || []).length ? `<details><summary>${e.sources.length} pages consultées</summary><div class="sources">${e.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.titre || s.url)}</a>`).join('')}</div></details>` : ''}` : ''}
+                ${(e.sources || []).length ? `<details><summary>${e.sources.length} pages consultées</summary><div class="sources">${e.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.titre || s.url)}</a>`).join('')}</div></details>` : ''}
+                </details>` : ''}
             </section>
 
             <div class="cols">
@@ -618,6 +634,7 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
         if (eb) eb.onclick = async () => {
             try { await api('/api/admin/demandes/' + d.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; fiche(); surveiller(true); } catch (err) { toast(err.message); }
         };
+        if ($('#noteMore')) $('#noteMore').onclick = ev => { const p = $('#noteTxt'); p.classList.toggle('clamp'); ev.target.textContent = p.classList.contains('clamp') ? 'Voir plus' : 'Voir moins'; };
         $('#plaqueBtn').onclick = async () => {
             const b = $('#plaqueBtn'); b.disabled = true; $('#plaqueMsg').textContent = 'Interrogation…';
             try { const r = await api('/api/admin/demandes/' + d.ref + '/plaque', { method: 'POST', body: JSON.stringify({ plaque: $('#plaqueIn').value.replace(/[^A-Za-z0-9]/g, '') }) });
