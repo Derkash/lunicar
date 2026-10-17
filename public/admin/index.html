@@ -146,6 +146,13 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
 .histo li { padding: 3px 0; }
 .histo b { color: var(--ink-6); font-weight: 600; }
 
+.siv .alerte { margin: 0 0 8px; padding: 8px 12px; border-radius: 8px; background: #FCF3E8; color: #7A3B12; font-size: .9rem; }
+.assist { border-top: 1px solid var(--line); padding: 12px 0; }
+.assist .q { margin: 0 0 6px; font-weight: 700; color: var(--marine); }
+.assist .q span { font-weight: 400; color: var(--ink-4); font-size: .8rem; margin-left: 8px; }
+.assist .r { font-size: .92rem; color: var(--ink-6); }
+.assist .r h4 { margin: 12px 0 4px; font-size: .95rem; color: var(--marine); }
+
 /* ---------- Dossiers photos ---------- */
 .folders { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
 .folder { background: var(--white); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; }
@@ -235,7 +242,10 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
                     <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option>
                 </select>
                 <select class="in" id="fType"><option value="">Estimations et rappels</option><option value="estimation">Estimations</option><option value="rappel">Rappels</option></select>
-                <label class="chk"><input type="checkbox" id="fIdf"> Île-de-France</label>
+                <select class="in" id="fTri"><option value="recent">Plus récentes d'abord</option><option value="ancien">Plus anciennes d'abord</option><option value="distance">Plus proches de Paris</option><option value="prix">Prix max d'achat décroissant</option></select>
+                <select class="in" id="fPeriode"><option value="">Toute la période</option><option value="1">Aujourd'hui</option><option value="7">7 derniers jours</option><option value="30">30 derniers jours</option><option value="90">3 derniers mois</option><option value="365">12 derniers mois</option></select>
+                <select class="in" id="fRegion"><option value="">Toutes les régions</option></select>
+                <select class="in" id="fDist"><option value="">Toute distance</option><option value="30">≤ 30 km de Paris</option><option value="60">≤ 60 km</option><option value="120">≤ 120 km</option><option value="250">≤ 250 km (couloir)</option><option value="500">≤ 500 km</option></select>
                 <label class="chk"><input type="checkbox" id="fPhotos"> Avec photos</label>
                 <label class="chk"><input type="checkbox" id="fSansEst"> Sans estimation</label>
                 <a class="btn btn-s" id="csv" href="#">Export CSV</a>
@@ -297,6 +307,21 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
     const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const eur = v => (v || v === 0) && Number(v) ? Number(v).toLocaleString('fr-FR') + ' €' : '—';
     const date = (s, h = true) => s ? new Date(s).toLocaleString('fr-FR', h ? { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' } : { day: '2-digit', month: 'short', year: 'numeric' }) : '';
+    // Départements : préfecture (lat, lon) et région, pour la distance à Paris et le filtre par région.
+    const REG = { IDF: 'Île-de-France', HDF: 'Hauts-de-France', GE: 'Grand Est', NOR: 'Normandie', BRE: 'Bretagne', PDL: 'Pays de la Loire', CVL: 'Centre-Val de Loire', BFC: 'Bourgogne-Franche-Comté', NAQ: 'Nouvelle-Aquitaine', ARA: 'Auvergne-Rhône-Alpes', OCC: 'Occitanie', PACA: "Provence-Alpes-Côte d'Azur", COR: 'Corse', DOM: 'Outre-mer' };
+    const DEP = {'01':[46.205,5.226,'ARA'],'02':[49.564,3.62,'HDF'],'03':[46.566,3.333,'ARA'],'04':[44.092,6.236,'PACA'],'05':[44.559,6.079,'PACA'],'06':[43.71,7.262,'PACA'],'07':[44.735,4.599,'ARA'],'08':[49.773,4.72,'GE'],'09':[42.965,1.607,'OCC'],'10':[48.297,4.074,'GE'],'11':[43.212,2.353,'OCC'],'12':[44.35,2.575,'OCC'],'13':[43.296,5.37,'PACA'],'14':[49.182,-0.37,'NOR'],'15':[44.926,2.44,'ARA'],'16':[45.648,0.156,'NAQ'],'17':[46.16,-1.151,'NAQ'],'18':[47.081,2.399,'CVL'],'19':[45.267,1.77,'NAQ'],'2A':[41.919,8.738,'COR'],'2B':[42.697,9.451,'COR'],'21':[47.322,5.041,'BFC'],'22':[48.514,-2.765,'BRE'],'23':[46.171,1.871,'NAQ'],'24':[45.184,0.721,'NAQ'],'25':[47.238,6.024,'BFC'],'26':[44.933,4.892,'ARA'],'27':[49.024,1.151,'NOR'],'28':[48.444,1.489,'CVL'],'29':[47.996,-4.102,'BRE'],'30':[43.837,4.36,'OCC'],'31':[43.605,1.444,'OCC'],'32':[43.646,0.586,'OCC'],'33':[44.838,-0.579,'NAQ'],'34':[43.611,3.877,'OCC'],'35':[48.117,-1.678,'BRE'],'36':[46.81,1.691,'CVL'],'37':[47.394,0.685,'CVL'],'38':[45.188,5.725,'ARA'],'39':[46.675,5.555,'BFC'],'40':[43.894,-0.5,'NAQ'],'41':[47.586,1.335,'CVL'],'42':[45.44,4.387,'ARA'],'43':[45.043,3.885,'ARA'],'44':[47.218,-1.554,'PDL'],'45':[47.903,1.909,'CVL'],'46':[44.448,1.441,'OCC'],'47':[44.203,0.616,'NAQ'],'48':[44.518,3.5,'OCC'],'49':[47.478,-0.563,'PDL'],'50':[49.116,-1.09,'NOR'],'51':[48.957,4.363,'GE'],'52':[48.111,5.139,'GE'],'53':[48.073,-0.769,'PDL'],'54':[48.692,6.184,'GE'],'55':[48.773,5.161,'GE'],'56':[47.658,-2.76,'BRE'],'57':[49.119,6.176,'GE'],'58':[46.99,3.159,'BFC'],'59':[50.629,3.057,'HDF'],'60':[49.43,2.083,'HDF'],'61':[48.432,0.091,'NOR'],'62':[50.291,2.777,'HDF'],'63':[45.778,3.087,'ARA'],'64':[43.295,-0.371,'NAQ'],'65':[43.232,0.078,'OCC'],'66':[42.699,2.895,'OCC'],'67':[48.573,7.752,'GE'],'68':[48.079,7.358,'GE'],'69':[45.764,4.836,'ARA'],'70':[47.62,6.155,'BFC'],'71':[46.307,4.828,'BFC'],'72':[48.006,0.199,'PDL'],'73':[45.564,5.918,'ARA'],'74':[45.899,6.129,'ARA'],'75':[48.857,2.352,'IDF'],'76':[49.443,1.1,'NOR'],'77':[48.62,2.95,'IDF'],'78':[48.805,1.95,'IDF'],'79':[46.323,-0.464,'NAQ'],'80':[49.894,2.296,'HDF'],'81':[43.929,2.148,'OCC'],'82':[44.018,1.355,'OCC'],'83':[43.124,5.928,'PACA'],'84':[43.949,4.806,'PACA'],'85':[46.67,-1.426,'PDL'],'86':[46.58,0.34,'NAQ'],'87':[45.834,1.261,'NAQ'],'88':[48.173,6.449,'GE'],'89':[47.798,3.567,'BFC'],'90':[47.638,6.863,'BFC'],'91':[48.55,2.3,'IDF'],'92':[48.84,2.24,'IDF'],'93':[48.91,2.48,'IDF'],'94':[48.78,2.46,'IDF'],'95':[49.06,2.15,'IDF']};
+    function geo(cp) {
+        cp = String(cp || '').trim();
+        if (!/^\d{5}$/.test(cp)) return null;
+        if (cp.startsWith('97') || cp.startsWith('98')) return { dep: cp.slice(0, 3), region: 'DOM', km: null };
+        let dep = cp.slice(0, 2);
+        if (dep === '20') dep = Number(cp.slice(0, 3)) < 202 ? '2A' : '2B';
+        const g = DEP[dep];
+        if (!g) return null;
+        const r = Math.PI / 180, la1 = 48.857 * r, la2 = g[0] * r, dla = la2 - la1, dlo = (g[1] - 2.352) * r;
+        const km = Math.round(2 * 6371 * Math.asin(Math.sqrt(Math.sin(dla / 2) ** 2 + Math.cos(la1) * Math.cos(la2) * Math.sin(dlo / 2) ** 2)));
+        return { dep, region: g[2], km: dep === '75' ? 0 : km };
+    }
     let token = null;
     try { token = localStorage.getItem('lunicarAdmin'); } catch (e) {}
     let etat = { statuts: {} }, demandes = [], messages = [], courant = null, poll = null;
@@ -328,6 +353,7 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
     async function demarrer() {
         try { etat = await api('/api/admin/etat'); } catch (e) { return deconnecter(); }
         $('#login').hidden = true; $('#app').hidden = false;
+        $('#fRegion').innerHTML = '<option value="">Toutes les régions</option><option value="hors-idf">Hors Île-de-France</option>' + Object.entries(REG).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
         $('#fStatut').innerHTML = '<option value="">Tous les statuts</option>' + Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
         afficherAvis();
         await Promise.all([charger(), chargerMessages()]);
@@ -378,7 +404,10 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
             if (st && d.statut !== st) return false;
             if (or && d.origine !== or) return false;
             if (ty && d.type !== ty) return false;
-            if ($('#fIdf').checked && !idf(d)) return false;
+            const g = geo(x.code_postal), reg = $('#fRegion').value, dist = Number($('#fDist').value), per = Number($('#fPeriode').value);
+            if (reg === 'hors-idf' ? (!g || g.region === 'IDF') : (reg && (!g || g.region !== reg))) return false;
+            if (dist && (!g || g.km == null || g.km > dist)) return false;
+            if (per && Date.now() - new Date(d.created_at) > per * 864e5) return false;
             if ($('#fPhotos').checked && !(d.photos || []).length) return false;
             if ($('#fSansEst').checked && d.estimation) return false;
             if (!q) return true;
@@ -387,7 +416,12 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
         });
     }
     function liste() {
-        const a = filtrees();
+        const tri = $('#fTri').value;
+        const km = d => { const g = geo((d.data || {}).code_postal); return g && g.km != null ? g.km : 1e6; };
+        const a = filtrees().sort(tri === 'ancien' ? (p, q) => p.created_at.localeCompare(q.created_at)
+            : tri === 'distance' ? (p, q) => km(p) - km(q) || q.created_at.localeCompare(p.created_at)
+            : tri === 'prix' ? (p, q) => prixMax(q) - prixMax(p)
+            : (p, q) => q.created_at.localeCompare(p.created_at));
         const head = '<div class="row head"><div>Reçue</div><div>Vendeur</div><div>Véhicule</div><div class="ville">Ville</div><div style="text-align:right">Prix max</div><div>Statut</div><div class="ph" style="text-align:right">Photos</div></div>';
         $('#list').innerHTML = head + (a.length ? a.map(d => {
             const x = d.data || {};
@@ -395,17 +429,17 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
             const pub = /^Google Ads/.test(x.origine || '') ? ' <span class="tag rappel">Pub</span>' : '';
             const tag = d.origine === 'abandon' ? '<span class="tag">Abandon</span>' : d.type === 'rappel' ? '<span class="tag rappel">Rappel</span>' : d.origine === 'gmail' ? '<span class="tag" style="color:var(--ink-4)">Importée</span>' : '';
             return `<div class="row" data-ref="${esc(d.ref)}">
-                <div class="d"><b>${date(d.created_at, false)}</b>${esc(d.ref)}</div>
+                <div class="d"><b>${date(d.created_at, false)}</b>${new Date(d.created_at).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })} · ${esc(d.ref)}</div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span></div>
                 <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km · ' : ''}${esc(x.mecanique || '')} ${tag}${pub}</span></div>
-                <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span></div>
+                <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${(g => g ? `<small style="display:block;color:var(--ink-4);font-size:.78rem">${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : '')(geo(x.code_postal))}</div>
                 <div class="price num">${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div><span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span></div>
                 <div class="ph num">${(d.photos || []).length || ''}</div>
             </div>`;
         }).join('') : '<div class="empty">Aucune demande ne correspond.</div>');
     }
-    ['#q', '#fStatut', '#fOrigine', '#fType', '#fIdf', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
+    ['#q', '#fStatut', '#fOrigine', '#fType', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
     $('#list').addEventListener('click', e => { const r = e.target.closest('.row[data-ref]'); if (r) ouvrir(r.dataset.ref); });
     $('#csv').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/export.csv'); });
     $('#csvAds').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/conversions-ads.csv'); });
@@ -430,6 +464,13 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
         if (!$('#lb').hidden && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) lbAller(e.key === 'ArrowRight' ? 1 : -1);
     });
 
+    // Carburant lu dans un titre (« Mégane 1.5 dCi ») vs fiche officielle : signale les contradictions.
+    const carburant = t => { t = String(t || '').toLowerCase();
+        if (/\b(dci|hdi|bluehdi|tdi|crdi|cdti|tdci|d-?4d|jtd|multijet|ecoblue|diesel|gazole|d\b)/.test(t)) return 'diesel';
+        if (/\b(tce|vti|puretech|tsi|tfsi|ecoboost|sce|thp|vvt|essence|gpl|hybride|électrique|electrique)\b/.test(t)) return /hybride/.test(t) ? 'hybride' : /lectrique/.test(t) ? 'électrique' : 'essence';
+        return ''; };
+    const md = t => esc(t).replace(/^### (.*)$/gm, '<h4>$1</h4>').replace(/^## (.*)$/gm, '<h4>$1</h4>').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+        .replace(/^(?:- |\* )(.*)$/gm, '<li>$1</li>').replace(/(<li>.*<\/li>\n?)+/g, m => `<ul class="plain">${m}</ul>`).replace(/\n{2,}/g, '<br><br>').replace(/\n/g, ' ');
     const kv = rows => `<table class="kv">${rows.filter(r => r[1]).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join('')}</table>`;
     const ESTIM_DUREE = 'une à deux minutes';
 
@@ -494,6 +535,19 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
             <div class="cols">
                 <section class="sec">
                     <h3>Véhicule</h3>
+                    ${(() => {
+                        const energieSiv = x.energie_siv || (siv && (siv.energieNGC || siv.energie_ngc || siv.carburant)) || '';
+                        const cDecl = carburant(`${x.vehicule} ${x.fiche_confirmee || ''}`), cSiv = carburant(energieSiv);
+                        const alerte = cDecl && cSiv && cDecl !== cSiv;
+                        return `<div class="siv">
+                            ${x.vehicule_siv || energieSiv ? `<p style="margin:0 0 6px"><b>Fiche officielle (SIV) :</b> ${esc([x.vehicule_siv, energieSiv, x.boite_siv, x.puissance_siv, x.annee_siv].filter(Boolean).join(' · '))}</p>` : ''}
+                            ${alerte ? `<p class="alerte">⚠ Incohérence : le titre indique <b>${esc(cDecl)}</b>, la fiche officielle indique <b>${esc(cSiv)}</b>. La fiche officielle fait foi.</p>` : ''}
+                            <div class="filters" style="margin:6px 0 10px">
+                                <input class="in" id="plaqueIn" value="${esc(x.plaque || '')}" placeholder="AB-123-CD" style="width:130px;text-transform:uppercase">
+                                <button class="btn btn-s" id="plaqueBtn">${siv ? 'Réinterroger' : 'Interroger'} l'API plaque</button>
+                                <span class="sub" id="plaqueMsg" style="font-size:.8rem;color:var(--ink-4)">1 requête sur le forfait (gratuit si déjà consultée dans les 24 h)</span>
+                            </div></div>`;
+                    })()}
                     ${kv([
                         ['Véhicule', esc(x.vehicule)], ['Année', esc(x.annee)], ['Kilométrage', x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''],
                         ['Plaque', esc(x.plaque) + (x.plaque_datation ? `<br><span style="color:var(--ink-4);font-weight:400">${esc(x.plaque_datation)}</span>` : '')],
@@ -528,6 +582,18 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
             </section>
 
             <section class="sec">
+                <h3>Assistant IA · pannes connues</h3>
+                <div class="filters">
+                    <button class="btn btn-s btn-g" id="pannesBtn" ${etat.estimation.actif ? '' : 'disabled'}>Pannes connues de ce modèle</button>
+                    <input class="in grow" id="assistQ" placeholder="Une question sur ce véhicule ? (ex. la boîte EDC est-elle fiable ? coût d'un embrayage ?)">
+                    <button class="btn btn-s" id="assistBtn" ${etat.estimation.actif ? '' : 'disabled'}>Demander</button>
+                </div>
+                <div id="assistAttente" class="sub" hidden><span class="spin"></span> Recherche en cours (30 s à 1 min)…</div>
+                ${((s.assistant || [])).map(a => `<div class="assist"><p class="q">${esc(a.question)} <span>${date(a.date)}</span></p><div class="r">${md(a.reponse)}</div>
+                    ${(a.sources || []).length ? `<details><summary>${a.sources.length} sources</summary><div class="sources">${a.sources.map(z => `<a href="${esc(z.url)}" target="_blank" rel="noopener noreferrer">${esc(z.titre || z.url)}</a>`).join('')}</div></details>` : ''}</div>`).join('')}
+            </section>
+
+            <section class="sec">
                 <h3>Suivi</h3>
                 <form id="suiviForm">
                     <div class="form-grid">
@@ -552,6 +618,20 @@ details summary { cursor: pointer; color: var(--marine-7); font-weight: 600; fon
         if (eb) eb.onclick = async () => {
             try { await api('/api/admin/demandes/' + d.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; fiche(); surveiller(true); } catch (err) { toast(err.message); }
         };
+        $('#plaqueBtn').onclick = async () => {
+            const b = $('#plaqueBtn'); b.disabled = true; $('#plaqueMsg').textContent = 'Interrogation…';
+            try { const r = await api('/api/admin/demandes/' + d.ref + '/plaque', { method: 'POST', body: JSON.stringify({ plaque: $('#plaqueIn').value.replace(/[^A-Za-z0-9]/g, '') }) });
+                courant = r; fiche(); maj(r); toast(`Fiche plaque récupérée · ${r.quota} requêtes restantes`); }
+            catch (e) { $('#plaqueMsg').textContent = e.message; b.disabled = false; }
+        };
+        const assister = async question => {
+            $('#assistAttente').hidden = false; $('#pannesBtn').disabled = $('#assistBtn').disabled = true;
+            try { courant = await api('/api/admin/demandes/' + d.ref + '/assistant', { method: 'POST', body: JSON.stringify({ question }) }); fiche(); maj(courant); }
+            catch (e) { toast(e.message); $('#assistAttente').hidden = true; $('#pannesBtn').disabled = $('#assistBtn').disabled = false; }
+        };
+        $('#pannesBtn').onclick = () => assister('');
+        $('#assistBtn').onclick = () => { const q = $('#assistQ').value.trim(); if (q) assister(q); };
+        $('#assistQ').onkeydown = e => { if (e.key === 'Enter') $('#assistBtn').click(); };
         $('#suiviForm').onsubmit = async ev => {
             ev.preventDefault();
             const f = Object.fromEntries(new FormData(ev.target));
