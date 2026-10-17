@@ -123,7 +123,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(251, 248, 241, .94); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
 .site-header-in { display: flex; align-items: center; gap: 20px; min-height: 66px; }
 .logo { display: inline-flex; color: var(--marine-900); flex: none; }
-.logo-svg { height: 36px; width: auto; display: block; }
+.logo-img { height: 34px; width: auto; display: block; }
+@media (max-width: 600px) { .logo-img { height: 28px; } }
 .site-nav { display: flex; gap: 22px; margin-left: 14px; flex: 1; }
 .site-nav a { color: var(--ink-600); text-decoration: none; font-size: .95rem; font-weight: 500; padding: 6px 0; border-bottom: 2px solid transparent; white-space: nowrap; }
 .site-nav a:hover, .site-nav a[aria-current] { color: var(--marine-900); border-bottom-color: var(--gold-600); }

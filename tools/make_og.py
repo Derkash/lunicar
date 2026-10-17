@@ -38,13 +38,11 @@ def main():
     img.paste(Image.composite(crop, Image.new('RGB', (PHOTO_W, H), NAVY), mask), (W - PHOTO_W, 0))
 
     d = ImageDraw.Draw(img)
-    x0, y0 = 64, 64
-    d.rounded_rectangle([x0, y0, x0 + 56, y0 + 56], radius=14, fill=(255, 255, 255))
-    d.line([(x0 + 19, y0 + 15), (x0 + 19, y0 + 44), (x0 + 40, y0 + 44)], fill=NAVY, width=7, joint='curve')
-    d.ellipse([x0 + 36, y0 + 16, x0 + 45, y0 + 25], fill=GOLD_DARK)
-    bold = font('Georgia Bold.ttf', 36)
-    d.text((x0 + 74, y0 + 10), 'LUNI', font=bold, fill=(255, 255, 255))
-    d.text((x0 + 74 + d.textlength('LUNI', font=bold), y0 + 10), 'CAR', font=bold, fill=GOLD)
+    # Logo officiel, version blanche (public/images/logo-lunicar-blanc-h.png, tiré du kit logo).
+    logo = Image.open(ROOT / 'public' / 'images' / 'logo-lunicar-blanc-h.png').convert('RGBA')
+    lh = 58
+    logo = logo.resize((round(logo.width * lh / logo.height), lh), Image.LANCZOS)
+    img.paste(logo, (64, 70), logo)
 
     big, it, small = font('Georgia.ttf', 58), font('Georgia Italic.ttf', 58), font('Georgia.ttf', 26)
     d.text((64, 200), 'Nous rachetons', font=big, fill=(255, 255, 255))
