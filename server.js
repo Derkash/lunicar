@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
-const { v4: uuidv4 } = require('uuid');
+const uuidv4 = () => require('crypto').randomUUID();
 const nodemailer = require('nodemailer');
 const { SITE, esc, parsePhone } = require('./lib/config');
 const pages = require('./lib/pages');
