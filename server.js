@@ -1056,8 +1056,10 @@ if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_P
 app.get(['/conversions/google-ads.csv', '/conversions/leads.csv'], async (req, res) => {
     const jeton = process.env.CONVERSIONS_TOKEN;
     const basic = Buffer.from(String(req.headers.authorization || '').replace(/^Basic /, ''), 'base64').toString().split(':').slice(1).join(':');
-    const fourni = String(req.query.k || basic || '');
-    if (!jeton || fourni.length !== jeton.length || !crypto.timingSafeEqual(Buffer.from(fourni), Buffer.from(jeton))) {
+    const fourni = String(req.query.k || basic || '').trim();
+    const autorise = !!jeton && fourni.length === jeton.length && crypto.timingSafeEqual(Buffer.from(fourni), Buffer.from(jeton));
+    console.log(`Flux conversions : ${req.method} ${req.path} · ${autorise ? 'autorisé' : 'refusé (' + (req.headers.authorization ? 'mot de passe incorrect' : 'sans identifiants') + ')'} · ${String(req.headers['user-agent'] || '').slice(0, 60)}`);
+    if (!autorise) {
         res.set('WWW-Authenticate', 'Basic realm="conversions"');
         return res.status(401).send('Non autorisé');
     }
