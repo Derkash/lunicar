@@ -1051,6 +1051,22 @@ function pingIndexNow() {
 if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_PING === '1')) setTimeout(pingIndexNow, 30000).unref();
 
 // Route admin cachée
+// Flux de conversions pour l'import planifié de Google Ads (Conversions > Importations > HTTPS).
+// Protégé par CONVERSIONS_TOKEN : en paramètre ?k= ou en mot de passe HTTP Basic (champ prévu par Google Ads).
+app.get('/conversions/google-ads.csv', async (req, res) => {
+    const jeton = process.env.CONVERSIONS_TOKEN;
+    const basic = Buffer.from(String(req.headers.authorization || '').replace(/^Basic /, ''), 'base64').toString().split(':').slice(1).join(':');
+    const fourni = String(req.query.k || basic || '');
+    if (!jeton || fourni.length !== jeton.length || !crypto.timingSafeEqual(Buffer.from(fourni), Buffer.from(jeton))) {
+        res.set('WWW-Authenticate', 'Basic realm="conversions"');
+        return res.status(401).send('Non autorisé');
+    }
+    try {
+        res.set('X-Robots-Tag', 'noindex').set('Cache-Control', 'no-store').type('text/csv; charset=utf-8')
+            .send(require('./lib/admin').csvConversions(await store.listerDemandes()));
+    } catch (e) { res.status(500).send('Erreur'); }
+});
+
 app.get(['/admino', '/admino/demande/:ref'], (req, res) => {
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     res.set('Cache-Control', 'no-store');
