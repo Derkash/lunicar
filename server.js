@@ -1053,7 +1053,7 @@ if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_P
 // Route admin cachée
 // Flux de conversions pour l'import planifié de Google Ads (Conversions > Importations > HTTPS).
 // Protégé par CONVERSIONS_TOKEN : en paramètre ?k= ou en mot de passe HTTP Basic (champ prévu par Google Ads).
-app.get('/conversions/google-ads.csv', async (req, res) => {
+app.get(['/conversions/google-ads.csv', '/conversions/leads.csv'], async (req, res) => {
     const jeton = process.env.CONVERSIONS_TOKEN;
     const basic = Buffer.from(String(req.headers.authorization || '').replace(/^Basic /, ''), 'base64').toString().split(':').slice(1).join(':');
     const fourni = String(req.query.k || basic || '');
