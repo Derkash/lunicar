@@ -1063,7 +1063,7 @@ app.get('/conversions/google-ads.csv', async (req, res) => {
     }
     try {
         res.set('X-Robots-Tag', 'noindex').set('Cache-Control', 'no-store').type('text/csv; charset=utf-8')
-            .send(require('./lib/admin').csvConversions(await store.listerDemandes()));
+            .send(require('./lib/admin').csvConversions(await store.listerDemandes(), false));
     } catch (e) { res.status(500).send('Erreur'); }
 });
 
