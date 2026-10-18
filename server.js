@@ -910,13 +910,13 @@ function indexablePages() {
     const list = [];
     const add = (loc, priority, lastmod = T) => list.push({ loc, priority, lastmod });
     add('/', '1.0');
-    add('/reprise', '0.9');
+    add('/reprise', '0.9', '2026-10-18');
     add('/reprise-auto-paris', '0.9', (LOCAL.paris && LOCAL.paris.updated) || T);
     add(`/${idf.HUB_SLUG}`, '0.9');
-    idf.DEPARTMENTS.forEach(d => add(`/${d.slug}`, '0.8'));
-    idf.SITUATIONS.forEach(s => add(`/${s.slug}`, '0.8'));
+    idf.DEPARTMENTS.forEach(d => add(`/${d.slug}`, '0.8', d.updated || T));
+    idf.SITUATIONS.forEach(s => add(`/${s.slug}`, '0.8', s.updated || T));
     GUIDES.forEach(g => add(`/${g.slug}`, g.brand ? '0.6' : '0.8', g.updated || T));
-    zones.IDF_CITIES.filter(s => s !== 'paris').forEach(s => add(`/reprise-auto-${s}`, '0.7'));
+    zones.IDF_CITIES.filter(s => s !== 'paris').forEach(s => add(`/reprise-auto-${s}`, '0.7', ((LOCAL.villes || {})[s] || {}).updated || T));
     if (LOCAL.france) add(`/${zones.FRANCE_SLUG}`, '0.9', LOCAL.france.updated || T);
     Object.values(LOCAL.regions || {}).forEach(r => add(`/${r.slug}`, '0.8', r.updated || T));
     zones.FRANCE_CITIES.forEach(s => add(`/reprise-auto-${s}`, '0.7'));
@@ -965,7 +965,7 @@ Sitemap: ${SITE.baseUrl}/sitemap.xml
 const strip = h => String(h || '').replace(/<li>/g, '\n- ').replace(/<\/(p|h2|h3|ul|ol|table|tr)>/g, '\n').replace(/<(td|th)[^>]*>/g, ' | ').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n\n').trim();
 const title = t => String(t || '').replace(/<[^>]+>/g, '');
 
-const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels partout en France (Paris, Lyon, Marseille, Bordeaux, Toulouse, Lille, Nantes, Nice, Montpellier…). Le déplacement et l'enlèvement sont à sa charge partout en France. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de GUIRAK SERVICES (SAS, SIRET 947 982 856 00017).`;
+const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels, en priorité à Paris (75), dans les Hauts-de-Seine (92) et les Yvelines (78), et partout en France. Spécialité : les voitures anciennes peu roulées ou sans contrôle technique, rachetées en l'état avec enlèvement à domicile, parking souterrain compris. Le déplacement et l'enlèvement sont à sa charge partout en France. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de OPTIMERCH (SAS, SIREN 100 047 281).`;
 
 app.get('/llms.txt', (req, res) => {
     const b = SITE.baseUrl;
@@ -977,7 +977,9 @@ app.get('/llms.txt', (req, res) => {
 Dernière mise à jour : ${pages.TEMPLATE_DATE}
 
 ## Faits clés
-- Véhicules rachetés : récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, fort kilométrage, en panne, accidentés, sans contrôle technique
+- Zone prioritaire : Paris, Hauts-de-Seine (Boulogne-Billancourt, Neuilly-sur-Seine, Nanterre, Rueil-Malmaison, Issy-les-Moulineaux), Yvelines (Versailles, Saint-Germain-en-Laye, Le Chesnay-Rocquencourt) ; déplacement partout en France
+- Véhicules rachetés : voitures anciennes (plus de 15 ans) peu roulées, récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, fort kilométrage, sans contrôle technique
+- Voitures anciennes et faible kilométrage rachetées en l'état, sans réparation à avancer
 - Contrôle technique non exigé : il n'est obligatoire que pour une vente entre particuliers
 - Offre gratuite et sans engagement, valable 7 jours ; refus possible même le jour du rendez-vous, sans frais
 - Déplacement et enlèvement à la charge de LUNICAR partout en France, y compris véhicule non roulant ou en parking souterrain
@@ -988,7 +990,8 @@ Dernière mise à jour : ${pages.TEMPLATE_DATE}
 
 ## Pages principales
 - [Accueil](${b}/): présentation, déroulé, comparatif, FAQ
-- [Estimation gratuite](${b}/reprise): formulaire de demande d'offre
+- [Estimation voiture gratuite](${b}/reprise): comment est estimée une voiture, estimation avec la plaque, demande d'offre
+- [Vendre une vieille voiture sans se déplacer](${b}/vendre-vieille-voiture): voitures de plus de 15 ans, peu roulées
 - [Toutes les voitures](${b}/reprise-voiture-occasion): ce que LUNICAR rachète et ce qui fait le prix
 - [Qui sommes-nous](${b}/a-propos): société, méthode, engagements
 - [Garanties](${b}/garanties): les six engagements
@@ -1003,6 +1006,7 @@ ${zones.FRANCE_CITIES.slice(0, 40).map(s => { const c = CITIES.find(x => x.slug 
 - [Rachat de voiture à Paris](${b}/reprise-auto-paris)
 - [Rachat de voiture en Île-de-France](${b}/${idf.HUB_SLUG})
 ${idf.DEPARTMENTS.map(d => `- [Rachat de voiture ${d.dans} (${d.code})](${b}/${d.slug})`).join('\n')}
+${zones.IDF_CITIES.filter(x => x !== 'paris').map(x => { const c = CITIES.find(y => y.slug === x); return c ? `- [Rachat de voiture à ${c.nom}](${b}/reprise-auto-${x})` : ''; }).filter(Boolean).join('\n')}
 
 ## Situations
 ${idf.SITUATIONS.map(s => `- [${title(s.h1)}](${b}/${s.slug}): ${s.description}`).join('\n')}
@@ -1032,6 +1036,8 @@ app.get('/llms-full.txt', (req, res) => {
     if (LOCAL.paris) parts.push(block(`${b}/reprise-auto-paris`, LOCAL.paris.h1, LOCAL.paris.lede, LOCAL.paris.sections, LOCAL.paris.faq));
     idf.SITUATIONS.forEach(s => parts.push(block(`${b}/${s.slug}`, s.h1, s.lede, s.sections, s.faq)));
     GUIDES.filter(g => !g.brand).forEach(g => parts.push(block(`${b}/${g.slug}`, g.h1, g.lede, g.sections, g.faq)));
+    idf.DEPARTMENTS.filter(d => d.local).forEach(d => parts.push(`# ${title(d.h1)}\nURL : ${b}/${d.slug}\n\n${d.profil}\n\n${strip(d.local)}\n`));
+    readJSON('articles.json').forEach(a => parts.push(`# ${a.titre}\nURL : ${b}/article/${a.slug}\n\n${a.extrait}\n\n${strip(a.contenu)}\n`));
     res.header('Content-Type', 'text/plain; charset=utf-8');
     res.send(parts.join('\n---\n\n'));
 });

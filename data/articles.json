@@ -1,5 +1,152 @@
 [
   {
+    "slug": "preparer-voiture-immobilisee-avant-vente",
+    "titre": "Voiture restée longtemps immobile : comment la préparer avant de la vendre",
+    "metaTitle": "Préparer une voiture immobilisée avant sa vente | LUNICAR",
+    "metaDescription": "Voiture qui dort au garage depuis des mois : batterie, pneus, freins, papiers. Ce qu'il faut vérifier avant de la vendre, et ce qu'il vaut mieux ne pas réparer.",
+    "extrait": "Une voiture qui ne roule plus depuis des mois vieillit autrement qu'une voiture qui roule : batterie, pneus, freins, fluides. Voici ce qu'il faut vérifier avant de la vendre, ce qui vaut la peine d'être fait, et ce qu'il vaut mieux laisser en l'état.",
+    "categorie": "Conseils",
+    "categorieSlug": "conseils",
+    "tags": [
+      "Voiture ancienne",
+      "Préparation",
+      "Batterie",
+      "Pneus"
+    ],
+    "date": "18 octobre 2026",
+    "dateISO": "2026-10-18",
+    "dateModified": "2026-10-18",
+    "tempsLecture": "7",
+    "auteur": "Rédaction LUNICAR",
+    "contenu": "<h2>Pourquoi une voiture immobile se dégrade-t-elle ?</h2><p>Une voiture est faite pour rouler. Quand elle reste des mois au garage ou au parking, certaines pièces s'abîment avec le temps plutôt qu'avec les kilomètres. Ce n'est pas grave en soi, mais il faut le savoir avant de la vendre : c'est ce que regardera tout acheteur sérieux.</p><ul class=\"ticks\"><li><strong>La batterie</strong> se décharge lentement, même voiture arrêtée. Après plusieurs mois, elle peut être à plat, voire hors d'usage.</li><li><strong>Les pneus</strong> durcissent et se craquellent avec l'âge, et une voiture immobile pèse toujours sur les mêmes points.</li><li><strong>Les freins</strong> peuvent se gripper ou se couvrir de rouille, surtout dans un lieu humide.</li><li><strong>Les fluides et les joints</strong> vieillissent : liquide de frein, huile, durites.</li></ul><h2>Ce qu'il est utile de vérifier vous-même</h2><p>Sans outil ni compétence particulière, quelques vérifications vous permettent de décrire honnêtement la voiture, ce qui évite toute surprise le jour de la vente.</p><ul class=\"ticks\"><li><strong>Est-ce qu'elle démarre ?</strong> Si la batterie est à plat, notez-le simplement. Ne forcez pas le démarreur.</li><li><strong>L'âge des pneus</strong> : il est inscrit sur le flanc, dans un code à quatre chiffres (semaine puis année de fabrication, par exemple 2318 pour la 23e semaine de 2018).</li><li><strong>Les voyants au tableau de bord</strong> une fois le contact mis.</li><li><strong>Les traces sous la voiture</strong> : une tache d'huile ou de liquide sur le sol du garage est une information utile.</li><li><strong>Le kilométrage exact</strong> et la date du dernier contrôle technique.</li></ul><h2>Faut-il réparer avant de vendre ?</h2><p>Le plus souvent, non. Changer une batterie ou faire regonfler les pneus ne coûte pas cher et peut faciliter une vente entre particuliers. En revanche, une réparation plus lourde (freins, pneus neufs, contrôle technique avec contre-visite) coûte souvent plus que ce qu'elle rapporte sur une voiture ancienne. Notre conseil : demandez d'abord une offre en l'état. Elle est gratuite et vous donne un point de comparaison avant toute dépense.</p><h2>Rassembler les papiers</h2><p>C'est la vraie préparation utile. Il vous faut la carte grise à votre nom, une pièce d'identité et, si vous les avez, le carnet d'entretien, les factures et les anciens procès-verbaux de contrôle technique. Vous pouvez aussi télécharger gratuitement le rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>, qui retrace l'historique administratif du véhicule. Pour la liste complète, voir <a href=\"/article/documents-necessaires-vente-voiture\">les documents nécessaires pour vendre sa voiture</a>.</p><h2>Un nettoyage simple suffit</h2><p>Videz l'habitacle et le coffre, passez un coup d'aspirateur et retirez la poussière accumulée. Inutile de payer un nettoyage professionnel : sur une voiture ancienne, l'acheteur regarde d'abord la mécanique, la carrosserie et l'entretien. Pour une préparation plus complète en vue d'une annonce, voir <a href=\"/article/comment-bien-preparer-son-vehicule-pour-la-revente\">comment bien préparer sa voiture avant de la vendre</a>.</p><h2>Et si la voiture ne roule plus du tout ?</h2><p>Elle reste vendable. Un professionnel peut venir la chercher là où elle est, y compris au sous-sol d'une résidence, avec une remorque si nécessaire. Signalez-le dans votre description : l'offre en tient compte, et vous n'avez pas à la faire réparer ni remorquer vous-même. Voir <a href=\"/vendre-vieille-voiture\">vendre une vieille voiture sans vous déplacer</a>.</p>",
+    "faq": [
+      {
+        "question": "Combien de temps une batterie tient-elle sur une voiture qui ne roule pas ?",
+        "answer": "Cela dépend de la batterie, de son âge et de la voiture. Après plusieurs semaines sans rouler, une batterie peut ne plus permettre de démarrer. Après plusieurs mois, elle est souvent à plat ou à remplacer."
+      },
+      {
+        "question": "Comment connaître l'âge de mes pneus ?",
+        "answer": "Il est inscrit sur le flanc du pneu, dans un code à quatre chiffres : les deux premiers indiquent la semaine, les deux derniers l'année de fabrication. Par exemple, 2318 signifie la 23e semaine de 2018."
+      },
+      {
+        "question": "Dois-je refaire le contrôle technique avant de vendre ?",
+        "answer": "Pas pour une vente à un professionnel, qui n'exige pas de contrôle. Pour une vente à un particulier, un contrôle de moins de six mois est obligatoire pour une voiture de plus de quatre ans."
+      },
+      {
+        "question": "Ma voiture ne démarre plus, puis-je quand même la vendre ?",
+        "answer": "Oui. Signalez-le dans la description : un professionnel peut venir l'enlever sur place et l'offre tient compte de son état réel."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Service-Public : vendre ou donner son véhicule",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Histovec, historique officiel d'un véhicule",
+        "url": "https://histovec.interieur.gouv.fr/"
+      }
+    ]
+  },
+  {
+    "slug": "combien-vaut-une-voiture-ancienne",
+    "titre": "Combien vaut une voiture de plus de 15 ans ? Les critères qui font le prix",
+    "metaTitle": "Combien vaut ma voiture ancienne ? Les 6 critères | LUNICAR",
+    "metaDescription": "Combien vaut une voiture de 2005 ou de 2008 ? Modèle, kilométrage, entretien, état, contrôle technique : les critères qui font le prix et où vérifier la valeur.",
+    "extrait": "Aucun site ne peut donner le prix exact d'une voiture de plus de 15 ans sans connaître son état. Voici les six critères qui font sa valeur, la différence entre cote, annonce et offre de rachat, et comment obtenir un prix ferme.",
+    "categorie": "Prix et estimation",
+    "categorieSlug": "prix",
+    "tags": [
+      "Estimation",
+      "Voiture ancienne",
+      "Prix",
+      "Cote"
+    ],
+    "date": "18 octobre 2026",
+    "dateISO": "2026-10-18",
+    "dateModified": "2026-10-18",
+    "tempsLecture": "6",
+    "auteur": "Rédaction LUNICAR",
+    "contenu": "<h2>La réponse courte</h2><p>La valeur d'une voiture de plus de 15 ans dépend de six critères : le modèle et la motorisation, le kilométrage, l'état mécanique, l'état de la carrosserie, l'entretien documenté et le contrôle technique. Aucun site ne peut donner un prix exact sans connaître ces éléments. Pour un prix ferme, il faut une offre établie après description de la voiture, puis vérifiée sur place.</p><h2>Les six critères qui font le prix</h2><ol><li><strong>Le modèle et la motorisation.</strong> Sur une voiture ancienne, c'est le premier critère. Certaines citadines et compactes simples, réputées fiables et économiques, restent demandées ; d'autres modèles, plus complexes ou moins appréciés, se vendent difficilement.</li><li><strong>Le kilométrage.</strong> Un compteur bas est un atout s'il est cohérent avec l'historique. Les anciens procès-verbaux de contrôle technique permettent de le vérifier.</li><li><strong>L'état mécanique.</strong> Démarrage, embrayage, boîte, bruits, fuites, voyants.</li><li><strong>La carrosserie.</strong> La rouille et les chocs pèsent beaucoup sur une voiture ancienne, parce que leur réparation coûte souvent plus que la voiture.</li><li><strong>L'entretien documenté.</strong> Un carnet tamponné et des factures, notamment pour la courroie de distribution, rassurent et se valorisent.</li><li><strong>Le contrôle technique.</strong> Il n'est pas exigé pour une vente à un professionnel, mais un contrôle récent et favorable facilite une vente entre particuliers.</li></ol><h2>Cote, prix d'annonce, offre de rachat : trois chiffres différents</h2><p><strong>La cote</strong> publiée par les sites spécialisés est une valeur moyenne pour un modèle, une année et un kilométrage. C'est un repère utile, que vous pouvez consulter vous-même. <strong>Le prix d'annonce</strong> est ce que demande un vendeur particulier, avant négociation : ce n'est pas ce qu'il obtient. <strong>L'offre de rachat</strong> d'un professionnel est un prix ferme, payé le jour de la vente, qui tient compte de la remise en état et des démarches qu'il prend en charge.</p><p>Comparer les trois est la meilleure façon de décider. Pour savoir comment nous calculons une offre, voir notre page <a href=\"/reprise\">estimation voiture gratuite</a>.</p><h2>Ce qui fait baisser la valeur d'une voiture ancienne</h2><ul class=\"ticks\"><li>Une longue immobilisation sans entretien : batterie, pneus et freins à refaire (voir <a href=\"/article/preparer-voiture-immobilisee-avant-vente\">préparer une voiture restée longtemps immobile</a>).</li><li>Un contrôle technique défavorable avec des défaillances majeures.</li><li>Des réparations de carrosserie à prévoir.</li><li>L'absence de carnet ou de factures.</li></ul><h2>Ce qui la soutient</h2><ul class=\"ticks\"><li>Un faible kilométrage justifié.</li><li>Un seul ou peu de propriétaires, visibles sur le rapport gratuit <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>.</li><li>Une voiture gardée au garage, sans rouille.</li><li>Les deux clés, les manuels, l'entretien suivi.</li></ul><h2>Obtenir un prix ferme</h2><p>Décrivez votre voiture en deux minutes : un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours. Si elle vous convient, nous venons chercher la voiture chez vous et le paiement se fait par virement le jour de la vente. Voir <a href=\"/vendre-vieille-voiture\">vendre une vieille voiture sans vous déplacer</a>.</p>",
+    "faq": [
+      {
+        "question": "Combien vaut une voiture de 2005 ?",
+        "answer": "Cela dépend surtout du modèle, de l'état et de l'entretien, plus que de l'année. Deux voitures de 2005 peuvent avoir des valeurs très différentes. Pour un prix ferme, demandez une offre après avoir décrit la voiture."
+      },
+      {
+        "question": "La cote Argus est-elle le prix que je vais obtenir ?",
+        "answer": "Non. Une cote est une valeur moyenne qui ne connaît pas l'état réel de votre voiture. C'est un repère utile, mais le prix obtenu dépend de l'état, de l'entretien et du mode de vente."
+      },
+      {
+        "question": "Un faible kilométrage augmente-t-il beaucoup la valeur ?",
+        "answer": "C'est un atout s'il est cohérent avec l'historique, mais sur une voiture ancienne l'état et l'entretien comptent autant. Une voiture qui a peu roulé mais qui est restée longtemps immobile peut nécessiter une batterie, des pneus ou des freins."
+      },
+      {
+        "question": "Faut-il faire le contrôle technique pour mieux vendre ?",
+        "answer": "Pour une vente entre particuliers, il est obligatoire. Pour une vente à un professionnel, il n'est pas exigé : demandez d'abord une offre en l'état avant de dépenser quoi que ce soit."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Histovec, historique officiel d'un véhicule",
+        "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "Service-Public : vendre ou donner son véhicule",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      }
+    ]
+  },
+  {
+    "slug": "vendre-voiture-parent-age",
+    "titre": "Vendre la voiture d'un parent qui ne conduit plus : démarches et conseils",
+    "metaTitle": "Vendre la voiture d'un parent âgé : démarches | LUNICAR",
+    "metaDescription": "Votre parent ne conduit plus ? Qui signe la cession, quels papiers, comment vendre sans visites ni déplacement, et que faire en cas de tutelle ou curatelle.",
+    "extrait": "Votre parent a arrêté de conduire et sa voiture dort au garage. Qui doit signer, quels papiers préparer, comment vendre sans visites ni déplacement : les étapes, simplement.",
+    "categorie": "Démarches",
+    "categorieSlug": "demarches",
+    "tags": [
+      "Voiture ancienne",
+      "Démarches",
+      "Famille",
+      "Certificat de cession"
+    ],
+    "date": "18 octobre 2026",
+    "dateISO": "2026-10-18",
+    "dateModified": "2026-10-18",
+    "tempsLecture": "6",
+    "auteur": "Rédaction LUNICAR",
+    "contenu": "<h2>Une situation fréquente</h2><p>Un parent arrête de conduire, par prudence ou sur conseil de son médecin. Sa voiture reste au garage ou au parking de la résidence : elle est souvent ancienne, bien entretenue et peu roulée. Elle continue pourtant de coûter (assurance, place de parking) et se dégrade lentement. La vendre est souvent la meilleure décision, à condition que tout se fasse simplement et en sécurité pour votre parent.</p><h2>Qui doit signer la vente ?</h2><p>C'est le titulaire de la carte grise qui vend la voiture : c'est donc votre parent qui signe le certificat de cession, sauf exception. Vous pouvez l'accompagner pendant toute la démarche, être présent au rendez-vous et l'aider à remplir les papiers. Si la carte grise est au nom des deux parents, les deux doivent en principe signer.</p><p>Si votre parent fait l'objet d'une mesure de protection (curatelle, tutelle, habilitation familiale), les règles sont différentes : renseignez-vous auprès de la personne chargée de la mesure ou du juge des contentieux de la protection avant de vendre. Si votre parent est décédé, la vente relève de la succession : voir <a href=\"/reprise-voiture-succession\">vendre une voiture dans le cadre d'une succession</a>.</p><h2>Les papiers à rassembler</h2><ul class=\"ticks\"><li><strong>La carte grise</strong> au nom de votre parent. Si elle est perdue, un duplicata se demande sur le site de l'ANTS.</li><li><strong>Une pièce d'identité</strong> de votre parent.</li><li><strong>Un RIB</strong> au nom de votre parent, pour recevoir le paiement.</li><li><strong>Le carnet d'entretien, les factures et le dernier contrôle technique</strong>, s'ils existent.</li></ul><p>Voir aussi <a href=\"/article/documents-necessaires-vente-voiture\">les documents nécessaires pour vendre sa voiture</a>.</p><h2>Vendre sans visites ni déplacement</h2><p>Publier une annonce pour la voiture d'un parent âgé pose souvent problème : appels d'inconnus, visites au domicile, essais, risque de faux chèque de banque. Vendre à un professionnel évite tout cela. Avec LUNICAR, vous décrivez la voiture en ligne ou par téléphone, un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis nous venons chercher la voiture chez votre parent, en votre présence si vous le souhaitez. Le paiement se fait par virement sur le compte de votre parent, le jour de la vente.</p><h2>Après la vente</h2><p>Nous faisons avec vous la déclaration de cession sur le site de l'ANTS : elle met fin à la responsabilité de votre parent sur le véhicule à la date et à l'heure de la vente. Pensez ensuite à résilier l'assurance en transmettant le certificat de cession à l'assureur, et l'éventuel abonnement de parking. Voir <a href=\"/article/declaration-de-cession-ants-etapes\">la déclaration de cession ANTS étape par étape</a>.</p>",
+    "faq": [
+      {
+        "question": "Puis-je vendre la voiture de mon père à sa place ?",
+        "answer": "En principe, c'est le titulaire de la carte grise qui signe la cession. Vous pouvez l'accompagner et l'aider dans toutes les démarches. En cas de mesure de protection (tutelle, curatelle, habilitation familiale), renseignez-vous auprès de la personne chargée de la mesure."
+      },
+      {
+        "question": "Le paiement peut-il être fait sur mon compte ?",
+        "answer": "Le paiement est fait au vendeur, c'est-à-dire au titulaire de la carte grise, sur son compte bancaire. C'est la solution la plus sûre et la plus simple pour tout le monde."
+      },
+      {
+        "question": "Mon parent ne veut pas recevoir d'inconnus chez lui, comment faire ?",
+        "answer": "Vendre à un professionnel évite les visites : un seul rendez-vous, auquel vous pouvez assister, pour vérifier la voiture et signer les papiers."
+      },
+      {
+        "question": "La voiture n'a pas roulé depuis longtemps, est-ce un problème ?",
+        "answer": "Non. Signalez-le dans la description : nous vérifions la batterie, les pneus et les freins, et l'offre tient compte de l'état réel. Rien n'est à réparer avant la vente."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Service-Public : vendre ou donner son véhicule",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Service-Public : mesures de protection juridique des majeurs",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/N155"
+      }
+    ]
+  },
+  {
     "slug": "comment-bien-preparer-son-vehicule-pour-la-revente",
     "titre": "Comment bien préparer sa voiture avant de la vendre",
     "metaTitle": "Préparer sa voiture avant de la vendre | LUNICAR",
