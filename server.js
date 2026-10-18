@@ -174,6 +174,7 @@ const html = (res, doc, status = 200) => {
 
 // Contenus rédigés, lus une fois au démarrage (ils ne changent qu'au déploiement).
 const GUIDES = readJSON('guides.json');
+const MODELS = readJSON('models.json');
 const LOCAL = readJSON('local.json');
 const CITIES = readJSON('cities.json');
 
@@ -218,7 +219,12 @@ idf.SITUATIONS.forEach(s => {
 
 // Guides rédigés : marques, toutes les voitures, situations, comparatif
 GUIDES.forEach(g => {
-    app.get(`/${g.slug}`, (req, res) => html(res, pages.guide(g, GUIDES)));
+    app.get(`/${g.slug}`, (req, res) => html(res, pages.guide(g, GUIDES, MODELS)));
+});
+
+// Pages modèles rédigées (data/models.json)
+MODELS.forEach(m => {
+    app.get(`/${m.slug}`, (req, res) => html(res, pages.model(m, MODELS, GUIDES)));
 });
 
 if (LOCAL.france) app.get(`/${zones.FRANCE_SLUG}`, (req, res) => html(res, pages.france(LOCAL.france, CITIES)));
@@ -916,6 +922,7 @@ function indexablePages() {
     idf.DEPARTMENTS.forEach(d => add(`/${d.slug}`, '0.8', d.updated || T));
     idf.SITUATIONS.forEach(s => add(`/${s.slug}`, '0.8', s.updated || T));
     GUIDES.forEach(g => add(`/${g.slug}`, g.brand ? '0.6' : '0.8', g.updated || T));
+    MODELS.forEach(m => add(`/${m.slug}`, '0.7', m.updated || '2026-10-18'));
     zones.IDF_CITIES.filter(s => s !== 'paris').forEach(s => add(`/reprise-auto-${s}`, '0.7', ((LOCAL.villes || {})[s] || {}).updated || T));
     if (LOCAL.france) add(`/${zones.FRANCE_SLUG}`, '0.9', LOCAL.france.updated || T);
     Object.values(LOCAL.regions || {}).forEach(r => add(`/${r.slug}`, '0.8', r.updated || T));
@@ -1015,6 +1022,9 @@ ${GUIDES.filter(g => !g.brand).map(g => `- [${title(g.h1)}](${b}/${g.slug}): ${g
 ## Marques
 ${GUIDES.filter(g => g.brand).map(g => `- [${g.brand}](${b}/${g.slug}): ${g.description}`).join('\n')}
 
+## Modèles (fiche, distribution, problèmes connus, vente)
+${MODELS.map(m => `- [Vendre sa ${m.nav}](${b}/${m.slug}): ${m.description}`).join('\n')}
+
 ## Conseils
 ${articles.map(a => `- [${a.titre}](${b}/article/${a.slug}): ${a.extrait}`).join('\n')}
 
@@ -1036,6 +1046,13 @@ app.get('/llms-full.txt', (req, res) => {
     if (LOCAL.paris) parts.push(block(`${b}/reprise-auto-paris`, LOCAL.paris.h1, LOCAL.paris.lede, LOCAL.paris.sections, LOCAL.paris.faq));
     idf.SITUATIONS.forEach(s => parts.push(block(`${b}/${s.slug}`, s.h1, s.lede, s.sections, s.faq)));
     GUIDES.filter(g => !g.brand).forEach(g => parts.push(block(`${b}/${g.slug}`, g.h1, g.lede, g.sections, g.faq)));
+    MODELS.forEach(m => parts.push([`# Vendre sa ${m.nav} (${m.annees})`, `URL : ${b}/${m.slug}`, '', m.lede, '',
+        '## Générations', ...(m.generations || []).map(g => `- ${g.nom} (${g.annees}) : ${g.notes}`), '',
+        '## Motorisations et distribution', ...(m.motorisations || []).map(x => `- ${x.nom} (${x.carburant}) : distribution ${x.distribution}. ${x.entretien} ${x.points}`), '',
+        '## Avantages', ...(m.avantages || []).map(x => `- ${x}`), '', '## Inconvénients', ...(m.inconvenients || []).map(x => `- ${x}`), '',
+        '## Problèmes connus', ...(m.problemes || []).map(p => `- ${p.titre} : ${p.detail}`), '',
+        '## Un modèle ancien en bon état', m.age, '',
+        '## Questions fréquentes', ...(m.faq || []).map(f => `**${f.question}**\n${f.answer}`)].join('\n') + '\n'));
     idf.DEPARTMENTS.filter(d => d.local).forEach(d => parts.push(`# ${title(d.h1)}\nURL : ${b}/${d.slug}\n\n${d.profil}\n\n${strip(d.local)}\n`));
     readJSON('articles.json').forEach(a => parts.push(`# ${a.titre}\nURL : ${b}/article/${a.slug}\n\n${a.extrait}\n\n${strip(a.contenu)}\n`));
     res.header('Content-Type', 'text/plain; charset=utf-8');

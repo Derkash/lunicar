@@ -1,0 +1,2263 @@
+[
+  {
+    "slug": "reprise-peugeot-206",
+    "brand": "Peugeot",
+    "brandSlug": "reprise-peugeot",
+    "model": "206",
+    "nav": "Peugeot 206",
+    "title": "Vendre sa Peugeot 206 : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Peugeot 206 sans obligation d'achat : estimation gratuite, offre sous 24 h ouvrées, on vient chez vous et on paie par virement.",
+    "h1": "Vendre sa Peugeot 206 <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Peugeot 206, souvent achetée neuve ou gardée de longues années. LUNICAR vous fait une offre chiffrée sous 24 h ouvrées, valable 7 jours. Nous venons chez vous et payons par virement le jour de la vente.",
+    "annees": "1998-2012",
+    "generations": [
+      {
+        "nom": "Phase 1",
+        "annees": "1998-2003",
+        "notes": "Lancement en 3 et 5 portes. Le coupé-cabriolet 206 CC arrive en 2000 et le break 206 SW en 2002."
+      },
+      {
+        "nom": "Phase 2",
+        "annees": "2003-2009",
+        "notes": "Restylage léger : calandre et feux arrière revus, planche de bord retouchée. Mêmes carrosseries 3 portes, 5 portes, SW et CC."
+      },
+      {
+        "nom": "206+",
+        "annees": "2009-2012",
+        "notes": "Version simplifiée vendue à côté de la 207, avec une face avant inspirée de la 207. Gamme de moteurs réduite."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.1 60 ch",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Moteur TU simple. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou un nombre d'années qui varie selon les versions : vérifiez le carnet.",
+        "points": "Réputé fiable, performances modestes."
+      },
+      {
+        "nom": "1.4 75 ch",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Courroie à remplacer selon le kilométrage ou l'âge indiqué au carnet. Bougies et bobine à surveiller.",
+        "points": "Réputé fiable. Des défauts de bobine d'allumage sont signalés sur le 1.4 8v."
+      },
+      {
+        "nom": "1.6 16v 110 ch",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Courroie et pompe à eau à remplacer ensemble selon le carnet. Contrôler le niveau de liquide de refroidissement.",
+        "points": "Suintements de liquide de refroidissement au joint de culasse signalés jusqu'en 2004. Bobines fragiles."
+      },
+      {
+        "nom": "1.4 HDi 70 ch",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Courroie à remplacer selon le carnet. Gazole de qualité et filtre à gazole changé à temps.",
+        "points": "Fuites possibles sur les tuyaux de retour des injecteurs. Injection sensible aux impuretés du carburant."
+      },
+      {
+        "nom": "2.0 HDi 90 ch",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Courroie, galets et poulie damper à contrôler à chaque grosse révision.",
+        "points": "Poulie damper fragile, pouvant se déliter dès 60 000 km. Débitmètre qui s'encrasse sur les premiers modèles."
+      },
+      {
+        "nom": "1.6 HDi 110 ch",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Courroie selon le carnet, vidanges régulières avec une huile conforme pour protéger le turbo.",
+        "points": "Turbo et fuites d'injecteurs signalés jusqu'en 2009."
+      }
+    ],
+    "avantages": [
+      "Gabarit compact, facile à garer en ville.",
+      "Large choix de carrosseries : 3 portes, 5 portes, SW et CC.",
+      "Moteurs essence TU simples et bien connus des garages.",
+      "Pièces très répandues et faciles à trouver.",
+      "Diesels HDi sobres en usage courant.",
+      "Châssis agréable à conduire pour une citadine de cette époque."
+    ],
+    "inconvenients": [
+      "Habitabilité arrière et coffre limités en berline.",
+      "Finition intérieure qui vieillit mal (plastiques, bruits).",
+      "Électronique capricieuse sur les premières années.",
+      "Train arrière qui peut demander une remise en état.",
+      "Amortisseurs avant sujets à une usure précoce.",
+      "Équipements de sécurité en retrait face aux modèles récents."
+    ],
+    "problemes": [
+      {
+        "titre": "Joint de culasse sur le 1.6 16v",
+        "detail": "Suintements de liquide de refroidissement signalés sur le 1.6 16v essence jusqu'en 2004. Symptômes : baisse du niveau de liquide, traces autour de la culasse, surchauffe."
+      },
+      {
+        "titre": "Poulie damper du 2.0 HDi",
+        "detail": "Sur le 2.0 HDi 90, la poulie damper peut se déliter à partir de 60 000 km. Bruit ou vibration côté distribution : à contrôler sans attendre, car la casse peut endommager le moteur."
+      },
+      {
+        "titre": "Train arrière",
+        "detail": "Usure des roulements du train arrière. Symptômes : roues arrière qui se mettent en biais, usure anormale des pneus arrière, bruit au roulage."
+      },
+      {
+        "titre": "Témoins et combiné d'instruments",
+        "detail": "Témoins qui s'allument sans raison et jauges défaillantes, fréquents jusqu'en 2003. Le module de commande sous volant (Com 2000) tombe aussi en panne."
+      },
+      {
+        "titre": "Témoin d'airbag allumé",
+        "detail": "Corrosion des connecteurs sous les sièges avant, qui allume le témoin d'airbag. Souvent réglé par une intervention sur la connectique."
+      },
+      {
+        "titre": "Bobines d'allumage",
+        "detail": "Ratés, perte de puissance ou moteur qui tremble sur les 1.4 8v et 1.6 16v essence. La bobine est souvent en cause."
+      },
+      {
+        "titre": "Injection HDi",
+        "detail": "Les HDi sont sensibles aux impuretés du gazole. Fuites aux retours d'injecteurs sur le 1.4 HDi 70, débitmètre encrassé sur le 2.0 HDi jusqu'en 2002 ou 2003."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de courroie de distribution.",
+      "Niveau et aspect du liquide de refroidissement, surtout sur le 1.6 16v.",
+      "État du train arrière : position des roues et usure des pneus arrière.",
+      "Témoins au tableau de bord, dont celui d'airbag.",
+      "Bruit côté distribution et poulie damper sur le 2.0 HDi.",
+      "Démarrage à froid, ralenti et absence de ratés.",
+      "Toit rigide escamotable et son mécanisme sur la 206 CC.",
+      "Amortisseurs avant et état général de la carrosserie."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures.",
+      "Retrouvez la facture du dernier changement de courroie : c'est le document le plus regardé.",
+      "Notez les réparations déjà faites (train arrière, poulie damper, joint de culasse).",
+      "Sur une 206 CC, faites fonctionner le toit devant nous pour montrer qu'il marche.",
+      "Faites un petit nettoyage intérieur et extérieur, sans frais inutiles.",
+      "Prévoyez les deux clés et le code autoradio si vous l'avez."
+    ],
+    "age": "Une Peugeot 206 a aujourd'hui entre 14 et plus de 25 ans. C'est un modèle ancien, mais l'âge ne dit pas tout. Une 206 peu roulée, entretenue à temps et sans corrosion reste une voiture recherchée, simple à réparer et économique. Ce qui fait la différence, c'est l'historique : courroie changée avec facture, carnet suivi, pneus corrects, pas de témoin allumé. Une 206 CC dont le toit fonctionne bien, ou un 1.4 essence de petit kilométrage, gardent un vrai intérêt. Nous regardons votre voiture telle qu'elle est, pas seulement sa date de mise en circulation.",
+    "valeurPlus": [
+      "Faible kilométrage justifié par le carnet ou les contrôles techniques.",
+      "Courroie de distribution récente avec facture.",
+      "Peu de propriétaires et entretien suivi.",
+      "Toit de la 206 CC en parfait état de marche.",
+      "Carrosserie sans rouille ni gros chocs."
+    ],
+    "valeurMoins": [
+      "Courroie jamais changée ou sans justificatif.",
+      "Témoins allumés, notamment airbag ou moteur.",
+      "Train arrière fatigué.",
+      "Fuite de liquide de refroidissement ou surchauffe passée.",
+      "Toit de CC qui ne se replie plus correctement."
+    ],
+    "faq": [
+      {
+        "question": "Ma 206 de 2005 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle roule bien et qu'elle a été entretenue. Une 206 de 2005 peu kilométrée, avec un carnet suivi et une courroie récente, garde un intérêt réel. Nous l'estimons gratuitement à partir de son état, de son kilométrage et de ses factures. Vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours, sans obligation."
+      },
+      {
+        "question": "Ma 206 a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Les moteurs courants de la 206 utilisent une courroie, en essence comme en diesel. Le constructeur préconise un remplacement selon un kilométrage ou un nombre d'années qui varie selon les versions : vérifiez le carnet. Une facture récente de courroie rassure et soutient le prix de reprise."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma 206 à LUNICAR ?",
+        "answer": "Non, nous ne l'exigeons pas. Si vous en avez un récent, montrez-le, il aide à l'estimation. Sans contrôle, nous faisons nos propres vérifications au rendez-vous, chez vous. L'offre tient compte de ce que nous constatons, sans mauvaise surprise le jour du paiement."
+      },
+      {
+        "question": "Reprenez-vous la 206 CC ?",
+        "answer": "Oui. Nous rachetons les 206 CC comme les berlines et les SW. Au rendez-vous, nous testons le toit rigide escamotable sur un cycle complet, nous regardons les joints et l'étanchéité. Un toit qui fonctionne bien et un habitacle sec soutiennent nettement l'offre."
+      },
+      {
+        "question": "Mon témoin d'airbag est allumé, est-ce bloquant ?",
+        "answer": "Non, ce n'est pas bloquant pour la vente. Sur la 206, ce témoin vient souvent des connecteurs sous les sièges avant. Signalez-le simplement lors de la demande. Nous en tenons compte dans l'offre, sans vous demander de réparer avant la vente."
+      },
+      {
+        "question": "Comment se passe le paiement ?",
+        "answer": "Le paiement se fait par virement le jour de la vente. Nous venons chez vous, nous vérifions la voiture et les papiers, puis nous faisons les démarches de cession ensemble. Vous n'avez aucune obligation d'acheter un autre véhicule chez nous."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Peugeot 206",
+        "url": "https://fr.wikipedia.org/wiki/Peugeot_206"
+      },
+      {
+        "label": "Caradisiac : fiabilité de la Peugeot 206",
+        "url": "https://www.caradisiac.com/Peugeot-40413.htm"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-peugeot-207",
+    "brand": "Peugeot",
+    "brandSlug": "reprise-peugeot",
+    "model": "207",
+    "nav": "Peugeot 207",
+    "title": "Vendre sa Peugeot 207 : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Peugeot 207 sans obligation d'achat : estimation gratuite, offre sous 24 h ouvrées, on vient chez vous et on paie par virement.",
+    "h1": "Vendre sa Peugeot 207 <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Peugeot 207, berline, SW ou CC, qui veulent vendre sans se déplacer. LUNICAR vous fait une offre chiffrée sous 24 h ouvrées, valable 7 jours. Nous venons chez vous et payons par virement le jour de la vente.",
+    "annees": "2006-2014",
+    "generations": [
+      {
+        "nom": "Phase 1",
+        "annees": "2006-2009",
+        "notes": "Berline 3 et 5 portes, puis 207 CC (coupé-cabriolet) dès 2007 et 207 SW (break) la même année."
+      },
+      {
+        "nom": "Phase 2",
+        "annees": "2009-2012",
+        "notes": "Restylage : nouveau bouclier avant, feux arrière à LED, nouvelles jantes. Les carrosseries SW et CC restent au catalogue."
+      },
+      {
+        "nom": "207+",
+        "annees": "2012-2014",
+        "notes": "Version simplifiée vendue après l'arrivée de la 208, avec une gamme de moteurs réduite."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.4 75 ch",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Moteur TU éprouvé. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou un nombre d'années qui varie selon les versions : vérifiez le carnet.",
+        "points": "Réputé fiable, performances modestes."
+      },
+      {
+        "nom": "1.4 VTi 95 ch",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Vidanges régulières avec l'huile préconisée, indispensables pour la chaîne et son tendeur.",
+        "points": "Consommation d'huile et défauts de chaîne ou de tendeur signalés. Bruit de claquement au démarrage à surveiller."
+      },
+      {
+        "nom": "1.6 VTi 120 ch",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Vidanges rapprochées et contrôle du niveau d'huile entre deux révisions.",
+        "points": "Tendeur de chaîne, consommation d'huile, encrassement des soupapes. Bobines et pompe à eau signalées sur les premiers modèles."
+      },
+      {
+        "nom": "1.6 THP 150 ch",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Huile de qualité changée souvent, niveau vérifié régulièrement, moteur ménagé à froid.",
+        "points": "Allongement de chaîne, tendeur, calamine et consommation d'huile. Le moteur le plus sensible de la gamme."
+      },
+      {
+        "nom": "1.4 HDi 70 ch",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Courroie à remplacer selon le carnet, filtre à gazole changé à temps.",
+        "points": "Réputé robuste, peu puissant pour la SW."
+      },
+      {
+        "nom": "1.6 HDi 90 et 110 ch",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Courroie selon le carnet, vidanges régulières pour protéger le turbo, filtre à particules à surveiller sur les versions FAP.",
+        "points": "Joints d'injecteurs qui fuient, turbo, crépine d'huile encrassée. Courroie parfois bruyante (humidité par la poulie de vilebrequin)."
+      }
+    ],
+    "avantages": [
+      "Plus spacieuse et mieux finie que la 206.",
+      "Bon niveau de sécurité pour une citadine de sa génération.",
+      "Version SW pratique et 207 CC très demandée l'été.",
+      "Diesels HDi sobres en usage courant.",
+      "Confort de suspension correct sur route.",
+      "Pièces courantes et faciles à trouver."
+    ],
+    "inconvenients": [
+      "Plus lourde que la 206, ce qui pénalise les petits moteurs.",
+      "Moteurs essence VTi et THP sensibles à l'entretien.",
+      "Habitabilité arrière moyenne en berline.",
+      "Diesels 1.6 HDi exigeants sur la qualité de l'huile.",
+      "Électronique moins simple que sur la 206."
+    ],
+    "problemes": [
+      {
+        "titre": "Chaîne de distribution des VTi et THP",
+        "detail": "Sur les 1.4 VTi, 1.6 VTi et 1.6 THP, la chaîne peut s'allonger et le tendeur faiblir. Symptôme typique : claquement métallique quelques secondes au démarrage à froid. À traiter vite, la casse peut détruire le moteur."
+      },
+      {
+        "titre": "Consommation d'huile et calamine",
+        "detail": "Les moteurs VTi et THP peuvent consommer de l'huile et encrasser leurs soupapes. Symptômes : niveau qui baisse entre deux vidanges, perte de puissance, voyant moteur."
+      },
+      {
+        "titre": "Joints d'injecteurs et turbo du 1.6 HDi",
+        "detail": "Les joints d'injecteurs qui fuient épaississent l'huile. La crépine s'encrasse et le turbo manque de lubrification. Symptômes : odeur de gazole, sifflement, fumée, perte de puissance."
+      },
+      {
+        "titre": "Pertes de puissance du THP",
+        "detail": "Pertes de puissance sur le 1.6 THP jusqu'en mai 2008, corrigées par une mise à jour logicielle en atelier."
+      },
+      {
+        "titre": "Catalyseur et voyant moteur",
+        "detail": "Voyant moteur allumé sur des essences produites jusqu'en juin 2007, lié à un défaut du catalyseur."
+      },
+      {
+        "titre": "Démarrage difficile du 1.6 VTi",
+        "detail": "Bobine d'allumage pouvant fondre jusqu'en octobre 2008. Bruit croissant avec le régime lié au galet de pompe à eau sur les premiers VTi."
+      }
+    ],
+    "controles": [
+      "Bruit de chaîne au démarrage à froid sur les VTi et THP.",
+      "Niveau d'huile et historique des vidanges.",
+      "Facture de courroie sur les 1.4 essence et les HDi.",
+      "Fumée, sifflement de turbo et odeur de gazole sur le 1.6 HDi.",
+      "Voyants moteur, antipollution et filtre à particules.",
+      "Fonctionnement complet du toit sur la 207 CC.",
+      "Essai routier : reprises, boîte, embrayage, bruits de train avant.",
+      "État de la carrosserie et des jantes."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet et toutes les factures d'entretien.",
+      "Sur un VTi ou un THP, gardez les factures de vidange et de chaîne s'il y en a eu.",
+      "Sur un HDi, retrouvez la facture du dernier changement de courroie.",
+      "Notez les réparations déjà faites : turbo, injecteurs, chaîne, catalyseur.",
+      "Sur une 207 CC, faites fonctionner le toit devant nous.",
+      "Préparez les deux clés et un intérieur propre."
+    ],
+    "age": "Une Peugeot 207 a aujourd'hui entre 12 et 20 ans. C'est un modèle ancien, mais une 207 bien suivie se vend encore bien. Le plus important est l'entretien, surtout sur les moteurs à chaîne VTi et THP, qui supportent mal les vidanges oubliées. Une voiture peu roulée, avec des factures claires, sans bruit de distribution ni voyant allumé, change tout. Une 1.4 essence ou une HDi au carnet complet restent des choix appréciés. Une 207 CC avec un toit en bon état garde aussi un vrai intérêt. Nous estimons votre voiture sur son état réel.",
+    "valeurPlus": [
+      "Carnet d'entretien complet et vidanges à jour.",
+      "Chaîne déjà remplacée avec facture (VTi, THP) ou courroie récente (1.4, HDi).",
+      "Faible kilométrage justifié.",
+      "Toit de 207 CC en parfait état de marche.",
+      "Peu de propriétaires et carrosserie saine."
+    ],
+    "valeurMoins": [
+      "Claquement de chaîne au démarrage à froid.",
+      "Consommation d'huile importante.",
+      "Voyant moteur ou antipollution allumé.",
+      "Turbo fatigué ou fuite aux injecteurs sur le 1.6 HDi.",
+      "Entretien sans justificatif."
+    ],
+    "faq": [
+      {
+        "question": "Ma 207 de 2008 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle a été entretenue et qu'elle roule bien. Une 207 de 2008 peu kilométrée, avec des factures claires et sans bruit moteur, garde un intérêt réel. Nous l'estimons gratuitement et vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours, sans obligation d'acheter un autre véhicule."
+      },
+      {
+        "question": "Ma 207 a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Cela dépend du moteur. Le 1.4 75 ch et les diesels HDi ont une courroie. Les 1.4 VTi, 1.6 VTi et 1.6 THP ont une chaîne. Pour la courroie, le constructeur préconise un remplacement selon un kilométrage ou un nombre d'années variable selon les versions : vérifiez le carnet."
+      },
+      {
+        "question": "Mon moteur claque au démarrage, puis-je quand même vendre ?",
+        "answer": "Oui. Sur les VTi et THP, ce bruit indique souvent une chaîne ou un tendeur fatigué. Signalez-le lors de votre demande. Nous en tenons compte dans l'offre, sans vous demander de réparer avant la vente. Évitez simplement de trop rouler avec ce symptôme."
+      },
+      {
+        "question": "Reprenez-vous la 207 CC et la 207 SW ?",
+        "answer": "Oui, toutes les carrosseries de la 207 nous intéressent. Sur la CC, nous testons le toit rigide sur un cycle complet et vérifions l'étanchéité. Sur la SW, nous regardons l'état du coffre et des sièges arrière, souvent très sollicités. L'offre suit l'état constaté."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma 207 ?",
+        "answer": "Non, LUNICAR ne l'exige pas. Un contrôle récent aide à l'estimation, mais il n'est pas obligatoire pour nous vendre la voiture. Nous faisons nos vérifications au rendez-vous, chez vous, puis nous payons par virement le jour même de la vente."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Peugeot 207",
+        "url": "https://fr.wikipedia.org/wiki/Peugeot_207"
+      },
+      {
+        "label": "L'argus : bilan occasion Peugeot 207 CC",
+        "url": "https://www.largus.fr/actualite-automobile/bilan-occasion-peugeot-207-cc-178286_p_3.html"
+      },
+      {
+        "label": "Carverif : fiabilité de la Peugeot 207 RC THP",
+        "url": "https://carverif.fr/blogs/fiabilite-voitures/peugeot-207-rc-thp-fiabilite"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-peugeot-1007",
+    "brand": "Peugeot",
+    "brandSlug": "reprise-peugeot",
+    "model": "1007",
+    "nav": "Peugeot 1007",
+    "title": "Vendre sa Peugeot 1007 : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Peugeot 1007 sans obligation d'achat : estimation gratuite, offre sous 24 h ouvrées, on vient chez vous et on paie par virement.",
+    "h1": "Vendre sa Peugeot 1007 <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Peugeot 1007, la petite Peugeot aux portes coulissantes électriques. LUNICAR vous fait une offre chiffrée sous 24 h ouvrées, valable 7 jours. Nous venons chez vous et payons par virement le jour de la vente.",
+    "annees": "2004-2009",
+    "generations": [
+      {
+        "nom": "Modèle unique",
+        "annees": "2004-2009",
+        "notes": "Produite à Poissy, commercialisée à partir d'avril 2005. Une seule carrosserie à deux portes latérales coulissantes électriques. Pas de vrai restylage, mais des contacteurs de portes améliorés à partir d'avril 2008."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.4 75 ch",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Moteur TU simple. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou un nombre d'années qui varie selon les versions : vérifiez le carnet.",
+        "points": "Réputé fiable, mais juste face au poids de la voiture."
+      },
+      {
+        "nom": "1.4 16v 90 ch",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Courroie selon le carnet. Si la voiture a la boîte 2-Tronic, demandez les interventions faites sur la boîte.",
+        "points": "Moteur réputé fiable. La boîte 2-Tronic est le point à vérifier."
+      },
+      {
+        "nom": "1.6 16v 110 ch",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Courroie et pompe à eau selon le carnet, circuit de refroidissement à surveiller.",
+        "points": "Capteur de liquide de refroidissement fragile, objet d'un rappel sur la production 2006."
+      },
+      {
+        "nom": "1.4 HDi 70 ch",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Courroie selon le carnet, filtre à gazole changé à temps.",
+        "points": "Réputé robuste. Usure d'embrayage parfois précoce signalée sur les diesels."
+      },
+      {
+        "nom": "1.6 HDi 110 ch",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Courroie selon le carnet, vidanges régulières, filtre à particules à surveiller.",
+        "points": "Injection et vanne EGR signalées par des propriétaires."
+      }
+    ],
+    "avantages": [
+      "Portes coulissantes très pratiques pour se garer en ville et monter à bord.",
+      "Excellent résultat aux crash-tests Euro NCAP en 2005.",
+      "Position de conduite haute et bonne visibilité.",
+      "Moteurs essence et HDi éprouvés, partagés avec d'autres Peugeot.",
+      "Gabarit court, facile à manier en ville.",
+      "Sièges arrière modulables."
+    ],
+    "inconvenients": [
+      "Portes coulissantes lentes et sources de pannes.",
+      "Boîte robotisée 2-Tronic lente et parfois capricieuse.",
+      "Coffre réduit et accès arrière peu commode.",
+      "Poids élevé pour des moteurs modestes.",
+      "Modèle peu diffusé, donc acheteurs plus rares qu'une 206 ou 207."
+    ],
+    "problemes": [
+      {
+        "titre": "Portes coulissantes électriques",
+        "detail": "Point faible principal. Rails encrassés, capteurs, faisceaux ou contacteurs : la porte se bloque, s'ouvre mal ou refuse de se verrouiller. Contacteurs améliorés à partir d'avril 2008."
+      },
+      {
+        "titre": "Boîte robotisée 2-Tronic",
+        "detail": "À-coups, hésitations au démarrage, passage lent des rapports, voire blocage sur un rapport. Concerne les versions équipées de cette boîte, selon la motorisation."
+      },
+      {
+        "titre": "Électronique liée aux portes",
+        "detail": "Si une porte ne confirme pas sa fermeture, d'autres fonctions passent en défaut : témoins allumés, verrouillage centralisé, alarmes."
+      },
+      {
+        "titre": "Refroidissement du 1.6 16v",
+        "detail": "Capteur de liquide de refroidissement fragile sur la production 2006, ayant fait l'objet d'un rappel. Des soucis de thermostat et de pompe à eau sont aussi signalés."
+      },
+      {
+        "titre": "Triangle de suspension",
+        "detail": "Rappel sur des modèles 2008 pour un défaut de fixation du triangle de suspension. Vérifiez que l'intervention a été faite."
+      },
+      {
+        "titre": "Embrayage",
+        "detail": "Usure précoce de l'embrayage signalée, surtout sur les diesels et les boîtes 2-Tronic."
+      }
+    ],
+    "controles": [
+      "Ouverture et fermeture complètes des deux portes, à la télécommande et à la poignée.",
+      "Verrouillage centralisé et témoins au tableau de bord.",
+      "Comportement de la boîte 2-Tronic : démarrage, passages de rapports, marche arrière.",
+      "Facture du dernier changement de courroie.",
+      "Rappels effectués (capteur de refroidissement, triangle de suspension).",
+      "Niveau de liquide de refroidissement et absence de fuite.",
+      "Essai routier : embrayage, bruits de suspension, freinage."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet et les factures, en particulier celles des portes et de la boîte.",
+      "Retrouvez la facture du dernier changement de courroie.",
+      "Nettoyez les rails des portes coulissantes avant le rendez-vous.",
+      "Vérifiez que les deux télécommandes fonctionnent.",
+      "Notez si les rappels ont été faits chez Peugeot.",
+      "Signalez dès la demande tout défaut de porte ou de boîte."
+    ],
+    "age": "Une Peugeot 1007 a aujourd'hui entre 17 et 21 ans. C'est un modèle ancien et peu courant, mais cela ne la condamne pas. Une 1007 dont les deux portes fonctionnent bien, sans témoin allumé, avec une boîte qui passe correctement, reste une voiture pratique pour la ville. Son excellent niveau de sécurité pour l'époque et ses moteurs éprouvés jouent en sa faveur. Les factures sont ici décisives : portes réparées, courroie changée, rappels faits. Nous l'estimons sur son état réel, porte par porte.",
+    "valeurPlus": [
+      "Deux portes coulissantes qui fonctionnent parfaitement.",
+      "Boîte manuelle, ou 2-Tronic sans à-coups avec historique d'entretien.",
+      "Faible kilométrage justifié.",
+      "Courroie récente et rappels effectués.",
+      "Factures de réparation des portes déjà faites."
+    ],
+    "valeurMoins": [
+      "Porte coulissante bloquée ou qui ne se verrouille plus.",
+      "Boîte 2-Tronic qui hésite ou se bloque.",
+      "Témoins allumés au tableau de bord.",
+      "Courroie sans justificatif.",
+      "Embrayage usé."
+    ],
+    "faq": [
+      {
+        "question": "Ma 1007 de 2006 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état de marche. Une 1007 de 2006 dont les portes et la boîte fonctionnent bien, avec un carnet suivi, reste une voiture utile en ville. Nous l'estimons gratuitement et vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours, sans obligation d'achat."
+      },
+      {
+        "question": "Ma 1007 a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Les moteurs de la 1007, essence comme HDi, utilisent une courroie de distribution. Le constructeur préconise un remplacement selon un kilométrage ou un nombre d'années qui varie selon les versions : vérifiez le carnet. Une facture récente rassure et soutient l'offre."
+      },
+      {
+        "question": "Une porte coulissante ne marche plus, rachetez-vous quand même ?",
+        "answer": "Oui. Nous rachetons aussi les 1007 dont une porte fonctionne mal. Indiquez-le lors de votre demande, avec les réparations déjà tentées. Au rendez-vous, nous testons les deux portes et l'offre tient compte de leur état, sans vous demander de réparer avant."
+      },
+      {
+        "question": "Comment savoir si ma 1007 a la boîte 2-Tronic ?",
+        "answer": "La 2-Tronic est une boîte robotisée sans pédale d'embrayage, avec un mode automatique et un mode séquentiel. Si votre 1007 n'a que deux pédales, elle en est équipée. Nous vérifions au rendez-vous son comportement au démarrage, aux changements de rapports et en marche arrière."
+      },
+      {
+        "question": "Les rappels constructeur ont-ils une importance ?",
+        "answer": "Oui. La 1007 a fait l'objet de rappels, dont un sur le capteur de liquide de refroidissement du 1.6 16v (production 2006) et un sur la fixation du triangle de suspension (modèles 2008). Un rappel fait et prouvé rassure. Votre concessionnaire Peugeot peut vous dire s'il a été effectué."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma 1007 ?",
+        "answer": "Non, LUNICAR ne l'exige pas. Nous venons chez vous, nous faisons nos propres vérifications, puis nous payons par virement le jour de la vente. Un contrôle récent reste utile pour l'estimation si vous en avez un. Sinon, l'offre se fonde sur ce que nous constatons sur place."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Peugeot 1007",
+        "url": "https://fr.wikipedia.org/wiki/Peugeot_1007"
+      },
+      {
+        "label": "Fiches-auto : rappels et problèmes de la Peugeot 1007",
+        "url": "https://www.fiches-auto.fr/rappels-peugeot/r-197-rappels-peugeot-1007.php"
+      },
+      {
+        "label": "L'argus : la liste noire des modèles à problèmes",
+        "url": "https://www.largus.fr/actualite-automobile/voitures-francaises-la-liste-noire-des-modeles-a-problemes-167621_p_3.html"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-renault-clio",
+    "brand": "Renault",
+    "brandSlug": "reprise-renault",
+    "model": "Clio",
+    "nav": "Renault Clio",
+    "title": "Vendre sa Renault Clio : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Renault Clio 2, 3 ou 4 : estimation gratuite sous 24 h, sans obligation d'achat, on vient chez vous et on paie par virement.",
+    "h1": "Vendre sa Renault Clio <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Clio 2 ou d'une Clio 3, parfois d'une Clio 4, qui veulent la vendre sans se déplacer. LUNICAR vous envoie une offre chiffrée sous 24 h ouvrées, valable 7 jours, puis vient voir la voiture chez vous. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "1998-2019 (Clio 2 : 1998-2012, Clio 3 : 2005-2014, Clio 4 : 2012-2019)",
+    "generations": [
+      {
+        "nom": "Clio 2 phase 1",
+        "annees": "1998-2001",
+        "notes": "Lancée en mars 1998. Berline 3 ou 5 portes. Moteurs essence 1.2 8 soupapes, 1.4 et 1.6, diesels 1.9 D et 1.9 dTi."
+      },
+      {
+        "nom": "Clio 2 phases 2 et 3",
+        "annees": "2001-2006",
+        "notes": "Restylage en juin 2001 (face avant et planche de bord revues). Le 1.2 16V 75 et le 1.5 dCi arrivent à cette période. Nouvelle évolution en avril 2003."
+      },
+      {
+        "nom": "Clio 2 Campus",
+        "annees": "2006-2012",
+        "notes": "Vendue sous le nom Clio Campus à côté de la Clio 3, avec une gamme réduite (surtout 1.2 essence et 1.5 dCi). Retouches esthétiques en 2009 et 2011. Fin de production en France fin 2012."
+      },
+      {
+        "nom": "Clio 3 phase 1",
+        "annees": "2005-2009",
+        "notes": "Plus grande et mieux équipée que la Clio 2, 5 étoiles au crash-test Euro NCAP. Berline 3 ou 5 portes."
+      },
+      {
+        "nom": "Clio 3 phase 2 et Estate",
+        "annees": "2009-2014",
+        "notes": "Restylage en avril 2009 (boucliers et feux revus). Break Estate depuis janvier 2008. Vendue en fin de carrière sous le nom Clio Collection jusqu'en 2014."
+      },
+      {
+        "nom": "Clio 4",
+        "annees": "2012-2019",
+        "notes": "Génération plus récente, nous la reprenons aussi. Principales motorisations : 1.2 16V 75, 0.9 TCe 90, 1.2 TCe 120 et 1.5 dCi. Berline 5 portes et Estate."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.2 8 soupapes 60 (D7F)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Clio 2. Le constructeur préconise environ 120 000 km ou 5 ans selon les versions et les années : vérifiez le carnet.",
+        "points": "Moteur simple. Bobine, capteur de point mort haut et boîtier papillon encrassé peuvent provoquer ratés ou ralenti instable."
+      },
+      {
+        "nom": "1.2 16V 75 (D4F)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Clio 2 dès 2001, Clio 3 et Clio 4. Le constructeur préconise environ 120 000 km ou 5 ans selon les versions : vérifiez le carnet.",
+        "points": "Réputé robuste. Bobines d'allumage à surveiller. Un peu juste sur autoroute, surtout dans la Clio 3."
+      },
+      {
+        "nom": "1.4 16V 98 et 1.6 16V 110 (K4J, K4M)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Clio 2 et Clio 3. Remplacement de la courroie avec galets et pompe à eau, à un intervalle qui varie selon l'année : vérifiez le carnet.",
+        "points": "Bons moteurs. Bobines d'allumage et capteurs à surveiller. Une courroie dépassée expose à une casse moteur."
+      },
+      {
+        "nom": "1.2 TCe 100 (D4FT)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Clio 3 phase 2 surtout. Intervalle de courroie selon le carnet, en général du même ordre que le 1.2 16V.",
+        "points": "Version conseillée par la presse spécialisée. Rappel en 2011 pour un défaut de sièges de soupapes sur des moteurs produits entre septembre et novembre 2010."
+      },
+      {
+        "nom": "1.5 dCi 65 à 105 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Clio 2 dès 2001, Clio 3 et Clio 4. Le constructeur préconise environ 120 000 km ou 5 à 6 ans selon les versions : vérifiez le carnet. Vidanges régulières indispensables.",
+        "points": "Sobre, mais les premières versions à injection Delphi sont exposées à la pompe haute pression qui produit de la limaille. Vanne EGR, turbo, coussinets de bielle et filtre à particules (Clio 3) à surveiller."
+      },
+      {
+        "nom": "1.9 dTi 80 (F9Q)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Clio 2 jusqu'à l'arrivée du 1.5 dCi. Intervalle de courroie selon le carnet.",
+        "points": "Réputé très endurant. Vanne EGR qui s'encrasse et capteur de point mort haut à surveiller."
+      }
+    ],
+    "avantages": [
+      "Pièces très courantes et faciles à trouver, entretien connu de tous les garages.",
+      "Moteurs essence simples, en particulier le 1.2 16V et le 1.4 16V.",
+      "Gabarit adapté à la ville, avec 5 portes disponibles sur Clio 2 et Clio 3.",
+      "Clio 3 notée 5 étoiles au crash-test Euro NCAP.",
+      "Version Estate pratique sur la Clio 3.",
+      "1.5 dCi sobre quand il a été bien entretenu."
+    ],
+    "inconvenients": [
+      "Électricité et électronique sensibles avec l'âge : lève-vitres, antidémarrage, témoins.",
+      "Bobines d'allumage fragiles sur les moteurs essence 16 soupapes.",
+      "Premiers 1.5 dCi exposés à des pannes d'injection coûteuses.",
+      "1.2 16V un peu juste sur autoroute, surtout dans la Clio 3.",
+      "Trains roulants qui s'usent : roulements, rotules, silentblocs."
+    ],
+    "problemes": [
+      {
+        "titre": "Bobines d'allumage",
+        "detail": "Sur les essence 1.2, 1.4 et 1.6 16V des Clio 2 et 3, une bobine qui faiblit fait tourner le moteur sur trois cylindres. Symptômes : à-coups, perte de puissance, voyant moteur."
+      },
+      {
+        "titre": "Injection Delphi du 1.5 dCi",
+        "detail": "Sur les premières générations du 1.5 dCi, la pompe haute pression peut produire de la limaille qui pollue rampe et injecteurs. Symptômes : démarrage difficile, mode dégradé, claquements. Réparation lourde."
+      },
+      {
+        "titre": "Témoin d'airbag allumé",
+        "detail": "Fréquent sur Clio 2 et surtout Clio 3. La cause la plus courante est un connecteur sous un siège oxydé ou mal enfiché. Le défaut doit être diagnostiqué."
+      },
+      {
+        "titre": "Vanne EGR et turbo des diesels",
+        "detail": "Sur 1.9 dTi et 1.5 dCi, la vanne EGR s'encrasse en usage urbain. Symptômes : fumée, manque de puissance, voyant. Le turbo du 1.5 dCi est aussi à surveiller."
+      },
+      {
+        "titre": "Lève-vitres et électricité",
+        "detail": "Sur Clio 2, mécanismes de lève-vitres, moteurs et boutons fatiguent. Masses de feux arrière oxydées et défauts d'antidémarrage sont aussi signalés."
+      },
+      {
+        "titre": "Capteur de point mort haut",
+        "detail": "Sur plusieurs moteurs essence et sur le 1.9 dTi, un capteur défaillant provoque calages ou refus de démarrer. Pièce simple à remplacer une fois le défaut identifié."
+      },
+      {
+        "titre": "Roulements et trains roulants",
+        "detail": "Roulements de roue arrière bruyants, rotules et biellettes usées, freins arrière à tambour qui peuvent bloquer sur Clio 2. Contrôle utile au-delà de 150 000 km."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de courroie de distribution, facture à l'appui.",
+      "Démarrage à froid et ralenti, pour repérer une bobine ou un capteur défaillant.",
+      "Sur 1.5 dCi : bruits d'injection, fumée, mode dégradé et historique des vidanges.",
+      "Témoin d'airbag et autres voyants au tableau de bord.",
+      "Fonctionnement des lève-vitres, de la fermeture centralisée et de la clé ou carte.",
+      "Bruits de roulements et de train avant pendant un court essai.",
+      "Embrayage et passage des vitesses.",
+      "État de la carrosserie : bas de caisse, passages de roue, rayures."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celle de la courroie.",
+      "Retrouvez les deux clés ou cartes : leur absence compte sur une Clio.",
+      "Notez si la courroie a été faite avec la pompe à eau et les galets.",
+      "Sur un 1.5 dCi, gardez les factures d'injection, d'EGR ou de turbo si des travaux ont été faits.",
+      "Faites tourner la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Une Clio 2 de 2003 ou une Clio 3 de 2008 a plus de quinze ans, c'est vrai. Mais l'âge ne dit pas tout. Une Clio peu roulée, entretenue à temps et sans voyant allumé reste une voiture saine et recherchée. Ce qui la valorise : une courroie remplacée récemment avec facture, un carnet suivi, deux clés, un moteur essence 16 soupapes qui tourne rond, une carrosserie propre. Un faible kilométrage pèse beaucoup sur ces modèles. À l'inverse, un historique flou sur un 1.5 dCi fait baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment, facture à l'appui.",
+      "Kilométrage faible et cohérent avec le carnet.",
+      "Moteur essence 1.4 16V, 1.6 16V ou 1.2 TCe en bon état.",
+      "Deux clés ou cartes et carnet d'entretien complet.",
+      "Carrosserie et intérieur soignés, climatisation fonctionnelle."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve de remplacement.",
+      "1.5 dCi sans historique d'entretien ou avec symptômes d'injection.",
+      "Voyants allumés (airbag, moteur, ABS).",
+      "Lève-vitres, fermeture ou électricité défaillants.",
+      "Corrosion, chocs ou intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Ma Clio 2 de 2004 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Une Clio 2 de 2004 peu roulée, avec un carnet suivi et une courroie faite à temps, intéresse toujours. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours, sans obligation."
+      },
+      {
+        "question": "Ma Clio a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Sur les Clio 2 et Clio 3, les moteurs courants (1.2, 1.4, 1.6, 1.5 dCi, 1.9 dTi) ont une courroie. Le constructeur préconise un remplacement autour de 120 000 km ou 5 ans selon les versions. Vérifiez votre carnet. Une facture récente de courroie soutient nettement la valeur de la voiture."
+      },
+      {
+        "question": "Ma Clio 3 1.5 dCi a un historique incomplet, la rachetez-vous ?",
+        "answer": "Oui, nous étudions toutes les Clio 3 diesel. Un historique incomplet n'empêche pas la vente, mais il compte dans l'offre car l'injection du 1.5 dCi peut coûter cher. Envoyez-nous les factures que vous avez, même partielles. Au rendez-vous, nous écoutons le moteur et faisons un court essai avant de confirmer."
+      },
+      {
+        "question": "Le témoin d'airbag de ma Clio est allumé, puis-je la vendre ?",
+        "answer": "Oui. Sur Clio 3, ce témoin vient souvent d'un connecteur sous un siège, un défaut connu. Il reste à diagnostiquer, et nous en tenons compte dans l'offre. Signalez-le dès la demande d'estimation : une information claire évite une mauvaise surprise au rendez-vous et permet une offre juste."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma Clio à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour une Clio ancienne dont le contrôle est expiré ou dont les réparations demandées ne valent pas la dépense. Nous évaluons la voiture nous-mêmes lors du rendez-vous à domicile, puis nous payons par virement le jour de la vente."
+      },
+      {
+        "question": "Reprenez-vous aussi la Clio 4 et la Clio Estate ?",
+        "answer": "Oui. Nous reprenons la Clio 4 (2012-2019) et les versions Estate de la Clio 3 et de la Clio 4, en essence comme en diesel. Le principe reste le même : estimation gratuite, offre sous 24 h ouvrées, rendez-vous chez vous, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Renault Clio II",
+        "url": "https://fr.wikipedia.org/wiki/Renault_Clio_II"
+      },
+      {
+        "label": "Wikipédia : Renault Clio III",
+        "url": "https://fr.wikipedia.org/wiki/Renault_Clio_III"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Renault Clio 2",
+        "url": "https://www.fiches-auto.fr/fiabilite-renault/fiabilite-61-pannes-renault-clio-2.php"
+      },
+      {
+        "label": "Caradisiac : Clio 3 d'occasion, meilleures et pires versions",
+        "url": "https://www.caradisiac.com/la-renault-clio-3-en-occasion-les-meilleures-et-pires-versions-169082.htm"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-renault-twingo",
+    "brand": "Renault",
+    "brandSlug": "reprise-renault",
+    "model": "Twingo",
+    "nav": "Renault Twingo",
+    "title": "Vendre sa Renault Twingo : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Renault Twingo 1 ou 2 : estimation gratuite sous 24 h, sans obligation d'achat, on vient chez vous et on paie par virement.",
+    "h1": "Vendre sa Renault Twingo <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Twingo 1 ou d'une Twingo 2 qui veulent la vendre simplement. LUNICAR vous envoie une offre chiffrée sous 24 h ouvrées, valable 7 jours, et vient voir la voiture chez vous. Pas de contrôle technique exigé, pas d'autre véhicule à acheter.",
+    "annees": "1993-2014 (Twingo 1 : 1993-2007, Twingo 2 : 2007-2014)",
+    "generations": [
+      {
+        "nom": "Twingo 1 phase 1",
+        "annees": "1993-1998",
+        "notes": "Lancée en avril 1993. Monocorps 3 portes avec banquette arrière coulissante. Moteur 1.2 « Cléon » à chaîne jusqu'en 1996, puis 1.2 D7F à courroie à partir de septembre 1996."
+      },
+      {
+        "nom": "Twingo 1 phase 2",
+        "annees": "1998-2000",
+        "notes": "Restylage en septembre 1998 : nouveaux phares et feux, planche de bord revue avec airbag passager."
+      },
+      {
+        "nom": "Twingo 1 phases 3 et 4",
+        "annees": "2000-2007",
+        "notes": "Phase 3 en septembre 2000 (barres antiroulis plus grosses, jantes 14 pouces). Le 1.2 16V 75 arrive en janvier 2001, avec la boîte robotisée Quickshift. Phase 4 en 2004, retouches de détail. 3 étoiles au crash-test Euro NCAP en 2003."
+      },
+      {
+        "nom": "Twingo 2 phase 1",
+        "annees": "2007-2012",
+        "notes": "Lancée en 2007, fabriquée à Novo Mesto (Slovénie). Toujours 3 portes, banquette coulissante selon versions. Moteurs 1.2 60, 1.2 16V 75, 1.2 TCe 100, 1.5 dCi et 1.6 RS."
+      },
+      {
+        "nom": "Twingo 2 phase 2",
+        "annees": "2012-2014",
+        "notes": "Restylage commercialisé en janvier 2012 : face avant et feux arrière revus. Remplacée en 2014 par la Twingo 3."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.2 55 « Cléon » (C3G)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Twingo 1 de 1993 à 1996. Pas de courroie à remplacer, mais une chaîne qui peut devenir bruyante avec l'âge.",
+        "points": "Bloc ancien réputé endurant. Surconsommation d'huile possible due à des joints de soupapes peu étanches."
+      },
+      {
+        "nom": "1.2 8 soupapes 58 à 60 (D7F)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Twingo 1 dès 1996 et Twingo 2. Renault préconise environ 120 000 km ou 5 ans selon les versions : vérifiez le carnet.",
+        "points": "Réputé fiable. Fuites d'huile au couvre-culasse signalées. Joint de culasse et consommation d'huile signalés sur certaines Twingo 2."
+      },
+      {
+        "nom": "1.2 16V 75 (D4F)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Twingo 1 dès 2001 et Twingo 2. Environ 120 000 km ou 5 ans selon les versions : vérifiez le carnet.",
+        "points": "Réputé fiable. Ralenti trop bas sur certaines Twingo 2 (vibrations, calage), corrigé par réglage électronique. Pompe à eau et bobines à surveiller."
+      },
+      {
+        "nom": "1.2 TCe 100 (D4FT)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Twingo 2. Intervalle de courroie selon le carnet.",
+        "points": "Fuites de liquide de refroidissement au niveau du turbo signalées. Rappel en 2011 pour un défaut de soupapes sur des moteurs produits entre septembre et novembre 2010."
+      },
+      {
+        "nom": "1.5 dCi 65 à 85 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Twingo 2. Environ 120 000 km ou 5 à 6 ans selon les versions : vérifiez le carnet. Vidanges rapprochées conseillées.",
+        "points": "Sobre. Claquements d'injecteurs, vanne EGR, turbo à surveiller. Pompe d'injection Delphi sensible à un entretien négligé."
+      },
+      {
+        "nom": "1.6 16V 133 RS (K4M)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Twingo 2 Renault Sport. Intervalle de courroie selon le carnet.",
+        "points": "Mécanique saine, mais embrayage, boîte et supports moteur sollicités par une conduite sportive."
+      }
+    ],
+    "avantages": [
+      "Gabarit très court, idéal en ville et pour se garer.",
+      "Habitabilité étonnante pour sa taille, banquette arrière coulissante.",
+      "Moteurs essence 1.2 simples et économiques à entretenir.",
+      "Pièces nombreuses et partagées avec d'autres Renault.",
+      "Twingo 2 recommandée par la presse spécialisée parmi les citadines d'occasion."
+    ],
+    "inconvenients": [
+      "Seulement 3 portes, moins pratique avec des passagers à l'arrière.",
+      "Twingo 1 au niveau de sécurité d'une conception des années 1990.",
+      "Boîte Easy de la Twingo 1 fragile (embrayage, bloc hydraulique).",
+      "Peinture fragile et bruits de finition sur Twingo 2.",
+      "Moteurs 1.2 un peu justes sur autoroute."
+    ],
+    "problemes": [
+      {
+        "titre": "Boîte Easy (Twingo 1)",
+        "detail": "L'embrayage piloté patinait sur les modèles 1995-1996, et le bloc hydraulique ou le contacteur du levier ont posé problème sur toute la production. Symptômes : patinage, passages difficiles, usure rapide de l'embrayage."
+      },
+      {
+        "titre": "Consommation et fuites d'huile",
+        "detail": "Sur Twingo 1, surconsommation liée aux joints de soupapes du moteur Cléon et fuites au couvre-culasse des moteurs D. Sur Twingo 2 1.2 60, consommation d'huile et joint de culasse signalés."
+      },
+      {
+        "titre": "Freinage des premières Twingo 1",
+        "detail": "De 1993 à 1998, plaquettes frottant en permanence sur les disques. Symptômes : sifflements et usure rapide des freins."
+      },
+      {
+        "titre": "Ralenti du 1.2 16V (Twingo 2)",
+        "detail": "Ralenti réglé trop bas sur certaines Twingo 2. Symptômes : vibrations, calages. Une mise à jour électronique corrige le défaut."
+      },
+      {
+        "titre": "Peinture et finitions (Twingo 2)",
+        "detail": "Vernis fragile qui se ternit, bruits de planche de bord et de banquette arrière, cuir du volant qui pèle. Défauts gênants plus que graves."
+      },
+      {
+        "titre": "Glissières de sièges (Twingo 2)",
+        "detail": "Rappel en 2009 pour un risque de déverrouillage des sièges sur des Twingo 2 produites entre septembre 2008 et février 2009. Vérifiez que l'intervention a été faite."
+      }
+    ],
+    "controles": [
+      "Type de moteur et date du dernier remplacement de courroie, ou état de la chaîne sur une Twingo 1 d'avant 1997.",
+      "Niveau et consommation d'huile, traces de fuite au couvre-culasse.",
+      "Sur boîte Easy ou Quickshift : passages des rapports et patinage.",
+      "Freinage et bruits de roulements pendant un court essai.",
+      "Glissement et verrouillage de la banquette et des sièges.",
+      "Ralenti stable et absence de voyant au tableau de bord.",
+      "État de la peinture et de la carrosserie."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet et les factures, surtout celle de la courroie.",
+      "Sur une Twingo 1, notez le code moteur (plaque sur le bloc : C ou D) si vous ne le connaissez pas.",
+      "Gardez les justificatifs des rappels effectués sur une Twingo 2.",
+      "Retrouvez les deux clés.",
+      "Faites rouler la voiture quelques jours avant le rendez-vous pour une batterie chargée.",
+      "Videz l'habitacle et le coffre."
+    ],
+    "age": "Une Twingo 1 a souvent plus de vingt ans, une Twingo 2 plus de dix. Pourtant, beaucoup ont été conduites en ville par un seul propriétaire, avec peu de kilomètres. C'est ce qui fait leur valeur. Une Twingo entretenue, au moteur 1.2 qui tourne rond, avec une courroie faite à temps et une carrosserie propre, reste une citadine recherchée. Ce qui compte : le kilométrage réel, les factures, l'état de la peinture et de l'intérieur, une boîte manuelle saine. Nous jugeons votre Twingo sur son état, pas sur son année.",
+    "valeurPlus": [
+      "Faible kilométrage et usage urbain doux.",
+      "Courroie de distribution remplacée récemment, facture à l'appui.",
+      "Boîte manuelle en bon état.",
+      "Peinture et intérieur bien conservés.",
+      "Carnet d'entretien et deux clés."
+    ],
+    "valeurMoins": [
+      "Boîte Easy ou Quickshift qui patine ou passe mal les vitesses.",
+      "Courroie hors échéance ou sans preuve.",
+      "Consommation d'huile importante ou fuites.",
+      "Peinture très ternie, chocs, corrosion.",
+      "Voyants allumés ou ralenti instable."
+    ],
+    "faq": [
+      {
+        "question": "Ma Twingo 1 de 2003 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est saine. Une Twingo 1 de 2003 peu roulée, avec un carnet suivi et une courroie faite à temps, garde une valeur réelle. Nous l'estimons sur son état, son kilométrage et ses factures. Vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours, sans obligation de la vendre."
+      },
+      {
+        "question": "Ma Twingo a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Les Twingo 1 jusqu'en 1996 ont le moteur Cléon à chaîne. Ensuite, les moteurs D7F et D4F, comme tous ceux de la Twingo 2, ont une courroie. Renault préconise environ 120 000 km ou 5 ans selon les versions. La plaque du bloc moteur commence par C (chaîne) ou D (courroie)."
+      },
+      {
+        "question": "Rachetez-vous une Twingo à boîte Easy ou Quickshift ?",
+        "answer": "Oui. Ces boîtes robotisées sont connues pour leur fragilité, en particulier la boîte Easy de la Twingo 1. Nous vérifions le passage des rapports et le patinage pendant l'essai. Si la boîte fonctionne bien, c'est un point positif. Si elle présente un défaut, nous l'intégrons à l'offre, sans surprise."
+      },
+      {
+        "question": "Ma Twingo consomme un peu d'huile, est-ce un problème pour la vendre ?",
+        "answer": "Non, ce n'est pas bloquant. Une légère consommation d'huile est connue sur certains moteurs 1.2 de Twingo. Nous regardons le niveau, les traces de fuite et le comportement du moteur. Indiquez-le dans votre demande. Une consommation modérée sur une voiture bien suivie pèse peu dans l'offre."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma Twingo ?",
+        "answer": "Non, LUNICAR n'exige pas de contrôle technique. Pratique pour une Twingo ancienne dont le contrôle a expiré ou dont les réparations demandées coûteraient trop. Nous venons l'évaluer chez vous, en Île-de-France comme ailleurs en France, et nous payons par virement le jour de la vente."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Renault Twingo I",
+        "url": "https://fr.wikipedia.org/wiki/Renault_Twingo_I"
+      },
+      {
+        "label": "Wikipédia : Renault Twingo II",
+        "url": "https://fr.wikipedia.org/wiki/Renault_Twingo_II"
+      },
+      {
+        "label": "Caradisiac : maxi fiche fiabilité Renault Twingo 2",
+        "url": "https://www.caradisiac.com/Maxi-fiche-fiabilite-la-Renault-Twingo-2-74111.htm"
+      },
+      {
+        "label": "Caradisiac : fiabilité Renault Twingo",
+        "url": "https://www.caradisiac.com/Fiabilite-45622.htm"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-citroen-c3",
+    "brand": "Citroën",
+    "brandSlug": "reprise-citroen",
+    "model": "C3",
+    "nav": "Citroën C3",
+    "title": "Vendre sa Citroën C3 : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Citroën C3 de 1re ou 2e génération : estimation gratuite sous 24 h, sans obligation d'achat, on vient chez vous.",
+    "h1": "Vendre sa Citroën C3 <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Citroën C3 de première (2002-2010) ou de deuxième génération (2009-2016). LUNICAR vous envoie une offre chiffrée sous 24 h ouvrées, valable 7 jours, et vient voir la voiture chez vous. Pas de contrôle technique exigé, aucun autre véhicule à acheter.",
+    "annees": "2002-2016 (C3 I : 2002-2010, C3 II : 2009-2016)",
+    "generations": [
+      {
+        "nom": "C3 I phase 1",
+        "annees": "2002-2005",
+        "notes": "Lancée en avril 2002. Citadine 5 portes au toit arrondi. Dérivés : C3 Pluriel (découvrable) et C3 X-TR (2004). Stop & Start en première mondiale fin 2004 sur 1.4 essence avec boîte SensoDrive."
+      },
+      {
+        "nom": "C3 I phase 2",
+        "annees": "2005-2010",
+        "notes": "Restylage en octobre 2005 : calandre aux chevrons agrandis, planche de bord revue, diesels améliorés. Retirée du catalogue début 2011."
+      },
+      {
+        "nom": "C3 II phase 1",
+        "annees": "2009-2013",
+        "notes": "Lancée fin 2009, avec le pare-brise panoramique Zénith en option ou de série selon finition. Moteurs 3 cylindres 1.0 et 1.2 VTi à partir de 2012."
+      },
+      {
+        "nom": "C3 II phase 2",
+        "annees": "2013-2016",
+        "notes": "Restylage en 2013 : feux de jour à LED, calandre et feux arrière revus. Arrivée du 1.2 PureTech 110 turbo et des diesels BlueHDi."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.1i 60 et 1.4i 75 (TU)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "C3 I et début de C3 II. Remplacement généralement entre 100 000 et 150 000 km ou autour de 10 ans selon les versions : vérifiez le carnet.",
+        "points": "Réputés fiables et simples. Difficultés de redémarrage à chaud signalées sur certains 1.4 de C3 I."
+      },
+      {
+        "nom": "1.4 HDi 70 (DV4)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "C3 I et C3 II. Environ 120 000 km ou 6 ans selon les versions : vérifiez le carnet.",
+        "points": "Endurant. Fuites de gazole aux joints d'injecteurs et aux retours (odeur dans l'habitacle). Vanne EGR et embrayage à surveiller."
+      },
+      {
+        "nom": "1.6 HDi 90 et 110 (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "C3 I et C3 II. Environ 120 000 km ou 6 ans selon les versions : vérifiez le carnet.",
+        "points": "Agréable sur route. Vanne EGR et filtre à particules qui s'encrassent en usage urbain. Usure d'embrayage signalée."
+      },
+      {
+        "nom": "1.4 VTi 95 et 1.6 VTi 120 (EP)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "C3 II. Pas de remplacement périodique, mais la chaîne et son tendeur doivent rester silencieux. Vidanges régulières importantes.",
+        "points": "Consommation d'huile possible, défauts de refroidissement (pompe à eau, boîtier d'eau, thermostat), bobines. Tendeur de chaîne à surveiller (bruit au démarrage)."
+      },
+      {
+        "nom": "1.0 et 1.2 VTi ou PureTech (EB)",
+        "carburant": "Essence",
+        "distribution": "Courroie baignant dans l'huile",
+        "entretien": "C3 II à partir de 2012. Intervalle très variable selon l'année : vérifiez le carnet et les campagnes de rappel liées à votre numéro de série.",
+        "points": "La courroie humide peut se dégrader et boucher le circuit de lubrification. Rappel en 2020 sur des 1.2 PureTech. L'huile préconisée et des vidanges à temps sont essentielles."
+      }
+    ],
+    "avantages": [
+      "Confort de suspension apprécié pour une citadine.",
+      "Pièces très courantes et partagées avec d'autres Peugeot et Citroën.",
+      "Moteurs essence TU simples et diesels HDi endurants s'ils sont suivis.",
+      "Pare-brise Zénith très lumineux sur la C3 II.",
+      "5 portes de série, habitabilité correcte."
+    ],
+    "inconvenients": [
+      "Boîte robotisée SensoDrive de la C3 I peu fiable.",
+      "Airbags Takata sur de nombreuses C3 II : rappel avec arrêt de circulation.",
+      "Courroie humide des 3 cylindres EB qui demande un suivi strict.",
+      "Diesels mal adaptés aux petits trajets (EGR, filtre à particules).",
+      "Plastiques intérieurs qui se rayent et bruits de planche de bord."
+    ],
+    "problemes": [
+      {
+        "titre": "Airbags Takata (C3 II)",
+        "detail": "Les C3 II produites de 2009 à 2019 équipées d'airbags Takata font l'objet d'un rappel avec arrêt de circulation étendu en Europe en 2025. Le remplacement est gratuit. À vérifier avec le numéro de série sur le site Citroën."
+      },
+      {
+        "titre": "Boîte SensoDrive (C3 I)",
+        "detail": "Passages difficiles, à-coups, voire blocage, surtout en marche arrière. Les remèdes vont de la reprogrammation au graissage des cannelures d'embrayage, jusqu'au remplacement de l'actionneur."
+      },
+      {
+        "titre": "Ressorts de suspension cassés (C3 I)",
+        "detail": "De très nombreux cas de spires cassées à l'avant, à droite comme à gauche. Symptômes : bruit sec, voiture penchée, pneu qui frotte."
+      },
+      {
+        "titre": "Courroie humide des 1.0 et 1.2 (C3 II)",
+        "detail": "Sur les 3 cylindres EB, la courroie baigne dans l'huile et peut se désagréger. Symptômes : voyant de pression d'huile, freinage moins assisté, bruit moteur. Rappel en 2020 sur des 1.2 PureTech."
+      },
+      {
+        "titre": "Fuites de gazole du 1.4 HDi",
+        "detail": "Joints d'injecteurs et tuyaux de retour qui fuient sur C3 I. Symptôme : odeur de gazole dans l'habitacle. Intervention peu coûteuse si elle est faite tôt."
+      },
+      {
+        "titre": "Témoin d'airbag (C3 I)",
+        "detail": "Témoin qui s'allume sans raison à cause de connecteurs sous les sièges. Le défaut doit être diagnostiqué pour écarter une vraie panne."
+      },
+      {
+        "titre": "EGR et filtre à particules des HDi",
+        "detail": "Sur 1.6 HDi surtout, en usage urbain : voyant moteur, perte de puissance, régénérations trop fréquentes."
+      }
+    ],
+    "controles": [
+      "Sur C3 II : vérification de la campagne airbag Takata avec le numéro de série.",
+      "Type de moteur et preuve du dernier remplacement de courroie.",
+      "Sur 1.0 et 1.2 VTi ou PureTech : historique des vidanges, huile utilisée et rappels effectués.",
+      "Sur C3 I SensoDrive : passages des rapports et marche arrière.",
+      "Ressorts et train avant : hauteur de caisse, bruits sur les bosses.",
+      "Odeur de gazole et fumée sur les HDi.",
+      "Témoins au tableau de bord et ralenti.",
+      "État du pare-brise Zénith et de la carrosserie."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet et les factures, surtout celle de la courroie.",
+      "Sur une C3 II, vérifiez sur le site Citroën si votre voiture est concernée par le rappel airbag, et gardez la preuve de l'intervention.",
+      "Sur un moteur PureTech, gardez les factures de vidange et de rappel.",
+      "Retrouvez les deux clés.",
+      "Faites rouler la voiture avant le rendez-vous pour une batterie chargée.",
+      "Videz l'habitacle et le coffre."
+    ],
+    "age": "Une C3 de première génération a plus de quinze ans, une C3 II souvent plus de dix. Ce n'est pas un frein si la voiture a été suivie. Une C3 peu roulée, avec un moteur essence TU qui tourne rond ou un HDi entretenu, une boîte manuelle saine et une suspension sans bruit, garde une valeur réelle. Ce qui la valorise : un carnet complet, une courroie faite à temps, les rappels effectués, un intérieur propre. Sur une C3 II, la preuve du remplacement des airbags compte beaucoup. Nous jugeons votre C3 sur son état réel.",
+    "valeurPlus": [
+      "Rappel airbag Takata effectué, preuve à l'appui (C3 II).",
+      "Courroie remplacée récemment avec facture.",
+      "Boîte manuelle en bon état.",
+      "Kilométrage faible et carnet suivi.",
+      "Pare-brise Zénith intact et intérieur soigné."
+    ],
+    "valeurMoins": [
+      "Rappel airbag non effectué sur une C3 II concernée.",
+      "Boîte SensoDrive défaillante.",
+      "Moteur PureTech sans historique de vidange.",
+      "Voyants moteur ou airbag allumés, fumée sur un HDi.",
+      "Ressorts cassés, bruits de train avant, corrosion."
+    ],
+    "faq": [
+      {
+        "question": "Ma C3 de 2006 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Une C3 de 2006 peu roulée, avec un carnet suivi, une courroie faite à temps et une boîte manuelle saine intéresse toujours. Nous l'estimons sur son état, son kilométrage et ses factures. Vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours, sans obligation."
+      },
+      {
+        "question": "Ma C3 a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Les 1.1 et 1.4 essence et tous les HDi ont une courroie, à remplacer en général entre 100 000 et 150 000 km selon les versions. Les 1.4 et 1.6 VTi de la C3 II ont une chaîne. Les 1.0 et 1.2 VTi ou PureTech ont une courroie qui baigne dans l'huile. Vérifiez votre carnet."
+      },
+      {
+        "question": "Ma C3 II est concernée par le rappel airbag Takata, puis-je la vendre ?",
+        "answer": "Le constructeur demande de ne plus rouler avec une C3 concernée tant que l'airbag n'est pas remplacé. L'intervention est gratuite en concession. Faites-la avant la vente si possible et gardez la preuve. Parlez-nous de votre situation dès la demande d'estimation, nous vous dirons comment procéder."
+      },
+      {
+        "question": "Rachetez-vous une C3 avec boîte SensoDrive ?",
+        "answer": "Oui. Cette boîte robotisée de la C3 I est connue pour ses à-coups et ses blocages. Nous testons les passages de rapports et la marche arrière pendant l'essai. Si elle fonctionne bien, tant mieux. Si elle présente un défaut, nous l'intégrons à l'offre de façon claire, sans surprise au moment du paiement."
+      },
+      {
+        "question": "Ma C3 1.2 PureTech a-t-elle un risque lié à sa courroie ?",
+        "answer": "Le 1.2 PureTech utilise une courroie qui baigne dans l'huile et peut se dégrader. Un rappel a eu lieu en 2020 pour certains moteurs. Ce qui compte : des vidanges faites à temps avec l'huile préconisée et les interventions effectuées. Gardez ces factures, elles soutiennent la valeur de la voiture."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma C3 ?",
+        "answer": "Non, LUNICAR n'exige pas de contrôle technique. C'est utile pour une C3 dont le contrôle a expiré ou demande des travaux importants. Nous venons évaluer la voiture chez vous, à Paris, dans les Hauts-de-Seine, les Yvelines ou ailleurs en France, et nous payons par virement le jour de la vente."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Citroën C3 I",
+        "url": "https://fr.wikipedia.org/wiki/Citroën_C3_I"
+      },
+      {
+        "label": "Wikipédia : Citroën C3 II",
+        "url": "https://fr.wikipedia.org/wiki/Citroën_C3_II"
+      },
+      {
+        "label": "Caradisiac : fiabilité Citroën C3 (1re génération)",
+        "url": "https://www.caradisiac.com/Citroen-C-40397.htm"
+      },
+      {
+        "label": "Stellantis : extension du stop drive C3 et DS3 (2009-2019)",
+        "url": "https://www.media.stellantis.com/em-en/corporate-communications/press/stellantis-extends-stop-drive-action-in-europe-for-citroen-c3-and-ds3-vehicles-manufactured-between-2009-and-2019"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-dacia-sandero",
+    "brand": "Dacia",
+    "brandSlug": "reprise-dacia",
+    "model": "Sandero",
+    "nav": "Dacia Sandero",
+    "title": "Vendre sa Dacia Sandero : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Dacia Sandero 1 ou 2 : estimation gratuite sous 24 h, sans obligation d'achat. On vient chez vous et on paie par virement.",
+    "h1": "Vendre sa Dacia Sandero <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Dacia Sandero de première ou de deuxième génération, Stepway compris. Vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours, puis nous venons chez vous. Le paiement se fait par virement le jour de la vente, sans contrôle technique exigé.",
+    "annees": "2008-2021",
+    "generations": [
+      {
+        "nom": "Sandero 1",
+        "annees": "2008-2012",
+        "notes": "Berline compacte 5 portes sur base Logan, lancée en France en juin 2008. Version Stepway au look baroudeur à partir de 2009, toujours en traction. Mécaniques Renault éprouvées : 1.2 16V, 1.4 et 1.6 MPI, 1.5 dCi. Une version GPL du 1.4 est apparue en 2009."
+      },
+      {
+        "nom": "Sandero 2 phase 1",
+        "annees": "2012-2016",
+        "notes": "Nouvelle génération commercialisée fin 2012, avec l'arrivée du 0.9 TCe 90 trois cylindres turbo. Boîte robotisée Easy-R proposée en option à partir de fin 2015."
+      },
+      {
+        "nom": "Sandero 2 phase 2",
+        "annees": "2016-2021",
+        "notes": "Restylage présenté au Mondial de Paris 2016 : calandre revue et feux de jour à LED. Le 1.0 SCe 75 remplace le 1.2 16V. Le Stepway devient le haut de gamme. Remplacée début 2021 par la troisième génération."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.2 16V 75",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Le constructeur préconise environ 120 000 km ou 6 ans selon les versions : vérifiez le carnet.",
+        "points": "Réputé fiable mais un peu juste sur autoroute. Souffre surtout d'un entretien négligé."
+      },
+      {
+        "nom": "1.4 MPI 75 (essence ou GPL)",
+        "carburant": "Essence ou GPL",
+        "distribution": "Courroie",
+        "entretien": "Intervalle de courroie variable selon l'année : vérifiez le carnet. Sur les versions GPL, faites contrôler le circuit gaz.",
+        "points": "Mécanique simple. Des fuites d'huile côté distribution sont signalées sur ce moteur."
+      },
+      {
+        "nom": "1.0 SCe 75",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Chaîne prévue pour durer, sans remplacement périodique. Des vidanges régulières la préservent.",
+        "points": "Réputé fiable. Quelques remplacements de chaîne rapportés vers 100 000 km."
+      },
+      {
+        "nom": "0.9 TCe 90",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Pas de remplacement périodique de la chaîne. Surveiller le niveau de liquide de refroidissement et d'huile.",
+        "points": "Bruit de chaîne, fuites au boîtier de thermostat et au carter de distribution signalés, surtout sur les premières années."
+      },
+      {
+        "nom": "1.5 dCi 75 / 90 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Le constructeur préconise environ 120 000 km ou 6 ans selon les versions : vérifiez le carnet.",
+        "points": "Moteur endurant et sobre. Injecteurs, pompe haute pression, vanne EGR et FAP à surveiller, coussinets de bielle sur certaines années."
+      }
+    ],
+    "avantages": [
+      "Mécaniques Renault éprouvées et simples à entretenir",
+      "Pièces détachées très répandues et peu coûteuses",
+      "Habitabilité et coffre généreux pour la catégorie",
+      "Diesel 1.5 dCi très sobre en consommation",
+      "Versions GPL d'usine proposées selon les années",
+      "Stepway au look plus valorisant, très demandé"
+    ],
+    "inconvenients": [
+      "Finition intérieure basique et plastiques durs",
+      "Insonorisation limitée à vitesse d'autoroute",
+      "1.2 16V et 1.0 SCe un peu justes avec du chargement",
+      "Peinture fragile face aux gravillons",
+      "Équipements de sécurité modestes sur les premières versions",
+      "Boîte Easy-R parfois capricieuse"
+    ],
+    "problemes": [
+      {
+        "titre": "Injection et pompe haute pression du 1.5 dCi",
+        "detail": "Sur le K9K, des injecteurs défaillants provoquent claquements, fumée ou démarrages difficiles. La pompe haute pression peut aussi lâcher, souvent entre 100 000 et 180 000 km."
+      },
+      {
+        "titre": "Coussinets de bielle du 1.5 dCi",
+        "detail": "L'Argus documente une usure des coussinets de bielle sur des 1.5 dCi de 2009 à 2013. Un bruit sourd moteur chaud ou un voyant de pression d'huile doivent alerter."
+      },
+      {
+        "titre": "Encrassement EGR et FAP en diesel",
+        "detail": "Les petits trajets répétés encrassent la vanne EGR et le filtre à particules des Sandero 2 diesel. Symptômes : perte de puissance, voyant moteur, régénérations incomplètes."
+      },
+      {
+        "titre": "Chaîne et refroidissement du 0.9 TCe",
+        "detail": "Sur la Sandero 2 TCe 90, bruit de chaîne de distribution, fuite au boîtier de thermostat et fuites d'huile sont rapportés. Une baisse de liquide non surveillée peut mener à la surchauffe."
+      },
+      {
+        "titre": "Boîte robotisée Easy-R",
+        "detail": "Proposée à partir de fin 2015, elle peut présenter des à-coups d'embrayage, des pannes d'actionneur ou des défauts de programmation, parfois persistants après mise à jour."
+      },
+      {
+        "titre": "Petits défauts électriques",
+        "detail": "Jauge à carburant fantaisiste, bugs de l'écran Media Nav et défauts de centrale de clignotants sont signalés par des propriétaires, sans gravité mécanique."
+      }
+    ],
+    "controles": [
+      "Facture de la dernière courroie de distribution sur 1.2 16V, 1.4, 1.6 et 1.5 dCi",
+      "Bruit de chaîne au démarrage à froid sur le 0.9 TCe",
+      "Niveau et traces de fuite de liquide de refroidissement côté thermostat",
+      "Démarrage, fumées et ralenti sur les 1.5 dCi",
+      "Absence de voyant moteur ou de dépollution au tableau de bord",
+      "Passage des rapports à froid sur les boîtes Easy-R",
+      "État du circuit et du réservoir GPL sur les versions Bi-Fuel",
+      "Freins, pneus et éclairage, avec un essai routier"
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures de vidange",
+      "Retrouvez la facture du dernier kit de distribution si votre moteur a une courroie",
+      "Pour une version GPL, gardez les justificatifs de contrôle du réservoir et du circuit",
+      "Préparez les deux clés et le code de l'autoradio ou du Media Nav si vous l'avez",
+      "Faites tourner la voiture quelques jours avant le rendez-vous si elle roule peu",
+      "Videz l'habitacle et le coffre, un simple nettoyage suffit"
+    ],
+    "age": "Une Sandero de 2009 ou de 2013 n'a plus rien d'une voiture neuve, et c'est normal. Mais ce modèle a un atout rare : une mécanique Renault simple, connue de tous les garages, avec des pièces faciles à trouver. Une Sandero peu roulée, entretenue avec des factures et une distribution faite à temps reste une voiture recherchée pour un premier véhicule ou un usage quotidien. Le Stepway, les versions GPL et les diesels bien suivis attirent aussi. Ce qui compte vraiment, c'est l'état réel et l'historique, bien plus que l'année inscrite sur la carte grise.",
+    "valeurPlus": [
+      "Kilométrage modéré et justifié",
+      "Carnet tamponné et factures, dont la distribution",
+      "Finition Stepway ou version GPL en bon état",
+      "Carrosserie saine, sans rayure profonde ni choc",
+      "Climatisation fonctionnelle"
+    ],
+    "valeurMoins": [
+      "Courroie de distribution sans facture ou en retard",
+      "Voyant moteur ou dépollution allumé sur un diesel",
+      "Bruit de chaîne sur un 0.9 TCe",
+      "Boîte Easy-R qui patine ou refuse un rapport",
+      "Pneus usés et freins à refaire"
+    ],
+    "faq": [
+      {
+        "question": "Ma Sandero de 2010 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle roule bien et que son entretien est suivi. Une Sandero 1 reste demandée comme voiture du quotidien ou premier véhicule, grâce à sa mécanique simple. Le kilométrage, la distribution faite à temps et l'état de la carrosserie font la différence. Nous évaluons votre voiture telle qu'elle est, sans exiger de contrôle technique."
+      },
+      {
+        "question": "Ma Sandero a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Cela dépend du moteur. Les 1.2 16V, 1.4 MPI, 1.6 et 1.5 dCi ont une courroie, à remplacer selon le carnet, souvent autour de 120 000 km ou 6 ans selon les versions. Les 0.9 TCe 90 et 1.0 SCe 75 de la Sandero 2 ont une chaîne, sans remplacement périodique prévu."
+      },
+      {
+        "question": "Je n'ai pas la facture de courroie, puis-je quand même vendre ?",
+        "answer": "Oui. Sans justificatif, nous considérons que la distribution est à prévoir, ce qui est pris en compte dans l'offre. Pensez à demander à votre garage un duplicata de facture : beaucoup les conservent plusieurs années. Une facture retrouvée peut améliorer l'estimation."
+      },
+      {
+        "question": "Ma Sandero GPL est-elle plus difficile à vendre ?",
+        "answer": "Non. Les versions GPL d'usine intéressent les acheteurs qui roulent beaucoup ou veulent une vignette Crit'Air favorable. Nous vérifions le fonctionnement en mode gaz et l'état du réservoir. Gardez les justificatifs d'entretien du circuit GPL, ils rassurent et soutiennent la valeur."
+      },
+      {
+        "question": "Vous rachetez aussi les Sandero Stepway ?",
+        "answer": "Oui, la Stepway est une finition de la Sandero et nous la reprenons comme les autres versions, en première ou en deuxième génération. Ses protections de carrosserie et ses barres de toit sont appréciées. Nous contrôlons la mécanique de la même façon, car c'est une traction comme la Sandero classique."
+      },
+      {
+        "question": "Ma Sandero a une boîte Easy-R qui fait des à-coups, vous la reprenez ?",
+        "answer": "Oui. Nous essayons la boîte au rendez-vous et tenons compte de son comportement dans l'offre. Si une mise à jour ou une réparation a été faite, apportez la facture. Vous n'avez rien à réparer avant la vente, et aucun achat d'un autre véhicule n'est demandé."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Dacia Sandero I",
+        "url": "https://fr.wikipedia.org/wiki/Dacia_Sandero_I"
+      },
+      {
+        "label": "Wikipédia : Dacia Sandero II",
+        "url": "https://fr.wikipedia.org/wiki/Dacia_Sandero_II"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité et pannes de la Dacia Sandero 2",
+        "url": "https://www.fiches-auto.fr/fiabilite-dacia/fiabilite-366-pannes-dacia-sandero-2.php"
+      },
+      {
+        "label": "iDGARAGES : distribution Dacia Sandero",
+        "url": "https://www.idgarages.com/fr-fr/vehicules/dacia/dacia-sandero-courroie-kit-de-distribution"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-dacia-logan",
+    "brand": "Dacia",
+    "brandSlug": "reprise-dacia",
+    "model": "Logan",
+    "nav": "Dacia Logan",
+    "title": "Vendre sa Dacia Logan : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Dacia Logan ou Logan MCV : estimation gratuite sous 24 h, sans obligation d'achat. On vient chez vous, paiement par virement.",
+    "h1": "Vendre sa Dacia Logan <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Dacia Logan berline ou d'un break Logan MCV, de première ou de deuxième génération. Vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours, et nous venons chez vous. Le paiement se fait par virement le jour de la vente.",
+    "annees": "2005-2021",
+    "generations": [
+      {
+        "nom": "Logan 1 berline",
+        "annees": "2005-2012",
+        "notes": "Berline tricorps lancée en France mi-2005. Le 1.5 dCi arrive en 2006, le 1.6 16V 105 fin 2006. Restylage en juillet 2008 avec une nouvelle face avant. Version GPL du 1.4 MPI en France à partir de 2009."
+      },
+      {
+        "nom": "Logan MCV 1",
+        "annees": "2007-2013",
+        "notes": "Break long en 5 ou 7 places, arrivé en France au premier semestre 2007. Portes arrière battantes asymétriques. Déclinaisons utilitaires Van et pick-up produites jusqu'en 2012."
+      },
+      {
+        "nom": "Logan 2 et Logan MCV 2",
+        "annees": "2012-2021",
+        "notes": "Nouvelle berline fin 2012, puis un break MCV plus classique à hayon en juillet 2013, avec un coffre de 573 litres. Restylage fin 2016. Version MCV Stepway présentée en 2017. Le MCV est remplacé par le Jogger fin 2021."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.4 MPI 75 (essence ou GPL)",
+        "carburant": "Essence ou GPL",
+        "distribution": "Courroie",
+        "entretien": "Intervalle de courroie variable selon l'année : vérifiez le carnet. Sur les versions GPL, faites contrôler le circuit gaz.",
+        "points": "Mécanique simple. Fuites d'huile côté distribution signalées."
+      },
+      {
+        "nom": "1.6 MPI 85/90",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Intervalle de courroie variable selon l'année : vérifiez le carnet.",
+        "points": "Réputé fiable et peu exigeant."
+      },
+      {
+        "nom": "1.2 16V 75",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Le constructeur préconise environ 120 000 km ou 6 ans selon les versions : vérifiez le carnet.",
+        "points": "Réputé fiable, mais juste en puissance avec un MCV chargé."
+      },
+      {
+        "nom": "0.9 TCe 90",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Pas de remplacement périodique de la chaîne. Surveiller les niveaux d'huile et de liquide de refroidissement.",
+        "points": "Fuite de thermostat sur les premiers moteurs, bruit ou détente de chaîne signalés par des propriétaires."
+      },
+      {
+        "nom": "1.5 dCi 75 / 85 / 90 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Le constructeur préconise environ 120 000 km ou 6 ans selon les versions : vérifiez le carnet.",
+        "points": "Très endurant s'il est entretenu. Injecteurs, pompe haute pression, EGR et FAP à surveiller selon les années."
+      }
+    ],
+    "avantages": [
+      "Mécaniques Renault simples et connues de tous les garages",
+      "Coffre très volumineux, surtout en MCV",
+      "MCV 1 disponible en 7 places",
+      "Diesel 1.5 dCi sobre et endurant",
+      "Entretien et pièces parmi les moins coûteux du marché",
+      "Comportement routier sain et sûr"
+    ],
+    "inconvenients": [
+      "Finition intérieure rustique",
+      "Plastiques durs et présentation datée sur la Logan 1",
+      "Insonorisation moyenne sur autoroute",
+      "Moteurs essence atmosphériques un peu justes en charge",
+      "Carrosserie qui marque facilement aux petits chocs",
+      "Boîte Easy-R moins fiable que la manuelle"
+    ],
+    "problemes": [
+      {
+        "titre": "Injection du 1.5 dCi",
+        "detail": "Sur le K9K, injecteurs et pompe haute pression peuvent faiblir avec le kilométrage. Symptômes : claquements, fumées, démarrage difficile ou à-coups."
+      },
+      {
+        "titre": "Coussinets de bielle des dCi de 2009 à 2013",
+        "detail": "Une usure des coussinets de bielle est documentée sur des 1.5 dCi de cette période. Un bruit moteur chaud ou un voyant de pression d'huile doit faire réagir rapidement."
+      },
+      {
+        "titre": "EGR et FAP sur les Logan 2 diesel",
+        "detail": "L'usage en ville et les petits trajets encrassent la vanne EGR et le filtre à particules. Perte de puissance et voyant moteur sont les signes typiques."
+      },
+      {
+        "titre": "Fuites d'huile du 1.4 MPI",
+        "detail": "Des suintements côté distribution sont signalés sur ce moteur de Logan 1. À surveiller lors du remplacement de la courroie."
+      },
+      {
+        "titre": "Thermostat et chaîne du 0.9 TCe",
+        "detail": "Sur les premiers Logan 2 TCe 90, une fuite au thermostat est connue. Des propriétaires rapportent aussi une chaîne bruyante ou détendue vers 100 000 km."
+      },
+      {
+        "titre": "Embrayage, cardans et trains roulants",
+        "detail": "Usure d'embrayage précoce en usage urbain, soufflets et cardans fatigués, amortisseurs à surveiller, surtout sur les MCV souvent chargés."
+      }
+    ],
+    "controles": [
+      "Facture de la dernière courroie sur les moteurs 1.2, 1.4, 1.6 et 1.5 dCi",
+      "Bruit moteur à chaud et démarrage sur les 1.5 dCi",
+      "Fuites d'huile et de liquide de refroidissement",
+      "Embrayage, cardans et amortisseurs, surtout sur un MCV chargé",
+      "Fonctionnement du mode GPL et état du réservoir sur les versions Bi-Fuel",
+      "Présence et état de la troisième rangée sur un MCV 7 places",
+      "Voyants au tableau de bord et électricité de bord",
+      "Essai routier complet, freinage compris"
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet et les factures d'entretien",
+      "Retrouvez la facture du dernier kit de distribution",
+      "Pour un MCV 7 places, remettez les sièges de troisième rangée en place",
+      "Gardez les justificatifs du circuit GPL si votre Logan en est équipée",
+      "Préparez les doubles des clés",
+      "Videz le coffre, souvent très rempli sur un break"
+    ],
+    "age": "Une Logan de 2007 ou un MCV de 2014 a de l'âge, mais ce modèle a été conçu pour durer avec une mécanique simple. Un break MCV peu roulé, bien entretenu, avec une distribution faite à temps, reste une voiture utile et recherchée par les familles et les artisans. Les versions 7 places et GPL ont aussi leur public. Ce qui valorise votre Logan, ce sont les factures, un kilométrage cohérent et un intérieur soigné. L'année ne fait pas tout : une Logan saine vaut bien plus qu'une plus récente négligée.",
+    "valeurPlus": [
+      "Break MCV, notamment en 7 places",
+      "Historique d'entretien complet avec facture de distribution",
+      "Kilométrage modéré et justifié",
+      "Version GPL fonctionnelle",
+      "Intérieur propre et sièges en bon état"
+    ],
+    "valeurMoins": [
+      "Courroie de distribution sans justificatif",
+      "Bruit moteur ou fumées sur un diesel",
+      "Embrayage qui patine ou cardans qui claquent",
+      "Carrosserie très marquée par un usage utilitaire",
+      "Voyant moteur allumé"
+    ],
+    "faq": [
+      {
+        "question": "Ma Logan de 2008 a-t-elle encore une valeur ?",
+        "answer": "Oui, dès lors qu'elle roule correctement et que l'entretien est suivi. La Logan 1, surtout en break MCV, garde un public grâce à sa robustesse et à son grand coffre. Le kilométrage, la distribution et l'état général pèsent plus que l'année. Nous l'estimons telle qu'elle est, sans contrôle technique exigé."
+      },
+      {
+        "question": "Ma Logan a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Les 1.4 et 1.6 MPI, le 1.2 16V et le 1.5 dCi ont une courroie. Le constructeur préconise un remplacement selon le carnet, souvent autour de 120 000 km ou 6 ans selon les versions. Le 0.9 TCe 90 de la Logan 2 a une chaîne, sans remplacement périodique prévu."
+      },
+      {
+        "question": "Vous reprenez les Logan MCV 7 places ?",
+        "answer": "Oui. Le MCV de première génération existait en 5 ou 7 places et la version 7 places intéresse les familles. Pensez à remettre les sièges de troisième rangée dans la voiture avant le rendez-vous : s'ils manquent, l'offre en tient compte. Nous vérifions aussi leur fixation et leur état."
+      },
+      {
+        "question": "Ma Logan a beaucoup de kilomètres, est-ce un problème ?",
+        "answer": "Non. Le 1.5 dCi est connu pour son endurance quand il est entretenu. Un kilométrage élevé se compense par des factures régulières, une distribution récente et un moteur qui démarre et tourne bien. Nous regardons l'ensemble de la voiture, pas seulement le compteur."
+      },
+      {
+        "question": "Ma Logan GPL est-elle reprise ?",
+        "answer": "Oui. La Logan a été proposée avec un 1.4 MPI GPL d'usine sur la première génération, puis en Bi-Fuel sur la seconde selon les années. Nous testons le passage en mode gaz et l'état du réservoir. Les justificatifs d'entretien du circuit GPL rassurent et soutiennent la valeur."
+      },
+      {
+        "question": "Dois-je réparer ma Logan avant de la vendre ?",
+        "answer": "Non, ce n'est pas nécessaire. Nous chiffrons la voiture dans son état actuel, avec ses éventuels défauts. Une réparation coûteuse juste avant la vente est rarement rentable. Signalez simplement les problèmes connus lors de votre demande, l'offre sera plus juste et le rendez-vous plus rapide."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Dacia Logan I",
+        "url": "https://fr.wikipedia.org/wiki/Dacia_Logan_I"
+      },
+      {
+        "label": "Wikipédia : Dacia Logan II",
+        "url": "https://fr.wikipedia.org/wiki/Dacia_Logan_II"
+      },
+      {
+        "label": "Fiches-Auto : essai et fiabilité de la Dacia Logan 2005-2012",
+        "url": "https://www.fiches-auto.fr/essai-dacia/essai-115-test-complet-dacia-logan.php"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité et pannes de la Dacia Sandero 2 (mécaniques communes)",
+        "url": "https://www.fiches-auto.fr/fiabilite-dacia/fiabilite-366-pannes-dacia-sandero-2.php"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-toyota-yaris",
+    "brand": "Toyota",
+    "brandSlug": "reprise-toyota",
+    "model": "Yaris",
+    "nav": "Toyota Yaris",
+    "title": "Vendre sa Toyota Yaris : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Toyota Yaris 1, 2 ou 3, hybride comprise : estimation gratuite sous 24 h, sans obligation d'achat. On vient chez vous.",
+    "h1": "Vendre sa Toyota Yaris <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Toyota Yaris de première, deuxième ou troisième génération, essence, diesel ou hybride. Vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours, et nous venons chez vous. Le paiement se fait par virement le jour de la vente.",
+    "annees": "1999-2020",
+    "generations": [
+      {
+        "nom": "Yaris 1",
+        "annees": "1999-2005",
+        "notes": "Citadine 3 ou 5 portes, élue Voiture européenne de l'année 2000. Produite à Valenciennes à partir de 2001. Moteurs 1.0 et 1.3 VVT-i, 1.5 sur la version TS, 1.4 D-4D diesel."
+      },
+      {
+        "nom": "Yaris 2",
+        "annees": "2005-2011",
+        "notes": "Plus grande et plus moderne, en 3 ou 5 portes. Boîte robotisée MMT en option. Le 1.33 Dual VVT-i remplace le 1.3 à partir de 2009. Version sportive TS en 1.8."
+      },
+      {
+        "nom": "Yaris 3",
+        "annees": "2011-2020",
+        "notes": "Lancée fin 2011, avec l'arrivée de la version hybride 1.5 en 2012. Restylages en 2014 et en 2017. Produite à Valenciennes. Remplacée par la quatrième génération en 2020."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.0 VVT-i 69/70",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Chaîne sans remplacement périodique prévu. Des vidanges régulières la préservent.",
+        "points": "Réputé fiable. Pompe à eau fragile sur les Yaris 2 jusqu'en 2009 environ, embrayage parfois bruyant sur les Yaris 3 jusqu'à fin 2016."
+      },
+      {
+        "nom": "1.3 VVT-i 86/87",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Chaîne sans remplacement périodique prévu.",
+        "points": "Débitmètre parfois défaillant sur la Yaris 1. Globalement fiable."
+      },
+      {
+        "nom": "1.33 Dual VVT-i 99/100",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Chaîne sans remplacement périodique prévu. Surveiller le niveau d'huile.",
+        "points": "Surconsommation d'huile signalée sur les premiers moteurs, jusqu'à début 2013 environ, et bruit de chaîne à froid."
+      },
+      {
+        "nom": "1.4 D-4D 75/90",
+        "carburant": "Diesel",
+        "distribution": "Chaîne",
+        "entretien": "Chaîne sans remplacement périodique prévu. Vidanges rigoureuses indispensables.",
+        "points": "Motorisation la plus sensible : consommation d'huile, turbo, volant moteur bimasse, injecteurs, EGR et FAP. Pompe à eau et joint de culasse à surveiller sur la Yaris 1."
+      },
+      {
+        "nom": "1.5 hybride 100h",
+        "carburant": "Hybride essence",
+        "distribution": "Chaîne",
+        "entretien": "Chaîne sans remplacement périodique prévu. Pas d'embrayage ni de démarreur classique.",
+        "points": "Réputée fiable. Vérifier l'état du système hybride, la batterie et les rappels effectués."
+      }
+    ],
+    "avantages": [
+      "Réputation de fiabilité solide, surtout en essence et en hybride",
+      "Moteurs essence à chaîne de distribution",
+      "Hybride très sobre en ville, sans embrayage à remplacer",
+      "Gabarit compact, facile à garer",
+      "Fabriquée à Valenciennes depuis 2001",
+      "Bonne demande sur le marché de l'occasion"
+    ],
+    "inconvenients": [
+      "Diesel 1.4 D-4D plus fragile que les versions essence",
+      "Boîte robotisée MMT sujette aux pannes d'actionneur",
+      "Coffre modeste",
+      "Plastiques intérieurs qui se rayent facilement",
+      "Peinture sensible aux gravillons sur la Yaris 2",
+      "Roulements de roue arrière qui s'usent tôt sur certaines versions"
+    ],
+    "problemes": [
+      {
+        "titre": "Consommation d'huile et turbo du 1.4 D-4D",
+        "detail": "Sur les Yaris 2 et 3 diesel, une consommation d'huile anormale peut annoncer un turbo fatigué. FAP, EGR, injecteurs et volant moteur bimasse sont aussi cités."
+      },
+      {
+        "titre": "Pompe à eau du 1.0 VVT-i",
+        "detail": "Faiblesse connue sur la Yaris 2, surtout jusqu'en 2009. Symptômes : fuite de liquide, bruit, baisse du niveau de refroidissement."
+      },
+      {
+        "titre": "Boîte robotisée MMT",
+        "detail": "Sur les Yaris 2 MMT, l'actionneur d'embrayage peut se bloquer. Le voyant s'allume, le N clignote et la boîte refuse d'engager un rapport."
+      },
+      {
+        "titre": "Surconsommation d'huile du 1.33",
+        "detail": "Les premiers 1.33 Dual VVT-i, jusqu'à début 2013 environ, peuvent consommer de l'huile et faire un bruit de chaîne au démarrage à froid."
+      },
+      {
+        "titre": "Roulements arrière et capteurs ABS",
+        "detail": "Sur la Yaris 2, usure précoce des roulements de roue arrière et capteurs ABS fragiles ou corrodés, qui allument le voyant."
+      },
+      {
+        "titre": "Rappels constructeur",
+        "detail": "Pédale d'accélérateur sur des Yaris 2 produites de 2005 à 2009, airbags Takata sur des Yaris 3 de 2011 à 2014, réservoir de liquide de frein sur des hybrides de 2013 à 2014. Vérifiez que les rappels ont été faits."
+      }
+    ],
+    "controles": [
+      "Niveau et consommation d'huile, surtout sur 1.4 D-4D et 1.33",
+      "Bruit de chaîne au démarrage à froid",
+      "Fuite ou bruit de pompe à eau sur le 1.0",
+      "Engagement des rapports sur les boîtes MMT",
+      "Démarrage en mode Ready et absence de voyant hybride",
+      "Bruit de roulement arrière et voyant ABS lors de l'essai",
+      "Réalisation des rappels constructeur, notamment airbags",
+      "Fumées et voyant moteur ou FAP sur les diesels"
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet Toyota et les factures d'entretien",
+      "Récupérez auprès d'un concessionnaire la liste des rappels effectués",
+      "Pour une hybride, gardez les comptes rendus des contrôles du système hybride",
+      "Préparez les deux clés et la carte de code si vous l'avez",
+      "Faites rouler la voiture avant le rendez-vous si elle reste souvent garée",
+      "Videz l'habitacle et le coffre"
+    ],
+    "age": "Une Yaris de 2004 ou de 2010 n'est plus récente, mais elle a une vraie réputation de sérieux. Ses moteurs essence et hybride à chaîne vieillissent bien quand ils sont entretenus. Une Yaris peu roulée, utilisée en ville avec des vidanges régulières, reste très recherchée, notamment comme première voiture ou citadine du quotidien. L'hybride attire aussi pour sa sobriété. Ce qui la valorise : un carnet suivi, les rappels effectués et un intérieur propre. Une Yaris saine garde une valeur réelle, quel que soit son âge.",
+    "valeurPlus": [
+      "Version hybride en bon état, sans voyant",
+      "Carnet Toyota suivi et rappels effectués",
+      "Kilométrage faible et cohérent",
+      "Moteur essence 1.0 ou 1.33 sans consommation d'huile",
+      "Boîte manuelle ou hybride plutôt que MMT défaillante"
+    ],
+    "valeurMoins": [
+      "Diesel 1.4 D-4D qui consomme de l'huile ou fume",
+      "Boîte MMT qui refuse d'engager un rapport",
+      "Rappel airbag non réalisé",
+      "Voyant moteur, ABS ou hybride allumé",
+      "Carrosserie marquée par les gravillons et les chocs urbains"
+    ],
+    "faq": [
+      {
+        "question": "Ma Yaris de 2006 a-t-elle encore une valeur ?",
+        "answer": "Oui. Une Yaris 2 essence qui roule bien, avec un entretien suivi, reste recherchée pour sa fiabilité. Le kilométrage, l'état de la carrosserie et l'historique comptent davantage que l'année. Nous estimons votre voiture telle qu'elle est, sans contrôle technique exigé, et nous venons chez vous pour la voir."
+      },
+      {
+        "question": "Ma Yaris a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Les moteurs courants des Yaris 1, 2 et 3 ont une chaîne : 1.0 VVT-i, 1.3, 1.33, 1.4 D-4D et 1.5 hybride. Il n'y a pas de remplacement périodique prévu. Un bruit de chaîne au démarrage à froid doit toutefois être signalé, surtout sur les 1.33 et les diesels. Vérifiez le carnet."
+      },
+      {
+        "question": "Vous rachetez les Yaris hybrides ?",
+        "answer": "Oui, la Yaris 3 hybride, apparue en 2012, est très demandée. Au rendez-vous, nous vérifions le démarrage en mode Ready, l'absence de voyant et le comportement du système hybride. Les rappels effectués et les comptes rendus de contrôle du système hybride soutiennent la valeur."
+      },
+      {
+        "question": "Ma Yaris diesel consomme de l'huile, vous la reprenez ?",
+        "answer": "Oui. Le 1.4 D-4D est connu pour ce défaut, souvent lié au turbo. Signalez-le dans votre demande : l'offre en tiendra compte et vous n'aurez rien à réparer. Nous vérifions aussi les fumées, le voyant moteur et le filtre à particules lors de l'essai."
+      },
+      {
+        "question": "Ma Yaris a une boîte MMT en panne, que faire ?",
+        "answer": "Vous pouvez la vendre en l'état. La boîte robotisée MMT des Yaris 2 souffre parfois de pannes d'actionneur d'embrayage. Indiquez le symptôme, par exemple un N qui clignote ou un rapport refusé. Nous tenons compte de la réparation à prévoir dans l'offre, sans vous demander de la faire avant."
+      },
+      {
+        "question": "Comment savoir si les rappels de ma Yaris ont été faits ?",
+        "answer": "Un concessionnaire Toyota peut consulter l'historique à partir du numéro de série. Les rappels connus concernent notamment la pédale d'accélérateur sur des Yaris 2 et les airbags Takata sur des Yaris 3 de 2011 à 2014. Un rappel réalisé rassure et soutient la valeur."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Toyota Yaris",
+        "url": "https://fr.wikipedia.org/wiki/Toyota_Yaris"
+      },
+      {
+        "label": "Caradisiac : maxi fiche fiabilité Toyota Yaris 2",
+        "url": "https://www.caradisiac.com/Maxi-fiche-fiabilite-que-vaut-la-Toyota-Yaris-2-en-occasion-91734.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité et pannes de la Toyota Yaris 1",
+        "url": "https://www.fiches-auto.fr/fiabilite-toyota/fiabilite-68-pannes-toyota-yaris.php"
+      },
+      {
+        "label": "Wikipedia EN : Toyota NZ engine (distribution par chaîne)",
+        "url": "https://en.wikipedia.org/wiki/Toyota_NZ_engine"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-volkswagen-polo",
+    "brand": "Volkswagen",
+    "brandSlug": "reprise-volkswagen",
+    "model": "Polo",
+    "nav": "Volkswagen Polo",
+    "title": "Vendre sa Volkswagen Polo : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Volkswagen Polo, même ancienne : estimation gratuite sous 24 h, sans obligation d'achat, on vient chez vous et on paie par virement.",
+    "h1": "Vendre sa Volkswagen Polo <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Polo 4 (9N) ou d'une Polo 5 (6R), souvent gardée de longues années et bien entretenue. LUNICAR vous envoie une offre chiffrée sous 24 h ouvrées, valable 7 jours, puis se déplace chez vous. Le paiement se fait par virement le jour de la vente.",
+    "annees": "2001-2017",
+    "generations": [
+      {
+        "nom": "Polo 4 (9N), phase 1",
+        "annees": "2001-2005",
+        "notes": "Citadine 3 ou 5 portes au style sobre, plateforme partagée avec la Seat Ibiza et la Skoda Fabia. Une version tricorps (Polo Classic) a existé sur certains marchés."
+      },
+      {
+        "nom": "Polo 4 (9N3), phase 2",
+        "annees": "2005-2009",
+        "notes": "Restylage de la face avant et des feux arrière. Finitions Trendline, Confortline, Sportline, ainsi que CrossPolo, GTI et BlueMotion."
+      },
+      {
+        "nom": "Polo 5 (6R), phase 1",
+        "annees": "2009-2014",
+        "notes": "Nouvelle génération 3 ou 5 portes, élue voiture mondiale de l'année 2010, cinq étoiles à l'Euro NCAP. Boîte manuelle ou DSG7 selon les moteurs."
+      },
+      {
+        "nom": "Polo 5 (6C), phase 2",
+        "annees": "2014-2017",
+        "notes": "Restylage avec moteurs Euro 6 : 1.2 TSI et 1.0 à courroie, 1.4 TDI trois cylindres à la place des 1.2 et 1.6 TDI."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.2 6V / 12V (Polo 4) et 1.2 60/70 (Polo 5)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Trois cylindres atmosphérique. La chaîne n'a pas d'échéance fixe de remplacement mais doit être surveillée. Vidanges régulières avec une huile conforme à la norme VW.",
+        "points": "Allongement de la chaîne de distribution signalé (bruit de cliquetis au démarrage à froid), bobines d'allumage, consommation d'huile sur certains exemplaires."
+      },
+      {
+        "nom": "1.4 16V 75/80 ch (Polo 4)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet.",
+        "points": "Moteur plutôt robuste. Surveiller la consommation d'huile et les fuites."
+      },
+      {
+        "nom": "1.2 TSI 90/105 ch (Polo 5)",
+        "carburant": "Essence",
+        "distribution": "Chaîne jusqu'en 2014, courroie sur le 1.2 TSI de la phase 2",
+        "entretien": "Sur la version à chaîne (2010-2014), le bruit au démarrage à froid doit alerter. Sur la version à courroie de la phase 2, suivre l'échéance indiquée au carnet.",
+        "points": "Allongement de chaîne et tendeur défaillant sur le 1.2 TSI à chaîne. VW a révisé la pièce par la suite."
+      },
+      {
+        "nom": "1.4 TDI 70/80 ch et 1.9 TDI 100/130 ch (Polo 4)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Injecteurs-pompes. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet.",
+        "points": "Usure du turbo, de l'embrayage et du volant moteur, encrassement de la vanne EGR."
+      },
+      {
+        "nom": "1.6 TDI 75/90/105 ch (Polo 5)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Injection directe à rampe commune avec filtre à particules. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet.",
+        "points": "Injecteurs fragiles sur les premiers 75 et 90 ch (2009-2011), radiateur EGR et FAP à surveiller."
+      },
+      {
+        "nom": "1.2 TDI 75 ch et 1.4 TDI (Polo 5)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Trois cylindres diesel. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet.",
+        "points": "Vibrations propres au trois cylindres, radiateur EGR et FAP à surveiller sur le 1.2 TDI."
+      }
+    ],
+    "avantages": [
+      "Finition et assemblage sérieux pour une citadine, avec un habitacle qui vieillit bien.",
+      "Polo 5 notée cinq étoiles à l'Euro NCAP et élue voiture mondiale de l'année 2010.",
+      "Large choix de moteurs, du petit essence urbain au diesel pour les gros rouleurs.",
+      "Pièces courantes faciles à trouver, plateforme partagée avec Seat et Skoda.",
+      "Modèle très connu et recherché en occasion, ce qui facilite sa revente.",
+      "Diesels TDI sobres, appréciés pour les trajets réguliers."
+    ],
+    "inconvenients": [
+      "Chaîne de distribution à surveiller sur les 1.2 trois cylindres et le 1.2 TSI 2010-2014.",
+      "Lève-vitres électriques fragiles sur la Polo 4 (câbles et guides en plastique).",
+      "Petits défauts électriques fréquents sur la Polo 4 (combiné, voyants, capteurs ABS).",
+      "Boîte DSG7 à sec parfois sujette à des à-coups sur la Polo 5.",
+      "Petits trois cylindres essence peu vifs sur voie rapide.",
+      "Diesels récents sensibles à l'encrassement en usage purement urbain."
+    ],
+    "problemes": [
+      {
+        "titre": "Chaîne de distribution détendue (1.2 trois cylindres et 1.2 TSI)",
+        "detail": "Cliquetis métallique de quelques secondes au démarrage à froid. Concerne les 1.2 de la Polo 4, le 1.2 60/70 de la Polo 5 et le 1.2 TSI 2010-2014. Sans intervention, la chaîne peut sauter une dent et endommager le moteur."
+      },
+      {
+        "titre": "Lève-vitres électriques (Polo 4)",
+        "detail": "Vitre qui descend de travers, reste bloquée ou tombe dans la porte. En cause, l'usure des câbles et des guides en plastique du mécanisme."
+      },
+      {
+        "titre": "Défauts électriques (Polo 4)",
+        "detail": "Voyants qui s'allument sans raison, affichage du combiné défaillant, capteurs ABS, antidémarrage capricieux. Plusieurs alertes peuvent apparaître en même temps."
+      },
+      {
+        "titre": "Boîte manuelle de la Polo 4",
+        "detail": "Rapports qui accrochent, ronflement en roulant, première ou marche arrière difficiles à engager. Le problème s'aggrave avec le temps."
+      },
+      {
+        "titre": "Injecteurs du 1.6 TDI 75/90 (Polo 5)",
+        "detail": "Défaillances d'injecteurs relevées sur les premières versions (2009 à début 2011) : ralenti instable, fumée, voyant moteur. Un historique de remplacement est un plus."
+      },
+      {
+        "titre": "Boîte DSG7 (Polo 5)",
+        "detail": "À-coups au démarrage, claquements à basse vitesse. La mécatronique peut nécessiter une reprogrammation ou un remplacement."
+      },
+      {
+        "titre": "Train avant et climatisation",
+        "detail": "Silentblocs et rotules usés (claquements, usure irrégulière des pneus) et compresseur ou résistance de ventilation défaillants, surtout sur la Polo 4."
+      }
+    ],
+    "controles": [
+      "Démarrage moteur froid pour écouter un éventuel bruit de chaîne sur les 1.2 et 1.2 TSI.",
+      "Factures de courroie de distribution sur les 1.4 essence et tous les diesels.",
+      "Passage de toutes les vitesses, y compris la marche arrière, et comportement de la DSG7.",
+      "Fonctionnement des quatre lève-vitres et de la fermeture centralisée.",
+      "Voyants au tableau de bord et lecture des défauts électroniques.",
+      "Efficacité de la climatisation et de la ventilation.",
+      "Bruits de train avant sur un trajet court et usure des pneus avant.",
+      "Fumée et reprises sur les diesels TDI (turbo, injecteurs, FAP)."
+    ],
+    "preparation": [
+      "Rassemblez le carnet d'entretien et les factures, surtout celles de la courroie ou de la chaîne.",
+      "Notez si la chaîne ou le tendeur ont déjà été remplacés sur un 1.2 ou un 1.2 TSI.",
+      "Préparez la carte grise, les doubles de clés et le code autoradio si votre Polo 4 en demande un.",
+      "Faites tourner la voiture quelques jours avant le rendez-vous si elle roule peu.",
+      "Un nettoyage intérieur simple suffit, inutile d'engager des frais de remise en état.",
+      "Gardez le dernier contrôle technique s'il existe, même s'il n'est pas exigé."
+    ],
+    "age": "Une Polo de 2004 ou de 2010 n'est plus une voiture récente. Pourtant, ce modèle se revend bien parce qu'il inspire confiance et que la demande reste forte. Ce qui fait la différence, c'est l'état réel de la voiture. Un kilométrage modéré, un carnet suivi, une courroie remplacée à temps ou une chaîne contrôlée valent beaucoup plus qu'une année de mise en circulation. Une carrosserie saine, un intérieur propre et des lève-vitres qui fonctionnent rassurent aussi. Une Polo entretenue par un propriétaire soigneux garde une vraie valeur, et LUNICAR en tient compte dans son offre.",
+    "valeurPlus": [
+      "Carnet d'entretien complet avec factures de distribution.",
+      "Kilométrage modéré pour l'année.",
+      "Chaîne déjà remplacée sur un 1.2 ou un 1.2 TSI, facture à l'appui.",
+      "Version cinq portes et climatisation fonctionnelle.",
+      "Finitions recherchées comme GTI, CrossPolo ou BlueMotion en bon état."
+    ],
+    "valeurMoins": [
+      "Bruit de chaîne au démarrage à froid.",
+      "Courroie de distribution sans preuve de remplacement.",
+      "Boîte qui accroche ou DSG7 avec à-coups.",
+      "Voyants allumés ou défauts électriques non résolus.",
+      "Diesel avec FAP ou EGR encrassés et perte de puissance."
+    ],
+    "faq": [
+      {
+        "question": "Ma Polo de 2005 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Une Polo 4 de 2005 reste recherchée comme petite voiture fiable et économique. La valeur dépend du kilométrage, de l'entretien prouvé, de l'état de la boîte et de l'électricité. Envoyez-nous ses informations et quelques photos : vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours, sans engagement."
+      },
+      {
+        "question": "Ma Polo a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Cela dépend du moteur. Les 1.2 trois cylindres essence et le 1.2 TSI vendu jusqu'en 2014 ont une chaîne. Le 1.4 16V essence et les diesels TDI ont une courroie, tout comme le 1.2 TSI de la phase 2. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient : vérifiez le carnet."
+      },
+      {
+        "question": "Le bruit de chaîne sur mon 1.2 empêche-t-il la vente ?",
+        "answer": "Non. LUNICAR rachète aussi les Polo qui présentent ce défaut connu. Le bruit au démarrage à froid sera noté lors du rendez-vous et pris en compte dans l'offre. Si la chaîne a déjà été remplacée, montrez la facture : c'est un vrai argument qui soutient la valeur de votre voiture."
+      },
+      {
+        "question": "Rachetez-vous les Polo à boîte DSG ?",
+        "answer": "Oui. Nous rachetons les Polo 5 à boîte DSG7 comme les versions manuelles. Lors de l'essai, nous vérifions le démarrage, le passage des rapports et l'absence d'à-coups. Si la mécatronique a été remplacée ou reprogrammée, gardez les factures et présentez-les au rendez-vous."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma Polo à LUNICAR ?",
+        "answer": "Non, le contrôle technique n'est pas exigé pour nous vendre votre voiture. Si vous en avez un récent, il aide à décrire son état, mais vous n'avez pas à en passer un avant notre visite. Nous venons chez vous, nous examinons la Polo et le paiement se fait par virement le jour de la vente."
+      },
+      {
+        "question": "Dois-je acheter un autre véhicule chez vous ?",
+        "answer": "Non. LUNICAR rachète votre Polo sans aucune obligation d'achat d'un autre véhicule. Vous pouvez simplement vendre votre voiture, à Paris, dans les Hauts-de-Seine, les Yvelines ou ailleurs en France. Notre offre reste valable 7 jours pour vous laisser le temps de décider."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Volkswagen Polo IV",
+        "url": "https://fr.wikipedia.org/wiki/Volkswagen_Polo_IV"
+      },
+      {
+        "label": "Wikipédia : Volkswagen Polo V",
+        "url": "https://fr.wikipedia.org/wiki/Volkswagen_Polo_V"
+      },
+      {
+        "label": "Fiches-auto : fiabilité Volkswagen Polo IV",
+        "url": "https://www.fiches-auto.fr/fiabilite-volkswagen/fiabilite-34-pannes-volkswagen-polo-iv.php"
+      },
+      {
+        "label": "Carverif : Polo V (6R/6C) en occasion",
+        "url": "https://carverif.fr/pages/modele-occasion/volkswagen-polo-v-6r-6c-2009-2017"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-fiat-500",
+    "brand": "Fiat",
+    "brandSlug": "reprise-fiat",
+    "model": "500",
+    "nav": "Fiat 500",
+    "title": "Vendre sa Fiat 500 : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Fiat 500, berline ou 500C : estimation gratuite sous 24 h, sans obligation d'achat, on vient chez vous et on paie par virement.",
+    "h1": "Vendre sa Fiat 500 <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Fiat 500 lancée en 2007, en berline ou en cabriolet 500C, en boîte manuelle ou Dualogic. LUNICAR vous envoie une offre chiffrée sous 24 h ouvrées, valable 7 jours, et se déplace chez vous. Le paiement se fait par virement le jour de la vente.",
+    "annees": "2007-2024",
+    "generations": [
+      {
+        "nom": "Fiat 500, phase 1",
+        "annees": "2007-2015",
+        "notes": "Citadine trois portes au style rétro, élue voiture de l'année 2008 et notée cinq étoiles à l'Euro NCAP. Moteurs 1.2, 1.4 et 1.3 Multijet, puis 0.9 TwinAir à partir de 2010."
+      },
+      {
+        "nom": "Fiat 500C",
+        "annees": "2009-2024",
+        "notes": "Version découvrable à capote en toile électrique. Les montants de carrosserie sont conservés, seule la toile coulisse."
+      },
+      {
+        "nom": "Fiat 500, phase 2",
+        "annees": "2015-2024",
+        "notes": "Restylage présenté en juillet 2015 : feux à LED, nouvelle connectivité. Le 1.3 Multijet disparaît en 2018, une version hybride légère 1.0 arrive en 2020."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.2 8V 69 ch",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Moteur FIRE simple et répandu. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet.",
+        "points": "Thermostat et boîtier de refroidissement qui fuient, bobines d'allumage, consommation d'huile sur certains exemplaires."
+      },
+      {
+        "nom": "0.9 TwinAir 85 ch",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Bicylindre turbo à commande de soupapes MultiAir (UniAir). Vidanges régulières avec l'huile préconisée, essentielles pour le module UniAir.",
+        "points": "Module UniAir, turbo et soupape de décharge, bobines d'allumage, fuites d'huile au carter de distribution sur certains modèles 2010-2012. Consommation réelle souvent supérieure à l'annonce."
+      },
+      {
+        "nom": "1.4 16V 100 ch",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet.",
+        "points": "Réputé fiable, plus vif que le 1.2."
+      },
+      {
+        "nom": "1.3 Multijet 75/95 ch",
+        "carburant": "Diesel",
+        "distribution": "Chaîne",
+        "entretien": "Diesel à rampe commune avec filtre à particules selon les années. Surveiller le niveau d'huile entre deux vidanges.",
+        "points": "Régénérations du FAP perturbées en usage urbain, avec dilution de gazole dans l'huile pouvant abîmer le moteur."
+      }
+    ],
+    "avantages": [
+      "Style rétro intemporel qui garde ses amateurs.",
+      "Gabarit très court, idéal pour se garer en ville.",
+      "Cinq étoiles à l'Euro NCAP et élue voiture de l'année 2008.",
+      "Version 500C qui offre le plaisir du ciel ouvert en gardant quatre places.",
+      "1.2 69 ch simple, économique à l'usage et répandu.",
+      "Grand choix de finitions et de personnalisations."
+    ],
+    "inconvenients": [
+      "Boîte de vitesses fragile, surtout la Dualogic robotisée.",
+      "Direction assistée électrique qui peut tomber en panne.",
+      "Places arrière et coffre très justes.",
+      "TwinAir souvent gourmand par rapport aux chiffres officiels.",
+      "Peinture fragile et faisceau de hayon sensible.",
+      "1.3 Multijet mal adapté aux petits trajets urbains."
+    ],
+    "problemes": [
+      {
+        "titre": "Boîte Dualogic",
+        "detail": "Rapports refusés, retour au point mort, voyant de boîte. En cause, l'actionneur, la pompe hydraulique, un capteur de position ou l'embrayage piloté. Concerne les versions robotisées, souvent associées au 1.2 69 ch."
+      },
+      {
+        "titre": "Roulements de boîte (manuelle et Dualogic)",
+        "detail": "Grondement en roulant qui augmente avec le temps, puis limaille dans l'huile. Point faible important relevé surtout sur le 1.2 69 ch."
+      },
+      {
+        "titre": "Direction assistée électrique",
+        "detail": "Perte soudaine d'assistance ou direction qui durcit, parfois par temps froid, avec voyant au tableau de bord. Concerne toutes les motorisations."
+      },
+      {
+        "titre": "Refroidissement",
+        "detail": "Thermostat et boîtier de sortie d'eau qui fuient ou se fissurent. Une baisse du liquide non surveillée peut entraîner une surchauffe et toucher le joint de culasse."
+      },
+      {
+        "titre": "Module UniAir du TwinAir",
+        "detail": "Ralenti irrégulier, perte de puissance, voyant moteur. Le module de commande des soupapes est sensible à la qualité et au niveau de l'huile."
+      },
+      {
+        "titre": "Faisceau électrique du hayon",
+        "detail": "Ouverture du coffre impossible, éclairage de plaque ou fermeture centralisée intermittents. Les fils se fragilisent au passage vers le hayon."
+      },
+      {
+        "titre": "Capote de la 500C",
+        "detail": "Toile usée ou décolorée, joints qui laissent passer l'eau, moteur de capote lent. À vérifier sur les cabriolets ayant dormi dehors."
+      }
+    ],
+    "controles": [
+      "Essai de la boîte Dualogic : passage des rapports, démarrage en côte, absence de retour au neutre.",
+      "Bruit de roulement de boîte en roulant, sur toutes les versions.",
+      "Fonctionnement de la direction assistée et absence de voyant.",
+      "Niveau de liquide de refroidissement et traces de fuite au thermostat.",
+      "Facture de courroie sur les 1.2 et 1.4 essence.",
+      "Ralenti et reprises du TwinAir, état de l'huile.",
+      "Ouverture du hayon et éclairage arrière.",
+      "Capote, joints et intérieur sec sur une 500C."
+    ],
+    "preparation": [
+      "Rassemblez le carnet et les factures, en particulier celles de la courroie et de la boîte Dualogic.",
+      "Notez les interventions déjà faites sur la direction assistée ou le refroidissement.",
+      "Sur une 500C, ouvrez et fermez la capote avant le rendez-vous pour vérifier qu'elle fonctionne.",
+      "Préparez la carte grise et les doubles de clés.",
+      "Vérifiez le niveau d'huile, surtout sur un TwinAir ou un 1.3 Multijet.",
+      "Un nettoyage simple suffit, inutile de refaire la peinture avant la vente."
+    ],
+    "age": "Une Fiat 500 de 2008 ou de 2010 a déjà de nombreuses années derrière elle. Son style, lui, n'a presque pas changé jusqu'en 2024, ce qui l'aide à rester désirable. Une 500 en bon état, peu roulée et entretenue garde donc un réel intérêt. Les points qui comptent le plus sont une boîte saine, une direction assistée qui fonctionne et un refroidissement sans fuite. Les factures de courroie sur le 1.2 et un entretien suivi sur le TwinAir rassurent aussi. Une 500C avec une capote en bon état est recherchée. LUNICAR prend tout cela en compte dans son offre.",
+    "valeurPlus": [
+      "Carnet suivi et facture de courroie récente sur un 1.2 ou un 1.4.",
+      "Boîte manuelle saine ou Dualogic révisée avec factures.",
+      "500C avec capote propre et étanche.",
+      "Kilométrage modéré et intérieur bien conservé.",
+      "Finitions recherchées comme Lounge ou Abarth, en bon état."
+    ],
+    "valeurMoins": [
+      "Dualogic qui refuse des rapports ou affiche un défaut.",
+      "Grondement de boîte en roulant.",
+      "Direction assistée défaillante.",
+      "Fuite de liquide de refroidissement ou surchauffe passée.",
+      "Capote déchirée ou infiltrations d'eau sur une 500C."
+    ],
+    "faq": [
+      {
+        "question": "Ma 500 de 2009 a-t-elle encore une valeur ?",
+        "answer": "Oui. Une Fiat 500 de 2009 en bon état reste recherchée pour son style et sa facilité en ville. Sa valeur dépend du kilométrage, de l'état de la boîte, de la direction assistée et de l'entretien prouvé. Envoyez-nous ses informations : vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours."
+      },
+      {
+        "question": "Ma Fiat 500 a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Cela dépend du moteur. Les essence 1.2 8V et 1.4 16V ont une courroie. Le 0.9 TwinAir et le diesel 1.3 Multijet ont une chaîne. Pour la courroie, le constructeur préconise un remplacement selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet et gardez la facture."
+      },
+      {
+        "question": "Rachetez-vous les Fiat 500 à boîte Dualogic en panne ?",
+        "answer": "Oui. Une Dualogic qui se met au neutre ou refuse des rapports ne bloque pas la vente. Nous notons le défaut lors du rendez-vous et l'intégrons dans l'offre. Si l'actionneur, la pompe ou l'embrayage ont déjà été remplacés, présentez les factures : elles soutiennent la valeur de la voiture."
+      },
+      {
+        "question": "Le TwinAir est-il un problème pour la revente ?",
+        "answer": "Non, mais son état compte. Le TwinAir apprécie un entretien rigoureux, car son module UniAir est sensible à l'huile. Un historique de vidanges régulières est un vrai atout. Lors de l'essai, nous écoutons le ralenti et vérifions les reprises. Une consommation supérieure aux chiffres officiels est normale sur ce moteur."
+      },
+      {
+        "question": "Vous rachetez aussi les 500C cabriolet ?",
+        "answer": "Oui. Nous rachetons la 500C au même titre que la berline. Au rendez-vous, nous vérifions l'ouverture et la fermeture de la capote, l'état de la toile et l'absence d'infiltrations d'eau. Une capote propre et étanche est un vrai plus pour la valeur de votre cabriolet."
+      },
+      {
+        "question": "Faut-il un contrôle technique ou acheter une autre voiture chez vous ?",
+        "answer": "Non dans les deux cas. Le contrôle technique n'est pas exigé pour vendre votre 500 à LUNICAR, et vous n'avez aucune obligation d'acheter un autre véhicule. Nous venons chez vous, à Paris, dans le 92, le 78 ou ailleurs en France, et nous payons par virement le jour de la vente."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Fiat 500 (2007)",
+        "url": "https://fr.wikipedia.org/wiki/Fiat_500_(2007)"
+      },
+      {
+        "label": "Fiches-auto : fiabilité Fiat 500 (2007)",
+        "url": "https://www.fiches-auto.fr/fiabilite-fiat/fiabilite-188-pannes-fiat-500.php"
+      },
+      {
+        "label": "Al Volante : Fiat 500 usata, pregi e difetti",
+        "url": "https://www.alvolante.it/da_sapere/auto-usate/fiat-500-usata-pregi-e-difetti-406863"
+      }
+    ]
+  },
+  {
+    "slug": "reprise-ford-fiesta",
+    "brand": "Ford",
+    "brandSlug": "reprise-ford",
+    "model": "Fiesta",
+    "nav": "Ford Fiesta",
+    "title": "Vendre sa Ford Fiesta : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Ford Fiesta, même ancienne : estimation gratuite sous 24 h, sans obligation d'achat, on vient chez vous et on paie par virement.",
+    "h1": "Vendre sa Ford Fiesta <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Ford Fiesta de 2002 à 2017, essence ou diesel, en boîte manuelle ou automatique. LUNICAR vous envoie une offre chiffrée sous 24 h ouvrées, valable 7 jours, et se déplace chez vous. Le paiement se fait par virement le jour de la vente.",
+    "annees": "2002-2017",
+    "generations": [
+      {
+        "nom": "Fiesta de 2002 (Fiesta 5), phase 1",
+        "annees": "2002-2005",
+        "notes": "Citadine 3 ou 5 portes, plus haute et plus spacieuse que la précédente. Moteurs Duratec essence et 1.4 TDCi diesel. Le Fusion en est un dérivé monospace."
+      },
+      {
+        "nom": "Fiesta de 2002 (Fiesta 5), phase 2",
+        "annees": "2005-2008",
+        "notes": "Restylage de la face avant et de l'intérieur. Version sportive ST de 150 ch. Boîte robotisée Durashift proposée sur certaines versions essence."
+      },
+      {
+        "nom": "Fiesta de 2008 (Fiesta 6), phase 1",
+        "annees": "2008-2012",
+        "notes": "Nouvelle génération issue du concept Verve, produite à Cologne et Valence. Selon les sources, elle est appelée Fiesta 6 ou Fiesta 7. Boîte automatique Powershift à double embrayage sur certaines versions essence."
+      },
+      {
+        "nom": "Fiesta de 2008 (Fiesta 6), phase 2",
+        "annees": "2012-2017",
+        "notes": "Restylage avec grande calandre trapézoïdale. Arrivée du 1.0 EcoBoost trois cylindres et de la Fiesta ST de 182 ch."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.25 et 1.4 16V Duratec",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Moteurs atmosphériques simples. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet.",
+        "points": "Réputé fiable. Le 1.25 manque de souffle en charge ou sur voie rapide."
+      },
+      {
+        "nom": "1.6 Ti-VCT",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet.",
+        "points": "Moteur robuste, mais souvent associé à la boîte Powershift sur la Fiesta 6, dont la fiabilité est le vrai sujet."
+      },
+      {
+        "nom": "1.0 EcoBoost 100/125 ch",
+        "carburant": "Essence",
+        "distribution": "Courroie humide (baignant dans l'huile)",
+        "entretien": "Huile strictement conforme à la norme Ford et vidanges régulières, car la courroie travaille dans l'huile. Échéance de remplacement à vérifier au carnet selon la version.",
+        "points": "Dégradation de la courroie humide pouvant colmater la crépine de pompe à huile, durite et boîtier de refroidissement sujets aux fuites et à la surchauffe."
+      },
+      {
+        "nom": "1.4 TDCi 68/70 ch",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Diesel très répandu, sobre. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet.",
+        "points": "Globalement robuste. Fuites d'injecteurs signalées, bougies de préchauffage."
+      },
+      {
+        "nom": "1.6 TDCi 90/95 ch",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Filtre à particules selon les versions. Le constructeur préconise un remplacement de la courroie selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet.",
+        "points": "Encrassement du FAP et de l'EGR en usage urbain, turbo à surveiller."
+      }
+    ],
+    "avantages": [
+      "Châssis agile et agréable, souvent cité comme une référence de la catégorie.",
+      "Moteurs essence atmosphériques simples et robustes.",
+      "Diesel 1.4 TDCi sobre et réputé solide.",
+      "Pièces nombreuses et entretien accessible dans tout le réseau.",
+      "Modèle très diffusé, connu des acheteurs d'occasion.",
+      "1.0 EcoBoost vif et sobre quand il est bien entretenu."
+    ],
+    "inconvenients": [
+      "Boîte automatique Powershift à double embrayage très peu fiable.",
+      "Courroie humide du 1.0 EcoBoost qui exige un entretien rigoureux.",
+      "Usure rapide des pneus avant signalée sur la Fiesta 6.",
+      "Infiltrations d'eau dans le coffre et joints de portes qui se décollent.",
+      "Peinture sensible aux éclats.",
+      "Diesels à FAP mal adaptés aux petits trajets."
+    ],
+    "problemes": [
+      {
+        "titre": "Boîte Powershift (Fiesta 6)",
+        "detail": "À-coups violents au démarrage, tremblements à basse vitesse, rapports qui ne passent pas, message d'erreur. En cause, les embrayages à sec et le calculateur de boîte. Concerne les versions automatiques à double embrayage, surtout de 2011 à 2016."
+      },
+      {
+        "titre": "Courroie humide du 1.0 EcoBoost",
+        "detail": "La courroie baigne dans l'huile. En se dégradant, elle libère des particules qui peuvent boucher la crépine de la pompe à huile. Voyant de pression d'huile, bruits, puis risque grave pour le moteur."
+      },
+      {
+        "titre": "Refroidissement du 1.0 EcoBoost",
+        "detail": "Fuites de liquide, vase d'expansion fissuré, durite défaillante. La surchauffe qui en résulte peut toucher la culasse. Concerne surtout les Fiesta 1.0 EcoBoost de 2012 à 2016."
+      },
+      {
+        "titre": "Direction (Fiesta 6 avant 2011)",
+        "detail": "Jeu et bruits dans la direction relevés sur les premiers modèles."
+      },
+      {
+        "titre": "Étanchéité et carrosserie",
+        "detail": "Eau dans le coffre, joints de portes qui se décollent, serrure de coffre bloquée ou qui s'ouvre en roulant, peinture qui s'écaille."
+      },
+      {
+        "titre": "Injecteurs du 1.4 TDCi",
+        "detail": "Fuites d'injecteurs signalées sur le 1.4 TDCi 68 ch : odeur de gazole, ralenti irrégulier, démarrage difficile."
+      }
+    ],
+    "controles": [
+      "Essai complet de la boîte Powershift : démarrage, créneaux, montée et descente des rapports.",
+      "Voyant de pression d'huile, qualité et niveau d'huile sur le 1.0 EcoBoost.",
+      "Niveau de liquide de refroidissement et traces de fuite sur le 1.0 EcoBoost.",
+      "Facture de courroie de distribution selon le moteur.",
+      "Bruits et jeu dans la direction.",
+      "Coffre sec et état des joints de portes.",
+      "Usure des pneus avant et géométrie.",
+      "Fumée et reprises sur les 1.4 et 1.6 TDCi."
+    ],
+    "preparation": [
+      "Rassemblez le carnet d'entretien et la facture de la dernière courroie.",
+      "Sur un 1.0 EcoBoost, gardez les factures de vidange qui précisent l'huile utilisée.",
+      "Sur une Powershift, réunissez les factures d'embrayage ou de mise à jour du calculateur.",
+      "Vérifiez auprès d'un concessionnaire Ford si des rappels ont été faits sur votre véhicule.",
+      "Préparez la carte grise et les doubles de clés.",
+      "Un nettoyage simple suffit, et videz le coffre pour faciliter l'inspection."
+    ],
+    "age": "Une Fiesta de 2006 ou de 2011 n'est plus de première jeunesse. C'est pourtant une voiture qui reste appréciée pour son comportement et sa simplicité. Une Fiesta en bon état, peu roulée et bien suivie garde donc une vraie valeur. Les moteurs essence atmosphériques et le 1.4 TDCi ont bonne réputation. Ce qui pèse le plus, c'est l'historique : courroie remplacée à temps, vidanges régulières sur un EcoBoost, boîte Powershift sans défaut. Une carrosserie saine et un coffre sec rassurent aussi. LUNICAR regarde la voiture telle qu'elle est, et pas seulement son année.",
+    "valeurPlus": [
+      "Carnet suivi et facture de courroie récente.",
+      "Boîte manuelle en bon état, ou Powershift révisée avec factures.",
+      "1.0 EcoBoost avec vidanges régulières à l'huile préconisée.",
+      "Kilométrage modéré et carrosserie saine.",
+      "Version cinq portes ou finition bien équipée comme Titanium."
+    ],
+    "valeurMoins": [
+      "Powershift avec à-coups ou message d'erreur.",
+      "Voyant de pression d'huile ou surchauffe passée sur un 1.0 EcoBoost.",
+      "Courroie sans preuve de remplacement.",
+      "Infiltrations d'eau dans le coffre.",
+      "Diesel avec FAP encrassé ou injecteurs qui fuient."
+    ],
+    "faq": [
+      {
+        "question": "Ma Fiesta de 2007 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Une Fiesta de 2007 avec un moteur essence atmosphérique ou un 1.4 TDCi bien entretenu reste une citadine recherchée. Sa valeur dépend du kilométrage, de l'entretien prouvé et de l'état de la carrosserie. Envoyez-nous ses informations : vous recevez une offre chiffrée sous 24 h ouvrées, valable 7 jours."
+      },
+      {
+        "question": "Ma Fiesta a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Les moteurs courants de la Fiesta, essence 1.25, 1.4 et 1.6 comme diesels 1.4 et 1.6 TDCi, ont une courroie. Le 1.0 EcoBoost a une courroie dite humide, qui baigne dans l'huile. Le constructeur préconise un remplacement selon un kilométrage ou une durée qui varient selon les versions : vérifiez le carnet."
+      },
+      {
+        "question": "Qu'est-ce que la courroie humide du 1.0 EcoBoost change pour la vente ?",
+        "answer": "Elle rend l'historique d'entretien très important. Comme la courroie travaille dans l'huile, des vidanges régulières avec l'huile préconisée par Ford la protègent. Gardez vos factures de vidange et de distribution. Au rendez-vous, nous vérifions l'huile, le voyant de pression et le refroidissement, puis nous intégrons tout cela à l'offre."
+      },
+      {
+        "question": "Rachetez-vous les Fiesta à boîte Powershift ?",
+        "answer": "Oui, même si la boîte présente des à-coups. Nous essayons la voiture au rendez-vous et intégrons l'état de la boîte dans notre offre. Si les embrayages ou le calculateur ont déjà été remplacés, présentez les factures. Elles soutiennent la valeur de votre Fiesta."
+      },
+      {
+        "question": "Ma Fiesta n'a plus de contrôle technique valide, est-ce gênant ?",
+        "answer": "Non. Le contrôle technique n'est pas exigé pour vendre votre Fiesta à LUNICAR. Nous venons chez vous, à Paris, dans les Hauts-de-Seine, les Yvelines ou ailleurs en France. Nous examinons la voiture sur place et le paiement se fait par virement le jour de la vente."
+      },
+      {
+        "question": "Dois-je acheter une autre voiture pour vous vendre la mienne ?",
+        "answer": "Non. LUNICAR rachète votre Fiesta sans aucune obligation d'achat d'un autre véhicule. Vous recevez une offre chiffrée, valable 7 jours, et vous restez libre de l'accepter ou non. Si elle vous convient, nous fixons un rendez-vous chez vous pour finaliser la vente."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Ford Fiesta VI",
+        "url": "https://fr.wikipedia.org/wiki/Ford_Fiesta_VI"
+      },
+      {
+        "label": "Caradisiac : maxi fiche fiabilité Ford Fiesta",
+        "url": "https://www.caradisiac.com/Maxi-fiche-fiabilite-que-vaut-la-Ford-Fiesta-5-en-occasion-95446.htm"
+      },
+      {
+        "label": "Fiches-auto : fiabilité Ford Fiesta",
+        "url": "https://www.fiches-auto.fr/rappels-ford/r-609-rappels-ford-fiesta.php"
+      },
+      {
+        "label": "The Autopian : la boîte Powershift expliquée",
+        "url": "https://www.theautopian.com/ford-focus-and-fiesta-powershift-automatic-transmission-explained/"
+      }
+    ]
+  }
+]
