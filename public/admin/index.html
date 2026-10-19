@@ -159,6 +159,15 @@ button.kpi:hover { border-color: #CFCAC0; }
 .flag svg { width: 13px; height: 13px; }
 .flag:hover { border-color: #CFCAC0; color: var(--ink-7); }
 .flag.on { background: var(--gold); border-color: var(--gold); color: #fff; }
+.diag textarea { width: 100%; min-height: 96px; resize: vertical; }
+.diag-caps { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; margin: 10px 0 0; }
+.diag-caps figure { position: relative; margin: 0; aspect-ratio: 3 / 4; border-radius: var(--r-s); overflow: hidden; border: 1px solid var(--line); background: #FAF9F6; }
+.diag-caps img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+.diag-caps .del { position: absolute; top: 4px; right: 4px; border: 0; border-radius: 6px; background: rgba(18,24,38,.75); color: #fff; font-size: .7rem; padding: 3px 6px; }
+.diag-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+.diag-codes { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.diag-codes li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: baseline; font-size: .86rem; }
+.diag-codes code { font-weight: 650; }
 .photo-modele { display: block; width: 100%; max-width: 320px; aspect-ratio: 16 / 10; object-fit: contain; background: #FAF9F6; border: 1px solid var(--line-2); border-radius: var(--r-s); margin: 0 0 12px; }
 .photo-modele + small { display: block; margin: -6px 0 12px; font-size: .74rem; color: var(--ink-4); }
 .meca { display: inline-flex; align-items: center; gap: 5px; height: 21px; padding: 0 8px; border-radius: 99px; font-size: .72rem; font-weight: 650; white-space: nowrap; vertical-align: 1px; }
@@ -1476,6 +1485,18 @@ ul.plain li { margin: 3px 0; }
                 <div class="appel-btns">${Object.entries(etat.resultats || {}).map(([k, v]) => `<button class="btn btn-s" data-appel="${k}">${esc(v)}</button>`).join('')}</div>
                 <input class="in" id="appelNote" placeholder="Note rapide sur l'appel (facultatif) : prix proposé ailleurs, délai…">
             </div>
+            <section class="sec diag" id="diag">
+                <h3>Diagnostic mécanique</h3>
+                <p class="sub" style="margin:0 0 10px">Ce que tu as constaté ou ce que dit le vendeur, et les captures de la valise (ediag, codes défaut). L'estimation en tient compte en priorité sur l'état déclaré.</p>
+                <textarea class="in" id="diagTxt" placeholder="Ex. : voyant moteur allumé, P0401 mémorisé, embrayage qui patine en 4e, fumée bleue à froid, bruit de chaîne au démarrage…">${esc((s.diagnostic || {}).texte || '')}</textarea>
+                ${((s.diagnostic || {}).captures || []).length ? `<div class="diag-caps">${s.diagnostic.captures.map((c, i) => `<figure><img src="${photoUrl(c.path)}" alt="Capture ${i + 1} du diagnostic" loading="lazy" data-diag="${i}"><button class="del" data-diag-del="${esc(c.path)}">Supprimer</button></figure>`).join('')}</div>` : ''}
+                <div class="diag-actions">
+                    <label class="btn">Ajouter des captures<input type="file" id="diagCap" accept="image/*" multiple hidden></label>
+                    <button class="btn btn-p" id="diagSave">Enregistrer</button>
+                    <button class="btn btn-g" id="diagEstimer"${etat.estimation.actif ? '' : ' disabled'}>Enregistrer et réestimer</button>
+                    <span class="sub" id="diagMsg">${(s.diagnostic || {}).maj ? 'Mis à jour le ' + date(s.diagnostic.maj) : ''}</span>
+                </div>
+            </section>
             <section class="sec">
                 <h3>Estimation</h3>
                 <div class="prices">
@@ -1504,6 +1525,7 @@ ul.plain li { margin: 3px 0; }
                 <div class="analyse">
                     ${(e.points_attention || []).length ? `<div><h4>Points d'attention</h4><ul class="plain">${e.points_attention.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
                     ${(e.questions_a_poser || []).length ? `<div><h4>À demander au vendeur</h4><ul class="plain">${e.questions_a_poser.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
+                    ${e.diagnostic && ((e.diagnostic.codes || []).length || e.diagnostic.synthese) ? `<div><h4>Lecture du diagnostic</h4>${e.diagnostic.synthese ? `<p style="margin:0 0 8px">${esc(e.diagnostic.synthese)}</p>` : ''}${(e.diagnostic.codes || []).length ? `<ul class="diag-codes">${e.diagnostic.codes.map(c => `<li><code>${esc(c.code)}</code><span>${esc(c.signification)}${c.gravite ? ` <span class="meca ${c.gravite === 'forte' ? 'r' : c.gravite === 'moyenne' ? 'o' : 'v'}">${esc({ faible: 'faible', moyenne: 'moyenne', forte: 'forte' }[c.gravite] || c.gravite)}</span>` : ''}</span><b class="num">${c.cout_estime ? eur(c.cout_estime) : ''}</b></li>`).join('')}</ul>` : ''}</div>` : ''}
                     ${(e.frais_remise_en_etat && e.frais_remise_en_etat.postes || []).length ? `<div><h4>Remise en état chiffrée</h4>${kv(e.frais_remise_en_etat.postes.map(p => [p.libelle, '<span class="num">' + eur(p.montant) + '</span>']))}</div>` : ''}
                     ${(e.hypotheses || []).length ? `<div><h4>Hypothèses</h4><ul class="plain">${e.hypotheses.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
                 </div>
@@ -1611,6 +1633,27 @@ ul.plain li { margin: 3px 0; }
             try { await api('/api/admin/demandes/' + d.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; fiche(); surveiller(true); } catch (err) { toast(err.message); }
         };
         $('#sheetIn').querySelectorAll('[data-flag]').forEach(b => b.onclick = () => basculerDrapeau(b.dataset.flag));
+        // Diagnostic : texte + captures envoyés ensemble ; « réestimer » relance l'estimation avec.
+        const envoyerDiag = async (fichiers, reestimer) => {
+            const fd = new FormData();
+            fd.append('texte', $('#diagTxt').value);
+            [...(fichiers || [])].forEach(f => fd.append('captures', f));
+            $('#diagMsg').innerHTML = '<span class="spin"></span> Envoi…';
+            try {
+                courant = await api('/api/admin/demandes/' + courant.ref + '/diagnostic', { method: 'POST', body: fd });
+                if (reestimer) { await api('/api/admin/demandes/' + courant.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; toast('Diagnostic enregistré, estimation relancée'); }
+                else toast('Diagnostic enregistré');
+                maj(courant); fiche(); if (reestimer) surveiller(true);
+            } catch (e) { $('#diagMsg').textContent = e.message; }
+        };
+        $('#diagCap').onchange = e => { if (e.target.files.length) envoyerDiag(e.target.files, false); };
+        $('#diagSave').onclick = () => envoyerDiag(null, false);
+        $('#diagEstimer').onclick = () => envoyerDiag(null, true);
+        $('#sheetIn').querySelectorAll('[data-diag-del]').forEach(b => b.onclick = async () => {
+            if (await demander({ titre: 'Supprimer cette capture ?', boutons: [['ok', 'Supprimer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
+            try { courant = await api('/api/admin/demandes/' + courant.ref + '/diagnostic?path=' + encodeURIComponent(b.dataset.diagDel), { method: 'DELETE' }); maj(courant); fiche(); } catch (e) { toast(e.message); }
+        });
+        $('#sheetIn').querySelectorAll('[data-diag]').forEach(img => img.onclick = () => { lbSource = (courant.suivi.diagnostic || {}).captures || []; lbOuvrir(+img.dataset.diag); });
         $('#sheetIn').querySelectorAll('[data-appel]').forEach(b => b.onclick = async () => {
             try { courant = await api('/api/admin/demandes/' + d.ref + '/appel', { method: 'POST', body: JSON.stringify({ resultat: b.dataset.appel, note: $('#appelNote').value }) });
                 fiche(); maj(courant); toast((courant.suivi || {}).rappel_le ? 'Noté · relance le ' + jj(courant.suivi.rappel_le) : 'Noté'); }
@@ -1656,7 +1699,7 @@ ul.plain li { margin: 3px 0; }
             if (!confirm('Supprimer cette photo ?')) return;
             courant = await api('/api/admin/demandes/' + d.ref + '/photos?path=' + encodeURIComponent(b.dataset.del), { method: 'DELETE' }); fiche(); maj(courant);
         });
-        $('#sheetIn').querySelectorAll('.gal img').forEach(img => img.onclick = () => lbOuvrir(+img.dataset.i));
+        $('#sheetIn').querySelectorAll('.gal img').forEach(img => img.onclick = () => { lbSource = null; lbOuvrir(+img.dataset.i); });
     }
     async function sauver(champs) {
         try { courant = await api('/api/admin/demandes/' + courant.ref, { method: 'PATCH', body: JSON.stringify(champs) }); fiche(); maj(courant); }
@@ -1682,7 +1725,8 @@ ul.plain li { margin: 3px 0; }
 
     // ---------------- Visionneuse
     let lbI = 0;
-    const imgs = () => (courant.photos || []).filter(p => !/\.pdf$/i.test(p.name));
+    let lbSource = null; // captures du diagnostic, sinon les photos de la demande
+    const imgs = () => lbSource || (courant.photos || []).filter(p => !/\.pdf$/i.test(p.name));
     function lbOuvrir(i) { lbI = i; lbRendre(); $('#lb').hidden = false; }
     function lbAller(n) { const a = imgs(); lbI = (lbI + n + a.length) % a.length; lbRendre(); }
     function lbRendre() {
