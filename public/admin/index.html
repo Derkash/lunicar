@@ -152,6 +152,19 @@ button.kpi:hover { border-color: #CFCAC0; }
 .tag { display: inline-block; font-size: .66rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--orange); background: var(--orange-1); padding: 1px 6px; border-radius: 4px; vertical-align: 1px; }
 .tag.rappel { color: var(--blue); background: var(--marine-1); }
 .row .car .tag { display: inline-block; margin-left: 2px; }
+/* À appeler (drapeau, ambre) et rappel arrivé (rouge) : teinte de fond + bordure, remontés en tête */
+.row.drapeau, .swipe > .row.drapeau { background: var(--gold-1); }
+.row.du, .swipe > .row.du { background: var(--red-1); }
+.flag { display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 9px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-5); font-size: .74rem; font-weight: 600; white-space: nowrap; }
+.flag svg { width: 13px; height: 13px; }
+.flag:hover { border-color: #CFCAC0; color: var(--ink-7); }
+.flag.on { background: var(--gold); border-color: var(--gold); color: #fff; }
+.badge-du { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 9px; border-radius: 99px; background: var(--red); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
+.badge-ap { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 99px; background: var(--gold); color: #fff; font-size: .72rem; font-weight: 700; white-space: nowrap; }
+.seg.urgent b { color: var(--red); }
+.seg.urgent.on { background: var(--red); border-color: var(--red); }
+.seg.urgent.on b { color: #fff; }
+.row .st { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .empty { padding: 48px 20px; text-align: center; color: var(--ink-5); }
 .rappel { display: block; margin-top: 5px; font-size: .74rem; color: var(--ink-5); }
 .rappel.jour { color: var(--orange); font-weight: 600; }
@@ -483,6 +496,8 @@ ul.plain li { margin: 3px 0; }
     .row { grid-template-columns: 22px minmax(0, 1fr) auto; grid-template-areas: "sel car price" "sel who quand" "sel st st"; gap: 3px 12px; padding: 14px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); align-items: start; }
     .row:last-child { border-bottom: 1px solid var(--line); }
     .row:active { background: #FAF9F6; }
+    .swipe > .row.du, .list > .swipe:last-child > .row.du { border-color: #EDB8AF; }
+    .swipe > .row.drapeau, .list > .swipe:last-child > .row.drapeau { border-color: #E8D29E; }
     .row > .sel { grid-area: sel; padding-top: 2px; }
     .row .d { display: none; }
     .row .car { grid-area: car; }
@@ -559,6 +574,7 @@ ul.plain li { margin: 3px 0; }
     <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><path d="M4.5 6l7.5 6 7.5-6"/></symbol>
     <symbol id="i-reg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
     <symbol id="i-stat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6.5 16.5v-4M10.5 16.5V8M14.5 16.5v-6M18.5 16.5V5"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4"/><path d="M6 4.5c3.5-1.8 6.5 1.8 12 0v8c-5.5 1.8-8.5-1.8-12 0"/></symbol>
     <symbol id="i-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h9l3 3v13H6z"/><path d="M9 10h6M9 13.5h6M9 17h4"/></symbol>
     <symbol id="i-cherche" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></symbol>
     <symbol id="i-filtre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"/></symbol>
@@ -615,7 +631,7 @@ ul.plain li { margin: 3px 0; }
                 <div class="filtres-grille">
                     <label class="f">Trier par<select class="in" id="fTri"><option value="recent">Plus récentes d'abord</option><option value="ancien">Plus anciennes d'abord</option><option value="distance">Plus proches de Paris</option><option value="prix">Prix max d'achat décroissant</option></select></label>
                     <label class="f">Statut<select class="in" id="fStatut"><option value="">Tous les statuts</option></select></label>
-                    <label class="f">Relance<select class="in" id="fRelance"><option value="">Toutes les relances</option><option value="dues">À rappeler aujourd'hui (et retard)</option><option value="semaine">À rappeler sous 7 jours</option><option value="jamais">Jamais appelées</option><option value="sans">Actives sans relance prévue</option></select></label>
+                    <label class="f">Relance<select class="in" id="fRelance"><option value="">Toutes les relances</option><option value="appeler">À appeler (drapeau + rappels arrivés)</option><option value="drapeau">Marquées « À appeler »</option><option value="dues">Rappels arrivés (aujourd'hui et retard)</option><option value="semaine">À rappeler sous 7 jours</option><option value="jamais">Jamais appelées</option><option value="sans">Actives sans relance prévue</option></select></label>
                     <label class="f">Période<select class="in" id="fPeriode"><option value="">Toute la période</option><option value="1">Aujourd'hui</option><option value="7">7 derniers jours</option><option value="30">30 derniers jours</option><option value="90">3 derniers mois</option><option value="365">12 derniers mois</option></select></label>
                     <label class="f">Région<select class="in" id="fRegion"><option value="">Toutes les régions</option></select></label>
                     <label class="f">Distance de Paris<select class="in" id="fDist"><option value="">Toute distance</option><option value="30">≤ 30 km de Paris</option><option value="60">≤ 60 km</option><option value="120">≤ 120 km</option><option value="250">≤ 250 km (couloir)</option><option value="500">≤ 500 km</option></select></label>
@@ -639,6 +655,8 @@ ul.plain li { margin: 3px 0; }
                 <div class="lot-actions">
                     <select class="in" id="lotStatut"><option value="">Statut…</option></select>
                     <label class="f">Relance <input class="in" type="date" id="lotRappel"></label>
+                    <button class="btn btn-s" data-lot="appeler">À appeler</button>
+                    <button class="btn btn-s" data-lot="pas_appeler">Retirer « À appeler »</button>
                     <button class="btn btn-s" data-lot="estimer">Estimer</button>
                     <button class="btn btn-s" data-lot="archiver">Archiver</button>
                     <button class="btn btn-s" data-lot="desarchiver">Désarchiver</button>
@@ -875,13 +893,18 @@ ul.plain li { margin: 3px 0; }
             d.doublon = t.length === 9 && vus.has(t) ? vus.get(t) : null;
             if (t.length === 9 && !vus.has(t)) vus.set(t, d.ref);
         });
-        compter('dem', demandes.filter(d => d.statut === 'nouvelle' && !(d.suivi || {}).archivee).length);
+        compter('dem', demandes.filter(d => aAppeler(d) || (d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels && !(d.suivi || {}).archivee)).length);
         kpis(); liste();
         if (!document.querySelector('[data-view="stats"]').hidden) tableau();
     }
     const ACTIFS = ['nouvelle', 'contactee', 'offre', 'rdv'];
     const jourIso = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
     const rappel = d => ACTIFS.includes(d.statut) && !(d.suivi || {}).archivee ? ((d.suivi || {}).rappel_le || '').slice(0, 10) : '';
+    // Rappel arrivé (rouge) et drapeau « À appeler » (ambre) : ces demandes remontent en tête.
+    const du = d => { const r = rappel(d); return !!r && r <= jourIso(); };
+    const drapeau = d => !!(d.suivi || {}).a_appeler && !(d.suivi || {}).archivee;
+    const aAppeler = d => du(d) || drapeau(d);
+    const priorite = d => du(d) ? 0 : drapeau(d) ? 1 : 2;
     // Jours ouvrés (week-ends et jours fériés français exclus), comme côté serveur.
     function feries(an) {
         const a = an % 19, b = Math.floor(an / 100), c = an % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3);
@@ -913,7 +936,7 @@ ul.plain li { margin: 3px 0; }
         const dues = vivantes.filter(d => rappel(d) && rappel(d) <= jourIso()).length;
         const jamais = vivantes.filter(d => d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels && now - new Date(d.created_at) < 14 * 864e5).length;
         const k = [
-            ['dues', dues, 'à rappeler aujourd\'hui', dues ? 'alerte' : ''],
+            ['dues', vivantes.filter(aAppeler).length, 'à appeler maintenant', vivantes.some(aAppeler) ? 'alerte' : ''],
             ['jamais', jamais, 'jamais appelées (14 j)', jamais ? 'alerte' : ''],
             ['j30', demandes.filter(d => now - new Date(d.created_at) < 30 * 864e5).length, 'reçues sur 30 jours'],
             ['sansEst', vivantes.filter(d => !d.estimation && d.type !== 'rappel').length, 'sans estimation'],
@@ -928,26 +951,26 @@ ul.plain li { margin: 3px 0; }
     $('#kpis').addEventListener('click', e => {
         const b = e.target.closest('[data-kpi]'); if (!b) return;
         raz();
-        ({ dues: () => $('#fRelance').value = 'dues', jamais: () => $('#fRelance').value = 'jamais', j30: () => $('#fPeriode').value = '30',
+        ({ dues: () => $('#fRelance').value = 'appeler', jamais: () => $('#fRelance').value = 'jamais', j30: () => $('#fPeriode').value = '30',
            sansEst: () => $('#fSansEst').checked = true, achetee: () => $('#fStatut').value = 'achetee' })[b.dataset.kpi]();
         liste();
     });
     // Segments rapides : statut ou relance, un clic.
-    const SEGS = [['', 'Toutes'], ['r:dues', 'À rappeler'], ['nouvelle', 'Nouvelles'], ['contactee', 'Contactées'], ['offre', 'Offre faite'], ['rdv', 'Rendez-vous'], ['achetee', 'Achetées']];
+    const SEGS = [['', 'Toutes'], ['r:appeler', 'À appeler'], ['nouvelle', 'Nouvelles'], ['contactee', 'Contactées'], ['offre', 'Offre faite'], ['rdv', 'Rendez-vous'], ['achetee', 'Achetées']];
     function segments() {
         const vivantes = demandes.filter(d => !(d.suivi || {}).archivee), auj = jourIso();
-        const n = k => !k ? vivantes.length : k === 'r:dues' ? vivantes.filter(d => rappel(d) && rappel(d) <= auj).length : vivantes.filter(d => d.statut === k).length;
-        const actif = $('#fRelance').value === 'dues' && !$('#fStatut').value ? 'r:dues' : !$('#fRelance').value ? $('#fStatut').value : null;
-        $('#segs').innerHTML = SEGS.map(([k, l]) => `<button class="seg${actif === k ? ' on' : ''}" data-seg="${k}">${l}<b class="num">${n(k)}</b></button>`).join('');
+        const n = k => !k ? vivantes.length : k === 'r:appeler' ? vivantes.filter(aAppeler).length : vivantes.filter(d => d.statut === k).length;
+        const actif = $('#fRelance').value === 'appeler' && !$('#fStatut').value ? 'r:appeler' : !$('#fRelance').value ? $('#fStatut').value : null;
+        $('#segs').innerHTML = SEGS.map(([k, l]) => `<button class="seg${actif === k ? ' on' : ''}${k === 'r:appeler' && n(k) ? ' urgent' : ''}" data-seg="${k}">${l}<b class="num">${n(k)}</b></button>`).join('');
         const nb = FILTRES.filter(f => $(f).value).length + $('#fPhotos').checked + $('#fSansEst').checked + ($('#fTri').value !== 'recent');
         $('#nbFiltres').textContent = nb || '';
         document.querySelectorAll('[data-kpi]').forEach(b => b.classList.toggle('on',
-            ({ dues: $('#fRelance').value === 'dues', jamais: $('#fRelance').value === 'jamais', j30: $('#fPeriode').value === '30', sansEst: $('#fSansEst').checked, achetee: $('#fStatut').value === 'achetee' })[b.dataset.kpi] && nb === 1));
+            ({ dues: $('#fRelance').value === 'appeler', jamais: $('#fRelance').value === 'jamais', j30: $('#fPeriode').value === '30', sansEst: $('#fSansEst').checked, achetee: $('#fStatut').value === 'achetee' })[b.dataset.kpi] && nb === 1));
     }
     $('#segs').addEventListener('click', e => {
         const b = e.target.closest('[data-seg]'); if (!b) return;
         const k = b.dataset.seg;
-        $('#fStatut').value = k.startsWith('r:') ? '' : k; $('#fRelance').value = k === 'r:dues' ? 'dues' : '';
+        $('#fStatut').value = k.startsWith('r:') ? '' : k; $('#fRelance').value = k === 'r:appeler' ? 'appeler' : '';
         liste();
     });
     const panneau = ouvert => { $('#panneau').hidden = !ouvert; $('#voile').hidden = !(ouvert && matchMedia('(max-width: 760px)').matches); };
@@ -971,6 +994,8 @@ ul.plain li { margin: 3px 0; }
             if ((ar === '' && archivee) || (ar === 'oui' && !archivee)) return false;
             const rl = $('#fRelance').value, r = rappel(d), auj = jourIso();
             if (rl === 'dues' && !(r && r <= auj)) return false;
+            if (rl === 'appeler' && !aAppeler(d)) return false;
+            if (rl === 'drapeau' && !drapeau(d)) return false;
             if (rl === 'semaine' && !(r && r <= new Date(Date.now() + 7 * 864e5).toISOString().slice(0, 10))) return false;
             if (rl === 'jamais' && !(d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels)) return false;
             if (rl === 'sans' && !(ACTIFS.includes(d.statut) && !r)) return false;
@@ -984,10 +1009,12 @@ ul.plain li { margin: 3px 0; }
     function liste() {
         const tri = $('#fTri').value;
         const km = d => { const g = geo((d.data || {}).code_postal); return g && g.km != null ? g.km : 1e6; };
-        const a = affichees = filtrees().sort(tri === 'ancien' ? (p, q) => p.created_at.localeCompare(q.created_at)
+        const parTri = tri === 'ancien' ? (p, q) => p.created_at.localeCompare(q.created_at)
             : tri === 'distance' ? (p, q) => km(p) - km(q) || q.created_at.localeCompare(p.created_at)
             : tri === 'prix' ? (p, q) => prixMax(q) - prixMax(p)
-            : (p, q) => q.created_at.localeCompare(p.created_at));
+            : (p, q) => q.created_at.localeCompare(p.created_at);
+        // Rappels arrivés d'abord (le plus en retard en premier), puis les « À appeler », puis le tri choisi.
+        const a = affichees = filtrees().sort((p, q) => priorite(p) - priorite(q) || (priorite(p) === 0 ? rappel(p).localeCompare(rappel(q)) : 0) || parTri(p, q));
         const head = '<div class="row head"><div class="sel"><input type="checkbox" id="toutCocher" title="Tout sélectionner (liste filtrée)"></div><div>Reçue</div><div>Vendeur</div><div>Véhicule</div><div class="ville">Ville</div><div style="text-align:right">Prix max</div><div>Statut</div><div class="ph" style="text-align:right">Photos</div></div>';
         segments();
         $('#list').innerHTML = head + (a.length ? a.map(d => {
@@ -998,14 +1025,14 @@ ul.plain li { margin: 3px 0; }
             const tag = d.origine === 'abandon' ? '<span class="tag">Abandon</span>' : d.type === 'rappel' ? '<span class="tag rappel">Rappel</span>' : '';
             const g = geo(x.code_postal), r = rappel(d), auj = jourIso();
             const lieu = [x.ville || x.code_postal, g && g.km ? g.km + ' km' : ''].filter(Boolean).join(' · ');
-            const archivee = !!(d.suivi || {}).archivee;
-            return `<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
+            const archivee = !!(d.suivi || {}).archivee, estDu = du(d), estDrap = drapeau(d);
+            return `<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
                 <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${x.kilometrage && x.mecanique ? ' · ' : ''}${esc(x.mecanique || '')} ${tag}${pub}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
-                <div class="st"><span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r ? `<small class="rappel ${r < auj ? 'retard' : r === auj ? 'jour' : ''}">${r < auj ? 'Rappel en retard · ' + jj(r) : r === auj ? "Rappeler aujourd'hui" : 'Rappel ' + jj(r)}</small>` : ''}</div>
+                <div class="st">${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
                 <div class="ph num">${(d.photos || []).length || ''}</div>
                 <div class="quand-m">${date(d.created_at, false)}</div>
             </div></div>`;
@@ -1018,6 +1045,7 @@ ul.plain li { margin: 3px 0; }
         if (e.target.classList.contains('choix')) { e.target.checked ? choisies.add(e.target.dataset.ref) : choisies.delete(e.target.dataset.ref); e.target.closest('.row').classList.toggle('choisie', e.target.checked); barreLot(); return; }
         if (e.target.closest('.row.head')) return;
         if (e.target.closest('.swipe[data-glisse]')) return;
+        const f = e.target.closest('[data-flag]'); if (f) { basculerDrapeau(f.dataset.flag); return; }
         const r = e.target.closest('.row[data-ref]'); if (r) ouvrir(r.dataset.ref);
     });
     function barreLot() {
@@ -1045,6 +1073,18 @@ ul.plain li { margin: 3px 0; }
     });
     $('#csv').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/export.csv'); });
     $('#csvAds').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/conversions-ads.csv'); });
+
+    // ---------------- Drapeau « À appeler »
+    async function basculerDrapeau(ref) {
+        const d = demandes.find(x => x.ref === ref); if (!d) return;
+        const v = !drapeau(d);
+        d.suivi = { ...(d.suivi || {}), a_appeler: v }; liste(); kpis(); // affichage immédiat
+        try {
+            const r = await api('/api/admin/demandes/' + ref, { method: 'PATCH', body: JSON.stringify({ a_appeler: v }) });
+            maj(r); if (courant && courant.ref === ref) { courant = r; fiche(); }
+            toast(v ? 'Marquée « À appeler »' : 'Drapeau retiré');
+        } catch (e) { d.suivi.a_appeler = !v; liste(); toast(e.message); }
+    }
 
     // ---------------- Confirmation (feuille du bas sur mobile)
     function demander({ titre, texte, boutons }) {
@@ -1402,6 +1442,7 @@ ul.plain li { margin: 3px 0; }
         <div class="sh-body">
             <div class="appel">
                 <div class="appel-tete"><b>Après l'appel</b>
+                    <button class="flag${drapeau(d) ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${drapeau(d)}"><svg><use href="#i-flag"/></svg>${drapeau(d) ? 'À appeler · retirer' : 'Marquer « À appeler »'}</button>
                     <span>${(s.nb_appels ? `${s.nb_appels} appel${s.nb_appels > 1 ? 's' : ''}, dernier le ${date(s.dernier_appel, false)}` : 'Jamais appelé')}${rappel(d) ? ` · prochaine relance <b class="${rappel(d) < jourIso() ? 'retard' : ''}">${jj(rappel(d))}</b>` : ''}</span></div>
                 <div class="appel-btns">${Object.entries(etat.resultats || {}).map(([k, v]) => `<button class="btn btn-s" data-appel="${k}">${esc(v)}</button>`).join('')}</div>
                 <input class="in" id="appelNote" placeholder="Note rapide sur l'appel (facultatif) : prix proposé ailleurs, délai…">
@@ -1539,6 +1580,7 @@ ul.plain li { margin: 3px 0; }
         if (eb) eb.onclick = async () => {
             try { await api('/api/admin/demandes/' + d.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; fiche(); surveiller(true); } catch (err) { toast(err.message); }
         };
+        $('#sheetIn').querySelectorAll('[data-flag]').forEach(b => b.onclick = () => basculerDrapeau(b.dataset.flag));
         $('#sheetIn').querySelectorAll('[data-appel]').forEach(b => b.onclick = async () => {
             try { courant = await api('/api/admin/demandes/' + d.ref + '/appel', { method: 'POST', body: JSON.stringify({ resultat: b.dataset.appel, note: $('#appelNote').value }) });
                 fiche(); maj(courant); toast((courant.suivi || {}).rappel_le ? 'Noté · relance le ' + jj(courant.suivi.rappel_le) : 'Noté'); }
@@ -1590,7 +1632,13 @@ ul.plain li { margin: 3px 0; }
         try { courant = await api('/api/admin/demandes/' + courant.ref, { method: 'PATCH', body: JSON.stringify(champs) }); fiche(); maj(courant); }
         catch (e) { toast(e.message); }
     }
-    function maj(d) { const i = demandes.findIndex(x => x.ref === d.ref); if (i >= 0) demandes[i] = d; else demandes.unshift(d); kpis(); liste(); }
+    function maj(d) {
+        const i = demandes.findIndex(x => x.ref === d.ref), av = i >= 0 ? demandes[i] : {};
+        const n = { canal: av.canal, origine_txt: av.origine_txt, doublon: av.doublon, ...d };
+        if (i >= 0) demandes[i] = n; else demandes.unshift(n);
+        compter('dem', demandes.filter(x => aAppeler(x) || (x.statut === 'nouvelle' && !(x.suivi || {}).nb_appels && !(x.suivi || {}).archivee)).length);
+        kpis(); liste();
+    }
     // Pendant une estimation, la fiche se met à jour toute seule.
     function surveiller(force) {
         clearInterval(poll);

@@ -1101,21 +1101,26 @@ setInterval(async () => {
         const toutes = await store.listerDemandes();
         const actives = toutes.filter(d => relances.ACTIFS.includes(d.statut));
         const dues = actives.filter(d => (d.suivi || {}).rappel_le && d.suivi.rappel_le <= jour).sort((a, b) => a.suivi.rappel_le.localeCompare(b.suivi.rappel_le));
+        // Marquées « À appeler » à la main (hors relances déjà comptées).
+        const drapeaux = toutes.filter(d => (d.suivi || {}).a_appeler && !d.suivi.archivee && !dues.includes(d));
         // Nouvelles demandes des 14 derniers jours jamais appelées (les anciennes importées de Gmail n'y figurent pas).
-        const neuves = actives.filter(d => d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels && Date.now() - new Date(d.created_at) < 14 * 864e5);
-        if (!dues.length && !neuves.length) return;
+        const neuves = actives.filter(d => d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels && !(d.suivi || {}).a_appeler && Date.now() - new Date(d.created_at) < 14 * 864e5);
+        if (!dues.length && !neuves.length && !drapeaux.length) return;
+        const total = dues.length + drapeaux.length + neuves.length;
+        push.notifier({ titre: `📞 ${total} vendeur${total > 1 ? 's' : ''} à appeler aujourd'hui`, texte: [dues.length && `${dues.length} relance${dues.length > 1 ? 's' : ''} arrivée${dues.length > 1 ? 's' : ''}`, drapeaux.length && `${drapeaux.length} marqué${drapeaux.length > 1 ? 's' : ''} « À appeler »`, neuves.length && `${neuves.length} nouvelle${neuves.length > 1 ? 's' : ''} jamais appelée${neuves.length > 1 ? 's' : ''}`].filter(Boolean).join(' · ') }).catch(() => {});
         const ligne = d => { const x = d.data || {}; const r = (d.suivi || {}).rappel_le;
             return `<tr><td style="padding:6px 10px 6px 0"><a href="${SITE.baseUrl}/admino/demande/${d.ref}" style="color:#0D2541;font-weight:700">${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</a><br><span style="color:#6F6B64">${esc([x.vehicule, x.annee].filter(Boolean).join(' '))} · ${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span></td>
             <td style="padding:6px 10px 6px 0;white-space:nowrap"><a href="tel:+${esc(x.telephone_intl || '')}">${esc(x.telephone || '')}</a></td>
             <td style="padding:6px 0;color:${r && r < jour ? '#B03A2E' : '#6F6B64'};white-space:nowrap">${r ? (r < jour ? 'en retard · ' : '') + r.split('-').reverse().join('/') : ''}</td></tr>`; };
         await sendEmail({
-            subject: `☎️ ${dues.length} relance${dues.length > 1 ? 's' : ''} et ${neuves.length} nouvelle${neuves.length > 1 ? 's' : ''} demande${neuves.length > 1 ? 's' : ''} à appeler aujourd'hui`,
+            subject: `☎️ ${total} vendeur${total > 1 ? 's' : ''} à appeler aujourd'hui : ${dues.length} relance${dues.length > 1 ? 's' : ''}, ${drapeaux.length} marqué${drapeaux.length > 1 ? 's' : ''}, ${neuves.length} nouvelle${neuves.length > 1 ? 's' : ''}`,
             html: `<div style="font-family:Arial,sans-serif;max-width:620px">
 ${dues.length ? `<h3 style="color:#0D2541">Relances du jour (${dues.length})</h3><table style="border-collapse:collapse;font-size:14px;width:100%">${dues.map(ligne).join('')}</table>` : ''}
+${drapeaux.length ? `<h3 style="color:#0D2541">Marquées « À appeler » (${drapeaux.length})</h3><table style="border-collapse:collapse;font-size:14px;width:100%">${drapeaux.map(ligne).join('')}</table>` : ''}
 ${neuves.length ? `<h3 style="color:#0D2541">Nouvelles demandes pas encore appelées (${neuves.length})</h3><table style="border-collapse:collapse;font-size:14px;width:100%">${neuves.map(ligne).join('')}</table>` : ''}
 <p><a href="${SITE.baseUrl}/admino" style="color:#B8923A;font-weight:700">Ouvrir l'espace admin →</a></p></div>`
         });
-        console.log(`☎️ Récapitulatif envoyé : ${dues.length} relances, ${neuves.length} nouvelles`);
+        console.log(`☎️ Récapitulatif envoyé : ${dues.length} relances, ${drapeaux.length} drapeaux, ${neuves.length} nouvelles`);
     } catch (e) { console.error('Récapitulatif :', e.message); }
 }, 10 * 60 * 1000).unref();
 
