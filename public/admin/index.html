@@ -159,6 +159,8 @@ button.kpi:hover { border-color: #CFCAC0; }
 .flag svg { width: 13px; height: 13px; }
 .flag:hover { border-color: #CFCAC0; color: var(--ink-7); }
 .flag.on { background: var(--gold); border-color: var(--gold); color: #fff; }
+.photo-modele { display: block; width: 100%; max-width: 320px; aspect-ratio: 16 / 10; object-fit: contain; background: #FAF9F6; border: 1px solid var(--line-2); border-radius: var(--r-s); margin: 0 0 12px; }
+.photo-modele + small { display: block; margin: -6px 0 12px; font-size: .74rem; color: var(--ink-4); }
 .meca { display: inline-flex; align-items: center; gap: 5px; height: 21px; padding: 0 8px; border-radius: 99px; font-size: .72rem; font-weight: 650; white-space: nowrap; vertical-align: 1px; }
 .meca::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 .meca.r, .row .car span.meca.r { background: var(--red-1); color: var(--red); }
@@ -1448,6 +1450,8 @@ ul.plain li { margin: 3px 0; }
         const enCours = s.estimation_statut === 'en_cours';
         const p = (e && e.prix) || {};
         const siv = x.fiche_api || null;
+        // Photo du modèle renvoyée par l'API plaque (photo type du modèle, pas la voiture du vendeur).
+        const photoModele = siv && typeof siv.photo_modele === 'string' && /^https?:\/\//.test(siv.photo_modele) ? siv.photo_modele.replace(/^http:/, 'https:') : '';
         $('#sheetIn').innerHTML = `
         <div class="sh-top">
             <button class="retour" id="closeSheet" aria-label="Retour aux demandes"><svg><use href="#i-retour"/></svg><span>Demandes</span></button>
@@ -1538,6 +1542,7 @@ ul.plain li { margin: 3px 0; }
             <div class="cols">
                 <section class="sec">
                     <h3>Véhicule</h3>
+                    ${photoModele ? `<img class="photo-modele" src="${esc(photoModele)}" alt="Photo du modèle" loading="lazy" referrerpolicy="no-referrer" onerror="this.nextElementSibling.remove();this.remove()"><small>Photo type du modèle (API plaque)</small>` : ''}
                     ${(() => {
                         const energieSiv = x.energie_siv || (siv && (siv.energieNGC || siv.energie_ngc || siv.carburant)) || '';
                         const cDecl = carburant(`${x.vehicule} ${x.fiche_confirmee || ''}`), cSiv = carburant(energieSiv);
@@ -1559,7 +1564,7 @@ ul.plain li { margin: 3px 0; }
                         ['Contrôle technique', esc(x.controle_technique)], ['Carburant', esc(x.carburant)], ['Boîte', esc(x.boite)],
                         ['Extérieur', esc(x.etat_exterieur)], ['Intérieur', esc(x.etat_interieur)]
                     ])}
-                    ${siv ? `<details><summary>Fiche SIV complète</summary>${kv(Object.entries(siv).filter(([k, v]) => v !== null && v !== '' && typeof v !== 'object').map(([k, v]) => [k, esc(v)]))}</details>` : ''}
+                    ${siv ? `<details><summary>Fiche SIV complète</summary>${kv(Object.entries(siv).filter(([k, v]) => v !== null && v !== '' && typeof v !== 'object' && !['photo_modele', 'logo_marque'].includes(k)).map(([k, v]) => [k, esc(v)]))}</details>` : ''}
                     ${x.autres ? `<details><summary>Autres informations de l'e-mail</summary>${kv(Object.entries(x.autres).map(([k, v]) => [k, esc(v)]))}</details>` : ''}
                 </section>
                 <section class="sec">
