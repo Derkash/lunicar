@@ -151,6 +151,7 @@ button.kpi:hover { border-color: #CFCAC0; }
 .st-refusee, .st-sans_suite, .st-vendue_ailleurs { background: #F1EFEA; color: var(--ink-5); }
 .tag { display: inline-block; font-size: .66rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--orange); background: var(--orange-1); padding: 1px 6px; border-radius: 4px; vertical-align: 1px; }
 .tag.rappel { color: var(--blue); background: var(--marine-1); }
+.row .car .tag { display: inline-block; margin-left: 2px; }
 .empty { padding: 48px 20px; text-align: center; color: var(--ink-5); }
 .rappel { display: block; margin-top: 5px; font-size: .74rem; color: var(--ink-5); }
 .rappel.jour { color: var(--orange); font-weight: 600; }
@@ -345,9 +346,77 @@ ul.plain li { margin: 3px 0; }
 @keyframes s { to { transform: rotate(360deg); } }
 .navbas { display: none; }
 
+/* ---------- Tableau de bord ---------- */
+.tb-bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 0 0 16px; }
+.tb-bar .segs { margin: 0; flex: 1 1 auto; }
+.tb-bar select.in { width: auto; }
+.kpi .delta { font-size: .74rem; font-weight: 600; color: var(--ink-5); }
+.kpi .delta.up { color: var(--green); }
+.kpi .delta.down { color: var(--red); }
+.tb-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 14px; }
+.tb-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; box-shadow: var(--shadow); min-width: 0; }
+.tb-card h3 { margin: 0 0 2px; font-size: .98rem; font-weight: 650; letter-spacing: -.01em; }
+.tb-card .sub { margin: 0 0 14px; font-size: .82rem; color: var(--ink-5); }
+.tb-wide { grid-column: 1 / -1; }
+.legende { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .8rem; color: var(--ink-7); margin: 0 0 12px; }
+.legende i, .canaux i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 7px; vertical-align: -1px; }
+.chart { position: relative; touch-action: pan-y; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .ax { font: 500 10px var(--font); fill: var(--ink-4); }
+.chart .grille { stroke: var(--line-2); stroke-width: 1; }
+.chart .survol { fill: var(--ink); opacity: .04; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: #fff; border-radius: 8px; padding: 8px 10px; font-size: .78rem; line-height: 1.45; white-space: nowrap; z-index: 3; box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+.tip b { font-weight: 650; }
+.tip i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 6px; }
+.canaux { width: 100%; border-collapse: collapse; font-size: .86rem; }
+.canaux td, .canaux th { padding: 9px 6px; border-bottom: 1px solid var(--line-2); text-align: right; white-space: nowrap; }
+.canaux tr:last-child td { border-bottom: 0; }
+.canaux th { font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-5); }
+.canaux td:first-child, .canaux th:first-child { text-align: left; white-space: normal; }
+.canaux tr[data-canal] { cursor: pointer; }
+.canaux tr[data-canal]:hover td { background: #FAF9F6; }
+.canaux .barre { height: 5px; border-radius: 3px; background: var(--line-2); margin-top: 6px; overflow: hidden; }
+.canaux .barre span { display: block; height: 100%; border-radius: 3px; }
+.hbars { display: grid; gap: 9px; font-size: .84rem; }
+.hbar { display: grid; grid-template-columns: minmax(0, 8.5em) minmax(0, 1fr) 4.4em; gap: 10px; align-items: center; }
+.hbar > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-7); }
+.hbar .t { height: 8px; border-radius: 4px; background: var(--line-2); overflow: hidden; }
+.hbar .t i { display: block; height: 100%; background: var(--marine-6); border-radius: 4px; }
+.hbar b { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.hbar b small { font-weight: 500; color: var(--ink-4); margin-left: 4px; }
+.vide { color: var(--ink-4); font-size: .86rem; padding: 8px 0; }
+
+/* ---------- Glisser une demande (archiver / supprimer) ---------- */
+.swipe { position: relative; overflow: hidden; }
+.swipe > .row { position: relative; z-index: 1; background: var(--surface); }
+.swipe > .row:last-child { border-bottom: 1px solid var(--line-2); }
+.list > .swipe:last-child > .row { border-bottom: 0; }
+.swipe > .row.choisie { background: var(--marine-1); }
+.swipe > .row.anime { transition: transform .22s cubic-bezier(.2,.8,.2,1); }
+.swipe-bg { display: none; position: absolute; inset: 0; align-items: center; padding: 0 22px; font-weight: 650; font-size: .9rem; color: #fff; gap: 8px; }
+.swipe.glisse .swipe-bg { display: flex; }
+.swipe.vers-droite .swipe-bg { background: var(--marine-6); justify-content: flex-start; }
+.swipe.vers-gauche .swipe-bg { background: var(--red); justify-content: flex-end; }
+.swipe.vers-droite .sup, .swipe.vers-gauche .arc { display: none; }
+.swipe.pret .swipe-bg span { transform: scale(1.08); }
+.swipe-bg span { transition: transform .15s; }
+.ptr { height: 0; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; color: var(--ink-5); font-size: .82rem; gap: 8px; }
+.ptr.anime { transition: height .2s; }
+
+/* ---------- Confirmation ---------- */
+.confirm { position: fixed; inset: 0; z-index: 90; background: rgba(14,35,64,.45); display: grid; place-items: center; padding: 16px; }
+.confirm-in { width: 100%; max-width: 400px; background: var(--surface); border-radius: 16px; padding: 22px 20px 18px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+.confirm-in h3 { margin: 0 0 6px; font-size: 1.08rem; font-weight: 650; }
+.confirm-in p { margin: 0 0 18px; color: var(--ink-5); font-size: .9rem; }
+.confirm-btns { display: grid; gap: 8px; }
+.confirm-btns .btn { justify-content: center; height: 46px; font-size: .95rem; }
+.btn-rouge { background: var(--red); border-color: var(--red); color: #fff; }
+.btn-rouge:hover { background: #9C2E23; border-color: #9C2E23; }
+
 /* ---------- Tablette ---------- */
 @media (max-width: 1180px) {
     .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .tb-grid { grid-template-columns: minmax(0, 1fr); }
     .row { grid-template-columns: 22px 88px minmax(0,1.2fr) minmax(0,1.6fr) 104px 140px; }
     .row .ville, .row .ph { display: none; }
     .suivi-chiffres { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -369,7 +438,7 @@ ul.plain li { margin: 3px 0; }
     .page-h { display: none; }
 
     /* Navigation du bas */
-    .navbas { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: rgba(255,255,255,.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom); }
+    .navbas { display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: rgba(255,255,255,.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom); }
     .navbas button { position: relative; height: var(--nav); border: 0; background: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: .7rem; font-weight: 550; color: var(--ink-4); }
     .navbas button svg { width: 22px; height: 22px; }
     .navbas button.on { color: var(--marine); }
@@ -395,6 +464,18 @@ ul.plain li { margin: 3px 0; }
     .panneau-h b { font-size: 1.05rem; font-weight: 650; }
     .filtres-grille { grid-template-columns: 1fr 1fr; gap: 12px 10px; }
     .panneau-pied .btn { flex: 1 1 auto; justify-content: center; }
+
+    /* Tableau de bord */
+    .tb-bar { margin: 0 0 12px; }
+    .tb-bar .segs { margin: 0 -16px; padding: 1px 16px; flex: 1 1 100%; }
+    .tb-card { padding: 14px; }
+    .canaux .hide-m { display: none; }
+
+    /* Glisser : chaque carte porte son ombre, la ligne garde sa bordure */
+    .swipe { border-radius: var(--r); box-shadow: var(--shadow); }
+    .swipe > .row, .list > .swipe:last-child > .row, .swipe > .row:last-child { border: 1px solid var(--line); box-shadow: none; }
+    .confirm { place-items: end stretch; padding: 0; }
+    .confirm-in { max-width: none; border-radius: 18px 18px 0 0; padding: 22px 16px calc(16px + env(safe-area-inset-bottom)); }
 
     /* Liste en cartes */
     .list { background: transparent; border: 0; box-shadow: none; display: grid; gap: 8px; overflow: visible; }
@@ -477,6 +558,7 @@ ul.plain li { margin: 3px 0; }
     <symbol id="i-pho" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h2.2l1.4-2h5.8l1.4 2h2.2A1.5 1.5 0 0 1 20 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><circle cx="12" cy="12.8" r="3.3"/></symbol>
     <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><path d="M4.5 6l7.5 6 7.5-6"/></symbol>
     <symbol id="i-reg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-stat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6.5 16.5v-4M10.5 16.5V8M14.5 16.5v-6M18.5 16.5V5"/></symbol>
     <symbol id="i-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h9l3 3v13H6z"/><path d="M9 10h6M9 13.5h6M9 17h4"/></symbol>
     <symbol id="i-cherche" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></symbol>
     <symbol id="i-filtre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"/></symbol>
@@ -505,6 +587,7 @@ ul.plain li { margin: 3px 0; }
         <div class="brand"><img src="/images/logo-lunicar-blanc.webp" width="556" height="120" alt="LUNICAR"><small>ADMIN</small></div>
         <nav class="tabs" id="tabs">
             <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
+            <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
             <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
             <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
             <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
@@ -517,6 +600,7 @@ ul.plain li { margin: 3px 0; }
         <div id="notices"></div>
 
         <section data-view="demandes">
+            <div class="ptr" id="ptr"><span class="spin" hidden></span><span id="ptrTxt">Tirer pour actualiser</span></div>
             <div class="page-h"><h1>Demandes</h1><span id="sousTitre"></span></div>
             <div class="kpis" id="kpis"></div>
             <div class="toolbar">
@@ -538,6 +622,7 @@ ul.plain li { margin: 3px 0; }
                     <label class="f">Origine<select class="in" id="fOrigine">
                     <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option>
                 </select></label>
+                    <label class="f">Canal<select class="in" id="fCanal"><option value="">Tous les canaux</option><option value="pub">Publicité Google Ads</option><option value="google">Google (naturel)</option><option value="ia">ChatGPT et IA</option><option value="autres">Direct, liens, autres</option><option value="inconnu">Non renseigné</option></select></label>
                     <label class="f">Type<select class="in" id="fType"><option value="">Estimations et rappels</option><option value="estimation">Estimations</option><option value="rappel">Rappels</option></select></label>
                     <label class="f">Archives<select class="in" id="fArchive"><option value="">Non archivées</option><option value="oui">Archivées</option><option value="tout">Toutes</option></select></label>
                 </div>
@@ -563,6 +648,53 @@ ul.plain li { margin: 3px 0; }
                 <button class="close" data-lot="aucune" aria-label="Tout désélectionner" style="background:transparent;border-color:rgba(255,255,255,.2);color:#fff"><svg><use href="#i-x"/></svg></button>
             </div>
             <div class="list" id="list"></div>
+        </section>
+
+        <section data-view="stats" hidden>
+            <div class="page-h"><h1>Tableau de bord</h1><span id="tbSous"></span></div>
+            <div class="tb-bar">
+                <div class="segs" id="tbPeriode"></div>
+                <select class="in" id="tbType" aria-label="Demandes comptées"><option value="">Toutes les demandes</option><option value="envoyees">Formulaires envoyés</option><option value="abandon">Abandons seulement</option></select>
+            </div>
+            <div class="kpis" id="tbKpis"></div>
+            <div class="tb-grid">
+                <div class="tb-card tb-wide">
+                    <h3 id="tbCourbeT">Demandes par jour</h3>
+                    <p class="sub">Par canal d'arrivée. Touchez une barre pour le détail.</p>
+                    <div class="legende" id="tbLegende"></div>
+                    <div class="chart" id="tbCourbe"></div>
+                </div>
+                <div class="tb-card">
+                    <h3>D'où viennent les vendeurs</h3>
+                    <p class="sub">Touchez un canal pour voir ses demandes.</p>
+                    <table class="canaux" id="tbCanaux"></table>
+                </div>
+                <div class="tb-card">
+                    <h3>Du contact à l'achat</h3>
+                    <p class="sub">Demandes de la période, selon leur statut actuel.</p>
+                    <div class="hbars" id="tbEntonnoir"></div>
+                </div>
+                <div class="tb-card" id="tbAdsCarte">
+                    <h3>Google Ads : mots-clés qui amènent des demandes</h3>
+                    <p class="sub">Mot-clé de la recherche au moment du clic.</p>
+                    <div class="hbars" id="tbAds"></div>
+                </div>
+                <div class="tb-card">
+                    <h3>Heure de réception</h3>
+                    <p class="sub">Pour caler les horaires de la pub et des rappels.</p>
+                    <div class="chart" id="tbHeures"></div>
+                </div>
+                <div class="tb-card">
+                    <h3>Départements</h3>
+                    <p class="sub" id="tbIdf"></p>
+                    <div class="hbars" id="tbDeps"></div>
+                </div>
+                <div class="tb-card">
+                    <h3>Marques</h3>
+                    <p class="sub">Les plus proposées sur la période.</p>
+                    <div class="hbars" id="tbMarques"></div>
+                </div>
+            </div>
         </section>
 
         <section data-view="photos" hidden>
@@ -620,6 +752,7 @@ ul.plain li { margin: 3px 0; }
 
 <nav class="navbas" id="navbas" hidden>
     <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
+    <button data-tab="stats"><svg><use href="#i-stat"/></svg>Stats</button>
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
     <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
     <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages</button>
@@ -627,6 +760,7 @@ ul.plain li { margin: 3px 0; }
 <div class="voile" id="voile" hidden></div>
 
 <div class="lightbox" id="lb" hidden></div>
+<div class="confirm" id="confirm" hidden><div class="confirm-in" role="alertdialog" aria-modal="true" aria-labelledby="cfT"><h3 id="cfT"></h3><p id="cfP"></p><div class="confirm-btns" id="cfB"></div></div></div>
 
 <script>
 (() => {
@@ -723,6 +857,7 @@ ul.plain li { margin: 3px 0; }
         document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== b.dataset.tab);
         window.scrollTo(0, 0);
         if (b.dataset.tab === 'photos') dossiers();
+        if (b.dataset.tab === 'stats') tableau();
         if (b.dataset.tab === 'reglages') reglages();
         if (b.dataset.tab === 'messages') rendreMessages();
     };
@@ -733,8 +868,16 @@ ul.plain li { margin: 3px 0; }
     // ---------------- Demandes
     async function charger() {
         demandes = await api('/api/admin/demandes');
+        // Même téléphone déjà reçu plus tôt : le vendeur revient (ou s'est trompé de formulaire).
+        const vus = new Map();
+        [...demandes].sort((p, q) => p.created_at.localeCompare(q.created_at)).forEach(d => {
+            const t = ((d.data || {}).telephone || '').replace(/\D/g, '').slice(-9);
+            d.doublon = t.length === 9 && vus.has(t) ? vus.get(t) : null;
+            if (t.length === 9 && !vus.has(t)) vus.set(t, d.ref);
+        });
         compter('dem', demandes.filter(d => d.statut === 'nouvelle' && !(d.suivi || {}).archivee).length);
         kpis(); liste();
+        if (!document.querySelector('[data-view="stats"]').hidden) tableau();
     }
     const ACTIFS = ['nouvelle', 'contactee', 'offre', 'rdv'];
     const jourIso = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
@@ -780,7 +923,7 @@ ul.plain li { margin: 3px 0; }
         $('#kpis').innerHTML = k.map(([id, v, l, c]) => id ? `<button class="kpi ${c || ''}" data-kpi="${id}"><b class="num">${v}</b><span>${l}</span></button>` : `<div class="kpi"><b class="num">${v}</b><span>${l}</span></div>`).join('');
         $('#sousTitre').textContent = `${vivantes.length} en cours · ${demandes.length} au total`;
     }
-    const FILTRES = ['#fStatut', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fPeriode', '#fRegion', '#fDist'];
+    const FILTRES = ['#fStatut', '#fCanal', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fPeriode', '#fRegion', '#fDist'];
     function raz() { FILTRES.forEach(f => $(f).value = ''); $('#fPhotos').checked = $('#fSansEst').checked = false; }
     $('#kpis').addEventListener('click', e => {
         const b = e.target.closest('[data-kpi]'); if (!b) return;
@@ -819,6 +962,7 @@ ul.plain li { margin: 3px 0; }
             if (st && d.statut !== st) return false;
             if (or && d.origine !== or) return false;
             if (ty && d.type !== ty) return false;
+            if ($('#fCanal').value && d.canal !== $('#fCanal').value) return false;
             const g = geo(x.code_postal), reg = $('#fRegion').value, dist = Number($('#fDist').value), per = Number($('#fPeriode').value);
             if (reg === 'hors-idf' ? (!g || g.region === 'IDF') : (reg && (!g || g.region !== reg))) return false;
             if (dist && (!g || g.km == null || g.km > dist)) return false;
@@ -849,11 +993,13 @@ ul.plain li { margin: 3px 0; }
         $('#list').innerHTML = head + (a.length ? a.map(d => {
             const x = d.data || {};
             const est = (d.suivi || {}).estimation_statut === 'en_cours' ? '<span class="spin"></span>' : (prixMax(d) ? eur(prixMax(d)) : '—');
-            const pub = /^Google Ads/.test(x.origine || '') ? ' <span class="tag rappel">Pub</span>' : '';
+            const pub = (d.canal === 'pub' ? ' <span class="tag rappel">Pub</span>' : d.canal === 'ia' ? ' <span class="tag rappel">IA</span>' : '')
+                + (d.doublon ? ` <span class="tag" title="Même téléphone que ${esc(d.doublon)}">Déjà reçu</span>` : '');
             const tag = d.origine === 'abandon' ? '<span class="tag">Abandon</span>' : d.type === 'rappel' ? '<span class="tag rappel">Rappel</span>' : '';
             const g = geo(x.code_postal), r = rappel(d), auj = jourIso();
             const lieu = [x.ville || x.code_postal, g && g.km ? g.km + ' km' : ''].filter(Boolean).join(' · ');
-            return `<div class="row${choisies.has(d.ref) ? ' choisie' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
+            const archivee = !!(d.suivi || {}).archivee;
+            return `<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
                 <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${x.kilometrage && x.mecanique ? ' · ' : ''}${esc(x.mecanique || '')} ${tag}${pub}</span></div>
@@ -862,15 +1008,16 @@ ul.plain li { margin: 3px 0; }
                 <div class="st"><span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r ? `<small class="rappel ${r < auj ? 'retard' : r === auj ? 'jour' : ''}">${r < auj ? 'Rappel en retard · ' + jj(r) : r === auj ? "Rappeler aujourd'hui" : 'Rappel ' + jj(r)}</small>` : ''}</div>
                 <div class="ph num">${(d.photos || []).length || ''}</div>
                 <div class="quand-m">${date(d.created_at, false)}</div>
-            </div>`;
+            </div></div>`;
         }).join('') : '<div class="empty">Aucune demande ne correspond.</div>');
         barreLot();
     }
-    ['#q', '#fStatut', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
+    ['#q', '#fStatut', '#fCanal', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
     $('#list').addEventListener('click', e => {
         if (e.target.id === 'toutCocher') { affichees.forEach(d => e.target.checked ? choisies.add(d.ref) : choisies.delete(d.ref)); liste(); return; }
         if (e.target.classList.contains('choix')) { e.target.checked ? choisies.add(e.target.dataset.ref) : choisies.delete(e.target.dataset.ref); e.target.closest('.row').classList.toggle('choisie', e.target.checked); barreLot(); return; }
         if (e.target.closest('.row.head')) return;
+        if (e.target.closest('.swipe[data-glisse]')) return;
         const r = e.target.closest('.row[data-ref]'); if (r) ouvrir(r.dataset.ref);
     });
     function barreLot() {
@@ -882,7 +1029,7 @@ ul.plain li { margin: 3px 0; }
     }
     async function lot(action, valeur) {
         const refs = [...choisies];
-        if (action === 'supprimer' && !confirm(`Supprimer définitivement ${refs.length} demande(s) et leurs photos ? Cette action est irréversible.`)) return;
+        if (action === 'supprimer' && await demander({ titre: `Supprimer ${refs.length} demande${refs.length > 1 ? 's' : ''} ?`, texte: 'Les demandes et leurs photos seront effacées définitivement.', boutons: [['ok', 'Supprimer définitivement', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
         if (action === 'estimer' && !confirm(`Lancer l'estimation de ${refs.length} demande(s) ? (≈ 0,15 à 0,30 € chacune)`)) return;
         try { const r = await api('/api/admin/lot', { method: 'POST', body: JSON.stringify({ refs, action, valeur }) });
             toast(`${r.traitees} demande(s) traitée(s)`); if (action !== 'estimer') choisies.clear(); await charger(); barreLot(); }
@@ -898,6 +1045,255 @@ ul.plain li { margin: 3px 0; }
     });
     $('#csv').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/export.csv'); });
     $('#csvAds').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/conversions-ads.csv'); });
+
+    // ---------------- Confirmation (feuille du bas sur mobile)
+    function demander({ titre, texte, boutons }) {
+        return new Promise(fin => {
+            $('#cfT').textContent = titre; $('#cfP').textContent = texte || '';
+            $('#cfB').innerHTML = boutons.map(([id, l, c]) => `<button class="btn ${c || ''}" data-cf="${id}">${esc(l)}</button>`).join('');
+            $('#confirm').hidden = false;
+            const fermer = v => { $('#confirm').hidden = true; $('#confirm').onclick = null; document.removeEventListener('keydown', clavier); fin(v); };
+            const clavier = e => { if (e.key === 'Escape') fermer(''); };
+            document.addEventListener('keydown', clavier);
+            $('#confirm').onclick = e => { const b = e.target.closest('[data-cf]'); if (b) fermer(b.dataset.cf); else if (e.target.id === 'confirm') fermer(''); };
+            const p = $('#cfB .btn:last-child'); if (p) p.focus();
+        });
+    }
+    const nomDemande = d => { const x = d.data || {}; return [[x.vehicule, x.annee].filter(Boolean).join(' '), [x.prenom, x.nom].filter(Boolean).join(' ')].filter(Boolean).join(' · ') || d.ref; };
+
+    // ---------------- Glisser une demande : à droite = archiver (annulable), à gauche = supprimer (avec confirmation)
+    async function archiverRef(ref, annulable = true) {
+        const d = demandes.find(x => x.ref === ref); if (!d) return;
+        const action = (d.suivi || {}).archivee ? 'desarchiver' : 'archiver';
+        try {
+            await api('/api/admin/lot', { method: 'POST', body: JSON.stringify({ refs: [ref], action }) });
+            await charger();
+            if (!annulable) return;
+            const t = document.createElement('div'); t.className = 'toast'; t.style.cssText = 'display:flex;gap:14px;align-items:center;pointer-events:auto';
+            t.innerHTML = `<span>${action === 'archiver' ? 'Demande archivée' : 'Demande désarchivée'}</span><button class="btn btn-s" style="background:transparent;color:var(--gold-l);border-color:rgba(255,255,255,.25)">Annuler</button>`;
+            document.body.appendChild(t);
+            const fin = setTimeout(() => t.remove(), 5000);
+            t.querySelector('button').onclick = () => { clearTimeout(fin); t.remove(); archiverRef(ref, false); };
+        } catch (e) { toast(e.message); }
+    }
+    async function supprimerRef(ref) {
+        const d = demandes.find(x => x.ref === ref); if (!d) return false;
+        const r = await demander({ titre: 'Supprimer cette demande ?', texte: `${nomDemande(d)} — la demande et ses photos seront effacées définitivement.`,
+            boutons: [['ok', 'Supprimer définitivement', 'btn-rouge'], ['arc', (d.suivi || {}).archivee ? 'Désarchiver plutôt' : 'Archiver plutôt'], ['', 'Annuler']] });
+        if (r === 'arc') { archiverRef(ref); return true; }
+        if (r !== 'ok') return false;
+        try { await api('/api/admin/demandes/' + ref, { method: 'DELETE' }); choisies.delete(ref); toast('Demande supprimée'); await charger(); return true; }
+        catch (e) { toast(e.message); return false; }
+    }
+    (() => {
+        let g = null; // geste en cours
+        const SEUIL = 96;
+        const remettre = (row, anime = true) => { row.classList.toggle('anime', anime); row.style.transform = ''; const w = row.parentNode; setTimeout(() => w.classList.remove('glisse', 'vers-droite', 'vers-gauche', 'pret'), anime ? 220 : 0); };
+        $('#list').addEventListener('touchstart', e => {
+            const w = e.target.closest('.swipe'); if (!w || e.touches.length > 1 || e.target.closest('input')) return;
+            g = { w, row: w.querySelector('.row'), x: e.touches[0].clientX, y: e.touches[0].clientY, dx: 0, sens: null };
+        }, { passive: true });
+        $('#list').addEventListener('touchmove', e => {
+            if (!g) return;
+            const dx = e.touches[0].clientX - g.x, dy = e.touches[0].clientY - g.y;
+            if (!g.sens) { if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return; g.sens = Math.abs(dx) > Math.abs(dy) * 1.2 ? 'h' : 'v'; }
+            if (g.sens !== 'h') return;
+            e.preventDefault();
+            g.dx = dx;
+            g.row.classList.remove('anime');
+            g.row.style.transform = `translateX(${dx}px)`;
+            g.w.classList.add('glisse'); g.w.classList.toggle('vers-droite', dx > 0); g.w.classList.toggle('vers-gauche', dx < 0);
+            g.w.classList.toggle('pret', Math.abs(dx) > SEUIL);
+        }, { passive: false });
+        $('#list').addEventListener('touchend', async () => {
+            if (!g) return;
+            const { w, row, dx, sens } = g; g = null;
+            if (sens !== 'h') return;
+            w.dataset.glisse = '1'; setTimeout(() => delete w.dataset.glisse, 350); // pas d'ouverture de fiche au relâcher
+            if (Math.abs(dx) <= SEUIL) return remettre(row);
+            if (dx > 0) { remettre(row); return archiverRef(w.dataset.ref); }
+            row.classList.add('anime'); row.style.transform = `translateX(-${Math.min(w.offsetWidth * .45, 180)}px)`;
+            const fait = await supprimerRef(w.dataset.ref);
+            if (!fait && row.isConnected) remettre(row);
+        });
+        $('#list').addEventListener('touchcancel', () => { if (g) { remettre(g.row); g = null; } });
+    })();
+
+    // ---------------- Tirer pour actualiser (liste des demandes)
+    (() => {
+        let y0 = null, h = 0, charge = false;
+        const vue = () => !document.querySelector('[data-view="demandes"]').hidden && $('#sheet').hidden && $('#confirm').hidden;
+        document.addEventListener('touchstart', e => { y0 = vue() && window.scrollY <= 0 && !e.target.closest('.panneau, .swipe.glisse') ? e.touches[0].clientY : null; }, { passive: true });
+        document.addEventListener('touchmove', e => {
+            if (y0 == null || charge || document.querySelector('.swipe.glisse')) return;
+            const dy = e.touches[0].clientY - y0;
+            if (dy <= 0 || window.scrollY > 0) { h = 0; $('#ptr').style.height = '0'; return; }
+            h = Math.min(90, dy * .45);
+            $('#ptr').classList.remove('anime'); $('#ptr').style.height = h + 'px';
+            $('#ptrTxt').textContent = h > 60 ? 'Relâcher pour actualiser' : 'Tirer pour actualiser';
+        }, { passive: true });
+        document.addEventListener('touchend', async () => {
+            if (y0 == null || charge) return; y0 = null;
+            $('#ptr').classList.add('anime');
+            if (h > 60) {
+                charge = true; $('#ptr').style.height = '44px'; $('#ptr .spin').hidden = false; $('#ptrTxt').textContent = 'Actualisation…';
+                try { await Promise.all([charger(), chargerMessages()]); } catch (e) {}
+                charge = false; $('#ptr .spin').hidden = true;
+            }
+            h = 0; $('#ptr').style.height = '0';
+        });
+    })();
+    // Retour dans l'app (ou sur l'onglet) : on recharge si la liste date de plus de 30 s.
+    let vuLe = Date.now();
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden || !token || $('#app').hidden || Date.now() - vuLe < 30000) return;
+        vuLe = Date.now(); charger().catch(() => {}); chargerMessages().catch(() => {});
+    });
+
+    // ---------------- Tableau de bord
+    // Couleurs validées (ordre fixe, sûr pour les daltoniens) ; « non renseignée » en gris neutre.
+    const CANAUX = [['pub', 'Publicité Google Ads', '#2a78d6'], ['google', 'Google (naturel)', '#eb6834'], ['ia', 'ChatGPT et IA', '#1baf7a'], ['autres', 'Direct, liens, autres', '#eda100'], ['inconnu', 'Non renseignée', '#CBC7BE']];
+    const PERIODES = [[7, '7 jours'], [30, '30 jours'], [90, '3 mois'], [365, '12 mois']];
+    let tbJours = 30;
+    const jourParis = t => new Date(t).toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
+    const heureParis = t => Number(new Date(t).toLocaleString('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', hour12: false }).slice(0, 2)) % 24;
+    const pct = (a, b) => b ? Math.round(a / b * 100) + ' %' : '—';
+    const contactee = d => d.statut !== 'nouvelle' || (d.suivi || {}).nb_appels > 0;
+    const hbars = (rows, max, total) => rows.length ? rows.map(([l, n, c]) => `<div class="hbar"><span title="${esc(l)}">${esc(l)}</span><div class="t"><i style="width:${max ? Math.max(2, n / max * 100) : 0}%${c ? ';background:' + c : ''}"></i></div><b>${n}${total ? `<small>${pct(n, total)}</small>` : ''}</b></div>`).join('') : '<div class="vide">Rien sur la période.</div>';
+    function decompteTop(liste, cle, n = 8) {
+        const m = new Map(); liste.forEach(d => { const k = cle(d); if (k) m.set(k, (m.get(k) || 0) + 1); });
+        return [...m].sort((a, b) => b[1] - a[1]).slice(0, n);
+    }
+    function tableau() {
+        $('#tbPeriode').innerHTML = PERIODES.map(([j, l]) => `<button class="seg${j === tbJours ? ' on' : ''}" data-j="${j}">${l}</button>`).join('');
+        const type = $('#tbType').value;
+        const garde = d => type === 'abandon' ? d.origine === 'abandon' : type === 'envoyees' ? d.origine !== 'abandon' : true;
+        // Période en jours calendaires de Paris, aujourd'hui compris.
+        const auj = jourParis(Date.now());
+        const jourIsoMoins = n => new Date(new Date(auj + 'T12:00:00Z').getTime() - n * 864e5).toISOString().slice(0, 10);
+        const debut = jourIsoMoins(tbJours - 1), debutPrec = jourIsoMoins(2 * tbJours - 1);
+        const tous = demandes.filter(garde).map(d => ({ d, j: jourParis(d.created_at) }));
+        const per = tous.filter(x => x.j >= debut).map(x => x.d), prec = tous.filter(x => x.j >= debutPrec && x.j < debut).map(x => x.d);
+        const n = per.length, nc = k => per.filter(d => d.canal === k).length;
+        $('#tbSous').textContent = `${n} demande${n > 1 ? 's' : ''} sur ${PERIODES.find(p => p[0] === tbJours)[1].toLowerCase()}`;
+
+        // Chiffres clés
+        const evol = (a, b) => { if (!b) return a ? '<span class="delta">nouveau</span>' : '<span class="delta">—</span>'; const v = Math.round((a - b) / b * 100); return `<span class="delta ${v > 0 ? 'up' : v < 0 ? 'down' : ''}">${v > 0 ? '+' : ''}${v} % vs période préc.</span>`; };
+        const achetees = per.filter(d => d.statut === 'achetee').length;
+        const k = [
+            [n, 'demandes', evol(n, prec.length)],
+            [(n / tbJours).toLocaleString('fr-FR', { maximumFractionDigits: 1 }), 'par jour en moyenne', `<span class="delta">${(prec.length / tbJours).toLocaleString('fr-FR', { maximumFractionDigits: 1 })} avant</span>`],
+            [pct(nc('pub'), n), 'via la pub Google', `<span class="delta">${nc('pub')} demande${nc('pub') > 1 ? 's' : ''}</span>`],
+            [pct(nc('google') + nc('ia') + nc('autres'), n), 'en organique', `<span class="delta">Google ${nc('google')} · IA ${nc('ia')} · autres ${nc('autres')}</span>`],
+            [pct(per.filter(contactee).length, n), 'contactées', `<span class="delta">${per.filter(d => d.statut === 'nouvelle' && !contactee(d)).length} jamais appelées</span>`],
+            [achetees, achetees > 1 ? 'voitures achetées' : 'voiture achetée', `<span class="delta">${pct(achetees, n)} des demandes</span>`]
+        ];
+        $('#tbKpis').innerHTML = k.map(([v, l, dlt]) => `<div class="kpi"><b class="num">${v}</b><span>${l}</span>${dlt}</div>`).join('');
+
+        // Barres empilées par jour (par semaine sur 12 mois)
+        const hebdo = tbJours > 90;
+        const lundi = iso => { const d = new Date(iso + 'T12:00:00Z'); return new Date(d.getTime() - ((d.getUTCDay() + 6) % 7) * 864e5).toISOString().slice(0, 10); };
+        const cles = []; for (let i = tbJours - 1; i >= 0; i--) { const c = hebdo ? lundi(jourIsoMoins(i)) : jourIsoMoins(i); if (cles[cles.length - 1] !== c) cles.push(c); }
+        const seaux = new Map(cles.map(c => [c, Object.fromEntries(CANAUX.map(([id]) => [id, 0]))]));
+        per.forEach(d => { const j = jourParis(d.created_at), c = hebdo ? lundi(j) : j; const s = seaux.get(c); if (s) s[d.canal in s ? d.canal : 'inconnu']++; });
+        $('#tbCourbeT').textContent = hebdo ? 'Demandes par semaine' : 'Demandes par jour';
+        const presents = CANAUX.filter(([id]) => per.some(d => d.canal === id));
+        $('#tbLegende').innerHTML = presents.map(([, l, c]) => `<span><i style="background:${c}"></i>${l}</span>`).join('');
+        courbe(cles, seaux, hebdo);
+
+        // Canaux
+        const lignes = CANAUX.map(([id, l, c]) => { const x = per.filter(d => d.canal === id); return { id, l, c, n: x.length, ct: x.filter(contactee).length, ac: x.filter(d => d.statut === 'achetee').length }; }).filter(r => r.n);
+        $('#tbCanaux').innerHTML = lignes.length ? `<tr><th>Canal</th><th>Demandes</th><th>Part</th><th class="hide-m">Contactées</th><th>Achetées</th></tr>` + lignes.map(r =>
+            `<tr data-canal="${r.id}"><td><i style="background:${r.c}"></i>${r.l}<div class="barre"><span style="width:${r.n / n * 100}%;background:${r.c}"></span></div></td><td class="num">${r.n}</td><td class="num">${pct(r.n, n)}</td><td class="num hide-m">${pct(r.ct, r.n)}</td><td class="num">${r.ac}</td></tr>`).join('')
+            : '<tr><td class="vide">Aucune demande sur la période.</td></tr>';
+
+        // Entonnoir (une seule teinte, du plus clair au plus foncé)
+        const etapes = [['Reçues', n], ['Contactées', per.filter(contactee).length], ['Offre faite', per.filter(d => ['offre', 'rdv', 'achetee'].includes(d.statut) || (d.suivi || {}).offre).length], ['Rendez-vous', per.filter(d => ['rdv', 'achetee'].includes(d.statut)).length], ['Achetées', achetees]];
+        const teintes = ['#86b6ef', '#5598e7', '#2a78d6', '#1c5cab', '#104281'];
+        $('#tbEntonnoir').innerHTML = hbars(etapes.map(([l, v], i) => [l, v, teintes[i]]), n, n);
+
+        // Mots-clés Google Ads
+        const mot = d => { const m = String(d.origine_txt || '').match(/mot-clé « ([^»]+) »/); return m ? m[1].trim().toLowerCase() : (d.canal === 'pub' ? '(sans mot-clé)' : ''); };
+        const ads = decompteTop(per, mot);
+        $('#tbAdsCarte').hidden = !nc('pub');
+        $('#tbAds').innerHTML = hbars(ads, ads.length ? ads[0][1] : 0);
+
+        // Heures
+        heures(per);
+
+        // Départements
+        const g = d => geo((d.data || {}).code_postal);
+        const nIdf = per.filter(d => { const x = g(d); return x && x.region === 'IDF'; }).length, nGeo = per.filter(g).length;
+        $('#tbIdf').textContent = nGeo ? `Île-de-France : ${pct(nIdf, nGeo)} des demandes localisées (${nIdf} sur ${nGeo}).` : 'Aucune demande localisée.';
+        const deps = decompteTop(per, d => { const x = g(d); return x ? `${x.dep} · ${x.region === 'IDF' ? 'IDF' : REG[x.region]}` : ''; });
+        $('#tbDeps').innerHTML = hbars(deps, deps.length ? deps[0][1] : 0, nGeo);
+
+        // Marques
+        const marque = d => { const v = String((d.data || {}).vehicule || '').trim().split(/\s+/)[0] || ''; return v ? v[0].toUpperCase() + v.slice(1).toLowerCase() : ''; };
+        const mq = decompteTop(per, marque);
+        $('#tbMarques').innerHTML = hbars(mq, mq.length ? mq[0][1] : 0, per.filter(marque).length);
+    }
+    function courbe(cles, seaux, hebdo) {
+        const W = 760, H = 230, ml = 30, mr = 6, mt = 10, mb = 24, iw = W - ml - mr, ih = H - mt - mb;
+        const tot = cles.map(c => Object.values(seaux.get(c)).reduce((a, b) => a + b, 0));
+        const max = Math.max(1, ...tot), pas = max <= 4 ? 1 : max <= 10 ? 2 : max <= 25 ? 5 : max <= 50 ? 10 : Math.ceil(max / 50) * 10;
+        const ymax = Math.ceil(max / pas) * pas, y = v => mt + ih - v / ymax * ih;
+        const step = iw / cles.length, bw = Math.max(2, Math.min(28, step * .68)), r = Math.min(4, bw / 2);
+        const fmt = iso => new Date(iso + 'T12:00:00Z').toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+        let svg = '';
+        for (let v = 0; v <= ymax; v += pas) svg += `<line class="grille" x1="${ml}" x2="${W - mr}" y1="${y(v)}" y2="${y(v)}"/><text class="ax" x="${ml - 6}" y="${y(v) + 3}" text-anchor="end">${v}</text>`;
+        const nbEt = Math.min(cles.length, 6), tous = [];
+        for (let i = 0; i < nbEt; i++) tous.push(Math.round(i * (cles.length - 1) / Math.max(1, nbEt - 1)));
+        [...new Set(tous)].forEach(i => { svg += `<text class="ax" x="${ml + step * i + step / 2}" y="${H - 6}" text-anchor="middle">${fmt(cles[i])}</text>`; });
+        cles.forEach((c, i) => {
+            const x = ml + step * i + (step - bw) / 2; let base = mt + ih;
+            const segs = CANAUX.filter(([id]) => seaux.get(c)[id]);
+            segs.forEach(([id, , coul], k) => {
+                const h = seaux.get(c)[id] / ymax * ih, haut = k === segs.length - 1;
+                const hh = Math.max(1, h - (haut ? 0 : 2)), yy = base - h; // 2 px de séparation entre segments
+                svg += haut ? `<path d="M${x},${yy + hh} V${yy + r} Q${x},${yy} ${x + r},${yy} H${x + bw - r} Q${x + bw},${yy} ${x + bw},${yy + r} V${yy + hh} Z" fill="${coul}"/>` : `<rect x="${x}" y="${yy}" width="${bw}" height="${hh}" fill="${coul}"/>`;
+                base -= h;
+            });
+        });
+        svg += `<rect class="survol" id="tbSurvol" x="0" y="${mt}" width="${step}" height="${ih}" visibility="hidden"/>`;
+        $('#tbCourbe').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${hebdo ? 'Demandes par semaine' : 'Demandes par jour'}">${svg}</svg><div class="tip" hidden></div>`;
+        const box = $('#tbCourbe'), el = box.querySelector('svg'), tip = box.querySelector('.tip'), sv = box.querySelector('#tbSurvol');
+        const montrer = cx => {
+            const rc = el.getBoundingClientRect(), vx = (cx - rc.left) / rc.width * W, i = Math.floor((vx - ml) / step);
+            if (i < 0 || i >= cles.length) return cacher();
+            const s = seaux.get(cles[i]), total = tot[i];
+            sv.setAttribute('x', ml + step * i); sv.setAttribute('visibility', 'visible');
+            tip.innerHTML = `<b>${hebdo ? 'Semaine du ' : ''}${new Date(cles[i] + 'T12:00:00Z').toLocaleDateString('fr-FR', { weekday: hebdo ? undefined : 'short', day: 'numeric', month: 'long', timeZone: 'UTC' })}</b> · ${total} demande${total > 1 ? 's' : ''}`
+                + CANAUX.filter(([id]) => s[id]).map(([id, l, c]) => `<br><i style="background:${c}"></i>${l} : ${s[id]}`).join('');
+            tip.hidden = false;
+            const px = (ml + step * i + step / 2) / W * rc.width, tw = tip.offsetWidth;
+            tip.style.left = Math.max(0, Math.min(rc.width - tw, px - tw / 2)) + 'px';
+            tip.style.top = Math.max(-8, (y(total) / H) * rc.height - tip.offsetHeight - 10) + 'px';
+        };
+        const cacher = () => { tip.hidden = true; sv.setAttribute('visibility', 'hidden'); };
+        el.addEventListener('pointermove', e => montrer(e.clientX));
+        el.addEventListener('pointerdown', e => montrer(e.clientX));
+        el.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') cacher(); });
+    }
+    function heures(per) {
+        const h = Array(24).fill(0); per.forEach(d => h[heureParis(d.created_at)]++);
+        const W = 360, H = 130, ml = 4, mb = 18, ih = H - mb - 6, max = Math.max(1, ...h), step = (W - ml * 2) / 24, bw = step * .66;
+        let svg = '';
+        h.forEach((v, i) => {
+            const bh = v / max * ih, x = ml + i * step + (step - bw) / 2, yy = 6 + ih - bh;
+            svg += `<g><title>${i} h – ${i + 1} h : ${v} demande${v > 1 ? 's' : ''}</title><rect x="${ml + i * step}" y="0" width="${step}" height="${H - mb}" fill="transparent"/>${v ? `<path d="M${x},${6 + ih} V${yy + Math.min(3, bh)} Q${x},${yy} ${x + Math.min(3, bw / 2)},${yy} H${x + bw - Math.min(3, bw / 2)} Q${x + bw},${yy} ${x + bw},${yy + Math.min(3, bh)} V${6 + ih} Z" fill="${i >= 9 && i < 22 ? '#2a78d6' : '#86b6ef'}"/>` : ''}</g>`;
+            if (i % 3 === 0) svg += `<text class="ax" x="${ml + i * step + step / 2}" y="${H - 4}" text-anchor="middle">${i}h</text>`;
+        });
+        const top = h.map((v, i) => [i, v]).sort((a, b) => b[1] - a[1]).slice(0, 3).filter(x => x[1]).map(([i]) => `${i} h`).join(', ');
+        $('#tbHeures').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Demandes par heure">${svg}</svg><p class="sub" style="margin:8px 0 0">${top ? `Pics : ${top}. Bleu foncé : 9 h – 22 h, horaires de la pub.` : 'Rien sur la période.'}</p>`;
+    }
+    $('#tbPeriode').addEventListener('click', e => { const b = e.target.closest('[data-j]'); if (b) { tbJours = Number(b.dataset.j); tableau(); } });
+    $('#tbType').addEventListener('input', tableau);
+    $('#tbCanaux').addEventListener('click', e => {
+        const tr = e.target.closest('[data-canal]'); if (!tr) return;
+        raz(); $('#fCanal').value = tr.dataset.canal; $('#fPeriode').value = String(tbJours); $('#fArchive').value = 'tout';
+        document.querySelector('#navbas button[data-tab="demandes"]').click(); liste();
+    });
 
     // ---------------- Fiche d'une demande
     // Routage : la liste vit sur /admino, chaque fiche sur /admino/demande/REF.

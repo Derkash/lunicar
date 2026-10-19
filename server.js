@@ -14,6 +14,7 @@ const store = require('./lib/store');
 const estimation = require('./lib/estimation');
 const adminRouter = require('./lib/admin');
 const push = require('./lib/push');
+const { origine } = require('./lib/origine');
 const crypto = require('crypto');
 
 const app = express();
@@ -433,22 +434,6 @@ function emailDemande(d, apiBrut, opts = {}) {
 </div></body></html>`;
 }
 
-// Origine lisible d'une demande : pub Google Ads (campagne, groupe, mot-clé), ChatGPT, Google naturel…
-function origine(d) {
-    const p = String(d.provenance || '');
-    const q = k => { const m = p.match(new RegExp(`(?:^|[&| ])${k}=([^&|]+)`)); return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')).trim() : ''; };
-    if (d.clic_ads || /gclid=|gbraid=|wbraid=/.test(p) || /utm_medium=cpc/.test(p)) {
-        return ['Google Ads', q('utm_campaign') && `campagne « ${q('utm_campaign')} »`, q('utm_content') && `groupe « ${q('utm_content')} »`, q('utm_term') && `mot-clé « ${q('utm_term')} »`].filter(Boolean).join(' · ');
-    }
-    const ref = q('ref');
-    if (/chatgpt|openai/i.test(ref + q('utm_source'))) return 'ChatGPT';
-    if (/perplexity/i.test(ref)) return 'Perplexity';
-    if (/google\./i.test(ref)) return 'Google (résultats naturels)';
-    if (/bing\.|ecosia|qwant|duckduckgo/i.test(ref)) return 'Moteur de recherche (naturel)';
-    if (q('utm_source')) return q('utm_source');
-    return ref ? `Lien depuis ${ref.replace(/^https?:\/\//, '').split('/')[0]}` : 'Accès direct';
-}
-
 const euros = v => v ? `${Number(v).toLocaleString('fr-FR')} €` : '—';
 // Les 4 prix de l'estimation automatique, en tête de l'e-mail.
 function blocEstimation(e, ref) {
@@ -671,25 +656,15 @@ app.get('/api/valider-plaque/:plaque', (req, res) => {
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || (process.env.NODE_ENV === 'production' ? null : 'lunicar2024');
 if (!ADMIN_PASSWORD) console.log('⚠️  ADMIN_PASSWORD non défini : espace /admino désactivé');
 const ADMIN_USER = process.env.ADMIN_USER || 'Elbagui224';
-const SESSION_EXPIRY = 60 * 60 * 1000; // 1 heure
 const MAX_LOGIN_ATTEMPTS = 5;
 const LOCKOUT_DURATION = 15 * 60 * 1000; // 15 minutes
-
-// Stockage des tokens avec expiration
-const adminSessions = new Map(); // token -> { createdAt, lastActivity }
 
 // Stockage des tentatives de connexion par IP
 const loginAttempts = new Map(); // ip -> { count, lockedUntil }
 
-// Nettoyage périodique des sessions expirées
+// Nettoyage périodique des blocages expirés
 setInterval(() => {
     const now = Date.now();
-    for (const [token, session] of adminSessions.entries()) {
-        if (now - session.lastActivity > SESSION_EXPIRY) {
-            adminSessions.delete(token);
-        }
-    }
-    // Nettoyage des blocages expirés
     for (const [ip, attempt] of loginAttempts.entries()) {
         if (attempt.lockedUntil && now > attempt.lockedUntil) {
             loginAttempts.delete(ip);
@@ -721,29 +696,29 @@ function loginRateLimiter(req, res, next) {
     next();
 }
 
+// Jeton de session signé (HMAC du mot de passe admin) : valable 30 jours, survit aux
+// redéploiements Render. Changer ADMIN_PASSWORD invalide toutes les sessions.
+const SESSION_JOURS = 30;
+const signer = corps => require('crypto').createHmac('sha256', `${ADMIN_USER}:${ADMIN_PASSWORD}`).update(corps).digest('base64url');
+function creerJeton() {
+    const corps = Buffer.from(JSON.stringify({ exp: Date.now() + SESSION_JOURS * 864e5, n: uuidv4().slice(0, 8) })).toString('base64url');
+    return `${corps}.${signer(corps)}`;
+}
+function jetonValide(token) {
+    const [corps, sig] = String(token || '').split('.');
+    if (!ADMIN_PASSWORD || !corps || !sig) return false;
+    const attendu = signer(corps);
+    if (sig.length !== attendu.length || !require('crypto').timingSafeEqual(Buffer.from(sig), Buffer.from(attendu))) return false;
+    try { return JSON.parse(Buffer.from(corps, 'base64url').toString()).exp > Date.now(); } catch (e) { return false; }
+}
+
 // Middleware d'authentification admin
 function authAdmin(req, res, next) {
     const authHeader = req.headers.authorization || '';
     // Images, zip et export s'ouvrent par lien : le jeton peut aussi passer en ?k=
     const token = authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : String(req.query.k || '');
-    if (!token) {
-        return res.status(401).json({ error: 'Non autorisé' });
-    }
-    const session = adminSessions.get(token);
-
-    if (!session) {
-        return res.status(401).json({ error: 'Token invalide' });
-    }
-
-    // Vérifier expiration de session (1h d'inactivité)
-    const now = Date.now();
-    if (now - session.lastActivity > SESSION_EXPIRY) {
-        adminSessions.delete(token);
-        return res.status(401).json({ error: 'Session expirée' });
-    }
-
-    // Mettre à jour l'activité
-    session.lastActivity = now;
+    if (!token) return res.status(401).json({ error: 'Non autorisé' });
+    if (!jetonValide(token)) return res.status(401).json({ error: 'Session expirée' });
     next();
 }
 
@@ -756,13 +731,7 @@ app.post('/api/admin/login', loginRateLimiter, (req, res) => {
         // Connexion réussie - réinitialiser les tentatives
         loginAttempts.delete(ip);
 
-        const token = uuidv4();
-        const now = Date.now();
-        adminSessions.set(token, {
-            createdAt: now,
-            lastActivity: now
-        });
-        res.json({ success: true, token, expiresIn: SESSION_EXPIRY });
+        res.json({ success: true, token: creerJeton(), expiresIn: SESSION_JOURS * 864e5 });
     } else {
         // Échec de connexion - incrémenter les tentatives
         const attempt = loginAttempts.get(ip) || { count: 0, lockedUntil: null };
