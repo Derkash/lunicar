@@ -688,6 +688,24 @@ ul.plain li { margin: 3px 0; }
         afficherAvis();
         await Promise.all([charger(), chargerMessages()]);
         ouvrirDepuisHash();
+        activerPush();
+    }
+
+    // ---------------- Notifications (app iOS uniquement)
+    // Dans l'app native, une alerte arrive à chaque demande ; la toucher ouvre la fiche.
+    let pushPret = false;
+    function activerPush() {
+        const C = window.Capacitor, P = C && C.isNativePlatform && C.isNativePlatform() && C.Plugins && C.Plugins.PushNotifications;
+        if (!P || pushPret) return;
+        pushPret = true;
+        P.addListener('registration', t => api('/api/admin/push', { method: 'POST', body: JSON.stringify({ token: t.value, nom: navigator.platform || '' }) }).catch(() => {}));
+        P.addListener('registrationError', e => console.warn('Push :', e && e.error));
+        P.addListener('pushNotificationActionPerformed', a => {
+            const ref = a && a.notification && a.notification.data && a.notification.data.ref;
+            if (ref) { courant = null; ouvrir(String(ref)); }
+        });
+        P.addListener('pushNotificationReceived', () => charger().catch(() => {}));
+        P.requestPermissions().then(r => { if (r.receive === 'granted') P.register(); }).catch(() => {});
     }
     function afficherAvis() {
         const a = [];

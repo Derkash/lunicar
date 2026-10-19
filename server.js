@@ -13,6 +13,7 @@ const zones = require('./lib/zones');
 const store = require('./lib/store');
 const estimation = require('./lib/estimation');
 const adminRouter = require('./lib/admin');
+const push = require('./lib/push');
 const crypto = require('crypto');
 
 const app = express();
@@ -471,6 +472,12 @@ const ESTIMATION_ATTENTE = (parseFloat(process.env.ESTIMATION_ATTENTE_S) || 150)
 
 // Une demande reçue : enregistrement durable, fiche plaque, estimation, puis e-mail.
 async function envoyerDemande(d, opts = {}) {
+    // Alerte immédiate sur l'app iOS, avant la fiche plaque et l'e-mail.
+    push.notifier({
+        titre: opts.abandon ? '⚠️ Demande abandonnée' : d.type === 'rappel' ? '📞 Demande de rappel' : '🚗 Nouvelle demande' + (/^Google Ads/.test(origine(d)) ? ' [PUB]' : ''),
+        texte: [[d.vehicule || d.prenom || d.plaque, d.annee].filter(Boolean).join(' '), d.kilometrage ? `${Number(d.kilometrage).toLocaleString('fr-FR')} km` : '', [d.code_postal, d.ville].filter(Boolean).join(' ')].filter(Boolean).join(' · ') || d.telephone,
+        ref: d.id.substring(0, 8).toUpperCase()
+    }).catch(e => console.error('Push :', e.message));
     let apiBrut = null;
     if (d.plaque) { try { apiBrut = await fichePlaque.ficheComplete(d.plaque); } catch (e) { apiBrut = null; } }
     const ref = d.id.substring(0, 8).toUpperCase();
