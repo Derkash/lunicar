@@ -159,6 +159,15 @@ button.kpi:hover { border-color: #CFCAC0; }
 .flag svg { width: 13px; height: 13px; }
 .flag:hover { border-color: #CFCAC0; color: var(--ink-7); }
 .flag.on { background: var(--gold); border-color: var(--gold); color: #fff; }
+.meca { display: inline-flex; align-items: center; gap: 5px; height: 21px; padding: 0 8px; border-radius: 99px; font-size: .72rem; font-weight: 650; white-space: nowrap; vertical-align: 1px; }
+.meca::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.meca.r, .row .car span.meca.r { background: var(--red-1); color: var(--red); }
+.meca.o, .row .car span.meca.o { background: var(--orange-1); color: var(--orange); }
+.meca.v, .row .car span.meca.v { background: var(--green-1); color: var(--green); }
+.row .car > span { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; white-space: normal; overflow: visible; }
+.row .car span.meca { display: inline-flex; font-size: .72rem; }
+.row .car .tag { margin-left: 0; }
+.sh-titre .meca { margin-left: 8px; vertical-align: 3px; }
 .badge-du { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 9px; border-radius: 99px; background: var(--red); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
 .badge-ap { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 99px; background: var(--gold); color: #fff; font-size: .72rem; font-weight: 700; white-space: nowrap; }
 .seg.urgent b { color: var(--red); }
@@ -639,6 +648,7 @@ ul.plain li { margin: 3px 0; }
                     <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option>
                 </select></label>
                     <label class="f">Canal<select class="in" id="fCanal"><option value="">Tous les canaux</option><option value="pub">Publicité Google Ads</option><option value="google">Google (naturel)</option><option value="ia">ChatGPT et IA</option><option value="autres">Direct, liens, autres</option><option value="inconnu">Non renseigné</option></select></label>
+                    <label class="f">État du véhicule<select class="in" id="fMeca"><option value="">Tous les états</option><option value="v">Roule bien</option><option value="o">Roule avec soucis</option><option value="r">En panne ou accidentée</option><option value="?">Non précisé</option></select></label>
                     <label class="f">Type<select class="in" id="fType"><option value="">Estimations et rappels</option><option value="estimation">Estimations</option><option value="rappel">Rappels</option></select></label>
                     <label class="f">Archives<select class="in" id="fArchive"><option value="">Non archivées</option><option value="oui">Archivées</option><option value="tout">Toutes</option></select></label>
                 </div>
@@ -904,6 +914,17 @@ ul.plain li { margin: 3px 0; }
     const du = d => { const r = rappel(d); return !!r && r <= jourIso(); };
     const drapeau = d => !!(d.suivi || {}).a_appeler && !(d.suivi || {}).archivee;
     const aAppeler = d => du(d) || drapeau(d);
+    function etatMeca(x) {
+        const t = [x.mecanique, ...(Array.isArray(x.etat) ? x.etat : [])].filter(Boolean).join(' ').toLowerCase();
+        if (!t) return null;
+        if (/accident/.test(t)) return { c: 'r', l: 'Accidentée' };
+        if (/ne roule (plus|pas)|en panne|\bpanne\b|\bhs\b|hors service|moteur cass|ne d[ée]marre/.test(t)) return { c: 'r', l: 'En panne' };
+        if (/aucun souci|sans souci|roule bien|tr[eè]s bon|bon [ée]tat|parfait|impeccable|nickel|ras\b/.test(t)) return { c: 'v', l: 'Roule bien' };
+        if (/souci|probl[eè]me|bruit|voyant|fuite|us[ée]|r[ée]paration|embrayage|bo[iî]te|courroie|turbo|fum/.test(t)) return { c: 'o', l: 'Roule avec soucis' };
+        if (/roule/.test(t)) return { c: 'v', l: 'Roule bien' };
+        return null;
+    }
+    const badgeMeca = x => { const e = etatMeca(x); return e ? `<span class="meca ${e.c}" title="${esc(x.mecanique || '')}">${e.l}</span>` : ''; };
     const priorite = d => du(d) ? 0 : drapeau(d) ? 1 : 2;
     // Jours ouvrés (week-ends et jours fériés français exclus), comme côté serveur.
     function feries(an) {
@@ -931,22 +952,22 @@ ul.plain li { margin: 3px 0; }
     const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || ((d.estimation || {}).prix || {}).max_achat || 0;
     function kpis() {
         const now = Date.now(), vivantes = demandes.filter(d => !(d.suivi || {}).archivee);
-        const achetees = demandes.filter(d => d.statut === 'achetee');
+        const achetees = vivantes.filter(d => d.statut === 'achetee');
         const engage = achetees.reduce((t, d) => t + (Number((d.suivi || {}).prix_achat) || 0), 0);
         const dues = vivantes.filter(d => rappel(d) && rappel(d) <= jourIso()).length;
         const jamais = vivantes.filter(d => d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels && now - new Date(d.created_at) < 14 * 864e5).length;
         const k = [
             ['dues', vivantes.filter(aAppeler).length, 'à appeler maintenant', vivantes.some(aAppeler) ? 'alerte' : ''],
             ['jamais', jamais, 'jamais appelées (14 j)', jamais ? 'alerte' : ''],
-            ['j30', demandes.filter(d => now - new Date(d.created_at) < 30 * 864e5).length, 'reçues sur 30 jours'],
+            ['j30', vivantes.filter(d => now - new Date(d.created_at) < 30 * 864e5).length, 'reçues sur 30 jours'],
             ['sansEst', vivantes.filter(d => !d.estimation && d.type !== 'rappel').length, 'sans estimation'],
             ['achetee', achetees.length, 'véhicules achetés'],
             ['', engage ? eur(engage) : '—', 'payés aux vendeurs']
         ];
         $('#kpis').innerHTML = k.map(([id, v, l, c]) => id ? `<button class="kpi ${c || ''}" data-kpi="${id}"><b class="num">${v}</b><span>${l}</span></button>` : `<div class="kpi"><b class="num">${v}</b><span>${l}</span></div>`).join('');
-        $('#sousTitre').textContent = `${vivantes.length} en cours · ${demandes.length} au total`;
+        $('#sousTitre').textContent = `${vivantes.length} en cours · ${demandes.length - vivantes.length} archivée${demandes.length - vivantes.length > 1 ? 's' : ''}`;
     }
-    const FILTRES = ['#fStatut', '#fCanal', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fPeriode', '#fRegion', '#fDist'];
+    const FILTRES = ['#fStatut', '#fCanal', '#fMeca', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fPeriode', '#fRegion', '#fDist'];
     function raz() { FILTRES.forEach(f => $(f).value = ''); $('#fPhotos').checked = $('#fSansEst').checked = false; }
     $('#kpis').addEventListener('click', e => {
         const b = e.target.closest('[data-kpi]'); if (!b) return;
@@ -956,11 +977,13 @@ ul.plain li { margin: 3px 0; }
         liste();
     });
     // Segments rapides : statut ou relance, un clic.
-    const SEGS = [['', 'Toutes'], ['r:appeler', 'À appeler'], ['nouvelle', 'Nouvelles'], ['contactee', 'Contactées'], ['offre', 'Offre faite'], ['rdv', 'Rendez-vous'], ['achetee', 'Achetées']];
+    const SEGS = [['', 'Toutes'], ['r:appeler', 'À appeler'], ['nouvelle', 'Nouvelles'], ['contactee', 'Contactées'], ['offre', 'Offre faite'], ['rdv', 'Rendez-vous'], ['achetee', 'Achetées'], ['a:archivees', 'Archivées']];
     function segments() {
         const vivantes = demandes.filter(d => !(d.suivi || {}).archivee), auj = jourIso();
-        const n = k => !k ? vivantes.length : k === 'r:appeler' ? vivantes.filter(aAppeler).length : vivantes.filter(d => d.statut === k).length;
-        const actif = $('#fRelance').value === 'appeler' && !$('#fStatut').value ? 'r:appeler' : !$('#fRelance').value ? $('#fStatut').value : null;
+        const n = k => !k ? vivantes.length : k === 'a:archivees' ? demandes.length - vivantes.length : k === 'r:appeler' ? vivantes.filter(aAppeler).length : vivantes.filter(d => d.statut === k).length;
+        const actif = $('#fArchive').value === 'oui' ? (!$('#fStatut').value && !$('#fRelance').value ? 'a:archivees' : null)
+            : $('#fArchive').value ? null
+            : $('#fRelance').value === 'appeler' && !$('#fStatut').value ? 'r:appeler' : !$('#fRelance').value ? $('#fStatut').value : null;
         $('#segs').innerHTML = SEGS.map(([k, l]) => `<button class="seg${actif === k ? ' on' : ''}${k === 'r:appeler' && n(k) ? ' urgent' : ''}" data-seg="${k}">${l}<b class="num">${n(k)}</b></button>`).join('');
         const nb = FILTRES.filter(f => $(f).value).length + $('#fPhotos').checked + $('#fSansEst').checked + ($('#fTri').value !== 'recent');
         $('#nbFiltres').textContent = nb || '';
@@ -970,7 +993,8 @@ ul.plain li { margin: 3px 0; }
     $('#segs').addEventListener('click', e => {
         const b = e.target.closest('[data-seg]'); if (!b) return;
         const k = b.dataset.seg;
-        $('#fStatut').value = k.startsWith('r:') ? '' : k; $('#fRelance').value = k === 'r:appeler' ? 'appeler' : '';
+        $('#fStatut').value = /^[ra]:/.test(k) ? '' : k; $('#fRelance').value = k === 'r:appeler' ? 'appeler' : '';
+        $('#fArchive').value = k === 'a:archivees' ? 'oui' : '';
         liste();
     });
     const panneau = ouvert => { $('#panneau').hidden = !ouvert; $('#voile').hidden = !(ouvert && matchMedia('(max-width: 760px)').matches); };
@@ -986,6 +1010,7 @@ ul.plain li { margin: 3px 0; }
             if (or && d.origine !== or) return false;
             if (ty && d.type !== ty) return false;
             if ($('#fCanal').value && d.canal !== $('#fCanal').value) return false;
+            if ($('#fMeca').value && (etatMeca(x) || { c: '?' }).c !== $('#fMeca').value) return false;
             const g = geo(x.code_postal), reg = $('#fRegion').value, dist = Number($('#fDist').value), per = Number($('#fPeriode').value);
             if (reg === 'hors-idf' ? (!g || g.region === 'IDF') : (reg && (!g || g.region !== reg))) return false;
             if (dist && (!g || g.km == null || g.km > dist)) return false;
@@ -1029,7 +1054,7 @@ ul.plain li { margin: 3px 0; }
             return `<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
-                <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${x.kilometrage && x.mecanique ? ' · ' : ''}${esc(x.mecanique || '')} ${tag}${pub}</span></div>
+                <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div class="st">${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
@@ -1039,7 +1064,7 @@ ul.plain li { margin: 3px 0; }
         }).join('') : '<div class="empty">Aucune demande ne correspond.</div>');
         barreLot();
     }
-    ['#q', '#fStatut', '#fCanal', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
+    ['#q', '#fStatut', '#fCanal', '#fMeca', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
     $('#list').addEventListener('click', e => {
         if (e.target.id === 'toutCocher') { affichees.forEach(d => e.target.checked ? choisies.add(d.ref) : choisies.delete(d.ref)); liste(); return; }
         if (e.target.classList.contains('choix')) { e.target.checked ? choisies.add(e.target.dataset.ref) : choisies.delete(e.target.dataset.ref); e.target.closest('.row').classList.toggle('choisie', e.target.checked); barreLot(); return; }
@@ -1426,7 +1451,7 @@ ul.plain li { margin: 3px 0; }
         $('#sheetIn').innerHTML = `
         <div class="sh-top">
             <button class="retour" id="closeSheet" aria-label="Retour aux demandes"><svg><use href="#i-retour"/></svg><span>Demandes</span></button>
-            <div class="sh-titre"><h2>${esc(x.vehicule || 'Véhicule non précisé')} ${esc(x.annee || '')}</h2>
+            <div class="sh-titre"><h2>${esc(x.vehicule || 'Véhicule non précisé')} ${esc(x.annee || '')}${badgeMeca(x)}</h2>
                 <small>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
