@@ -222,6 +222,25 @@ body.page-fiche main { display: none; }
 .calc-strip b { font-size: 1rem; font-weight: 600; color: var(--ink); }
 .calc-strip .tot { background: #FAF9F6; }
 .calc-strip .tot b { color: var(--marine); }
+.attract { margin: 16px 0 0; border: 1px solid var(--line); border-radius: var(--r-s); padding: 14px 16px; background: var(--surface); }
+.attract-tete { display: flex; gap: 14px; align-items: center; }
+.attract-score { display: flex; align-items: baseline; gap: 2px; min-width: 76px; }
+.attract-score b { font-size: 2rem; font-weight: 700; letter-spacing: -.03em; line-height: 1; }
+.attract-score span { color: var(--ink-4); font-size: .85rem; }
+.attract-ok .attract-score b { color: var(--green); }
+.attract-moyen .attract-score b { color: var(--orange); }
+.attract-bas .attract-score b { color: var(--red); }
+.attract-titre { margin: 0; font-weight: 650; }
+.attract-verdict { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.attract-ok .pill { background: var(--green-1); color: var(--green); }
+.attract-moyen .pill { background: var(--orange-1); color: var(--orange); }
+.attract-bas .pill { background: var(--red-1); color: var(--red); }
+.attract-delai { font-size: .84rem; color: var(--ink-5); }
+.attract-resume { margin: 12px 0 0; font-size: .93rem; }
+.attract-signaux { margin: 8px 0 0; font-size: .84rem; color: var(--ink-5); }
+.attract-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 4px 24px; margin-top: 6px; }
+.attract-cols h4 { margin: 10px 0 4px; font-size: .86rem; }
+.attract-cols li { font-size: .88rem; }
 .retenu { margin: 14px 0 0; font-size: .88rem; color: var(--ink-7); }
 .surveiller { margin: 8px 0 0; font-size: .88rem; color: #8A3F12; }
 details summary { cursor: pointer; color: var(--marine-6); font-weight: 550; font-size: .88rem; margin: 8px 0; }
@@ -918,6 +937,32 @@ ul.plain li { margin: 3px 0; }
     const kv = rows => `<table class="kv">${rows.filter(r => r[1]).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join('')}</table>`;
     const ESTIM_DUREE = 'une à deux minutes';
 
+    // Attractivité à la revente : score, verdict, délai, raisons (issus de l'estimation).
+    function attractivite(a) {
+        if (!a || a.score == null) return '';
+        const V = { acheter: ['Acheter', 'ok'], prix_serre: ['Acheter à prix serré', 'moyen'], eviter: ['Éviter', 'bas'] }[a.verdict] || ['—', 'moyen'];
+        const D = { rapide: 'Revente rapide', moyen: 'Revente moyenne', lent: 'Revente lente' }[a.delai_revente] || '';
+        const T = { hausse: 'en hausse', stable: 'stable', baisse: 'en baisse', non_observee: 'non observée' }[(a.demande || {}).tendance] || '';
+        const P = { serree: 'prix serrés', moyenne: 'prix assez dispersés', forte: 'prix très dispersés' }[(a.offre || {}).dispersion_prix] || '';
+        const li = l => (l || []).map(t => `<li>${esc(t)}</li>`).join('');
+        return `<div class="attract attract-${V[1]}">
+            <div class="attract-tete">
+                <div class="attract-score"><b class="num">${a.score}</b><span>/100</span></div>
+                <div><p class="attract-titre">Attractivité à la revente</p>
+                <p class="attract-verdict"><span class="pill">${V[0]}</span>${D ? ` <span class="attract-delai">${D}${a.delai_commentaire ? ' · ' + esc(a.delai_commentaire) : ''}</span>` : ''}</p></div>
+            </div>
+            ${a.resume ? `<p class="attract-resume">${esc(a.resume)}</p>` : ''}
+            <p class="attract-signaux">${[(a.offre || {}).nb_annonces_comparables ? `${a.offre.nb_annonces_comparables} annonces comparables` : '', P, T ? `demande ${T}` : '', a.confiance ? `confiance ${esc(a.confiance)}` : ''].filter(Boolean).join(' · ')}</p>
+            ${(a.offre || {}).anciennete ? `<p class="attract-signaux"><b>Ancienneté des annonces :</b> ${esc(a.offre.anciennete)}</p>` : ''}
+            <div class="attract-cols">
+                ${(a.facteurs_plus || []).length ? `<div><h4>Ce qui aide</h4><ul class="plain">${li(a.facteurs_plus)}</ul></div>` : ''}
+                ${(a.facteurs_moins || []).length ? `<div><h4>Ce qui freine</h4><ul class="plain">${li(a.facteurs_moins)}</ul></div>` : ''}
+            </div>
+            ${a.contexte_idf ? `<p class="attract-signaux"><b>Île-de-France :</b> ${esc(a.contexte_idf)}</p>` : ''}
+            ${(a.demande || {}).commentaire ? `<p class="attract-signaux"><b>Demande :</b> ${esc(a.demande.commentaire)}</p>` : ''}
+        </div>`;
+    }
+
     function fiche() {
         const d = courant, x = d.data || {}, s = d.suivi || {}, e = d.estimation;
         const tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
@@ -968,6 +1013,7 @@ ul.plain li { margin: 3px 0; }
                     <div><span>− Marge (${esc(e.reglages.marge_pct)} %, min. ${eur(e.reglages.marge_min)})</span><b class="num">${eur(e.calcul.marge)}</b></div>
                     <div class="tot"><span>= Prix max d'achat</span><b class="num">${eur(e.calcul.prix_max_achat)}</b></div>
                 </div>
+                ${attractivite(e.attractivite)}
                 ${e.vehicule_identifie ? `<p class="retenu"><b>Véhicule retenu :</b> ${esc(e.vehicule_identifie)}${e.prix_max_achat_ia ? ` · avis de l'IA sans vos marges : ${eur(e.prix_max_achat_ia)}` : ''}</p>` : ''}
                 ${(e.points_attention || []).length ? `<p class="surveiller"><b>À surveiller :</b> ${e.points_attention.slice(0, 2).map(esc).join(' · ')}</p>` : ''}
                 <details class="plus"><summary>Voir l'analyse complète</summary>
