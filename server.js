@@ -923,6 +923,19 @@ ${indexablePages().map(u => `  <url><loc>${SITE.baseUrl}${u.loc === '/' ? '/' : 
     res.send(xml);
 });
 
+// Sitemap temporaire des anciennes adresses redirigées (301) : il pousse Google et Bing à les
+// revisiter vite, à constater la redirection et à remplacer l'ancienne page dans leurs résultats.
+// À retirer quand la Search Console ne montre plus d'anciennes URL indexées (≈ 2 à 3 mois).
+const redirectedUrls = () => Object.keys(REDIRECTS).map(k => `${SITE.baseUrl}/${k}`);
+app.get('/sitemap-redirections.xml', (req, res) => {
+    const today = new Date().toISOString().slice(0, 10);
+    res.header('Content-Type', 'application/xml');
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${redirectedUrls().map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
+</urlset>`);
+});
+
 // Robots d'IA cités explicitement : leur accès est voulu (citations ChatGPT, Perplexity, Claude…).
 app.get('/robots.txt', (req, res) => {
     const aiBots = ['OAI-SearchBot', 'ChatGPT-User', 'GPTBot', 'PerplexityBot', 'Perplexity-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'Google-Extended', 'Applebot-Extended', 'Bingbot', 'DuckAssistBot', 'MistralAI-User'];
@@ -941,6 +954,7 @@ Disallow: /admino
 Disallow: /api/
 
 Sitemap: ${SITE.baseUrl}/sitemap.xml
+Sitemap: ${SITE.baseUrl}/sitemap-redirections.xml
 `;
     res.header('Content-Type', 'text/plain; charset=utf-8');
     res.send(robots);
@@ -1042,7 +1056,8 @@ const INDEXNOW_KEY = process.env.INDEXNOW_KEY || crypto.createHash('sha256').upd
 app.get(`/${INDEXNOW_KEY}.txt`, (req, res) => res.type('text/plain').send(INDEXNOW_KEY));
 
 function pingIndexNow() {
-    const urlList = indexablePages().map(u => SITE.baseUrl + (u.loc === '/' ? '/' : u.loc));
+    // Pages en ligne + anciennes adresses redirigées (Bing doit voir les 301 pour mettre à jour son index).
+    const urlList = [...indexablePages().map(u => SITE.baseUrl + (u.loc === '/' ? '/' : u.loc)), ...redirectedUrls()].slice(0, 10000);
     const body = JSON.stringify({ host: new URL(SITE.baseUrl).host, key: INDEXNOW_KEY, keyLocation: `${SITE.baseUrl}/${INDEXNOW_KEY}.txt`, urlList });
     fetch('https://api.indexnow.org/indexnow', { method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body })
         .then(r => console.log(`IndexNow : ${urlList.length} URL soumises (HTTP ${r.status})`))
