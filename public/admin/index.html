@@ -249,7 +249,7 @@ body.page-fiche main { display: none; }
 .pr.main small { opacity: .75; }
 .est-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: .82rem; color: var(--ink-5); margin: 12px 0 0; }
 .resume { font-size: .95rem; margin: 14px 0 0; color: var(--ink-7); }
-.calc-strip { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 14px; border: 1px solid var(--line); border-radius: var(--r-s); overflow: hidden; }
+.calc-strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); margin-top: 14px; border: 1px solid var(--line); border-radius: var(--r-s); overflow: hidden; }
 .calc-strip div { padding: 10px 14px; border-right: 1px solid var(--line); }
 .calc-strip div:last-child { border-right: 0; }
 .calc-strip span { display: block; font-size: .74rem; color: var(--ink-5); }
@@ -436,6 +436,57 @@ ul.plain li { margin: 3px 0; }
 .ptr { height: 0; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; color: var(--ink-5); font-size: .82rem; gap: 8px; }
 .ptr.anime { transition: height .2s; }
 
+/* ---------- Véhicules et dépenses ---------- */
+.vh-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; }
+.vh { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; box-shadow: var(--shadow); display: grid; gap: 8px; }
+.vh:hover { border-color: #CFCAC0; }
+.vh-t { display: flex; gap: 10px; align-items: baseline; justify-content: space-between; }
+.vh-t b { font-size: 1rem; font-weight: 650; }
+.vh-t .mono { color: var(--ink-5); font-size: .8rem; }
+.vh-st { display: flex; gap: 8px; align-items: center; }
+.vh-st small { color: var(--ink-4); font-size: .76rem; }
+.vh-c { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px solid var(--line-2); padding-top: 8px; }
+.vh-c span { font-size: .72rem; color: var(--ink-5); }
+.vh-c b { display: block; font-size: .95rem; font-weight: 650; color: var(--ink); }
+.pos { color: var(--green) !important; } .neg { color: var(--red) !important; }
+.pill.vh-stock { background: var(--orange-1); color: var(--orange); }
+.pill.vh-preparation { background: var(--marine-1); color: var(--marine-6); }
+.pill.vh-en_vente { background: var(--gold-1); color: #7A5A12; }
+.pill.vh-vendu { background: var(--green-1); color: var(--green); }
+.soldes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 14px; }
+.solde { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; box-shadow: var(--shadow); }
+.solde span { display: block; font-size: .78rem; color: var(--ink-5); font-weight: 550; }
+.solde b { display: block; font-size: 1.45rem; font-weight: 650; letter-spacing: -.02em; margin: 2px 0; }
+.solde small { color: var(--ink-4); font-size: .76rem; }
+.solde-txt { grid-column: 1 / -1; background: var(--marine-1); color: var(--marine); border-radius: var(--r-s); padding: 12px 14px; font-size: .9rem; line-height: 1.55; }
+.solde-txt span { color: var(--ink-7); }
+.payeur { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 99px; font-size: .72rem; font-weight: 650; white-space: nowrap; }
+.payeur.p-abdoul { background: var(--marine-1); color: var(--marine-6); }
+.payeur.p-youssouf { background: var(--gold-1); color: #7A5A12; }
+.payeur.p-societe { background: #F1EFEA; color: var(--ink-7); }
+.dep-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 12px; align-items: end; margin: 0 0 14px; }
+.dep-form .dep-lib { grid-column: span 2; }
+.dep-act { display: flex; gap: 8px; flex-wrap: wrap; }
+.dep-list { display: grid; }
+.dep { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto 90px auto; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line-2); cursor: pointer; }
+.dep:last-child { border-bottom: 0; }
+.dep-d { font-size: .8rem; color: var(--ink-5); }
+.dep-m b { display: block; font-weight: 600; font-size: .9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dep-m span { display: block; font-size: .78rem; color: var(--ink-5); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dep-mt { text-align: right; font-weight: 650; }
+.dep-a { display: flex; gap: 2px; }
+.dep-a .btn { padding: 0 8px; }
+.dep-mois { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 6px 16px 4px; margin: 0 0 10px; box-shadow: var(--shadow); }
+.dep-mois-h { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--line); text-transform: capitalize; }
+.dep-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+.plus-sheet { position: fixed; inset: 0; z-index: 60; background: rgba(14,35,64,.4); display: flex; align-items: flex-end; }
+.plus-in { width: 100%; background: var(--surface); border-radius: 18px 18px 0 0; padding: 10px 12px calc(14px + env(safe-area-inset-bottom)); display: grid; gap: 4px; }
+.plus-in button, .plus-in a { display: flex; align-items: center; gap: 12px; height: 52px; padding: 0 12px; border: 0; background: none; border-radius: 10px; font-size: 1rem; font-weight: 550; color: var(--ink); text-decoration: none; text-align: left; }
+.plus-in button:active, .plus-in a:active { background: #F4F2EE; }
+.plus-in svg { width: 22px; height: 22px; color: var(--ink-5); }
+.plus-in .count { margin-left: auto; }
+.pilotage-t { margin: 0 0 8px; font-size: .78rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-5); }
+
 /* ---------- Confirmation ---------- */
 .confirm { position: fixed; inset: 0; z-index: 90; background: rgba(14,35,64,.45); display: grid; place-items: center; padding: 16px; }
 .confirm-in { width: 100%; max-width: 400px; background: var(--surface); border-radius: 16px; padding: 22px 20px 18px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
@@ -450,6 +501,7 @@ ul.plain li { margin: 3px 0; }
 @media (max-width: 1180px) {
     .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .tb-grid { grid-template-columns: minmax(0, 1fr); }
+    .dep-grid { grid-template-columns: minmax(0, 1fr); }
     .row { grid-template-columns: 22px 88px minmax(0,1.2fr) minmax(0,1.6fr) 104px 140px; }
     .row .ville, .row .ph { display: none; }
     .suivi-chiffres { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -497,6 +549,23 @@ ul.plain li { margin: 3px 0; }
     .panneau-h b { font-size: 1.05rem; font-weight: 650; }
     .filtres-grille { grid-template-columns: 1fr 1fr; gap: 12px 10px; }
     .panneau-pied .btn { flex: 1 1 auto; justify-content: center; }
+
+    /* Véhicules, dépenses */
+    .vh-list { grid-template-columns: minmax(0, 1fr); }
+    .soldes { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .solde { padding: 10px; }
+    .solde b { font-size: 1.05rem; }
+    .solde span { font-size: .7rem; }
+    .dep { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "m mt" "d p" "a a"; gap: 2px 10px; }
+    .dep-m { grid-area: m; } .dep-mt { grid-area: mt; } .dep-d { grid-area: d; } .dep .payeur { grid-area: p; justify-self: end; } .dep-a { grid-area: a; justify-content: flex-end; }
+    .dep-form .dep-lib { grid-column: 1 / -1; }
+    .dep-form { grid-template-columns: 1fr 1fr; }
+    .vh-prix { grid-template-columns: 1fr 1fr; }
+    [data-view="depenses"] .toolbar { flex-wrap: wrap; }
+    [data-view="depenses"] .toolbar .in { flex: 1 1 30%; min-width: 0; }
+    [data-view="depenses"] .toolbar .btn { flex: 1 1 100%; justify-content: center; display: inline-flex !important; }
+    [data-view="vehicules"] .toolbar { flex-wrap: wrap; }
+    [data-view="vehicules"] .toolbar .btn { flex: 1 1 100%; justify-content: center; }
 
     /* Tableau de bord */
     .tb-bar { margin: 0 0 12px; }
@@ -557,7 +626,7 @@ ul.plain li { margin: 3px 0; }
     .prices { grid-template-columns: 1fr 1fr; gap: 8px; }
     .pr { padding: 12px; }
     .pr b { font-size: 1.3rem; }
-    .calc-strip { grid-template-columns: 1fr; }
+    .calc-strip { grid-template-columns: 1fr; grid-auto-flow: row; }
     .calc-strip div { display: flex; justify-content: space-between; align-items: baseline; border-right: 0; border-bottom: 1px solid var(--line-2); padding: 9px 12px; }
     .calc-strip div:last-child { border-bottom: 0; }
     .calc-strip span { font-size: .84rem; }
@@ -594,6 +663,9 @@ ul.plain li { margin: 3px 0; }
     <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><path d="M4.5 6l7.5 6 7.5-6"/></symbol>
     <symbol id="i-reg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
     <symbol id="i-stat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6.5 16.5v-4M10.5 16.5V8M14.5 16.5v-6M18.5 16.5V5"/></symbol>
+    <symbol id="i-cle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></symbol>
+    <symbol id="i-euro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 6.5A7 7 0 1 0 17.5 17.5"/><path d="M4.5 10.5h9M4.5 13.5h9"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></symbol>
     <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4"/><path d="M6 4.5c3.5-1.8 6.5 1.8 12 0v8c-5.5 1.8-8.5-1.8-12 0"/></symbol>
     <symbol id="i-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h9l3 3v13H6z"/><path d="M9 10h6M9 13.5h6M9 17h4"/></symbol>
     <symbol id="i-cherche" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></symbol>
@@ -623,6 +695,8 @@ ul.plain li { margin: 3px 0; }
         <div class="brand"><img src="/images/logo-lunicar-blanc.webp" width="556" height="120" alt="LUNICAR"><small>ADMIN</small></div>
         <nav class="tabs" id="tabs">
             <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
+            <button data-tab="vehicules"><svg><use href="#i-cle"/></svg>Véhicules</button>
+            <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Dépenses</button>
             <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
             <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
             <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
@@ -689,12 +763,36 @@ ul.plain li { margin: 3px 0; }
             <div class="list" id="list"></div>
         </section>
 
+        <section data-view="vehicules" hidden>
+            <div class="page-h"><h1>Véhicules achetés</h1><span id="vhSous"></span></div>
+            <div class="kpis" id="vhKpis"></div>
+            <div class="toolbar"><div class="segs" id="vhSegs" style="margin:0;flex:1"></div><button class="btn btn-p" id="vhAjout" type="button">+ Ajouter un véhicule</button></div>
+            <div class="vh-list" id="vhList"></div>
+        </section>
+
+        <section data-view="depenses" hidden>
+            <div class="page-h"><h1>Dépenses</h1><span>qui a payé quoi, entre Abdoul-Khader, Youssouf et la société</span></div>
+            <div class="soldes" id="soldes"></div>
+            <div class="tb-card" id="depForm" style="margin:0 0 14px"></div>
+            <div class="toolbar">
+                <select class="in" id="depPer" aria-label="Période"><option value="mois">Ce mois-ci</option><option value="mprec">Mois dernier</option><option value="90">3 derniers mois</option><option value="an">Cette année</option><option value="">Tout</option></select>
+                <select class="in" id="depPay" aria-label="Payé par"><option value="">Tous les payeurs</option><option value="abdoul">Abdoul-Khader</option><option value="youssouf">Youssouf</option><option value="societe">Société</option></select>
+                <select class="in" id="depTyp" aria-label="Type"><option value="">Toutes les dépenses</option><option value="generales">Dépenses générales</option><option value="vehicules">Dépenses véhicules</option><option value="remb">Remboursements</option></select>
+                <a class="btn" id="depCsv" href="#"><svg><use href="#i-dl"/></svg>Export comptable</a>
+            </div>
+            <p class="sub" id="depTotal" style="margin:0 0 10px"></p>
+            <div class="dep-grid"><div id="depList"></div><div class="tb-card"><h3>Par catégorie</h3><p class="sub">Sur la période et les filtres choisis.</p><div class="hbars" id="depCats"></div></div></div>
+        </section>
+
         <section data-view="stats" hidden>
             <div class="page-h"><h1>Tableau de bord</h1><span id="tbSous"></span></div>
             <div class="tb-bar">
                 <div class="segs" id="tbPeriode"></div>
                 <select class="in" id="tbType" aria-label="Demandes comptées"><option value="">Toutes les demandes</option><option value="envoyees">Formulaires envoyés</option><option value="abandon">Abandons seulement</option></select>
             </div>
+            <p class="pilotage-t">Activité et argent</p>
+            <div class="kpis" id="tbPilotage"></div>
+            <p class="pilotage-t">Demandes</p>
             <div class="kpis" id="tbKpis"></div>
             <div class="tb-grid">
                 <div class="tb-card tb-wide">
@@ -751,12 +849,26 @@ ul.plain li { margin: 3px 0; }
             <div class="page-h"><h1>Réglages et import</h1></div>
             <div class="card">
                 <h3>Calcul du prix maximum d'achat</h3>
-                <p class="sub">Prix max = prix de vente estimé − remise en état − frais fixes − marge (en % du prix de vente, jamais sous la marge minimale), arrondi à l'inférieur.</p>
+                <p class="sub">Prix max = prix de vente estimé − remise en état − frais fixes − déplacement − marge (en % du prix de vente, jamais sous la marge minimale), arrondi à l'inférieur.</p>
                 <form id="regForm" class="form-grid">
                     <label class="f">Marge visée (%)<input class="in num" name="marge_pct" type="number" min="0" step="1"></label>
                     <label class="f">Marge minimale (€)<input class="in num" name="marge_min" type="number" min="0" step="50"></label>
                     <label class="f">Frais fixes par véhicule (€)<input class="in num" name="frais_fixes" type="number" min="0" step="10"></label>
                     <label class="f">Arrondi (€)<input class="in num" name="arrondi" type="number" min="1" step="10"></label>
+                    <p class="sub" style="grid-column:1/-1;margin:6px 0 0"><b>Déplacement pour aller chercher la voiture</b> (déduit du prix max) : train à l'aller, retour au volant avec carburant et péages. Distance routière calculée depuis le code postal de départ.</p>
+                    <label class="f">Départ (code postal)<input class="in num" name="depart_cp" inputmode="numeric" maxlength="5"></label>
+                    <label class="f">Gazole (€/L)<input class="in num" name="prix_gazole" type="number" step="0.01" min="0"></label>
+                    <label class="f">Essence (€/L)<input class="in num" name="prix_essence" type="number" step="0.01" min="0"></label>
+                    <label class="f">Conso. diesel (L/100)<input class="in num" name="conso_diesel" type="number" step="0.1" min="0"></label>
+                    <label class="f">Conso. essence (L/100)<input class="in num" name="conso_essence" type="number" step="0.1" min="0"></label>
+                    <label class="f">Conso. hybride (L/100)<input class="in num" name="conso_hybride" type="number" step="0.1" min="0"></label>
+                    <label class="f">Électrique (€/100 km)<input class="in num" name="cout_electrique_100km" type="number" step="0.5" min="0"></label>
+                    <label class="f">Péages (€/km)<input class="in num" name="peage_eur_km" type="number" step="0.005" min="0"></label>
+                    <label class="f">Péages au-delà de (km)<input class="in num" name="peage_seuil_km" type="number" step="5" min="0"></label>
+                    <label class="f">Train (€/km, si pas de prix trouvé)<input class="in num" name="train_eur_km" type="number" step="0.01" min="0"></label>
+                    <label class="f">Billet de train minimum (€)<input class="in num" name="train_min" type="number" step="1" min="0"></label>
+                    <label class="f">Trajet local jusqu'à (km)<input class="in num" name="train_local_km" type="number" step="5" min="0"></label>
+                    <label class="f">Ticket trajet local (€)<input class="in num" name="train_local_eur" type="number" step="0.5" min="0"></label>
                     <div style="align-self:end"><button class="btn btn-p">Enregistrer</button></div>
                 </form>
                 <p class="sub" style="margin:12px 0 0">Les nouvelles valeurs s'appliquent aux prochaines estimations (relancez une estimation pour la recalculer).</p>
@@ -787,15 +899,22 @@ ul.plain li { margin: 3px 0; }
         </section>
     </main>
     <div class="sheet" id="sheet" hidden><div class="sheet-in" id="sheetIn"></div></div>
+    <div class="sheet" id="vpage" hidden><div class="sheet-in" id="vpageIn"></div></div>
 </div>
 
 <nav class="navbas" id="navbas" hidden>
     <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
+    <button data-tab="vehicules"><svg><use href="#i-cle"/></svg>Véhicules</button>
+    <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Dépenses</button>
     <button data-tab="stats"><svg><use href="#i-stat"/></svg>Stats</button>
+    <button data-tab="plus"><svg><use href="#i-plus"/></svg>Plus<span class="count" data-count="msg"></span></button>
+</nav>
+<div class="plus-sheet" id="plusSheet" hidden><div class="plus-in">
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
     <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
-    <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages</button>
-</nav>
+    <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
+    <a href="/admino/articles"><svg><use href="#i-art"/></svg>Articles du blog</a>
+</div></div>
 <div class="voile" id="voile" hidden></div>
 
 <div class="lightbox" id="lb" hidden></div>
@@ -947,19 +1066,29 @@ ul.plain li { margin: 3px 0; }
     }
 
     // ---------------- Onglets
+    function allerOnglet(tab) {
+        $('#plusSheet').hidden = true;
+        if (!$('#sheet').hidden || !$('#vpage').hidden) { history.pushState({}, '', BASE); quitterFiche(); quitterVehicule(); }
+        const dansPlus = ['photos', 'messages', 'reglages'].includes(tab);
+        document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
+        document.querySelectorAll('#navbas button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab || (dansPlus && x.dataset.tab === 'plus')));
+        document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== tab);
+        window.scrollTo(0, 0);
+        if (tab === 'photos') dossiers();
+        if (tab === 'reglages') reglages();
+        if (tab === 'messages') rendreMessages();
+        if (tab === 'vehicules') vueVehicules();
+        if (tab === 'depenses') vueDepenses();
+        if (tab === 'stats') tableau();
+    }
     const onglet = e => {
         const b = e.target.closest('button[data-tab]'); if (!b) return;
-        if (!$('#sheet').hidden) { history.pushState({}, '', BASE); quitterFiche(); }
-        document.querySelectorAll('#tabs button, #navbas button').forEach(x => x.classList.toggle('on', x.dataset.tab === b.dataset.tab));
-        document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== b.dataset.tab);
-        window.scrollTo(0, 0);
-        if (b.dataset.tab === 'photos') dossiers();
-        if (b.dataset.tab === 'stats') tableau();
-        if (b.dataset.tab === 'reglages') reglages();
-        if (b.dataset.tab === 'messages') rendreMessages();
+        if (b.dataset.tab === 'plus') { $('#plusSheet').hidden = false; return; }
+        allerOnglet(b.dataset.tab);
     };
     $('#tabs').addEventListener('click', onglet);
     $('#navbas').addEventListener('click', onglet);
+    $('#plusSheet').addEventListener('click', e => { if (e.target.id === 'plusSheet') $('#plusSheet').hidden = true; else onglet(e); });
     const compter = (k, n) => document.querySelectorAll(`[data-count="${k}"]`).forEach(c => c.textContent = n || '');
 
     // ---------------- Demandes
@@ -1307,6 +1436,7 @@ ul.plain li { margin: 3px 0; }
         const jourIsoMoins = n => new Date(new Date(auj + 'T12:00:00Z').getTime() - n * 864e5).toISOString().slice(0, 10);
         const debut = jourIsoMoins(tbJours - 1), debutPrec = jourIsoMoins(2 * tbJours - 1);
         const tous = demandes.filter(garde).map(d => ({ d, j: jourParis(d.created_at) }));
+        pilotage(debut, debutPrec);
         const per = tous.filter(x => x.j >= debut).map(x => x.d), prec = tous.filter(x => x.j >= debutPrec && x.j < debut).map(x => x.d);
         const n = per.length, nc = k => per.filter(d => d.canal === k).length;
         $('#tbSous').textContent = `${n} demande${n > 1 ? 's' : ''} sur ${PERIODES.find(p => p[0] === tbJours)[1].toLowerCase()}`;
@@ -1426,8 +1556,257 @@ ul.plain li { margin: 3px 0; }
     $('#tbCanaux').addEventListener('click', e => {
         const tr = e.target.closest('[data-canal]'); if (!tr) return;
         raz(); $('#fCanal').value = tr.dataset.canal; $('#fPeriode').value = String(tbJours); $('#fArchive').value = 'tout';
-        document.querySelector('#navbas button[data-tab="demandes"]').click(); liste();
+        allerOnglet('demandes'); liste();
     });
+
+    // ---------------- Compta : véhicules achetés et dépenses entre associés
+    let compta = null, vhSeg = 'actifs', depEdit = null;
+    const PAYCOURT = { abdoul: 'Abdoul-Khader', youssouf: 'Youssouf', societe: 'Société' };
+    const euro = v => (Number(v) || 0).toLocaleString('fr-FR', { minimumFractionDigits: Number(v) % 1 ? 2 : 0, maximumFractionDigits: 2 }) + ' €';
+    const signe = v => v == null ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') + euro(Math.abs(v));
+    const payeurDefaut = () => { try { return localStorage.getItem('lunicarPayeur') || 'abdoul'; } catch (e) { return 'abdoul'; } };
+    const retenirPayeur = v => { try { localStorage.setItem('lunicarPayeur', v); } catch (e) {} };
+    const selPayeur = (name, val, sauf) => `<select class="in" name="${name}">${Object.entries(PAYCOURT).filter(([k]) => k !== sauf).map(([k, l]) => `<option value="${k}"${k === val ? ' selected' : ''}>${l}</option>`).join('')}</select>`;
+    const jourAuj = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
+    const dateCourte = iso => iso ? new Date(iso + 'T12:00:00Z').toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', timeZone: 'UTC' }) : '';
+    async function chargerCompta() { compta = await api('/api/admin/compta'); return compta; }
+    const vehiculeDe = vid => compta && compta.vehicules.find(v => v.id === vid);
+
+    // Liste des véhicules
+    async function vueVehicules() {
+        try { await chargerCompta(); } catch (e) { return toast(e.message); }
+        const V = compta.vehicules, actifs = V.filter(v => v.statut !== 'vendu'), vendus = V.filter(v => v.statut === 'vendu');
+        const immob = actifs.reduce((t, v) => t + v.bilan.cout, 0), ca = vendus.reduce((t, v) => t + (Number(v.prix_vente) || 0), 0);
+        const marge = vendus.reduce((t, v) => t + (v.bilan.marge || 0), 0);
+        const delais = vendus.map(v => v.bilan.jours).filter(j => j != null);
+        $('#vhKpis').innerHTML = [
+            [actifs.length, 'en stock'], [euro(immob), 'argent immobilisé'], [vendus.length, 'vendus'], [euro(ca), 'chiffre d\'affaires'],
+            [signe(marge), 'marge totale', marge < 0 ? 'alerte' : ''], [delais.length ? Math.round(delais.reduce((a, b) => a + b, 0) / delais.length) + ' j' : '—', 'délai moyen de revente']
+        ].map(([v, l, c]) => `<div class="kpi ${c || ''}"><b class="num">${v}</b><span>${l}</span></div>`).join('');
+        $('#vhSous').textContent = `${V.length} véhicule${V.length > 1 ? 's' : ''}`;
+        $('#vhSegs').innerHTML = [['actifs', 'En stock', actifs.length], ['vendus', 'Vendus', vendus.length], ['tous', 'Tous', V.length]]
+            .map(([k, l, n]) => `<button class="seg${vhSeg === k ? ' on' : ''}" data-vhseg="${k}">${l}<b class="num">${n}</b></button>`).join('');
+        const liste = vhSeg === 'actifs' ? actifs : vhSeg === 'vendus' ? vendus : V;
+        $('#vhList').innerHTML = liste.length ? liste.map(v => {
+            const b = v.bilan, vendu = v.statut === 'vendu';
+            return `<button class="vh" data-vh="${esc(v.id)}">
+                <div class="vh-t"><b>${esc(v.libelle || 'Véhicule')}</b>${v.plaque ? `<span class="mono">${esc(v.plaque)}</span>` : ''}</div>
+                <div class="vh-st"><span class="pill vh-${esc(v.statut)}">${esc(compta.statuts[v.statut] || v.statut)}</span>${b.jours != null ? `<small>${vendu ? `revendu en ${b.jours} j` : `J+${b.jours}`}</small>` : ''}</div>
+                <div class="vh-c"><span>Coût de revient<b class="num">${euro(b.cout)}</b></span><span>${vendu ? 'Vendu' : 'Vente estimée'}<b class="num">${vendu ? euro(v.prix_vente) : v.estimation_vente ? euro(v.estimation_vente) : '—'}</b></span><span>${vendu ? 'Marge' : 'Marge prévue'}<b class="num ${(vendu ? b.marge : b.marge_prevue) < 0 ? 'neg' : 'pos'}">${signe(vendu ? b.marge : b.marge_prevue)}</b></span></div>
+            </button>`;
+        }).join('') : `<div class="empty">${vhSeg === 'vendus' ? 'Aucun véhicule vendu pour l\'instant.' : 'Aucun véhicule. Passez une demande en « Achetée » ou ajoutez-en un.'}</div>`;
+    }
+    $('#vhSegs').addEventListener('click', e => { const b = e.target.closest('[data-vhseg]'); if (b) { vhSeg = b.dataset.vhseg; vueVehicules(); } });
+    $('#vhList').addEventListener('click', e => { const b = e.target.closest('[data-vh]'); if (b) ouvrirVehicule(b.dataset.vh); });
+    $('#vhAjout').onclick = async () => {
+        try { const v = await api('/api/admin/compta/vehicules', { method: 'POST', body: JSON.stringify({ libelle: 'Nouveau véhicule', payeur_achat: payeurDefaut() }) }); await chargerCompta(); ouvrirVehicule(v.id); }
+        catch (e) { toast(e.message); }
+    };
+
+    // Page d'un véhicule : /admino/vehicule/ID
+    function ouvrirVehicule(vid) { history.pushState({ veh: vid }, '', BASE + '/vehicule/' + vid); afficherVehicule(vid); }
+    async function afficherVehicule(vid) {
+        if (!vehiculeDe(vid)) { try { await chargerCompta(); } catch (e) { return toast(e.message); } }
+        const v = vehiculeDe(vid);
+        if (!v) { toast('Véhicule introuvable'); history.replaceState({}, '', BASE); return quitterVehicule(); }
+        const b = v.bilan, vendu = v.statut === 'vendu';
+        const deps = compta.depenses.filter(d => d.vehicule_id === v.id);
+        document.body.classList.add('page-fiche'); $('#vpage').hidden = false;
+        document.title = `${v.libelle} · Lunicar`;
+        const cats = compta.categories.vehicule;
+        $('#vpageIn').innerHTML = `
+        <div class="sh-top">
+            <button class="retour" id="vRetour" aria-label="Retour aux véhicules"><svg><use href="#i-retour"/></svg><span>Véhicules</span></button>
+            <div class="sh-titre"><h2>${esc(v.libelle || 'Véhicule')}</h2><small>${[v.plaque && `<span class="mono">${esc(v.plaque)}</span>`, v.annee && esc(v.annee), v.kilometrage && Number(v.kilometrage).toLocaleString('fr-FR') + ' km', v.date_achat && 'acheté le ' + dateCourte(v.date_achat)].filter(Boolean).join(' · ')}</small></div>
+            <select class="in" id="vStatut">${Object.entries(compta.statuts).map(([k, l]) => `<option value="${k}"${k === v.statut ? ' selected' : ''}>${esc(l)}</option>`).join('')}</select>
+        </div>
+        <div class="sh-body">
+            <div class="prices vh-prix">
+                <div class="pr"><span>Prix d'achat</span><b class="num">${euro(v.prix_achat)}</b><small>${v.prix_achat ? 'payé par ' + PAYCOURT[v.payeur_achat || 'societe'] : 'à renseigner'}</small></div>
+                <div class="pr"><span>Dépenses</span><b class="num">${euro(b.frais)}</b><small>${b.nb_depenses} ligne${b.nb_depenses > 1 ? 's' : ''}</small></div>
+                <div class="pr main"><span>Coût de revient</span><b class="num">${euro(b.cout)}</b><small>achat + dépenses</small></div>
+                <div class="pr"><span>${vendu ? 'Marge réalisée' : 'Marge prévue'}</span><b class="num ${(vendu ? b.marge : b.marge_prevue) < 0 ? 'neg' : 'pos'}">${signe(vendu ? b.marge : b.marge_prevue)}</b><small>${vendu ? 'vendu ' + euro(v.prix_vente) : v.estimation_vente ? 'si vendu ' + euro(v.estimation_vente) : 'renseigner la vente estimée'}</small></div>
+            </div>
+            <section class="sec">
+                <h3>Dépenses du véhicule <small>${Object.entries(b.par_payeur).filter(([, m]) => m).map(([k, m]) => `${PAYCOURT[k]} ${euro(m)}`).join(' · ') || 'aucune'}</small></h3>
+                <form id="vDepForm" class="dep-form">
+                    <label class="f">Montant (€)<input class="in num" name="montant" inputmode="decimal" required placeholder="0"></label>
+                    <label class="f">Catégorie<select class="in" name="categorie">${cats.map(c => `<option>${esc(c)}</option>`).join('')}</select></label>
+                    <label class="f">Payé par${selPayeur('payeur', payeurDefaut())}</label>
+                    <label class="f">Date<input class="in" type="date" name="date" value="${jourAuj()}"></label>
+                    <label class="f dep-lib">Détail<input class="in" name="libelle" placeholder="Ex. : billet Paris → Lyon, plaquettes AV…"></label>
+                    <div class="dep-act"><label class="btn">Justificatif<input type="file" name="justificatif" accept="image/*,application/pdf" hidden></label><button class="btn btn-p">Ajouter</button></div>
+                </form>
+                ${deps.length ? `<div class="dep-list">${deps.map(ligneDepense).join('')}</div>` : '<p class="vide">Aucune dépense pour l\'instant : train, carburant, péages, réparations, contrôle technique…</p>'}
+                ${Object.keys(b.par_categorie).length > 1 ? `<div class="hbars" style="margin-top:14px">${hbars(Object.entries(b.par_categorie).sort((x, y) => y[1] - x[1]).map(([c, m]) => [c, Math.round(m)]), Math.max(...Object.values(b.par_categorie)))}</div>` : ''}
+            </section>
+            <section class="sec">
+                <h3>Achat et vente</h3>
+                <form id="vForm" class="form-grid">
+                    <label class="f">Véhicule<input class="in" name="libelle" value="${esc(v.libelle || '')}"></label>
+                    <label class="f">Plaque<input class="in" name="plaque" value="${esc(v.plaque || '')}" autocapitalize="characters"></label>
+                    <label class="f">Année<input class="in num" name="annee" value="${esc(v.annee || '')}" inputmode="numeric"></label>
+                    <label class="f">Kilométrage<input class="in num" name="kilometrage" value="${esc(v.kilometrage || '')}" inputmode="numeric"></label>
+                    <label class="f">Date d'achat<input class="in" type="date" name="date_achat" value="${esc(v.date_achat || '')}"></label>
+                    <label class="f">Prix d'achat (€)<input class="in num" name="prix_achat" value="${v.prix_achat || ''}" inputmode="decimal"></label>
+                    <label class="f">Achat payé par${selPayeur('payeur_achat', v.payeur_achat || 'societe')}</label>
+                    <label class="f">Vente estimée (€)<input class="in num" name="estimation_vente" value="${v.estimation_vente || ''}" inputmode="decimal"></label>
+                    <label class="f">Prix de vente (€)<input class="in num" name="prix_vente" value="${v.prix_vente || ''}" inputmode="decimal"></label>
+                    <label class="f">Date de vente<input class="in" type="date" name="date_vente" value="${esc(v.date_vente || '')}"></label>
+                    <label class="f">Encaissé par${selPayeur('encaisse_par', v.encaisse_par || 'societe')}</label>
+                    <label class="f">Vendu via<input class="in" name="canal_vente" value="${esc(v.canal_vente || '')}" placeholder="Leboncoin, marchand, export…"></label>
+                    <label class="f" style="grid-column:1/-1">Notes<textarea class="in" name="notes" rows="2">${esc(v.notes || '')}</textarea></label>
+                    <div><button class="btn btn-p">Enregistrer</button></div>
+                </form>
+            </section>
+            <div class="danger">${v.ref ? `<button class="btn" id="vDemande">Voir la demande ${esc(v.ref)}</button>` : ''}<button class="btn btn-d" id="vSuppr">Supprimer le véhicule</button></div>
+        </div>`;
+        $('#vRetour').onclick = () => { if (history.state && history.state.veh) history.back(); else { history.replaceState({}, '', BASE); quitterVehicule(); } };
+        const sauverV = async champs => {
+            try { await api('/api/admin/compta/vehicules/' + v.id, { method: 'PATCH', body: JSON.stringify(champs) }); await chargerCompta(); afficherVehicule(v.id); toast('Véhicule enregistré'); }
+            catch (e) { toast(e.message); }
+        };
+        $('#vStatut').onchange = e => sauverV({ statut: e.target.value });
+        $('#vForm').onsubmit = e => { e.preventDefault(); sauverV(Object.fromEntries(new FormData(e.target))); };
+        $('#vDepForm').onsubmit = async e => {
+            e.preventDefault();
+            const fd = new FormData(e.target); fd.append('vehicule_id', v.id); retenirPayeur(fd.get('payeur'));
+            if (!(fd.get('justificatif') || {}).size) fd.delete('justificatif');
+            try { await api('/api/admin/compta/depenses', { method: 'POST', body: fd }); await chargerCompta(); afficherVehicule(v.id); toast('Dépense ajoutée'); }
+            catch (err) { toast(err.message); }
+        };
+        $('#vDepForm [name=justificatif]').onchange = ev => { ev.target.closest('label').firstChild.textContent = ev.target.files.length ? '✓ Justificatif' : 'Justificatif'; };
+        lierDepenses($('#vpageIn'), () => afficherVehicule(v.id));
+        if ($('#vDemande')) $('#vDemande').onclick = () => { quitterVehicule(); history.pushState({ ref: v.ref }, '', BASE + '/demande/' + v.ref); afficherFiche(v.ref); };
+        $('#vSuppr').onclick = async () => {
+            if (await demander({ titre: 'Supprimer ce véhicule ?', texte: `${v.libelle} et ses ${deps.length} dépense(s) seront effacés de la compta. La demande d'origine n'est pas touchée.`, boutons: [['ok', 'Supprimer définitivement', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
+            try { await api('/api/admin/compta/vehicules/' + v.id, { method: 'DELETE' }); history.replaceState({}, '', BASE); quitterVehicule(); allerOnglet('vehicules'); toast('Véhicule supprimé'); } catch (e) { toast(e.message); }
+        };
+        window.scrollTo(0, 0);
+    }
+    function quitterVehicule() { if ($('#vpage').hidden) return; $('#vpage').hidden = true; if ($('#sheet').hidden) document.body.classList.remove('page-fiche'); document.title = 'Admin · LUNICAR'; if (!document.querySelector('[data-view="vehicules"]').hidden) vueVehicules(); }
+
+    // Une ligne de dépense (liste générale et page véhicule)
+    function ligneDepense(d) {
+        const v = d.vehicule_id && vehiculeDe(d.vehicule_id);
+        return `<div class="dep" data-dep="${esc(d.id)}">
+            <div class="dep-d">${dateCourte(d.date)}</div>
+            <div class="dep-m"><b>${esc(d.libelle || d.categorie)}</b><span>${[d.libelle ? esc(d.categorie) : '', v && !$('#vpage').hidden ? '' : v ? '🚗 ' + esc(v.libelle) : '', d.beneficiaire ? 'à ' + PAYCOURT[d.beneficiaire] : ''].filter(Boolean).join(' · ')}</span></div>
+            <span class="payeur p-${esc(d.payeur)}">${PAYCOURT[d.payeur]}</span>
+            <b class="dep-mt num">${euro(d.montant)}</b>
+            <div class="dep-a">${d.justificatif ? `<a class="btn btn-s btn-ghost" href="${photoUrl(d.justificatif.path)}" target="_blank" title="Justificatif">📎</a>` : ''}<button class="btn btn-s btn-ghost" data-dep-del="${esc(d.id)}" aria-label="Supprimer">✕</button></div>
+        </div>`;
+    }
+    function lierDepenses(racine, apres) {
+        racine.querySelectorAll('[data-dep-del]').forEach(b => b.onclick = async ev => {
+            ev.stopPropagation();
+            const d = compta.depenses.find(x => x.id === b.dataset.depDel);
+            if (await demander({ titre: 'Supprimer cette dépense ?', texte: d ? `${d.libelle || d.categorie} · ${euro(d.montant)} · payé par ${PAYCOURT[d.payeur]}` : '', boutons: [['ok', 'Supprimer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
+            try { await api('/api/admin/compta/depenses/' + b.dataset.depDel, { method: 'DELETE' }); await chargerCompta(); apres(); toast('Dépense supprimée'); } catch (e) { toast(e.message); }
+        });
+    }
+
+    // Onglet Dépenses : soldes entre associés, saisie, liste filtrée
+    async function vueDepenses() {
+        try { await chargerCompta(); } catch (e) { return toast(e.message); }
+        const S = compta.soldes;
+        $('#soldes').innerHTML = ['abdoul', 'youssouf', 'societe'].map(k => `<div class="solde p-${k}"><span>${esc(compta.payeurs[k])}</span><b class="num">${euro(S[k].paye)}</b><small>payés${S[k].encaisse ? ` · ${euro(S[k].encaisse)} encaissés` : ''}</small></div>`).join('')
+            + `<div class="solde-txt">${['abdoul', 'youssouf'].map(k => S[k].net > 0 ? `La société doit <b>${euro(S[k].net)}</b> à ${PAYCOURT[k]} (avances non remboursées).` : S[k].net < 0 ? `${PAYCOURT[k]} a encaissé <b>${euro(-S[k].net)}</b> de plus qu'il n'a payé.` : '').filter(Boolean).join('<br>') || 'Aucune avance en cours.'}
+               ${S.equilibre ? `<br><span>Pour équilibrer entre vous deux (parts égales) : ${PAYCOURT[S.equilibre.de]} verse <b>${euro(S.equilibre.montant)}</b> à ${PAYCOURT[S.equilibre.a]}.</span>` : ''}</div>`;
+        formDepense();
+        listeDepenses();
+    }
+    function formDepense() {
+        const d = depEdit ? compta.depenses.find(x => x.id === depEdit) : null;
+        const vehs = compta.vehicules.filter(v => v.statut !== 'vendu' || (d && d.vehicule_id === v.id));
+        const vid = d ? d.vehicule_id || '' : '';
+        const cats = vid ? compta.categories.vehicule : compta.categories.generales;
+        $('#depForm').innerHTML = `<h3>${d ? 'Modifier la dépense' : 'Nouvelle dépense'}</h3>
+            <form id="depF" class="dep-form">
+                <label class="f">Montant (€)<input class="in num" name="montant" inputmode="decimal" required value="${d ? d.montant : ''}" placeholder="0"></label>
+                <label class="f">Véhicule<select class="in" name="vehicule_id"><option value="">— Dépense générale —</option>${vehs.map(v => `<option value="${esc(v.id)}"${v.id === vid ? ' selected' : ''}>${esc(v.libelle)}${v.plaque ? ' · ' + esc(v.plaque) : ''}</option>`).join('')}</select></label>
+                <label class="f">Catégorie<select class="in" name="categorie">${cats.map(c => `<option${d && d.categorie === c ? ' selected' : ''}>${esc(c)}</option>`).join('')}</select></label>
+                <label class="f">Payé par${selPayeur('payeur', d ? d.payeur : payeurDefaut())}</label>
+                <label class="f" id="depBenef"${d && d.beneficiaire ? '' : ' hidden'}>Remboursé à${selPayeur('beneficiaire', d && d.beneficiaire || 'abdoul', 'societe')}</label>
+                <label class="f">Date<input class="in" type="date" name="date" value="${d ? d.date : jourAuj()}"></label>
+                <label class="f dep-lib">Détail<input class="in" name="libelle" value="${esc(d ? d.libelle : '')}" placeholder="Ex. : Google Ads octobre, assurance flotte…"></label>
+                <div class="dep-act"><label class="btn">${d && d.justificatif ? '✓ Justificatif (remplacer)' : 'Justificatif'}<input type="file" name="justificatif" accept="image/*,application/pdf" hidden></label>
+                    <button class="btn btn-p">${d ? 'Enregistrer' : 'Ajouter'}</button>${d ? '<button type="button" class="btn" id="depAnnul">Annuler</button>' : ''}</div>
+            </form>`;
+        const f = $('#depF');
+        const majBenef = () => { $('#depBenef').hidden = f.categorie.value !== compta.remboursement; };
+        f.vehicule_id.onchange = () => { const c = f.vehicule_id.value ? compta.categories.vehicule : compta.categories.generales; f.categorie.innerHTML = c.map(x => `<option>${esc(x)}</option>`).join(''); majBenef(); };
+        f.categorie.onchange = majBenef; majBenef();
+        f.justificatif.onchange = ev => { ev.target.closest('label').firstChild.textContent = ev.target.files.length ? '✓ Justificatif' : 'Justificatif'; };
+        if ($('#depAnnul')) $('#depAnnul').onclick = () => { depEdit = null; formDepense(); };
+        f.onsubmit = async e => {
+            e.preventDefault();
+            const fd = new FormData(f); retenirPayeur(fd.get('payeur'));
+            if (!(fd.get('justificatif') || {}).size) fd.delete('justificatif');
+            if (f.categorie.value !== compta.remboursement) fd.delete('beneficiaire');
+            try {
+                await api('/api/admin/compta/depenses' + (d ? '/' + d.id : ''), { method: d ? 'PATCH' : 'POST', body: fd });
+                depEdit = null; toast(d ? 'Dépense modifiée' : 'Dépense ajoutée'); vueDepenses();
+            } catch (err) { toast(err.message); }
+        };
+    }
+    function listeDepenses() {
+        const per = $('#depPer').value, pay = $('#depPay').value, typ = $('#depTyp').value, auj = jourAuj();
+        const debut = per === 'mois' ? auj.slice(0, 8) + '01' : per === 'mprec' ? (() => { const x = new Date(auj.slice(0, 8) + '01T12:00:00Z'); x.setUTCMonth(x.getUTCMonth() - 1); return x.toISOString().slice(0, 10); })()
+            : per === '90' ? new Date(Date.now() - 90 * 864e5).toISOString().slice(0, 10) : per === 'an' ? auj.slice(0, 4) + '-01-01' : '';
+        const fin = per === 'mprec' ? auj.slice(0, 8) + '01' : '9999';
+        const L = compta.depenses.filter(d => (!debut || d.date >= debut) && d.date < fin && (!pay || d.payeur === pay)
+            && (!typ || (typ === 'vehicules' ? d.vehicule_id : typ === 'remb' ? d.beneficiaire : !d.vehicule_id && !d.beneficiaire)));
+        const total = L.filter(d => !d.beneficiaire).reduce((t, d) => t + d.montant, 0);
+        $('#depTotal').innerHTML = `${L.length} ligne${L.length > 1 ? 's' : ''} · <b class="num">${euro(total)}</b> de dépenses${L.some(d => d.beneficiaire) ? ' (hors remboursements)' : ''}`;
+        const mois = new Map();
+        L.forEach(d => { const k = d.date.slice(0, 7); if (!mois.has(k)) mois.set(k, []); mois.get(k).push(d); });
+        $('#depList').innerHTML = L.length ? [...mois].map(([k, ds]) => `<div class="dep-mois"><div class="dep-mois-h"><b>${new Date(k + '-15T12:00:00Z').toLocaleDateString('fr-FR', { month: 'long', year: 'numeric', timeZone: 'UTC' })}</b><span class="num">${euro(ds.filter(d => !d.beneficiaire).reduce((t, d) => t + d.montant, 0))}</span></div><div class="dep-list">${ds.map(ligneDepense).join('')}</div></div>`).join('')
+            : '<div class="empty">Aucune dépense sur cette période.</div>';
+        const cats = {}; L.filter(d => !d.beneficiaire).forEach(d => { cats[d.categorie] = (cats[d.categorie] || 0) + d.montant; });
+        const top = Object.entries(cats).sort((a, b) => b[1] - a[1]);
+        $('#depCats').innerHTML = top.length ? hbars(top.map(([c, m]) => [c, Math.round(m)]), top[0][1], Math.round(total)) : '<div class="vide">—</div>';
+        lierDepenses($('#depList'), vueDepenses);
+        $('#depList').querySelectorAll('[data-dep]').forEach(r => r.onclick = ev => { if (ev.target.closest('a,button')) return; depEdit = r.dataset.dep; formDepense(); $('#depForm').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    }
+    ['#depPer', '#depPay', '#depTyp'].forEach(s => $(s).addEventListener('input', () => compta && listeDepenses()));
+    $('#depCsv').onclick = e => { e.preventDefault(); location.href = lien('/api/admin/compta/export.csv'); };
+
+    // Pilotage (en tête du tableau de bord) : achats, ventes, marge, dépenses générales, résultat
+    async function pilotage(debut, prec) {
+        if (!compta) { try { await chargerCompta(); } catch (e) { return; } }
+        const V = compta.vehicules, D = compta.depenses;
+        const dans = (iso, a, b) => iso && iso >= a && (!b || iso < b);
+        const calc = (a, b) => {
+            const vendus = V.filter(v => v.statut === 'vendu' && dans(v.date_vente, a, b));
+            const marge = vendus.reduce((t, v) => t + (v.bilan.marge || 0), 0), ca = vendus.reduce((t, v) => t + (Number(v.prix_vente) || 0), 0);
+            const gen = D.filter(d => !d.vehicule_id && !d.beneficiaire && dans(d.date, a, b));
+            const generales = gen.reduce((t, d) => t + d.montant, 0), pub = gen.filter(d => /google ads/i.test(d.categorie)).reduce((t, d) => t + d.montant, 0);
+            const achetes = V.filter(v => dans(v.date_achat, a, b)).length;
+            return { vendus: vendus.length, marge, ca, generales, pub, achetes, resultat: marge - generales };
+        };
+        const p = calc(debut, ''), q = calc(prec, debut);
+        const stock = V.filter(v => v.statut !== 'vendu');
+        const evol = (a, b) => b ? `<span class="delta ${a > b ? 'up' : a < b ? 'down' : ''}">${signe(a - b)} vs période préc.</span>` : '<span class="delta">—</span>';
+        $('#tbPilotage').innerHTML = [
+            [p.achetes, p.achetes > 1 ? 'voitures achetées' : 'voiture achetée', p.pub && p.achetes ? `<span class="delta">pub : ${euro(Math.round(p.pub / p.achetes))} par achat</span>` : '<span class="delta">&nbsp;</span>'],
+            [p.vendus, p.vendus > 1 ? 'voitures vendues' : 'voiture vendue', `<span class="delta">${euro(p.ca)} de CA</span>`],
+            [signe(p.marge), 'marge sur les ventes', evol(p.marge, q.marge)],
+            [euro(p.generales), 'dépenses générales', `<span class="delta">dont pub ${euro(p.pub)}</span>`],
+            [signe(p.resultat), 'résultat (marge − dépenses)', evol(p.resultat, q.resultat), p.resultat < 0 ? 'alerte' : ''],
+            [stock.length, 'en stock', `<span class="delta">${euro(stock.reduce((t, v) => t + v.bilan.cout, 0))} immobilisés</span>`]
+        ].map(([v, l, d, c]) => `<div class="kpi ${c || ''}"><b class="num">${v}</b><span>${l}</span>${d}</div>`).join('');
+    }
+
+    // Depuis la fiche d'une demande achetée : ouvrir (ou créer) son véhicule
+    async function vehiculeDeDemande(ref) {
+        try {
+            await chargerCompta();
+            let v = compta.vehicules.find(x => x.ref === ref);
+            if (!v) { v = await api('/api/admin/compta/vehicules', { method: 'POST', body: JSON.stringify({ ref }) }); await chargerCompta(); }
+            quitterFiche(); ouvrirVehicule(v.id);
+        } catch (e) { toast(e.message); }
+    }
 
     // ---------------- Fiche d'une demande
     // Routage : la liste vit sur /admino, chaque fiche sur /admino/demande/REF.
@@ -1440,6 +1819,9 @@ ul.plain li { margin: 3px 0; }
         router();
     }
     function router() {
+        const vm = location.pathname.match(/\/admino\/vehicule\/([\w-]+)/);
+        if (vm) { if (!$('#sheet').hidden) quitterFiche(); return afficherVehicule(vm[1]); }
+        quitterVehicule();
         const ref = refDeUrl();
         if (ref) return afficherFiche(ref);
         quitterFiche();
@@ -1536,6 +1918,7 @@ ul.plain li { margin: 3px 0; }
             <button class="btn" type="button" id="versNote">Note</button>
         </div>
         <div class="sh-body">
+            ${d.statut === 'achetee' ? `<button class="btn btn-g" id="versVehicule" style="justify-self:start">Véhicule acheté : dépenses et vente →</button>` : ''}
             <div class="appel">
                 <div class="appel-tete"><b>Après l'appel</b>
                     <button class="flag${drapeau(d) ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${drapeau(d)}"><svg><use href="#i-flag"/></svg>${drapeau(d) ? 'À appeler · retirer' : 'Marquer « À appeler »'}</button>
@@ -1573,9 +1956,11 @@ ul.plain li { margin: 3px 0; }
                     <div><span>Vente estimée</span><b class="num">${eur(e.calcul.prix_vente_estime)}</b></div>
                     <div><span>− Remise en état</span><b class="num">${eur(e.calcul.frais_remise_en_etat)}</b></div>
                     <div><span>− Frais fixes</span><b class="num">${eur(e.calcul.frais_fixes)}</b></div>
+                    ${e.calcul.deplacement ? `<div><span>− Déplacement</span><b class="num">${eur(e.calcul.deplacement)}</b></div>` : ''}
                     <div><span>− Marge (${esc(e.reglages.marge_pct)} %, min. ${eur(e.reglages.marge_min)})</span><b class="num">${eur(e.calcul.marge)}</b></div>
                     <div class="tot"><span>= Prix max d'achat</span><b class="num">${eur(e.calcul.prix_max_achat)}</b></div>
                 </div>
+                ${e.deplacement_detail ? (t => `<p class="sub" style="margin:8px 0 0">Déplacement ${esc(t.depart)} → ${esc(t.arrivee)} : ${t.km} km (${Math.floor(t.minutes / 60)} h ${String(t.minutes % 60).padStart(2, '0')}) · train aller ${eur(t.train)} <span style="color:var(--ink-4)">(${esc(t.train_source)})</span> · carburant retour ${eur(t.carburant)} <span style="color:var(--ink-4)">(${esc(t.energie)})</span> · péages ${eur(t.peages)}</p>`)(e.deplacement_detail) : ''}
                 ${attractivite(e.attractivite)}
                 ${e.vehicule_identifie ? `<p class="retenu"><b>Véhicule retenu :</b> ${esc(e.vehicule_identifie)}${e.prix_max_achat_ia ? ` · avis de l'IA sans vos marges : ${eur(e.prix_max_achat_ia)}` : ''}</p>` : ''}
                 ${(e.points_attention || []).length ? `<p class="surveiller"><b>À surveiller :</b> ${e.points_attention.slice(0, 2).map(esc).join(' · ')}</p>` : ''}
@@ -1691,6 +2076,7 @@ ul.plain li { margin: 3px 0; }
             try { await api('/api/admin/demandes/' + d.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; fiche(); surveiller(true); } catch (err) { toast(err.message); }
         };
         $('#sheetIn').querySelectorAll('[data-flag]').forEach(b => b.onclick = () => basculerDrapeau(b.dataset.flag));
+        if ($('#versVehicule')) $('#versVehicule').onclick = () => vehiculeDeDemande(d.ref);
         // Diagnostic : texte + captures envoyés ensemble ; « réestimer » relance l'estimation avec.
         const envoyerDiag = async (fichiers, reestimer) => {
             const fd = new FormData();

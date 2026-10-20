@@ -1108,7 +1108,7 @@ app.get(['/conversions/google-ads.csv', '/conversions/leads.csv'], async (req, r
     } catch (e) { res.status(500).send('Erreur'); }
 });
 
-app.get(['/admino', '/admino/demande/:ref'], (req, res) => {
+app.get(['/admino', '/admino/demande/:ref', '/admino/vehicule/:id'], (req, res) => {
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     res.set('Cache-Control', 'no-store');
     res.sendFile(path.join(__dirname, 'public', 'admin', 'index.html'));
