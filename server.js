@@ -453,6 +453,22 @@ function blocEstimation(e, ref) {
     </div>`;
 }
 
+// Année du véhicule : déclarée, sinon 1re mise en circulation (fiche plaque), sinon datation de la plaque.
+function anneeVehicule(d, apiBrut) {
+    const an = v => { const m = /\b(19[5-9]\d|20[0-4]\d)\b/.exec(String(v || '')); return m ? Number(m[1]) : 0; };
+    let a = an(d.annee);
+    if (!a && apiBrut) { try { const f = fichePlaque.normaliserReponse(apiBrut); a = an(f && f.annee); } catch (e) { /* fiche illisible */ } }
+    return a || an(d.plaque_datation);
+}
+// Même plaque déjà reçue dans une autre demande (sans plaque : même téléphone).
+async function dejaRecue(d) {
+    const pl = v => String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    const tel = v => String(v || '').replace(/\D/g, '').slice(-9);
+    const p = pl(d.plaque), t = tel(d.telephone);
+    if (!p && t.length < 9) return false;
+    return (await store.listerDemandes()).some(x => x.id !== d.id && (p ? pl((x.data || {}).plaque) === p : tel((x.data || {}).telephone) === t));
+}
+
 const ESTIMATION_ATTENTE = (parseFloat(process.env.ESTIMATION_ATTENTE_S) || 150) * 1000;
 
 // Une demande reçue : enregistrement durable, fiche plaque, estimation, puis e-mail.
@@ -471,9 +487,17 @@ async function envoyerDemande(d, opts = {}) {
     } catch (e) {
         console.error(`🚨 Demande ${ref} non enregistrée en base :`, e.message);
     }
-    // Estimation lancée à la main depuis l'admin (décision du 2026-10-17).
-    // ESTIMATION_AUTO=1 sur Render la relance automatiquement à chaque demande.
-    if (process.env.ESTIMATION_AUTO === '1' && estimation.actif() && d.type !== 'rappel' && d.vehicule && !opts.rapide) {
+    // Estimation automatique pour les véhicules de 10 ans et plus (décision du 2026-10-20), sauf si la même
+    // plaque a déjà été reçue (sans plaque : même téléphone). Les autres s'estiment à la main depuis l'admin.
+    // ESTIMATION_AUTO=1 sur Render la relance pour toutes les demandes.
+    let auto = process.env.ESTIMATION_AUTO === '1';
+    if (!auto && estimation.actif() && d.type !== 'rappel' && d.vehicule && !opts.rapide) {
+        const annee = anneeVehicule(d, apiBrut), age = annee ? new Date().getFullYear() - annee : 0;
+        const doublon = age >= 10 ? await dejaRecue(d).catch(() => false) : false;
+        auto = age >= 10 && !doublon;
+        console.log(`💶 ${ref} : ${annee ? `${annee} (${age} ans)` : 'année inconnue'}${doublon ? ', déjà reçue' : ''} → estimation ${auto ? 'automatique' : 'à la demande'}`);
+    }
+    if (auto && estimation.actif() && d.type !== 'rappel' && d.vehicule && !opts.rapide) {
         const fin = estimation.planifier(ref);
         await Promise.race([fin, new Promise(r => setTimeout(r, ESTIMATION_ATTENTE).unref())]);
         const ligne = await store.lireDemande(ref).catch(() => null);
