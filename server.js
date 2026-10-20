@@ -252,6 +252,7 @@ app.get('/article/:slug', (req, res) => {
 });
 
 app.get('/garanties', (req, res) => html(res, pages.garanties()));
+app.get('/chiffres-cles-vente-voiture-occasion', (req, res) => html(res, pages.chiffres()));
 app.get('/contact', (req, res) => html(res, pages.contact()));
 app.get('/mentions-legales', (req, res) => html(res, pages.legal('mentions-legales', 'Mentions légales | LUNICAR', 'Mentions légales du site lunicar.fr : éditeur et propriétaire OPTIMERCH (SAS), hébergement, propriété intellectuelle et contact pour toute question.')));
 app.get('/politique-confidentialite', (req, res) => html(res, pages.legal('politique-confidentialite', 'Politique de confidentialité | LUNICAR', 'Comment LUNICAR collecte, utilise et protège vos données personnelles lors d\'une demande d\'offre de rachat : finalités, durée de conservation, vos droits.')));
@@ -931,6 +932,7 @@ function indexablePages() {
     if (LOCAL.aPropos) add('/a-propos', '0.5');
     add('/garanties', '0.5');
     add('/articles', '0.6');
+    add('/chiffres-cles-vente-voiture-occasion', '0.8', require('./lib/faits').derniereVerif() || T);
     articles.forEach(a => add(`/article/${a.slug}`, '0.6', a.dateModified || a.dateISO || T));
     add('/contact', '0.3');
     add('/mentions-legales', '0.1');
@@ -987,7 +989,7 @@ Sitemap: ${SITE.baseUrl}/sitemap-redirections.xml
 const strip = h => String(h || '').replace(/<li>/g, '\n- ').replace(/<\/(p|h2|h3|ul|ol|table|tr)>/g, '\n').replace(/<(td|th)[^>]*>/g, ' | ').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n\n').trim();
 const title = t => String(t || '').replace(/<[^>]+>/g, '');
 
-const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels, en priorité à Paris (75), dans les Hauts-de-Seine (92) et les Yvelines (78), et partout en France. Spécialité : les voitures anciennes peu roulées ou sans contrôle technique, rachetées en l'état avec enlèvement à domicile, parking souterrain compris. Le déplacement et l'enlèvement sont à sa charge partout en France. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de OPTIMERCH (SAS, SIREN 100 047 281).`;
+const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels, partout en France, avec une présence renforcée en Île-de-France. Le déplacement et l'enlèvement sont gratuits partout en France, y compris pour une voiture qui ne roule plus ou garée en parking souterrain. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de OPTIMERCH (SAS, SIREN 100 047 281).`;
 
 app.get('/llms.txt', (req, res) => {
     const b = SITE.baseUrl;
@@ -999,9 +1001,9 @@ app.get('/llms.txt', (req, res) => {
 Dernière mise à jour : ${pages.TEMPLATE_DATE}
 
 ## Faits clés
-- Zone prioritaire : Paris, Hauts-de-Seine (Boulogne-Billancourt, Neuilly-sur-Seine, Nanterre, Rueil-Malmaison, Issy-les-Moulineaux), Yvelines (Versailles, Saint-Germain-en-Laye, Le Chesnay-Rocquencourt) ; déplacement partout en France
-- Véhicules rachetés : voitures anciennes (plus de 15 ans) peu roulées, récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, fort kilométrage, sans contrôle technique
-- Voitures anciennes et faible kilométrage rachetées en l'état, sans réparation à avancer
+- Zone : toute la France, déplacement et enlèvement gratuits ; présence renforcée à Paris et en Île-de-France
+- Véhicules rachetés : toutes marques, récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, anciens, fort kilométrage, en panne, accidentés, sans contrôle technique
+- Véhicules rachetés en l'état, sans réparation à avancer
 - Contrôle technique non exigé : il n'est obligatoire que pour une vente entre particuliers
 - Offre gratuite et sans engagement, valable 7 jours ; refus possible même le jour du rendez-vous, sans frais
 - Déplacement et enlèvement à la charge de LUNICAR partout en France, y compris véhicule non roulant ou en parking souterrain
@@ -1018,17 +1020,18 @@ Dernière mise à jour : ${pages.TEMPLATE_DATE}
 - [Qui sommes-nous](${b}/a-propos): société, méthode, engagements
 - [Garanties](${b}/garanties): les six engagements
 - [Comparer particulier, concession et professionnel](${b}/comparatif-reprise-auto)
+- [Chiffres clés de la vente d'une voiture d'occasion](${b}/chiffres-cles-vente-voiture-occasion): données officielles sourcées (SDES, service-public, UTAC, Banque de France, Code civil)
 
 ## Partout en France
 - [Rachat de voiture partout en France](${b}/${zones.FRANCE_SLUG})
 ${Object.values(LOCAL.regions || {}).map(r => `- [Rachat de voiture en ${r.region}](${b}/${r.slug}): ${r.description}`).join('\n')}
-${zones.FRANCE_CITIES.slice(0, 40).map(s => { const c = CITIES.find(x => x.slug === s); return c ? `- [Rachat de voiture à ${c.nom}](${b}/reprise-auto-${s})` : ''; }).filter(Boolean).join('\n')}
+${zones.FRANCE_CITIES.slice(0, 12).map(s => { const c = CITIES.find(x => x.slug === s); return c ? `- [Rachat de voiture à ${c.nom}](${b}/reprise-auto-${s})` : ''; }).filter(Boolean).join('\n')}
 
 ## Paris et Île-de-France
 - [Rachat de voiture à Paris](${b}/reprise-auto-paris)
 - [Rachat de voiture en Île-de-France](${b}/${idf.HUB_SLUG})
 ${idf.DEPARTMENTS.map(d => `- [Rachat de voiture ${d.dans} (${d.code})](${b}/${d.slug})`).join('\n')}
-${zones.IDF_CITIES.filter(x => x !== 'paris').map(x => { const c = CITIES.find(y => y.slug === x); return c ? `- [Rachat de voiture à ${c.nom}](${b}/reprise-auto-${x})` : ''; }).filter(Boolean).join('\n')}
+${zones.IDF_CITIES.filter(x => x !== 'paris').slice(0, 8).map(x => { const c = CITIES.find(y => y.slug === x); return c ? `- [Rachat de voiture à ${c.nom}](${b}/reprise-auto-${x})` : ''; }).filter(Boolean).join('\n')}
 
 ## Situations
 ${idf.SITUATIONS.map(s => `- [${title(s.h1)}](${b}/${s.slug}): ${s.description}`).join('\n')}
@@ -1045,7 +1048,7 @@ ${articles.map(a => `- [${a.titre}](${b}/article/${a.slug}): ${a.extrait}`).join
 
 ## Optional
 - [Texte intégral des pages clés](${b}/llms-full.txt)
-- [Plan du site](${b}/sitemap.xml)
+- [Plan du site (toutes les villes et pages)](${b}/sitemap.xml)
 `;
     res.header('Content-Type', 'text/plain; charset=utf-8');
     res.send(llms);
@@ -1061,14 +1064,7 @@ app.get('/llms-full.txt', (req, res) => {
     if (LOCAL.paris) parts.push(block(`${b}/reprise-auto-paris`, LOCAL.paris.h1, LOCAL.paris.lede, LOCAL.paris.sections, LOCAL.paris.faq));
     idf.SITUATIONS.forEach(s => parts.push(block(`${b}/${s.slug}`, s.h1, s.lede, s.sections, s.faq)));
     GUIDES.filter(g => !g.brand).forEach(g => parts.push(block(`${b}/${g.slug}`, g.h1, g.lede, g.sections, g.faq)));
-    MODELS.forEach(m => parts.push([`# Vendre sa ${m.nav} (${m.annees})`, `URL : ${b}/${m.slug}`, '', m.lede, '',
-        '## Générations', ...(m.generations || []).map(g => `- ${g.nom} (${g.annees}) : ${g.notes}`), '',
-        '## Motorisations et distribution', ...(m.motorisations || []).map(x => `- ${x.nom} (${x.carburant}) : distribution ${x.distribution}. ${x.entretien} ${x.points}`), '',
-        '## Avantages', ...(m.avantages || []).map(x => `- ${x}`), '', '## Inconvénients', ...(m.inconvenients || []).map(x => `- ${x}`), '',
-        '## Problèmes connus', ...(m.problemes || []).map(p => `- ${p.titre} : ${p.detail}`), '',
-        '## Un modèle ancien en bon état', m.age, '',
-        '## Questions fréquentes', ...(m.faq || []).map(f => `**${f.question}**\n${f.answer}`)].join('\n') + '\n'));
-    idf.DEPARTMENTS.filter(d => d.local).forEach(d => parts.push(`# ${title(d.h1)}\nURL : ${b}/${d.slug}\n\n${d.profil}\n\n${strip(d.local)}\n`));
+    parts.push(`# Chiffres clés de la vente d'une voiture d'occasion en France\nURL : ${b}/chiffres-cles-vente-voiture-occasion\n\n${require('./lib/faits').FAITS.map(f => `- ${f.fait} (source : ${f.source_titre}, ${f.source_url})`).join('\n')}\n`);
     readJSON('articles.json').forEach(a => parts.push(`# ${a.titre}\nURL : ${b}/article/${a.slug}\n\n${a.extrait}\n\n${strip(a.contenu)}\n`));
     res.header('Content-Type', 'text/plain; charset=utf-8');
     res.send(parts.join('\n---\n\n'));

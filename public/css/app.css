@@ -469,6 +469,15 @@ select.q-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://
 .q .field-row { margin-bottom: 0; }
 .q .field { margin-bottom: 6px; }
 
+/* ---------- Faits sourcés (Bon à savoir, chiffres clés) ---------- */
+.section-faits { padding: 40px 0; }
+.faits { display: grid; gap: 14px; margin: 6px 0 18px; }
+.faits li { padding: 14px 16px; border-left: 3px solid var(--gold-600); background: var(--white); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.section-tint .faits li { background: var(--cream-50); }
+.faits li p { margin: 0; color: var(--ink-900); }
+.faits .fait-source { margin-top: 6px; font-size: .84rem; color: var(--ink-400); }
+.faits .fait-source a { color: var(--ink-400); }
+
 /* ---------- Étape photos ---------- */
 .lead-photos-intro { font-size: .94rem; color: var(--ink-600); margin: -2px 0 14px; }
 .photo-actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
