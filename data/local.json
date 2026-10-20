@@ -180,7 +180,12 @@
       "faqLocale": {
         "question": "Pouvez-vous voir la voiture sur le parking de mon entreprise à La Défense ?",
         "answer": "Oui, si vous pouvez nous y donner accès. Le rendez-vous se cale sur votre pause ou votre fin de journée. La vérification, la signature du certificat de cession et la déclaration ANTS se font sur place."
-      }
+      },
+      "bloc2": {
+        "h2": "Je suis étudiant à Nanterre : comment vendre ma voiture sans perdre de temps entre les cours ?",
+        "html": "<p>Décrivez votre voiture en ligne entre deux cours, cela prend deux minutes. Un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis vous fixez ensemble un rendez-vous à l'adresse qui vous arrange, près du campus ou chez vous, sans frais de déplacement.</p><p>Autour de l'université, de nombreux étudiants constatent que le RER A et les bus suffisent au quotidien, et que la voiture amenée de province ou cédée par la famille devient une charge. Assurance au tarif jeune conducteur, contrôle technique à prévoir, place à trouver près de la résidence : le budget s'en ressent vite. Vendre à un particulier demande des disponibilités que les partiels et les stages ne laissent pas. Avec LUNICAR, une seule rencontre suffit. Lorsque la carte grise porte le nom d'un parent, la signature du certificat de cession lui revient : organisez sa présence, ou choisissez son adresse pour le rendez-vous, même hors d'Île-de-France. Vous évitez ainsi les visites d'acheteurs entre deux examens et les négociations par messages.</p><ul class=\"ticks\"><li><strong>Un rendez-vous calé sur votre emploi du temps</strong> : le créneau se choisit lors de l'appel</li><li><strong>Une voiture acceptée telle quelle</strong> : petite citadine, fort kilométrage, rayures de stationnement</li><li><strong>Le temps de souffler</strong> : l'offre reste valable 7 jours</li><li><strong>Un virement le jour de la vente</strong> : utile pour financer un stage ou une rentrée</li><li><strong>Des papiers préparés</strong> : certificat de cession et déclaration ANTS remplis avec vous</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "creteil": {
       "intro": "<p>Créteil, préfecture du Val-de-Marne, a été largement construite en dalle et en ensembles d'immeubles autour du lac, de l'Échat et du Mont-Mesly, alors que le Vieux Créteil garde ses rues de village et ses pavillons près de la Marne. Cette organisation pèse sur la vente : les voitures sont souvent garées en parking collectif sous les immeubles.</p><p>Étudiants de l'université, personnel hospitalier, familles : les usages sont variés et les horaires parfois décalés. Le rendez-vous peut se faire le samedi, au pied de votre résidence ou sur un parking où la voiture peut être vérifiée sans encombre.</p><p>Dans les parkings collectifs sous dalle, les places sont parfois numérotées par bâtiment et par niveau. Notez-les pour le conseiller, avec le code d'accès piéton si l'entrée véhicules est fermée. Pour un étudiant qui quitte Créteil en fin d'année universitaire, l'offre valable 7 jours laisse le temps de caler la vente juste avant le déménagement.</p>",
@@ -190,7 +195,12 @@
       "faqLocale": {
         "question": "Je travaille en horaires décalés, pouvez-vous venir le samedi ?",
         "answer": "Oui. Nos conseillers travaillent aussi le samedi de 10 h à 18 h. Le rendez-vous peut se tenir ce jour-là au pied de votre immeuble ou dans le parking de votre résidence."
-      }
+      },
+      "bloc2": {
+        "h2": "Avec la ligne 8 à Créteil, ai-je encore besoin de ma voiture ?",
+        "html": "<p>Tout dépend de vos trajets. Si la voiture ne sort plus que rarement, connaître son prix aide à trancher. Décrivez-la en ligne : un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours, puis vient sans frais à votre adresse si vous décidez de vendre.</p><p>Le métro relie Créteil au centre de Paris sans changement, et les bus complètent la desserte vers les communes voisines. Pour un habitant proche d'une station qui travaille dans la capitale, la voiture peut se limiter à quelques sorties par mois, ce qui pèse lourd quand on paie en plus une place dans sa résidence. À l'inverse, rejoindre Rungis, Orly ou une zone d'activités du Val-de-Marne reste souvent plus simple en voiture. Faites la liste de vos trajets réels sur un mois, avec leur coût. Si la voiture n'est indispensable que pour les vacances, la location peut suffire. En cas de vente, le rendez-vous se tient au pied de votre immeuble ou devant votre pavillon. Si la voiture dort au sous-sol depuis longtemps, précisez le niveau, le numéro de place et l'accès.</p><ul class=\"ticks\"><li><strong>Une estimation pour décider</strong> : aucune obligation d'accepter l'offre</li><li><strong>Une place libérée</strong> : la voiture est enlevée depuis votre résidence, sans frais</li><li><strong>Toutes les voitures acceptées</strong> : récentes, anciennes, en panne ou sans contrôle technique</li><li><strong>Un paiement simple</strong> : virement bancaire le jour de la vente, jamais d'espèces</li><li><strong>Des démarches préparées</strong> : certificat de cession et déclaration ANTS remplis avec vous</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "vitry-sur-seine": {
       "intro": "<p>Vitry-sur-Seine combine un grand tissu pavillonnaire sur le plateau, des grands ensembles et une vaste zone d'activités le long de la Seine, autour des Ardoines et du Port-à-l'Anglais. Beaucoup de Vitriots utilisent leur voiture pour aller travailler dans le sud du Val-de-Marne, là où les transports sont moins directs.</p><p>On y trouve aussi de nombreux utilitaires de professionnels installés dans la zone industrielle. Pour un pavillon du Moulin-Vert ou du Plateau, le rendez-vous se fait devant le portail. Pour une entreprise des Ardoines, nous venons sur votre site, aux heures d'activité.</p><p>Les pavillons vitriots ont souvent une cour ou un garage où la voiture est restée longtemps sans rouler. Ce n'est pas un problème. Décrivez son état réel, y compris les voyants allumés ou les pneus dégonflés. Si elle ne démarre pas, l'enlèvement est pris en charge. Pour une entreprise, chaque véhicule fait l'objet de sa propre offre et de son propre certificat de cession.</p>",
@@ -200,7 +210,12 @@
       "faqLocale": {
         "question": "Mon entreprise des Ardoines veut vendre deux utilitaires, est-ce possible ?",
         "answer": "Oui. LUNICAR rachète les véhicules des professionnels. Décrivez chaque utilitaire séparément pour recevoir une offre chiffrée par véhicule. Le rendez-vous a lieu sur votre site, et le paiement se fait par virement."
-      }
+      },
+      "bloc2": {
+        "h2": "Notre famille s'agrandit à Vitry-sur-Seine : comment vendre la citadine pour un véhicule plus grand ?",
+        "html": "<p>Vous pouvez vendre la citadine à LUNICAR sans être tenu d'acheter le véhicule suivant chez nous. Décrivez-la en ligne : un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours, puis vient chez vous sans frais. Le virement du jour de la vente vient compléter votre budget.</p><p>Avec un deuxième enfant ou une poussette double, la petite voiture qui suffisait pour aller au travail montre vite ses limites. Sièges auto, courses du week-end, visites à la famille : un monospace ou un break devient nécessaire. Dans un pavillon du plateau, garder les deux véhicules peut sembler possible, mais l'assurance et l'entretien s'additionnent. En appartement, la place manque souvent pour un second véhicule. Pour éviter une période sans voiture, demandez l'offre dès que vous avez repéré le futur modèle, puis fixez la vente au plus près de sa livraison. Le conseiller vient à l'adresse choisie, devant votre portail ou au parking de votre immeuble. Pensez à retirer les sièges enfants et à vider le coffre avant son passage. Une voiture vide se vérifie plus vite et la vente se conclut sans attente.</p><ul class=\"ticks\"><li><strong>Aucun achat lié</strong> : vous choisissez librement votre futur véhicule, où vous le souhaitez</li><li><strong>Un calendrier maîtrisé</strong> : l'offre reste valable 7 jours, le temps de finaliser l'autre achat</li><li><strong>Un déplacement gratuit</strong> : pavillon, résidence ou lieu de travail, partout à Vitry</li><li><strong>Des papiers prêts</strong> : certificat de cession et déclaration ANTS préparés avec vous</li><li><strong>Un paiement rapide</strong> : virement bancaire le jour de la vente, jamais en espèces</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "versailles": {
       "intro": "<p>À Versailles, la ville historique impose ses règles. Autour du château, à Notre-Dame et à Saint-Louis, les rues anciennes et le stationnement payant compliquent toute vente organisée sur la voie publique. Plus loin, Porchefontaine, Clagny-Glatigny ou Montreuil offrent davantage de maisons avec garage ou allée.</p><p>Les Versaillais roulent souvent vers Paris, Vélizy ou Saint-Quentin, et entretiennent leurs voitures avec soin. Nous rachetons aussi bien la berline familiale bien suivie que la petite voiture d'un étudiant. Le rendez-vous se fait dans votre garage, votre cour ou le parking de votre résidence.</p><p>Dans le quartier historique autour du château, organiser une vente entre particuliers dans la rue relève du casse-tête : essais impossibles, places rares, circulation touristique. Un rendez-vous dans votre cour ou votre garage règle la question. Pour une voiture de collection ou très ancienne, précisez son état et son historique dans la description : elle sera étudiée avec attention.</p>",
@@ -210,7 +225,12 @@
       "faqLocale": {
         "question": "Mon carnet d'entretien est complet, cela compte-t-il dans l'offre ?",
         "answer": "Oui. Un entretien suivi, les factures et le double des clés font partie des critères pris en compte. Mentionnez-les dans votre description, et joignez si possible votre rapport Histovec, gratuit."
-      }
+      },
+      "bloc2": {
+        "h2": "Je vais travailler à Paris en train : faut-il garder à Versailles une voiture qui ne sort que le week-end ?",
+        "html": "<p>Si elle sort de moins en moins, il est utile d'en connaître le prix. Décrivez-la en ligne en deux minutes : un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours. Vous restez libre de la refuser. Si vous l'acceptez, il vient sans frais à votre adresse versaillaise.</p><p>Avec le RER C et les lignes du Transilien vers Paris, beaucoup d'actifs versaillais peuvent laisser leur voiture au garage du lundi au vendredi. Elle ne roule alors que pour les courses, une visite familiale ou un départ en vacances, tout en continuant de coûter : assurance, entretien, éventuelle place louée. Une voiture qui roule peu se dégrade aussi : batterie qui se décharge, pneus qui se déforment, freins qui se grippent. Pour les rares trajets restants, la location ponctuelle revient parfois moins cher, surtout pour un foyer qui possède déjà un autre véhicule. Faites le compte sur une année, puis comparez-le à l'offre reçue. En cas de vente, le rendez-vous se tient dans votre cour, votre garage ou le parking de votre résidence. Le conseiller vérifie la voiture à l'arrêt, sans essai dans les rues du quartier.</p><ul class=\"ticks\"><li><strong>Une estimation sans engagement</strong> : aucune obligation de vendre après l'appel</li><li><strong>Une vérification à domicile</strong> : dans tous les quartiers de Versailles, sans frais de déplacement</li><li><strong>Les voitures peu roulantes acceptées</strong> : même après des mois d'immobilité</li><li><strong>Une vente réglée sur place</strong> : documents ANTS préparés, virement le jour même</li><li><strong>Une offre qui laisse réfléchir</strong> : elle reste valable 7 jours, le temps d'en parler en famille</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "aubervilliers": {
       "intro": "<p>Aubervilliers est une ville de travail autant que d'habitat. Entre le canal Saint-Denis, les entrepôts des grossistes et le Campus Condorcet, une part importante des véhicules sont des utilitaires et des voitures de professionnels. Côté logement, les immeubles des Quatre-Chemins, de la Villette ou de la Maladrerie côtoient quelques rues de petites maisons.</p><p>Le stationnement est serré, notamment aux Quatre-Chemins, en limite de Paris et de Pantin. Pour vendre une voiture de particulier, nous privilégions le parking de votre résidence. Pour un professionnel, le rendez-vous se tient à votre entrepôt ou devant votre local, pendant vos heures d'activité.</p><p>Pour un professionnel, vendre un utilitaire signifie souvent le remplacer. LUNICAR rachète votre véhicule sans vous obliger à en acheter un autre chez nous. Vous restez libre de choisir votre prochain utilitaire où vous le souhaitez. Pensez à vider le véhicule de votre matériel et à retirer vos autocollants publicitaires si vous ne voulez pas qu'ils restent visibles.</p>",
@@ -220,7 +240,12 @@
       "faqLocale": {
         "question": "Mon utilitaire a beaucoup de kilomètres, le rachetez-vous ?",
         "answer": "Oui. Les utilitaires à fort kilométrage font partie des véhicules que LUNICAR rachète. Indiquez le kilométrage exact, l'entretien et les éventuels défauts pour recevoir une offre chiffrée sous 24 h ouvrées."
-      }
+      },
+      "bloc2": {
+        "h2": "Je n'utilise presque plus ma voiture à Aubervilliers : comment la vendre sans place pour la montrer ?",
+        "html": "<p>Aucun emplacement dégagé n'est nécessaire. Le conseiller LUNICAR vient là où la voiture est garée, dans la rue ou dans un parking de résidence, et la vérifie sur place. Vous décrivez d'abord le véhicule en ligne, recevez une offre chiffrée sous 24 h ouvrées, puis le déplacement est offert.</p><p>Avec les lignes 7 et 12 du métro qui mènent dans Paris, beaucoup d'Albertivillariens se déplacent sans voiture au quotidien. Le véhicule reste alors garé des jours entiers, et chaque changement de place devient une corvée dans des rues où le stationnement est serré. Le montrer à un acheteur suppose de le libérer, de trouver un endroit pour l'essai et de rester disponible pour des rendez-vous qui se multiplient. Avec LUNICAR, la rencontre a lieu à l'endroit exact où la voiture se trouve. Indiquez dans la description le secteur où elle stationne ou l'accès au parking, le code ou le badge nécessaire, et l'état de la batterie si le moteur n'a pas tourné depuis longtemps. Le conseiller arrive préparé et la vérification se fait sans perte de temps.</p><ul class=\"ticks\"><li><strong>Pas d'essai sur la chaussée</strong> : la vérification se fait à l'arrêt</li><li><strong>Une voiture immobilisée acceptée</strong> : si elle ne démarre plus, l'enlèvement reste gratuit</li><li><strong>Un prix connu à l'avance</strong> : l'offre reste valable 7 jours</li><li><strong>Un paiement par virement</strong> : le jour de la vente, sans espèces ni chèque</li><li><strong>Des papiers préparés</strong> : certificat de cession et déclaration ANTS remplis avec vous</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "colombes": {
       "intro": "<p>Colombes est l'une des grandes villes pavillonnaires de la boucle de Seine. Les rues de maisons avec garage dominent autour du centre, des Vallées et du Stade, tandis que les Fossés-Jean et le Petit-Colombes concentrent davantage d'immeubles. La voiture sert pour l'école, les courses et les trajets vers La Défense ou Gennevilliers.</p><p>La plupart des ventes se règlent devant le domicile : la voiture est dans l'allée ou le garage, la vérification se fait au calme. Dans les résidences, nous venons au parking collectif, et le rendez-vous peut être fixé le samedi en famille.</p><p>Avant la vente, faites le tour du garage : double des clés, carnet d'entretien, factures de pneus ou de distribution. Ces documents rassurent sur l'entretien et comptent dans l'offre. Si la carte grise est au nom de deux conjoints, les deux signatures sont nécessaires sur le certificat de cession. Le conseiller vous le rappelle au moment de fixer le rendez-vous.</p>",
@@ -230,7 +255,12 @@
       "faqLocale": {
         "question": "Ma voiture est dans un garage individuel au fond d'une impasse, est-ce un problème ?",
         "answer": "Non. Nous venons à l'adresse exacte du véhicule. Précisez simplement l'accès et la largeur du passage si la voiture ne roule pas, pour que l'enlèvement soit organisé correctement."
-      }
+      },
+      "bloc2": {
+        "h2": "Combien de temps faut-il pour vendre sa voiture à Colombes ?",
+        "html": "<p>Le calendrier dépend surtout de vous. La description en ligne prend deux minutes, un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis vous fixez ensemble le rendez-vous à votre adresse à Colombes, sans frais. Le virement est fait le jour même de la vente.</p><p>Entre particuliers, la vente s'étire facilement : rédiger l'annonce, faire des photos, trier les messages, organiser des visites qui se décommandent, négocier, puis attendre que le paiement soit encaissé. Pendant ce temps, la voiture reste stationnée dans la rue ou bloque l'allée du pavillon. Avec LUNICAR, les étapes sont connues dès le départ. Vous recevez l'offre, vous disposez de 7 jours pour la comparer ou en parler en famille, puis un seul rendez-vous suffit pour vérifier le véhicule, signer le certificat de cession et déclarer la vente sur le site de l'ANTS. Si vous travaillez à La Défense ou à Gennevilliers, choisissez l'adresse qui vous évite de poser une journée de congé. Vous connaissez ainsi chaque étape avant de vous engager, sans obligation de vendre.</p><ul class=\"ticks\"><li><strong>Une première réponse rapide</strong> : rappel sous 24 h ouvrées avec un prix</li><li><strong>Un délai de réflexion</strong> : l'offre reste valable pendant toute la semaine qui suit</li><li><strong>Un rendez-vous unique</strong> : chez vous ou à l'adresse choisie, sans frais de déplacement</li><li><strong>Un paiement le jour même</strong> : virement bancaire, aucun chèque à encaisser</li><li><strong>Toutes les voitures rachetées</strong> : récentes ou anciennes, en panne, accidentées ou sans contrôle technique</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "asnieres-sur-seine": {
       "intro": "<p>Asnières-sur-Seine change de visage entre la gare et les bords de Seine. Près du centre, les immeubles anciens et les copropriétés avec parking en sous-sol dominent. Vers Bécon et les Quatre-Routes, les rues de maisons et de petits immeubles offrent plus souvent une cour ou un garage. Les trajets quotidiens vers Saint-Lazare se font surtout en train, et la voiture reste au garage la semaine.</p><p>C'est le profil type de la voiture qui roule peu et vieillit sans servir. Nous venons la voir là où elle est, sous l'immeuble ou devant la maison, et préparons avec vous les documents de cession.</p><p>Une voiture qui reste au garage toute la semaine vieillit pourtant : joints qui sèchent, pneus qui se déforment, batterie qui se vide. Plus la vente tarde, plus ces petits défauts s'accumulent. Décrivez-la en deux minutes, la plaque est facultative, et recevez une offre chiffrée sous 24 h ouvrées. Vous restez libre de refuser, même le jour du rendez-vous.</p>",
@@ -320,7 +350,12 @@
       "faqLocale": {
         "question": "Je suis étudiant et la carte grise est au nom de mes parents, puis-je vendre ?",
         "answer": "La vente doit être faite par le titulaire de la carte grise, ou avec son accord écrit et les pièces nécessaires. Le plus simple est que vos parents signent le certificat de cession. Le conseiller vous indique les documents à réunir."
-      }
+      },
+      "bloc2": {
+        "h2": "Faut-il garder deux voitures à Cergy quand on prend le RER A ?",
+        "html": "<p>Pas forcément. Si l'une des deux reste au parking toute la semaine, vous pouvez connaître sa valeur sans engagement. Décrivez-la en ligne : un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours, puis vient sans frais à votre domicile si vous décidez de vendre.</p><p>À Cergy, de nombreux foyers se sont équipés de deux véhicules : un pour les trajets par l'A15, l'autre pour l'école, les courses et les activités. Quand l'un des conjoints passe au RER A, au télétravail ou à un poste plus proche, la seconde voiture sort beaucoup moins, mais coûte toujours en assurance, en entretien et parfois en stationnement. Comparez les usages : la voiture familiale garde souvent sa place pour les week-ends et les vacances, alors que la seconde peut céder la place au vélo, aux bus ou à une location ponctuelle. Une offre en main vous aide à décider sereinement, et le rendez-vous se tient devant la maison ou au parking de la résidence. Vous pouvez aussi choisir de vendre plus tard, l'offre ne vous engage à rien.</p><ul class=\"ticks\"><li><strong>Une évaluation par véhicule</strong> : rien ne vous empêche de faire estimer les deux voitures avant de choisir</li><li><strong>Un déplacement gratuit</strong> : de Cergy-le-Haut aux bords d'Oise</li><li><strong>Toutes les voitures rachetées</strong> : monospace, citadine, utilitaire, en panne ou sans contrôle technique</li><li><strong>Un virement le jour de la vente</strong> : certificat de cession et déclaration ANTS préparés ensemble</li><li><strong>Une offre qui laisse le temps</strong> : elle reste valable 7 jours, le temps d'en parler à la maison</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "evry": {
       "intro": "<p>Évry-Courcouronnes, préfecture de l'Essonne, s'est construite comme ville nouvelle autour de la cathédrale, de l'université et du Genopole. Les Pyramides, le Champtier-du-Coq ou le Bois-Sauvage alternent immeubles et maisons, avec beaucoup de parkings collectifs. La voiture sert pour l'A6, la N104 et la N7.</p><p>Chercheurs, étudiants, fonctionnaires, familles : les usages sont variés et les véhicules souvent très différents. Le rendez-vous se fait à votre domicile ou sur votre lieu de travail à Évry, aux horaires d'ouverture de nos conseillers.</p><p>Les voitures vendues à Évry-Courcouronnes vont de la citadine d'étudiant au break familial qui fait la route vers Paris chaque jour. Toutes reçoivent une offre chiffrée sur la base de leur description. Indiquez le kilométrage exact, l'entretien et les défauts connus. Le prix n'est revu que si l'état réel diffère, et vous pouvez refuser sur place sans frais.</p>",
@@ -690,7 +725,12 @@
       "faqLocale": {
         "question": "Rachetez-vous les utilitaires des exploitations viticoles autour de Reims ?",
         "answer": "Oui. Nous rachetons les utilitaires des particuliers et des professionnels, y compris ceux qui servent dans les vignes. Décrivez l'état réel, le kilométrage et les éventuels aménagements. Le paiement se fait par virement le jour de la vente, avec des documents de cession préparés ensemble."
-      }
+      },
+      "bloc2": {
+        "h2": "Je termine mes études à Reims : comment vendre ma voiture avant de partir ?",
+        "html": "<p>Vous pouvez la vendre sans attendre qu'un acheteur se manifeste. Décrivez votre voiture en ligne, un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec un prix chiffré, puis vient la chercher à l'adresse que vous indiquez à Reims, sans frais. Le virement est émis le jour de la vente.</p><p>La fin de l'année universitaire est une période chargée : rendre les clés du logement, faire l'état des lieux, organiser le déménagement. Publier une annonce, répondre aux messages et recevoir des inconnus pour un essai prend alors un temps que vous n'avez pas. Beaucoup d'étudiants roulent avec une petite voiture passée entre plusieurs mains, au compteur bien avancé. Elle nous intéresse telle qu'elle est, même avec une rayure de stationnement ou un contrôle technique expiré. Si la carte grise est au nom d'un parent, c'est lui qui signe le certificat de cession : prévenez-le dès l'appel pour choisir une date où il sera disponible. Et si le départ est déjà fait, rien n'est perdu.</p><ul class=\"ticks\"><li><strong>Un calendrier qui suit le vôtre</strong> : l'offre reste valable 7 jours, ce qui laisse le temps de caler le rendez-vous avant la remise des clés</li><li><strong>Un rendez-vous à votre porte</strong> : résidence étudiante, colocation ou domicile familial, le déplacement ne vous coûte rien</li><li><strong>Même après le départ</strong> : si la voiture est restée chez vos parents, ailleurs en France, le conseiller se rend là-bas</li><li><strong>Des papiers prêts</strong> : certificat de cession et déclaration ANTS sont préparés avec vous</li><li><strong>Aucune obligation</strong> : vous pouvez refuser l'offre et garder la voiture pour la rentrée suivante</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "toulon": {
       "h2": "Vendre sa voiture à Toulon : à quoi faut-il penser ?",
@@ -715,7 +755,12 @@
       "faqLocale": {
         "question": "Les pentes de Saint-Étienne ont usé mon embrayage, puis-je quand même vendre ?",
         "answer": "Oui. Un embrayage fatigué ou des freins usés ne bloquent pas la vente. Décrivez simplement le défaut que vous avez constaté. Nous rachetons aussi les voitures en panne. L'offre en tient compte dès le départ, et le prix n'est revu que si l'état réel diffère de votre description."
-      }
+      },
+      "bloc2": {
+        "h2": "Ma voiture ne démarre plus dans une rue en pente à Saint-Étienne : qui peut l'enlever ?",
+        "html": "<p>LUNICAR s'en charge, sans frais. Décrivez la panne en ligne, même si vous en ignorez la cause. Un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis l'enlèvement est organisé à l'adresse où la voiture stationne. Vous n'avez ni dépanneuse à payer ni atelier à trouver.</p><p>Dans les quartiers hauts de la ville, une voiture immobilisée devient vite un souci. Impossible de la pousser jusqu'à un endroit plat, difficile de solliciter les voisins, et chaque semaine passée le long du trottoir ajoute au risque de contravention ou de dégradation. Certains propriétaires finissent par payer une réparation supérieure à la valeur du véhicule. Vous pouvez éviter ce calcul. Indiquez simplement ce que vous constatez : voyant allumé, bruit au démarrage, batterie à plat, fuite sous le moteur. L'offre se fonde sur cette description, puis sur l'état vérifié lors du rendez-vous. Si la voiture est bloquée dans le garage d'une maison accessible par une rampe, précisez-le aussi. Vous gagnez ainsi du temps et vous libérez la place sans avoir à négocier avec qui que ce soit.</p><ul class=\"ticks\"><li><strong>Aucune avance de frais</strong> : le remorquage fait partie du service, il est gratuit</li><li><strong>Les pannes lourdes acceptées</strong> : boîte de vitesses, joint de culasse ou moteur hors d'usage</li><li><strong>Peu de temps sur place</strong> : juste celui de vérifier le véhicule et de signer les documents</li><li><strong>Un paiement sûr</strong> : virement bancaire le jour même, jamais d'espèces</li><li><strong>Une offre claire</strong> : elle reste valable 7 jours, le temps de vous faire un avis sur un éventuel devis</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "le-havre": {
       "h2": "Vendre sa voiture au Havre : comment procéder ?",
@@ -725,7 +770,12 @@
       "faqLocale": {
         "question": "Ma voiture havraise a souffert de l'air marin, est-ce un frein à la vente ?",
         "answer": "Non. Au Havre, le vent et l'humidité marquent souvent la carrosserie et les joints. Indiquez la corrosion ou les défauts visibles dans votre description. L'offre chiffrée les intègre, et vous restez libre de la refuser sans frais, même le jour de la vente."
-      }
+      },
+      "bloc2": {
+        "h2": "Je travaille en horaires décalés sur le port du Havre : comment caler le rendez-vous ?",
+        "html": "<p>Le rendez-vous se fixe pendant l'appel du conseiller, en tenant compte de vos horaires, à l'adresse que vous choisissez. Vous décrivez d'abord votre voiture en ligne, recevez une offre chiffrée sous 24 h ouvrées, puis le déplacement se fait sans frais, chez vous ou ailleurs au Havre.</p><p>Entre les terminaux, la zone industrialo-portuaire et les sites de l'estuaire, une partie des Havrais travaille en équipes, de jour, de nuit ou le week-end. Vendre à un particulier devient alors compliqué : les acheteurs veulent voir la voiture en soirée, au moment où vous partez prendre votre poste, ou le samedi matin, quand vous rentrez d'une nuit. Avec LUNICAR, il n'y a qu'un créneau à placer, et c'est vous qui proposez le lieu : votre domicile sur le plateau, une résidence de la ville basse ou l'adresse d'un proche. La voiture qui fait chaque jour la navette vers la zone portuaire cumule les démarrages à froid et les trajets courts. Signalez simplement son usage, rien de cela n'empêche la vente. Le conseiller vérifie ensuite la voiture sur place, en votre présence, sans essai sur route imposé.</p><ul class=\"ticks\"><li><strong>Un seul créneau à trouver</strong> : pas d'essais à répétition ni d'appels d'acheteurs pendant vos heures de sommeil</li><li><strong>Une offre compatible avec vos rotations</strong> : elle reste valable 7 jours</li><li><strong>Le choix du lieu</strong> : domicile, maison familiale ou adresse d'un proche, sans frais de déplacement</li><li><strong>Le paiement sans attente</strong> : virement le jour de la cession, formalités ANTS préparées</li><li><strong>Tous les profils de voitures</strong> : citadine de ville, break familial, utilitaire ou voiture très kilométrée</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "grenoble": {
       "h2": "Comment vendre sa voiture à Grenoble, entre ville et montagne ?",
@@ -750,7 +800,12 @@
       "faqLocale": {
         "question": "J'habite un village viticole près de Dijon, puis-je vendre ma voiture ?",
         "answer": "Oui. LUNICAR rachète partout en France, y compris dans les villages de la Côte autour de Dijon. Décrivez votre véhicule en ligne. Le conseiller vous rappelle sous 24 h ouvrées, l'offre reste valable 7 jours, et nous venons à votre adresse, sans frais."
-      }
+      },
+      "bloc2": {
+        "h2": "Peut-on vendre une voiture électrique ou hybride à Dijon ?",
+        "html": "<p>Oui. LUNICAR rachète les voitures électriques et hybrides comme les modèles essence ou diesel. Indiquez en ligne l'état de la batterie si vous le connaissez, le câble de recharge fourni et le kilométrage. Un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis se déplace sans frais chez vous.</p><p>Certains Dijonnais ont choisi l'électrique pour les trajets de l'agglomération, souvent avec une prise à domicile dans un pavillon ou un box. Les raisons de revendre sont variées : un déménagement dans un immeuble sans borne, un besoin d'autonomie pour des trajets plus longs, ou une hybride rechargeable qu'on ne branche plus jamais et qui roule surtout à l'essence. Trouver un particulier rassuré sur l'état de la batterie prend parfois du temps. Pour préparer la vente, rassemblez les câbles, les éventuels rapports de diagnostic batterie et les factures d'entretien. Si la voiture est en location avec option d'achat, vérifiez d'abord auprès de l'organisme de financement les conditions pour la céder. L'offre reflète ensuite ce que vous avez déclaré et ce que le conseiller constate lors de sa visite.</p><ul class=\"ticks\"><li><strong>Toutes les motorisations électrifiées</strong> : électrique, hybride simple ou rechargeable, récente ou plus ancienne</li><li><strong>Une vérification à domicile</strong> : le conseiller vient à l'adresse choisie, sans frais de déplacement</li><li><strong>Une offre stable</strong> : elle reste valable 7 jours, le temps de la comparer avec une reprise</li><li><strong>Un règlement net</strong> : virement le jour même, sans obligation d'acheter un autre véhicule</li><li><strong>Pas de diagnostic à payer avant</strong> : décrivez ce que vous savez, la vérification se fait au rendez-vous</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "angers": {
       "h2": "Comment vendre sa voiture à Angers sans annonce ?",
@@ -760,7 +815,12 @@
       "faqLocale": {
         "question": "Ma voiture angevine roule très peu, vaut-elle encore la peine d'être vendue ?",
         "answer": "Oui. Une voiture peu kilométrée et bien entretenue conserve de la valeur, même si elle sort rarement. Décrivez-la en ligne, un conseiller vous rappelle sous 24 h ouvrées avec une offre valable 7 jours. Vous décidez ensuite, sans engagement ni frais."
-      }
+      },
+      "bloc2": {
+        "h2": "Ma voiture a été accidentée à Angers et l'assurance ne la répare pas : puis-je la vendre ?",
+        "html": "<p>Oui. LUNICAR rachète les voitures accidentées, même lorsque la remise en état coûterait plus que leur valeur. Décrivez les dégâts en ligne, avec des photos si possible. Un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis l'enlèvement se fait sans frais à l'adresse de votre choix.</p><p>Après un accrochage dans l'agglomération angevine ou sur une route de campagne, le scénario est fréquent : l'assureur juge la réparation trop chère, vous indemnise, et la voiture reste dans votre allée sans que vous sachiez quoi en faire. Elle encombre, se dégrade et finit parfois oubliée pendant des mois. Si un dossier est encore ouvert avec votre assurance, mentionnez-le dans votre description. Détaillez ensuite les zones touchées : pare-chocs, portière, train avant, airbags déclenchés ou non, et précisez si le véhicule peut encore rouler. Une voiture immobilisée est chargée sur place, sans que vous ayez à organiser le transport, et les documents sont préparés pour déclarer la cession. Vous évitez ainsi de payer un gardiennage ou un remorquage de votre poche.</p><ul class=\"ticks\"><li><strong>Les chocs de carrosserie comme les dégâts mécaniques</strong> : la voiture peut être roulante ou non</li><li><strong>Un enlèvement offert</strong> : depuis votre domicile ou l'endroit où elle est immobilisée</li><li><strong>Le temps de réfléchir</strong> : l'offre tient 7 jours, pendant que vous réglez le dossier d'assurance</li><li><strong>Un paiement immédiat</strong> : virement le jour de la vente, jamais par chèque</li><li><strong>Des papiers en ordre</strong> : certificat de cession et déclaration ANTS sont préparés avec vous lors du rendez-vous</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "nimes": {
       "h2": "Vendre sa voiture à Nîmes : comment obtenir une offre ?",
@@ -785,7 +845,12 @@
       "faqLocale": {
         "question": "Ma voiture ne quitte plus le parking de mon immeuble à Villeurbanne, pouvez-vous la racheter ?",
         "answer": "Oui. Même immobilisée depuis longtemps, une voiture se rachète. Signalez si elle démarre ou non et si la batterie est à plat. Nous rachetons aussi les véhicules en panne. Le rendez-vous est fixé lors du rappel du conseiller, qui vient ensuite sur place sans frais."
-      }
+      },
+      "bloc2": {
+        "h2": "J'emménage à Villeurbanne dans un logement sans place de parking : faut-il vendre ma voiture ?",
+        "html": "<p>C'est à vous de décider, et vous pouvez connaître son prix avant de trancher, sans engagement. Décrivez la voiture en ligne : un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours. Si vous acceptez, il vient à votre nouvelle adresse ou à l'ancienne, sans frais.</p><p>S'installer à Villeurbanne, c'est souvent découvrir que le métro, le tram et le vélo couvrent l'essentiel des trajets, alors que la voiture, elle, réclame une place. Louer un emplacement en sous-sol, tourner le soir pour se garer, ressortir le véhicule quand il gêne : ces contraintes s'ajoutent à l'assurance et à l'entretien, pour un usage qui se réduit à quelques sorties. Certains choisissent alors de vendre et de louer pour les week-ends. Le bon moment se situe souvent juste avant le déménagement. La voiture est encore garée chez vous, vous avez la place de la présenter, et la vente se conclut en un seul rendez-vous, avant même l'arrivée des cartons. Vous évitez aussi de payer un mois de place souterraine pour une voiture qui ne sort plus.</p><ul class=\"ticks\"><li><strong>L'adresse au choix</strong> : l'ancien logement, le nouveau ou le lieu de travail, déplacement gratuit</li><li><strong>Une décision sans pression</strong> : aucune obligation d'accepter l'offre, ni d'acheter un autre véhicule</li><li><strong>Des formalités à jour</strong> : certificat de cession et déclaration ANTS préparés avec vous</li><li><strong>Un virement le jour même</strong> : de quoi financer l'installation sans attendre l'encaissement d'un chèque</li><li><strong>Toutes les voitures acceptées</strong> : citadine récente, diesel ancien, hybride ou modèle en panne qui ne roule plus</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "clermont-ferrand": {
       "h2": "Comment vendre sa voiture à Clermont-Ferrand ?",
@@ -795,7 +860,12 @@
       "faqLocale": {
         "question": "Je roule beaucoup sur l'A75 depuis Clermont-Ferrand, ma voiture est-elle rachetable ?",
         "answer": "Oui. Les grands rouleurs auvergnats affichent souvent des kilométrages élevés, et nous rachetons les voitures à fort kilométrage. Précisez l'historique d'entretien, vous pouvez aussi transmettre votre rapport Histovec. L'offre chiffrée reste valable 7 jours après le rappel."
-      }
+      },
+      "bloc2": {
+        "h2": "Faut-il faire réparer sa voiture avant de la vendre à Clermont-Ferrand ?",
+        "html": "<p>En général, non. Vous pouvez vendre votre voiture à LUNICAR dans l'état où elle se trouve, défauts compris. Décrivez-les honnêtement en ligne : un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée qui en tient compte, puis il vient à votre adresse clermontoise sans frais.</p><p>Avant une vente, la tentation est grande de passer à l'atelier : changer des plaquettes, reprendre une rayure, remplacer un pare-brise étoilé. Ces dépenses se retrouvent rarement en totalité dans le prix de revente, et elles retardent la vente de plusieurs semaines. Sur une voiture qui grimpe chaque jour vers les quartiers hauts ou part le week-end vers les volcans, l'usure des freins, de l'embrayage et des amortisseurs est normale. Mieux vaut la décrire que la masquer : l'offre repose sur votre description, et le prix n'est revu que si l'état constaté sur place en diffère. Seul effort vraiment utile : retrouver le double des clés, le carnet et les factures récentes, qui ne coûtent rien. Ces documents rassurent sur l'entretien et facilitent l'estimation de votre voiture.</p><ul class=\"ticks\"><li><strong>Aucun devis à engager</strong> : vous gardez votre budget au lieu de l'avancer pour des réparations</li><li><strong>Les pannes acceptées</strong> : une voiture qui ne roule plus est enlevée gratuitement</li><li><strong>Une offre qui laisse réfléchir</strong> : elle reste valable 7 jours</li><li><strong>Un paiement immédiat</strong> : virement bancaire le jour de la vente</li><li><strong>Un déplacement offert</strong> : en ville, sur les hauteurs ou dans un village au pied des puys</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "le-mans": {
       "h2": "Vendre sa voiture au Mans : pourquoi choisir LUNICAR ?",
@@ -805,7 +875,12 @@
       "faqLocale": {
         "question": "Rachetez-vous les voitures sportives ou de passionnés au Mans ?",
         "answer": "Oui. Nous rachetons tous les véhicules, des citadines aux modèles sportifs et premium. Détaillez les options, les modifications éventuelles et l'historique d'entretien. Le rapport Histovec, gratuit, aide à justifier cet historique. L'offre chiffrée reste valable 7 jours."
-      }
+      },
+      "bloc2": {
+        "h2": "Puis-je vendre ma voiture au Mans si son contrôle technique est expiré ?",
+        "html": "<p>Oui. LUNICAR rachète les voitures sans contrôle technique valide, y compris celles qui attendent une contre-visite. Indiquez-le dans votre description en ligne, avec les défauts relevés. Un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis vient sans frais à l'adresse que vous choisissez au Mans.</p><p>Entre particuliers, vendre une voiture suppose en principe un contrôle technique récent. Quand le procès-verbal arrive avec une liste de défaillances majeures, le propriétaire se retrouve coincé : réparer coûte cher, et céder en l'état à un acheteur privé devient compliqué. Une voiture qui dort au fond d'une cour depuis l'échéance de son contrôle pose le même problème. Avec LUNICAR, ce contrôle n'est pas exigé pour conclure. Joignez si possible le dernier procès-verbal : il donne une image claire du véhicule et rend l'estimation plus juste. Si la voiture ne peut plus circuler, l'enlèvement est organisé à votre adresse, sans que vous ayez à la conduire sur la rocade. Vous libérez la cour, et la voiture quitte votre adresse le jour même de la vente.</p><ul class=\"ticks\"><li><strong>Pas de passage obligé au centre de contrôle</strong> : la voiture est rachetée en l'état</li><li><strong>Une contre-visite en suspens n'est pas bloquante</strong> : signalez-la, elle entre dans le calcul de l'offre</li><li><strong>Un déplacement gratuit</strong> : en ville comme dans les communes de l'agglomération mancelle</li><li><strong>Une vente bouclée sur place</strong> : certificat de cession, déclaration ANTS et virement le jour même</li><li><strong>Une offre qui laisse le temps de comparer</strong> : elle reste valable 7 jours, devis de réparation en main</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "aix-en-provence": {
       "h2": "Comment revendre sa voiture à Aix-en-Provence ?",
@@ -815,7 +890,12 @@
       "faqLocale": {
         "question": "Rachetez-vous les SUV et voitures premium à Aix-en-Provence ?",
         "answer": "Oui. Les SUV et modèles premium sont nombreux dans le pays d'Aix, et nous les rachetons comme toutes les autres voitures. Décrivez les options, l'entretien et l'état de la carrosserie. Si un crédit ou une location est en cours, précisez-le lors du rappel."
-      }
+      },
+      "bloc2": {
+        "h2": "Ma climatisation ne marche plus : vendre ma voiture à Aix-en-Provence ou la réparer ?",
+        "html": "<p>Vous pouvez vendre sans réparer. LUNICAR rachète les voitures dont la climatisation est en panne, comme celles qui présentent d'autres défauts. Signalez-le en ligne, un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours, puis se déplace sans frais à votre adresse aixoise.</p><p>Dans le pays d'Aix, rouler sans climatisation en plein été devient vite pénible, surtout dans les ralentissements vers Marseille. Une recharge de gaz suffit parfois, mais une fuite, un compresseur ou un condenseur à remplacer représentent une dépense lourde sur une voiture âgée. La chaleur fatigue aussi d'autres éléments : batterie qui faiblit, plastiques intérieurs qui se fendillent, pneus qui sèchent quand la voiture stationne au soleil. Si vous hésitez à engager ces frais, demandez d'abord une offre. Elle vous donne un repère concret à mettre en face du devis de réparation, et vous décidez ensuite en connaissance de cause, sans aucune obligation de vendre. Si la voiture a d'autres défauts, mentionnez-les en même temps : l'offre ne sera revue que si l'état réel s'écarte de ce que vous avez décrit.</p><ul class=\"ticks\"><li><strong>Une panne décrite, pas cachée</strong> : climatisation, électronique ou mécanique, l'offre en tient compte dès le départ</li><li><strong>Un rendez-vous là où vous êtes</strong> : centre ancien, quartier résidentiel ou village du pays d'Aix, sans frais</li><li><strong>Aucune obligation</strong> : vous pouvez refuser l'offre et faire réparer</li><li><strong>Un règlement rapide</strong> : virement bancaire le jour même</li><li><strong>Des papiers préparés</strong> : certificat de cession et déclaration ANTS remplis avec vous, sans frais de dossier</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "brest": {
       "h2": "Vendre sa voiture à Brest : ce qu'il faut savoir",
@@ -840,7 +920,12 @@
       "faqLocale": {
         "question": "Je prends le TGV à Saint-Pierre-des-Corps et j'utilise peu ma voiture, puis-je la vendre ?",
         "answer": "Oui. Une voiture qui ne sert qu'à rejoindre la gare peut être vendue sans annonce. Décrivez-la en ligne, l'offre arrive sous 24 h ouvrées et reste valable 7 jours. Vous restez libre de refuser, sans aucun frais."
-      }
+      },
+      "bloc2": {
+        "h2": "Mon parent ne conduit plus à Tours : comment vendre sa voiture à sa place ?",
+        "html": "<p>La vente doit être signée par le titulaire de la carte grise, ou par la personne habilitée à le représenter, mais vous pouvez tout organiser pour lui. Décrivez la voiture en ligne, un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis vient sans frais au domicile de votre parent.</p><p>Quand un parent arrête de conduire, la voiture reste souvent au garage de la maison, dans un quartier pavillonnaire ou une commune voisine de Tours, et perd de sa valeur sans rouler. Lui faire recevoir des inconnus pour des essais n'est pas souhaitable, et vous ne pouvez pas toujours venir de loin pour gérer une annonce. Avec LUNICAR, un seul rendez-vous suffit. Vous pouvez y assister, et le conseiller prend le temps d'expliquer chaque document. Pensez à réunir la carte grise, les clés et, si possible, le carnet d'entretien. Si une mesure de protection juridique est en place, mentionnez-la dès l'appel pour savoir qui doit signer. Vous évitez ainsi plusieurs allers-retours et votre parent reste dans un cadre familier du début à la fin.</p><ul class=\"ticks\"><li><strong>Un rendez-vous chez votre parent</strong> : aucun trajet à prévoir pour lui, déplacement offert</li><li><strong>Une offre à discuter en famille</strong> : elle reste valable 7 jours</li><li><strong>Des papiers préparés</strong> : certificat de cession et déclaration ANTS remplis ensemble</li><li><strong>Un paiement traçable</strong> : virement le jour même, jamais d'espèces ni de chèque</li><li><strong>Toutes les voitures rachetées</strong> : même ancienne, peu roulante ou sans contrôle technique récent</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "amiens": {
       "h2": "Vendre sa voiture à Amiens : comment s'y prendre ?",
@@ -850,7 +935,12 @@
       "faqLocale": {
         "question": "J'habite à la campagne près d'Amiens, puis-je vendre ma voiture à LUNICAR ?",
         "answer": "Oui. LUNICAR rachète des voitures partout en France, y compris dans les villages de la Somme. La démarche reste la même : description en ligne, rappel sous 24 h ouvrées, offre valable 7 jours, déplacement offert à votre adresse et paiement par virement le jour même."
-      }
+      },
+      "bloc2": {
+        "h2": "J'habite une amiénoise sans garage : comment vendre une voiture qui ne roule presque plus ?",
+        "html": "<p>Vous n'avez pas à la déplacer. LUNICAR vient voir la voiture là où elle stationne, dans la rue ou dans une cour, et l'enlève sans frais si elle ne démarre plus. Décrivez-la en ligne en deux minutes : un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée.</p><p>Les amiénoises, ces maisons de brique étroites et mitoyennes typiques de la ville, disposent rarement d'un garage. La voiture reste donc dehors, exposée à la pluie, aux feuilles et à l'humidité, et chaque semaine sans rouler fatigue la batterie et les pneus. Quand elle ne sert plus qu'aux courses du samedi, elle occupe une place précieuse devant la porte. La vendre à un particulier suppose de la remettre en état de rouler pour l'essai. Avec LUNICAR, il suffit de décrire ce que vous constatez : démarrage difficile, freins grippés, mousse sur les joints, traces de rouille. Le conseiller vérifie sur place et, si nécessaire, le véhicule est chargé directement depuis la rue. Vous récupérez la place devant votre porte et vous n'avez plus à surveiller une voiture immobile.</p><ul class=\"ticks\"><li><strong>Aucun essai à organiser</strong> : la vérification se fait à l'arrêt, devant chez vous</li><li><strong>Un enlèvement offert</strong> : même si la voiture n'a pas démarré depuis des mois</li><li><strong>Le temps de vous décider</strong> : l'offre reste valable 7 jours</li><li><strong>Une place libérée et un virement</strong> : le paiement intervient le jour même de la cession</li><li><strong>Des documents préparés</strong> : certificat de cession et déclaration ANTS remplis avec vous</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "limoges": {
       "h2": "Où vendre sa voiture à Limoges sans se déplacer en concession ?",
@@ -860,7 +950,12 @@
       "faqLocale": {
         "question": "Ma voiture a un très fort kilométrage à cause des trajets en Limousin, la rachetez-vous ?",
         "answer": "Oui. En Haute-Vienne, les distances font vite monter le compteur. Nous rachetons les voitures à fort kilométrage, diesel ou essence. Indiquez le kilométrage réel et l'entretien. Le contrôle technique n'est pas exigé pour vendre à un professionnel comme LUNICAR."
-      }
+      },
+      "bloc2": {
+        "h2": "Notre foyer passe à une seule voiture à Limoges : comment vendre la seconde ?",
+        "html": "<p>Décrivez en ligne celle dont vous voulez vous séparer : un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours. Si elle vous convient, il vient sans frais à votre domicile, prépare les documents avec vous et règle la vente par virement le jour même.</p><p>Un départ à la retraite, des enfants qui quittent la maison, un poste en télétravail : autour de Limoges, ces changements font souvent d'une deuxième voiture un véhicule qui dort. Elle continue pourtant de coûter, entre l'assurance, le contrôle technique et l'entretien, et sa cote baisse chaque année. Pour choisir laquelle garder, regardez l'usage réel de chacune : la plus économe pour les trajets vers la ville, la plus spacieuse pour les vacances ou le bricolage. Rien ne vous empêche de demander une estimation pour chacune des deux avant de trancher. Le rendez-vous se tient devant la maison, qu'elle soit dans un quartier de Limoges ou dans un bourg de la Haute-Vienne. Vous évitez ainsi de payer une année d'assurance de plus pour une voiture qui ne sert presque plus.</p><ul class=\"ticks\"><li><strong>Une offre par voiture</strong> : chacune est évaluée selon son état et son kilométrage</li><li><strong>Un déplacement gratuit</strong> : même loin du centre, dans une commune rurale du département</li><li><strong>Aucune obligation</strong> : vous pouvez garder les deux si les offres ne vous conviennent pas</li><li><strong>Des démarches réglées</strong> : certificat de cession et déclaration ANTS préparés</li><li><strong>Un virement le jour même</strong> : sans chèque à déposer ni espèces à transporter</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "annecy": {
       "h2": "Vendre sa voiture à Annecy : comment obtenir un prix ?",
@@ -880,7 +975,12 @@
       "faqLocale": {
         "question": "Ma voiture a souffert du soleil et de la tramontane à Perpignan, est-ce gênant ?",
         "answer": "Non. Peinture ternie, plastiques secs ou joints fatigués sont fréquents en Roussillon. Décrivez-les tels qu'ils sont, avec des photos si possible. Notre offre en tient compte dès le départ, et vous restez libre de la refuser sans frais."
-      }
+      },
+      "bloc2": {
+        "h2": "Comment être payé en toute sécurité quand on vend sa voiture à Perpignan ?",
+        "html": "<p>Avec LUNICAR, le paiement se fait uniquement par virement bancaire, le jour de la vente. Il n'y a ni espèces à compter ni chèque à faire vérifier. Vous décrivez votre voiture en ligne, recevez une offre chiffrée sous 24 h ouvrées, puis le conseiller vient chez vous, sans frais, pour conclure.</p><p>Lors d'une vente entre particuliers, le moment du paiement est souvent le plus délicat. Un chèque peut se révéler sans provision, une grosse somme en liquide pose la question du transport et du dépôt à la banque, et certains acheteurs pressés veulent repartir avec la voiture avant que l'argent soit arrivé. Avec LUNICAR, le circuit est clair : le prix convenu est celui de l'offre, sauf si l'état réel diffère de votre description, le certificat de cession est signé sur place et la vente est déclarée à l'ANTS. Gardez la carte grise barrée avec la mention de la date de vente, ainsi qu'un exemplaire du certificat : ils attestent le moment exact où vous avez cédé le véhicule. Vous savez ainsi à quel moment précis la voiture cesse d'être sous votre responsabilité.</p><ul class=\"ticks\"><li><strong>Ni espèces ni chèque</strong> : seul le virement bancaire est utilisé</li><li><strong>Un prix connu à l'avance</strong> : l'offre chiffrée reste valable 7 jours</li><li><strong>Une rencontre chez vous</strong> : le conseiller vient à l'adresse choisie, en ville comme sur le littoral, sans frais</li><li><strong>Une cession déclarée</strong> : l'enregistrement auprès de l'ANTS vous dégage des amendes postérieures à la vente</li><li><strong>Aucune obligation d'achat</strong> : vous vendez sans devoir acquérir un autre véhicule chez nous</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "metz": {
       "h2": "Vendre sa voiture à Metz : comment se déroule le rachat ?",
@@ -890,7 +990,12 @@
       "faqLocale": {
         "question": "Je suis frontalier au Luxembourg depuis Metz, ma voiture très kilométrée intéresse-t-elle LUNICAR ?",
         "answer": "Oui. Les trajets quotidiens sur l'A31 font monter vite le compteur, et nous rachetons les voitures à fort kilométrage. Le véhicule doit être immatriculé en France à votre nom. Indiquez l'entretien réalisé, l'offre chiffrée reste valable 7 jours."
-      }
+      },
+      "bloc2": {
+        "h2": "Je pars m'installer au Luxembourg depuis Metz : comment vendre ma voiture avant le déménagement ?",
+        "html": "<p>Vous pouvez la vendre en France avant de partir, en un seul rendez-vous. Décrivez votre voiture en ligne, un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis vient sans frais à votre adresse messine. Le virement est émis le jour de la vente, et les formalités sont préparées avec vous.</p><p>Certains Messins qui travaillent déjà de l'autre côté de la frontière finissent par s'y installer. Conserver une voiture immatriculée en France après une installation à l'étranger implique des démarches d'immatriculation et d'assurance, à vérifier auprès des autorités luxembourgeoises. Vendre avant le départ simplifie les choses : la voiture est encore à votre adresse française, les papiers sont à jour et la cession se déclare en ligne. Prévoyez le rendez-vous avant de rendre votre logement ou votre place de stationnement, et gardez une solution de transport pour les derniers jours. Si le calendrier se resserre, le conseiller peut aussi venir chez un proche resté en Moselle. Vous partez ainsi sans voiture à gérer à distance ni démarche en suspens derrière vous.</p><ul class=\"ticks\"><li><strong>Une offre qui suit votre préavis</strong> : elle reste valable 7 jours</li><li><strong>Le choix de l'adresse</strong> : votre logement, celui d'un proche ou votre lieu de travail en France, sans frais</li><li><strong>Les voitures de frontaliers bienvenues</strong> : kilométrage élevé, usage autoroutier quotidien sur l'A31</li><li><strong>Un paiement sans délai</strong> : virement bancaire le jour de la cession</li><li><strong>Des démarches préparées</strong> : certificat de cession et déclaration ANTS remplis avec vous avant votre départ</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "besancon": {
       "h2": "Comment vendre sa voiture à Besançon sans annonce ?",
@@ -900,7 +1005,12 @@
       "faqLocale": {
         "question": "Ma voiture a beaucoup roulé l'hiver dans le Haut-Doubs, puis-je la vendre ?",
         "answer": "Oui. Neige, sel et routes de montagne marquent les voitures comtoises, et nous les rachetons. Signalez la corrosion ou l'usure des freins dans votre description. L'offre en tient compte, et le prix n'est revu que si l'état réel diffère de ce que vous avez décrit."
-      }
+      },
+      "bloc2": {
+        "h2": "Faut-il laisser les pneus hiver avec la voiture quand on la vend à Besançon ?",
+        "html": "<p>C'est à vous de choisir. Si vous laissez les pneus hiver ou les chaînes, indiquez-le dans votre description en ligne : un conseiller LUNICAR vous rappelle sous 24 h ouvrées avec une offre chiffrée qui en tient compte, puis il vient à votre adresse, à Besançon ou dans le Doubs, sans frais.</p><p>Entre la Boucle et les plateaux, il est courant d'équiper sa voiture pour la saison froide : pneus hiver ou quatre saisons, chaînes dans le coffre, parfois un second jeu de jantes rangé à la cave. Au moment de vendre, la question revient : garder cet équipement pour la prochaine voiture ou le céder avec l'ancienne. Si vos pneus correspondent aux dimensions de votre futur véhicule, les conserver peut avoir du sens. Sinon, les laisser évite de les stocker pour rien. Dans les deux cas, précisez leur usure et leur âge approximatif. Signalez aussi l'état des freins et du dessous de caisse, mis à l'épreuve par les routes traitées en hiver. Le conseiller vérifie l'ensemble au rendez-vous et vous restez libre de reprendre ce que vous souhaitez garder.</p><ul class=\"ticks\"><li><strong>Un équipement pris en compte</strong> : pneus montés, jeu supplémentaire ou chaînes, tout se décrit en ligne</li><li><strong>Un rendez-vous où vous habitez</strong> : dans la Boucle, sur les collines ou dans un village du Haut-Doubs, déplacement offert</li><li><strong>Une offre stable</strong> : valable 7 jours, le temps de trier ce que vous gardez</li><li><strong>Un règlement le jour même</strong> : virement bancaire, papiers ANTS préparés</li><li><strong>Toutes les voitures acceptées</strong> : SUV, tout-terrain, citadine ou voiture sans contrôle technique valide</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "orleans": {
       "h2": "Vendre sa voiture à Orléans : quelles démarches ?",
@@ -910,7 +1020,12 @@
       "faqLocale": {
         "question": "Quels documents préparer pour vendre ma voiture à Orléans ?",
         "answer": "Prévoyez la carte grise à votre nom, une pièce d'identité et, si possible, le carnet d'entretien et votre rapport Histovec. Le certificat de cession Cerfa 15776 et la déclaration sur l'ANTS sont préparés avec vous. Le contrôle technique n'est pas exigé pour nous vendre la voiture."
-      }
+      },
+      "bloc2": {
+        "h2": "Je change de voiture à Orléans : faut-il vendre l'ancienne avant d'acheter la nouvelle ?",
+        "html": "<p>Rien ne vous y oblige, et LUNICAR rachète votre voiture sans vous imposer l'achat d'une autre. Demandez une offre en ligne : un conseiller vous rappelle sous 24 h ouvrées avec un prix, valable 7 jours. Vous savez ainsi de quel budget vous disposez avant de signer pour la suivante.</p><p>Quand on change de véhicule dans l'agglomération orléanaise, deux options se présentent souvent : la reprise proposée par le vendeur de la nouvelle voiture, ou la vente séparée de l'ancienne. La reprise est pratique, mais son montant se mêle au prix d'achat et se compare mal. Avec une offre LUNICAR en main, vous disposez d'un montant net à mettre en face. Le calendrier se règle ensuite facilement : fixez le rendez-vous juste avant de récupérer la nouvelle voiture, pour ne pas rester sans véhicule si vous travaillez à Saran, à La Source ou à Paris. Le conseiller vient à votre domicile ou à l'adresse de votre choix, et le virement du jour de la vente complète votre apport. Vous gardez aussi la liberté de refuser notre offre si la reprise vous paraît plus intéressante.</p><ul class=\"ticks\"><li><strong>Aucun achat imposé</strong> : la vente est indépendante de votre prochain véhicule</li><li><strong>Un point de comparaison</strong> : l'offre chiffrée vous sert face à une proposition de reprise</li><li><strong>Un rendez-vous calé sur votre livraison</strong> : chez vous ou au travail, sans frais de déplacement</li><li><strong>Un virement immédiat</strong> : émis le jour de la cession</li><li><strong>Toutes les voitures acceptées</strong> : récentes, très kilométrées, en panne ou accidentées</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "rouen": {
       "h2": "Comment vendre sa voiture à Rouen rapidement ?",
@@ -920,7 +1035,12 @@
       "faqLocale": {
         "question": "J'habite sur les hauteurs de Rouen et ma voiture ne démarre plus, que faire ?",
         "answer": "Vous pouvez la vendre quand même. Nous rachetons les voitures en panne, y compris immobilisées. Précisez si elle démarre, si la batterie est à plat et où elle se trouve. Le rendez-vous est fixé lors du rappel du conseiller, qui vient sur place sans frais."
-      }
+      },
+      "bloc2": {
+        "h2": "Mon diesel ancien est-il encore vendable à Rouen avec la zone à faibles émissions ?",
+        "html": "<p>Oui. LUNICAR rachète les diesels et les essences anciens quelle que soit leur vignette Crit'Air. Décrivez la voiture en ligne, un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis vient la chercher à votre adresse rouennaise, sans frais. Vous n'avez pas à la conduire jusqu'au centre.</p><p>La métropole rouennaise a instauré une zone à faibles émissions, et le cadre national de ces zones a été plusieurs fois remis en discussion. Périmètre, dérogations et calendrier ont pu évoluer : consultez le site officiel de la métropole avant de prendre une décision fondée sur votre vignette. Pour un propriétaire de la rive gauche ou des plateaux qui traverse rarement la Seine, la question se pose autrement que pour celui qui rejoint le centre chaque jour. Dans les deux cas, connaître la valeur de la voiture aide à choisir entre la garder, la remplacer ou s'en passer, avec le métro et les lignes TEOR pour les trajets quotidiens. Si la voiture ne roule plus du tout, l'enlèvement est pris en charge sans frais.</p><ul class=\"ticks\"><li><strong>Toutes les vignettes acceptées</strong> : diesel ancien, essence d'ancienne génération, utilitaire ou hybride</li><li><strong>Un rendez-vous sur place</strong> : le conseiller vient là où la voiture stationne, déplacement offert</li><li><strong>Le temps de vérifier les règles</strong> : l'offre reste valable 7 jours</li><li><strong>Une vente réglée en une fois</strong> : documents ANTS préparés, virement le jour même</li><li><strong>Aucune obligation</strong> : vous pouvez refuser l'offre et garder la voiture si les règles vous le permettent</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "mulhouse": {
       "h2": "Vendre sa voiture à Mulhouse : quelles spécificités ?",
@@ -955,7 +1075,12 @@
       "faqLocale": {
         "question": "Je suis étudiant à Nancy et je veux vendre ma petite voiture, est-ce possible ?",
         "answer": "Oui. Si la carte grise est à votre nom, vous pouvez vendre votre voiture seul. Décrivez-la en ligne, un conseiller vous rappelle sous 24 h ouvrées avec une offre valable 7 jours. Le paiement se fait par virement le jour de la vente."
-      }
+      },
+      "bloc2": {
+        "h2": "Ma voiture est presque neuve et ne me convient plus : puis-je la vendre à Nancy ?",
+        "html": "<p>Oui. LUNICAR rachète aussi les voitures récentes et peu kilométrées. Décrivez la vôtre en ligne avec sa finition, ses options et son historique : un conseiller vous rappelle sous 24 h ouvrées avec une offre chiffrée, puis vient sans frais à votre adresse nancéienne si vous l'acceptez.</p><p>Il arrive qu'une voiture achetée récemment ne corresponde plus à la vie qu'on mène. Un emploi qui se rejoint à pied ou en bus, une naissance qui rend le coffre trop petit, un SUV trop large pour le parking de la nouvelle résidence : les raisons ne manquent pas. Une voiture récente perd vite de sa valeur au cours de ses premières années, si bien qu'attendre n'arrange rien. Pour une offre fidèle, précisez la date de première immatriculation, le kilométrage exact et l'équipement. Joignez le carnet tamponné et les factures d'entretien. Si la voiture est financée par un crédit avec gage ou une location, réglez d'abord ce point avec l'organisme concerné, faute de quoi la cession ne peut pas aboutir. Une voiture bien décrite reçoit une offre plus précise, et le rendez-vous se déroule sans surprise.</p><ul class=\"ticks\"><li><strong>Les modèles récents bienvenus</strong> : citadine, compacte, SUV ou électrique de quelques mois</li><li><strong>Un rendez-vous chez vous</strong> : déplacement offert, en ville comme dans la métropole</li><li><strong>Une décision posée</strong> : l'offre reste valable 7 jours, sans obligation d'accepter</li><li><strong>Un paiement immédiat</strong> : virement bancaire le jour de la vente</li><li><strong>Des papiers préparés</strong> : certificat de cession et déclaration ANTS remplis avec vous</li></ul>"
+      },
+      "updated": "2026-10-22"
     },
     "avignon": {
       "h2": "Comment vendre sa voiture à Avignon ?",
