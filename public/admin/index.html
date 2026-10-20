@@ -862,7 +862,65 @@ ul.plain li { margin: 3px 0; }
         await Promise.all([charger(), chargerMessages()]);
         ouvrirDepuisHash();
         activerPush();
+        nettoyerContacts();
     }
+
+    // ---------------- Contacts du téléphone (app iOS uniquement)
+    // Avant un appel, le vendeur devient un contact « Prénom Nom · modèle » (société Lunicar, poste = réf.) :
+    // s'il rappelle, l'iPhone (et SoftCall) affichent son nom. Les fiches des demandes archivées ou supprimées
+    // sont retirées au lancement de l'app. Rien n'est jamais envoyé au vendeur.
+    const CT = () => { const C = window.Capacitor; return C && C.isNativePlatform && C.isNativePlatform() && C.Plugins && C.Plugins.Contacts; };
+    const telNorm = v => { let t = String(v || '').replace(/[^\d+]/g, ''); if (t.startsWith('00')) t = '+' + t.slice(2); if (/^0\d{9}$/.test(t)) t = '+33' + t.slice(1); return t; };
+    const libelleContact = d => {
+        const x = d.data || {};
+        const nom = [x.prenom, x.nom].filter(Boolean).join(' ').trim() || 'Vendeur';
+        const v = String(x.vehicule || '').trim().split(/\s+/), modele = (v.length > 1 ? v.slice(1) : v).join(' ').slice(0, 24);
+        return { given: nom, family: modele || '' };
+    };
+    let contactsLunicar = null; // { réf : { id, tel, libellé } }
+    async function lireContacts(P) {
+        const r = await P.getContacts({ projection: { name: true, organization: true, phones: true } });
+        contactsLunicar = {};
+        (r.contacts || []).forEach(c => {
+            const o = c.organization || {}; const m = /^Réf\. ([0-9A-F]{8})$/.exec(o.jobTitle || '');
+            if (o.company === 'Lunicar' && m) contactsLunicar[m[1]] = { id: c.contactId, tel: telNorm(((c.phones || [])[0] || {}).number), nom: [c.name && c.name.given, c.name && c.name.family].filter(Boolean).join(' ') };
+        });
+    }
+    async function contactVendeur(d) {
+        const P = CT(), x = d && d.data || {};
+        if (!P || !x.telephone) return;
+        try {
+            if ((await P.requestPermissions()).contacts !== 'granted') return;
+            if (!contactsLunicar) await lireContacts(P);
+            const l = libelleContact(d), tel = telNorm(x.telephone), deja = contactsLunicar[d.ref];
+            if (deja && deja.tel === tel && deja.nom === [l.given, l.family].filter(Boolean).join(' ')) return;
+            if (deja) await P.deleteContact({ contactId: deja.id }).catch(() => {});
+            const r = await P.createContact({ contact: { name: l, organization: { company: 'Lunicar', jobTitle: `Réf. ${d.ref}` }, phones: [{ type: 'mobile', label: 'Vendeur Lunicar', number: tel }] } });
+            contactsLunicar[d.ref] = { id: r.contactId, tel, nom: [l.given, l.family].filter(Boolean).join(' ') };
+        } catch (e) { console.warn('Contact :', e && e.message); }
+    }
+    async function nettoyerContacts() {
+        const P = CT(); if (!P) return;
+        try {
+            if ((await P.checkPermissions()).contacts !== 'granted') return;
+            await lireContacts(P);
+            for (const [ref, c] of Object.entries(contactsLunicar)) {
+                const d = demandes.find(x => x.ref === ref);
+                if (!d || (d.suivi || {}).archivee) { await P.deleteContact({ contactId: c.id }).catch(() => {}); delete contactsLunicar[ref]; }
+            }
+        } catch (e) { console.warn('Contacts :', e && e.message); }
+    }
+    // Liens « Appeler » / WhatsApp de l'app : la fiche contact est créée juste avant l'appel.
+    document.addEventListener('click', e => {
+        const a = e.target.closest('a[href^="tel:"], a[href^="https://wa.me/"]');
+        if (!a || !CT()) return;
+        const ref = (courant && courant.ref) || (a.closest('[data-ref]') || {}).dataset?.ref;
+        const d = ref && (courant && courant.ref === ref ? courant : demandes.find(x => x.ref === ref));
+        if (!d) return;
+        e.preventDefault();
+        const href = a.href, aller = () => { if (/^tel:/.test(href)) location.href = href; else window.open(href, '_blank'); };
+        Promise.race([contactVendeur(d), new Promise(r => setTimeout(r, 2500))]).then(aller, aller);
+    }, true);
 
     // ---------------- Notifications (app iOS uniquement)
     // Dans l'app native, une alerte arrive à chaque demande ; la toucher ouvre la fiche.
