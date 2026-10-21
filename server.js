@@ -747,6 +747,20 @@ function authAdmin(req, res, next) {
     next();
 }
 
+// Planning des rendez-vous en abonnement (Calendrier iPhone, Google Agenda) : adresse secrète dérivée du mot de passe admin.
+const jetonCalendrier = () => ADMIN_PASSWORD ? signer('calendrier-rdv').slice(0, 32) : null;
+app.get('/calendrier/:jeton/lunicar-rdv.ics', async (req, res) => {
+    const j = jetonCalendrier();
+    if (!j || req.params.jeton !== j) return res.status(404).send('Introuvable');
+    const depuis = new Date(Date.now() - 60 * 864e5).toISOString().slice(0, 10);
+    const ds = (await store.listerDemandes()).filter(d => d.suivi && d.suivi.rdv && d.suivi.rdv.date >= depuis);
+    res.type('text/calendar; charset=utf-8').set('Cache-Control', 'no-cache').send(require('./lib/calendrier').ics(ds));
+});
+app.get('/api/admin/calendrier', authAdmin, (req, res) => {
+    const j = jetonCalendrier();
+    res.json({ url: j ? `${SITE.baseUrl.replace(/^https?:/, 'webcal:')}/calendrier/${j}/lunicar-rdv.ics` : null, https: j ? `${SITE.baseUrl}/calendrier/${j}/lunicar-rdv.ics` : null });
+});
+
 // Login admin avec rate limiting
 app.post('/api/admin/login', loginRateLimiter, (req, res) => {
     const { identifiant, password } = req.body;
@@ -1140,16 +1154,19 @@ setInterval(async () => {
         const drapeaux = toutes.filter(d => (d.suivi || {}).a_appeler && !d.suivi.archivee && !dues.includes(d));
         // Nouvelles demandes des 14 derniers jours jamais appelées (les anciennes importées de Gmail n'y figurent pas).
         const neuves = actives.filter(d => d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels && !(d.suivi || {}).a_appeler && Date.now() - new Date(d.created_at) < 14 * 864e5);
-        if (!dues.length && !neuves.length && !drapeaux.length) return;
+        const rdvs = toutes.filter(d => (d.suivi || {}).rdv && d.suivi.rdv.statut === 'prevu' && d.suivi.rdv.date === jour).sort((a, b) => a.suivi.rdv.heure.localeCompare(b.suivi.rdv.heure));
+        if (!dues.length && !neuves.length && !drapeaux.length && !rdvs.length) return;
+        if (rdvs.length) push.notifier({ titre: `📅 ${rdvs.length} rendez-vous aujourd'hui`, texte: rdvs.map(d => `${d.suivi.rdv.heure} ${[(d.data || {}).vehicule, (d.data || {}).ville].filter(Boolean).join(', ')}`).join(' · '), ref: rdvs.length === 1 ? rdvs[0].ref : undefined }).catch(() => {});
         const total = dues.length + drapeaux.length + neuves.length;
-        push.notifier({ titre: `📞 ${total} vendeur${total > 1 ? 's' : ''} à appeler aujourd'hui`, texte: [dues.length && `${dues.length} relance${dues.length > 1 ? 's' : ''} arrivée${dues.length > 1 ? 's' : ''}`, drapeaux.length && `${drapeaux.length} marqué${drapeaux.length > 1 ? 's' : ''} « À appeler »`, neuves.length && `${neuves.length} nouvelle${neuves.length > 1 ? 's' : ''} jamais appelée${neuves.length > 1 ? 's' : ''}`].filter(Boolean).join(' · ') }).catch(() => {});
+        if (total) push.notifier({ titre: `📞 ${total} vendeur${total > 1 ? 's' : ''} à appeler aujourd'hui`, texte: [dues.length && `${dues.length} relance${dues.length > 1 ? 's' : ''} arrivée${dues.length > 1 ? 's' : ''}`, drapeaux.length && `${drapeaux.length} marqué${drapeaux.length > 1 ? 's' : ''} « À appeler »`, neuves.length && `${neuves.length} nouvelle${neuves.length > 1 ? 's' : ''} jamais appelée${neuves.length > 1 ? 's' : ''}`].filter(Boolean).join(' · ') }).catch(() => {});
         const ligne = d => { const x = d.data || {}; const r = (d.suivi || {}).rappel_le;
             return `<tr><td style="padding:6px 10px 6px 0"><a href="${SITE.baseUrl}/admino/demande/${d.ref}" style="color:#0D2541;font-weight:700">${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</a><br><span style="color:#6F6B64">${esc([x.vehicule, x.annee].filter(Boolean).join(' '))} · ${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span></td>
             <td style="padding:6px 10px 6px 0;white-space:nowrap"><a href="tel:+${esc(x.telephone_intl || '')}">${esc(x.telephone || '')}</a></td>
             <td style="padding:6px 0;color:${r && r < jour ? '#B03A2E' : '#6F6B64'};white-space:nowrap">${r ? (r < jour ? 'en retard · ' : '') + r.split('-').reverse().join('/') : ''}</td></tr>`; };
         await sendEmail({
-            subject: `☎️ ${total} vendeur${total > 1 ? 's' : ''} à appeler aujourd'hui : ${dues.length} relance${dues.length > 1 ? 's' : ''}, ${drapeaux.length} marqué${drapeaux.length > 1 ? 's' : ''}, ${neuves.length} nouvelle${neuves.length > 1 ? 's' : ''}`,
+            subject: `${rdvs.length ? `📅 ${rdvs.length} RDV · ` : ''}☎️ ${total} vendeur${total > 1 ? 's' : ''} à appeler aujourd'hui : ${dues.length} relance${dues.length > 1 ? 's' : ''}, ${drapeaux.length} marqué${drapeaux.length > 1 ? 's' : ''}, ${neuves.length} nouvelle${neuves.length > 1 ? 's' : ''}`,
             html: `<div style="font-family:Arial,sans-serif;max-width:620px">
+${rdvs.length ? `<h3 style="color:#0D2541">Rendez-vous du jour (${rdvs.length})</h3><table style="border-collapse:collapse;font-size:14px;width:100%">${rdvs.map(d => `<tr><td style="padding:6px 10px 6px 0;font-weight:700;white-space:nowrap">${d.suivi.rdv.heure}</td><td style="padding:6px 0"><a href="${SITE.baseUrl}/admino/demande/${d.ref}" style="color:#0D2541;font-weight:700">${esc([(d.data || {}).prenom, (d.data || {}).nom].filter(Boolean).join(' ') || 'Vendeur')}</a> · ${esc((d.data || {}).vehicule || '')}<br><span style="color:#6F6B64">${esc(d.suivi.rdv.lieu || [(d.data || {}).code_postal, (d.data || {}).ville].filter(Boolean).join(' '))}${d.suivi.rdv.prix ? ` · ${d.suivi.rdv.prix.toLocaleString('fr-FR')} € convenus` : ''}</span></td></tr>`).join('')}</table>` : ''}
 ${dues.length ? `<h3 style="color:#0D2541">Relances du jour (${dues.length})</h3><table style="border-collapse:collapse;font-size:14px;width:100%">${dues.map(ligne).join('')}</table>` : ''}
 ${drapeaux.length ? `<h3 style="color:#0D2541">Marquées « À appeler » (${drapeaux.length})</h3><table style="border-collapse:collapse;font-size:14px;width:100%">${drapeaux.map(ligne).join('')}</table>` : ''}
 ${neuves.length ? `<h3 style="color:#0D2541">Nouvelles demandes pas encore appelées (${neuves.length})</h3><table style="border-collapse:collapse;font-size:14px;width:100%">${neuves.map(ligne).join('')}</table>` : ''}

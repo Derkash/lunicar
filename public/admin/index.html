@@ -487,6 +487,48 @@ ul.plain li { margin: 3px 0; }
 .plus-in .count { margin-left: auto; }
 .pilotage-t { margin: 0 0 8px; font-size: .78rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-5); }
 
+/* ---------- Rendez-vous et planning ---------- */
+.badge-rdv { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 99px; background: #EEE9FA; color: #5A3E9E; font-size: .72rem; font-weight: 700; white-space: nowrap; }
+.badge-rdv.auj { background: #5A3E9E; color: #fff; }
+.badge-rdv.passe { background: var(--red-1); color: var(--red); }
+.rdv-bloc { border-color: #DCD3F2; }
+.rdv-bloc.passe { border-color: #EDB8AF; }
+.rdv-quand { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 0 0 8px; }
+.rdv-quand b { font-size: 1.25rem; font-weight: 650; letter-spacing: -.02em; text-transform: capitalize; color: #3F2A78; }
+.rdv-quand span { color: var(--ink-5); font-size: .92rem; }
+.rdv-info { display: grid; gap: 4px; font-size: .92rem; margin: 0 0 12px; }
+.rdv-info a { color: var(--marine-6); text-decoration: none; font-weight: 550; }
+.rdv-act { display: flex; flex-wrap: wrap; gap: 8px; }
+.rdv-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 12px; margin-top: 12px; }
+.rdv-form .rdv-lieu { grid-column: 1 / -1; }
+.rdv-form .rdv-act { grid-column: 1 / -1; }
+.pl-bande { display: grid; grid-template-columns: repeat(14, minmax(46px, 1fr)); gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 0 14px; padding: 1px; }
+.pl-bande::-webkit-scrollbar { display: none; }
+.pl-j { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 7px 0 5px; display: grid; justify-items: center; gap: 1px; }
+.pl-j span { font-size: .68rem; color: var(--ink-5); text-transform: capitalize; }
+.pl-j b { font-size: 1.05rem; font-weight: 650; }
+.pl-j i { font-style: normal; font-size: .5rem; letter-spacing: 1px; color: #5A3E9E; min-height: 9px; line-height: 9px; }
+.pl-j.auj { border-color: #5A3E9E; }
+.pl-j.on { background: #5A3E9E; border-color: #5A3E9E; }
+.pl-j.on span, .pl-j.on b, .pl-j.on i { color: #fff; }
+.pl-groupe { margin: 0 0 14px; }
+.pl-jour { display: flex; justify-content: space-between; align-items: baseline; font-weight: 650; font-size: .95rem; margin: 0 0 8px; text-transform: capitalize; }
+.pl-jour span { font-weight: 500; font-size: .8rem; color: var(--ink-4); text-transform: none; }
+.pl-jour.auj { color: #5A3E9E; }
+.pl-rdv { display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; gap: 12px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; margin: 0 0 8px; box-shadow: var(--shadow); cursor: pointer; }
+.pl-rdv.retard { border-color: #EDB8AF; background: var(--red-1); }
+.pl-rdv.fini { opacity: .78; }
+.pl-h b { display: block; font-size: 1.15rem; font-weight: 700; letter-spacing: -.02em; color: #3F2A78; }
+.pl-h span { font-size: .72rem; color: var(--ink-4); }
+.pl-c { display: grid; gap: 2px; min-width: 0; }
+.pl-c b { font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pl-c span { font-size: .84rem; color: var(--ink-5); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pl-c .pill { justify-self: start; margin-top: 4px; }
+.pl-p { display: grid; justify-items: end; gap: 6px; }
+.pl-p b { font-weight: 650; }
+.pl-a { display: flex; gap: 6px; }
+.pl-a .btn { width: 40px; justify-content: center; padding: 0; }
+
 /* ---------- Confirmation ---------- */
 .confirm { position: fixed; inset: 0; z-index: 90; background: rgba(14,35,64,.45); display: grid; place-items: center; padding: 16px; }
 .confirm-in { width: 100%; max-width: 400px; background: var(--surface); border-radius: 16px; padding: 22px 20px 18px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
@@ -549,6 +591,14 @@ ul.plain li { margin: 3px 0; }
     .panneau-h b { font-size: 1.05rem; font-weight: 650; }
     .filtres-grille { grid-template-columns: 1fr 1fr; gap: 12px 10px; }
     .panneau-pied .btn { flex: 1 1 auto; justify-content: center; }
+
+    /* Planning */
+    .pl-bande { margin: 0 -16px 12px; padding: 1px 16px; grid-template-columns: repeat(14, 52px); }
+    .rdv-form { grid-template-columns: 1fr 1fr; }
+    [data-view="planning"] .toolbar { flex-wrap: wrap; }
+    [data-view="planning"] .toolbar .segs { flex: 1 1 100% !important; margin: 0 -16px !important; padding: 1px 16px; }
+    [data-view="planning"] .toolbar .btn { flex: 1 1 100%; justify-content: center; }
+    .rdv-act .btn { flex: 1 1 calc(50% - 4px); justify-content: center; }
 
     /* Véhicules, dépenses */
     .vh-list { grid-template-columns: minmax(0, 1fr); }
@@ -663,6 +713,7 @@ ul.plain li { margin: 3px 0; }
     <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><path d="M4.5 6l7.5 6 7.5-6"/></symbol>
     <symbol id="i-reg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
     <symbol id="i-stat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6.5 16.5v-4M10.5 16.5V8M14.5 16.5v-6M18.5 16.5V5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/><path d="M8 14h2M14 14h2M8 17h2"/></symbol>
     <symbol id="i-cle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></symbol>
     <symbol id="i-euro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 6.5A7 7 0 1 0 17.5 17.5"/><path d="M4.5 10.5h9M4.5 13.5h9"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></symbol>
@@ -695,6 +746,7 @@ ul.plain li { margin: 3px 0; }
         <div class="brand"><img src="/images/logo-lunicar-blanc.webp" width="556" height="120" alt="LUNICAR"><small>ADMIN</small></div>
         <nav class="tabs" id="tabs">
             <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
+            <button data-tab="planning"><svg><use href="#i-cal"/></svg>Planning</button>
             <button data-tab="vehicules"><svg><use href="#i-cle"/></svg>Véhicules</button>
             <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Dépenses</button>
             <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
@@ -761,6 +813,14 @@ ul.plain li { margin: 3px 0; }
                 <button class="close" data-lot="aucune" aria-label="Tout désélectionner" style="background:transparent;border-color:rgba(255,255,255,.2);color:#fff"><svg><use href="#i-x"/></svg></button>
             </div>
             <div class="list" id="list"></div>
+        </section>
+
+        <section data-view="planning" hidden>
+            <div class="page-h"><h1>Planning des rendez-vous</h1><span>fixés au téléphone depuis la fiche d'une demande</span></div>
+            <div class="kpis" id="plKpis"></div>
+            <div class="pl-bande" id="plBande"></div>
+            <div class="toolbar"><div class="segs" id="plVues" style="margin:0;flex:1"></div><a class="btn" id="plCal" href="#" hidden><svg><use href="#i-cal"/></svg>S'abonner dans Calendrier</a></div>
+            <div id="plListe"></div>
         </section>
 
         <section data-view="vehicules" hidden>
@@ -904,12 +964,13 @@ ul.plain li { margin: 3px 0; }
 
 <nav class="navbas" id="navbas" hidden>
     <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
+    <button data-tab="planning"><svg><use href="#i-cal"/></svg>Planning<span class="count" data-count="rdv"></span></button>
     <button data-tab="vehicules"><svg><use href="#i-cle"/></svg>Véhicules</button>
     <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Dépenses</button>
-    <button data-tab="stats"><svg><use href="#i-stat"/></svg>Stats</button>
     <button data-tab="plus"><svg><use href="#i-plus"/></svg>Plus<span class="count" data-count="msg"></span></button>
 </nav>
 <div class="plus-sheet" id="plusSheet" hidden><div class="plus-in">
+    <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
     <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
     <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
@@ -947,7 +1008,7 @@ ul.plain li { margin: 3px 0; }
     let affichees = [];
     let etat = { statuts: {} }, demandes = [], messages = [], courant = null, poll = null;
 
-    const toast = t => { const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
+    const toast = t => { document.querySelectorAll('.toast:not([data-garde])').forEach(x => x.remove()); const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
     async function api(url, opts = {}) {
         const r = await fetch(url, { ...opts, headers: { Authorization: 'Bearer ' + token, ...(opts.body && !(opts.body instanceof FormData) ? { 'Content-Type': 'application/json' } : {}), ...(opts.headers || {}) } });
         if (r.status === 401) { deconnecter(); throw new Error('Session expirée'); }
@@ -1033,7 +1094,7 @@ ul.plain li { margin: 3px 0; }
     document.addEventListener('click', e => {
         const a = e.target.closest('a[href^="tel:"], a[href^="https://wa.me/"]');
         if (!a || !CT()) return;
-        const ref = (courant && courant.ref) || (a.closest('[data-ref]') || {}).dataset?.ref;
+        const ref = (courant && courant.ref) || (a.closest('[data-ref]') || {}).dataset?.ref || (a.closest('[data-plref]') || {}).dataset?.plref;
         const d = ref && (courant && courant.ref === ref ? courant : demandes.find(x => x.ref === ref));
         if (!d) return;
         e.preventDefault();
@@ -1069,7 +1130,7 @@ ul.plain li { margin: 3px 0; }
     function allerOnglet(tab) {
         $('#plusSheet').hidden = true;
         if (!$('#sheet').hidden || !$('#vpage').hidden) { history.pushState({}, '', BASE); quitterFiche(); quitterVehicule(); }
-        const dansPlus = ['photos', 'messages', 'reglages'].includes(tab);
+        const dansPlus = ['stats', 'photos', 'messages', 'reglages'].includes(tab);
         document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
         document.querySelectorAll('#navbas button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab || (dansPlus && x.dataset.tab === 'plus')));
         document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== tab);
@@ -1080,6 +1141,7 @@ ul.plain li { margin: 3px 0; }
         if (tab === 'vehicules') vueVehicules();
         if (tab === 'depenses') vueDepenses();
         if (tab === 'stats') tableau();
+        if (tab === 'planning') vuePlanning();
     }
     const onglet = e => {
         const b = e.target.closest('button[data-tab]'); if (!b) return;
@@ -1102,7 +1164,9 @@ ul.plain li { margin: 3px 0; }
             if (t.length === 9 && !vus.has(t)) vus.set(t, d.ref);
         });
         compter('dem', demandes.filter(d => aAppeler(d) || (d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels && !(d.suivi || {}).archivee)).length);
+        compter('rdv', demandes.filter(d => rdvPrevu(d) && rdvPrevu(d).date <= jourIso()).length);
         kpis(); liste();
+        if (!document.querySelector('[data-view="planning"]').hidden) vuePlanning();
         if (!document.querySelector('[data-view="stats"]').hidden) tableau();
     }
     const ACTIFS = ['nouvelle', 'contactee', 'offre', 'rdv'];
@@ -1255,7 +1319,7 @@ ul.plain li { margin: 3px 0; }
                 <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
-                <div class="st">${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
+                <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
                 <div class="ph num">${(d.photos || []).length || ''}</div>
                 <div class="quand-m">${date(d.created_at, false)}</div>
             </div></div>`;
@@ -1332,7 +1396,7 @@ ul.plain li { margin: 3px 0; }
             await api('/api/admin/lot', { method: 'POST', body: JSON.stringify({ refs: [ref], action }) });
             await charger();
             if (!annulable) return;
-            const t = document.createElement('div'); t.className = 'toast'; t.style.cssText = 'display:flex;gap:14px;align-items:center;pointer-events:auto';
+            const t = document.createElement('div'); t.className = 'toast'; t.dataset.garde = '1'; t.style.cssText = 'display:flex;gap:14px;align-items:center;pointer-events:auto';
             t.innerHTML = `<span>${action === 'archiver' ? 'Demande archivée' : 'Demande désarchivée'}</span><button class="btn btn-s" style="background:transparent;color:var(--gold-l);border-color:rgba(255,255,255,.25)">Annuler</button>`;
             document.body.appendChild(t);
             const fin = setTimeout(() => t.remove(), 5000);
@@ -1808,6 +1872,130 @@ ul.plain li { margin: 3px 0; }
         } catch (e) { toast(e.message); }
     }
 
+    // ---------------- Rendez-vous : fixés au téléphone, planning mobile
+    const AVEC = { abdoul: 'Abdoul-Khader', youssouf: 'Youssouf', deux: 'Les deux' };
+    let plVue = 'avenir', plJour = null, calUrl = null;
+    const rdvDe = d => (d.suivi || {}).rdv || null;
+    const rdvPrevu = d => { const r = rdvDe(d); return r && r.statut === 'prevu' ? r : null; };
+    const jourLong = iso => new Date(iso + 'T12:00:00Z').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+    const jourCourt = iso => new Date(iso + 'T12:00:00Z').toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+    const ajoutJours = (iso, n) => new Date(new Date(iso + 'T12:00:00Z').getTime() + n * 864e5).toISOString().slice(0, 10);
+    const libJour = iso => { const a = jourIso(); return iso === a ? "Aujourd'hui" : iso === ajoutJours(a, 1) ? 'Demain' : iso === ajoutJours(a, -1) ? 'Hier' : jourLong(iso); };
+    const itineraire = (d, r) => `https://maps.apple.com/?daddr=${encodeURIComponent(r.lieu || [(d.data || {}).code_postal, (d.data || {}).ville].filter(Boolean).join(' '))}`;
+    const badgeRdv = d => { const r = rdvPrevu(d); if (!r) return ''; const passe = r.date < jourIso(); return `<span class="badge-rdv${passe ? ' passe' : r.date === jourIso() ? ' auj' : ''}">${passe ? 'RDV passé · ' : 'RDV '}${r.date === jourIso() ? "aujourd'hui" : jourCourt(r.date)} · ${r.heure}</span>`; };
+
+    // Bloc de la fiche : rendez-vous prévu (actions) ou formulaire pour le fixer
+    function blocRdv(d) {
+        const r = rdvDe(d), x = d.data || {};
+        if (r && r.statut === 'prevu') {
+            const passe = r.date < jourIso();
+            return `<section class="sec rdv-bloc${passe ? ' passe' : ''}" id="rdvBloc">
+                <h3>Rendez-vous ${passe ? '<small class="neg">date passée : indiquez comment il s\'est passé</small>' : ''}</h3>
+                <div class="rdv-quand"><b>${libJour(r.date)}</b><span>${r.heure} · ${r.duree || 45} min · ${AVEC[r.avec] || ''}</span></div>
+                <div class="rdv-info">${r.lieu ? `<a href="${itineraire(d, r)}" target="_blank" rel="noopener">📍 ${esc(r.lieu)}</a>` : `<a href="${itineraire(d, r)}" target="_blank" rel="noopener">📍 ${esc([x.code_postal, x.ville].filter(Boolean).join(' ') || 'Lieu à préciser')}</a>`}${r.prix ? `<span>Prix convenu <b class="num">${eur(r.prix)}</b></span>` : ''}${r.note ? `<span>${esc(r.note)}</span>` : ''}</div>
+                <div class="rdv-act">
+                    <button class="btn btn-g" data-rdv="achetee">Fait : voiture achetée</button>
+                    <button class="btn" data-rdv="fait">Fait, pas d'achat</button>
+                    <button class="btn" data-rdv="modifier">Déplacer</button>
+                    <a class="btn" href="${lien('/api/admin/demandes/' + d.ref + '/rdv.ics')}" target="_blank">Ajouter au calendrier</a>
+                    <button class="btn btn-d" data-rdv="annule">Annuler</button>
+                </div>
+                <div id="rdvForm" hidden></div>
+            </section>`;
+        }
+        const hist = r && r.statut !== 'prevu' ? `<p class="sub" style="margin:0 0 10px">Dernier rendez-vous : ${jourCourt(r.date)} à ${r.heure} · ${r.statut === 'fait' ? 'fait' : 'annulé'}${r.motif ? ' (' + esc(r.motif) + ')' : ''}</p>` : '';
+        return `<section class="sec rdv-bloc" id="rdvBloc"><h3>Rendez-vous</h3>${hist}
+            <button class="btn btn-p" data-rdv="nouveau" ${['achetee', 'vendue_ailleurs', 'refusee', 'sans_suite'].includes(d.statut) ? 'hidden' : ''}>Programmer un rendez-vous</button>
+            <div id="rdvForm" hidden></div></section>`;
+    }
+    function formRdv(d) {
+        const r = rdvPrevu(d) || {}, x = d.data || {}, s = d.suivi || {};
+        const dem = ajoutJours(jourIso(), 1);
+        return `<form id="rdvF" class="rdv-form">
+            <label class="f">Date<input class="in" type="date" name="date" required value="${r.date || dem}" min="${jourIso()}"></label>
+            <label class="f">Heure<input class="in" type="time" name="heure" required step="900" value="${r.heure || '14:00'}"></label>
+            <label class="f">Prix convenu (€)<input class="in num" name="prix" inputmode="decimal" value="${r.prix || s.offre || ''}"></label>
+            <label class="f">Qui y va<select class="in" name="avec">${Object.entries(AVEC).map(([k, l]) => `<option value="${k}"${(r.avec || payeurDefaut()) === k ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
+            <label class="f rdv-lieu">Adresse du rendez-vous<input class="in" name="lieu" value="${esc(r.lieu || [x.code_postal, x.ville].filter(Boolean).join(' '))}" placeholder="N°, rue, ville" autocomplete="street-address"></label>
+            <label class="f">Durée<select class="in" name="duree">${[30, 45, 60, 90, 120].map(m => `<option value="${m}"${(r.duree || 45) === m ? ' selected' : ''}>${m < 60 ? m + ' min' : m / 60 + ' h' + (m % 60 ? ' 30' : '')}</option>`).join('')}</select></label>
+            <label class="f rdv-lieu">Note<input class="in" name="note" value="${esc(r.note || '')}" placeholder="Code portail, documents à préparer, double des clés…"></label>
+            <div class="rdv-act"><button class="btn btn-p">${r.date ? 'Enregistrer le nouvel horaire' : 'Fixer le rendez-vous'}</button><button type="button" class="btn" id="rdvAnnulForm">Fermer</button></div>
+        </form>`;
+    }
+    function lierRdv(d) {
+        const bloc = $('#rdvBloc'); if (!bloc) return;
+        const ouvrirForm = () => { const f = $('#rdvForm'); f.innerHTML = formRdv(d); f.hidden = false; bloc.querySelectorAll('[data-rdv="nouveau"]').forEach(b => b.hidden = true);
+            $('#rdvAnnulForm').onclick = () => { f.hidden = true; bloc.querySelectorAll('[data-rdv="nouveau"]').forEach(b => b.hidden = false); };
+            $('#rdvF').onsubmit = async e => {
+                e.preventDefault();
+                try { courant = await api('/api/admin/demandes/' + d.ref + '/rdv', { method: 'POST', body: JSON.stringify(Object.fromEntries(new FormData(e.target))) }); maj(courant); fiche(); toast('Rendez-vous enregistré'); $('#rdvBloc').scrollIntoView({ block: 'center' }); }
+                catch (err) { toast(err.message); }
+            };
+            f.querySelector('[name=date]').focus(); };
+        bloc.querySelectorAll('[data-rdv]').forEach(b => b.onclick = async () => {
+            const a = b.dataset.rdv, r = rdvDe(d) || {};
+            if (a === 'nouveau' || a === 'modifier') return ouvrirForm();
+            let corps;
+            if (a === 'achetee') {
+                const v = await demander({ titre: 'Voiture achetée ?', texte: `Prix convenu : ${r.prix ? eur(r.prix) : 'non renseigné'}. La demande passe en « Achetée » et le véhicule entre dans la compta.`, boutons: [['ok', 'Oui, achetée' + (r.prix ? ' ' + eur(r.prix) : ''), 'btn-g'], ['', 'Annuler']] });
+                if (v !== 'ok') return; corps = { statut: 'fait', achetee: true, prix_achat: r.prix };
+            } else if (a === 'fait') {
+                const v = await demander({ titre: 'Rendez-vous fait sans achat', texte: 'Pourquoi ?', boutons: [['Prix refusé sur place', 'Prix refusé sur place'], ['Voiture pas conforme', 'Voiture pas conforme à la description'], ['Le vendeur a renoncé', 'Le vendeur a renoncé'], ['', 'Annuler']] });
+                if (!v) return; corps = { statut: 'fait', motif: v };
+            } else if (a === 'annule') {
+                const v = await demander({ titre: 'Annuler le rendez-vous ?', texte: 'Une relance est programmée pour le lendemain.', boutons: [['Annulé par le vendeur', 'Annulé par le vendeur', 'btn-rouge'], ['Annulé par nous', 'Annulé par nous'], ['', 'Garder le rendez-vous']] });
+                if (!v) return; corps = { statut: 'annule', motif: v };
+            }
+            try { courant = await api('/api/admin/demandes/' + d.ref + '/rdv', { method: 'PATCH', body: JSON.stringify(corps) }); maj(courant); fiche(); toast(a === 'achetee' ? 'Voiture achetée : bravo !' : 'Rendez-vous mis à jour'); }
+            catch (err) { toast(err.message); }
+        });
+        if (location.hash === '#rdv') { history.replaceState(history.state, '', location.pathname); ouvrirForm(); bloc.scrollIntoView({ block: 'start' }); }
+    }
+
+    // Onglet Planning
+    async function vuePlanning() {
+        const auj = jourIso();
+        const tous = demandes.filter(d => rdvDe(d) && rdvDe(d).date);
+        const prevus = tous.filter(d => rdvDe(d).statut === 'prevu');
+        // Bande des 14 prochains jours avec le nombre de rendez-vous
+        const jours = Array.from({ length: 14 }, (_, i) => ajoutJours(auj, i));
+        $('#plBande').innerHTML = jours.map(j => { const n = prevus.filter(d => rdvDe(d).date === j).length; const dt = new Date(j + 'T12:00:00Z');
+            return `<button class="pl-j${plJour === j ? ' on' : ''}${j === auj ? ' auj' : ''}" data-plj="${j}"><span>${dt.toLocaleDateString('fr-FR', { weekday: 'short', timeZone: 'UTC' }).replace('.', '')}</span><b>${dt.getUTCDate()}</b><i>${n ? '●'.repeat(Math.min(n, 3)) : ''}</i></button>`; }).join('');
+        const semaine = prevus.filter(d => rdvDe(d).date >= auj && rdvDe(d).date <= ajoutJours(auj, 6));
+        const retard = prevus.filter(d => rdvDe(d).date < auj);
+        const valeur = prevus.filter(d => rdvDe(d).date >= auj).reduce((t, d) => t + (rdvDe(d).prix || 0), 0);
+        const mois = tous.filter(d => rdvDe(d).date.slice(0, 7) === auj.slice(0, 7) && rdvDe(d).statut === 'fait'), achats = mois.filter(d => d.statut === 'achetee').length;
+        $('#plKpis').innerHTML = [
+            [prevus.filter(d => rdvDe(d).date === auj).length, "aujourd'hui"], [semaine.length, '7 prochains jours'],
+            [retard.length, 'passés sans compte rendu', retard.length ? 'alerte' : ''], [eur(valeur), 'de rachats prévus'],
+            [mois.length ? `${achats}/${mois.length}` : '—', 'achats / RDV faits ce mois']
+        ].map(([v, l, c]) => `<div class="kpi ${c || ''}"><b class="num">${v}</b><span>${l}</span></div>`).join('');
+        $('#plVues').innerHTML = [['avenir', 'À venir', prevus.filter(d => rdvDe(d).date >= auj).length], ['retard', 'Sans compte rendu', retard.length], ['passes', 'Historique', tous.filter(d => rdvDe(d).statut !== 'prevu').length]]
+            .map(([k, l, n]) => `<button class="seg${plVue === k ? ' on' : ''}${k === 'retard' && n ? ' urgent' : ''}" data-plv="${k}">${l}<b class="num">${n}</b></button>`).join('');
+        let L = plVue === 'avenir' ? prevus.filter(d => rdvDe(d).date >= auj) : plVue === 'retard' ? retard : tous.filter(d => rdvDe(d).statut !== 'prevu');
+        if (plJour) L = prevus.filter(d => rdvDe(d).date === plJour);
+        const tri = (p, q) => (rdvDe(p).date + rdvDe(p).heure).localeCompare(rdvDe(q).date + rdvDe(q).heure);
+        L.sort(plVue === 'passes' && !plJour ? (p, q) => tri(q, p) : tri);
+        const groupes = new Map(); L.forEach(d => { const k = rdvDe(d).date; if (!groupes.has(k)) groupes.set(k, []); groupes.get(k).push(d); });
+        $('#plListe').innerHTML = L.length ? [...groupes].map(([j, ds]) => `<div class="pl-groupe"><div class="pl-jour${j === auj ? ' auj' : ''}">${libJour(j)}<span>${ds.length} RDV</span></div>${ds.map(d => {
+            const r = rdvDe(d), x = d.data || {}, tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
+            return `<div class="pl-rdv${r.statut !== 'prevu' ? ' fini' : ''}${r.statut === 'prevu' && r.date < auj ? ' retard' : ''}" data-plref="${esc(d.ref)}">
+                <div class="pl-h"><b>${r.heure}</b><span>${r.duree || 45} min</span></div>
+                <div class="pl-c"><b>${esc(x.vehicule || 'Véhicule')} ${esc(x.annee || '')}</b>
+                    <span>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Vendeur')} · ${AVEC[r.avec] || ''}</span>
+                    <span class="pl-lieu">📍 ${esc(r.lieu || [x.code_postal, x.ville].filter(Boolean).join(' ') || 'Lieu à préciser')}</span>
+                    ${r.statut !== 'prevu' ? `<span class="pill ${r.statut === 'fait' && d.statut === 'achetee' ? 'st-achetee' : r.statut === 'fait' ? 'st-contactee' : 'st-sans_suite'}">${r.statut === 'fait' ? (d.statut === 'achetee' ? 'Fait · achetée' : 'Fait · pas d\'achat') : 'Annulé'}</span>` : ''}</div>
+                <div class="pl-p">${r.prix ? `<b class="num">${eur(r.prix)}</b>` : ''}${r.statut === 'prevu' ? `<div class="pl-a">${x.telephone ? `<a class="btn btn-s btn-g" href="tel:+${esc(tel)}" aria-label="Appeler">📞</a>` : ''}<a class="btn btn-s" href="${itineraire(d, r)}" target="_blank" rel="noopener" aria-label="Itinéraire">🧭</a></div>` : ''}</div>
+            </div>`; }).join('')}</div>`).join('')
+            : `<div class="empty">${plJour ? 'Aucun rendez-vous ce jour-là.' : plVue === 'retard' ? 'Tous les rendez-vous passés ont un compte rendu.' : plVue === 'passes' ? 'Aucun rendez-vous terminé pour l\'instant.' : 'Aucun rendez-vous prévu. Fixez-en un depuis la fiche d\'une demande, après l\'appel.'}</div>`;
+        if (!calUrl) { try { calUrl = await api('/api/admin/calendrier'); } catch (e) { calUrl = {}; } }
+        $('#plCal').hidden = !calUrl.url;
+        if (calUrl.url) $('#plCal').href = calUrl.url;
+    }
+    $('#plBande').addEventListener('click', e => { const b = e.target.closest('[data-plj]'); if (b) { plJour = plJour === b.dataset.plj ? null : b.dataset.plj; vuePlanning(); } });
+    $('#plVues').addEventListener('click', e => { const b = e.target.closest('[data-plv]'); if (b) { plVue = b.dataset.plv; plJour = null; vuePlanning(); } });
+    $('#plListe').addEventListener('click', e => { if (e.target.closest('a')) return; const c = e.target.closest('[data-plref]'); if (c) ouvrir(c.dataset.plref); });
+
     // ---------------- Fiche d'une demande
     // Routage : la liste vit sur /admino, chaque fiche sur /admino/demande/REF.
     // Le retour arrière (navigateur, geste iOS, bouton Android) ramène à la liste, à la même position.
@@ -1926,6 +2114,7 @@ ul.plain li { margin: 3px 0; }
                 <div class="appel-btns">${Object.entries(etat.resultats || {}).map(([k, v]) => `<button class="btn btn-s" data-appel="${k}">${esc(v)}</button>`).join('')}</div>
                 <input class="in" id="appelNote" placeholder="Note rapide sur l'appel (facultatif) : prix proposé ailleurs, délai…">
             </div>
+            ${blocRdv(d)}
             <section class="sec diag" id="diag">
                 <h3>Diagnostic mécanique</h3>
                 <p class="sub" style="margin:0 0 10px">Ce que tu as constaté ou ce que dit le vendeur, et les captures de la valise (ediag, codes défaut). L'estimation en tient compte en priorité sur l'état déclaré.</p>
@@ -2077,6 +2266,7 @@ ul.plain li { margin: 3px 0; }
         };
         $('#sheetIn').querySelectorAll('[data-flag]').forEach(b => b.onclick = () => basculerDrapeau(b.dataset.flag));
         if ($('#versVehicule')) $('#versVehicule').onclick = () => vehiculeDeDemande(d.ref);
+        lierRdv(d);
         // Diagnostic : texte + captures envoyés ensemble ; « réestimer » relance l'estimation avec.
         const envoyerDiag = async (fichiers, reestimer) => {
             const fd = new FormData();
@@ -2100,7 +2290,8 @@ ul.plain li { margin: 3px 0; }
         $('#sheetIn').querySelectorAll('[data-diag]').forEach(img => img.onclick = () => { lbSource = (courant.suivi.diagnostic || {}).captures || []; lbOuvrir(+img.dataset.diag); });
         $('#sheetIn').querySelectorAll('[data-appel]').forEach(b => b.onclick = async () => {
             try { courant = await api('/api/admin/demandes/' + d.ref + '/appel', { method: 'POST', body: JSON.stringify({ resultat: b.dataset.appel, note: $('#appelNote').value }) });
-                fiche(); maj(courant); toast((courant.suivi || {}).rappel_le ? 'Noté · relance le ' + jj(courant.suivi.rappel_le) : 'Noté'); }
+                if (b.dataset.appel === 'accepte') history.replaceState(history.state, '', location.pathname + '#rdv');
+                fiche(); maj(courant); toast(b.dataset.appel === 'accepte' ? 'Offre acceptée : fixez le rendez-vous' : (courant.suivi || {}).rappel_le ? 'Noté · relance le ' + jj(courant.suivi.rappel_le) : 'Noté'); }
             catch (e) { toast(e.message); }
         });
         $('#plaqueBtn').onclick = async () => {
