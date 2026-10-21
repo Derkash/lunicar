@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0C223B">
 <link rel="preload" href="/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <meta name="robots" content="noindex, nofollow">
@@ -31,6 +31,8 @@
     --top: 60px; --nav: 0px;
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+/* Pas de zoom au double-tap (outil de travail, pas une page à lire) */
+html, body, button, a, input, select, textarea, label, summary, .row, .vh, .pl-rdv, .dep, .kpi, .seg { touch-action: manipulation; }
 html, body { margin: 0; background: var(--bg); color: var(--ink); font: 400 14.5px/1.5 var(--font); -webkit-font-smoothing: antialiased; font-feature-settings: 'ss01'; }
 a { color: var(--marine-6); }
 button, input, select, textarea { font: inherit; color: inherit; }
@@ -419,6 +421,20 @@ ul.plain li { margin: 3px 0; }
 .hbar b small { font-weight: 500; color: var(--ink-4); margin-left: 4px; }
 .vide { color: var(--ink-4); font-size: .86rem; padding: 8px 0; }
 
+/* ---------- Score d'attractivité et groupes de la liste ---------- */
+.score { display: inline-flex; align-items: baseline; gap: 1px; height: 24px; padding: 0 8px; border-radius: 99px; font-size: .82rem; font-weight: 750; line-height: 24px; margin-right: 6px; vertical-align: 1px; }
+.score small { font-size: .62rem; font-weight: 600; opacity: .75; }
+.score.s-v { background: var(--green-1); color: var(--green); }
+.score.s-o { background: var(--orange-1); color: var(--orange); }
+.score.s-r { background: var(--red-1); color: var(--red); }
+.score.grand { height: 34px; line-height: 34px; padding: 0 12px; font-size: 1.15rem; }
+.row .price .score { display: inline-flex; }
+.grp { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 18px 6px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-5); background: #FAF9F6; border-bottom: 1px solid var(--line-2); }
+.grp span { font-weight: 600; }
+.grp-0 b { color: var(--marine); }
+.grp-2 { color: var(--ink-4); }
+.row.clos { opacity: .62; }
+
 /* ---------- Glisser une demande (archiver / supprimer) ---------- */
 .swipe { position: relative; overflow: hidden; }
 .swipe > .row { position: relative; z-index: 1; background: var(--surface); }
@@ -448,6 +464,8 @@ ul.plain li { margin: 3px 0; }
 .vh-c { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px solid var(--line-2); padding-top: 8px; }
 .vh-c span { font-size: .72rem; color: var(--ink-5); }
 .vh-pros { border-color: #DCD3F2; }
+#vForm .in.ok { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-1); }
+.dep.edit { background: var(--gold-1); border-radius: 8px; }
 .vh { min-width: 0; overflow: hidden; }
 .vh-st { min-width: 0; }
 .vh-st .badge-rdv { flex: none; }
@@ -534,6 +552,82 @@ ul.plain li { margin: 3px 0; }
 .pl-a { display: flex; gap: 6px; }
 .pl-a .btn { width: 40px; justify-content: center; padding: 0; }
 
+/* ---------- Tableau de bord ---------- */
+.tb-auj { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 18px; }
+.auj { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; box-shadow: var(--shadow); display: grid; gap: 1px; }
+.auj b { font-size: 1.6rem; font-weight: 700; letter-spacing: -.03em; color: var(--ink-4); line-height: 1.15; }
+.auj span { font-size: .84rem; font-weight: 600; color: var(--ink-7); }
+.auj small { font-size: .74rem; color: var(--ink-4); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.auj.actif b { color: var(--marine); }
+.auj.auj-appeler, .auj.auj-cr { border-color: #EDB8AF; background: var(--red-1); }
+.auj.auj-appeler b, .auj.auj-cr b { color: var(--red); }
+.auj.auj-rdv { border-color: #DCD3F2; background: #F6F3FD; }
+.auj.auj-rdv b { color: #5A3E9E; }
+.tb-gros { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 14px; }
+.gros { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; box-shadow: var(--shadow); display: grid; gap: 2px; align-content: start; }
+.gros > span:first-child { font-size: .78rem; font-weight: 600; color: var(--ink-5); text-transform: uppercase; letter-spacing: .05em; }
+.gros b { font-size: 2rem; font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
+.gros small { font-size: .76rem; color: var(--ink-4); }
+.parcours { display: flex; align-items: flex-end; gap: 4px; overflow-x: auto; padding-bottom: 2px; }
+.pc-et { flex: 1 1 0; min-width: 64px; display: grid; justify-items: center; gap: 2px; }
+.pc-et i { display: block; width: 100%; max-width: 90px; border-radius: 6px 6px 2px 2px; min-height: 6px; height: 0; }
+.pc-et { height: 150px; grid-template-rows: 1fr auto auto; align-items: end; }
+.pc-et b { font-size: 1.1rem; font-weight: 700; }
+.pc-et span { font-size: .74rem; color: var(--ink-5); text-align: center; }
+.pc-et em { display: none; font-style: normal; font-size: .68rem; font-weight: 700; color: var(--marine-6); }
+.pc-fl { flex: none; align-self: center; padding-bottom: 34px; }
+.pc-fl span { display: inline-block; font-size: .72rem; font-weight: 700; color: var(--marine-6); background: var(--marine-1); border-radius: 99px; padding: 2px 7px; }
+.tb-plus { margin-top: 14px; }
+.tb-plus > summary { cursor: pointer; font-weight: 600; color: var(--marine-6); padding: 10px 0; }
+
+/* ---------- Fiche : carte décision, appels, compte rendu ---------- */
+.decision { border-color: #CFD9E6; }
+.dec-tete { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin: 0 0 12px; }
+.dec-max span { display: block; font-size: .78rem; font-weight: 600; color: var(--ink-5); text-transform: uppercase; letter-spacing: .05em; }
+.dec-max b { display: block; font-size: 2.1rem; font-weight: 700; letter-spacing: -.03em; color: var(--marine); line-height: 1.15; }
+.dec-max small { color: var(--ink-4); font-size: .8rem; }
+.dec-score { display: grid; justify-items: end; gap: 4px; text-align: right; }
+.dec-score small { font-size: .76rem; color: var(--ink-5); }
+.dec-grille { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.dec-grille > div { background: #FAF9F6; border: 1px solid var(--line-2); border-radius: var(--r-s); padding: 10px 12px; min-width: 0; }
+.dec-grille span { display: block; font-size: .72rem; color: var(--ink-5); font-weight: 550; }
+.dec-grille b { display: block; font-size: 1.1rem; font-weight: 650; margin: 2px 0 1px; }
+.dec-grille small { display: block; font-size: .72rem; color: var(--ink-4); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dec-faits { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; }
+.dec-faits span { font-size: .78rem; background: #F1EFEA; color: var(--ink-7); padding: 3px 9px; border-radius: 99px; }
+.decision .resume { margin: 12px 0 0; }
+.decision .est-meta { margin-top: 12px; }
+.appel-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.appel-actions .btn-p { height: 44px; padding: 0 18px; font-size: .95rem; }
+.cr-liste { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 8px; }
+.cr-liste li { background: #FAF9F6; border: 1px solid var(--line-2); border-radius: var(--r-s); padding: 10px 12px; }
+.cr-liste li div { display: flex; justify-content: space-between; gap: 8px; font-size: .86rem; }
+.cr-liste li div span { color: var(--ink-4); font-size: .76rem; white-space: nowrap; }
+.cr-liste p { margin: 6px 0 0; font-size: .88rem; white-space: pre-wrap; }
+.cr-liste small { display: block; margin-top: 4px; font-size: .76rem; color: var(--ink-5); }
+.corr { font-size: .84rem; background: var(--gold-1); border-radius: var(--r-s); padding: 8px 10px; margin: 0 0 10px; }
+.appel-cr p small { color: var(--ink-5); }
+.cr-modal { position: fixed; inset: 0; z-index: 85; background: rgba(14,35,64,.45); display: grid; place-items: center; padding: 16px; }
+.cr-in { width: 100%; max-width: 560px; max-height: 92vh; overflow-y: auto; background: var(--surface); border-radius: 16px; padding: 18px 20px 16px; box-shadow: 0 20px 60px rgba(0,0,0,.3); display: grid; gap: 12px; }
+.cr-tete { display: flex; justify-content: space-between; align-items: center; }
+.cr-tete h3 { margin: 0; font-size: 1.12rem; font-weight: 650; }
+.cr-in .sub { margin: -6px 0 0; }
+.cr-l { margin: 0; font-size: .78rem; font-weight: 600; color: var(--ink-5); }
+.cr-res { display: flex; flex-wrap: wrap; gap: 6px; }
+.cr-chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 8px 12px; font-size: .86rem; font-weight: 550; color: var(--ink-7); text-align: left; }
+.cr-chip.on { background: var(--marine); border-color: var(--marine); color: #fff; }
+.cr-in label.f textarea { min-height: 110px; }
+.cr-corr summary { cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--marine-6); padding: 4px 0; }
+.cr-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 8px; }
+.cr-chk { height: auto; align-items: flex-start; line-height: 1.4; }
+.cr-chk small { color: var(--ink-4); }
+.cr-btns { display: flex; gap: 8px; justify-content: flex-end; }
+.cr-btns .btn { height: 46px; padding: 0 18px; }
+.cr-recap { margin: 0; display: grid; grid-template-columns: 9em minmax(0, 1fr); gap: 10px 14px; font-size: .92rem; }
+.cr-recap dt { color: var(--ink-5); font-weight: 550; }
+.cr-recap dd { margin: 0; }
+body.modal-ouvert { overflow: hidden; }
+
 /* ---------- Confirmation ---------- */
 .confirm { position: fixed; inset: 0; z-index: 90; background: rgba(14,35,64,.45); display: grid; place-items: center; padding: 16px; }
 .confirm-in { width: 100%; max-width: 400px; background: var(--surface); border-radius: 16px; padding: 22px 20px 18px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
@@ -605,6 +699,25 @@ ul.plain li { margin: 3px 0; }
     [data-view="planning"] .toolbar .btn { flex: 1 1 100%; justify-content: center; }
     .rdv-act .btn { flex: 1 1 calc(50% - 4px); justify-content: center; }
 
+    /* Tableau de bord */
+    .tb-auj, .tb-gros { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .gros b { font-size: 1.6rem; }
+    .pc-et { height: 130px; min-width: 0; grid-template-rows: 1fr auto auto auto; }
+    .pc-et em { display: block; }
+    .pc-et span { font-size: .66rem; }
+    .pc-fl { display: none; }
+    .parcours { gap: 6px; overflow: visible; }
+
+    /* Fiche */
+    .dec-grille { grid-template-columns: 1fr 1fr; }
+    .dec-max b { font-size: 1.8rem; }
+    .appel-actions .btn-p { flex: 1 1 100%; justify-content: center; }
+    .cr-modal { place-items: end stretch; padding: 0; }
+    .cr-in { max-width: none; max-height: 94vh; border-radius: 18px 18px 0 0; padding: 16px 16px calc(14px + env(safe-area-inset-bottom)); }
+    .cr-btns .btn { flex: 1; justify-content: center; }
+    .cr-recap { grid-template-columns: 1fr; gap: 2px; }
+    .cr-recap dd { margin-bottom: 8px; }
+
     /* Véhicules, dépenses */
     .vh-list { grid-template-columns: minmax(0, 1fr); }
     .soldes { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
@@ -621,6 +734,11 @@ ul.plain li { margin: 3px 0; }
     [data-view="depenses"] .toolbar .btn { flex: 1 1 100%; justify-content: center; display: inline-flex !important; }
     [data-view="vehicules"] .toolbar { flex-wrap: wrap; }
     [data-view="vehicules"] .toolbar .btn { flex: 1 1 100%; justify-content: center; }
+
+    /* Groupes de la liste en cartes */
+    .grp { background: transparent; border: 0; padding: 12px 2px 2px; }
+    .row .price { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+    .row .price .score { margin: 0; }
 
     /* Tableau de bord */
     .tb-bar { margin: 0 0 12px; }
@@ -780,7 +898,7 @@ ul.plain li { margin: 3px 0; }
             <div class="panneau" id="panneau" hidden>
                 <div class="panneau-h"><b>Filtres</b><button class="close" type="button" id="fermerFiltres" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
                 <div class="filtres-grille">
-                    <label class="f">Trier par<select class="in" id="fTri"><option value="recent">Plus récentes d'abord</option><option value="ancien">Plus anciennes d'abord</option><option value="distance">Plus proches de Paris</option><option value="prix">Prix max d'achat décroissant</option></select></label>
+                    <label class="f">Trier par<select class="in" id="fTri"><option value="recent">Plus récentes d'abord</option><option value="ancien">Plus anciennes d'abord</option><option value="distance">Plus proches de Paris</option><option value="prix">Prix max d'achat décroissant</option><option value="score">Meilleur score d'abord</option></select></label>
                     <label class="f">Statut<select class="in" id="fStatut"><option value="">Tous les statuts</option></select></label>
                     <label class="f">Relance<select class="in" id="fRelance"><option value="">Toutes les relances</option><option value="appeler">À appeler (drapeau + rappels arrivés)</option><option value="drapeau">Marquées « À appeler »</option><option value="dues">Rappels arrivés (aujourd'hui et retard)</option><option value="semaine">À rappeler sous 7 jours</option><option value="jamais">Jamais appelées</option><option value="sans">Actives sans relance prévue</option></select></label>
                     <label class="f">Période<select class="in" id="fPeriode"><option value="">Toute la période</option><option value="1">Aujourd'hui</option><option value="7">7 derniers jours</option><option value="30">30 derniers jours</option><option value="90">3 derniers mois</option><option value="365">12 derniers mois</option></select></label>
@@ -851,14 +969,18 @@ ul.plain li { margin: 3px 0; }
 
         <section data-view="stats" hidden>
             <div class="page-h"><h1>Tableau de bord</h1><span id="tbSous"></span></div>
+            <p class="pilotage-t">Aujourd'hui</p>
+            <div class="tb-auj" id="tbAuj"></div>
             <div class="tb-bar">
                 <div class="segs" id="tbPeriode"></div>
                 <select class="in" id="tbType" aria-label="Demandes comptées"><option value="">Toutes les demandes</option><option value="envoyees">Formulaires envoyés</option><option value="abandon">Abandons seulement</option></select>
             </div>
-            <p class="pilotage-t">Activité et argent</p>
-            <div class="kpis" id="tbPilotage"></div>
-            <p class="pilotage-t">Demandes</p>
-            <div class="kpis" id="tbKpis"></div>
+            <div class="tb-gros" id="tbKpis"></div>
+            <div class="tb-card" style="margin:0 0 14px">
+                <h3>Parcours des demandes</h3>
+                <p class="sub">Demandes reçues sur la période et ce qu'elles sont devenues.</p>
+                <div class="parcours" id="tbEntonnoir"></div>
+            </div>
             <div class="tb-grid">
                 <div class="tb-card tb-wide">
                     <h3 id="tbCourbeT">Demandes par jour</h3>
@@ -872,10 +994,13 @@ ul.plain li { margin: 3px 0; }
                     <table class="canaux" id="tbCanaux"></table>
                 </div>
                 <div class="tb-card">
-                    <h3>Du contact à l'achat</h3>
-                    <p class="sub">Demandes de la période, selon leur statut actuel.</p>
-                    <div class="hbars" id="tbEntonnoir"></div>
+                    <h3>Argent</h3>
+                    <p class="sub">Ventes, marges et dépenses sur la période (onglets Nos véhicules et Dépenses).</p>
+                    <div id="tbPilotage"></div>
                 </div>
+            </div>
+            <details class="tb-plus"><summary>Plus d'analyses : mots-clés Google Ads, heures, départements, marques</summary>
+            <div class="tb-grid">
                 <div class="tb-card" id="tbAdsCarte">
                     <h3>Google Ads : mots-clés qui amènent des demandes</h3>
                     <p class="sub">Mot-clé de la recherche au moment du clic.</p>
@@ -897,6 +1022,7 @@ ul.plain li { margin: 3px 0; }
                     <div class="hbars" id="tbMarques"></div>
                 </div>
             </div>
+            </details>
         </section>
 
         <section data-view="photos" hidden>
@@ -984,6 +1110,7 @@ ul.plain li { margin: 3px 0; }
 <div class="voile" id="voile" hidden></div>
 
 <div class="lightbox" id="lb" hidden></div>
+<div class="cr-modal" id="crModal" hidden><div class="cr-in" id="crIn" role="dialog" aria-modal="true"></div></div>
 <div class="confirm" id="confirm" hidden><div class="confirm-in" role="alertdialog" aria-modal="true" aria-labelledby="cfT"><h3 id="cfT"></h3><p id="cfP"></p><div class="confirm-btns" id="cfB"></div></div></div>
 
 <script>
@@ -1216,7 +1343,24 @@ ul.plain li { margin: 3px 0; }
     }
     const jj = iso => iso ? iso.split('-').reverse().slice(0, 2).join('/') : '';
     const idf = d => /^(75|77|78|91|92|93|94|95)/.test((d.data || {}).code_postal || '');
-    const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || ((d.estimation || {}).prix || {}).max_achat || 0;
+    // UN SEUL prix max partout (liste, fiche, tri) : retenu à la main > recalculé avec le prix de vente retenu > estimation.
+    function maxRecalcule(d) {
+        const e = d.estimation, s = d.suivi || {}, v = Number(s.prix_manuel_vente);
+        if (!e || !e.calcul || !v) return 0;
+        const r = e.reglages || {}, marge = Math.max(Number(r.marge_min) || 0, Math.round(v * (Number(r.marge_pct) || 0) / 100));
+        const brut = v - (Number(e.calcul.frais_remise_en_etat) || 0) - (Number(e.calcul.frais_fixes) || 0) - (Number(e.calcul.deplacement) || 0) - marge;
+        const arr = Math.max(1, Number(r.arrondi) || 50);
+        return Math.max(0, Math.floor(brut / arr) * arr);
+    }
+    const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || maxRecalcule(d) || ((d.estimation || {}).prix || {}).max_achat || 0;
+    const origineMax = d => Number((d.suivi || {}).prix_manuel_max) ? 'retenu à la main' : maxRecalcule(d) ? 'recalculé avec votre prix de vente' : 'calculé par l\'estimation';
+    // Score d'attractivité à la revente (0-100) : vert ≥ 75, orange 50-74, rouge < 50.
+    const scoreDe = d => { const a = (d.estimation || {}).attractivite; return a && a.score != null ? Number(a.score) : null; };
+    const classeScore = n => n == null ? '' : n >= 75 ? 'v' : n >= 50 ? 'o' : 'r';
+    const badgeScore = (d, grand) => { const n = scoreDe(d); return n == null ? '' : `<span class="score s-${classeScore(n)}${grand ? ' grand' : ''}" title="Attractivité à la revente">${n}<small>/100</small></span>`; };
+    // Groupes de la liste : à traiter (jamais joint), déjà contactées, sans suite (toujours en bas).
+    const CLOS = ['sans_suite', 'refusee', 'vendue_ailleurs'];
+    const groupe = d => CLOS.includes(d.statut) ? 2 : (d.statut === 'nouvelle' && !(d.suivi || {}).nb_appels) ? 0 : 1;
     function kpis() {
         const now = Date.now(), vivantes = demandes.filter(d => !(d.suivi || {}).archivee);
         const achetees = vivantes.filter(d => d.statut === 'achetee');
@@ -1308,13 +1452,19 @@ ul.plain li { margin: 3px 0; }
         const parTri = tri === 'ancien' ? (p, q) => p.created_at.localeCompare(q.created_at)
             : tri === 'distance' ? (p, q) => km(p) - km(q) || q.created_at.localeCompare(p.created_at)
             : tri === 'prix' ? (p, q) => prixMax(q) - prixMax(p)
+            : tri === 'score' ? (p, q) => (scoreDe(q) ?? -1) - (scoreDe(p) ?? -1) || q.created_at.localeCompare(p.created_at)
             : (p, q) => q.created_at.localeCompare(p.created_at);
-        // Rappels arrivés d'abord (le plus en retard en premier), puis les « À appeler », puis le tri choisi.
-        const a = affichees = filtrees().sort((p, q) => priorite(p) - priorite(q) || (priorite(p) === 0 ? rappel(p).localeCompare(rappel(q)) : 0) || parTri(p, q));
+        // Groupe (à traiter, contactées, sans suite en bas), puis rappels arrivés et « À appeler », puis le tri choisi.
+        const a = affichees = filtrees().sort((p, q) => groupe(p) - groupe(q) || priorite(p) - priorite(q) || (priorite(p) === 0 ? rappel(p).localeCompare(rappel(q)) : 0) || parTri(p, q));
+        const titres = ['À traiter · jamais appelées', 'Déjà contactées', 'Sans suite'];
+        const nbGroupe = [0, 1, 2].map(g => a.filter(d => groupe(d) === g).length);
+        let gPrec = -1;
         const head = '<div class="row head"><div class="sel"><input type="checkbox" id="toutCocher" title="Tout sélectionner (liste filtrée)"></div><div>Reçue</div><div>Vendeur</div><div>Véhicule</div><div class="ville">Ville</div><div style="text-align:right">Prix max</div><div>Statut</div><div class="ph" style="text-align:right">Photos</div></div>';
         segments();
         $('#list').innerHTML = head + (a.length ? a.map(d => {
-            const x = d.data || {};
+            const x = d.data || {}, g0 = groupe(d);
+            const entete = g0 !== gPrec && nbGroupe.filter(Boolean).length > 1 ? `<div class="grp grp-${g0}"><b>${titres[g0]}</b><span>${nbGroupe[g0]}</span></div>` : '';
+            gPrec = g0;
             const est = (d.suivi || {}).estimation_statut === 'en_cours' ? '<span class="spin"></span>' : (prixMax(d) ? eur(prixMax(d)) : '—');
             const pub = (d.canal === 'pub' ? ' <span class="tag rappel">Pub</span>' : d.canal === 'ia' ? ' <span class="tag rappel">IA</span>' : '')
                 + (d.doublon ? ` <span class="tag" title="Même téléphone que ${esc(d.doublon)}">Déjà reçu</span>` : '');
@@ -1322,12 +1472,13 @@ ul.plain li { margin: 3px 0; }
             const g = geo(x.code_postal), r = rappel(d), auj = jourIso();
             const lieu = [x.ville || x.code_postal, g && g.km ? g.km + ' km' : ''].filter(Boolean).join(' · ');
             const archivee = !!(d.suivi || {}).archivee, estDu = du(d), estDrap = drapeau(d);
-            return `<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
+            const clos = CLOS.includes(d.statut);
+            return `${entete}<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}${clos ? ' clos' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
                 <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
-                <div class="price num">${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
+                <div class="price num">${badgeScore(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
                 <div class="ph num">${(d.photos || []).length || ''}</div>
                 <div class="quand-m">${date(d.created_at, false)}</div>
@@ -1380,6 +1531,80 @@ ul.plain li { margin: 3px 0; }
             maj(r); if (courant && courant.ref === ref) { courant = r; fiche(); }
             toast(v ? 'Marquée « À appeler »' : 'Drapeau retiré');
         } catch (e) { d.suivi.a_appeler = !v; liste(); toast(e.message); }
+    }
+
+    // ---------------- Compte rendu d'appel : résultat, ce qui a été dit, infos corrigées, offre, réestimation — avec confirmation
+    const OPT = {
+        mecanique: ['Roule, aucun souci', 'Roule, avec des soucis mécaniques', 'Ne roule plus (en panne)', 'Accidentée'],
+        controle_technique: ['À jour', 'Pas à jour', 'Contre-visite à faire', 'Jamais passé'],
+        carrosserie: ['Très bon état', 'Quelques rayures ou petits chocs', 'Abîmée'],
+        delai: ['Le plus vite possible', 'Dans le mois', 'Dans les 3 mois', 'Se renseigne']
+    };
+    const LIBC = { kilometrage: 'Kilométrage', prix_souhaite: 'Prix souhaité', annee: 'Année', mecanique: 'État mécanique', controle_technique: 'Contrôle technique', carrosserie: 'Carrosserie', delai: 'Vendre quand' };
+    function compteRendu(d) {
+        const x = d.data || {}, R = etat.resultats || {};
+        const saisie = { resultat: '', note: '', corrections: {}, offre: '', reestimer: !!etat.estimation.actif && !!x.vehicule };
+        const fermerCR = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        const sel = (k) => `<select class="in" name="${k}"><option value="">${esc(x[k] || '—')} (inchangé)</option>${OPT[k].filter(o => o !== x[k]).map(o => `<option${saisie.corrections[k] === o ? ' selected' : ''}>${esc(o)}</option>`).join('')}</select>`;
+        const etape1 = () => {
+            $('#crIn').innerHTML = `<div class="cr-tete"><h3>Compte rendu d'appel</h3><button class="close" type="button" id="crX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+                <p class="sub">${esc([x.vehicule, x.annee].filter(Boolean).join(' '))} · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Vendeur')}</p>
+                <p class="cr-l">Résultat de l'appel</p>
+                <div class="cr-res">${Object.entries(R).map(([k, l]) => `<button type="button" class="cr-chip${saisie.resultat === k ? ' on' : ''}" data-res="${k}">${esc(l)}</button>`).join('')}</div>
+                <label class="f">Ce qui a été dit<textarea class="in" id="crNote" rows="5" placeholder="État réel, entretien, défauts, prix proposé ailleurs, urgence, documents, disponibilités…">${esc(saisie.note)}</textarea></label>
+                <details class="cr-corr"${Object.keys(saisie.corrections).length ? ' open' : ''}><summary>Corriger les infos de la voiture</summary>
+                    <div class="cr-grille" id="crCorr">
+                        <label class="f">Kilométrage<input class="in num" name="kilometrage" inputmode="numeric" placeholder="${esc(x.kilometrage || '')}" value="${esc(saisie.corrections.kilometrage || '')}"></label>
+                        <label class="f">Prix souhaité (€)<input class="in num" name="prix_souhaite" inputmode="numeric" placeholder="${esc(x.prix_souhaite || '')}" value="${esc(saisie.corrections.prix_souhaite || '')}"></label>
+                        <label class="f">Année<input class="in num" name="annee" inputmode="numeric" placeholder="${esc(x.annee || '')}" value="${esc(saisie.corrections.annee || '')}"></label>
+                        <label class="f">État mécanique${sel('mecanique')}</label>
+                        <label class="f">Contrôle technique${sel('controle_technique')}</label>
+                        <label class="f">Carrosserie${sel('carrosserie')}</label>
+                        <label class="f">Vendre quand${sel('delai')}</label>
+                    </div>
+                </details>
+                <label class="f">Offre faite au vendeur (€)<input class="in num" id="crOffre" inputmode="numeric" placeholder="${esc((d.suivi || {}).offre || '')}" value="${esc(saisie.offre)}"></label>
+                <label class="chk cr-chk"><input type="checkbox" id="crReest"${saisie.reestimer ? ' checked' : ''}${etat.estimation.actif && x.vehicule ? '' : ' disabled'}> Mettre à jour l'estimation avec ces informations <small>(≈ 0,30 €, 2 à 4 min)</small></label>
+                <p class="err" id="crErr"></p>
+                <div class="cr-btns"><button type="button" class="btn" id="crAnnul">Annuler</button><button type="button" class="btn btn-p" id="crSuite">Vérifier →</button></div>`;
+            $('#crIn').querySelectorAll('[data-res]').forEach(b => b.onclick = () => { saisie.resultat = b.dataset.res; $('#crIn').querySelectorAll('[data-res]').forEach(c => c.classList.toggle('on', c === b)); });
+            $('#crX').onclick = $('#crAnnul').onclick = fermerCR;
+            $('#crSuite').onclick = () => {
+                saisie.note = $('#crNote').value.trim(); saisie.offre = $('#crOffre').value.replace(/[^\d]/g, ''); saisie.reestimer = $('#crReest').checked;
+                saisie.corrections = {}; $('#crCorr').querySelectorAll('[name]').forEach(f => { const v = f.value.trim(); if (v && v !== String(x[f.name] || '')) saisie.corrections[f.name] = v; });
+                if (!saisie.resultat) { $('#crErr').textContent = 'Choisissez le résultat de l\'appel.'; return; }
+                etape2();
+            };
+        };
+        const etape2 = () => {
+            const corr = Object.entries(saisie.corrections);
+            $('#crIn').innerHTML = `<div class="cr-tete"><h3>Confirmer le compte rendu</h3><button class="close" type="button" id="crX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+                <dl class="cr-recap">
+                    <dt>Résultat</dt><dd><b>${esc(R[saisie.resultat])}</b></dd>
+                    <dt>Ce qui a été dit</dt><dd>${saisie.note ? esc(saisie.note).replace(/\n/g, '<br>') : '<span class="vide">rien de noté</span>'}</dd>
+                    ${corr.length ? `<dt>Infos corrigées</dt><dd>${corr.map(([k, v]) => `${LIBC[k]} : ${esc(x[k] || '—')} → <b>${esc(v)}</b>`).join('<br>')}</dd>` : ''}
+                    ${saisie.offre ? `<dt>Offre faite</dt><dd><b>${eur(saisie.offre)}</b></dd>` : ''}
+                    <dt>Estimation</dt><dd>${saisie.reestimer ? 'mise à jour avec ces informations' : 'inchangée'}</dd>
+                    ${saisie.resultat === 'accepte' ? '<dt>Ensuite</dt><dd>le formulaire de rendez-vous s\'ouvre</dd>' : ''}
+                </dl>
+                <div class="cr-btns"><button type="button" class="btn" id="crRetour">← Modifier</button><button type="button" class="btn btn-p" id="crOk">Confirmer et enregistrer</button></div>`;
+            $('#crX').onclick = fermerCR;
+            $('#crRetour').onclick = etape1;
+            $('#crOk').onclick = async () => {
+                $('#crOk').disabled = true; $('#crOk').innerHTML = '<span class="spin"></span> Enregistrement…';
+                try {
+                    courant = await api('/api/admin/demandes/' + d.ref + '/appel', { method: 'POST', body: JSON.stringify({ resultat: saisie.resultat, note: saisie.note, corrections: saisie.corrections, offre: saisie.offre, reestimer: saisie.reestimer }) });
+                    fermerCR();
+                    if (saisie.resultat === 'accepte') history.replaceState(history.state, '', location.pathname + '#rdv');
+                    if (saisie.reestimer) courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' };
+                    maj(courant); fiche(); if (saisie.reestimer) surveiller(true);
+                    toast(saisie.resultat === 'accepte' ? 'Offre acceptée : fixez le rendez-vous' : saisie.reestimer ? 'Compte rendu enregistré · estimation en cours' : courant.suivi.rappel_le ? 'Compte rendu enregistré · relance le ' + jj(courant.suivi.rappel_le) : 'Compte rendu enregistré');
+                } catch (e) { $('#crOk').disabled = false; $('#crOk').textContent = 'Confirmer et enregistrer'; toast(e.message); }
+            };
+        };
+        etape1();
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermerCR(); };
     }
 
     // ---------------- Confirmation (feuille du bas sur mobile)
@@ -1517,15 +1742,22 @@ ul.plain li { margin: 3px 0; }
         // Chiffres clés
         const evol = (a, b) => { if (!b) return a ? '<span class="delta">nouveau</span>' : '<span class="delta">—</span>'; const v = Math.round((a - b) / b * 100); return `<span class="delta ${v > 0 ? 'up' : v < 0 ? 'down' : ''}">${v > 0 ? '+' : ''}${v} % vs période préc.</span>`; };
         const achetees = per.filter(d => d.statut === 'achetee').length;
-        const k = [
-            [n, 'demandes', evol(n, prec.length)],
-            [(n / tbJours).toLocaleString('fr-FR', { maximumFractionDigits: 1 }), 'par jour en moyenne', `<span class="delta">${(prec.length / tbJours).toLocaleString('fr-FR', { maximumFractionDigits: 1 })} avant</span>`],
-            [pct(nc('pub'), n), 'via la pub Google', `<span class="delta">${nc('pub')} demande${nc('pub') > 1 ? 's' : ''}</span>`],
-            [pct(nc('google') + nc('ia') + nc('autres'), n), 'en organique', `<span class="delta">Google ${nc('google')} · IA ${nc('ia')} · autres ${nc('autres')}</span>`],
-            [pct(per.filter(contactee).length, n), 'contactées', `<span class="delta">${per.filter(d => d.statut === 'nouvelle' && !contactee(d)).length} jamais appelées</span>`],
-            [achetees, achetees > 1 ? 'voitures achetées' : 'voiture achetée', `<span class="delta">${pct(achetees, n)} des demandes</span>`]
-        ];
-        $('#tbKpis').innerHTML = k.map(([v, l, dlt]) => `<div class="kpi"><b class="num">${v}</b><span>${l}</span>${dlt}</div>`).join('');
+        // Aujourd'hui : ce qu'il faut faire maintenant (touchable)
+        const vivantes = demandes.filter(d => !(d.suivi || {}).archivee);
+        const rdvAuj = vivantes.filter(d => rdvPrevu(d) && rdvPrevu(d).date === auj), sansCR = vivantes.filter(d => rdvPrevu(d) && rdvPrevu(d).date < auj);
+        $('#tbAuj').innerHTML = [
+            ['appeler', vivantes.filter(aAppeler).length, 'à appeler maintenant', 'rappels arrivés et drapeaux'],
+            ['neuves', vivantes.filter(d => groupe(d) === 0).length, 'nouvelles jamais appelées', 'à traiter en priorité'],
+            ['rdv', rdvAuj.length, 'rendez-vous aujourd\'hui', rdvAuj.map(d => rdvPrevu(d).heure).join(' · ') || 'aucun'],
+            ['cr', sansCR.length, 'RDV sans compte rendu', 'dire comment ça s\'est passé']
+        ].map(([k, v, l, sub]) => `<button class="auj${v ? ' actif auj-' + k : ''}" data-aller="${k}"><b class="num">${v}</b><span>${l}</span><small>${esc(sub)}</small></button>`).join('');
+        // 4 grands chiffres de la période
+        const dansP = (iso, a, b) => iso && iso.slice(0, 10) >= a && (!b || iso.slice(0, 10) < b);
+        const rdvP = demandes.filter(d => (d.suivi || {}).rdv && dansP(d.suivi.rdv.cree_le, debut)).length, rdvQ = demandes.filter(d => (d.suivi || {}).rdv && dansP(d.suivi.rdv.cree_le, debutPrec, debut)).length;
+        $('#tbKpis').innerHTML = `<div class="gros"><span>Demandes reçues</span><b class="num">${n}</b>${evol(n, prec.length)}<small>${(n / tbJours).toLocaleString('fr-FR', { maximumFractionDigits: 1 })} par jour · ${pct(nc('pub'), n)} pub · ${pct(nc('google') + nc('ia') + nc('autres'), n)} organique</small></div>
+            <div class="gros"><span>Rendez-vous pris</span><b class="num">${rdvP}</b>${evol(rdvP, rdvQ)}<small>${pct(rdvP, n)} des demandes</small></div>
+            <div class="gros"><span>Voitures achetées</span><b class="num" id="tbAchats">${achetees}</b><span class="delta" id="tbAchatsD">&nbsp;</span><small id="tbAchatsS">${pct(achetees, n)} des demandes</small></div>
+            <div class="gros"><span>Résultat</span><b class="num" id="tbRes">—</b><span class="delta" id="tbResD">&nbsp;</span><small>marge des ventes − dépenses générales</small></div>`;
 
         // Barres empilées par jour (par semaine sur 12 mois)
         const hebdo = tbJours > 90;
@@ -1544,10 +1776,10 @@ ul.plain li { margin: 3px 0; }
             `<tr data-canal="${r.id}"><td><i style="background:${r.c}"></i>${r.l}<div class="barre"><span style="width:${r.n / n * 100}%;background:${r.c}"></span></div></td><td class="num">${r.n}</td><td class="num">${pct(r.n, n)}</td><td class="num hide-m">${pct(r.ct, r.n)}</td><td class="num">${r.ac}</td></tr>`).join('')
             : '<tr><td class="vide">Aucune demande sur la période.</td></tr>';
 
-        // Entonnoir (une seule teinte, du plus clair au plus foncé)
-        const etapes = [['Reçues', n], ['Contactées', per.filter(contactee).length], ['Offre faite', per.filter(d => ['offre', 'rdv', 'achetee'].includes(d.statut) || (d.suivi || {}).offre).length], ['Rendez-vous', per.filter(d => ['rdv', 'achetee'].includes(d.statut)).length], ['Achetées', achetees]];
+        // Parcours : chaque étape avec le taux de passage depuis la précédente
+        const etapes = [['Reçues', n], ['Contactées', per.filter(contactee).length], ['Offre faite', per.filter(d => ['offre', 'rdv', 'achetee'].includes(d.statut) || (d.suivi || {}).offre || (d.suivi || {}).rdv).length], ['RDV pris', per.filter(d => (d.suivi || {}).rdv || ['rdv', 'achetee'].includes(d.statut)).length], ['Achetées', achetees]];
         const teintes = ['#86b6ef', '#5598e7', '#2a78d6', '#1c5cab', '#104281'];
-        $('#tbEntonnoir').innerHTML = hbars(etapes.map(([l, v], i) => [l, v, teintes[i]]), n, n);
+        $('#tbEntonnoir').innerHTML = etapes.map(([l, v], i) => `${i ? `<div class="pc-fl"><span>${etapes[i - 1][1] ? Math.round(v / etapes[i - 1][1] * 100) + ' %' : '—'}</span></div>` : ''}<div class="pc-et"><i style="background:${teintes[i]};height:${n ? Math.max(6, v / n * 100) : 6}%"></i><b class="num">${v}</b><span>${l}</span><em>${i ? (etapes[i - 1][1] ? Math.round(v / etapes[i - 1][1] * 100) + ' %' : '—') : '&nbsp;'}</em></div>`).join('');
 
         // Mots-clés Google Ads
         const mot = d => { const m = String(d.origine_txt || '').match(/mot-clé « ([^»]+) »/); return m ? m[1].trim().toLowerCase() : (d.canal === 'pub' ? '(sans mot-clé)' : ''); };
@@ -1624,6 +1856,14 @@ ul.plain li { margin: 3px 0; }
         const top = h.map((v, i) => [i, v]).sort((a, b) => b[1] - a[1]).slice(0, 3).filter(x => x[1]).map(([i]) => `${i} h`).join(', ');
         $('#tbHeures').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Demandes par heure">${svg}</svg><p class="sub" style="margin:8px 0 0">${top ? `Pics : ${top}. Bleu foncé : 9 h – 22 h, horaires de la pub.` : 'Rien sur la période.'}</p>`;
     }
+    $('#tbAuj').addEventListener('click', e => {
+        const b = e.target.closest('[data-aller]'); if (!b) return;
+        const k = b.dataset.aller;
+        if (k === 'rdv' || k === 'cr') { plVue = k === 'cr' ? 'retard' : 'avenir'; plJour = k === 'rdv' ? jourIso() : null; return allerOnglet('planning'); }
+        raz(); $('#fTri').value = 'recent';
+        if (k === 'appeler') $('#fRelance').value = 'appeler'; else $('#fStatut').value = 'nouvelle';
+        allerOnglet('demandes'); liste();
+    });
     $('#tbPeriode').addEventListener('click', e => { const b = e.target.closest('[data-j]'); if (b) { tbJours = Number(b.dataset.j); tableau(); } });
     $('#tbType').addEventListener('input', tableau);
     $('#tbCanaux').addEventListener('click', e => {
@@ -1709,12 +1949,7 @@ ul.plain li { margin: 3px 0; }
                 <div class="rdv-info">${r.lieu ? `<a href="https://maps.apple.com/?daddr=${encodeURIComponent(r.lieu)}" target="_blank" rel="noopener">📍 ${esc(r.lieu)}</a>` : ''}${v.prix_convenu ? `<span>Prix convenu <b class="num">${euro(v.prix_convenu)}</b></span>` : ''}</div>
                 ${pros && v.ref ? `<div class="rdv-act"><button class="btn btn-g" data-vrdv="achetee">Voiture achetée</button><button class="btn" data-vrdv="fait">Fait, pas d'achat</button><button class="btn btn-d" data-vrdv="annule">RDV annulé</button></div>` : ''}
             </section>` : ''}
-            <div class="prices vh-prix">
-                <div class="pr"><span>${pros ? 'Prix convenu' : 'Prix d\'achat'}</span><b class="num">${euro(pros ? v.prix_convenu : v.prix_achat)}</b><small>${pros ? 'au rendez-vous' : v.prix_achat ? 'payé par ' + PAYCOURT[v.payeur_achat || 'societe'] : 'à renseigner'}</small></div>
-                <div class="pr"><span>Dépenses</span><b class="num">${euro(b.frais)}</b><small>${b.nb_depenses} ligne${b.nb_depenses > 1 ? 's' : ''}</small></div>
-                <div class="pr main"><span>${pros ? 'Coût prévu' : 'Coût de revient'}</span><b class="num">${euro(b.cout)}</b><small>${pros ? 'prix convenu + frais' : 'achat + dépenses'}</small></div>
-                <div class="pr"><span>${vendu ? 'Marge réalisée' : 'Marge prévue'}</span><b class="num ${(vendu ? b.marge : b.marge_prevue) < 0 ? 'neg' : 'pos'}">${signe(vendu ? b.marge : b.marge_prevue)}</b><small>${vendu ? 'vendu ' + euro(v.prix_vente) : v.estimation_vente ? 'si vendu ' + euro(v.estimation_vente) : 'renseigner la vente estimée'}</small></div>
-            </div>
+            <div class="prices vh-prix" id="vPrix">${chiffresVehicule(v)}</div>
             <section class="sec">
                 <h3>Dépenses du véhicule <small>${Object.entries(b.par_payeur).filter(([, m]) => m).map(([k, m]) => `${PAYCOURT[k]} ${euro(m)}`).join(' · ') || 'aucune'}</small></h3>
                 <form id="vDepForm" class="dep-form">
@@ -1729,8 +1964,8 @@ ul.plain li { margin: 3px 0; }
                 ${Object.keys(b.par_categorie).length > 1 ? `<div class="hbars" style="margin-top:14px">${hbars(Object.entries(b.par_categorie).sort((x, y) => y[1] - x[1]).map(([c, m]) => [c, Math.round(m)]), Math.max(...Object.values(b.par_categorie)))}</div>` : ''}
             </section>
             <section class="sec">
-                <h3>Achat et vente</h3>
-                <form id="vForm" class="form-grid">
+                <h3>Achat et vente <small id="vEtat">chaque champ s'enregistre dès que vous le quittez</small></h3>
+                <form id="vForm" class="form-grid" autocomplete="off">
                     <label class="f">Véhicule<input class="in" name="libelle" value="${esc(v.libelle || '')}"></label>
                     <label class="f">Plaque<input class="in" name="plaque" value="${esc(v.plaque || '')}" autocapitalize="characters"></label>
                     <label class="f">Année<input class="in num" name="annee" value="${esc(v.annee || '')}" inputmode="numeric"></label>
@@ -1744,17 +1979,23 @@ ul.plain li { margin: 3px 0; }
                     <label class="f">Encaissé par${selPayeur('encaisse_par', v.encaisse_par || 'societe')}</label>
                     <label class="f">Vendu via<input class="in" name="canal_vente" value="${esc(v.canal_vente || '')}" placeholder="Leboncoin, marchand, export…"></label>
                     <label class="f" style="grid-column:1/-1">Notes<textarea class="in" name="notes" rows="2">${esc(v.notes || '')}</textarea></label>
-                    <div><button class="btn btn-p">Enregistrer</button></div>
                 </form>
             </section>
             <div class="danger">${v.ref ? `<button class="btn" id="vDemande">Voir la demande ${esc(v.ref)}</button>` : ''}<button class="btn btn-d" id="vSuppr">Supprimer le véhicule</button></div>
         </div>`;
         $('#vRetour').onclick = () => { if (history.state && history.state.veh) history.back(); else { history.replaceState({}, '', BASE); quitterVehicule(); } };
-        const sauverV = async champs => {
-            try { await api('/api/admin/compta/vehicules/' + v.id, { method: 'PATCH', body: JSON.stringify(champs) }); await chargerCompta(); afficherVehicule(v.id); toast('Véhicule enregistré'); }
-            catch (e) { toast(e.message); }
+        // Un champ modifié = enregistré tout de suite, sans redessiner la page (on ne perd jamais une saisie en cours).
+        const autoV = async (champs, el) => {
+            $('#vEtat').innerHTML = '<span class="spin"></span> Enregistrement…';
+            try {
+                await api('/api/admin/compta/vehicules/' + v.id, { method: 'PATCH', body: JSON.stringify(champs) });
+                await chargerCompta(); const nv = vehiculeDe(v.id); if (nv) { Object.assign(v, nv); $('#vPrix').innerHTML = chiffresVehicule(nv); }
+                $('#vEtat').innerHTML = '<span class="pos">✓ Enregistré</span>'; if (el) { el.classList.add('ok'); setTimeout(() => el.classList.remove('ok'), 1200); }
+            } catch (e) { $('#vEtat').innerHTML = `<span class="neg">Non enregistré : ${esc(e.message)}</span>`; }
         };
-        $('#vStatut').onchange = e => sauverV({ statut: e.target.value });
+        $('#vForm').addEventListener('change', e => { const f = e.target; if (f.name) autoV({ [f.name]: f.value }, f); });
+        $('#vForm').onsubmit = e => e.preventDefault();
+        $('#vStatut').onchange = e => autoV({ statut: e.target.value }, e.target);
         // Issue du rendez-vous depuis la page véhicule : même effet que depuis la fiche de la demande.
         $('#vpageIn').querySelectorAll('[data-vrdv]').forEach(btn => btn.onclick = async () => {
             const a = btn.dataset.vrdv; let corps;
@@ -1767,14 +2008,25 @@ ul.plain li { margin: 3px 0; }
                 if (vehiculeDe(v.id)) afficherVehicule(v.id); else { history.replaceState({}, '', BASE); quitterVehicule(); allerOnglet('vehicules'); }
             } catch (err) { toast(err.message); }
         });
-        $('#vForm').onsubmit = e => { e.preventDefault(); sauverV(Object.fromEntries(new FormData(e.target))); };
+
+        let depModif = null;
         $('#vDepForm').onsubmit = async e => {
             e.preventDefault();
             const fd = new FormData(e.target); fd.append('vehicule_id', v.id); retenirPayeur(fd.get('payeur'));
             if (!(fd.get('justificatif') || {}).size) fd.delete('justificatif');
-            try { await api('/api/admin/compta/depenses', { method: 'POST', body: fd }); await chargerCompta(); afficherVehicule(v.id); toast('Dépense ajoutée'); }
+            try { await api('/api/admin/compta/depenses' + (depModif ? '/' + depModif : ''), { method: depModif ? 'PATCH' : 'POST', body: fd }); await chargerCompta(); afficherVehicule(v.id); toast(depModif ? 'Dépense modifiée' : 'Dépense ajoutée'); }
             catch (err) { toast(err.message); }
         };
+        $('#vpageIn').querySelectorAll('.dep[data-dep]').forEach(row => row.onclick = ev => {
+            if (ev.target.closest('a,button')) return;
+            const dp = compta.depenses.find(x => x.id === row.dataset.dep); if (!dp) return;
+            depModif = dp.id; const f = $('#vDepForm');
+            f.montant.value = dp.montant; f.categorie.value = dp.categorie; f.payeur.value = dp.payeur; f.date.value = dp.date; f.libelle.value = dp.libelle || '';
+            f.querySelector('button.btn-p').textContent = 'Enregistrer la modification';
+            if (!f.querySelector('#vDepAnnul')) { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.id = 'vDepAnnul'; b.textContent = 'Annuler'; b.onclick = () => afficherVehicule(v.id); f.querySelector('.dep-act').appendChild(b); }
+            $('#vpageIn').querySelectorAll('.dep').forEach(x => x.classList.toggle('edit', x === row));
+            f.scrollIntoView({ block: 'center', behavior: 'smooth' }); f.montant.focus();
+        });
         $('#vDepForm [name=justificatif]').onchange = ev => { ev.target.closest('label').firstChild.textContent = ev.target.files.length ? '✓ Justificatif' : 'Justificatif'; };
         lierDepenses($('#vpageIn'), () => afficherVehicule(v.id));
         if ($('#vDemande')) $('#vDemande').onclick = () => { quitterVehicule(); history.pushState({ ref: v.ref }, '', BASE + '/demande/' + v.ref); afficherFiche(v.ref); };
@@ -1783,6 +2035,14 @@ ul.plain li { margin: 3px 0; }
             try { await api('/api/admin/compta/vehicules/' + v.id, { method: 'DELETE' }); history.replaceState({}, '', BASE); quitterVehicule(); allerOnglet('vehicules'); toast('Véhicule supprimé'); } catch (e) { toast(e.message); }
         };
         window.scrollTo(0, 0);
+    }
+    function chiffresVehicule(v) {
+        const b = v.bilan, vendu = v.statut === 'vendu', pros = v.statut === 'prospect';
+        const m = vendu ? b.marge : b.marge_prevue;
+        return `<div class="pr"><span>${pros ? 'Prix convenu' : 'Prix d\'achat'}</span><b class="num">${euro(pros ? v.prix_convenu : v.prix_achat)}</b><small>${pros ? 'au rendez-vous' : v.prix_achat ? 'payé par ' + PAYCOURT[v.payeur_achat || 'societe'] : 'à renseigner ci-dessous'}</small></div>
+            <div class="pr"><span>Dépenses</span><b class="num">${euro(b.frais)}</b><small>${b.nb_depenses} ligne${b.nb_depenses > 1 ? 's' : ''}</small></div>
+            <div class="pr main"><span>${pros ? 'Coût prévu' : 'Coût de revient'}</span><b class="num">${euro(b.cout)}</b><small>${pros ? 'prix convenu + frais' : 'achat + dépenses'}</small></div>
+            <div class="pr"><span>${vendu ? 'Marge réalisée' : 'Marge prévue'}</span><b class="num ${m < 0 ? 'neg' : 'pos'}">${signe(m)}</b><small>${vendu ? 'vendu ' + euro(v.prix_vente) : v.estimation_vente ? 'si vendu ' + euro(v.estimation_vente) : 'renseigner la vente estimée'}</small></div>`;
     }
     function quitterVehicule() { if ($('#vpage').hidden) return; $('#vpage').hidden = true; if ($('#sheet').hidden) document.body.classList.remove('page-fiche'); document.title = 'Admin · LUNICAR'; if (!document.querySelector('[data-view="vehicules"]').hidden) vueVehicules(); }
 
@@ -1886,16 +2146,22 @@ ul.plain li { margin: 3px 0; }
             return { vendus: vendus.length, marge, ca, generales, pub, achetes, resultat: marge - generales };
         };
         const p = calc(debut, ''), q = calc(prec, debut);
-        const stock = V.filter(v => v.statut !== 'vendu');
+        const stock = V.filter(v => ['stock', 'preparation', 'en_vente'].includes(v.statut)), perdus = V.filter(v => v.statut === 'perdu');
         const evol = (a, b) => b ? `<span class="delta ${a > b ? 'up' : a < b ? 'down' : ''}">${signe(a - b)} vs période préc.</span>` : '<span class="delta">—</span>';
-        $('#tbPilotage').innerHTML = [
-            [p.achetes, p.achetes > 1 ? 'voitures achetées' : 'voiture achetée', p.pub && p.achetes ? `<span class="delta">pub : ${euro(Math.round(p.pub / p.achetes))} par achat</span>` : '<span class="delta">&nbsp;</span>'],
-            [p.vendus, p.vendus > 1 ? 'voitures vendues' : 'voiture vendue', `<span class="delta">${euro(p.ca)} de CA</span>`],
-            [signe(p.marge), 'marge sur les ventes', evol(p.marge, q.marge)],
-            [euro(p.generales), 'dépenses générales', `<span class="delta">dont pub ${euro(p.pub)}</span>`],
-            [signe(p.resultat), 'résultat (marge − dépenses)', evol(p.resultat, q.resultat), p.resultat < 0 ? 'alerte' : ''],
-            [stock.length, 'en stock', `<span class="delta">${euro(stock.reduce((t, v) => t + v.bilan.cout, 0))} immobilisés</span>`]
-        ].map(([v, l, d, c]) => `<div class="kpi ${c || ''}"><b class="num">${v}</b><span>${l}</span>${d}</div>`).join('');
+        if ($('#tbAchats')) {
+            $('#tbAchats').textContent = p.achetes; $('#tbAchatsD').outerHTML = p.achetes - q.achetes ? `<span class="delta ${p.achetes > q.achetes ? 'up' : 'down'}" id="tbAchatsD">${p.achetes > q.achetes ? '+' : ''}${p.achetes - q.achetes} vs période préc.</span>` : '<span class="delta" id="tbAchatsD">&nbsp;</span>';
+            $('#tbRes').textContent = signe(p.resultat); $('#tbRes').classList.toggle('neg', p.resultat < 0); $('#tbRes').classList.toggle('pos', p.resultat > 0);
+            $('#tbResD').outerHTML = evol(p.resultat, q.resultat).replace('class="delta', 'id="tbResD" class="delta');
+        }
+        $('#tbPilotage').innerHTML = kv([
+            ['Voitures vendues', `${p.vendus} · <b>${euro(p.ca)}</b> de chiffre d'affaires`],
+            ['Marge sur les ventes', `<b class="${p.marge < 0 ? 'neg' : 'pos'}">${signe(p.marge)}</b>`],
+            ['Dépenses générales', `${euro(p.generales)} <span style="color:var(--ink-4)">dont pub ${euro(p.pub)}</span>`],
+            ['Pub par voiture achetée', p.pub && p.achetes ? euro(Math.round(p.pub / p.achetes)) : '—'],
+            ['Résultat', `<b class="${p.resultat < 0 ? 'neg' : 'pos'}">${signe(p.resultat)}</b>`],
+            ['En stock aujourd\'hui', `${stock.length} · ${euro(stock.reduce((t, v) => t + v.bilan.cout, 0))} immobilisés`],
+            ['Frais des RDV sans achat', euro(perdus.reduce((t, v) => t + v.bilan.frais, 0))]
+        ]);
     }
 
     // Depuis la fiche d'une demande achetée : ouvrir (ou créer) son véhicule
@@ -2147,40 +2413,36 @@ ul.plain li { margin: 3px 0; }
         </div>
         <div class="sh-body">
             ${d.statut === 'achetee' || rdvPrevu(d) ? `<button class="btn btn-g" id="versVehicule" style="justify-self:start">${d.statut === 'achetee' ? 'Véhicule acheté' : 'RDV pris'} : frais et suivi dans Nos véhicules →</button>` : ''}
-            <div class="appel">
-                <div class="appel-tete"><b>Après l'appel</b>
-                    <button class="flag${drapeau(d) ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${drapeau(d)}"><svg><use href="#i-flag"/></svg>${drapeau(d) ? 'À appeler · retirer' : 'Marquer « À appeler »'}</button>
-                    <span>${(s.nb_appels ? `${s.nb_appels} appel${s.nb_appels > 1 ? 's' : ''}, dernier le ${date(s.dernier_appel, false)}` : 'Jamais appelé')}${rappel(d) ? ` · prochaine relance <b class="${rappel(d) < jourIso() ? 'retard' : ''}">${jj(rappel(d))}</b>` : ''}</span></div>
-                <div class="appel-btns">${Object.entries(etat.resultats || {}).map(([k, v]) => `<button class="btn btn-s" data-appel="${k}">${esc(v)}</button>`).join('')}</div>
-                <input class="in" id="appelNote" placeholder="Note rapide sur l'appel (facultatif) : prix proposé ailleurs, délai…">
-            </div>
-            ${blocRdv(d)}
-            <section class="sec diag" id="diag">
-                <h3>Diagnostic mécanique</h3>
-                <p class="sub" style="margin:0 0 10px">Ce que tu as constaté ou ce que dit le vendeur, et les captures de la valise (ediag, codes défaut). L'estimation en tient compte en priorité sur l'état déclaré.</p>
-                <textarea class="in" id="diagTxt" placeholder="Ex. : voyant moteur allumé, P0401 mémorisé, embrayage qui patine en 4e, fumée bleue à froid, bruit de chaîne au démarrage…">${esc((s.diagnostic || {}).texte || '')}</textarea>
-                ${((s.diagnostic || {}).captures || []).length ? `<div class="diag-caps">${s.diagnostic.captures.map((c, i) => `<figure><img src="${photoUrl(c.path)}" alt="Capture ${i + 1} du diagnostic" loading="lazy" data-diag="${i}"><button class="del" data-diag-del="${esc(c.path)}">Supprimer</button></figure>`).join('')}</div>` : ''}
-                <div class="diag-actions">
-                    <label class="btn">Ajouter des captures<input type="file" id="diagCap" accept="image/*" multiple hidden></label>
-                    <button class="btn btn-p" id="diagSave">Enregistrer</button>
-                    <button class="btn btn-g" id="diagEstimer"${etat.estimation.actif ? '' : ' disabled'}>Enregistrer et réestimer</button>
-                    <span class="sub" id="diagMsg">${(s.diagnostic || {}).maj ? 'Mis à jour le ' + date(s.diagnostic.maj) : ''}</span>
+            <section class="sec decision">
+                <div class="dec-tete">
+                    <div class="dec-max"><span>Prix max d'achat</span><b class="num">${enCours ? '<span class="spin"></span>' : prixMax(d) ? eur(prixMax(d)) : '—'}</b><small>${enCours ? 'estimation en cours (' + ESTIM_DUREE + ')' : prixMax(d) ? origineMax(d) : 'pas encore estimé'}</small></div>
+                    ${scoreDe(d) != null ? `<div class="dec-score">${badgeScore(d, true)}<small>${esc({ acheter: 'à acheter', prix_serre: 'à prix serré', eviter: 'à éviter' }[(e.attractivite || {}).verdict] || '')}${(e.attractivite || {}).delai_revente ? ' · revente ' + esc({ rapide: 'rapide', moyen: 'moyenne', lent: 'lente' }[e.attractivite.delai_revente] || '') : ''}</small></div>` : ''}
                 </div>
-            </section>
-            <section class="sec">
-                <h3>Estimation</h3>
-                <div class="prices">
-                    <div class="pr main"><span>Prix max d'achat</span><b class="num">${enCours ? '<span class="spin"></span>' : eur(s.prix_manuel_max || p.max_achat)}</b><small>${s.prix_manuel_max ? 'retenu à la main · calcul ' + eur(p.max_achat) : 'calculé avec vos marges'}</small></div>
-                    <div class="pr"><span>Prix constaté Leboncoin</span><b class="num">${eur(p.leboncoin)}</b><small>${e && e.leboncoin ? (e.leboncoin.nb_annonces ? e.leboncoin.nb_annonces + ' annonces · ' : '') + (e.leboncoin.prix_bas ? eur(e.leboncoin.prix_bas) + ' à ' + eur(e.leboncoin.prix_haut) : '') : ''}</small></div>
-                    <div class="pr"><span>Cote Argus</span><b class="num">${eur(p.argus)}</b><small>${e && e.cote_argus ? esc(e.cote_argus.source || '') : ''}</small></div>
-                    <div class="pr"><span>Prix de vente estimé</span><b class="num">${eur(s.prix_manuel_vente || p.vente_estime)}</b><small>${e ? esc({ reparer_revendre: 'après remise en état', en_l_etat_marchand: 'en l\'état, à un marchand', export: 'à l\'export', pieces: 'pour pièces' }[e.canal_revente] || '') : ''}</small></div>
+                <div class="dec-grille">
+                    <div><span>Le vendeur veut</span><b class="num">${x.prix_souhaite ? eur(x.prix_souhaite) : '—'}</b>${x.prix_souhaite && prixMax(d) ? (ec => `<small class="${ec > 0 ? 'neg' : 'pos'}">${ec > 0 ? eur(ec) + ' au-dessus du max' : ec < 0 ? eur(-ec) + ' sous le max' : 'pile le max'}</small>`)(Number(x.prix_souhaite) - prixMax(d)) : '<small>&nbsp;</small>'}</div>
+                    <div><span>Revente estimée</span><b class="num">${eur(s.prix_manuel_vente || p.vente_estime)}</b><small>${s.prix_manuel_vente ? 'retenue à la main' : e ? esc({ reparer_revendre: 'après remise en état', en_l_etat_marchand: 'en l\'état, marchand', export: 'export', pieces: 'pour pièces' }[e.canal_revente] || '') : '&nbsp;'}</small></div>
+                    <div><span>Marché (médiane)</span><b class="num">${eur(p.marche || p.leboncoin)}</b><small>${e && (e.marche || e.leboncoin) ? ((e.marche || e.leboncoin).nb_annonces || 0) + ' annonces' : '&nbsp;'}</small></div>
+                    <div><span>Frais prévus</span><b class="num">${e && e.calcul ? eur((e.calcul.frais_remise_en_etat || 0) + (e.calcul.deplacement || 0)) : '—'}</b><small>remise en état + trajet</small></div>
                 </div>
+                <div class="dec-faits">${[x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.annee, [x.ville || x.code_postal, geo(x.code_postal) && geo(x.code_postal).km ? geo(x.code_postal).km + ' km' : ''].filter(Boolean).join(' · '), d.origine_txt && esc(d.origine_txt.split(' · ')[0]), s.offre && 'offre faite ' + eur(s.offre), s.prix_achat && 'acheté ' + eur(s.prix_achat)].filter(Boolean).map(t => `<span>${t}</span>`).join('')}</div>
+                ${e && e.resume ? `<p class="resume">${esc(e.resume)}</p>` : ''}
                 <div class="est-meta">
-                    <button class="btn btn-s ${e ? '' : 'btn-g'}" id="estBtn" ${enCours || !etat.estimation.actif ? 'disabled' : ''}>${enCours ? '<span class="spin"></span> Estimation en cours (' + ESTIM_DUREE + ')' : e ? 'Relancer l\'estimation' : 'Estimer maintenant'}</button>
-                    ${e ? `<span>Confiance <b>${esc(e.confiance || '?')}</b></span><span>${date(d.estimation_at)}</span><span>${esc(e.modele || '')} · ${e.duree_s || '?'} s · ${(e.usage || {}).recherches || 0} recherches</span>` : ''}
+                    <button class="btn btn-s ${e ? '' : 'btn-g'}" id="estBtn" ${enCours || !etat.estimation.actif ? 'disabled' : ''}>${enCours ? '<span class="spin"></span> Estimation en cours' : e ? 'Relancer l\'estimation' : 'Estimer maintenant'}</button>
                     ${s.estimation_statut === 'erreur' ? `<span style="color:var(--red)">Échec : ${esc(s.estimation_erreur)}</span>` : ''}
                 </div>
-                ${e && e.resume ? `<p class="resume">${esc(e.resume)}</p>` : ''}
+            </section>
+            <section class="sec appel-sec">
+                <h3>Appels <small>${s.nb_appels ? `${s.nb_appels} appel${s.nb_appels > 1 ? 's' : ''} · dernier le ${date(s.dernier_appel, false)}` : 'jamais appelé'}${rappel(d) ? ` · relance <b class="${rappel(d) < jourIso() ? 'neg' : ''}">${jj(rappel(d))}</b>` : ''}</small></h3>
+                <div class="appel-actions">
+                    <button class="btn btn-p" id="crBtn"><svg><use href="#i-tel"/></svg>Compte rendu d'appel</button>
+                    <button class="flag${drapeau(d) ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${drapeau(d)}"><svg><use href="#i-flag"/></svg>${drapeau(d) ? 'À appeler · retirer' : 'Marquer « À appeler »'}</button>
+                </div>
+                ${(s.appels || []).length ? `<ol class="cr-liste">${s.appels.slice(0, 3).map(a => `<li><div><b>${esc(a.libelle || a.resultat)}</b><span>${date(a.date)}</span></div>${a.texte ? `<p>${esc(a.texte)}</p>` : ''}${(a.corrections || []).length ? `<small>Corrigé : ${a.corrections.map(esc).join(' · ')}</small>` : ''}${a.offre ? `<small>Offre faite : ${eur(a.offre)}</small>` : ''}</li>`).join('')}</ol>` : ''}
+            </section>
+            ${blocRdv(d)}
+            <section class="sec">
+                <h3>Détail de l'estimation <small>${e ? `confiance ${esc(e.confiance || '?')} · ${date(d.estimation_at)} · ${(e.usage || {}).recherches || 0} recherches` : ''}</small></h3>
+                ${!e ? `<p class="vide">${enCours ? 'Estimation en cours…' : 'Pas encore d\'estimation : lancez-la depuis la carte du haut.'}</p>` : ''}
                 ${e ? `<div class="calc-strip">
                     <div><span>Vente estimée</span><b class="num">${eur(e.calcul.prix_vente_estime)}</b></div>
                     <div><span>− Remise en état</span><b class="num">${eur(e.calcul.frais_remise_en_etat)}</b></div>
@@ -2191,7 +2453,7 @@ ul.plain li { margin: 3px 0; }
                 </div>
                 ${e.deplacement_detail ? (t => `<p class="sub" style="margin:8px 0 0">Déplacement ${esc(t.depart)} → ${esc(t.arrivee)} : ${t.km} km (${Math.floor(t.minutes / 60)} h ${String(t.minutes % 60).padStart(2, '0')}) · train aller ${eur(t.train)} <span style="color:var(--ink-4)">(${esc(t.train_source)})</span> · carburant retour ${eur(t.carburant)} <span style="color:var(--ink-4)">(${esc(t.energie)})</span> · péages ${eur(t.peages)}</p>`)(e.deplacement_detail) : ''}
                 ${attractivite(e.attractivite)}
-                ${e.vehicule_identifie ? `<p class="retenu"><b>Véhicule retenu :</b> ${esc(e.vehicule_identifie)}${e.prix_max_achat_ia ? ` · avis de l'IA sans vos marges : ${eur(e.prix_max_achat_ia)}` : ''}</p>` : ''}
+                ${e.vehicule_identifie ? `<p class="retenu"><b>Véhicule retenu :</b> ${esc(e.vehicule_identifie)}</p>` : ''}
                 ${(e.points_attention || []).length ? `<p class="surveiller"><b>À surveiller :</b> ${e.points_attention.slice(0, 2).map(esc).join(' · ')}</p>` : ''}
                 <details class="plus"><summary>Voir l'analyse complète</summary>
                 <div class="analyse">
@@ -2201,36 +2463,15 @@ ul.plain li { margin: 3px 0; }
                     ${(e.frais_remise_en_etat && e.frais_remise_en_etat.postes || []).length ? `<div><h4>Remise en état chiffrée</h4>${kv(e.frais_remise_en_etat.postes.map(p => [p.libelle, '<span class="num">' + eur(p.montant) + '</span>']))}</div>` : ''}
                     ${(e.hypotheses || []).length ? `<div><h4>Hypothèses</h4><ul class="plain">${e.hypotheses.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
                 </div>
-                ${e.leboncoin && e.leboncoin.commentaire ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Leboncoin :</b> ${esc(e.leboncoin.commentaire)}</p>` : ''}
+                ${e.marche && e.marche.commentaire ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Marché${e.marche.nb_annonces ? ` (${e.marche.nb_annonces} annonces${(e.marche.sources || []).length ? ' : ' + e.marche.sources.map(esc).join(', ') : ''})` : ''} :</b> ${esc(e.marche.commentaire)}</p>` : e.leboncoin && e.leboncoin.commentaire ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Marché :</b> ${esc(e.leboncoin.commentaire)}</p>` : ''}
+                ${e.prix_vente_estime && e.prix_vente_estime.commentaire ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Prix de revente :</b> ${esc(e.prix_vente_estime.commentaire)}</p>` : ''}
+                ${(e.cotes || []).length ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Cotes :</b> ${e.cotes.filter(c => c.valeur).map(c => `${esc(c.source)} ${eur(c.valeur)}`).join(' · ')}</p>` : ''}
+                ${e.reprise_concurrents && e.reprise_concurrents.valeur ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Reprise chez les concurrents :</b> ${eur(e.reprise_concurrents.valeur)} (${esc(e.reprise_concurrents.source || '')})${e.reprise_concurrents.commentaire ? ' · ' + esc(e.reprise_concurrents.commentaire) : ''}</p>` : ''}
                 ${e.cote_argus && e.cote_argus.commentaire ? `<p class="sub" style="font-size:.88rem;color:var(--ink-6)"><b>Cote :</b> ${esc(e.cote_argus.commentaire)}</p>` : ''}
-                ${(e.annonces || []).length ? `<details><summary>${e.annonces.length} annonces comparables</summary><div class="ads-wrap"><table class="ads"><tr><th>Annonce</th><th>Source</th><th style="text-align:right">Année</th><th style="text-align:right">Km</th><th style="text-align:right">Prix</th></tr>
-                    ${e.annonces.map(a => `<tr><td>${/^https?:\/\//.test(a.url || '') ? `<a href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(a.titre || 'Annonce')}</a>` : esc(a.titre || 'Annonce')}${a.lieu ? ` <span style="color:var(--ink-4)">· ${esc(a.lieu)}</span>` : ''}</td><td>${esc(a.source || '')}</td><td class="n">${esc(a.annee || '')}</td><td class="n">${a.km ? Number(a.km).toLocaleString('fr-FR') : ''}</td><td class="n"><b>${eur(a.prix)}</b></td></tr>`).join('')}</table></div></details>` : ''}
+                ${(e.annonces || []).length ? `<details><summary>${e.annonces.length} annonces comparables</summary><div class="ads-wrap"><table class="ads"><tr><th>Annonce</th><th>Source</th><th style="text-align:right">Année</th><th style="text-align:right">Km</th><th style="text-align:right">Prix</th><th style="text-align:right">Ajusté</th></tr>
+                    ${e.annonces.map(a => `<tr><td>${/^https?:\/\//.test(a.url || '') ? `<a href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(a.titre || 'Annonce')}</a>` : esc(a.titre || 'Annonce')}${a.lieu ? ` <span style="color:var(--ink-4)">· ${esc(a.lieu)}</span>` : ''}</td><td>${esc(a.source || '')}${a.vendeur === 'pro' ? ' · pro' : ''}</td><td class="n">${esc(a.annee || '')}</td><td class="n">${a.km ? Number(a.km).toLocaleString('fr-FR') : ''}</td><td class="n">${eur(a.prix)}</td><td class="n"><b>${a.prix_ajuste ? eur(a.prix_ajuste) : ''}</b></td></tr>`).join('')}</table></div></details>` : ''}
                 ${(e.sources || []).length ? `<details><summary>${e.sources.length} pages consultées</summary><div class="sources">${e.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.titre || s.url)}</a>`).join('')}</div></details>` : ''}
                 </details>` : ''}
-            </section>
-
-            <section class="sec" id="secSuivi">
-                <h3>Suivi</h3>
-                ${decompte(d)}
-                <form id="suiviForm" class="form-grid suivi-chiffres">
-                    <label class="f">Offre faite (€)<input class="in num" name="offre" inputmode="numeric" value="${esc(s.offre || '')}"></label>
-                    <label class="f">Prix d'achat final (€)<input class="in num" name="prix_achat" inputmode="numeric" value="${esc(s.prix_achat || '')}"></label>
-                    <label class="f">Prix max retenu (€)<input class="in num" name="prix_manuel_max" inputmode="numeric" value="${esc(s.prix_manuel_max || '')}" placeholder="${p.max_achat || ''}"></label>
-                    <label class="f">Prix de vente retenu (€)<input class="in num" name="prix_manuel_vente" inputmode="numeric" value="${esc(s.prix_manuel_vente || '')}" placeholder="${p.vente_estime || ''}"></label>
-                    <label class="f">Relance prévue le<input class="in" name="rappel_le" type="date" value="${esc((s.rappel_le || '').slice(0, 10))}"></label>
-                    <div style="align-self:end"><button class="btn btn-p">Enregistrer</button></div>
-                </form>
-                <ol class="fil">
-                    ${s.notes ? `<li class="note"><span class="quand">Note</span><p>${esc(s.notes)}</p></li>` : ''}
-                    ${[...(s.historique || [])].reverse().map(h => h.type === 'note'
-                        ? `<li class="note"><span class="quand">${date(h.date)}</span><p>${esc(h.quoi)}</p></li>`
-                        : `<li class="action"><span class="quand">${date(h.date)}</span>${esc(h.quoi)}</li>`).join('')}
-                    ${!s.notes && !(s.historique || []).length ? '<li class="vide">Aucun échange pour l\'instant.</li>' : ''}
-                </ol>
-                <form id="noteForm" class="ajout-note">
-                    <textarea class="in" id="noteIn" rows="2" placeholder="Ajouter une note : ce que dit le vendeur, prix proposé ailleurs, documents…"></textarea>
-                    <button class="btn btn-p">Ajouter</button>
-                </form>
             </section>
 
             <div class="cols">
@@ -2250,6 +2491,7 @@ ul.plain li { margin: 3px 0; }
                                 <span class="sub" id="plaqueMsg">1 requête sur le forfait (gratuit si déjà consultée dans les 24 h)</span>
                             </div></div>`;
                     })()}
+                    ${(x.corrections || []).length ? `<p class="corr"><b>Corrigé au téléphone :</b> ${x.corrections.slice(-4).map(c => esc({ kilometrage: 'km', prix_souhaite: 'prix souhaité', mecanique: 'mécanique', controle_technique: 'CT', carrosserie: 'carrosserie', delai: 'délai', annee: 'année' }[c.champ] || c.champ) + ' ' + esc(c.avant || '—') + ' → <b>' + esc(c.apres) + '</b>').join(' · ')}</p>` : ''}
                     ${kv([
                         ['Véhicule', esc(x.vehicule)], ['Année', esc(x.annee)], ['Kilométrage', x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''],
                         ['Plaque', esc(x.plaque) + (x.plaque_datation ? `<br><span style="color:var(--ink-4);font-weight:400">${esc(x.plaque_datation)}</span>` : '')],
@@ -2265,14 +2507,53 @@ ul.plain li { margin: 3px 0; }
                     <h3>Vendeur et projet</h3>
                     ${kv([
                         ['Nom', esc([x.prenom, x.nom].filter(Boolean).join(' '))], ['Téléphone', esc(x.telephone)], ['E-mail', x.email ? `<a href="mailto:${esc(x.email)}">${esc(x.email)}</a>` : ''],
-                        ['Ville', esc([x.code_postal, x.ville].filter(Boolean).join(' ')) + (idf(d) ? ' · Île-de-France' : '')],
+                        ['Ville', esc([x.code_postal, x.ville].filter(Boolean).join(' ')) + (idf(d) ? ' · Île-de-France' : '') + (geo(x.code_postal) && geo(x.code_postal).km ? ` · ${geo(x.code_postal).km} km de Paris` : '')],
                         ['Prix souhaité', x.prix_souhaite ? eur(x.prix_souhaite) : ''], ['Vendre quand', esc(x.delai)], ['Autre voiture', esc(x.projet_achat)],
                         ['Titulaire de la carte grise', x.titulaire ? (x.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : ''], ['Nom du titulaire', esc(x.nom_titulaire)], ['N° du certificat', esc(x.numero_formule)],
-                        ['Origine', esc(x.origine)], ['Page', esc(x.page)], ['Provenance', esc(x.provenance)], ['Clic Google Ads', x.clic_ads ? '<span class="pill st-achetee">oui</span>' : '']
+                        ['Origine', esc(d.origine_txt || x.origine)]
                     ])}
+                    <details><summary>Détail technique de la provenance</summary>${kv([['Page', esc(x.page)], ['Provenance', esc(x.provenance)], ['Clic Google Ads', x.clic_ads ? '<span class="pill st-achetee">oui</span>' : '']])}</details>
                     ${x.message ? `<p style="margin:12px 0 4px;font-weight:600">Message du vendeur</p><p class="msg">${esc(x.message)}</p>` : ''}
                 </section>
             </div>
+
+            <section class="sec diag" id="diag">
+                <h3>Diagnostic mécanique</h3>
+                <p class="sub" style="margin:0 0 10px">Ce que tu as constaté ou ce que dit le vendeur, et les captures de la valise (ediag, codes défaut). L'estimation en tient compte en priorité sur l'état déclaré.</p>
+                <textarea class="in" id="diagTxt" placeholder="Ex. : voyant moteur allumé, P0401 mémorisé, embrayage qui patine en 4e, fumée bleue à froid, bruit de chaîne au démarrage…">${esc((s.diagnostic || {}).texte || '')}</textarea>
+                ${((s.diagnostic || {}).captures || []).length ? `<div class="diag-caps">${s.diagnostic.captures.map((c, i) => `<figure><img src="${photoUrl(c.path)}" alt="Capture ${i + 1} du diagnostic" loading="lazy" data-diag="${i}"><button class="del" data-diag-del="${esc(c.path)}">Supprimer</button></figure>`).join('')}</div>` : ''}
+                <div class="diag-actions">
+                    <label class="btn">Ajouter des captures<input type="file" id="diagCap" accept="image/*" multiple hidden></label>
+                    <button class="btn btn-p" id="diagSave">Enregistrer</button>
+                    <button class="btn btn-g" id="diagEstimer"${etat.estimation.actif ? '' : ' disabled'}>Enregistrer et réestimer</button>
+                    <span class="sub" id="diagMsg">${(s.diagnostic || {}).maj ? 'Mis à jour le ' + date(s.diagnostic.maj) : ''}</span>
+                </div>
+            </section>
+            <section class="sec" id="secSuivi">
+                <h3>Suivi et historique</h3>
+                ${decompte(d)}
+                <form id="suiviForm" class="form-grid suivi-chiffres">
+                    <label class="f">Offre faite (€)<input class="in num" name="offre" inputmode="numeric" value="${esc(s.offre || '')}"></label>
+                    <label class="f">Prix d'achat final (€)<input class="in num" name="prix_achat" inputmode="numeric" value="${esc(s.prix_achat || '')}"></label>
+                    <label class="f">Prix max retenu (€)<input class="in num" name="prix_manuel_max" inputmode="numeric" value="${esc(s.prix_manuel_max || '')}" placeholder="${p.max_achat || ''}"></label>
+                    <label class="f">Prix de vente retenu (€)<input class="in num" name="prix_manuel_vente" inputmode="numeric" value="${esc(s.prix_manuel_vente || '')}" placeholder="${p.vente_estime || ''}"></label>
+                    <label class="f">Relance prévue le<input class="in" name="rappel_le" type="date" value="${esc((s.rappel_le || '').slice(0, 10))}"></label>
+                    <div style="align-self:end"><button class="btn btn-p">Enregistrer</button></div>
+                </form>
+                <ol class="fil">
+                    ${s.notes ? `<li class="note"><span class="quand">Note</span><p>${esc(s.notes)}</p></li>` : ''}
+                    ${[...(s.historique || [])].reverse().map(h => h.type === 'appel'
+                        ? `<li class="note appel-cr"><span class="quand">${date(h.date)}</span><p><b>${esc(h.quoi)}</b>${h.texte ? '<br>' + esc(h.texte) : ''}${(h.corrections || []).length ? `<br><small>Corrigé : ${h.corrections.map(esc).join(' · ')}</small>` : ''}</p></li>`
+                        : h.type === 'note'
+                        ? `<li class="note"><span class="quand">${date(h.date)}</span><p>${esc(h.quoi)}</p></li>`
+                        : `<li class="action"><span class="quand">${date(h.date)}</span>${esc(h.quoi)}</li>`).join('')}
+                    ${!s.notes && !(s.historique || []).length ? '<li class="vide">Aucun échange pour l\'instant.</li>' : ''}
+                </ol>
+                <form id="noteForm" class="ajout-note">
+                    <textarea class="in" id="noteIn" rows="2" placeholder="Ajouter une note : ce que dit le vendeur, prix proposé ailleurs, documents…"></textarea>
+                    <button class="btn btn-p">Ajouter</button>
+                </form>
+            </section>
 
             <section class="sec">
                 <h3>Photos <small>${(d.photos || []).length} fichier${(d.photos || []).length > 1 ? 's' : ''} · <code>${esc(d.dossier)}</code></small></h3>
@@ -2328,12 +2609,7 @@ ul.plain li { margin: 3px 0; }
             try { courant = await api('/api/admin/demandes/' + courant.ref + '/diagnostic?path=' + encodeURIComponent(b.dataset.diagDel), { method: 'DELETE' }); maj(courant); fiche(); } catch (e) { toast(e.message); }
         });
         $('#sheetIn').querySelectorAll('[data-diag]').forEach(img => img.onclick = () => { lbSource = (courant.suivi.diagnostic || {}).captures || []; lbOuvrir(+img.dataset.diag); });
-        $('#sheetIn').querySelectorAll('[data-appel]').forEach(b => b.onclick = async () => {
-            try { courant = await api('/api/admin/demandes/' + d.ref + '/appel', { method: 'POST', body: JSON.stringify({ resultat: b.dataset.appel, note: $('#appelNote').value }) });
-                if (b.dataset.appel === 'accepte') history.replaceState(history.state, '', location.pathname + '#rdv');
-                fiche(); maj(courant); toast(b.dataset.appel === 'accepte' ? 'Offre acceptée : fixez le rendez-vous' : (courant.suivi || {}).rappel_le ? 'Noté · relance le ' + jj(courant.suivi.rappel_le) : 'Noté'); }
-            catch (e) { toast(e.message); }
-        });
+        $('#crBtn').onclick = () => compteRendu(d);
         $('#plaqueBtn').onclick = async () => {
             const b = $('#plaqueBtn'); b.disabled = true; $('#plaqueMsg').textContent = 'Interrogation…';
             try { const r = await api('/api/admin/demandes/' + d.ref + '/plaque', { method: 'POST', body: JSON.stringify({ plaque: $('#plaqueIn').value.replace(/[^A-Za-z0-9]/g, '') }) });
@@ -2362,7 +2638,7 @@ ul.plain li { margin: 3px 0; }
         };
         $('#noteIn').onkeydown = e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) $('#noteForm').requestSubmit(); };
         $('#delDem').onclick = async () => {
-            if (!confirm('Supprimer définitivement cette demande et ses photos ?')) return;
+            if (await demander({ titre: 'Supprimer cette demande ?', texte: 'La demande et ses photos seront effacées définitivement.', boutons: [['ok', 'Supprimer définitivement', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
             await api('/api/admin/demandes/' + d.ref, { method: 'DELETE' }); fermer(); charger(); toast('Demande supprimée');
         };
         $('#addPh').onchange = async ev => {
@@ -2371,7 +2647,7 @@ ul.plain li { margin: 3px 0; }
             try { courant = await api('/api/admin/demandes/' + d.ref + '/photos', { method: 'POST', body: fd }); fiche(); maj(courant); } catch (err) { toast(err.message); }
         };
         $('#sheetIn').querySelectorAll('[data-del]').forEach(b => b.onclick = async () => {
-            if (!confirm('Supprimer cette photo ?')) return;
+            if (await demander({ titre: 'Supprimer cette photo ?', boutons: [['ok', 'Supprimer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
             courant = await api('/api/admin/demandes/' + d.ref + '/photos?path=' + encodeURIComponent(b.dataset.del), { method: 'DELETE' }); fiche(); maj(courant);
         });
         $('#sheetIn').querySelectorAll('.gal img').forEach(img => img.onclick = () => { lbSource = null; lbOuvrir(+img.dataset.i); });
