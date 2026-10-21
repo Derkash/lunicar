@@ -273,5 +273,126 @@
     "source_url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441924",
     "citation_exacte": "Le vendeur est tenu de la garantie à raison des défauts cachés de la chose vendue qui la rendent impropre à l'usage auquel on la destine",
     "verifie_le": "2026-10-21"
+  },
+  {
+    "id": "assurance-suspension-vente",
+    "theme": "Assurance et fiscalité",
+    "fait": "Quand une voiture est vendue, son contrat d'assurance est suspendu de plein droit à partir du lendemain de la vente, à zéro heure, et peut être résilié par l'assuré ou l'assureur avec un préavis de dix jours (article L121-11 du Code des assurances).",
+    "chiffre": "Lendemain 0 h, préavis de 10 jours",
+    "annee": "2026",
+    "source_titre": "Article L121-11 du Code des assurances (Légifrance, version en vigueur depuis le 1er décembre 2020)",
+    "source_url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006792356",
+    "citation_exacte": "le contrat d'assurance est suspendu de plein droit à partir du lendemain, à zéro heure, du jour de l'aliénation ; il peut être résilié, moyennant préavis de dix jours, par chacune des parties.",
+    "verifie_le": "2026-10-22"
+  },
+  {
+    "id": "assurance-resiliation-6-mois",
+    "theme": "Assurance et fiscalité",
+    "fait": "Si le contrat d'assurance d'une voiture vendue n'est ni remis en vigueur ni résilié, il est résilié de plein droit six mois après la vente, sans indemnité possible pour l'assureur (article L121-11 du Code des assurances).",
+    "chiffre": "6 mois",
+    "annee": "2026",
+    "source_titre": "Article L121-11 du Code des assurances (Légifrance, version en vigueur depuis le 1er décembre 2020)",
+    "source_url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006792356",
+    "citation_exacte": "A défaut de remise en vigueur du contrat par accord des parties ou de résiliation par l'une d'elles, la résiliation intervient de plein droit à l'expiration d'un délai de six mois à compter de l'aliénation.",
+    "verifie_le": "2026-10-22"
+  },
+  {
+    "id": "impots-voiture-exoneree",
+    "theme": "Assurance et fiscalité",
+    "fait": "Un particulier qui vend sa voiture ne paie pas d'impôt sur la plus-value : l'article 150 UA du Code général des impôts exclut les voitures automobiles de l'imposition des plus-values sur biens meubles, sauf objets de collection.",
+    "chiffre": "Exonération",
+    "annee": "2026",
+    "source_titre": "Article 150 UA du Code général des impôts (Légifrance, version en vigueur)",
+    "source_url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037988296",
+    "citation_exacte": "Les dispositions du I ne s'appliquent pas : 1° Aux meubles meublants, aux appareils ménagers et aux voitures automobiles.",
+    "verifie_le": "2026-10-22"
+  },
+  {
+    "id": "prime-conversion-supprimee",
+    "theme": "Fin de vie du véhicule",
+    "fait": "La prime à la conversion, dite prime à la casse, est supprimée pour tous les véhicules depuis le 2 décembre 2024, en application du décret n° 2024-1084 du 29 novembre 2024.",
+    "chiffre": "2 décembre 2024",
+    "annee": "2024",
+    "source_titre": "Décret n° 2024-1084 du 29 novembre 2024 relatif aux aides à l'achat ou à la location de véhicules peu polluants (Légifrance)",
+    "source_url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050690951",
+    "citation_exacte": "il supprime la prime à la conversion pour tous les véhicules",
+    "verifie_le": "2026-10-22"
+  },
+  {
+    "id": "vhu-remise-gratuite",
+    "theme": "Fin de vie du véhicule",
+    "fait": "Seuls les centres VHU agréés peuvent détruire un véhicule ; la remise d'un véhicule complet y est gratuite et le centre remet un certificat de destruction (Service-Public.fr, 2026).",
+    "chiffre": "Gratuit",
+    "annee": "2026",
+    "source_titre": "Véhicule à détruire et certificat d'immatriculation (Service-Public.fr, vérifié le 21 octobre 2026)",
+    "source_url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F36516",
+    "citation_exacte": "La remise de votre véhicule complet au centre VHU est gratuite.",
+    "verifie_le": "2026-10-22"
+  },
+  {
+    "id": "cotitulaires-signature",
+    "theme": "Démarches de cession",
+    "fait": "Pour vendre une voiture dont la carte grise porte plusieurs noms, la signature de tous les cotitulaires est obligatoire (Service-Public.fr, 2026).",
+    "chiffre": "Tous les cotitulaires",
+    "annee": "2026",
+    "source_titre": "Vendre ou donner son véhicule (Service-Public.fr)",
+    "source_url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707",
+    "citation_exacte": "S'il y a plusieurs cotitulaires, il faut obligatoirement la signature de toutes les personnes mentionnées sur le certificat d'immatriculation.",
+    "verifie_le": "2026-10-22"
+  },
+  {
+    "id": "divorce-retrait-nom-carte-grise",
+    "theme": "Démarches de cession",
+    "fait": "Après un divorce, retirer de la carte grise le nom de l'ex-conjoint qui ne garde pas la voiture coûte 13,76 €, sans taxe régionale, lorsque la voiture est aux noms des deux ex-époux (Service-Public.fr, 2025).",
+    "chiffre": "13,76 €",
+    "annee": "2025",
+    "source_titre": "Faut-il modifier le certificat d'immatriculation après un divorce ? (Service-Public.fr, vérifié le 20 octobre 2025)",
+    "source_url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34748",
+    "citation_exacte": "Le retrait du nom de l'ex-époux ou de l'ex-épouse […] est exonéré du paiement de la taxe régionale. Vous devrez régler 13,76 € (taxe fixe de 11 € + redevance d'acheminement de 2,76 €).",
+    "verifie_le": "2026-10-22"
+  },
+  {
+    "id": "opposition-vente-bloquee",
+    "theme": "Démarches de cession",
+    "fait": "Une voiture frappée d'un gage ou d'une opposition au transfert de la carte grise ne peut généralement pas être vendue avant la levée ; l'opposition pour amendes majorées impayées est levée une fois toutes les amendes réglées (Service-Public.fr, 2026).",
+    "chiffre": "Vente bloquée",
+    "annee": "2026",
+    "source_titre": "Comment faire lever le gage ou l'opposition sur un véhicule ? (Service-Public.fr, vérifié le 19 août 2026)",
+    "source_url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34107",
+    "citation_exacte": "vous ne pourrez généralement pas vendre votre véhicule avant que le gage ou que l'opposition ne soient levés",
+    "verifie_le": "2026-10-22"
+  },
+  {
+    "id": "tutelle-vente-autorisation",
+    "theme": "Personnes protégées",
+    "fait": "Sous tutelle, la vente d'une voiture de valeur est un acte de disposition : le tuteur ne peut la faire sans l'autorisation du conseil de famille ou, à défaut, du juge (article 505 du Code civil, décret n° 2008-1484).",
+    "chiffre": "Autorisation",
+    "annee": "2026",
+    "source_titre": "Article 505 du Code civil (Légifrance, version en vigueur)",
+    "source_url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045277022",
+    "citation_exacte": "Le tuteur ne peut, sans y être autorisé par le conseil de famille ou, à défaut, le juge, faire des actes de disposition au nom de la personne protégée.",
+    "verifie_le": "2026-10-22"
+  },
+  {
+    "id": "tutelle-meubles-faible-valeur",
+    "theme": "Personnes protégées",
+    "fait": "La vente de meubles d'usage courant ou de faible valeur est un acte d'administration pour une personne sous tutelle ou curatelle ; celle de meubles de valeur est un acte de disposition (décret n° 2008-1484 du 22 décembre 2008, annexe 1).",
+    "chiffre": "Selon la valeur",
+    "annee": "2026",
+    "source_titre": "Décret n° 2008-1484 du 22 décembre 2008, annexe 1 (Légifrance)",
+    "source_url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000044929395",
+    "citation_exacte": "louage-prêt-emprunt-vente-échange-dation et acquisition de meubles d'usage courant ou de faible valeur",
+    "verifie_le": "2026-10-22"
+  },
+  {
+    "id": "curatelle-assistance-curateur",
+    "theme": "Personnes protégées",
+    "fait": "Une personne sous curatelle ne peut, sans l'assistance de son curateur, faire un acte qui demanderait une autorisation en tutelle, comme la vente d'une voiture de valeur (article 467 du Code civil).",
+    "chiffre": "Assistance du curateur",
+    "annee": "2026",
+    "source_titre": "Article 467 du Code civil (Légifrance, version en vigueur)",
+    "source_url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006427797",
+    "citation_exacte": "La personne en curatelle ne peut, sans l'assistance du curateur, faire aucun acte qui, en cas de tutelle, requerrait une autorisation du juge ou du conseil de famille.",
+    "verifie_le": "2026-10-22"
   }
 ]

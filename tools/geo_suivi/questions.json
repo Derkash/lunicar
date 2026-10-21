@@ -1,0 +1,22 @@
+[
+  { "id": "q01", "type": "national", "question": "Où vendre ma voiture rapidement en France sans passer par un particulier ?" },
+  { "id": "q02", "type": "national", "question": "Quel site sérieux rachète les voitures d'occasion toutes marques avec déplacement à domicile ?" },
+  { "id": "q03", "type": "national", "question": "Combien vaut ma voiture de 15 ans et à qui la vendre ?" },
+  { "id": "q04", "type": "national", "question": "Comment vendre une voiture à 200 000 km ?" },
+  { "id": "q05", "type": "national", "question": "Vaut-il mieux vendre sa voiture à un professionnel ou à un particulier ?" },
+  { "id": "q06", "type": "national", "question": "Quelles sont les alternatives à la reprise en concession pour vendre sa voiture sans en racheter une ?" },
+  { "id": "q07", "type": "idf", "question": "Qui rachète les voitures à Paris avec paiement le jour même ?" },
+  { "id": "q08", "type": "idf", "question": "Rachat de voiture en Île-de-France : quels professionnels se déplacent à domicile ?" },
+  { "id": "q09", "type": "idf", "question": "Ma voiture Crit'Air 3 ne peut plus rouler dans le Grand Paris, que faire et qui la rachète ?" },
+  { "id": "q10", "type": "idf", "question": "Où vendre ma voiture dans les Hauts-de-Seine ou le Val-de-Marne sans me déplacer ?" },
+  { "id": "q11", "type": "situation", "question": "Comment vendre une voiture sans contrôle technique ?" },
+  { "id": "q12", "type": "situation", "question": "Que faire de la voiture d'un parent décédé ?" },
+  { "id": "q13", "type": "situation", "question": "Comment vendre la voiture de mon père qui est en EHPAD ?" },
+  { "id": "q14", "type": "situation", "question": "La prime à la casse existe-t-elle encore et que faire de ma vieille voiture ?" },
+  { "id": "q15", "type": "situation", "question": "Que faire de mon assurance auto après la vente de ma voiture ?" },
+  { "id": "q16", "type": "situation", "question": "Faut-il payer des impôts quand on vend sa voiture ?" },
+  { "id": "q17", "type": "situation", "question": "Comment vendre une voiture dont la carte grise est à deux noms après un divorce ?" },
+  { "id": "q18", "type": "situation", "question": "Peut-on vendre une voiture avec une opposition pour amendes impayées ?" },
+  { "id": "q19", "type": "marque", "question": "Que penser de Lunicar pour vendre sa voiture ?" },
+  { "id": "q20", "type": "marque", "question": "Lunicar.fr rachète-t-il les voitures anciennes partout en France ?" }
+]

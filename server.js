@@ -1034,7 +1034,7 @@ Dernière mise à jour : ${pages.TEMPLATE_DATE}
 - [Qui sommes-nous](${b}/a-propos): société, méthode, engagements
 - [Garanties](${b}/garanties): les six engagements
 - [Comparer particulier, concession et professionnel](${b}/comparatif-reprise-auto)
-- [Chiffres clés de la vente d'une voiture d'occasion](${b}/chiffres-cles-vente-voiture-occasion): données officielles sourcées (SDES, service-public, UTAC, Banque de France, Code civil)
+- [Chiffres clés de la vente d'une voiture d'occasion](${b}/chiffres-cles-vente-voiture-occasion): données officielles sourcées (SDES, service-public, UTAC, Banque de France, Code civil, Code des assurances, Code général des impôts)
 
 ## Partout en France
 - [Rachat de voiture partout en France](${b}/${zones.FRANCE_SLUG})
@@ -1057,7 +1057,7 @@ ${GUIDES.filter(g => g.brand).map(g => `- [${g.brand}](${b}/${g.slug}): ${g.desc
 ## Modèles (fiche, distribution, problèmes connus, vente)
 ${MODELS.map(m => `- [Vendre sa ${m.nav}](${b}/${m.slug}): ${m.description}`).join('\n')}
 
-## Conseils
+## Conseils (réponses sourcées aux questions des vendeurs)
 ${articles.map(a => `- [${a.titre}](${b}/article/${a.slug}): ${a.extrait}`).join('\n')}
 
 ## Optional

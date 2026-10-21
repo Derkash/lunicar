@@ -109,6 +109,7 @@ PORT=3123 node server.js &  node tools/check_seo.js http://localhost:3123
 - `/llms.txt` (sommaire décrit) et `/llms-full.txt` (texte intégral des pages piliers) sont générés depuis les mêmes contenus que les pages.
 - IndexNow : la clé est servie à `/<clé>.txt` ; toutes les URL du sitemap sont soumises 30 s après chaque démarrage sur Render (donc à chaque déploiement). Bing alimente la recherche de ChatGPT.
 - Chaque page affiche sa date de mise à jour (`<time>`) et la déclare en `dateModified`. Les pages rédigées citent leurs sources officielles.
+- Suivi mensuel des citations dans ChatGPT : `node tools/geo_suivi/suivi.js` (clé `OPENAI_API_KEY` dans `.env`), 20 questions dans `tools/geo_suivi/questions.json`, relevés datés dans `lunicar-audit/geo-suivi/`.
 
 ## Mesure
 

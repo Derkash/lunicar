@@ -316,7 +316,7 @@
     "sections": [
       {
         "h2": "Une voiture à plus de 200 000 km a-t-elle encore de la valeur ?",
-        "html": "<p>Oui. Le kilométrage pèse sur le prix, mais il ne le résume pas. Une voiture à 200 000 km bien entretenue, avec un historique clair et une motorisation réputée robuste, intéresse encore des acheteurs. La valeur dépend surtout de l'état réel, des frais à prévoir et de la demande pour le modèle.</p><p>Deux voitures au même compteur peuvent avoir des valeurs très différentes. L'une a eu ses vidanges à l'heure, sa distribution remplacée et un seul propriétaire. L'autre a changé souvent de mains, sans factures. L'acheteur, professionnel ou particulier, ne paie pas des kilomètres : il paie le risque qu'il prend et les frais qu'il anticipe.</p><p>Le kilométrage reste un signal fort parce qu'il annonce l'usure de pièces coûteuses : embrayage, amortisseurs, turbo, boîte de vitesses. Plus vous montrez que ces points ont été suivis, plus l'estimation se rapproche de la valeur réelle du véhicule.</p>"
+        "html": "<p>Oui. Le kilométrage pèse sur le prix, mais il ne le résume pas. Une voiture à 200 000 km bien entretenue, avec un historique clair et une motorisation réputée robuste, intéresse encore des acheteurs. La valeur dépend surtout de l'état réel, des frais à prévoir et de la demande pour le modèle.</p><p>Un repère : une voiture particulière parcourt en moyenne 11 600 km par an en France, selon le <a href=\"https://www.statistiques.developpement-durable.gouv.fr/40-millions-de-voitures-en-circulation-en-france-au-1er-janvier-2026\" rel=\"noopener\" target=\"_blank\">SDES</a>. 200 000 km correspondent donc à environ 17 ans d'usage moyen, l'âge d'une bonne partie des voitures qui changent de main : en 2025, les voitures de plus de 15 ans représentent 30,5 % des ventes d'occasion.</p><p>Deux voitures au même compteur peuvent avoir des valeurs très différentes. L'une a eu ses vidanges à l'heure, sa distribution remplacée et un seul propriétaire. L'autre a changé souvent de mains, sans factures. L'acheteur, professionnel ou particulier, ne paie pas des kilomètres : il paie le risque qu'il prend et les frais qu'il anticipe.</p><p>Le kilométrage reste un signal fort parce qu'il annonce l'usure de pièces coûteuses : embrayage, amortisseurs, turbo, boîte de vitesses. Plus vous montrez que ces points ont été suivis, plus l'estimation se rapproche de la valeur réelle du véhicule.</p>"
       },
       {
         "h2": "Qu'est-ce qui garde de la valeur sur une voiture qui a beaucoup roulé ?",
@@ -341,6 +341,10 @@
     ],
     "faqTitle": "Questions sur la vente d'une voiture à fort kilométrage",
     "faq": [
+      {
+        "question": "Combien vaut une voiture à 200 000 km ?",
+        "answer": "Il n'existe pas de prix type : à 200 000 km, la valeur dépend surtout du modèle, de l'entretien prouvé et des frais à prévoir (distribution, embrayage, pneus). Une voiture bien suivie se vend encore. Pour un prix chiffré, décrivez-la en ligne : vous recevez une offre sous 24 h ouvrées, valable 7 jours."
+      },
       {
         "question": "Rachetez-vous les voitures à plus de 300 000 km ?",
         "answer": "Oui. LUNICAR rachète toutes les voitures, quel que soit le kilométrage. L'offre dépend de l'état réel, de l'entretien et du modèle. Décrivez le véhicule en ligne pour recevoir une offre chiffrée sous 24 h ouvrées."
@@ -374,9 +378,13 @@
       {
         "label": "Histovec, historique officiel d'un véhicule",
         "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "SDES : 40 millions de voitures en circulation au 1er janvier 2026",
+        "url": "https://www.statistiques.developpement-durable.gouv.fr/40-millions-de-voitures-en-circulation-en-france-au-1er-janvier-2026"
       }
     ],
-    "updated": "2026-10-14"
+    "updated": "2026-10-22"
   },
   {
     "slug": "reprise-voiture-diesel",
