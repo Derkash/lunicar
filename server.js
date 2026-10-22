@@ -1003,7 +1003,7 @@ Sitemap: ${SITE.baseUrl}/sitemap-redirections.xml
 const strip = h => String(h || '').replace(/<li>/g, '\n- ').replace(/<\/(p|h2|h3|ul|ol|table|tr)>/g, '\n').replace(/<(td|th)[^>]*>/g, ' | ').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n\n').trim();
 const title = t => String(t || '').replace(/<[^>]+>/g, '');
 
-const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels, partout en France, avec une présence renforcée en Île-de-France. Le déplacement et l'enlèvement sont gratuits partout en France, y compris pour une voiture qui ne roule plus ou garée en parking souterrain. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de OPTIMERCH (SAS, SIREN 100 047 281).`;
+const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels, partout en France, avec une présence renforcée en Île-de-France. LUNICAR intervient partout en France : le rendez-vous à l'adresse du vendeur et l'enlèvement sont gratuits, y compris pour une voiture qui ne roule plus ou garée en parking souterrain. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de OPTIMERCH (SAS, SIREN 100 047 281).`;
 
 app.get('/llms.txt', (req, res) => {
     const b = SITE.baseUrl;
@@ -1015,12 +1015,12 @@ app.get('/llms.txt', (req, res) => {
 Dernière mise à jour : ${pages.TEMPLATE_DATE}
 
 ## Faits clés
-- Zone : toute la France, déplacement et enlèvement gratuits ; présence renforcée à Paris et en Île-de-France
+- Zone : intervention partout en France, rendez-vous et enlèvement gratuits ; présence renforcée à Paris et en Île-de-France
 - Véhicules rachetés : toutes marques, récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, anciens, fort kilométrage, en panne, accidentés, sans contrôle technique
 - Véhicules rachetés en l'état, sans réparation à avancer
 - Contrôle technique non exigé : il n'est obligatoire que pour une vente entre particuliers
 - Offre gratuite et sans engagement, valable 7 jours ; refus possible même le jour du rendez-vous, sans frais
-- Déplacement et enlèvement à la charge de LUNICAR partout en France, y compris véhicule non roulant ou en parking souterrain
+- Rendez-vous à l'adresse du vendeur et enlèvement à la charge de LUNICAR partout en France, y compris véhicule non roulant ou en parking souterrain
 - Paiement par virement bancaire uniquement, le jour de la vente (ni espèces ni chèque)
 - Certificat de cession (Cerfa 15776) et déclaration de cession ANTS préparés avec le vendeur
 - Aucune obligation d'acheter un autre véhicule
