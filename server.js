@@ -5,7 +5,7 @@ const fs = require('fs');
 const multer = require('multer');
 const uuidv4 = () => require('crypto').randomUUID();
 const nodemailer = require('nodemailer');
-const { SITE, esc, parsePhone } = require('./lib/config');
+const { SITE, esc, parsePhone, aVille } = require('./lib/config');
 const pages = require('./lib/pages');
 const idf = require('./lib/idf');
 const fichePlaque = require('./lib/vehicule');
@@ -1059,6 +1059,14 @@ ${MODELS.map(m => `- [Vendre sa ${m.nav}](${b}/${m.slug}): ${m.description}`).jo
 
 ## Conseils (réponses sourcées aux questions des vendeurs)
 ${articles.map(a => `- [${a.titre}](${b}/article/${a.slug}): ${a.extrait}`).join('\n')}
+
+## Toutes les villes (une page locale par ville, rédigée pour la ville)
+${(() => {
+        const kept = CITIES.filter(c => c.slug !== 'paris' && zones.isKeptCity(c));
+        const byRegion = new Map();
+        kept.forEach(c => { if (!byRegion.has(c.region)) byRegion.set(c.region, []); byRegion.get(c.region).push(c); });
+        return [...byRegion.entries()].sort((x, y) => x[0].localeCompare(y[0], 'fr')).map(([r, list]) => `### ${r}\n${list.sort((x, y) => x.nom.localeCompare(y.nom, 'fr')).map(c => `- [Rachat de voiture ${aVille(c.nom)} (${c.codePostal})](${b}/reprise-auto-${c.slug})`).join('\n')}`).join('\n\n');
+    })()}
 
 ## Optional
 - [Texte intégral des pages clés](${b}/llms-full.txt)
