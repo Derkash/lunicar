@@ -12958,5 +12958,45 @@
     "lat": 46.7205,
     "lon": -1.3294,
     "dep": "85"
+  },
+  {
+    "nom": "Bouaye",
+    "slug": "bouaye",
+    "codePostal": "44830",
+    "departement": "Loire-Atlantique",
+    "region": "Pays de la Loire",
+    "lat": 47.1478,
+    "lon": -1.6687,
+    "dep": "44"
+  },
+  {
+    "nom": "Donges",
+    "slug": "donges",
+    "codePostal": "44480",
+    "departement": "Loire-Atlantique",
+    "region": "Pays de la Loire",
+    "lat": 47.3398,
+    "lon": -2.0731,
+    "dep": "44"
+  },
+  {
+    "nom": "Saint-Julien-de-Concelles",
+    "slug": "saint-julien-de-concelles",
+    "codePostal": "44450",
+    "departement": "Loire-Atlantique",
+    "region": "Pays de la Loire",
+    "lat": 47.2469,
+    "lon": -1.4036,
+    "dep": "44"
+  },
+  {
+    "nom": "Saint-Étienne-de-Montluc",
+    "slug": "saint-etienne-de-montluc",
+    "codePostal": "44360",
+    "departement": "Loire-Atlantique",
+    "region": "Pays de la Loire",
+    "lat": 47.2694,
+    "lon": -1.7902,
+    "dep": "44"
   }
 ]
