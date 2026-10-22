@@ -12818,5 +12818,145 @@
     "lat": 47.0474,
     "lon": -1.2574,
     "dep": "85"
+  },
+  {
+    "nom": "Saint-Philbert-de-Grand-Lieu",
+    "slug": "saint-philbert-de-grand-lieu",
+    "codePostal": "44310",
+    "departement": "Loire-Atlantique",
+    "region": "Pays de la Loire",
+    "lat": 47.0689,
+    "lon": -1.6443,
+    "dep": "44"
+  },
+  {
+    "nom": "Les Sorinières",
+    "slug": "les-sorinieres",
+    "codePostal": "44840",
+    "departement": "Loire-Atlantique",
+    "region": "Pays de la Loire",
+    "lat": 47.142,
+    "lon": -1.5195,
+    "dep": "44"
+  },
+  {
+    "nom": "Sautron",
+    "slug": "sautron",
+    "codePostal": "44880",
+    "departement": "Loire-Atlantique",
+    "region": "Pays de la Loire",
+    "lat": 47.275,
+    "lon": -1.6839,
+    "dep": "44"
+  },
+  {
+    "nom": "Le Loroux-Bottereau",
+    "slug": "le-loroux-bottereau",
+    "codePostal": "44430",
+    "departement": "Loire-Atlantique",
+    "region": "Pays de la Loire",
+    "lat": 47.2325,
+    "lon": -1.3272,
+    "dep": "44"
+  },
+  {
+    "nom": "Trignac",
+    "slug": "trignac",
+    "codePostal": "44570",
+    "departement": "Loire-Atlantique",
+    "region": "Pays de la Loire",
+    "lat": 47.3116,
+    "lon": -2.2052,
+    "dep": "44"
+  },
+  {
+    "nom": "Ombrée d'Anjou",
+    "slug": "ombree-d-anjou",
+    "codePostal": "49420",
+    "departement": "Maine-et-Loire",
+    "region": "Pays de la Loire",
+    "lat": 47.7232,
+    "lon": -1.1086,
+    "dep": "49"
+  },
+  {
+    "nom": "Les Hauts-d'Anjou",
+    "slug": "les-hauts-d-anjou",
+    "codePostal": "49330",
+    "departement": "Maine-et-Loire",
+    "region": "Pays de la Loire",
+    "lat": 47.697,
+    "lon": -0.5499,
+    "dep": "49"
+  },
+  {
+    "nom": "Gennes-Val-de-Loire",
+    "slug": "gennes-val-de-loire",
+    "codePostal": "49160",
+    "departement": "Maine-et-Loire",
+    "region": "Pays de la Loire",
+    "lat": 47.3424,
+    "lon": -0.2352,
+    "dep": "49"
+  },
+  {
+    "nom": "Verrières-en-Anjou",
+    "slug": "verrieres-en-anjou",
+    "codePostal": "49112",
+    "departement": "Maine-et-Loire",
+    "region": "Pays de la Loire",
+    "lat": 47.5182,
+    "lon": -0.4746,
+    "dep": "49"
+  },
+  {
+    "nom": "Pouzauges",
+    "slug": "pouzauges",
+    "codePostal": "85700",
+    "departement": "Vendée",
+    "region": "Pays de la Loire",
+    "lat": 46.7767,
+    "lon": -0.8228,
+    "dep": "85"
+  },
+  {
+    "nom": "Chanverrie",
+    "slug": "chanverrie",
+    "codePostal": "85130",
+    "departement": "Vendée",
+    "region": "Pays de la Loire",
+    "lat": 46.9468,
+    "lon": -0.9857,
+    "dep": "85"
+  },
+  {
+    "nom": "Les Achards",
+    "slug": "les-achards",
+    "codePostal": "85150",
+    "departement": "Vendée",
+    "region": "Pays de la Loire",
+    "lat": 46.5924,
+    "lon": -1.6651,
+    "dep": "85"
+  },
+  {
+    "nom": "La Garnache",
+    "slug": "la-garnache",
+    "codePostal": "85710",
+    "departement": "Vendée",
+    "region": "Pays de la Loire",
+    "lat": 46.8961,
+    "lon": -1.8215,
+    "dep": "85"
+  },
+  {
+    "nom": "La Ferrière",
+    "slug": "la-ferriere",
+    "codePostal": "85280",
+    "departement": "Vendée",
+    "region": "Pays de la Loire",
+    "lat": 46.7205,
+    "lon": -1.3294,
+    "dep": "85"
   }
 ]
