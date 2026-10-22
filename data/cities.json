@@ -4,3338 +4,4769 @@
     "slug": "paris",
     "codePostal": "75000",
     "departement": "Paris",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8589,
+    "lon": 2.347,
+    "dep": "75"
   },
   {
     "nom": "Marseille",
     "slug": "marseille",
     "codePostal": "13000",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.2803,
+    "lon": 5.3806,
+    "dep": "13"
   },
   {
     "nom": "Lyon",
     "slug": "lyon",
     "codePostal": "69000",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.758,
+    "lon": 4.8351,
+    "dep": "69"
   },
   {
     "nom": "Toulouse",
     "slug": "toulouse",
     "codePostal": "31000",
     "departement": "Haute-Garonne",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.6007,
+    "lon": 1.4328,
+    "dep": "31"
   },
   {
     "nom": "Nice",
     "slug": "nice",
     "codePostal": "06000",
     "departement": "Alpes-Maritimes",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.7032,
+    "lon": 7.2528,
+    "dep": "06"
   },
   {
     "nom": "Nantes",
     "slug": "nantes",
     "codePostal": "44000",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.2382,
+    "lon": -1.5603,
+    "dep": "44"
   },
   {
     "nom": "Strasbourg",
     "slug": "strasbourg",
     "codePostal": "67000",
     "departement": "Bas-Rhin",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.5691,
+    "lon": 7.7621,
+    "dep": "67"
   },
   {
     "nom": "Montpellier",
     "slug": "montpellier",
     "codePostal": "34000",
     "departement": "Hérault",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.61,
+    "lon": 3.8742,
+    "dep": "34"
   },
   {
     "nom": "Bordeaux",
     "slug": "bordeaux",
     "codePostal": "33000",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8624,
+    "lon": -0.5848,
+    "dep": "33"
   },
   {
     "nom": "Lille",
     "slug": "lille",
     "codePostal": "59000",
     "departement": "Nord",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.6311,
+    "lon": 3.0468,
+    "dep": "59"
   },
   {
     "nom": "Rennes",
     "slug": "rennes",
     "codePostal": "35000",
     "departement": "Ille-et-Vilaine",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.1159,
+    "lon": -1.6884,
+    "dep": "35"
   },
   {
     "nom": "Reims",
     "slug": "reims",
     "codePostal": "51100",
     "departement": "Marne",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 49.2535,
+    "lon": 4.0551,
+    "dep": "51"
   },
   {
     "nom": "Le Havre",
     "slug": "le-havre",
     "codePostal": "76600",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.4958,
+    "lon": 0.1312,
+    "dep": "76"
   },
   {
     "nom": "Saint-Étienne",
     "slug": "saint-etienne",
     "codePostal": "42000",
     "departement": "Loire",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.4241,
+    "lon": 4.3665,
+    "dep": "42"
   },
   {
     "nom": "Toulon",
     "slug": "toulon",
     "codePostal": "83000",
     "departement": "Var",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.1364,
+    "lon": 5.9334,
+    "dep": "83"
   },
   {
     "nom": "Grenoble",
     "slug": "grenoble",
     "codePostal": "38000",
     "departement": "Isère",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.1842,
+    "lon": 5.7155,
+    "dep": "38"
   },
   {
     "nom": "Dijon",
     "slug": "dijon",
     "codePostal": "21000",
     "departement": "Côte-d'Or",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.3319,
+    "lon": 5.0322,
+    "dep": "21"
   },
   {
     "nom": "Angers",
     "slug": "angers",
     "codePostal": "49000",
     "departement": "Maine-et-Loire",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.4819,
+    "lon": -0.5629,
+    "dep": "49"
   },
   {
     "nom": "Nîmes",
     "slug": "nimes",
     "codePostal": "30000",
     "departement": "Gard",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.8322,
+    "lon": 4.3429,
+    "dep": "30"
   },
   {
     "nom": "Villeurbanne",
     "slug": "villeurbanne",
     "codePostal": "69100",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7719,
+    "lon": 4.8898,
+    "dep": "69"
   },
   {
     "nom": "Le Mans",
     "slug": "le-mans",
     "codePostal": "72000",
     "departement": "Sarthe",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.9819,
+    "lon": 0.1957,
+    "dep": "72"
   },
   {
     "nom": "Aix-en-Provence",
     "slug": "aix-en-provence",
     "codePostal": "13100",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.536,
+    "lon": 5.3879,
+    "dep": "13"
   },
   {
     "nom": "Clermont-Ferrand",
     "slug": "clermont-ferrand",
     "codePostal": "63000",
     "departement": "Puy-de-Dôme",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.787,
+    "lon": 3.1127,
+    "dep": "63"
   },
   {
     "nom": "Brest",
     "slug": "brest",
     "codePostal": "29200",
     "departement": "Finistère",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.4085,
+    "lon": -4.4996,
+    "dep": "29"
   },
   {
     "nom": "Tours",
     "slug": "tours",
     "codePostal": "37000",
     "departement": "Indre-et-Loire",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 47.3943,
+    "lon": 0.6949,
+    "dep": "37"
   },
   {
     "nom": "Limoges",
     "slug": "limoges",
     "codePostal": "87000",
     "departement": "Haute-Vienne",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.8567,
+    "lon": 1.226,
+    "dep": "87"
   },
   {
     "nom": "Amiens",
     "slug": "amiens",
     "codePostal": "80000",
     "departement": "Somme",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 49.8987,
+    "lon": 2.2847,
+    "dep": "80"
   },
   {
     "nom": "Perpignan",
     "slug": "perpignan",
     "codePostal": "66000",
     "departement": "Pyrénées-Orientales",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 42.699,
+    "lon": 2.9045,
+    "dep": "66"
   },
   {
     "nom": "Metz",
     "slug": "metz",
     "codePostal": "57000",
     "departement": "Moselle",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 49.1048,
+    "lon": 6.1962,
+    "dep": "57"
   },
   {
     "nom": "Besançon",
     "slug": "besancon",
     "codePostal": "25000",
     "departement": "Doubs",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.2602,
+    "lon": 6.0123,
+    "dep": "25"
   },
   {
     "nom": "Orléans",
     "slug": "orleans",
     "codePostal": "45000",
     "departement": "Loiret",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 47.8734,
+    "lon": 1.9122,
+    "dep": "45"
   },
   {
     "nom": "Rouen",
     "slug": "rouen",
     "codePostal": "76000",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.4412,
+    "lon": 1.0912,
+    "dep": "76"
   },
   {
     "nom": "Mulhouse",
     "slug": "mulhouse",
     "codePostal": "68100",
     "departement": "Haut-Rhin",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 47.7526,
+    "lon": 7.3255,
+    "dep": "68"
   },
   {
     "nom": "Caen",
     "slug": "caen",
     "codePostal": "14000",
     "departement": "Calvados",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.1846,
+    "lon": -0.3722,
+    "dep": "14"
   },
   {
     "nom": "Nancy",
     "slug": "nancy",
     "codePostal": "54000",
     "departement": "Meurthe-et-Moselle",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.6881,
+    "lon": 6.1734,
+    "dep": "54"
   },
   {
     "nom": "Saint-Denis",
     "slug": "saint-denis",
     "codePostal": "93200",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9378,
+    "lon": 2.3657,
+    "dep": "93"
   },
   {
     "nom": "Argenteuil",
     "slug": "argenteuil",
     "codePostal": "95100",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9501,
+    "lon": 2.2478,
+    "dep": "95"
   },
   {
     "nom": "Montreuil",
     "slug": "montreuil",
     "codePostal": "93100",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8637,
+    "lon": 2.4491,
+    "dep": "93"
   },
   {
     "nom": "Roubaix",
     "slug": "roubaix",
     "codePostal": "59100",
     "departement": "Nord",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.6887,
+    "lon": 3.1843,
+    "dep": "59"
   },
   {
     "nom": "Tourcoing",
     "slug": "tourcoing",
     "codePostal": "59200",
     "departement": "Nord",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.721,
+    "lon": 3.1577,
+    "dep": "59"
   },
   {
     "nom": "Avignon",
     "slug": "avignon",
     "codePostal": "84000",
     "departement": "Vaucluse",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.9416,
+    "lon": 4.8333,
+    "dep": "84"
   },
   {
     "nom": "Dunkerque",
     "slug": "dunkerque",
     "codePostal": "59140",
     "departement": "Nord",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 51.0183,
+    "lon": 2.3431,
+    "dep": "59"
   },
   {
     "nom": "Poitiers",
     "slug": "poitiers",
     "codePostal": "86000",
     "departement": "Vienne",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 46.5846,
+    "lon": 0.3715,
+    "dep": "86"
   },
   {
     "nom": "Versailles",
     "slug": "versailles",
     "codePostal": "78000",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8039,
+    "lon": 2.1191,
+    "dep": "78"
   },
   {
     "nom": "Le Chesnay-Rocquencourt",
     "slug": "le-chesnay",
     "codePostal": "78150",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8285,
+    "lon": 2.1188,
+    "dep": "78"
   },
   {
     "nom": "Créteil",
     "slug": "creteil",
     "codePostal": "94000",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7845,
+    "lon": 2.4523,
+    "dep": "94"
   },
   {
     "nom": "Nanterre",
     "slug": "nanterre",
     "codePostal": "92000",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8974,
+    "lon": 2.2018,
+    "dep": "92"
   },
   {
     "nom": "Pau",
     "slug": "pau",
     "codePostal": "64000",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3219,
+    "lon": -0.3435,
+    "dep": "64"
   },
   {
     "nom": "La Rochelle",
     "slug": "la-rochelle",
     "codePostal": "17000",
     "departement": "Charente-Maritime",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 46.162,
+    "lon": -1.1765,
+    "dep": "17"
   },
   {
     "nom": "Antibes",
     "slug": "antibes",
     "codePostal": "06600",
     "departement": "Alpes-Maritimes",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.5823,
+    "lon": 7.1048,
+    "dep": "06"
   },
   {
     "nom": "Boulogne-Billancourt",
     "slug": "boulogne-billancourt",
     "codePostal": "92100",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8375,
+    "lon": 2.2429,
+    "dep": "92"
   },
   {
     "nom": "Vitry-sur-Seine",
     "slug": "vitry-sur-seine",
     "codePostal": "94400",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7893,
+    "lon": 2.3951,
+    "dep": "94"
   },
   {
     "nom": "Colombes",
     "slug": "colombes",
     "codePostal": "92700",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9218,
+    "lon": 2.2469,
+    "dep": "92"
   },
   {
     "nom": "Asnières-sur-Seine",
     "slug": "asnieres-sur-seine",
     "codePostal": "92600",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9181,
+    "lon": 2.2935,
+    "dep": "92"
   },
   {
     "nom": "Aubervilliers",
     "slug": "aubervilliers",
     "codePostal": "93300",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9128,
+    "lon": 2.3886,
+    "dep": "93"
   },
   {
     "nom": "Aulnay-sous-Bois",
     "slug": "aulnay-sous-bois",
     "codePostal": "93600",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9457,
+    "lon": 2.4918,
+    "dep": "93"
   },
   {
     "nom": "Courbevoie",
     "slug": "courbevoie",
     "codePostal": "92400",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8976,
+    "lon": 2.2574,
+    "dep": "92"
   },
   {
     "nom": "Rueil-Malmaison",
     "slug": "rueil-malmaison",
     "codePostal": "92500",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8717,
+    "lon": 2.1806,
+    "dep": "92"
   },
   {
     "nom": "Champigny-sur-Marne",
     "slug": "champigny-sur-marne",
     "codePostal": "94500",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8173,
+    "lon": 2.5206,
+    "dep": "94"
   },
   {
     "nom": "Saint-Maur-des-Fossés",
     "slug": "saint-maur-des-fosses",
     "codePostal": "94100",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7999,
+    "lon": 2.4921,
+    "dep": "94"
   },
   {
     "nom": "Issy-les-Moulineaux",
     "slug": "issy-les-moulineaux",
     "codePostal": "92130",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.824,
+    "lon": 2.2628,
+    "dep": "92"
   },
   {
     "nom": "Levallois-Perret",
     "slug": "levallois-perret",
     "codePostal": "92300",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8946,
+    "lon": 2.2874,
+    "dep": "92"
   },
   {
     "nom": "Neuilly-sur-Seine",
     "slug": "neuilly-sur-seine",
     "codePostal": "92200",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8862,
+    "lon": 2.2651,
+    "dep": "92"
   },
   {
     "nom": "Villepinte",
     "slug": "villepinte",
     "codePostal": "93420",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.956,
+    "lon": 2.5323,
+    "dep": "93"
   },
   {
     "nom": "Tremblay-en-France",
     "slug": "tremblay-en-france",
     "codePostal": "93290",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9744,
+    "lon": 2.5481,
+    "dep": "93"
   },
   {
     "nom": "Sevran",
     "slug": "sevran",
     "codePostal": "93270",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9378,
+    "lon": 2.5311,
+    "dep": "93"
   },
   {
     "nom": "Bondy",
     "slug": "bondy",
     "codePostal": "93140",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9036,
+    "lon": 2.4846,
+    "dep": "93"
   },
   {
     "nom": "Bobigny",
     "slug": "bobigny",
     "codePostal": "93000",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9073,
+    "lon": 2.4432,
+    "dep": "93"
   },
   {
     "nom": "Pantin",
     "slug": "pantin",
     "codePostal": "93500",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9006,
+    "lon": 2.4085,
+    "dep": "93"
   },
   {
     "nom": "Drancy",
     "slug": "drancy",
     "codePostal": "93700",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.925,
+    "lon": 2.4446,
+    "dep": "93"
   },
   {
     "nom": "Noisy-le-Grand",
     "slug": "noisy-le-grand",
     "codePostal": "93160",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8327,
+    "lon": 2.556,
+    "dep": "93"
   },
   {
     "nom": "Cergy",
     "slug": "cergy",
     "codePostal": "95000",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 49.0373,
+    "lon": 2.0455,
+    "dep": "95"
   },
   {
     "nom": "Pontoise",
     "slug": "pontoise",
     "codePostal": "95300",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 49.0488,
+    "lon": 2.0996,
+    "dep": "95"
   },
   {
     "nom": "Évry",
     "slug": "evry",
     "codePostal": "91000",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.6287,
+    "lon": 2.4313,
+    "dep": "91"
   },
   {
     "nom": "Corbeil-Essonnes",
     "slug": "corbeil-essonnes",
     "codePostal": "91100",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.5973,
+    "lon": 2.4646,
+    "dep": "91"
   },
   {
     "nom": "Massy",
     "slug": "massy",
     "codePostal": "91300",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7263,
+    "lon": 2.2696,
+    "dep": "91"
   },
   {
     "nom": "Palaiseau",
     "slug": "palaiseau",
     "codePostal": "91120",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7155,
+    "lon": 2.2293,
+    "dep": "91"
   },
   {
     "nom": "Sarcelles",
     "slug": "sarcelles",
     "codePostal": "95200",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9925,
+    "lon": 2.3858,
+    "dep": "95"
   },
   {
     "nom": "Garges-lès-Gonesse",
     "slug": "garges-les-gonesse",
     "codePostal": "95140",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9696,
+    "lon": 2.4035,
+    "dep": "95"
   },
   {
     "nom": "Épinay-sur-Seine",
     "slug": "epinay-sur-seine",
     "codePostal": "93800",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9544,
+    "lon": 2.3172,
+    "dep": "93"
   },
   {
     "nom": "Saint-Ouen",
     "slug": "saint-ouen",
     "codePostal": "93400",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9118,
+    "lon": 2.3329,
+    "dep": "93"
   },
   {
     "nom": "Clichy",
     "slug": "clichy",
     "codePostal": "92110",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9041,
+    "lon": 2.3041,
+    "dep": "92"
   },
   {
     "nom": "Gennevilliers",
     "slug": "gennevilliers",
     "codePostal": "92230",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9319,
+    "lon": 2.288,
+    "dep": "92"
   },
   {
     "nom": "Clamart",
     "slug": "clamart",
     "codePostal": "92140",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7957,
+    "lon": 2.2518,
+    "dep": "92"
   },
   {
     "nom": "Fontenay-sous-Bois",
     "slug": "fontenay-sous-bois",
     "codePostal": "94120",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8503,
+    "lon": 2.4736,
+    "dep": "94"
   },
   {
     "nom": "Vincennes",
     "slug": "vincennes",
     "codePostal": "94300",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8471,
+    "lon": 2.4383,
+    "dep": "94"
   },
   {
     "nom": "Maisons-Alfort",
     "slug": "maisons-alfort",
     "codePostal": "94700",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8017,
+    "lon": 2.44,
+    "dep": "94"
   },
   {
     "nom": "Meaux",
     "slug": "meaux",
     "codePostal": "77100",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9573,
+    "lon": 2.9035,
+    "dep": "77"
   },
   {
     "nom": "Chelles",
     "slug": "chelles",
     "codePostal": "77500",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8845,
+    "lon": 2.5954,
+    "dep": "77"
   },
   {
     "nom": "Melun",
     "slug": "melun",
     "codePostal": "77000",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.5421,
+    "lon": 2.6552,
+    "dep": "77"
   },
   {
     "nom": "Ivry-sur-Seine",
     "slug": "ivry-sur-seine",
     "codePostal": "94200",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8125,
+    "lon": 2.3872,
+    "dep": "94"
   },
   {
     "nom": "Cachan",
     "slug": "cachan",
     "codePostal": "94230",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7914,
+    "lon": 2.3318,
+    "dep": "94"
   },
   {
     "nom": "Villejuif",
     "slug": "villejuif",
     "codePostal": "94800",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7934,
+    "lon": 2.3603,
+    "dep": "94"
   },
   {
     "nom": "Antony",
     "slug": "antony",
     "codePostal": "92160",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7507,
+    "lon": 2.2976,
+    "dep": "92"
   },
   {
     "nom": "Bagneux",
     "slug": "bagneux",
     "codePostal": "92220",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.798,
+    "lon": 2.3093,
+    "dep": "92"
   },
   {
     "nom": "Malakoff",
     "slug": "malakoff",
     "codePostal": "92240",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.817,
+    "lon": 2.2943,
+    "dep": "92"
   },
   {
     "nom": "Montrouge",
     "slug": "montrouge",
     "codePostal": "92120",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8159,
+    "lon": 2.3163,
+    "dep": "92"
   },
   {
     "nom": "Châtillon",
     "slug": "chatillon",
     "codePostal": "92320",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8031,
+    "lon": 2.2887,
+    "dep": "92"
   },
   {
     "nom": "Vanves",
     "slug": "vanves",
     "codePostal": "92170",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8214,
+    "lon": 2.2869,
+    "dep": "92"
   },
   {
     "nom": "Suresnes",
     "slug": "suresnes",
     "codePostal": "92150",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.871,
+    "lon": 2.2183,
+    "dep": "92"
   },
   {
     "nom": "Puteaux",
     "slug": "puteaux",
     "codePostal": "92800",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8824,
+    "lon": 2.2384,
+    "dep": "92"
   },
   {
     "nom": "La Garenne-Colombes",
     "slug": "la-garenne-colombes",
     "codePostal": "92250",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9071,
+    "lon": 2.2437,
+    "dep": "92"
   },
   {
     "nom": "Bois-Colombes",
     "slug": "bois-colombes",
     "codePostal": "92270",
     "departement": "Hauts-de-Seine",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9151,
+    "lon": 2.2688,
+    "dep": "92"
   },
   {
     "nom": "Houilles",
     "slug": "houilles",
     "codePostal": "78800",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9266,
+    "lon": 2.1866,
+    "dep": "78"
   },
   {
     "nom": "Sartrouville",
     "slug": "sartrouville",
     "codePostal": "78500",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9374,
+    "lon": 2.1744,
+    "dep": "78"
   },
   {
     "nom": "Maisons-Laffitte",
     "slug": "maisons-laffitte",
     "codePostal": "78600",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9503,
+    "lon": 2.1533,
+    "dep": "78"
   },
   {
     "nom": "Le Vésinet",
     "slug": "le-vesinet",
     "codePostal": "78110",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8928,
+    "lon": 2.1312,
+    "dep": "78"
   },
   {
     "nom": "Saint-Germain-en-Laye",
     "slug": "saint-germain-en-laye",
     "codePostal": "78100",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.931,
+    "lon": 2.1052,
+    "dep": "78"
   },
   {
     "nom": "Poissy",
     "slug": "poissy",
     "codePostal": "78300",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9241,
+    "lon": 2.025,
+    "dep": "78"
   },
   {
     "nom": "Conflans-Sainte-Honorine",
     "slug": "conflans-sainte-honorine",
     "codePostal": "78700",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 49.0016,
+    "lon": 2.0992,
+    "dep": "78"
   },
   {
     "nom": "Achères",
     "slug": "acheres",
     "codePostal": "78260",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9817,
+    "lon": 2.1095,
+    "dep": "78"
   },
   {
     "nom": "Mantes-la-Jolie",
     "slug": "mantes-la-jolie",
     "codePostal": "78200",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9961,
+    "lon": 1.6918,
+    "dep": "78"
   },
   {
     "nom": "Les Mureaux",
     "slug": "les-mureaux",
     "codePostal": "78130",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9877,
+    "lon": 1.911,
+    "dep": "78"
   },
   {
     "nom": "Rambouillet",
     "slug": "rambouillet",
     "codePostal": "78120",
     "departement": "Yvelines",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.6538,
+    "lon": 1.8339,
+    "dep": "78"
   },
   {
     "nom": "Étampes",
     "slug": "etampes",
     "codePostal": "91150",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.4227,
+    "lon": 2.1524,
+    "dep": "91"
   },
   {
     "nom": "Savigny-sur-Orge",
     "slug": "savigny-sur-orge",
     "codePostal": "91600",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.6851,
+    "lon": 2.3493,
+    "dep": "91"
   },
   {
     "nom": "Athis-Mons",
     "slug": "athis-mons",
     "codePostal": "91200",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7093,
+    "lon": 2.3848,
+    "dep": "91"
   },
   {
     "nom": "Viry-Châtillon",
     "slug": "viry-chatillon",
     "codePostal": "91170",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.6662,
+    "lon": 2.3758,
+    "dep": "91"
   },
   {
     "nom": "Grigny",
     "slug": "grigny",
     "codePostal": "91350",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.6584,
+    "lon": 2.3861,
+    "dep": "91"
   },
   {
     "nom": "Ris-Orangis",
     "slug": "ris-orangis",
     "codePostal": "91130",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.6457,
+    "lon": 2.4104,
+    "dep": "91"
   },
   {
     "nom": "Yerres",
     "slug": "yerres",
     "codePostal": "91330",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7129,
+    "lon": 2.4932,
+    "dep": "91"
   },
   {
     "nom": "Brunoy",
     "slug": "brunoy",
     "codePostal": "91800",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.6948,
+    "lon": 2.5059,
+    "dep": "91"
   },
   {
     "nom": "Montgeron",
     "slug": "montgeron",
     "codePostal": "91230",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.6952,
+    "lon": 2.4638,
+    "dep": "91"
   },
   {
     "nom": "Draveil",
     "slug": "draveil",
     "codePostal": "91210",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.6777,
+    "lon": 2.4249,
+    "dep": "91"
   },
   {
     "nom": "Vigneux-sur-Seine",
     "slug": "vigneux-sur-seine",
     "codePostal": "91270",
     "departement": "Essonne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7021,
+    "lon": 2.4274,
+    "dep": "91"
   },
   {
     "nom": "Villeneuve-Saint-Georges",
     "slug": "villeneuve-saint-georges",
     "codePostal": "94190",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7389,
+    "lon": 2.4493,
+    "dep": "94"
   },
   {
     "nom": "Alfortville",
     "slug": "alfortville",
     "codePostal": "94140",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7963,
+    "lon": 2.4214,
+    "dep": "94"
   },
   {
     "nom": "Charenton-le-Pont",
     "slug": "charenton-le-pont",
     "codePostal": "94220",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8229,
+    "lon": 2.405,
+    "dep": "94"
   },
   {
     "nom": "Saint-Mandé",
     "slug": "saint-mande",
     "codePostal": "94160",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8414,
+    "lon": 2.4195,
+    "dep": "94"
   },
   {
     "nom": "Le Kremlin-Bicêtre",
     "slug": "le-kremlin-bicetre",
     "codePostal": "94270",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8087,
+    "lon": 2.356,
+    "dep": "94"
   },
   {
     "nom": "Gentilly",
     "slug": "gentilly",
     "codePostal": "94250",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.812,
+    "lon": 2.3426,
+    "dep": "94"
   },
   {
     "nom": "Arcueil",
     "slug": "arcueil",
     "codePostal": "94110",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8053,
+    "lon": 2.3328,
+    "dep": "94"
   },
   {
     "nom": "Fresnes",
     "slug": "fresnes",
     "codePostal": "94260",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7572,
+    "lon": 2.3263,
+    "dep": "94"
   },
   {
     "nom": "L'Haÿ-les-Roses",
     "slug": "l-hay-les-roses",
     "codePostal": "94240",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7777,
+    "lon": 2.3416,
+    "dep": "94"
   },
   {
     "nom": "Chevilly-Larue",
     "slug": "chevilly-larue",
     "codePostal": "94550",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7679,
+    "lon": 2.3507,
+    "dep": "94"
   },
   {
     "nom": "Thiais",
     "slug": "thiais",
     "codePostal": "94320",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7605,
+    "lon": 2.3869,
+    "dep": "94"
   },
   {
     "nom": "Orly",
     "slug": "orly",
     "codePostal": "94310",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7402,
+    "lon": 2.403,
+    "dep": "94"
   },
   {
     "nom": "Choisy-le-Roi",
     "slug": "choisy-le-roi",
     "codePostal": "94600",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7635,
+    "lon": 2.4202,
+    "dep": "94"
   },
   {
     "nom": "Valenton",
     "slug": "valenton",
     "codePostal": "94460",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7497,
+    "lon": 2.46,
+    "dep": "94"
   },
   {
     "nom": "Limeil-Brévannes",
     "slug": "limeil-brevannes",
     "codePostal": "94450",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7463,
+    "lon": 2.4924,
+    "dep": "94"
   },
   {
     "nom": "Boissy-Saint-Léger",
     "slug": "boissy-saint-leger",
     "codePostal": "94470",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7453,
+    "lon": 2.5251,
+    "dep": "94"
   },
   {
     "nom": "Sucy-en-Brie",
     "slug": "sucy-en-brie",
     "codePostal": "94370",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7688,
+    "lon": 2.5374,
+    "dep": "94"
   },
   {
     "nom": "Villiers-sur-Marne",
     "slug": "villiers-sur-marne",
     "codePostal": "94350",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8278,
+    "lon": 2.5482,
+    "dep": "94"
   },
   {
     "nom": "Nogent-sur-Marne",
     "slug": "nogent-sur-marne",
     "codePostal": "94130",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.837,
+    "lon": 2.4811,
+    "dep": "94"
   },
   {
     "nom": "Le Perreux-sur-Marne",
     "slug": "le-perreux-sur-marne",
     "codePostal": "94170",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8433,
+    "lon": 2.5045,
+    "dep": "94"
   },
   {
     "nom": "Joinville-le-Pont",
     "slug": "joinville-le-pont",
     "codePostal": "94340",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8199,
+    "lon": 2.4685,
+    "dep": "94"
   },
   {
     "nom": "Chennevières-sur-Marne",
     "slug": "chennevieres-sur-marne",
     "codePostal": "94430",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7951,
+    "lon": 2.5443,
+    "dep": "94"
   },
   {
     "nom": "Ormesson-sur-Marne",
     "slug": "ormesson-sur-marne",
     "codePostal": "94490",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7873,
+    "lon": 2.5371,
+    "dep": "94"
   },
   {
     "nom": "Le Plessis-Trévise",
     "slug": "le-plessis-trevise",
     "codePostal": "94420",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.808,
+    "lon": 2.5763,
+    "dep": "94"
   },
   {
     "nom": "La Queue-en-Brie",
     "slug": "la-queue-en-brie",
     "codePostal": "94510",
     "departement": "Val-de-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7769,
+    "lon": 2.5855,
+    "dep": "94"
   },
   {
     "nom": "Pontault-Combault",
     "slug": "pontault-combault",
     "codePostal": "77340",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7885,
+    "lon": 2.6173,
+    "dep": "77"
   },
   {
     "nom": "Roissy-en-Brie",
     "slug": "roissy-en-brie",
     "codePostal": "77680",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7913,
+    "lon": 2.6647,
+    "dep": "77"
   },
   {
     "nom": "Ozoir-la-Ferrière",
     "slug": "ozoir-la-ferriere",
     "codePostal": "77330",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.7631,
+    "lon": 2.6753,
+    "dep": "77"
   },
   {
     "nom": "Lognes",
     "slug": "lognes",
     "codePostal": "77185",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8325,
+    "lon": 2.6366,
+    "dep": "77"
   },
   {
     "nom": "Torcy",
     "slug": "torcy",
     "codePostal": "77200",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8534,
+    "lon": 2.6476,
+    "dep": "77"
   },
   {
     "nom": "Noisiel",
     "slug": "noisiel",
     "codePostal": "77186",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8461,
+    "lon": 2.6187,
+    "dep": "77"
   },
   {
     "nom": "Champs-sur-Marne",
     "slug": "champs-sur-marne",
     "codePostal": "77420",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8485,
+    "lon": 2.594,
+    "dep": "77"
   },
   {
     "nom": "Bussy-Saint-Georges",
     "slug": "bussy-saint-georges",
     "codePostal": "77600",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8297,
+    "lon": 2.7091,
+    "dep": "77"
   },
   {
     "nom": "Lagny-sur-Marne",
     "slug": "lagny-sur-marne",
     "codePostal": "77400",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8716,
+    "lon": 2.7045,
+    "dep": "77"
   },
   {
     "nom": "Thorigny-sur-Marne",
     "slug": "thorigny-sur-marne",
     "codePostal": "77400",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8928,
+    "lon": 2.7117,
+    "dep": "77"
   },
   {
     "nom": "Claye-Souilly",
     "slug": "claye-souilly",
     "codePostal": "77410",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.941,
+    "lon": 2.68,
+    "dep": "77"
   },
   {
     "nom": "Mitry-Mory",
     "slug": "mitry-mory",
     "codePostal": "77290",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9796,
+    "lon": 2.6116,
+    "dep": "77"
   },
   {
     "nom": "Villeparisis",
     "slug": "villeparisis",
     "codePostal": "77270",
     "departement": "Seine-et-Marne",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9408,
+    "lon": 2.6178,
+    "dep": "77"
   },
   {
     "nom": "Livry-Gargan",
     "slug": "livry-gargan",
     "codePostal": "93190",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9184,
+    "lon": 2.5351,
+    "dep": "93"
   },
   {
     "nom": "Le Raincy",
     "slug": "le-raincy",
     "codePostal": "93340",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8959,
+    "lon": 2.5196,
+    "dep": "93"
   },
   {
     "nom": "Gagny",
     "slug": "gagny",
     "codePostal": "93220",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8826,
+    "lon": 2.545,
+    "dep": "93"
   },
   {
     "nom": "Rosny-sous-Bois",
     "slug": "rosny-sous-bois",
     "codePostal": "93110",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8744,
+    "lon": 2.4872,
+    "dep": "93"
   },
   {
     "nom": "Villemomble",
     "slug": "villemomble",
     "codePostal": "93250",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.8866,
+    "lon": 2.5085,
+    "dep": "93"
   },
   {
     "nom": "Le Blanc-Mesnil",
     "slug": "le-blanc-mesnil",
     "codePostal": "93150",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9372,
+    "lon": 2.4576,
+    "dep": "93"
   },
   {
     "nom": "Dugny",
     "slug": "dugny",
     "codePostal": "93440",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9494,
+    "lon": 2.4255,
+    "dep": "93"
   },
   {
     "nom": "La Courneuve",
     "slug": "la-courneuve",
     "codePostal": "93120",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9341,
+    "lon": 2.3986,
+    "dep": "93"
   },
   {
     "nom": "Stains",
     "slug": "stains",
     "codePostal": "93240",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9578,
+    "lon": 2.3868,
+    "dep": "93"
   },
   {
     "nom": "Pierrefitte-sur-Seine",
     "slug": "pierrefitte-sur-seine",
     "codePostal": "93380",
     "departement": "Seine-Saint-Denis",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9653,
+    "lon": 2.3614,
+    "dep": "93"
   },
   {
     "nom": "Saint-Gratien",
     "slug": "saint-gratien",
     "codePostal": "95210",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9679,
+    "lon": 2.285,
+    "dep": "95"
   },
   {
     "nom": "Enghien-les-Bains",
     "slug": "enghien-les-bains",
     "codePostal": "95880",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9706,
+    "lon": 2.305,
+    "dep": "95"
   },
   {
     "nom": "Montmorency",
     "slug": "montmorency",
     "codePostal": "95160",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9922,
+    "lon": 2.322,
+    "dep": "95"
   },
   {
     "nom": "Deuil-la-Barre",
     "slug": "deuil-la-barre",
     "codePostal": "95170",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9704,
+    "lon": 2.327,
+    "dep": "95"
   },
   {
     "nom": "Groslay",
     "slug": "groslay",
     "codePostal": "95410",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9852,
+    "lon": 2.3514,
+    "dep": "95"
   },
   {
     "nom": "Sannois",
     "slug": "sannois",
     "codePostal": "95110",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9731,
+    "lon": 2.2509,
+    "dep": "95"
   },
   {
     "nom": "Franconville",
     "slug": "franconville",
     "codePostal": "95130",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9879,
+    "lon": 2.2235,
+    "dep": "95"
   },
   {
     "nom": "Ermont",
     "slug": "ermont",
     "codePostal": "95120",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9891,
+    "lon": 2.258,
+    "dep": "95"
   },
   {
     "nom": "Eaubonne",
     "slug": "eaubonne",
     "codePostal": "95600",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9912,
+    "lon": 2.2781,
+    "dep": "95"
   },
   {
     "nom": "Montigny-lès-Cormeilles",
     "slug": "montigny-les-cormeilles",
     "codePostal": "95370",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9934,
+    "lon": 2.1937,
+    "dep": "95"
   },
   {
     "nom": "Cormeilles-en-Parisis",
     "slug": "cormeilles-en-parisis",
     "codePostal": "95240",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9701,
+    "lon": 2.201,
+    "dep": "95"
   },
   {
     "nom": "Herblay",
     "slug": "herblay",
     "codePostal": "95220",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 49.0052,
+    "lon": 2.1556,
+    "dep": "95"
   },
   {
     "nom": "Taverny",
     "slug": "taverny",
     "codePostal": "95150",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 49.0274,
+    "lon": 2.2179,
+    "dep": "95"
   },
   {
     "nom": "Bessancourt",
     "slug": "bessancourt",
     "codePostal": "95550",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 49.0364,
+    "lon": 2.1998,
+    "dep": "95"
   },
   {
     "nom": "Saint-Leu-la-Forêt",
     "slug": "saint-leu-la-foret",
     "codePostal": "95320",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 49.0211,
+    "lon": 2.243,
+    "dep": "95"
   },
   {
     "nom": "Domont",
     "slug": "domont",
     "codePostal": "95330",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 49.0289,
+    "lon": 2.3243,
+    "dep": "95"
   },
   {
     "nom": "Goussainville",
     "slug": "goussainville",
     "codePostal": "95190",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 49.0266,
+    "lon": 2.4683,
+    "dep": "95"
   },
   {
     "nom": "Gonesse",
     "slug": "gonesse",
     "codePostal": "95500",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9856,
+    "lon": 2.4602,
+    "dep": "95"
   },
   {
     "nom": "Arnouville",
     "slug": "arnouville",
     "codePostal": "95400",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 48.9867,
+    "lon": 2.4168,
+    "dep": "95"
   },
   {
     "nom": "Villiers-le-Bel",
     "slug": "villiers-le-bel",
     "codePostal": "95400",
     "departement": "Val-d'Oise",
-    "region": "Île-de-France"
+    "region": "Île-de-France",
+    "lat": 49.008,
+    "lon": 2.4036,
+    "dep": "95"
   },
   {
     "nom": "Calais",
     "slug": "calais",
     "codePostal": "62100",
     "departement": "Pas-de-Calais",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.9523,
+    "lon": 1.869,
+    "dep": "62"
   },
   {
     "nom": "Béziers",
     "slug": "beziers",
     "codePostal": "34500",
     "departement": "Hérault",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.3481,
+    "lon": 3.2342,
+    "dep": "34"
   },
   {
     "nom": "Saint-Quentin",
     "slug": "saint-quentin",
     "codePostal": "02100",
     "departement": "Aisne",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 49.8475,
+    "lon": 3.279,
+    "dep": "02"
   },
   {
     "nom": "Troyes",
     "slug": "troyes",
     "codePostal": "10000",
     "departement": "Aube",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.2924,
+    "lon": 4.0761,
+    "dep": "10"
   },
   {
     "nom": "La Seyne-sur-Mer",
     "slug": "la-seyne-sur-mer",
     "codePostal": "83500",
     "departement": "Var",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.0837,
+    "lon": 5.8789,
+    "dep": "83"
   },
   {
     "nom": "Hyères",
     "slug": "hyeres",
     "codePostal": "83400",
     "departement": "Var",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.1139,
+    "lon": 6.2357,
+    "dep": "83"
   },
   {
     "nom": "Cagnes-sur-Mer",
     "slug": "cagnes-sur-mer",
     "codePostal": "06800",
     "departement": "Alpes-Maritimes",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.6712,
+    "lon": 7.1502,
+    "dep": "06"
   },
   {
     "nom": "Fréjus",
     "slug": "frejus",
     "codePostal": "83600",
     "departement": "Var",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.4553,
+    "lon": 6.7848,
+    "dep": "83"
   },
   {
     "nom": "Cannes",
     "slug": "cannes",
     "codePostal": "06400",
     "departement": "Alpes-Maritimes",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.5454,
+    "lon": 7.0152,
+    "dep": "06"
   },
   {
     "nom": "Grasse",
     "slug": "grasse",
     "codePostal": "06130",
     "departement": "Alpes-Maritimes",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.656,
+    "lon": 6.937,
+    "dep": "06"
   },
   {
     "nom": "Draguignan",
     "slug": "draguignan",
     "codePostal": "83300",
     "departement": "Var",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.5346,
+    "lon": 6.4651,
+    "dep": "83"
   },
   {
     "nom": "Arles",
     "slug": "arles",
     "codePostal": "13200",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.5441,
+    "lon": 4.6513,
+    "dep": "13"
   },
   {
     "nom": "Martigues",
     "slug": "martigues",
     "codePostal": "13500",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.3839,
+    "lon": 5.0451,
+    "dep": "13"
   },
   {
     "nom": "Istres",
     "slug": "istres",
     "codePostal": "13800",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.5455,
+    "lon": 4.9477,
+    "dep": "13"
   },
   {
     "nom": "Salon-de-Provence",
     "slug": "salon-de-provence",
     "codePostal": "13300",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.643,
+    "lon": 5.049,
+    "dep": "13"
   },
   {
     "nom": "Aubagne",
     "slug": "aubagne",
     "codePostal": "13400",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.2904,
+    "lon": 5.5643,
+    "dep": "13"
   },
   {
     "nom": "Cavaillon",
     "slug": "cavaillon",
     "codePostal": "84300",
     "departement": "Vaucluse",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.8485,
+    "lon": 5.0333,
+    "dep": "84"
   },
   {
     "nom": "Orange",
     "slug": "orange",
     "codePostal": "84100",
     "departement": "Vaucluse",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 44.1264,
+    "lon": 4.8031,
+    "dep": "84"
   },
   {
     "nom": "Carpentras",
     "slug": "carpentras",
     "codePostal": "84200",
     "departement": "Vaucluse",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 44.0629,
+    "lon": 5.0584,
+    "dep": "84"
   },
   {
     "nom": "Sète",
     "slug": "sete",
     "codePostal": "34200",
     "departement": "Hérault",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.3844,
+    "lon": 3.6441,
+    "dep": "34"
   },
   {
     "nom": "Agde",
     "slug": "agde",
     "codePostal": "34300",
     "departement": "Hérault",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.3084,
+    "lon": 3.4838,
+    "dep": "34"
   },
   {
     "nom": "Narbonne",
     "slug": "narbonne",
     "codePostal": "11100",
     "departement": "Aude",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.1493,
+    "lon": 3.0337,
+    "dep": "11"
   },
   {
     "nom": "Carcassonne",
     "slug": "carcassonne",
     "codePostal": "11000",
     "departement": "Aude",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.2078,
+    "lon": 2.3491,
+    "dep": "11"
   },
   {
     "nom": "Albi",
     "slug": "albi",
     "codePostal": "81000",
     "departement": "Tarn",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.929,
+    "lon": 2.1323,
+    "dep": "81"
   },
   {
     "nom": "Castres",
     "slug": "castres",
     "codePostal": "81100",
     "departement": "Tarn",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.6132,
+    "lon": 2.2448,
+    "dep": "81"
   },
   {
     "nom": "Montauban",
     "slug": "montauban",
     "codePostal": "82000",
     "departement": "Tarn-et-Garonne",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 44.0217,
+    "lon": 1.3646,
+    "dep": "82"
   },
   {
     "nom": "Tarbes",
     "slug": "tarbes",
     "codePostal": "65000",
     "departement": "Hautes-Pyrénées",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.2387,
+    "lon": 0.0653,
+    "dep": "65"
   },
   {
     "nom": "Lourdes",
     "slug": "lourdes",
     "codePostal": "65100",
     "departement": "Hautes-Pyrénées",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.109,
+    "lon": -0.0806,
+    "dep": "65"
   },
   {
     "nom": "Bayonne",
     "slug": "bayonne",
     "codePostal": "64100",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.4844,
+    "lon": -1.4611,
+    "dep": "64"
   },
   {
     "nom": "Anglet",
     "slug": "anglet",
     "codePostal": "64600",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.4893,
+    "lon": -1.5193,
+    "dep": "64"
   },
   {
     "nom": "Biarritz",
     "slug": "biarritz",
     "codePostal": "64200",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.4709,
+    "lon": -1.5557,
+    "dep": "64"
   },
   {
     "nom": "Agen",
     "slug": "agen",
     "codePostal": "47000",
     "departement": "Lot-et-Garonne",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.201,
+    "lon": 0.6302,
+    "dep": "47"
   },
   {
     "nom": "Périgueux",
     "slug": "perigueux",
     "codePostal": "24000",
     "departement": "Dordogne",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.1939,
+    "lon": 0.7105,
+    "dep": "24"
   },
   {
     "nom": "Bergerac",
     "slug": "bergerac",
     "codePostal": "24100",
     "departement": "Dordogne",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8519,
+    "lon": 0.4883,
+    "dep": "24"
   },
   {
     "nom": "Brive-la-Gaillarde",
     "slug": "brive-la-gaillarde",
     "codePostal": "19100",
     "departement": "Corrèze",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.145,
+    "lon": 1.5144,
+    "dep": "19"
   },
   {
     "nom": "Tulle",
     "slug": "tulle",
     "codePostal": "19000",
     "departement": "Corrèze",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.2685,
+    "lon": 1.7663,
+    "dep": "19"
   },
   {
     "nom": "Châteauroux",
     "slug": "chateauroux",
     "codePostal": "36000",
     "departement": "Indre",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 46.8023,
+    "lon": 1.6903,
+    "dep": "36"
   },
   {
     "nom": "Bourges",
     "slug": "bourges",
     "codePostal": "18000",
     "departement": "Cher",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 47.078,
+    "lon": 2.3983,
+    "dep": "18"
   },
   {
     "nom": "Nevers",
     "slug": "nevers",
     "codePostal": "58000",
     "departement": "Nièvre",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.9852,
+    "lon": 3.1598,
+    "dep": "58"
   },
   {
     "nom": "Auxerre",
     "slug": "auxerre",
     "codePostal": "89000",
     "departement": "Yonne",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.7939,
+    "lon": 3.5821,
+    "dep": "89"
   },
   {
     "nom": "Sens",
     "slug": "sens",
     "codePostal": "89100",
     "departement": "Yonne",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 48.1949,
+    "lon": 3.3039,
+    "dep": "89"
   },
   {
     "nom": "Chalon-sur-Saône",
     "slug": "chalon-sur-saone",
     "codePostal": "71100",
     "departement": "Saône-et-Loire",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.7896,
+    "lon": 4.8509,
+    "dep": "71"
   },
   {
     "nom": "Mâcon",
     "slug": "macon",
     "codePostal": "71000",
     "departement": "Saône-et-Loire",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.3265,
+    "lon": 4.8083,
+    "dep": "71"
   },
   {
     "nom": "Le Creusot",
     "slug": "le-creusot",
     "codePostal": "71200",
     "departement": "Saône-et-Loire",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.8065,
+    "lon": 4.4257,
+    "dep": "71"
   },
   {
     "nom": "Montceau-les-Mines",
     "slug": "montceau-les-mines",
     "codePostal": "71300",
     "departement": "Saône-et-Loire",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.6753,
+    "lon": 4.3547,
+    "dep": "71"
   },
   {
     "nom": "Beaune",
     "slug": "beaune",
     "codePostal": "21200",
     "departement": "Côte-d'Or",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.0272,
+    "lon": 4.8421,
+    "dep": "21"
   },
   {
     "nom": "Dole",
     "slug": "dole",
     "codePostal": "39100",
     "departement": "Jura",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.0739,
+    "lon": 5.5024,
+    "dep": "39"
   },
   {
     "nom": "Lons-le-Saunier",
     "slug": "lons-le-saunier",
     "codePostal": "39000",
     "departement": "Jura",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.6758,
+    "lon": 5.5574,
+    "dep": "39"
   },
   {
     "nom": "Belfort",
     "slug": "belfort",
     "codePostal": "90000",
     "departement": "Territoire de Belfort",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.6458,
+    "lon": 6.841,
+    "dep": "90"
   },
   {
     "nom": "Montbéliard",
     "slug": "montbeliard",
     "codePostal": "25200",
     "departement": "Doubs",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.5168,
+    "lon": 6.7834,
+    "dep": "25"
   },
   {
     "nom": "Vesoul",
     "slug": "vesoul",
     "codePostal": "70000",
     "departement": "Haute-Saône",
-    "region": "Bourgogne-Franche-Comté"
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.6323,
+    "lon": 6.1523,
+    "dep": "70"
   },
   {
     "nom": "Épinal",
     "slug": "epinal",
     "codePostal": "88000",
     "departement": "Vosges",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.1637,
+    "lon": 6.4867,
+    "dep": "88"
   },
   {
     "nom": "Saint-Dié-des-Vosges",
     "slug": "saint-die-des-vosges",
     "codePostal": "88100",
     "departement": "Vosges",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.2973,
+    "lon": 6.9386,
+    "dep": "88"
   },
   {
     "nom": "Thionville",
     "slug": "thionville",
     "codePostal": "57100",
     "departement": "Moselle",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 49.3718,
+    "lon": 6.1443,
+    "dep": "57"
   },
   {
     "nom": "Forbach",
     "slug": "forbach",
     "codePostal": "57600",
     "departement": "Moselle",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 49.1916,
+    "lon": 6.8985,
+    "dep": "57"
   },
   {
     "nom": "Sarreguemines",
     "slug": "sarreguemines",
     "codePostal": "57200",
     "departement": "Moselle",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 49.106,
+    "lon": 7.0709,
+    "dep": "57"
   },
   {
     "nom": "Haguenau",
     "slug": "haguenau",
     "codePostal": "67500",
     "departement": "Bas-Rhin",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.8388,
+    "lon": 7.8213,
+    "dep": "67"
   },
   {
     "nom": "Schiltigheim",
     "slug": "schiltigheim",
     "codePostal": "67300",
     "departement": "Bas-Rhin",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.6118,
+    "lon": 7.7511,
+    "dep": "67"
   },
   {
     "nom": "Illkirch-Graffenstaden",
     "slug": "illkirch-graffenstaden",
     "codePostal": "67400",
     "departement": "Bas-Rhin",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.522,
+    "lon": 7.7302,
+    "dep": "67"
   },
   {
     "nom": "Sélestat",
     "slug": "selestat",
     "codePostal": "67600",
     "departement": "Bas-Rhin",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.2507,
+    "lon": 7.4588,
+    "dep": "67"
   },
   {
     "nom": "Colmar",
     "slug": "colmar",
     "codePostal": "68000",
     "departement": "Haut-Rhin",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.1115,
+    "lon": 7.3924,
+    "dep": "68"
   },
   {
     "nom": "Saint-Louis",
     "slug": "saint-louis",
     "codePostal": "68300",
     "departement": "Haut-Rhin",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 47.5986,
+    "lon": 7.543,
+    "dep": "68"
   },
   {
     "nom": "Charleville-Mézières",
     "slug": "charleville-mezieres",
     "codePostal": "08000",
     "departement": "Ardennes",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 49.7802,
+    "lon": 4.7304,
+    "dep": "08"
   },
   {
     "nom": "Sedan",
     "slug": "sedan",
     "codePostal": "08200",
     "departement": "Ardennes",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 49.6993,
+    "lon": 4.9269,
+    "dep": "08"
   },
   {
     "nom": "Châlons-en-Champagne",
     "slug": "chalons-en-champagne",
     "codePostal": "51000",
     "departement": "Marne",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.9656,
+    "lon": 4.3801,
+    "dep": "51"
   },
   {
     "nom": "Épernay",
     "slug": "epernay",
     "codePostal": "51200",
     "departement": "Marne",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 49.0391,
+    "lon": 3.9282,
+    "dep": "51"
   },
   {
     "nom": "Saint-Dizier",
     "slug": "saint-dizier",
     "codePostal": "52100",
     "departement": "Haute-Marne",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.6319,
+    "lon": 4.9399,
+    "dep": "52"
   },
   {
     "nom": "Chaumont",
     "slug": "chaumont",
     "codePostal": "52000",
     "departement": "Haute-Marne",
-    "region": "Grand Est"
+    "region": "Grand Est",
+    "lat": 48.0965,
+    "lon": 5.1566,
+    "dep": "52"
   },
   {
     "nom": "Compiègne",
     "slug": "compiegne",
     "codePostal": "60200",
     "departement": "Oise",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 49.4006,
+    "lon": 2.8547,
+    "dep": "60"
   },
   {
     "nom": "Creil",
     "slug": "creil",
     "codePostal": "60100",
     "departement": "Oise",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 49.2557,
+    "lon": 2.4841,
+    "dep": "60"
   },
   {
     "nom": "Senlis",
     "slug": "senlis",
     "codePostal": "60300",
     "departement": "Oise",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 49.2156,
+    "lon": 2.5912,
+    "dep": "60"
   },
   {
     "nom": "Beauvais",
     "slug": "beauvais",
     "codePostal": "60000",
     "departement": "Oise",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 49.4425,
+    "lon": 2.0877,
+    "dep": "60"
   },
   {
     "nom": "Laon",
     "slug": "laon",
     "codePostal": "02000",
     "departement": "Aisne",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 49.5711,
+    "lon": 3.613,
+    "dep": "02"
   },
   {
     "nom": "Soissons",
     "slug": "soissons",
     "codePostal": "02200",
     "departement": "Aisne",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 49.3766,
+    "lon": 3.3235,
+    "dep": "02"
   },
   {
     "nom": "Cambrai",
     "slug": "cambrai",
     "codePostal": "59400",
     "departement": "Nord",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.1722,
+    "lon": 3.2413,
+    "dep": "59"
   },
   {
     "nom": "Douai",
     "slug": "douai",
     "codePostal": "59500",
     "departement": "Nord",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.3785,
+    "lon": 3.1004,
+    "dep": "59"
   },
   {
     "nom": "Valenciennes",
     "slug": "valenciennes",
     "codePostal": "59300",
     "departement": "Nord",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.362,
+    "lon": 3.5142,
+    "dep": "59"
   },
   {
     "nom": "Maubeuge",
     "slug": "maubeuge",
     "codePostal": "59600",
     "departement": "Nord",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.2834,
+    "lon": 3.9611,
+    "dep": "59"
   },
   {
     "nom": "Arras",
     "slug": "arras",
     "codePostal": "62000",
     "departement": "Pas-de-Calais",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.2893,
+    "lon": 2.7679,
+    "dep": "62"
   },
   {
     "nom": "Lens",
     "slug": "lens",
     "codePostal": "62300",
     "departement": "Pas-de-Calais",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.4395,
+    "lon": 2.8191,
+    "dep": "62"
   },
   {
     "nom": "Béthune",
     "slug": "bethune",
     "codePostal": "62400",
     "departement": "Pas-de-Calais",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.5299,
+    "lon": 2.6438,
+    "dep": "62"
   },
   {
     "nom": "Boulogne-sur-Mer",
     "slug": "boulogne-sur-mer",
     "codePostal": "62200",
     "departement": "Pas-de-Calais",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.7303,
+    "lon": 1.6062,
+    "dep": "62"
   },
   {
     "nom": "Saint-Omer",
     "slug": "saint-omer",
     "codePostal": "62500",
     "departement": "Pas-de-Calais",
-    "region": "Hauts-de-France"
+    "region": "Hauts-de-France",
+    "lat": 50.7673,
+    "lon": 2.2648,
+    "dep": "62"
   },
   {
     "nom": "Cherbourg",
     "slug": "cherbourg",
     "codePostal": "50100",
     "departement": "Manche",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.6277,
+    "lon": -1.6356,
+    "dep": "50"
   },
   {
     "nom": "Saint-Lô",
     "slug": "saint-lo",
     "codePostal": "50000",
     "departement": "Manche",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.1123,
+    "lon": -1.0812,
+    "dep": "50"
   },
   {
     "nom": "Granville",
     "slug": "granville",
     "codePostal": "50400",
     "departement": "Manche",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 48.8724,
+    "lon": -1.7657,
+    "dep": "50"
   },
   {
     "nom": "Alençon",
     "slug": "alencon",
     "codePostal": "61000",
     "departement": "Orne",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 48.431,
+    "lon": 0.0923,
+    "dep": "61"
   },
   {
     "nom": "Flers",
     "slug": "flers",
     "codePostal": "61100",
     "departement": "Orne",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 48.7389,
+    "lon": -0.5603,
+    "dep": "61"
   },
   {
     "nom": "Lisieux",
     "slug": "lisieux",
     "codePostal": "14100",
     "departement": "Calvados",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.1478,
+    "lon": 0.2426,
+    "dep": "14"
   },
   {
     "nom": "Évreux",
     "slug": "evreux",
     "codePostal": "27000",
     "departement": "Eure",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.018,
+    "lon": 1.1406,
+    "dep": "27"
   },
   {
     "nom": "Vernon",
     "slug": "vernon",
     "codePostal": "27200",
     "departement": "Eure",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.0921,
+    "lon": 1.4827,
+    "dep": "27"
   },
   {
     "nom": "Louviers",
     "slug": "louviers",
     "codePostal": "27400",
     "departement": "Eure",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.2213,
+    "lon": 1.1562,
+    "dep": "27"
   },
   {
     "nom": "Elbeuf",
     "slug": "elbeuf",
     "codePostal": "76500",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.2773,
+    "lon": 0.9974,
+    "dep": "76"
   },
   {
     "nom": "Dieppe",
     "slug": "dieppe",
     "codePostal": "76200",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.9199,
+    "lon": 1.0838,
+    "dep": "76"
   },
   {
     "nom": "Fécamp",
     "slug": "fecamp",
     "codePostal": "76400",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.7479,
+    "lon": 0.4012,
+    "dep": "76"
   },
   {
     "nom": "Chartres",
     "slug": "chartres",
     "codePostal": "28000",
     "departement": "Eure-et-Loir",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 48.4481,
+    "lon": 1.5046,
+    "dep": "28"
   },
   {
     "nom": "Dreux",
     "slug": "dreux",
     "codePostal": "28100",
     "departement": "Eure-et-Loir",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 48.7482,
+    "lon": 1.3578,
+    "dep": "28"
   },
   {
     "nom": "Blois",
     "slug": "blois",
     "codePostal": "41000",
     "departement": "Loir-et-Cher",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 47.5813,
+    "lon": 1.3049,
+    "dep": "41"
   },
   {
     "nom": "Vendôme",
     "slug": "vendome",
     "codePostal": "41100",
     "departement": "Loir-et-Cher",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 47.7995,
+    "lon": 1.0646,
+    "dep": "41"
   },
   {
     "nom": "Châteaudun",
     "slug": "chateaudun",
     "codePostal": "28200",
     "departement": "Eure-et-Loir",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 48.0718,
+    "lon": 1.3207,
+    "dep": "28"
   },
   {
     "nom": "Romorantin-Lanthenay",
     "slug": "romorantin-lanthenay",
     "codePostal": "41200",
     "departement": "Loir-et-Cher",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 47.3725,
+    "lon": 1.7368,
+    "dep": "41"
   },
   {
     "nom": "Vierzon",
     "slug": "vierzon",
     "codePostal": "18100",
     "departement": "Cher",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 47.2351,
+    "lon": 2.0776,
+    "dep": "18"
   },
   {
     "nom": "Saint-Amand-Montrond",
     "slug": "saint-amand-montrond",
     "codePostal": "18200",
     "departement": "Cher",
-    "region": "Centre-Val de Loire"
+    "region": "Centre-Val de Loire",
+    "lat": 46.7236,
+    "lon": 2.5167,
+    "dep": "18"
   },
   {
     "nom": "Montluçon",
     "slug": "montlucon",
     "codePostal": "03100",
     "departement": "Allier",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.3428,
+    "lon": 2.608,
+    "dep": "03"
   },
   {
     "nom": "Vichy",
     "slug": "vichy",
     "codePostal": "03200",
     "departement": "Allier",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.1318,
+    "lon": 3.4254,
+    "dep": "03"
   },
   {
     "nom": "Moulins",
     "slug": "moulins",
     "codePostal": "03000",
     "departement": "Allier",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.5591,
+    "lon": 3.3255,
+    "dep": "03"
   },
   {
     "nom": "Roanne",
     "slug": "roanne",
     "codePostal": "42300",
     "departement": "Loire",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.0443,
+    "lon": 4.0797,
+    "dep": "42"
   },
   {
     "nom": "Saint-Chamond",
     "slug": "saint-chamond",
     "codePostal": "42400",
     "departement": "Loire",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.4687,
+    "lon": 4.5082,
+    "dep": "42"
   },
   {
     "nom": "Firminy",
     "slug": "firminy",
     "codePostal": "42700",
     "departement": "Loire",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.3827,
+    "lon": 4.2895,
+    "dep": "42"
   },
   {
     "nom": "Valence",
     "slug": "valence",
     "codePostal": "26000",
     "departement": "Drôme",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.9234,
+    "lon": 4.9164,
+    "dep": "26"
   },
   {
     "nom": "Romans-sur-Isère",
     "slug": "romans-sur-isere",
     "codePostal": "26100",
     "departement": "Drôme",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.0611,
+    "lon": 5.0477,
+    "dep": "26"
   },
   {
     "nom": "Montélimar",
     "slug": "montelimar",
     "codePostal": "26200",
     "departement": "Drôme",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.5545,
+    "lon": 4.7454,
+    "dep": "26"
   },
   {
     "nom": "Vienne",
     "slug": "vienne",
     "codePostal": "38200",
     "departement": "Isère",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5221,
+    "lon": 4.8803,
+    "dep": "38"
   },
   {
     "nom": "Bourgoin-Jallieu",
     "slug": "bourgoin-jallieu",
     "codePostal": "38300",
     "departement": "Isère",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6025,
+    "lon": 5.2747,
+    "dep": "38"
   },
   {
     "nom": "Voiron",
     "slug": "voiron",
     "codePostal": "38500",
     "departement": "Isère",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.3805,
+    "lon": 5.5869,
+    "dep": "38"
   },
   {
     "nom": "Chambéry",
     "slug": "chambery",
     "codePostal": "73000",
     "departement": "Savoie",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5822,
+    "lon": 5.9064,
+    "dep": "73"
   },
   {
     "nom": "Aix-les-Bains",
     "slug": "aix-les-bains",
     "codePostal": "73100",
     "departement": "Savoie",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6943,
+    "lon": 5.9035,
+    "dep": "73"
   },
   {
     "nom": "Annecy",
     "slug": "annecy",
     "codePostal": "74000",
     "departement": "Haute-Savoie",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9024,
+    "lon": 6.1264,
+    "dep": "74"
   },
   {
     "nom": "Thonon-les-Bains",
     "slug": "thonon-les-bains",
     "codePostal": "74200",
     "departement": "Haute-Savoie",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.3745,
+    "lon": 6.4776,
+    "dep": "74"
   },
   {
     "nom": "Annemasse",
     "slug": "annemasse",
     "codePostal": "74100",
     "departement": "Haute-Savoie",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.189,
+    "lon": 6.2476,
+    "dep": "74"
   },
   {
     "nom": "Cluses",
     "slug": "cluses",
     "codePostal": "74300",
     "departement": "Haute-Savoie",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.0625,
+    "lon": 6.5775,
+    "dep": "74"
   },
   {
     "nom": "Sallanches",
     "slug": "sallanches",
     "codePostal": "74700",
     "departement": "Haute-Savoie",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9323,
+    "lon": 6.6041,
+    "dep": "74"
   },
   {
     "nom": "Chamonix",
     "slug": "chamonix",
     "codePostal": "74400",
     "departement": "Haute-Savoie",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9296,
+    "lon": 6.9291,
+    "dep": "74"
   },
   {
     "nom": "Albertville",
     "slug": "albertville",
     "codePostal": "73200",
     "departement": "Savoie",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6647,
+    "lon": 6.41,
+    "dep": "73"
   },
   {
     "nom": "Saint-Jean-de-Maurienne",
     "slug": "saint-jean-de-maurienne",
     "codePostal": "73300",
     "departement": "Savoie",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.2731,
+    "lon": 6.3465,
+    "dep": "73"
   },
   {
     "nom": "Bourg-en-Bresse",
     "slug": "bourg-en-bresse",
     "codePostal": "01000",
     "departement": "Ain",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.2027,
+    "lon": 5.2469,
+    "dep": "01"
   },
   {
     "nom": "Oyonnax",
     "slug": "oyonnax",
     "codePostal": "01100",
     "departement": "Ain",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.2599,
+    "lon": 5.6517,
+    "dep": "01"
   },
   {
     "nom": "Villefranche-sur-Saône",
     "slug": "villefranche-sur-saone",
     "codePostal": "69400",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9837,
+    "lon": 4.726,
+    "dep": "69"
   },
   {
     "nom": "Tarare",
     "slug": "tarare",
     "codePostal": "69170",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9071,
+    "lon": 4.4302,
+    "dep": "69"
   },
   {
     "nom": "Vénissieux",
     "slug": "venissieux",
     "codePostal": "69200",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7012,
+    "lon": 4.8805,
+    "dep": "69"
   },
   {
     "nom": "Saint-Priest",
     "slug": "saint-priest",
     "codePostal": "69800",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7014,
+    "lon": 4.9474,
+    "dep": "69"
   },
   {
     "nom": "Vaulx-en-Velin",
     "slug": "vaulx-en-velin",
     "codePostal": "69120",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7776,
+    "lon": 4.925,
+    "dep": "69"
   },
   {
     "nom": "Bron",
     "slug": "bron",
     "codePostal": "69500",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7355,
+    "lon": 4.9116,
+    "dep": "69"
   },
   {
     "nom": "Caluire-et-Cuire",
     "slug": "caluire-et-cuire",
     "codePostal": "69300",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7986,
+    "lon": 4.8494,
+    "dep": "69"
   },
   {
     "nom": "Oullins",
     "slug": "oullins",
     "codePostal": "69600",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.708,
+    "lon": 4.8112,
+    "dep": "69"
   },
   {
     "nom": "Saint-Fons",
     "slug": "saint-fons",
     "codePostal": "69190",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6997,
+    "lon": 4.8514,
+    "dep": "69"
   },
   {
     "nom": "Rillieux-la-Pape",
     "slug": "rillieux-la-pape",
     "codePostal": "69140",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8265,
+    "lon": 4.895,
+    "dep": "69"
   },
   {
     "nom": "Décines-Charpieu",
     "slug": "decines-charpieu",
     "codePostal": "69150",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7759,
+    "lon": 4.9589,
+    "dep": "69"
   },
   {
     "nom": "Meyzieu",
     "slug": "meyzieu",
     "codePostal": "69330",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7785,
+    "lon": 5.0114,
+    "dep": "69"
   },
   {
     "nom": "Givors",
     "slug": "givors",
     "codePostal": "69700",
     "departement": "Rhône",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5845,
+    "lon": 4.7561,
+    "dep": "69"
   },
   {
     "nom": "Saint-Étienne-du-Rouvray",
     "slug": "saint-etienne-du-rouvray",
     "codePostal": "76800",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.3833,
+    "lon": 1.0909,
+    "dep": "76"
   },
   {
     "nom": "Le Grand-Quevilly",
     "slug": "le-grand-quevilly",
     "codePostal": "76120",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.4118,
+    "lon": 1.0416,
+    "dep": "76"
   },
   {
     "nom": "Le Petit-Quevilly",
     "slug": "le-petit-quevilly",
     "codePostal": "76140",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.4238,
+    "lon": 1.0572,
+    "dep": "76"
   },
   {
     "nom": "Sotteville-lès-Rouen",
     "slug": "sotteville-les-rouen",
     "codePostal": "76300",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.4116,
+    "lon": 1.0944,
+    "dep": "76"
   },
   {
     "nom": "Déville-lès-Rouen",
     "slug": "deville-les-rouen",
     "codePostal": "76250",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.4673,
+    "lon": 1.0495,
+    "dep": "76"
   },
   {
     "nom": "Canteleu",
     "slug": "canteleu",
     "codePostal": "76380",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.4323,
+    "lon": 1.0173,
+    "dep": "76"
   },
   {
     "nom": "Mont-Saint-Aignan",
     "slug": "mont-saint-aignan",
     "codePostal": "76130",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.4673,
+    "lon": 1.0806,
+    "dep": "76"
   },
   {
     "nom": "Bois-Guillaume",
     "slug": "bois-guillaume",
     "codePostal": "76230",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.4729,
+    "lon": 1.1194,
+    "dep": "76"
   },
   {
     "nom": "Barentin",
     "slug": "barentin",
     "codePostal": "76360",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.5431,
+    "lon": 0.9549,
+    "dep": "76"
   },
   {
     "nom": "Yvetot",
     "slug": "yvetot",
     "codePostal": "76190",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.6183,
+    "lon": 0.7685,
+    "dep": "76"
   },
   {
     "nom": "Bolbec",
     "slug": "bolbec",
     "codePostal": "76210",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.5755,
+    "lon": 0.483,
+    "dep": "76"
   },
   {
     "nom": "Lillebonne",
     "slug": "lillebonne",
     "codePostal": "76170",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.505,
+    "lon": 0.5393,
+    "dep": "76"
   },
   {
     "nom": "Gonfreville-l'Orcher",
     "slug": "gonfreville-l-orcher",
     "codePostal": "76700",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.487,
+    "lon": 0.2223,
+    "dep": "76"
   },
   {
     "nom": "Harfleur",
     "slug": "harfleur",
     "codePostal": "76700",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.5137,
+    "lon": 0.1964,
+    "dep": "76"
   },
   {
     "nom": "Montivilliers",
     "slug": "montivilliers",
     "codePostal": "76290",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.5426,
+    "lon": 0.193,
+    "dep": "76"
   },
   {
     "nom": "Sainte-Adresse",
     "slug": "sainte-adresse",
     "codePostal": "76310",
     "departement": "Seine-Maritime",
-    "region": "Normandie"
+    "region": "Normandie",
+    "lat": 49.5099,
+    "lon": 0.0789,
+    "dep": "76"
   },
   {
     "nom": "Lorient",
     "slug": "lorient",
     "codePostal": "56100",
     "departement": "Morbihan",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 47.7494,
+    "lon": -3.3799,
+    "dep": "56"
   },
   {
     "nom": "Vannes",
     "slug": "vannes",
     "codePostal": "56000",
     "departement": "Morbihan",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 47.6577,
+    "lon": -2.7485,
+    "dep": "56"
   },
   {
     "nom": "Lanester",
     "slug": "lanester",
     "codePostal": "56600",
     "departement": "Morbihan",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 47.7686,
+    "lon": -3.326,
+    "dep": "56"
   },
   {
     "nom": "Ploemeur",
     "slug": "ploemeur",
     "codePostal": "56270",
     "departement": "Morbihan",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 47.7312,
+    "lon": -3.4486,
+    "dep": "56"
   },
   {
     "nom": "Hennebont",
     "slug": "hennebont",
     "codePostal": "56700",
     "departement": "Morbihan",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 47.8053,
+    "lon": -3.2694,
+    "dep": "56"
   },
   {
     "nom": "Pontivy",
     "slug": "pontivy",
     "codePostal": "56300",
     "departement": "Morbihan",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.0663,
+    "lon": -2.9697,
+    "dep": "56"
   },
   {
     "nom": "Auray",
     "slug": "auray",
     "codePostal": "56400",
     "departement": "Morbihan",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 47.6684,
+    "lon": -2.9901,
+    "dep": "56"
   },
   {
     "nom": "Saint-Brieuc",
     "slug": "saint-brieuc",
     "codePostal": "22000",
     "departement": "Côtes-d'Armor",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.5108,
+    "lon": -2.7657,
+    "dep": "22"
   },
   {
     "nom": "Lamballe",
     "slug": "lamballe",
     "codePostal": "22400",
     "departement": "Côtes-d'Armor",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.4859,
+    "lon": -2.5201,
+    "dep": "22"
   },
   {
     "nom": "Lannion",
     "slug": "lannion",
     "codePostal": "22300",
     "departement": "Côtes-d'Armor",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.7454,
+    "lon": -3.4697,
+    "dep": "22"
   },
   {
     "nom": "Dinan",
     "slug": "dinan",
     "codePostal": "22100",
     "departement": "Côtes-d'Armor",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.4471,
+    "lon": -2.0533,
+    "dep": "22"
   },
   {
     "nom": "Guingamp",
     "slug": "guingamp",
     "codePostal": "22200",
     "departement": "Côtes-d'Armor",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.5608,
+    "lon": -3.1533,
+    "dep": "22"
   },
   {
     "nom": "Quimper",
     "slug": "quimper",
     "codePostal": "29000",
     "departement": "Finistère",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 47.9982,
+    "lon": -4.0972,
+    "dep": "29"
   },
   {
     "nom": "Concarneau",
     "slug": "concarneau",
     "codePostal": "29900",
     "departement": "Finistère",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 47.8977,
+    "lon": -3.8993,
+    "dep": "29"
   },
   {
     "nom": "Morlaix",
     "slug": "morlaix",
     "codePostal": "29600",
     "departement": "Finistère",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.5971,
+    "lon": -3.8215,
+    "dep": "29"
   },
   {
     "nom": "Douarnenez",
     "slug": "douarnenez",
     "codePostal": "29100",
     "departement": "Finistère",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.0793,
+    "lon": -4.3243,
+    "dep": "29"
   },
   {
     "nom": "Landerneau",
     "slug": "landerneau",
     "codePostal": "29800",
     "departement": "Finistère",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.4494,
+    "lon": -4.2661,
+    "dep": "29"
   },
   {
     "nom": "Saint-Malo",
     "slug": "saint-malo",
     "codePostal": "35400",
     "departement": "Ille-et-Vilaine",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.6465,
+    "lon": -2.0066,
+    "dep": "35"
   },
   {
     "nom": "Fougères",
     "slug": "fougeres",
     "codePostal": "35300",
     "departement": "Ille-et-Vilaine",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.3512,
+    "lon": -1.1953,
+    "dep": "35"
   },
   {
     "nom": "Vitré",
     "slug": "vitre",
     "codePostal": "35500",
     "departement": "Ille-et-Vilaine",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.1105,
+    "lon": -1.1972,
+    "dep": "35"
   },
   {
     "nom": "Cesson-Sévigné",
     "slug": "cesson-sevigne",
     "codePostal": "35510",
     "departement": "Ille-et-Vilaine",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.1235,
+    "lon": -1.5935,
+    "dep": "35"
   },
   {
     "nom": "Saint-Jacques-de-la-Lande",
     "slug": "saint-jacques-de-la-lande",
     "codePostal": "35136",
     "departement": "Ille-et-Vilaine",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.0779,
+    "lon": -1.7252,
+    "dep": "35"
   },
   {
     "nom": "Bruz",
     "slug": "bruz",
     "codePostal": "35170",
     "departement": "Ille-et-Vilaine",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.024,
+    "lon": -1.7469,
+    "dep": "35"
   },
   {
     "nom": "Chartres-de-Bretagne",
     "slug": "chartres-de-bretagne",
     "codePostal": "35131",
     "departement": "Ille-et-Vilaine",
-    "region": "Bretagne"
+    "region": "Bretagne",
+    "lat": 48.0451,
+    "lon": -1.7039,
+    "dep": "35"
   },
   {
     "nom": "Saint-Nazaire",
     "slug": "saint-nazaire",
     "codePostal": "44600",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.2768,
+    "lon": -2.2392,
+    "dep": "44"
   },
   {
     "nom": "Rezé",
     "slug": "reze",
     "codePostal": "44400",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.1733,
+    "lon": -1.5573,
+    "dep": "44"
   },
   {
     "nom": "Saint-Herblain",
     "slug": "saint-herblain",
     "codePostal": "44800",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.2246,
+    "lon": -1.6306,
+    "dep": "44"
   },
   {
     "nom": "Orvault",
     "slug": "orvault",
     "codePostal": "44700",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.2745,
+    "lon": -1.6195,
+    "dep": "44"
   },
   {
     "nom": "Vertou",
     "slug": "vertou",
     "codePostal": "44120",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.1532,
+    "lon": -1.4679,
+    "dep": "44"
   },
   {
     "nom": "Couëron",
     "slug": "coueron",
     "codePostal": "44220",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.2391,
+    "lon": -1.7472,
+    "dep": "44"
   },
   {
     "nom": "Carquefou",
     "slug": "carquefou",
     "codePostal": "44470",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.2968,
+    "lon": -1.4687,
+    "dep": "44"
   },
   {
     "nom": "Bouguenais",
     "slug": "bouguenais",
     "codePostal": "44340",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.171,
+    "lon": -1.6181,
+    "dep": "44"
   },
   {
     "nom": "La Chapelle-sur-Erdre",
     "slug": "la-chapelle-sur-erdre",
     "codePostal": "44240",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.3041,
+    "lon": -1.5621,
+    "dep": "44"
   },
   {
     "nom": "Sainte-Luce-sur-Loire",
     "slug": "sainte-luce-sur-loire",
     "codePostal": "44980",
     "departement": "Loire-Atlantique",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.2529,
+    "lon": -1.4704,
+    "dep": "44"
   },
   {
     "nom": "Laval",
     "slug": "laval",
     "codePostal": "53000",
     "departement": "Mayenne",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 48.0578,
+    "lon": -0.7692,
+    "dep": "53"
   },
   {
     "nom": "Mayenne",
     "slug": "mayenne",
     "codePostal": "53100",
     "departement": "Mayenne",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 48.3066,
+    "lon": -0.614,
+    "dep": "53"
   },
   {
     "nom": "Château-Gontier",
     "slug": "chateau-gontier",
     "codePostal": "53200",
     "departement": "Mayenne",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.821,
+    "lon": -0.701,
+    "dep": "53"
   },
   {
     "nom": "Cholet",
     "slug": "cholet",
     "codePostal": "49300",
     "departement": "Maine-et-Loire",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.0358,
+    "lon": -0.875,
+    "dep": "49"
   },
   {
     "nom": "Saumur",
     "slug": "saumur",
     "codePostal": "49400",
     "departement": "Maine-et-Loire",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.2645,
+    "lon": -0.0837,
+    "dep": "49"
   },
   {
     "nom": "Avrillé",
     "slug": "avrille",
     "codePostal": "49240",
     "departement": "Maine-et-Loire",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.5027,
+    "lon": -0.6011,
+    "dep": "49"
   },
   {
     "nom": "Les Ponts-de-Cé",
     "slug": "les-ponts-de-ce",
     "codePostal": "49130",
     "departement": "Maine-et-Loire",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.427,
+    "lon": -0.511,
+    "dep": "49"
   },
   {
     "nom": "Trélazé",
     "slug": "trelaze",
     "codePostal": "49800",
     "departement": "Maine-et-Loire",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.4522,
+    "lon": -0.478,
+    "dep": "49"
   },
   {
     "nom": "Saint-Barthélemy-d'Anjou",
     "slug": "saint-barthelemy-d-anjou",
     "codePostal": "49124",
     "departement": "Maine-et-Loire",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.4741,
+    "lon": -0.4826,
+    "dep": "49"
   },
   {
     "nom": "La Roche-sur-Yon",
     "slug": "la-roche-sur-yon",
     "codePostal": "85000",
     "departement": "Vendée",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 46.6659,
+    "lon": -1.4162,
+    "dep": "85"
   },
   {
     "nom": "Les Sables-d'Olonne",
     "slug": "les-sables-d-olonne",
     "codePostal": "85100",
     "departement": "Vendée",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 46.5264,
+    "lon": -1.7611,
+    "dep": "85"
   },
   {
     "nom": "Challans",
     "slug": "challans",
     "codePostal": "85300",
     "departement": "Vendée",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 46.833,
+    "lon": -1.8422,
+    "dep": "85"
   },
   {
     "nom": "Fontenay-le-Comte",
     "slug": "fontenay-le-comte",
     "codePostal": "85200",
     "departement": "Vendée",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 46.4587,
+    "lon": -0.7887,
+    "dep": "85"
   },
   {
     "nom": "Luçon",
     "slug": "lucon",
     "codePostal": "85400",
     "departement": "Vendée",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 46.452,
+    "lon": -1.1616,
+    "dep": "85"
   },
   {
     "nom": "Sablé-sur-Sarthe",
     "slug": "sable-sur-sarthe",
     "codePostal": "72300",
     "departement": "Sarthe",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.8397,
+    "lon": -0.3542,
+    "dep": "72"
   },
   {
     "nom": "La Flèche",
     "slug": "la-fleche",
     "codePostal": "72200",
     "departement": "Sarthe",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.6908,
+    "lon": -0.0605,
+    "dep": "72"
   },
   {
     "nom": "Allonnes",
     "slug": "allonnes",
     "codePostal": "72700",
     "departement": "Sarthe",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 47.9588,
+    "lon": 0.1447,
+    "dep": "72"
   },
   {
     "nom": "Coulaines",
     "slug": "coulaines",
     "codePostal": "72190",
     "departement": "Sarthe",
-    "region": "Pays de la Loire"
+    "region": "Pays de la Loire",
+    "lat": 48.0348,
+    "lon": 0.2111,
+    "dep": "72"
   },
   {
     "nom": "Niort",
     "slug": "niort",
     "codePostal": "79000",
     "departement": "Deux-Sèvres",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 46.3274,
+    "lon": -0.4613,
+    "dep": "79"
   },
   {
     "nom": "Bressuire",
     "slug": "bressuire",
     "codePostal": "79300",
     "departement": "Deux-Sèvres",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 46.8654,
+    "lon": -0.4733,
+    "dep": "79"
   },
   {
     "nom": "Parthenay",
     "slug": "parthenay",
     "codePostal": "79200",
     "departement": "Deux-Sèvres",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 46.6458,
+    "lon": -0.235,
+    "dep": "79"
   },
   {
     "nom": "Thouars",
     "slug": "thouars",
     "codePostal": "79100",
     "departement": "Deux-Sèvres",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 46.9765,
+    "lon": -0.2466,
+    "dep": "79"
   },
   {
     "nom": "Angoulême",
     "slug": "angouleme",
     "codePostal": "16000",
     "departement": "Charente",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.6458,
+    "lon": 0.145,
+    "dep": "16"
   },
   {
     "nom": "Cognac",
     "slug": "cognac",
     "codePostal": "16100",
     "departement": "Charente",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.696,
+    "lon": -0.3376,
+    "dep": "16"
   },
   {
     "nom": "Soyaux",
     "slug": "soyaux",
     "codePostal": "16800",
     "departement": "Charente",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.6388,
+    "lon": 0.2056,
+    "dep": "16"
   },
   {
     "nom": "Saintes",
     "slug": "saintes",
     "codePostal": "17100",
     "departement": "Charente-Maritime",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.7462,
+    "lon": -0.6456,
+    "dep": "17"
   },
   {
     "nom": "Rochefort",
     "slug": "rochefort",
     "codePostal": "17300",
     "departement": "Charente-Maritime",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.9455,
+    "lon": -0.9745,
+    "dep": "17"
   },
   {
     "nom": "Royan",
     "slug": "royan",
     "codePostal": "17200",
     "departement": "Charente-Maritime",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.6343,
+    "lon": -1.0127,
+    "dep": "17"
   },
   {
     "nom": "Jonzac",
     "slug": "jonzac",
     "codePostal": "17500",
     "departement": "Charente-Maritime",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.4413,
+    "lon": -0.4237,
+    "dep": "17"
   },
   {
     "nom": "Mérignac",
     "slug": "merignac",
     "codePostal": "33700",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8313,
+    "lon": -0.682,
+    "dep": "33"
   },
   {
     "nom": "Pessac",
     "slug": "pessac",
     "codePostal": "33600",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.786,
+    "lon": -0.681,
+    "dep": "33"
   },
   {
     "nom": "Talence",
     "slug": "talence",
     "codePostal": "33400",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8061,
+    "lon": -0.5918,
+    "dep": "33"
   },
   {
     "nom": "Villenave-d'Ornon",
     "slug": "villenave-d-ornon",
     "codePostal": "33140",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.7736,
+    "lon": -0.5523,
+    "dep": "33"
   },
   {
     "nom": "Bègles",
     "slug": "begles",
     "codePostal": "33130",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.803,
+    "lon": -0.5485,
+    "dep": "33"
   },
   {
     "nom": "Le Bouscat",
     "slug": "le-bouscat",
     "codePostal": "33110",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.865,
+    "lon": -0.6033,
+    "dep": "33"
   },
   {
     "nom": "Cenon",
     "slug": "cenon",
     "codePostal": "33150",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8552,
+    "lon": -0.5223,
+    "dep": "33"
   },
   {
     "nom": "Floirac",
     "slug": "floirac",
     "codePostal": "33270",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8322,
+    "lon": -0.5215,
+    "dep": "33"
   },
   {
     "nom": "Lormont",
     "slug": "lormont",
     "codePostal": "33310",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8749,
+    "lon": -0.5176,
+    "dep": "33"
   },
   {
     "nom": "Gradignan",
     "slug": "gradignan",
     "codePostal": "33170",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.7681,
+    "lon": -0.6163,
+    "dep": "33"
   },
   {
     "nom": "Eysines",
     "slug": "eysines",
     "codePostal": "33320",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8779,
+    "lon": -0.646,
+    "dep": "33"
   },
   {
     "nom": "Saint-Médard-en-Jalles",
     "slug": "saint-medard-en-jalles",
     "codePostal": "33160",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8861,
+    "lon": -0.7823,
+    "dep": "33"
   },
   {
     "nom": "Libourne",
     "slug": "libourne",
     "codePostal": "33500",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9125,
+    "lon": -0.2328,
+    "dep": "33"
   },
   {
     "nom": "Arcachon",
     "slug": "arcachon",
     "codePostal": "33120",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.6515,
+    "lon": -1.1718,
+    "dep": "33"
   },
   {
     "nom": "La Teste-de-Buch",
     "slug": "la-teste-de-buch",
     "codePostal": "33260",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.586,
+    "lon": -1.1809,
+    "dep": "33"
   },
   {
     "nom": "Gujan-Mestras",
     "slug": "gujan-mestras",
     "codePostal": "33470",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.5758,
+    "lon": -1.0813,
+    "dep": "33"
   },
   {
     "nom": "Blanquefort",
     "slug": "blanquefort",
     "codePostal": "33290",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9216,
+    "lon": -0.61,
+    "dep": "33"
   },
   {
     "nom": "Bruges",
     "slug": "bruges",
     "codePostal": "33520",
     "departement": "Gironde",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8893,
+    "lon": -0.6029,
+    "dep": "33"
   },
   {
     "nom": "Dax",
     "slug": "dax",
     "codePostal": "40100",
     "departement": "Landes",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.7025,
+    "lon": -1.0637,
+    "dep": "40"
   },
   {
     "nom": "Mont-de-Marsan",
     "slug": "mont-de-marsan",
     "codePostal": "40000",
     "departement": "Landes",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.8931,
+    "lon": -0.5009,
+    "dep": "40"
   },
   {
     "nom": "Biscarrosse",
     "slug": "biscarrosse",
     "codePostal": "40600",
     "departement": "Landes",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.4077,
+    "lon": -1.1525,
+    "dep": "40"
   },
   {
     "nom": "Saint-Paul-lès-Dax",
     "slug": "saint-paul-les-dax",
     "codePostal": "40990",
     "departement": "Landes",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.7485,
+    "lon": -1.0941,
+    "dep": "40"
   },
   {
     "nom": "Oloron-Sainte-Marie",
     "slug": "oloron-sainte-marie",
     "codePostal": "64400",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.1679,
+    "lon": -0.5954,
+    "dep": "64"
   },
   {
     "nom": "Orthez",
     "slug": "orthez",
     "codePostal": "64300",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.4945,
+    "lon": -0.7777,
+    "dep": "64"
   },
   {
     "nom": "Hendaye",
     "slug": "hendaye",
     "codePostal": "64700",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3635,
+    "lon": -1.7627,
+    "dep": "64"
   },
   {
     "nom": "Saint-Jean-de-Luz",
     "slug": "saint-jean-de-luz",
     "codePostal": "64500",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3934,
+    "lon": -1.6337,
+    "dep": "64"
   },
   {
     "nom": "Mourenx",
     "slug": "mourenx",
     "codePostal": "64150",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.374,
+    "lon": -0.6156,
+    "dep": "64"
   },
   {
     "nom": "Lons",
     "slug": "lons",
     "codePostal": "64140",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3253,
+    "lon": -0.4067,
+    "dep": "64"
   },
   {
     "nom": "Billère",
     "slug": "billere",
     "codePostal": "64140",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3064,
+    "lon": -0.3952,
+    "dep": "64"
   },
   {
     "nom": "Lescar",
     "slug": "lescar",
     "codePostal": "64230",
     "departement": "Pyrénées-Atlantiques",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3412,
+    "lon": -0.4303,
+    "dep": "64"
   },
   {
     "nom": "Alès",
     "slug": "ales",
     "codePostal": "30100",
     "departement": "Gard",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 44.125,
+    "lon": 4.0905,
+    "dep": "30"
   },
   {
     "nom": "Lunel",
     "slug": "lunel",
     "codePostal": "34400",
     "departement": "Hérault",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.678,
+    "lon": 4.1329,
+    "dep": "34"
   },
   {
     "nom": "Frontignan",
     "slug": "frontignan",
     "codePostal": "34110",
     "departement": "Hérault",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.4486,
+    "lon": 3.7493,
+    "dep": "34"
   },
   {
     "nom": "Lattes",
     "slug": "lattes",
     "codePostal": "34970",
     "departement": "Hérault",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.567,
+    "lon": 3.899,
+    "dep": "34"
   },
   {
     "nom": "Castelnau-le-Lez",
     "slug": "castelnau-le-lez",
     "codePostal": "34170",
     "departement": "Hérault",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.6372,
+    "lon": 3.9113,
+    "dep": "34"
   },
   {
     "nom": "Rodez",
     "slug": "rodez",
     "codePostal": "12000",
     "departement": "Aveyron",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 44.3591,
+    "lon": 2.5699,
+    "dep": "12"
   },
   {
     "nom": "Millau",
     "slug": "millau",
     "codePostal": "12100",
     "departement": "Aveyron",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 44.0982,
+    "lon": 3.1176,
+    "dep": "12"
   },
   {
     "nom": "Cahors",
     "slug": "cahors",
     "codePostal": "46000",
     "departement": "Lot",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 44.4565,
+    "lon": 1.439,
+    "dep": "46"
   },
   {
     "nom": "Auch",
     "slug": "auch",
     "codePostal": "32000",
     "departement": "Gers",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.6602,
+    "lon": 0.5673,
+    "dep": "32"
   },
   {
     "nom": "Foix",
     "slug": "foix",
     "codePostal": "09000",
     "departement": "Ariège",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 42.9701,
+    "lon": 1.609,
+    "dep": "09"
   },
   {
     "nom": "Pamiers",
     "slug": "pamiers",
     "codePostal": "09100",
     "departement": "Ariège",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.1278,
+    "lon": 1.6168,
+    "dep": "09"
   },
   {
     "nom": "Mende",
     "slug": "mende",
     "codePostal": "48000",
     "departement": "Lozère",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 44.5349,
+    "lon": 3.4909,
+    "dep": "48"
   },
   {
     "nom": "Muret",
     "slug": "muret",
     "codePostal": "31600",
     "departement": "Haute-Garonne",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.4407,
+    "lon": 1.2987,
+    "dep": "31"
   },
   {
     "nom": "Colomiers",
     "slug": "colomiers",
     "codePostal": "31770",
     "departement": "Haute-Garonne",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.6116,
+    "lon": 1.3245,
+    "dep": "31"
   },
   {
     "nom": "Blagnac",
     "slug": "blagnac",
     "codePostal": "31700",
     "departement": "Haute-Garonne",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.641,
+    "lon": 1.377,
+    "dep": "31"
   },
   {
     "nom": "Tournefeuille",
     "slug": "tournefeuille",
     "codePostal": "31170",
     "departement": "Haute-Garonne",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.5747,
+    "lon": 1.3338,
+    "dep": "31"
   },
   {
     "nom": "Castelnaudary",
     "slug": "castelnaudary",
     "codePostal": "11400",
     "departement": "Aude",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.3201,
+    "lon": 1.9613,
+    "dep": "11"
   },
   {
     "nom": "Bagnols-sur-Cèze",
     "slug": "bagnols-sur-ceze",
     "codePostal": "30200",
     "departement": "Gard",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 44.1622,
+    "lon": 4.6244,
+    "dep": "30"
   },
   {
     "nom": "Beaucaire",
     "slug": "beaucaire",
     "codePostal": "30300",
     "departement": "Gard",
-    "region": "Occitanie"
+    "region": "Occitanie",
+    "lat": 43.7815,
+    "lon": 4.5912,
+    "dep": "30"
   },
   {
     "nom": "Gap",
     "slug": "gap",
     "codePostal": "05000",
     "departement": "Hautes-Alpes",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 44.5797,
+    "lon": 6.0616,
+    "dep": "05"
   },
   {
     "nom": "Manosque",
     "slug": "manosque",
     "codePostal": "04100",
     "departement": "Alpes-de-Haute-Provence",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.8293,
+    "lon": 5.7896,
+    "dep": "04"
   },
   {
     "nom": "Digne-les-Bains",
     "slug": "digne-les-bains",
     "codePostal": "04000",
     "departement": "Alpes-de-Haute-Provence",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 44.0954,
+    "lon": 6.2495,
+    "dep": "04"
   },
   {
     "nom": "La Ciotat",
     "slug": "la-ciotat",
     "codePostal": "13600",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.1882,
+    "lon": 5.6175,
+    "dep": "13"
   },
   {
     "nom": "Vitrolles",
     "slug": "vitrolles",
     "codePostal": "13127",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.4509,
+    "lon": 5.2656,
+    "dep": "13"
   },
   {
     "nom": "Marignane",
     "slug": "marignane",
     "codePostal": "13700",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.4218,
+    "lon": 5.2178,
+    "dep": "13"
   },
   {
     "nom": "Menton",
     "slug": "menton",
     "codePostal": "06500",
     "departement": "Alpes-Maritimes",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.7961,
+    "lon": 7.498,
+    "dep": "06"
   },
   {
     "nom": "Saint-Raphaël",
     "slug": "saint-raphael",
     "codePostal": "83700",
     "departement": "Var",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.4582,
+    "lon": 6.8483,
+    "dep": "83"
   },
   {
     "nom": "Six-Fours-les-Plages",
     "slug": "six-fours-les-plages",
     "codePostal": "83140",
     "departement": "Var",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.0843,
+    "lon": 5.8079,
+    "dep": "83"
   },
   {
     "nom": "Sainte-Maxime",
     "slug": "sainte-maxime",
     "codePostal": "83120",
     "departement": "Var",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.3584,
+    "lon": 6.6139,
+    "dep": "83"
   },
   {
     "nom": "Pertuis",
     "slug": "pertuis",
     "codePostal": "84120",
     "departement": "Vaucluse",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.6931,
+    "lon": 5.5345,
+    "dep": "84"
   },
   {
     "nom": "Miramas",
     "slug": "miramas",
     "codePostal": "13140",
     "departement": "Bouches-du-Rhône",
-    "region": "Provence-Alpes-Côte d'Azur"
+    "region": "Provence-Alpes-Côte d'Azur",
+    "lat": 43.5841,
+    "lon": 5.0148,
+    "dep": "13"
   },
   {
     "nom": "Aubenas",
     "slug": "aubenas",
     "codePostal": "07200",
     "departement": "Ardèche",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.6107,
+    "lon": 4.3942,
+    "dep": "07"
   },
   {
     "nom": "Privas",
     "slug": "privas",
     "codePostal": "07000",
     "departement": "Ardèche",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.7214,
+    "lon": 4.5949,
+    "dep": "07"
   },
   {
     "nom": "Annonay",
     "slug": "annonay",
     "codePostal": "07100",
     "departement": "Ardèche",
-    "region": "Auvergne-Rhône-Alpes"
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.2449,
+    "lon": 4.6419,
+    "dep": "07"
   },
   {
     "nom": "Villeneuve-sur-Lot",
     "slug": "villeneuve-sur-lot",
     "codePostal": "47300",
     "departement": "Lot-et-Garonne",
-    "region": "Nouvelle-Aquitaine"
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.4183,
+    "lon": 0.7484,
+    "dep": "47"
   }
 ]

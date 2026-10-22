@@ -14,7 +14,12 @@ const FORBIDDEN = /\b(expert[es]? (porsche|en|de la)|spécialiste|leader|n°\s?1
 const decode = s => s.replace(/&amp;/g, '&').replace(/&#39;|&apos;/g, '\'').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
 (async () => {
-    const sm = await (await fetch(`${base}/sitemap.xml`)).text();
+    let sm = await (await fetch(`${base}/sitemap.xml`)).text();
+    // Index de sitemaps : on lit chaque sous-fichier.
+    if (sm.includes('<sitemapindex')) {
+        const subs = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].replace(SITE, ''));
+        sm = (await Promise.all(subs.map(async s => (await fetch(base + s)).text()))).join('\n');
+    }
     const urls = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].replace(SITE, '') || '/');
     const problems = [];
     const titles = new Map(); const descs = new Map();

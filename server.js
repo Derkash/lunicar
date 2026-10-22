@@ -10,6 +10,7 @@ const pages = require('./lib/pages');
 const idf = require('./lib/idf');
 const fichePlaque = require('./lib/vehicule');
 const zones = require('./lib/zones');
+const DEPTS = require('./lib/departements');
 const store = require('./lib/store');
 const estimation = require('./lib/estimation');
 const adminRouter = require('./lib/admin');
@@ -232,6 +233,10 @@ MODELS.forEach(m => {
 if (LOCAL.france) app.get(`/${zones.FRANCE_SLUG}`, (req, res) => html(res, pages.france(LOCAL.france, CITIES)));
 Object.values(LOCAL.regions || {}).forEach(r => {
     app.get(`/${r.slug}`, (req, res) => html(res, pages.region(r, CITIES)));
+});
+// Départements hors Île-de-France rédigés (data/local.json, clé departements)
+DEPTS.LIST.forEach(d => {
+    app.get(`/${d.slug}`, (req, res) => html(res, pages.departement(d, CITIES)));
 });
 if (LOCAL.aPropos) app.get('/a-propos', (req, res) => html(res, pages.aPropos(LOCAL.aPropos)));
 
@@ -942,7 +947,8 @@ function indexablePages() {
     zones.IDF_CITIES.filter(s => s !== 'paris').forEach(s => add(`/reprise-auto-${s}`, '0.7', ((LOCAL.villes || {})[s] || {}).updated || T));
     if (LOCAL.france) add(`/${zones.FRANCE_SLUG}`, '0.9', LOCAL.france.updated || T);
     Object.values(LOCAL.regions || {}).forEach(r => add(`/${r.slug}`, '0.8', r.updated || T));
-    zones.FRANCE_CITIES.forEach(s => add(`/reprise-auto-${s}`, '0.7'));
+    DEPTS.LIST.forEach(d => add(`/${d.slug}`, '0.8', d.updated || T));
+    zones.FRANCE_CITIES.forEach(s => add(`/reprise-auto-${s}`, '0.7', ((LOCAL.villes || {})[s] || {}).updated || T));
     if (LOCAL.aPropos) add('/a-propos', '0.5');
     add('/garanties', '0.5');
     add('/articles', '0.6');
@@ -954,14 +960,24 @@ function indexablePages() {
     return list;
 }
 
-app.get('/sitemap.xml', (req, res) => {
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+// Plan du site en deux fichiers (pages / villes) pour suivre l'indexation de chaque type dans la Search Console.
+const urlset = list => `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${indexablePages().map(u => `  <url><loc>${SITE.baseUrl}${u.loc === '/' ? '/' : u.loc}</loc><lastmod>${u.lastmod}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}
+${list.map(u => `  <url><loc>${SITE.baseUrl}${u.loc === '/' ? '/' : u.loc}</loc><lastmod>${u.lastmod}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}
 </urlset>`;
+const isCityUrl = u => u.loc.startsWith('/reprise-auto-') && u.loc !== '/reprise-auto-paris';
+app.get('/sitemap.xml', (req, res) => {
+    const all = indexablePages();
+    const last = list => list.reduce((m, u) => (u.lastmod > m ? u.lastmod : m), '');
     res.header('Content-Type', 'application/xml');
-    res.send(xml);
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap><loc>${SITE.baseUrl}/sitemap-pages.xml</loc><lastmod>${last(all.filter(u => !isCityUrl(u)))}</lastmod></sitemap>
+  <sitemap><loc>${SITE.baseUrl}/sitemap-villes.xml</loc><lastmod>${last(all.filter(isCityUrl))}</lastmod></sitemap>
+</sitemapindex>`);
 });
+app.get('/sitemap-pages.xml', (req, res) => { res.header('Content-Type', 'application/xml'); res.send(urlset(indexablePages().filter(u => !isCityUrl(u)))); });
+app.get('/sitemap-villes.xml', (req, res) => { res.header('Content-Type', 'application/xml'); res.send(urlset(indexablePages().filter(isCityUrl))); });
 
 // Sitemap temporaire des anciennes adresses redirigées (301) : il pousse Google et Bing à les
 // revisiter vite, à constater la redirection et à remplacer l'ancienne page dans leurs résultats.
