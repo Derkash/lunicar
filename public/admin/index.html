@@ -2738,7 +2738,7 @@ body.modal-ouvert { overflow: hidden; }
                 <label class="f">Message<textarea class="in" id="mailTxt" rows="9" maxlength="${(I && I.limites || {}).texte || 10000}" placeholder="Votre message au client…">${esc(mailBrouillon.texte)}</textarea></label>
                 <p class="err" id="mailErr"></p>
                 <div class="mail-pied"><small>${E.from ? 'De : ' + esc(E.from) + (E.reply_to ? ' · réponses à ' + esc(E.reply_to) : '') : ''}</small>
-                    <div class="btns"><button class="btn btn-p" id="mailEnv"${I && E.envoi ? '' : ' disabled'}><svg><use href="#i-envoi"/></svg>Envoyer au client</button></div></div>
+                    <div class="btns"><button type="button" class="btn" id="mailApercu"${I && E.envoi ? '' : ' disabled'}>Envoyer un aperçu…</button><button class="btn btn-p" id="mailEnv"${I && E.envoi ? '' : ' disabled'}><svg><use href="#i-envoi"/></svg>Envoyer au client</button></div></div>
             </form>` : ''}
             <div class="pas-int">
                 <button type="button" class="btn btn-d" id="pasInt"><svg><use href="#i-non"/></svg>${nonRetenue ? 'Pas intéressé · déjà classée' : 'Pas intéressé'}</button>
@@ -2778,6 +2778,20 @@ body.modal-ouvert { overflow: hidden; }
                 }
             };
         }
+        // Aperçu : le message tel quel (gabarit compris) envoyé à des adresses internes, sans rien changer à la demande.
+        if ($('#mailApercu')) $('#mailApercu').onclick = async () => {
+            const objet = $('#mailObjet').value.trim(), texte = $('#mailTxt').value.trim();
+            $('#mailErr').textContent = '';
+            if (!objet || !texte) { $('#mailErr').textContent = 'Objet et message obligatoires.'; return; }
+            let dernier = ''; try { dernier = localStorage.getItem('lunicar-apercu') || ''; } catch (e) {}
+            const a = window.prompt('Envoyer un aperçu à (adresses séparées par des virgules) :', dernier);
+            if (!a || !a.trim()) return;
+            try { localStorage.setItem('lunicar-apercu', a.trim()); } catch (e) {}
+            const b = $('#mailApercu'); b.disabled = true; b.textContent = 'Envoi…';
+            try { const r = await api('/api/admin/demandes/' + ref + '/email/apercu', { method: 'POST', body: JSON.stringify({ objet, texte, a }) }); toast('Aperçu envoyé à ' + r.envoye_a.join(', ')); }
+            catch (e) { $('#mailErr').textContent = e.message; toast('Aperçu non envoyé'); }
+            b.disabled = false; b.textContent = 'Envoyer un aperçu…';
+        };
         if ($('#mailRep')) $('#mailRep').onclick = async () => {
             const b = $('#mailRep'); b.disabled = true; b.innerHTML = '<span class="spin"></span> Lecture de la boîte…';
             try { const r = await api('/api/admin/demandes/' + ref + '/email/reponses', { method: 'POST' }); courant = r; fiche(); maj(r); toast(r.nouveaux ? r.nouveaux + ' réponse' + (r.nouveaux > 1 ? 's' : '') + ' ajoutée' + (r.nouveaux > 1 ? 's' : '') : 'Aucune nouvelle réponse'); }
