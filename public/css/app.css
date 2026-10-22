@@ -614,3 +614,7 @@ select.q-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://
     * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 .section-steps[hidden] { display: none; }
+
+/* Réseaux sociaux du pied de page : liens texte, sans bibliothèque d'icônes. */
+.footer-social { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; margin-top: 14px; }
+.footer-social span { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-400); }
