@@ -68,7 +68,7 @@
         banner.innerHTML = `
             <div class="cookie-banner-content">
                 <div class="cookie-banner-text">
-                    <p>Nous utilisons des cookies pour analyser notre trafic et ameliorer votre experience.
+                    <p>Nous utilisons des cookies pour mesurer l'audience du site et améliorer votre expérience.
                     <a href="/politique-confidentialite">En savoir plus</a></p>
                 </div>
                 <div class="cookie-banner-actions">
@@ -81,15 +81,13 @@
                 <div class="cookie-option">
                     <label>
                         <input type="checkbox" checked disabled>
-                        <span>Cookies essentiels</span>
-                        <small>Necessaires au fonctionnement du site</small>
+                        <span class="cookie-option-text"><span>Cookies essentiels</span><small>Nécessaires au fonctionnement du site</small></span>
                     </label>
                 </div>
                 <div class="cookie-option">
                     <label>
                         <input type="checkbox" id="cookieAnalytics">
-                        <span>Cookies analytiques</span>
-                        <small>Google Analytics - mesure d'audience</small>
+                        <span class="cookie-option-text"><span>Cookies de mesure d'audience</span><small>Google Analytics : pages vues et parcours, sans donnée revendue</small></span>
                     </label>
                 </div>
                 <div class="cookie-customize-actions">

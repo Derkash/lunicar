@@ -169,10 +169,24 @@ const CSP = [
     "form-action 'self'"
 ].join('; ');
 
+// Typographie française : espace insécable avant « : ; ? ! », après « et avant », et entre un nombre et %, € ou km,
+// pour qu'un titre ne passe jamais à la ligne juste avant sa ponctuation. Ni les balises, ni les scripts ne sont touchés.
+const typoFr = doc => {
+    let skip = false;
+    return doc.split(/(<[^>]*>)/).map(seg => {
+        if (seg.startsWith('<')) {
+            if (/^<(script|style|textarea)\b/i.test(seg)) skip = true;
+            else if (/^<\/(script|style|textarea)>/i.test(seg)) skip = false;
+            return seg;
+        }
+        if (skip || !seg.trim()) return seg;
+        return seg.replace(/ ([:;?!»])/g, '\u00a0$1').replace(/« /g, '«\u00a0').replace(/(\d) (%|€|km\b)/g, '$1\u00a0$2');
+    }).join('');
+};
 const html = (res, doc, status = 200) => {
     res.set('Content-Security-Policy', CSP);
     res.set('Cache-Control', status === 200 ? 'public, max-age=300, stale-while-revalidate=86400' : 'no-store');
-    return res.status(status).type('html').send(doc);
+    return res.status(status).type('html').send(typoFr(doc));
 };
 
 // Contenus rédigés, lus une fois au démarrage (ils ne changent qu'au déploiement).
