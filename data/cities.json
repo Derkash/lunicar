@@ -5948,5 +5948,3025 @@
     "lat": 50.6794,
     "lon": 3.2398,
     "dep": "59"
+  },
+  {
+    "nom": "Saint-Denis-lès-Bourg",
+    "slug": "saint-denis-les-bourg",
+    "codePostal": "01000",
+    "departement": "Ain",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.2097,
+    "lon": 5.1825,
+    "dep": "01"
+  },
+  {
+    "nom": "Cessy",
+    "slug": "cessy",
+    "codePostal": "01170",
+    "departement": "Ain",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.3157,
+    "lon": 6.082,
+    "dep": "01"
+  },
+  {
+    "nom": "Reyrieux",
+    "slug": "reyrieux",
+    "codePostal": "01600",
+    "departement": "Ain",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9368,
+    "lon": 4.8314,
+    "dep": "01"
+  },
+  {
+    "nom": "Châtillon-sur-Chalaronne",
+    "slug": "chatillon-sur-chalaronne",
+    "codePostal": "01400",
+    "departement": "Ain",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.1264,
+    "lon": 4.9549,
+    "dep": "01"
+  },
+  {
+    "nom": "Beynost",
+    "slug": "beynost",
+    "codePostal": "01700",
+    "departement": "Ain",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8359,
+    "lon": 4.9964,
+    "dep": "01"
+  },
+  {
+    "nom": "Villars-les-Dombes",
+    "slug": "villars-les-dombes",
+    "codePostal": "01330",
+    "departement": "Ain",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46,
+    "lon": 5.0443,
+    "dep": "01"
+  },
+  {
+    "nom": "Cusset",
+    "slug": "cusset",
+    "codePostal": "03300",
+    "departement": "Allier",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.1342,
+    "lon": 3.4774,
+    "dep": "03"
+  },
+  {
+    "nom": "Yzeure",
+    "slug": "yzeure",
+    "codePostal": "03400",
+    "departement": "Allier",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.5662,
+    "lon": 3.3854,
+    "dep": "03"
+  },
+  {
+    "nom": "Bellerive-sur-Allier",
+    "slug": "bellerive-sur-allier",
+    "codePostal": "03700",
+    "departement": "Allier",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.1202,
+    "lon": 3.4025,
+    "dep": "03"
+  },
+  {
+    "nom": "Domérat",
+    "slug": "domerat",
+    "codePostal": "03410",
+    "departement": "Allier",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.3706,
+    "lon": 2.5462,
+    "dep": "03"
+  },
+  {
+    "nom": "Commentry",
+    "slug": "commentry",
+    "codePostal": "03600",
+    "departement": "Allier",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.2734,
+    "lon": 2.7509,
+    "dep": "03"
+  },
+  {
+    "nom": "Gannat",
+    "slug": "gannat",
+    "codePostal": "03800",
+    "departement": "Allier",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.0991,
+    "lon": 3.1708,
+    "dep": "03"
+  },
+  {
+    "nom": "Villette-d'Anthon",
+    "slug": "villette-d-anthon",
+    "codePostal": "38280",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7878,
+    "lon": 5.1019,
+    "dep": "38"
+  },
+  {
+    "nom": "Montbrison",
+    "slug": "montbrison",
+    "codePostal": "42600",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6016,
+    "lon": 4.0719,
+    "dep": "42"
+  },
+  {
+    "nom": "Riorges",
+    "slug": "riorges",
+    "codePostal": "42153",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.0421,
+    "lon": 4.0377,
+    "dep": "42"
+  },
+  {
+    "nom": "Andrézieux-Bouthéon",
+    "slug": "andrezieux-boutheon",
+    "codePostal": "42160",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5353,
+    "lon": 4.2773,
+    "dep": "42"
+  },
+  {
+    "nom": "Veauche",
+    "slug": "veauche",
+    "codePostal": "42340",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5616,
+    "lon": 4.29,
+    "dep": "42"
+  },
+  {
+    "nom": "Feurs",
+    "slug": "feurs",
+    "codePostal": "42110",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.732,
+    "lon": 4.2313,
+    "dep": "42"
+  },
+  {
+    "nom": "Mably",
+    "slug": "mably",
+    "codePostal": "42300",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.0916,
+    "lon": 4.0657,
+    "dep": "42"
+  },
+  {
+    "nom": "Le Coteau",
+    "slug": "le-coteau",
+    "codePostal": "42120",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.0217,
+    "lon": 4.0925,
+    "dep": "42"
+  },
+  {
+    "nom": "Sury-le-Comtal",
+    "slug": "sury-le-comtal",
+    "codePostal": "42450",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5426,
+    "lon": 4.1784,
+    "dep": "42"
+  },
+  {
+    "nom": "Saint-Galmier",
+    "slug": "saint-galmier",
+    "codePostal": "42330",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6038,
+    "lon": 4.314,
+    "dep": "42"
+  },
+  {
+    "nom": "Montrond-les-Bains",
+    "slug": "montrond-les-bains",
+    "codePostal": "42210",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.638,
+    "lon": 4.2429,
+    "dep": "42"
+  },
+  {
+    "nom": "Chazelles-sur-Lyon",
+    "slug": "chazelles-sur-lyon",
+    "codePostal": "42140",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6293,
+    "lon": 4.3717,
+    "dep": "42"
+  },
+  {
+    "nom": "Villerest",
+    "slug": "villerest",
+    "codePostal": "42300",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9981,
+    "lon": 4.0264,
+    "dep": "42"
+  },
+  {
+    "nom": "Saint-Marcellin-en-Forez",
+    "slug": "saint-marcellin-en-forez",
+    "codePostal": "42680",
+    "departement": "Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.4883,
+    "lon": 4.1672,
+    "dep": "42"
+  },
+  {
+    "nom": "Cournon-d'Auvergne",
+    "slug": "cournon-d-auvergne",
+    "codePostal": "63800",
+    "departement": "Puy-de-Dôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.742,
+    "lon": 3.1885,
+    "dep": "63"
+  },
+  {
+    "nom": "Cébazat",
+    "slug": "cebazat",
+    "codePostal": "63118",
+    "departement": "Puy-de-Dôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8314,
+    "lon": 3.1094,
+    "dep": "63"
+  },
+  {
+    "nom": "Lempdes",
+    "slug": "lempdes",
+    "codePostal": "63370",
+    "departement": "Puy-de-Dôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7719,
+    "lon": 3.192,
+    "dep": "63"
+  },
+  {
+    "nom": "Romagnat",
+    "slug": "romagnat",
+    "codePostal": "63540",
+    "departement": "Puy-de-Dôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7215,
+    "lon": 3.08,
+    "dep": "63"
+  },
+  {
+    "nom": "Ceyrat",
+    "slug": "ceyrat",
+    "codePostal": "63122",
+    "departement": "Puy-de-Dôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7403,
+    "lon": 3.0651,
+    "dep": "63"
+  },
+  {
+    "nom": "Lezoux",
+    "slug": "lezoux",
+    "codePostal": "63190",
+    "departement": "Puy-de-Dôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8328,
+    "lon": 3.3888,
+    "dep": "63"
+  },
+  {
+    "nom": "Ambert",
+    "slug": "ambert",
+    "codePostal": "63600",
+    "departement": "Puy-de-Dôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5516,
+    "lon": 3.7556,
+    "dep": "63"
+  },
+  {
+    "nom": "Châtel-Guyon",
+    "slug": "chatel-guyon",
+    "codePostal": "63140",
+    "departement": "Puy-de-Dôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9212,
+    "lon": 3.0634,
+    "dep": "63"
+  },
+  {
+    "nom": "Le Cendre",
+    "slug": "le-cendre",
+    "codePostal": "63670",
+    "departement": "Puy-de-Dôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7164,
+    "lon": 3.1947,
+    "dep": "63"
+  },
+  {
+    "nom": "Vic-le-Comte",
+    "slug": "vic-le-comte",
+    "codePostal": "63270",
+    "departement": "Puy-de-Dôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6468,
+    "lon": 3.2428,
+    "dep": "63"
+  },
+  {
+    "nom": "Tassin-la-Demi-Lune",
+    "slug": "tassin-la-demi-lune",
+    "codePostal": "69160",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7637,
+    "lon": 4.7521,
+    "dep": "69"
+  },
+  {
+    "nom": "Sainte-Foy-lès-Lyon",
+    "slug": "sainte-foy-les-lyon",
+    "codePostal": "69110",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7362,
+    "lon": 4.7926,
+    "dep": "69"
+  },
+  {
+    "nom": "Saint-Genis-Laval",
+    "slug": "saint-genis-laval",
+    "codePostal": "69230",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6922,
+    "lon": 4.7929,
+    "dep": "69"
+  },
+  {
+    "nom": "Écully",
+    "slug": "ecully",
+    "codePostal": "69130",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7822,
+    "lon": 4.7737,
+    "dep": "69"
+  },
+  {
+    "nom": "Chassieu",
+    "slug": "chassieu",
+    "codePostal": "69680",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7366,
+    "lon": 4.9638,
+    "dep": "69"
+  },
+  {
+    "nom": "Chaponost",
+    "slug": "chaponost",
+    "codePostal": "69630",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7089,
+    "lon": 4.7452,
+    "dep": "69"
+  },
+  {
+    "nom": "Dardilly",
+    "slug": "dardilly",
+    "codePostal": "69570",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8133,
+    "lon": 4.7466,
+    "dep": "69"
+  },
+  {
+    "nom": "Irigny",
+    "slug": "irigny",
+    "codePostal": "69540",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6747,
+    "lon": 4.8143,
+    "dep": "69"
+  },
+  {
+    "nom": "Anse",
+    "slug": "anse",
+    "codePostal": "69480",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9451,
+    "lon": 4.7049,
+    "dep": "69"
+  },
+  {
+    "nom": "Gleizé",
+    "slug": "gleize",
+    "codePostal": "69400",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9915,
+    "lon": 4.6883,
+    "dep": "69"
+  },
+  {
+    "nom": "Neuville-sur-Saône",
+    "slug": "neuville-sur-saone",
+    "codePostal": "69250",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8821,
+    "lon": 4.8404,
+    "dep": "69"
+  },
+  {
+    "nom": "Saint-Didier-au-Mont-d'Or",
+    "slug": "saint-didier-au-mont-d-or",
+    "codePostal": "69370",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8159,
+    "lon": 4.8003,
+    "dep": "69"
+  },
+  {
+    "nom": "Sathonay-Camp",
+    "slug": "sathonay-camp",
+    "codePostal": "69580",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8255,
+    "lon": 4.8792,
+    "dep": "69"
+  },
+  {
+    "nom": "Fontaines-sur-Saône",
+    "slug": "fontaines-sur-saone",
+    "codePostal": "69270",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8268,
+    "lon": 4.8537,
+    "dep": "69"
+  },
+  {
+    "nom": "Brindas",
+    "slug": "brindas",
+    "codePostal": "69126",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7183,
+    "lon": 4.703,
+    "dep": "69"
+  },
+  {
+    "nom": "Lentilly",
+    "slug": "lentilly",
+    "codePostal": "69210",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8166,
+    "lon": 4.6691,
+    "dep": "69"
+  },
+  {
+    "nom": "L'Arbresle",
+    "slug": "l-arbresle",
+    "codePostal": "69210",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8347,
+    "lon": 4.6102,
+    "dep": "69"
+  },
+  {
+    "nom": "La Mulatière",
+    "slug": "la-mulatiere",
+    "codePostal": "69350",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7338,
+    "lon": 4.8118,
+    "dep": "69"
+  },
+  {
+    "nom": "Grézieu-la-Varenne",
+    "slug": "grezieu-la-varenne",
+    "codePostal": "69290",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7469,
+    "lon": 4.6799,
+    "dep": "69"
+  },
+  {
+    "nom": "Saint-Cyr-au-Mont-d'Or",
+    "slug": "saint-cyr-au-mont-d-or",
+    "codePostal": "69450",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8216,
+    "lon": 4.8162,
+    "dep": "69"
+  },
+  {
+    "nom": "Champagne-au-Mont-d'Or",
+    "slug": "champagne-au-mont-d-or",
+    "codePostal": "69410",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8006,
+    "lon": 4.7864,
+    "dep": "69"
+  },
+  {
+    "nom": "Vaugneray",
+    "slug": "vaugneray",
+    "codePostal": "69670",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.73,
+    "lon": 4.6502,
+    "dep": "69"
+  },
+  {
+    "nom": "Jonage",
+    "slug": "jonage",
+    "codePostal": "69330",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7886,
+    "lon": 5.0377,
+    "dep": "69"
+  },
+  {
+    "nom": "Thizy-les-Bourgs",
+    "slug": "thizy-les-bourgs",
+    "codePostal": "69240",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.0505,
+    "lon": 4.3109,
+    "dep": "69"
+  },
+  {
+    "nom": "Genay",
+    "slug": "genay",
+    "codePostal": "69730",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8989,
+    "lon": 4.8389,
+    "dep": "69"
+  },
+  {
+    "nom": "Saint-Genis-les-Ollières",
+    "slug": "saint-genis-les-ollieres",
+    "codePostal": "69290",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7614,
+    "lon": 4.7248,
+    "dep": "69"
+  },
+  {
+    "nom": "Charbonnières-les-Bains",
+    "slug": "charbonnieres-les-bains",
+    "codePostal": "69260",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7792,
+    "lon": 4.743,
+    "dep": "69"
+  },
+  {
+    "nom": "Vindry-sur-Turdine",
+    "slug": "vindry-sur-turdine",
+    "codePostal": "69490",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8886,
+    "lon": 4.4948,
+    "dep": "69"
+  },
+  {
+    "nom": "Chenôve",
+    "slug": "chenove",
+    "codePostal": "21300",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.2911,
+    "lon": 5.0001,
+    "dep": "21"
+  },
+  {
+    "nom": "Talant",
+    "slug": "talant",
+    "codePostal": "21240",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.3389,
+    "lon": 4.9959,
+    "dep": "21"
+  },
+  {
+    "nom": "Chevigny-Saint-Sauveur",
+    "slug": "chevigny-saint-sauveur",
+    "codePostal": "21800",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.2986,
+    "lon": 5.132,
+    "dep": "21"
+  },
+  {
+    "nom": "Fontaine-lès-Dijon",
+    "slug": "fontaine-les-dijon",
+    "codePostal": "21121",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.3477,
+    "lon": 5.025,
+    "dep": "21"
+  },
+  {
+    "nom": "Quetigny",
+    "slug": "quetigny",
+    "codePostal": "21800",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.3209,
+    "lon": 5.1123,
+    "dep": "21"
+  },
+  {
+    "nom": "Longvic",
+    "slug": "longvic",
+    "codePostal": "21600",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.2855,
+    "lon": 5.0585,
+    "dep": "21"
+  },
+  {
+    "nom": "Auxonne",
+    "slug": "auxonne",
+    "codePostal": "21130",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.1887,
+    "lon": 5.407,
+    "dep": "21"
+  },
+  {
+    "nom": "Saint-Apollinaire",
+    "slug": "saint-apollinaire",
+    "codePostal": "21850",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.3367,
+    "lon": 5.0939,
+    "dep": "21"
+  },
+  {
+    "nom": "Châtillon-sur-Seine",
+    "slug": "chatillon-sur-seine",
+    "codePostal": "21400",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.8593,
+    "lon": 4.582,
+    "dep": "21"
+  },
+  {
+    "nom": "Marsannay-la-Côte",
+    "slug": "marsannay-la-cote",
+    "codePostal": "21160",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.2803,
+    "lon": 4.9875,
+    "dep": "21"
+  },
+  {
+    "nom": "Nuits-Saint-Georges",
+    "slug": "nuits-saint-georges",
+    "codePostal": "21700",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.1518,
+    "lon": 4.9414,
+    "dep": "21"
+  },
+  {
+    "nom": "Villers-le-Lac",
+    "slug": "villers-le-lac",
+    "codePostal": "25130",
+    "departement": "Doubs",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.073,
+    "lon": 6.6946,
+    "dep": "25"
+  },
+  {
+    "nom": "Baume-les-Dames",
+    "slug": "baume-les-dames",
+    "codePostal": "25110",
+    "departement": "Doubs",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.3492,
+    "lon": 6.3426,
+    "dep": "25"
+  },
+  {
+    "nom": "Saint-Vit",
+    "slug": "saint-vit",
+    "codePostal": "25410",
+    "departement": "Doubs",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.1882,
+    "lon": 5.8266,
+    "dep": "25"
+  },
+  {
+    "nom": "Héricourt",
+    "slug": "hericourt",
+    "codePostal": "70400",
+    "departement": "Haute-Saône",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.5666,
+    "lon": 6.7594,
+    "dep": "70"
+  },
+  {
+    "nom": "Lure",
+    "slug": "lure",
+    "codePostal": "70200",
+    "departement": "Haute-Saône",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.6817,
+    "lon": 6.4933,
+    "dep": "70"
+  },
+  {
+    "nom": "Luxeuil-les-Bains",
+    "slug": "luxeuil-les-bains",
+    "codePostal": "70300",
+    "departement": "Haute-Saône",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.8252,
+    "lon": 6.3578,
+    "dep": "70"
+  },
+  {
+    "nom": "Gray",
+    "slug": "gray",
+    "codePostal": "70100",
+    "departement": "Haute-Saône",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.431,
+    "lon": 5.6153,
+    "dep": "70"
+  },
+  {
+    "nom": "Saint-Claude",
+    "slug": "saint-claude-39",
+    "codePostal": "39200",
+    "departement": "Jura",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.4098,
+    "lon": 5.8802,
+    "dep": "39"
+  },
+  {
+    "nom": "Champagnole",
+    "slug": "champagnole",
+    "codePostal": "39300",
+    "departement": "Jura",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.7423,
+    "lon": 5.8938,
+    "dep": "39"
+  },
+  {
+    "nom": "Hauts de Bienne",
+    "slug": "hauts-de-bienne",
+    "codePostal": "39400",
+    "departement": "Jura",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.5165,
+    "lon": 6.0002,
+    "dep": "39"
+  },
+  {
+    "nom": "Cosne-Cours-sur-Loire",
+    "slug": "cosne-cours-sur-loire",
+    "codePostal": "58200",
+    "departement": "Nièvre",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.414,
+    "lon": 2.9419,
+    "dep": "58"
+  },
+  {
+    "nom": "Varennes-Vauzelles",
+    "slug": "varennes-vauzelles",
+    "codePostal": "58640",
+    "departement": "Nièvre",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.0381,
+    "lon": 3.1447,
+    "dep": "58"
+  },
+  {
+    "nom": "Autun",
+    "slug": "autun",
+    "codePostal": "71400",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.9386,
+    "lon": 4.3038,
+    "dep": "71"
+  },
+  {
+    "nom": "Paray-le-Monial",
+    "slug": "paray-le-monial",
+    "codePostal": "71600",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.4429,
+    "lon": 4.1115,
+    "dep": "71"
+  },
+  {
+    "nom": "Saint-Vallier",
+    "slug": "saint-vallier-71",
+    "codePostal": "71230",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.6457,
+    "lon": 4.3569,
+    "dep": "71"
+  },
+  {
+    "nom": "Charnay-lès-Mâcon",
+    "slug": "charnay-les-macon",
+    "codePostal": "71850",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.3054,
+    "lon": 4.7887,
+    "dep": "71"
+  },
+  {
+    "nom": "Digoin",
+    "slug": "digoin",
+    "codePostal": "71160",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.4863,
+    "lon": 4.0225,
+    "dep": "71"
+  },
+  {
+    "nom": "Gueugnon",
+    "slug": "gueugnon",
+    "codePostal": "71130",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.5923,
+    "lon": 4.0508,
+    "dep": "71"
+  },
+  {
+    "nom": "Louhans-Châteaurenaud",
+    "slug": "louhans-chateaurenaud",
+    "codePostal": "71500",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.6344,
+    "lon": 5.2424,
+    "dep": "71"
+  },
+  {
+    "nom": "Saint-Rémy",
+    "slug": "saint-remy",
+    "codePostal": "71100",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.7583,
+    "lon": 4.8234,
+    "dep": "71"
+  },
+  {
+    "nom": "Châtenoy-le-Royal",
+    "slug": "chatenoy-le-royal",
+    "codePostal": "71880",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.7892,
+    "lon": 4.8074,
+    "dep": "71"
+  },
+  {
+    "nom": "Saint-Marcel",
+    "slug": "saint-marcel-71",
+    "codePostal": "71380",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.7739,
+    "lon": 4.8882,
+    "dep": "71"
+  },
+  {
+    "nom": "Blanzy",
+    "slug": "blanzy",
+    "codePostal": "71450",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.7028,
+    "lon": 4.3907,
+    "dep": "71"
+  },
+  {
+    "nom": "Tournus",
+    "slug": "tournus",
+    "codePostal": "71700",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.568,
+    "lon": 4.9025,
+    "dep": "71"
+  },
+  {
+    "nom": "Chagny",
+    "slug": "chagny",
+    "codePostal": "71150",
+    "departement": "Saône-et-Loire",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.8995,
+    "lon": 4.7764,
+    "dep": "71"
+  },
+  {
+    "nom": "Delle",
+    "slug": "delle",
+    "codePostal": "90100",
+    "departement": "Territoire de Belfort",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.509,
+    "lon": 6.996,
+    "dep": "90"
+  },
+  {
+    "nom": "Valdoie",
+    "slug": "valdoie",
+    "codePostal": "90300",
+    "departement": "Territoire de Belfort",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.6727,
+    "lon": 6.8476,
+    "dep": "90"
+  },
+  {
+    "nom": "Joigny",
+    "slug": "joigny",
+    "codePostal": "89300",
+    "departement": "Yonne",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 48.0093,
+    "lon": 3.4092,
+    "dep": "89"
+  },
+  {
+    "nom": "Migennes",
+    "slug": "migennes",
+    "codePostal": "89400",
+    "departement": "Yonne",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.9715,
+    "lon": 3.5337,
+    "dep": "89"
+  },
+  {
+    "nom": "Avallon",
+    "slug": "avallon",
+    "codePostal": "89200",
+    "departement": "Yonne",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.4808,
+    "lon": 3.9197,
+    "dep": "89"
+  },
+  {
+    "nom": "Châteaugiron",
+    "slug": "chateaugiron",
+    "codePostal": "35410",
+    "departement": "Ille-et-Vilaine",
+    "region": "Bretagne",
+    "lat": 48.0481,
+    "lon": -1.4751,
+    "dep": "35"
+  },
+  {
+    "nom": "Dinard",
+    "slug": "dinard",
+    "codePostal": "35800",
+    "departement": "Ille-et-Vilaine",
+    "region": "Bretagne",
+    "lat": 48.629,
+    "lon": -2.0602,
+    "dep": "35"
+  },
+  {
+    "nom": "Chantepie",
+    "slug": "chantepie",
+    "codePostal": "35135",
+    "departement": "Ille-et-Vilaine",
+    "region": "Bretagne",
+    "lat": 48.0831,
+    "lon": -1.6064,
+    "dep": "35"
+  },
+  {
+    "nom": "Saint-Grégoire",
+    "slug": "saint-gregoire",
+    "codePostal": "35760",
+    "departement": "Ille-et-Vilaine",
+    "region": "Bretagne",
+    "lat": 48.1598,
+    "lon": -1.6815,
+    "dep": "35"
+  },
+  {
+    "nom": "Le Rheu",
+    "slug": "le-rheu",
+    "codePostal": "35650",
+    "departement": "Ille-et-Vilaine",
+    "region": "Bretagne",
+    "lat": 48.0971,
+    "lon": -1.7882,
+    "dep": "35"
+  },
+  {
+    "nom": "Guichen",
+    "slug": "guichen",
+    "codePostal": "35580",
+    "departement": "Ille-et-Vilaine",
+    "region": "Bretagne",
+    "lat": 47.9623,
+    "lon": -1.7969,
+    "dep": "35"
+  },
+  {
+    "nom": "Maen Roch",
+    "slug": "maen-roch",
+    "codePostal": "35460",
+    "departement": "Ille-et-Vilaine",
+    "region": "Bretagne",
+    "lat": 48.3975,
+    "lon": -1.3484,
+    "dep": "35"
+  },
+  {
+    "nom": "La Mézière",
+    "slug": "la-meziere",
+    "codePostal": "35520",
+    "departement": "Ille-et-Vilaine",
+    "region": "Bretagne",
+    "lat": 48.2135,
+    "lon": -1.7504,
+    "dep": "35"
+  },
+  {
+    "nom": "Saint-Avé",
+    "slug": "saint-ave",
+    "codePostal": "56890",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.7008,
+    "lon": -2.7434,
+    "dep": "56"
+  },
+  {
+    "nom": "Ploërmel",
+    "slug": "ploermel",
+    "codePostal": "56800",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.9167,
+    "lon": -2.3769,
+    "dep": "56"
+  },
+  {
+    "nom": "Theix-Noyalo",
+    "slug": "theix-noyalo",
+    "codePostal": "56450",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.6304,
+    "lon": -2.6472,
+    "dep": "56"
+  },
+  {
+    "nom": "Questembert",
+    "slug": "questembert",
+    "codePostal": "56230",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.6643,
+    "lon": -2.4348,
+    "dep": "56"
+  },
+  {
+    "nom": "Elven",
+    "slug": "elven",
+    "codePostal": "56250",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.7319,
+    "lon": -2.5955,
+    "dep": "56"
+  },
+  {
+    "nom": "Surzur",
+    "slug": "surzur",
+    "codePostal": "56450",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.5698,
+    "lon": -2.6246,
+    "dep": "56"
+  },
+  {
+    "nom": "Muzillac",
+    "slug": "muzillac",
+    "codePostal": "56190",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.5484,
+    "lon": -2.4741,
+    "dep": "56"
+  },
+  {
+    "nom": "Guer",
+    "slug": "guer",
+    "codePostal": "56380",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.905,
+    "lon": -2.1281,
+    "dep": "56"
+  },
+  {
+    "nom": "Saint-Doulchard",
+    "slug": "saint-doulchard",
+    "codePostal": "18230",
+    "departement": "Cher",
+    "region": "Centre-Val de Loire",
+    "lat": 47.1116,
+    "lon": 2.3554,
+    "dep": "18"
+  },
+  {
+    "nom": "Saint-Florent-sur-Cher",
+    "slug": "saint-florent-sur-cher",
+    "codePostal": "18400",
+    "departement": "Cher",
+    "region": "Centre-Val de Loire",
+    "lat": 46.9921,
+    "lon": 2.2537,
+    "dep": "18"
+  },
+  {
+    "nom": "Mehun-sur-Yèvre",
+    "slug": "mehun-sur-yevre",
+    "codePostal": "18500",
+    "departement": "Cher",
+    "region": "Centre-Val de Loire",
+    "lat": 47.1316,
+    "lon": 2.225,
+    "dep": "18"
+  },
+  {
+    "nom": "Aubigny-sur-Nère",
+    "slug": "aubigny-sur-nere",
+    "codePostal": "18700",
+    "departement": "Cher",
+    "region": "Centre-Val de Loire",
+    "lat": 47.4857,
+    "lon": 2.4209,
+    "dep": "18"
+  },
+  {
+    "nom": "Lucé",
+    "slug": "luce",
+    "codePostal": "28110",
+    "departement": "Eure-et-Loir",
+    "region": "Centre-Val de Loire",
+    "lat": 48.4337,
+    "lon": 1.4525,
+    "dep": "28"
+  },
+  {
+    "nom": "Vernouillet",
+    "slug": "vernouillet-28",
+    "codePostal": "28500",
+    "departement": "Eure-et-Loir",
+    "region": "Centre-Val de Loire",
+    "lat": 48.7141,
+    "lon": 1.352,
+    "dep": "28"
+  },
+  {
+    "nom": "Mainvilliers",
+    "slug": "mainvilliers",
+    "codePostal": "28300",
+    "departement": "Eure-et-Loir",
+    "region": "Centre-Val de Loire",
+    "lat": 48.4651,
+    "lon": 1.4471,
+    "dep": "28"
+  },
+  {
+    "nom": "Nogent-le-Rotrou",
+    "slug": "nogent-le-rotrou",
+    "codePostal": "28400",
+    "departement": "Eure-et-Loir",
+    "region": "Centre-Val de Loire",
+    "lat": 48.3197,
+    "lon": 0.8071,
+    "dep": "28"
+  },
+  {
+    "nom": "Luisant",
+    "slug": "luisant",
+    "codePostal": "28600",
+    "departement": "Eure-et-Loir",
+    "region": "Centre-Val de Loire",
+    "lat": 48.4239,
+    "lon": 1.4668,
+    "dep": "28"
+  },
+  {
+    "nom": "Auneau-Bleury-Saint-Symphorien",
+    "slug": "auneau-bleury-saint-symphorien",
+    "codePostal": "28700",
+    "departement": "Eure-et-Loir",
+    "region": "Centre-Val de Loire",
+    "lat": 48.5,
+    "lon": 1.7642,
+    "dep": "28"
+  },
+  {
+    "nom": "Épernon",
+    "slug": "epernon",
+    "codePostal": "28230",
+    "departement": "Eure-et-Loir",
+    "region": "Centre-Val de Loire",
+    "lat": 48.5947,
+    "lon": 1.6859,
+    "dep": "28"
+  },
+  {
+    "nom": "Lèves",
+    "slug": "leves",
+    "codePostal": "28300",
+    "departement": "Eure-et-Loir",
+    "region": "Centre-Val de Loire",
+    "lat": 48.4801,
+    "lon": 1.4692,
+    "dep": "28"
+  },
+  {
+    "nom": "Cloyes-les-Trois-Rivières",
+    "slug": "cloyes-les-trois-rivieres",
+    "codePostal": "28220",
+    "departement": "Eure-et-Loir",
+    "region": "Centre-Val de Loire",
+    "lat": 48.0069,
+    "lon": 1.2997,
+    "dep": "28"
+  },
+  {
+    "nom": "Issoudun",
+    "slug": "issoudun",
+    "codePostal": "36100",
+    "departement": "Indre",
+    "region": "Centre-Val de Loire",
+    "lat": 46.9447,
+    "lon": 2.0077,
+    "dep": "36"
+  },
+  {
+    "nom": "Déols",
+    "slug": "deols",
+    "codePostal": "36130",
+    "departement": "Indre",
+    "region": "Centre-Val de Loire",
+    "lat": 46.8397,
+    "lon": 1.7018,
+    "dep": "36"
+  },
+  {
+    "nom": "Le Blanc",
+    "slug": "le-blanc",
+    "codePostal": "36300",
+    "departement": "Indre",
+    "region": "Centre-Val de Loire",
+    "lat": 46.6351,
+    "lon": 1.0955,
+    "dep": "36"
+  },
+  {
+    "nom": "Le Poinçonnet",
+    "slug": "le-poinconnet",
+    "codePostal": "36330",
+    "departement": "Indre",
+    "region": "Centre-Val de Loire",
+    "lat": 46.7544,
+    "lon": 1.7257,
+    "dep": "36"
+  },
+  {
+    "nom": "Joué-lès-Tours",
+    "slug": "joue-les-tours",
+    "codePostal": "37300",
+    "departement": "Indre-et-Loire",
+    "region": "Centre-Val de Loire",
+    "lat": 47.3374,
+    "lon": 0.6544,
+    "dep": "37"
+  },
+  {
+    "nom": "Saint-Cyr-sur-Loire",
+    "slug": "saint-cyr-sur-loire",
+    "codePostal": "37540",
+    "departement": "Indre-et-Loire",
+    "region": "Centre-Val de Loire",
+    "lat": 47.4188,
+    "lon": 0.6554,
+    "dep": "37"
+  },
+  {
+    "nom": "Chinon",
+    "slug": "chinon",
+    "codePostal": "37500",
+    "departement": "Indre-et-Loire",
+    "region": "Centre-Val de Loire",
+    "lat": 47.1692,
+    "lon": 0.2433,
+    "dep": "37"
+  },
+  {
+    "nom": "Monts",
+    "slug": "monts",
+    "codePostal": "37260",
+    "departement": "Indre-et-Loire",
+    "region": "Centre-Val de Loire",
+    "lat": 47.2723,
+    "lon": 0.6429,
+    "dep": "37"
+  },
+  {
+    "nom": "Veigné",
+    "slug": "veigne",
+    "codePostal": "37250",
+    "departement": "Indre-et-Loire",
+    "region": "Centre-Val de Loire",
+    "lat": 47.286,
+    "lon": 0.7243,
+    "dep": "37"
+  },
+  {
+    "nom": "Esvres",
+    "slug": "esvres",
+    "codePostal": "37320",
+    "departement": "Indre-et-Loire",
+    "region": "Centre-Val de Loire",
+    "lat": 47.2905,
+    "lon": 0.7902,
+    "dep": "37"
+  },
+  {
+    "nom": "Loches",
+    "slug": "loches",
+    "codePostal": "37600",
+    "departement": "Indre-et-Loire",
+    "region": "Centre-Val de Loire",
+    "lat": 47.1223,
+    "lon": 0.9745,
+    "dep": "37"
+  },
+  {
+    "nom": "La Ville-aux-Dames",
+    "slug": "la-ville-aux-dames",
+    "codePostal": "37700",
+    "departement": "Indre-et-Loire",
+    "region": "Centre-Val de Loire",
+    "lat": 47.3894,
+    "lon": 0.7739,
+    "dep": "37"
+  },
+  {
+    "nom": "Bléré",
+    "slug": "blere",
+    "codePostal": "37150",
+    "departement": "Indre-et-Loire",
+    "region": "Centre-Val de Loire",
+    "lat": 47.3011,
+    "lon": 0.9848,
+    "dep": "37"
+  },
+  {
+    "nom": "Luynes",
+    "slug": "luynes",
+    "codePostal": "37230",
+    "departement": "Indre-et-Loire",
+    "region": "Centre-Val de Loire",
+    "lat": 47.4123,
+    "lon": 0.5364,
+    "dep": "37"
+  },
+  {
+    "nom": "Vineuil",
+    "slug": "vineuil",
+    "codePostal": "41350",
+    "departement": "Loir-et-Cher",
+    "region": "Centre-Val de Loire",
+    "lat": 47.5855,
+    "lon": 1.3886,
+    "dep": "41"
+  },
+  {
+    "nom": "Le Controis-en-Sologne",
+    "slug": "le-controis-en-sologne",
+    "codePostal": "41120",
+    "departement": "Loir-et-Cher",
+    "region": "Centre-Val de Loire",
+    "lat": 47.4327,
+    "lon": 1.3851,
+    "dep": "41"
+  },
+  {
+    "nom": "Mer",
+    "slug": "mer",
+    "codePostal": "41500",
+    "departement": "Loir-et-Cher",
+    "region": "Centre-Val de Loire",
+    "lat": 47.7123,
+    "lon": 1.5051,
+    "dep": "41"
+  },
+  {
+    "nom": "Olivet",
+    "slug": "olivet",
+    "codePostal": "45160",
+    "departement": "Loiret",
+    "region": "Centre-Val de Loire",
+    "lat": 47.8559,
+    "lon": 1.8913,
+    "dep": "45"
+  },
+  {
+    "nom": "Saint-Jean-de-Braye",
+    "slug": "saint-jean-de-braye",
+    "codePostal": "45800",
+    "departement": "Loiret",
+    "region": "Centre-Val de Loire",
+    "lat": 47.9216,
+    "lon": 1.9695,
+    "dep": "45"
+  },
+  {
+    "nom": "Fleury-les-Aubrais",
+    "slug": "fleury-les-aubrais",
+    "codePostal": "45400",
+    "departement": "Loiret",
+    "region": "Centre-Val de Loire",
+    "lat": 47.9449,
+    "lon": 1.9223,
+    "dep": "45"
+  },
+  {
+    "nom": "Saran",
+    "slug": "saran",
+    "codePostal": "45770",
+    "departement": "Loiret",
+    "region": "Centre-Val de Loire",
+    "lat": 47.9479,
+    "lon": 1.8806,
+    "dep": "45"
+  },
+  {
+    "nom": "Saint-Jean-de-la-Ruelle",
+    "slug": "saint-jean-de-la-ruelle",
+    "codePostal": "45140",
+    "departement": "Loiret",
+    "region": "Centre-Val de Loire",
+    "lat": 47.9101,
+    "lon": 1.872,
+    "dep": "45"
+  },
+  {
+    "nom": "Montargis",
+    "slug": "montargis",
+    "codePostal": "45200",
+    "departement": "Loiret",
+    "region": "Centre-Val de Loire",
+    "lat": 47.9998,
+    "lon": 2.7388,
+    "dep": "45"
+  },
+  {
+    "nom": "Amilly",
+    "slug": "amilly",
+    "codePostal": "45200",
+    "departement": "Loiret",
+    "region": "Centre-Val de Loire",
+    "lat": 47.9911,
+    "lon": 2.7813,
+    "dep": "45"
+  },
+  {
+    "nom": "Gien",
+    "slug": "gien",
+    "codePostal": "45500",
+    "departement": "Loiret",
+    "region": "Centre-Val de Loire",
+    "lat": 47.7175,
+    "lon": 2.6687,
+    "dep": "45"
+  },
+  {
+    "nom": "Obernai",
+    "slug": "obernai",
+    "codePostal": "67210",
+    "departement": "Bas-Rhin",
+    "region": "Grand Est",
+    "lat": 48.4546,
+    "lon": 7.4817,
+    "dep": "67"
+  },
+  {
+    "nom": "Saverne",
+    "slug": "saverne",
+    "codePostal": "67700",
+    "departement": "Bas-Rhin",
+    "region": "Grand Est",
+    "lat": 48.7439,
+    "lon": 7.3537,
+    "dep": "67"
+  },
+  {
+    "nom": "Erstein",
+    "slug": "erstein",
+    "codePostal": "67150",
+    "departement": "Bas-Rhin",
+    "region": "Grand Est",
+    "lat": 48.4191,
+    "lon": 7.6869,
+    "dep": "67"
+  },
+  {
+    "nom": "Brumath",
+    "slug": "brumath",
+    "codePostal": "67170",
+    "departement": "Bas-Rhin",
+    "region": "Grand Est",
+    "lat": 48.7199,
+    "lon": 7.7146,
+    "dep": "67"
+  },
+  {
+    "nom": "Molsheim",
+    "slug": "molsheim",
+    "codePostal": "67120",
+    "departement": "Bas-Rhin",
+    "region": "Grand Est",
+    "lat": 48.5456,
+    "lon": 7.4988,
+    "dep": "67"
+  },
+  {
+    "nom": "Souffelweyersheim",
+    "slug": "souffelweyersheim",
+    "codePostal": "67460",
+    "departement": "Bas-Rhin",
+    "region": "Grand Est",
+    "lat": 48.6323,
+    "lon": 7.7492,
+    "dep": "67"
+  },
+  {
+    "nom": "Villerupt",
+    "slug": "villerupt",
+    "codePostal": "54190",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 49.466,
+    "lon": 5.9275,
+    "dep": "54"
+  },
+  {
+    "nom": "Maxéville",
+    "slug": "maxeville",
+    "codePostal": "54320",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.7093,
+    "lon": 6.1432,
+    "dep": "54"
+  },
+  {
+    "nom": "Saint-Max",
+    "slug": "saint-max",
+    "codePostal": "54130",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.7061,
+    "lon": 6.2041,
+    "dep": "54"
+  },
+  {
+    "nom": "Dombasle-sur-Meurthe",
+    "slug": "dombasle-sur-meurthe",
+    "codePostal": "54110",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.6209,
+    "lon": 6.3613,
+    "dep": "54"
+  },
+  {
+    "nom": "Mont-Saint-Martin",
+    "slug": "mont-saint-martin",
+    "codePostal": "54350",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 49.5469,
+    "lon": 5.7872,
+    "dep": "54"
+  },
+  {
+    "nom": "Jarville-la-Malgrange",
+    "slug": "jarville-la-malgrange",
+    "codePostal": "54140",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.6676,
+    "lon": 6.2057,
+    "dep": "54"
+  },
+  {
+    "nom": "Tomblaine",
+    "slug": "tomblaine",
+    "codePostal": "54510",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.6851,
+    "lon": 6.2212,
+    "dep": "54"
+  },
+  {
+    "nom": "Essey-lès-Nancy",
+    "slug": "essey-les-nancy",
+    "codePostal": "54270",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.7077,
+    "lon": 6.2326,
+    "dep": "54"
+  },
+  {
+    "nom": "Val de Briey",
+    "slug": "val-de-briey",
+    "codePostal": "54150",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 49.2663,
+    "lon": 5.9546,
+    "dep": "54"
+  },
+  {
+    "nom": "Jarny",
+    "slug": "jarny",
+    "codePostal": "54800",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 49.1491,
+    "lon": 5.8739,
+    "dep": "54"
+  },
+  {
+    "nom": "Malzéville",
+    "slug": "malzeville",
+    "codePostal": "54220",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.7223,
+    "lon": 6.1927,
+    "dep": "54"
+  },
+  {
+    "nom": "Saint-Nicolas-de-Port",
+    "slug": "saint-nicolas-de-port",
+    "codePostal": "54210",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.62,
+    "lon": 6.2953,
+    "dep": "54"
+  },
+  {
+    "nom": "Laneuveville-devant-Nancy",
+    "slug": "laneuveville-devant-nancy",
+    "codePostal": "54410",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.6503,
+    "lon": 6.2471,
+    "dep": "54"
+  },
+  {
+    "nom": "Champigneulles",
+    "slug": "champigneulles",
+    "codePostal": "54250",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.7199,
+    "lon": 6.1268,
+    "dep": "54"
+  },
+  {
+    "nom": "Neuves-Maisons",
+    "slug": "neuves-maisons",
+    "codePostal": "54230",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.6164,
+    "lon": 6.1083,
+    "dep": "54"
+  },
+  {
+    "nom": "Frouard",
+    "slug": "frouard",
+    "codePostal": "54390",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.757,
+    "lon": 6.1231,
+    "dep": "54"
+  },
+  {
+    "nom": "Jœuf",
+    "slug": "juf",
+    "codePostal": "54240",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 49.2322,
+    "lon": 6.0142,
+    "dep": "54"
+  },
+  {
+    "nom": "Homécourt",
+    "slug": "homecourt",
+    "codePostal": "54310",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 49.2246,
+    "lon": 5.9932,
+    "dep": "54"
+  },
+  {
+    "nom": "Ludres",
+    "slug": "ludres",
+    "codePostal": "54710",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.6213,
+    "lon": 6.1751,
+    "dep": "54"
+  },
+  {
+    "nom": "Liverdun",
+    "slug": "liverdun",
+    "codePostal": "54460",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.75,
+    "lon": 6.0524,
+    "dep": "54"
+  },
+  {
+    "nom": "Heillecourt",
+    "slug": "heillecourt",
+    "codePostal": "54180",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.6501,
+    "lon": 6.1967,
+    "dep": "54"
+  },
+  {
+    "nom": "Seichamps",
+    "slug": "seichamps",
+    "codePostal": "54280",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.7159,
+    "lon": 6.2709,
+    "dep": "54"
+  },
+  {
+    "nom": "Longuyon",
+    "slug": "longuyon",
+    "codePostal": "54260",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 49.4625,
+    "lon": 5.5887,
+    "dep": "54"
+  },
+  {
+    "nom": "Pulnoy",
+    "slug": "pulnoy",
+    "codePostal": "54425",
+    "departement": "Meurthe-et-Moselle",
+    "region": "Grand Est",
+    "lat": 48.703,
+    "lon": 6.2677,
+    "dep": "54"
+  },
+  {
+    "nom": "Verdun",
+    "slug": "verdun",
+    "codePostal": "55100",
+    "departement": "Meuse",
+    "region": "Grand Est",
+    "lat": 49.144,
+    "lon": 5.3609,
+    "dep": "55"
+  },
+  {
+    "nom": "Bar-le-Duc",
+    "slug": "bar-le-duc",
+    "codePostal": "55000",
+    "departement": "Meuse",
+    "region": "Grand Est",
+    "lat": 48.7628,
+    "lon": 5.1732,
+    "dep": "55"
+  },
+  {
+    "nom": "Commercy",
+    "slug": "commercy",
+    "codePostal": "55200",
+    "departement": "Meuse",
+    "region": "Grand Est",
+    "lat": 48.749,
+    "lon": 5.5658,
+    "dep": "55"
+  },
+  {
+    "nom": "Montigny-lès-Metz",
+    "slug": "montigny-les-metz",
+    "codePostal": "57950",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.0966,
+    "lon": 6.1548,
+    "dep": "57"
+  },
+  {
+    "nom": "Yutz",
+    "slug": "yutz",
+    "codePostal": "57970",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.357,
+    "lon": 6.2,
+    "dep": "57"
+  },
+  {
+    "nom": "Hayange",
+    "slug": "hayange",
+    "codePostal": "57700",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.334,
+    "lon": 6.0641,
+    "dep": "57"
+  },
+  {
+    "nom": "Woippy",
+    "slug": "woippy",
+    "codePostal": "57140",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1651,
+    "lon": 6.1552,
+    "dep": "57"
+  },
+  {
+    "nom": "Fameck",
+    "slug": "fameck",
+    "codePostal": "57290",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2978,
+    "lon": 6.1059,
+    "dep": "57"
+  },
+  {
+    "nom": "Saint-Avold",
+    "slug": "saint-avold",
+    "codePostal": "57500",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1279,
+    "lon": 6.7088,
+    "dep": "57"
+  },
+  {
+    "nom": "Freyming-Merlebach",
+    "slug": "freyming-merlebach",
+    "codePostal": "57800",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1537,
+    "lon": 6.7997,
+    "dep": "57"
+  },
+  {
+    "nom": "Creutzwald",
+    "slug": "creutzwald",
+    "codePostal": "57150",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2113,
+    "lon": 6.6785,
+    "dep": "57"
+  },
+  {
+    "nom": "Sarrebourg",
+    "slug": "sarrebourg",
+    "codePostal": "57400",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 48.7329,
+    "lon": 7.0476,
+    "dep": "57"
+  },
+  {
+    "nom": "Florange",
+    "slug": "florange",
+    "codePostal": "57190",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.3284,
+    "lon": 6.1233,
+    "dep": "57"
+  },
+  {
+    "nom": "Maizières-lès-Metz",
+    "slug": "maizieres-les-metz",
+    "codePostal": "57280",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.21,
+    "lon": 6.1543,
+    "dep": "57"
+  },
+  {
+    "nom": "Stiring-Wendel",
+    "slug": "stiring-wendel",
+    "codePostal": "57350",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2016,
+    "lon": 6.9321,
+    "dep": "57"
+  },
+  {
+    "nom": "Amnéville",
+    "slug": "amneville",
+    "codePostal": "57360",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2469,
+    "lon": 6.1179,
+    "dep": "57"
+  },
+  {
+    "nom": "Marly",
+    "slug": "marly-57",
+    "codePostal": "57155",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.068,
+    "lon": 6.154,
+    "dep": "57"
+  },
+  {
+    "nom": "Rombas",
+    "slug": "rombas",
+    "codePostal": "57120",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2442,
+    "lon": 6.0881,
+    "dep": "57"
+  },
+  {
+    "nom": "Hagondange",
+    "slug": "hagondange",
+    "codePostal": "57300",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.242,
+    "lon": 6.161,
+    "dep": "57"
+  },
+  {
+    "nom": "Talange",
+    "slug": "talange",
+    "codePostal": "57525",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2348,
+    "lon": 6.1684,
+    "dep": "57"
+  },
+  {
+    "nom": "Guénange",
+    "slug": "guenange",
+    "codePostal": "57310",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2985,
+    "lon": 6.2029,
+    "dep": "57"
+  },
+  {
+    "nom": "Terville",
+    "slug": "terville",
+    "codePostal": "57180",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.3454,
+    "lon": 6.1334,
+    "dep": "57"
+  },
+  {
+    "nom": "Hettange-Grande",
+    "slug": "hettange-grande",
+    "codePostal": "57330",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.4196,
+    "lon": 6.154,
+    "dep": "57"
+  },
+  {
+    "nom": "Audun-le-Tiche",
+    "slug": "audun-le-tiche",
+    "codePostal": "57390",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.4619,
+    "lon": 5.9593,
+    "dep": "57"
+  },
+  {
+    "nom": "Moyeuvre-Grande",
+    "slug": "moyeuvre-grande",
+    "codePostal": "57250",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2507,
+    "lon": 6.0333,
+    "dep": "57"
+  },
+  {
+    "nom": "Uckange",
+    "slug": "uckange",
+    "codePostal": "57270",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.3069,
+    "lon": 6.1489,
+    "dep": "57"
+  },
+  {
+    "nom": "Marange-Silvange",
+    "slug": "marange-silvange",
+    "codePostal": "57535",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2187,
+    "lon": 6.106,
+    "dep": "57"
+  },
+  {
+    "nom": "Petite-Rosselle",
+    "slug": "petite-rosselle",
+    "codePostal": "57540",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2079,
+    "lon": 6.8606,
+    "dep": "57"
+  },
+  {
+    "nom": "Behren-lès-Forbach",
+    "slug": "behren-les-forbach",
+    "codePostal": "57460",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1671,
+    "lon": 6.9451,
+    "dep": "57"
+  },
+  {
+    "nom": "Hombourg-Haut",
+    "slug": "hombourg-haut",
+    "codePostal": "57470",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1262,
+    "lon": 6.7703,
+    "dep": "57"
+  },
+  {
+    "nom": "Algrange",
+    "slug": "algrange",
+    "codePostal": "57440",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.3653,
+    "lon": 6.0493,
+    "dep": "57"
+  },
+  {
+    "nom": "Mondelange",
+    "slug": "mondelange",
+    "codePostal": "57300",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2649,
+    "lon": 6.1731,
+    "dep": "57"
+  },
+  {
+    "nom": "Boulay-Moselle",
+    "slug": "boulay-moselle",
+    "codePostal": "57220",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1749,
+    "lon": 6.4965,
+    "dep": "57"
+  },
+  {
+    "nom": "Moulins-lès-Metz",
+    "slug": "moulins-les-metz",
+    "codePostal": "57160",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.0929,
+    "lon": 6.1192,
+    "dep": "57"
+  },
+  {
+    "nom": "Farébersviller",
+    "slug": "farebersviller",
+    "codePostal": "57450",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1164,
+    "lon": 6.8677,
+    "dep": "57"
+  },
+  {
+    "nom": "L'Hôpital",
+    "slug": "l-hopital",
+    "codePostal": "57490",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1548,
+    "lon": 6.732,
+    "dep": "57"
+  },
+  {
+    "nom": "Faulquemont",
+    "slug": "faulquemont",
+    "codePostal": "57380",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.0409,
+    "lon": 6.5918,
+    "dep": "57"
+  },
+  {
+    "nom": "Golbey",
+    "slug": "golbey",
+    "codePostal": "88190",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.1987,
+    "lon": 6.4258,
+    "dep": "88"
+  },
+  {
+    "nom": "Thaon-les-Vosges",
+    "slug": "thaon-les-vosges",
+    "codePostal": "88150",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.2498,
+    "lon": 6.4244,
+    "dep": "88"
+  },
+  {
+    "nom": "Gérardmer",
+    "slug": "gerardmer",
+    "codePostal": "88400",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.0658,
+    "lon": 6.8531,
+    "dep": "88"
+  },
+  {
+    "nom": "Remiremont",
+    "slug": "remiremont",
+    "codePostal": "88200",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.0037,
+    "lon": 6.581,
+    "dep": "88"
+  },
+  {
+    "nom": "Neufchâteau",
+    "slug": "neufchateau",
+    "codePostal": "88300",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.3568,
+    "lon": 5.7026,
+    "dep": "88"
+  },
+  {
+    "nom": "Raon-l'Étape",
+    "slug": "raon-l-etape",
+    "codePostal": "88110",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.4039,
+    "lon": 6.8679,
+    "dep": "88"
+  },
+  {
+    "nom": "Rambervillers",
+    "slug": "rambervillers",
+    "codePostal": "88700",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.3457,
+    "lon": 6.6312,
+    "dep": "88"
+  },
+  {
+    "nom": "Château-Thierry",
+    "slug": "chateau-thierry",
+    "codePostal": "02400",
+    "departement": "Aisne",
+    "region": "Hauts-de-France",
+    "lat": 49.0556,
+    "lon": 3.3784,
+    "dep": "02"
+  },
+  {
+    "nom": "Tergnier",
+    "slug": "tergnier",
+    "codePostal": "02700",
+    "departement": "Aisne",
+    "region": "Hauts-de-France",
+    "lat": 49.6562,
+    "lon": 3.2949,
+    "dep": "02"
+  },
+  {
+    "nom": "Chauny",
+    "slug": "chauny",
+    "codePostal": "02300",
+    "departement": "Aisne",
+    "region": "Hauts-de-France",
+    "lat": 49.6185,
+    "lon": 3.2192,
+    "dep": "02"
+  },
+  {
+    "nom": "Villers-Cotterêts",
+    "slug": "villers-cotterets",
+    "codePostal": "02600",
+    "departement": "Aisne",
+    "region": "Hauts-de-France",
+    "lat": 49.2197,
+    "lon": 3.1025,
+    "dep": "02"
+  },
+  {
+    "nom": "Hirson",
+    "slug": "hirson",
+    "codePostal": "02500",
+    "departement": "Aisne",
+    "region": "Hauts-de-France",
+    "lat": 49.938,
+    "lon": 4.1132,
+    "dep": "02"
+  },
+  {
+    "nom": "Bohain-en-Vermandois",
+    "slug": "bohain-en-vermandois",
+    "codePostal": "02110",
+    "departement": "Aisne",
+    "region": "Hauts-de-France",
+    "lat": 49.9887,
+    "lon": 3.464,
+    "dep": "02"
+  },
+  {
+    "nom": "Gauchy",
+    "slug": "gauchy",
+    "codePostal": "02430",
+    "departement": "Aisne",
+    "region": "Hauts-de-France",
+    "lat": 49.8233,
+    "lon": 3.2846,
+    "dep": "02"
+  },
+  {
+    "nom": "Villeneuve-d'Ascq",
+    "slug": "villeneuve-d-ascq",
+    "codePostal": "59491",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6362,
+    "lon": 3.1619,
+    "dep": "59"
+  },
+  {
+    "nom": "Wattrelos",
+    "slug": "wattrelos",
+    "codePostal": "59150",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.7125,
+    "lon": 3.2159,
+    "dep": "59"
+  },
+  {
+    "nom": "Marcq-en-Barœul",
+    "slug": "marcq-en-barul",
+    "codePostal": "59700",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6793,
+    "lon": 3.1006,
+    "dep": "59"
+  },
+  {
+    "nom": "Lambersart",
+    "slug": "lambersart",
+    "codePostal": "59130",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6538,
+    "lon": 3.0248,
+    "dep": "59"
+  },
+  {
+    "nom": "Armentières",
+    "slug": "armentieres",
+    "codePostal": "59280",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6925,
+    "lon": 2.8787,
+    "dep": "59"
+  },
+  {
+    "nom": "Loos",
+    "slug": "loos",
+    "codePostal": "59120",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6078,
+    "lon": 3.0215,
+    "dep": "59"
+  },
+  {
+    "nom": "Hazebrouck",
+    "slug": "hazebrouck",
+    "codePostal": "59190",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.7254,
+    "lon": 2.5357,
+    "dep": "59"
+  },
+  {
+    "nom": "La Madeleine",
+    "slug": "la-madeleine",
+    "codePostal": "59110",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6541,
+    "lon": 3.0699,
+    "dep": "59"
+  },
+  {
+    "nom": "Mons-en-Barœul",
+    "slug": "mons-en-barul",
+    "codePostal": "59370",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6436,
+    "lon": 3.1091,
+    "dep": "59"
+  },
+  {
+    "nom": "Coudekerque-Branche",
+    "slug": "coudekerque-branche",
+    "codePostal": "59210",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 51.0183,
+    "lon": 2.3986,
+    "dep": "59"
+  },
+  {
+    "nom": "Wasquehal",
+    "slug": "wasquehal",
+    "codePostal": "59290",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6726,
+    "lon": 3.1296,
+    "dep": "59"
+  },
+  {
+    "nom": "Halluin",
+    "slug": "halluin",
+    "codePostal": "59250",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.7759,
+    "lon": 3.1257,
+    "dep": "59"
+  },
+  {
+    "nom": "Denain",
+    "slug": "denain",
+    "codePostal": "59220",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.329,
+    "lon": 3.3922,
+    "dep": "59"
+  },
+  {
+    "nom": "Croix",
+    "slug": "croix",
+    "codePostal": "59170",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6754,
+    "lon": 3.155,
+    "dep": "59"
+  },
+  {
+    "nom": "Grande-Synthe",
+    "slug": "grande-synthe",
+    "codePostal": "59760",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 51.0157,
+    "lon": 2.2938,
+    "dep": "59"
+  },
+  {
+    "nom": "Ronchin",
+    "slug": "ronchin",
+    "codePostal": "59790",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6034,
+    "lon": 3.0931,
+    "dep": "59"
+  },
+  {
+    "nom": "Faches-Thumesnil",
+    "slug": "faches-thumesnil",
+    "codePostal": "59155",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.5956,
+    "lon": 3.0714,
+    "dep": "59"
+  },
+  {
+    "nom": "Hem",
+    "slug": "hem",
+    "codePostal": "59510",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6531,
+    "lon": 3.1913,
+    "dep": "59"
+  },
+  {
+    "nom": "Sin-le-Noble",
+    "slug": "sin-le-noble",
+    "codePostal": "59450",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3672,
+    "lon": 3.1213,
+    "dep": "59"
+  },
+  {
+    "nom": "Saint-Amand-les-Eaux",
+    "slug": "saint-amand-les-eaux",
+    "codePostal": "59230",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.4382,
+    "lon": 3.4447,
+    "dep": "59"
+  },
+  {
+    "nom": "Wattignies",
+    "slug": "wattignies",
+    "codePostal": "59139",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.5862,
+    "lon": 3.0389,
+    "dep": "59"
+  },
+  {
+    "nom": "Haubourdin",
+    "slug": "haubourdin",
+    "codePostal": "59320",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6002,
+    "lon": 2.9893,
+    "dep": "59"
+  },
+  {
+    "nom": "Bailleul",
+    "slug": "bailleul",
+    "codePostal": "59270",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.7325,
+    "lon": 2.7423,
+    "dep": "59"
+  },
+  {
+    "nom": "Hautmont",
+    "slug": "hautmont",
+    "codePostal": "59330",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.248,
+    "lon": 3.9204,
+    "dep": "59"
+  },
+  {
+    "nom": "Roncq",
+    "slug": "roncq",
+    "codePostal": "59223",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.7453,
+    "lon": 3.1152,
+    "dep": "59"
+  },
+  {
+    "nom": "Lys-lez-Lannoy",
+    "slug": "lys-lez-lannoy",
+    "codePostal": "59390",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6729,
+    "lon": 3.2186,
+    "dep": "59"
+  },
+  {
+    "nom": "Caudry",
+    "slug": "caudry",
+    "codePostal": "59540",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.1191,
+    "lon": 3.4175,
+    "dep": "59"
+  },
+  {
+    "nom": "Mouvaux",
+    "slug": "mouvaux",
+    "codePostal": "59420",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.7044,
+    "lon": 3.1368,
+    "dep": "59"
+  },
+  {
+    "nom": "Seclin",
+    "slug": "seclin",
+    "codePostal": "59113",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.5453,
+    "lon": 3.0268,
+    "dep": "59"
+  },
+  {
+    "nom": "Saint-André-lez-Lille",
+    "slug": "saint-andre-lez-lille",
+    "codePostal": "59350",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6599,
+    "lon": 3.0415,
+    "dep": "59"
+  },
+  {
+    "nom": "Anzin",
+    "slug": "anzin",
+    "codePostal": "59410",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.376,
+    "lon": 3.5112,
+    "dep": "59"
+  },
+  {
+    "nom": "Comines",
+    "slug": "comines",
+    "codePostal": "59560",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.7496,
+    "lon": 3.0136,
+    "dep": "59"
+  },
+  {
+    "nom": "Marquette-lez-Lille",
+    "slug": "marquette-lez-lille",
+    "codePostal": "59520",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6746,
+    "lon": 3.0539,
+    "dep": "59"
+  },
+  {
+    "nom": "Raismes",
+    "slug": "raismes",
+    "codePostal": "59590",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.4117,
+    "lon": 3.4886,
+    "dep": "59"
+  },
+  {
+    "nom": "Marly",
+    "slug": "marly-59",
+    "codePostal": "59770",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3464,
+    "lon": 3.5477,
+    "dep": "59"
+  },
+  {
+    "nom": "Somain",
+    "slug": "somain",
+    "codePostal": "59490",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3595,
+    "lon": 3.2717,
+    "dep": "59"
+  },
+  {
+    "nom": "Bruay-sur-l'Escaut",
+    "slug": "bruay-sur-l-escaut",
+    "codePostal": "59860",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3967,
+    "lon": 3.5382,
+    "dep": "59"
+  },
+  {
+    "nom": "Fourmies",
+    "slug": "fourmies",
+    "codePostal": "59610",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.0064,
+    "lon": 4.0594,
+    "dep": "59"
+  },
+  {
+    "nom": "Gravelines",
+    "slug": "gravelines",
+    "codePostal": "59820",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 51.0029,
+    "lon": 2.1385,
+    "dep": "59"
+  },
+  {
+    "nom": "Condé-sur-l'Escaut",
+    "slug": "conde-sur-l-escaut",
+    "codePostal": "59163",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.4662,
+    "lon": 3.6113,
+    "dep": "59"
+  },
+  {
+    "nom": "Escaudain",
+    "slug": "escaudain",
+    "codePostal": "59124",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.333,
+    "lon": 3.3388,
+    "dep": "59"
+  },
+  {
+    "nom": "La Chapelle-d'Armentières",
+    "slug": "la-chapelle-d-armentieres",
+    "codePostal": "59930",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6641,
+    "lon": 2.8944,
+    "dep": "59"
+  },
+  {
+    "nom": "Aulnoye-Aymeries",
+    "slug": "aulnoye-aymeries",
+    "codePostal": "59620",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.2036,
+    "lon": 3.8312,
+    "dep": "59"
+  },
+  {
+    "nom": "Onnaing",
+    "slug": "onnaing",
+    "codePostal": "59264",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3857,
+    "lon": 3.5972,
+    "dep": "59"
+  },
+  {
+    "nom": "Pérenchies",
+    "slug": "perenchies",
+    "codePostal": "59840",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6708,
+    "lon": 2.9682,
+    "dep": "59"
+  },
+  {
+    "nom": "Orchies",
+    "slug": "orchies",
+    "codePostal": "59310",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.4684,
+    "lon": 3.2398,
+    "dep": "59"
+  },
+  {
+    "nom": "Téteghem-Coudekerque-Village",
+    "slug": "teteghem-coudekerque-village",
+    "codePostal": "59229",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 51.0092,
+    "lon": 2.4453,
+    "dep": "59"
+  },
+  {
+    "nom": "Linselles",
+    "slug": "linselles",
+    "codePostal": "59126",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.7367,
+    "lon": 3.0724,
+    "dep": "59"
+  },
+  {
+    "nom": "Houplines",
+    "slug": "houplines",
+    "codePostal": "59116",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6832,
+    "lon": 2.9271,
+    "dep": "59"
+  },
+  {
+    "nom": "Cappelle-la-Grande",
+    "slug": "cappelle-la-grande",
+    "codePostal": "59180",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.9953,
+    "lon": 2.3716,
+    "dep": "59"
+  },
+  {
+    "nom": "Nieppe",
+    "slug": "nieppe",
+    "codePostal": "59850",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.697,
+    "lon": 2.8325,
+    "dep": "59"
+  },
+  {
+    "nom": "Wavrin",
+    "slug": "wavrin",
+    "codePostal": "59136",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.5735,
+    "lon": 2.9356,
+    "dep": "59"
+  },
+  {
+    "nom": "Fresnes-sur-Escaut",
+    "slug": "fresnes-sur-escaut",
+    "codePostal": "59970",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.4321,
+    "lon": 3.58,
+    "dep": "59"
+  },
+  {
+    "nom": "Waziers",
+    "slug": "waziers",
+    "codePostal": "59119",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3841,
+    "lon": 3.1121,
+    "dep": "59"
+  },
+  {
+    "nom": "Templeuve-en-Pévèle",
+    "slug": "templeuve-en-pevele",
+    "codePostal": "59242",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.5322,
+    "lon": 3.1716,
+    "dep": "59"
+  },
+  {
+    "nom": "Auby",
+    "slug": "auby",
+    "codePostal": "59950",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.4143,
+    "lon": 3.0612,
+    "dep": "59"
+  },
+  {
+    "nom": "Aulnoy-lez-Valenciennes",
+    "slug": "aulnoy-lez-valenciennes",
+    "codePostal": "59300",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3246,
+    "lon": 3.5362,
+    "dep": "59"
+  },
+  {
+    "nom": "Bourbourg",
+    "slug": "bourbourg",
+    "codePostal": "59630",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.9422,
+    "lon": 2.2034,
+    "dep": "59"
+  },
+  {
+    "nom": "Quesnoy-sur-Deûle",
+    "slug": "quesnoy-sur-deule",
+    "codePostal": "59890",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.713,
+    "lon": 3.0063,
+    "dep": "59"
+  },
+  {
+    "nom": "Beuvrages",
+    "slug": "beuvrages",
+    "codePostal": "59192",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3887,
+    "lon": 3.5043,
+    "dep": "59"
+  },
+  {
+    "nom": "Le Cateau-Cambrésis",
+    "slug": "le-cateau-cambresis",
+    "codePostal": "59360",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.0873,
+    "lon": 3.5354,
+    "dep": "59"
+  },
+  {
+    "nom": "Feignies",
+    "slug": "feignies",
+    "codePostal": "59750",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.291,
+    "lon": 3.9119,
+    "dep": "59"
   }
 ]
