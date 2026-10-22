@@ -28,6 +28,9 @@ Variables d'environnement à définir sur Render (voir `.env.example`) :
 | `PLAQUE_API_KEY`, `PLAQUE_API_PROVIDER`, `PLAQUE_API_QUOTA` | Fiche véhicule par plaque (apiplaqueimmatriculation.com par défaut), plafonnée par mois. |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_KEY` | Stockage durable de l'admin (demandes, suivi, photos). |
 | `ANTHROPIC_API_KEY` | Estimation automatique des demandes. Vide = pas d'estimation. |
+| `CONTACT_FROM`, `CONTACT_REPLY_TO` | Expéditeur des e-mails écrits au client depuis la fiche (ex. `LUNICAR <contact@lunicar.fr>`) et adresse de réponse. Sans `CONTACT_FROM` : `SMTP_FROM_NAME` + `SMTP_USER`. Avec le SMTP Gmail, l'adresse de `CONTACT_FROM` doit être déclarée comme alias (« Envoyer des e-mails en tant que »), sinon Gmail la remplace. |
+| `CONTACT_SMTP_HOST`, `CONTACT_SMTP_PORT`, `CONTACT_SMTP_USER`, `CONTACT_SMTP_PASS` | SMTP dédié à ces e-mails (facultatif, port 465 = TLS direct). Sans eux : le SMTP du site. Sans aucun SMTP, l'envoi échoue avec un message clair et rien ne change sur la demande. |
+| `CONTACT_IMAP_HOST`, `CONTACT_IMAP_PORT`, `CONTACT_IMAP_USER`, `CONTACT_IMAP_PASS` | Boîte où arrivent les réponses des clients (celle de `CONTACT_REPLY_TO`), relue par le bouton « Vérifier les réponses du client ». Sans eux : la boîte de l'import Gmail (`IMAP_*` ou `SMTP_*`). |
 
 Le disque de Render est effacé à chaque déploiement : avec Supabase configuré, les demandes et photos y sont conservées ; l'e-mail reste une copie, les journaux le filet de sécurité.
 
@@ -40,6 +43,10 @@ Toutes les demandes reçues (formulaire, abandons, rappels, anciennes demandes i
 - **Photos rangées par dossier** (`2026-10-17_AB12CD34_peugeot-308/`), visionneuse, ajout depuis l'admin, téléchargement du dossier en .zip. Les photos ne sont plus publiques.
 - Suivi : statut, offre faite, prix d'achat, prix retenus à la main, date de rappel, notes, historique. Export CSV.
 - **Import Gmail** (onglet Réglages, ou `node tools/import_gmail.js [AAAA-MM-JJ]`) : relit tous les formats d'e-mail envoyés par le site depuis décembre 2025, reconstruit les demandes, leurs photos et les messages de contact. Rejouable sans doublon.
+- **E-mails au client** (bloc « Échanges par e-mail » de la fiche) : objet prérempli « Votre demande LUNICAR <REF> – <modèle> », message libre, modèles insérables (demande d'informations / photos, fourchette indicative, confirmation de rendez-vous). Les repères `[montant bas]`, `[date]`… doivent être remplacés, sinon l'envoi est refusé. Chaque envoi est historisé dans `suivi.emails` et affiché en fil de conversation, avec les messages du formulaire de contact venus de la même adresse (l'onglet Messages renvoie vers la fiche). Un envoi compte comme un échange : « Nouvelle » passe à « Contactée », relance à J+4 ouvrés.
+- **Réponses du client** : « Vérifier les réponses du client » lit la boîte IMAP (`CONTACT_IMAP_*`), prend les e-mails venus de l'adresse du client depuis la demande, retire les citations et les ajoute au fil sans doublon. Point d'extension : `lireReponses()` dans `lib/contact-client.js` ; toute autre source (webhook d'un service d'e-mail entrant…) peut alimenter `suivi.emails` au même format `{ id, date, sens: 'recu', de, objet, texte, message_id }`.
+- **Pas intéressé** : texte de refus sobre, modifiable avant envoi, puis confirmation. La demande passe en « Sans suite » (`suivi.motif_fin = 'non_retenue'`), relances arrêtées, rendez-vous prévu annulé, compta synchronisée. Si l'e-mail ne part pas, le statut ne change pas ; « Classer sans envoyer » le fait explicitement sans rien envoyer.
+- Aucun e-mail ne part vers un client en dehors de ces deux actions. Code : `lib/contact-client.js`, routes `/api/admin/demandes/:ref/email`, `/pas-interesse`, `/email/reponses`.
 - Articles : `/admino/articles` (ancienne page).
 
 Code : `lib/store.js` (stockage), `lib/estimation.js`, `lib/gmail-import.js`, `lib/admin.js` (API), `public/admin/index.html` (interface).
