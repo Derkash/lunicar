@@ -269,6 +269,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .lead-done-mark { width: 58px; height: 58px; margin: 0 auto 14px; border-radius: 50%; background: var(--green); color: var(--white); display: grid; place-items: center; }
 .lead-done-mark svg { width: 30px; height: 30px; }
 .lead-ref { font-size: .9rem; color: var(--ink-400); }
+/* Prochaines étapes après l'envoi : liste numérotée éditoriale, chiffres et filets. */
+.lead-next-title { margin: 20px 0 4px; text-align: left; font: 600 .78rem var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-600); }
+.lead-next { list-style: none; counter-reset: etape; margin: 0; padding: 0; text-align: left; }
+.lead-next li { counter-increment: etape; display: grid; grid-template-columns: 30px 1fr; column-gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); }
+.lead-next li::before { content: counter(etape); grid-row: span 2; font: 600 1.25rem/1.2 var(--font-display); color: var(--marine-900); }
+.lead-next strong { font-size: .95rem; color: var(--ink-900, var(--marine-900)); line-height: 1.35; }
+.lead-next span { font-size: .87rem; color: var(--ink-600); line-height: 1.45; margin-top: 2px; }
+.lead-next-link { margin: 10px 0 0; text-align: left; font-size: .9rem; }
 .lead-alt { margin: 14px 4px 0; font-size: .92rem; color: rgba(255, 255, 255, .78); display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
 .lead-alt-link { display: inline-flex; align-items: center; gap: 7px; color: var(--white); font-weight: 600; }
 .lead-alt-link svg { width: 17px; height: 17px; color: var(--gold-400); }
