@@ -41,7 +41,7 @@ const decode = s => s.replace(/&amp;/g, '&').replace(/&#39;|&apos;/g, '\'').repl
             try { JSON.parse(m[1]); } catch (e) { bad('JSON-LD invalide'); }
         }
         const text = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
-        const f = text.replace(/exemplaire n°\s?\d/g, '').match(FORBIDDEN);
+        const f = text.replace(/(exemplaire|fosse|puits) n°\s?\d/g, '').match(FORBIDDEN);
         if (f) bad(`formulation interdite « ${f[0]} »`);
         titles.set(title, [...(titles.get(title) || []), u]);
         descs.set(desc, [...(descs.get(desc) || []), u]);
