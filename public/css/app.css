@@ -613,3 +613,4 @@ select.q-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://
 @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+.section-steps[hidden] { display: none; }

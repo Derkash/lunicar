@@ -392,6 +392,8 @@
         const terminer = () => {
             photosBox.hidden = true;
             form.querySelector('.lead-done').hidden = false;
+            // Demande envoyée : le déroulé générique de la page n'a plus d'utilité, l'écran de fin donne les étapes.
+            document.querySelectorAll('.section-steps').forEach(sec => { sec.hidden = true; });
             const bar = form.querySelector('.lead-meter-bar i');
             bar.style.width = '100%';
             form.querySelector('.lead-meter-pct').textContent = '100 %';
@@ -487,9 +489,9 @@
     simpleForm('callbackForm', '/api/reprise', f => ({
         type: 'rappel', prenom: f.prenom.value, telephone: f.telephone.value, site_web: f.site_web.value,
         source: 'rappel', page: location.pathname, provenance: provenance(), clicAds: clicAds()
-    }), 'C\'est noté : un conseiller vous rappelle sous 24 h ouvrées pour étudier votre voiture.', 'generate_lead');
+    }), 'C\'est noté : un conseiller vous rappelle rapidement pour étudier votre voiture.', 'generate_lead');
 
     simpleForm('contactForm', '/api/contact', f => ({
         nom: f.nom.value, email: f.email.value, telephone: f.telephone.value, message: f.message.value, site_web: f.site_web.value
-    }), 'Message envoyé. Nous vous répondons sous 24 h ouvrées.', 'contact_message');
+    }), 'Message envoyé. Nous vous répondons rapidement.', 'contact_message');
 })();
