@@ -615,6 +615,13 @@ select.q-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://
 }
 .section-steps[hidden] { display: none; }
 
-/* Réseaux sociaux du pied de page : liens texte, sans bibliothèque d'icônes. */
-.footer-social { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; margin-top: 14px; }
-.footer-social span { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-400); }
+
+/* « Suivez-nous » : pictogrammes au trait + nom, sans pastille derrière l'icône. */
+.footer-social { margin-top: 18px; }
+.footer-social > p { margin: 0 0 8px; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-400); }
+.social-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.social-links a { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; font-size: .95rem; color: var(--white); text-decoration: none; }
+.social-links a:hover span { text-decoration: underline; }
+.social-links svg { width: 20px; height: 20px; color: var(--gold-400); flex: none; }
+.social-links-light a { color: var(--marine-900); }
+.social-links-light svg { color: var(--gold-600); }

@@ -1046,6 +1046,9 @@ Dernière mise à jour : ${pages.TEMPLATE_DATE}
 - Aucune obligation d'acheter un autre véhicule
 - Horaires : ${SITE.hours} ; contact : ${SITE.email}
 
+## Comptes officiels LUNICAR
+${(SITE.social || []).map(r => `- [LUNICAR sur ${r.nom}](${r.url})`).join('\n')}
+
 ## Pages principales
 - [Accueil](${b}/): présentation, déroulé, comparatif, FAQ
 - [Comment fonctionne LUNICAR](${b}/${pages.METHODE_SLUG}): la méthode de bout en bout (demande, fourchette indicative, technicien, prix définitif, virement instantané), ce qui est garanti et ce qui ne l'est pas
