@@ -4,24 +4,23 @@
     "image": "accueil",
     "nav": "Toutes marques",
     "title": "Rachat de voiture d’occasion toutes marques | LUNICAR",
-    "description": "Rachat de voiture d’occasion toutes marques : récente, SUV, électrique, utilitaire, en panne ou accidentée, toute voiture peut être étudiée.",
+    "description": "Rachat de voiture d’occasion toutes marques : récente, SUV, électrique, utilitaire, ou en panne, toute voiture peut être étudiée.",
     "h1": "Rachat de voiture d’occasion : toutes marques, <em>toute voiture peut être étudiée</em>",
     "lede": "De la voiture récente encore sous garantie constructeur à celle qui ne roule plus, toute voiture peut faire l’objet d’une demande d’estimation auprès de LUNICAR, pour les particuliers comme pour les professionnels. Voici ce que nous étudions, dans quels cas une offre n’est pas possible et comment se construit le prix.",
     "points": [
       "Toutes marques, toute voiture peut être étudiée",
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Aucun achat de véhicule imposé",
       "Paiement par virement instantané à la vente"
     ],
     "etat": [
       "panne",
-      "accident",
       "ct"
     ],
     "sections": [
       {
         "h2": "Quelles voitures LUNICAR peut-il étudier ?",
-        "html": "<p>Toute voiture peut être étudiée par LUNICAR, de la récente à celle qui ne roule plus : citadines, berlines, SUV, monospaces, breaks, modèles premium, électriques, hybrides, GPL, utilitaires, véhicules à fort kilométrage, en panne, accidentés ou sans contrôle technique. Les particuliers comme les professionnels peuvent vendre, partout en France.</p><ul class=\"ticks\"><li><strong>Toutes les marques</strong> : généralistes comme <a href=\"/reprise-renault\">Renault</a>, <a href=\"/reprise-peugeot\">Peugeot</a>, <a href=\"/reprise-citroen\">Citroën</a>, <a href=\"/reprise-dacia\">Dacia</a>, <a href=\"/reprise-volkswagen\">Volkswagen</a>, <a href=\"/reprise-toyota\">Toyota</a>, <a href=\"/reprise-ford\">Ford</a>, <a href=\"/reprise-fiat\">Fiat</a> ou <a href=\"/reprise-seat\">Seat</a>, et premium comme <a href=\"/reprise-mercedes\">Mercedes</a>, <a href=\"/reprise-bmw\">BMW</a> ou <a href=\"/reprise-audi\">Audi</a>.</li><li><strong>Tous les âges</strong> : de la voiture de quelques mois à celle qui a vingt ans de service.</li><li><strong>Tous les états à l’étude</strong> : roulante, en panne, accidentée, sans contrôle technique valide. Selon l’importance des pannes ou des dommages, une offre n’est pas toujours possible.</li></ul><p>LUNICAR n’est pas un service d’enlèvement d’épaves : chaque demande fait l’objet d’une étude, fondée sur la valeur réelle du véhicule. Nous ne nous engageons pas à racheter toutes les voitures : certaines pannes ou dégradations importantes peuvent conduire à une absence d’offre, et le conseiller vous le dit clairement lors du rappel. Les professionnels qui renouvellent un véhicule de société ou un utilitaire bénéficient du même déroulé que les particuliers. Où que vous soyez en France, un technicien LUNICAR vient à votre adresse, sans frais.</p>"
+        "html": "<p>Toute voiture peut être étudiée par LUNICAR, de la récente à celle qui ne roule plus : citadines, berlines, SUV, monospaces, breaks, modèles premium, électriques, hybrides, GPL, utilitaires, véhicules à fort kilométrage, en panne ou sans contrôle technique. Les particuliers comme les professionnels peuvent vendre, partout en France.</p><ul class=\"ticks\"><li><strong>Toutes les marques</strong> : généralistes comme <a href=\"/reprise-renault\">Renault</a>, <a href=\"/reprise-peugeot\">Peugeot</a>, <a href=\"/reprise-citroen\">Citroën</a>, <a href=\"/reprise-dacia\">Dacia</a>, <a href=\"/reprise-volkswagen\">Volkswagen</a>, <a href=\"/reprise-toyota\">Toyota</a>, <a href=\"/reprise-ford\">Ford</a>, <a href=\"/reprise-fiat\">Fiat</a> ou <a href=\"/reprise-seat\">Seat</a>, et premium comme <a href=\"/reprise-mercedes\">Mercedes</a>, <a href=\"/reprise-bmw\">BMW</a> ou <a href=\"/reprise-audi\">Audi</a>.</li><li><strong>Tous les âges</strong> : de la voiture de quelques mois à celle qui a vingt ans de service.</li><li><strong>Tous les états à l’étude</strong> : roulante, en panne, sans contrôle technique valide. Selon l’importance des pannes, une offre n’est pas toujours possible.</li></ul><p>LUNICAR n’est pas un service d’enlèvement d’épaves : chaque demande fait l’objet d’une étude, fondée sur la valeur réelle du véhicule. Nous ne nous engageons pas à racheter toutes les voitures : certaines pannes importantes peuvent conduire à une absence d’offre, et le conseiller vous le dit clairement lors du rappel. Les professionnels qui renouvellent un véhicule de société ou un utilitaire bénéficient du même déroulé que les particuliers. Où que vous soyez en France, un technicien LUNICAR vient à votre adresse, sans frais.</p>"
       },
       {
         "h2": "Peut-on vendre une voiture récente, encore sous garantie constructeur ?",
@@ -36,23 +35,23 @@
         "html": "<p>Oui, la motorisation compte, parce qu’elle détermine le profil des acheteurs. Une électrique s’évalue d’abord sur l’état de sa batterie et son autonomie réelle, une hybride sur l’entretien de son système, un diesel sur son usage et son kilométrage, une version GPL sur l’entretien de son circuit gaz.</p><ul class=\"ticks\"><li><strong>Électrique</strong> : diagnostic de batterie, câbles de recharge, contrat de location de batterie éventuel, voir la <a href=\"/reprise-voiture-electrique\">reprise de voiture électrique</a>.</li><li><strong>Hybride et hybride rechargeable</strong> : historique d’entretien et comptes rendus de contrôle du système hybride.</li><li><strong>Diesel</strong> : filtre à particules, système AdBlue, distribution, voir la <a href=\"/reprise-voiture-diesel\">reprise de voiture diesel</a>.</li><li><strong>GPL et bicarburation</strong> : factures d’entretien spécifiques du circuit gaz.</li></ul><p class=\"note\">La vignette Crit’Air dépend de la motorisation et de la date de première immatriculation. Les règles de circulation dans les zones à faibles émissions ont évolué : vérifiez la situation de votre véhicule sur le <a href=\"https://www.certificat-air.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site officiel Crit’Air</a>.</p>"
       },
       {
-        "h2": "Peut-on vendre une voiture en panne, accidentée ou à fort kilométrage ?",
-        "html": "<p>Oui. Une voiture en panne, accidentée, sans contrôle technique valide ou dépassant 200 000 km peut être vendue à LUNICAR. L’offre tient compte des réparations à prévoir. Partout en France, le rendez-vous à votre adresse et l’enlèvement sont à la charge de LUNICAR, y compris pour un véhicule non roulant garé en parking souterrain.</p><p>Pour une panne, décrivez les symptômes et joignez un diagnostic si vous en avez un. Pour un accident, précisez les zones touchées et l’éventuel passage par l’assurance. Le prix n’est revu que si l’état réel diffère de votre description.</p><ul class=\"ticks\"><li><strong>En panne</strong> : <a href=\"/rachat-voiture-en-panne-paris\">rachat de voiture en panne</a>.</li><li><strong>Accidentée</strong> : <a href=\"/rachat-voiture-accidentee-paris\">rachat de voiture accidentée</a>.</li><li><strong>Fort kilométrage</strong> : <a href=\"/reprise-voiture-haut-kilometrage\">reprise de voiture à fort kilométrage</a>.</li><li><strong>Sans contrôle technique</strong> : <a href=\"/vendre-voiture-sans-controle-technique-paris\">vendre sans contrôle technique</a>.</li></ul>"
+        "h2": "Peut-on vendre une voiture en panne ou à fort kilométrage ?",
+        "html": "<p>Oui. Une voiture en panne, sans contrôle technique valide ou dépassant 200 000 km peut être vendue à LUNICAR. L’offre tient compte des réparations à prévoir. Partout en France, le rendez-vous à votre adresse et l’enlèvement sont à la charge de LUNICAR, y compris pour un véhicule non roulant garé en parking souterrain.</p><p>Pour une panne, décrivez les symptômes et joignez un diagnostic si vous en avez un. Le prix n’est revu que si l’état réel diffère de votre description.</p><ul class=\"ticks\"><li><strong>En panne</strong> : <a href=\"/rachat-voiture-en-panne-paris\">rachat de voiture en panne</a>.</li><li><strong>Fort kilométrage</strong> : <a href=\"/reprise-voiture-haut-kilometrage\">reprise de voiture à fort kilométrage</a>.</li><li><strong>Sans contrôle technique</strong> : <a href=\"/vendre-voiture-sans-controle-technique-paris\">vendre sans contrôle technique</a>.</li></ul>"
       },
       {
         "h2": "Qu’est-ce qui fait le prix d’une voiture d’occasion ?",
-        "html": "<p>Le prix d’une voiture d’occasion dépend du modèle, de l’année, du kilométrage, de l’état général, de l’entretien, de l’historique, des équipements, de la couleur, de la motorisation et de la demande du marché au moment de la vente. Aucun critère ne suffit seul : c’est leur combinaison qui fixe la valeur.</p><ul class=\"ticks\"><li><strong>Modèle, année et kilométrage</strong> : la base de toute estimation.</li><li><strong>État</strong> : carrosserie, intérieur, pneus, freins, voyants allumés.</li><li><strong>Entretien et historique</strong> : factures, distribution, nombre de propriétaires, sinistres déclarés, que l’on vérifie avec <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>.</li><li><strong>Équipements</strong> : boîte automatique, finition, aides à la conduite, toit ouvrant.</li><li><strong>Couleur</strong> : les teintes discrètes se revendent plus facilement que les couleurs très marquées.</li><li><strong>Demande du marché</strong> : certaines motorisations ou carrosseries sont plus recherchées que d’autres selon les périodes.</li></ul><p>Ces critères se combinent. Une voiture ancienne mais peu kilométrée et bien entretenue peut valoir davantage qu’un modèle plus récent au passé flou. À l’inverse, un kilométrage élevé pèse moins lorsque les factures montrent un entretien régulier, réalisé aux bonnes échéances. C’est pourquoi chaque document transmis compte : il réduit l’incertitude pour l’acheteur, et donc la décote appliquée.</p>"
+        "html": "<p>Le prix d’une voiture d’occasion dépend du modèle, de l’année, du kilométrage, de l’état général, de l’entretien, de l’historique, des équipements, de la couleur, de la motorisation et de la demande du marché au moment de la vente. Aucun critère ne suffit seul : c’est leur combinaison qui fixe la valeur.</p><ul class=\"ticks\"><li><strong>Modèle, année et kilométrage</strong> : la base de toute estimation.</li><li><strong>État</strong> : carrosserie, intérieur, pneus, freins, voyants allumés.</li><li><strong>Entretien et historique</strong> : factures, distribution, nombre de propriétaires, que l’on vérifie avec <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>.</li><li><strong>Équipements</strong> : boîte automatique, finition, aides à la conduite, toit ouvrant.</li><li><strong>Couleur</strong> : les teintes discrètes se revendent plus facilement que les couleurs très marquées.</li><li><strong>Demande du marché</strong> : certaines motorisations ou carrosseries sont plus recherchées que d’autres selon les périodes.</li></ul><p>Ces critères se combinent. Une voiture ancienne mais peu kilométrée et bien entretenue peut valoir davantage qu’un modèle plus récent au passé flou. À l’inverse, un kilométrage élevé pèse moins lorsque les factures montrent un entretien régulier, réalisé aux bonnes échéances. C’est pourquoi chaque document transmis compte : il réduit l’incertitude pour l’acheteur, et donc la décote appliquée.</p>"
       },
       {
         "h2": "Comment LUNICAR construit-il son offre de rachat ?",
-        "html": "<p>Vous décrivez votre voiture en ligne en deux minutes, la plaque est facultative. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative, établie à partir de votre description, de l’historique transmis et de la demande pour ce modèle. Cette fourchette n’impose aucun achat : le prix définitif est confirmé après vérification du véhicule par un technicien.</p><p>Le rendez-vous a lieu à l’adresse de votre choix : domicile, travail, parking ou garage. Un technicien LUNICAR vérifie le véhicule. Si son état correspond à la description, le positionnement annoncé est respecté, sans renégociation injustifiée. S’il diffère (dommage ou panne non déclarés, kilométrage différent), l’écart vous est expliqué et vous restez libre de refuser le prix définitif, sans frais. Le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont ensuite préparés avec vous, et le paiement est effectué par virement bancaire instantané à la conclusion de la vente.</p><p>Pour comparer cette solution avec une vente entre particuliers ou une reprise en concession, consultez notre <a href=\"/comparatif-reprise-auto\">comparatif</a>, et nos <a href=\"/garanties\">engagements</a>.</p>"
+        "html": "<p>Vous décrivez votre voiture en ligne en deux minutes, la plaque est facultative. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, établie à partir de votre description, de l’historique transmis et de la demande pour ce modèle. Cette fourchette n’impose aucun achat : le prix définitif est confirmé après vérification du véhicule par un technicien.</p><p>Le rendez-vous a lieu à l’adresse de votre choix : domicile, travail, parking ou garage. Un technicien LUNICAR vérifie le véhicule. Si son état correspond à la description, le positionnement annoncé est respecté, sans renégociation injustifiée. S’il diffère (dommage ou panne non déclarés, kilométrage différent), l’écart vous est expliqué et vous restez libre de refuser le prix définitif, sans frais. Le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont ensuite préparés avec vous, et le paiement est effectué par virement bancaire instantané à la conclusion de la vente.</p><p>Pour comparer cette solution avec une vente entre particuliers ou une reprise en concession, consultez notre <a href=\"/comparatif-reprise-auto\">comparatif</a>, et nos <a href=\"/garanties\">engagements</a>.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur le rachat de voiture d’occasion",
     "faq": [
       {
         "question": "LUNICAR rachète-t-il toutes les voitures ?",
-        "answer": "Non, pas systématiquement. Toutes les voitures et les utilitaires peuvent être étudiés, quels que soient la marque, l’âge, la motorisation et l’état, y compris en panne ou accidentés. Mais LUNICAR ne s’engage pas à tous les racheter : certaines pannes ou dégradations importantes peuvent conduire à une absence d’offre. Les véhicules anciens et de collection font l’objet d’une étude individuelle."
+        "answer": "Non, pas systématiquement. Toutes les voitures et les utilitaires peuvent être étudiés, quels que soient la marque, l’âge, la motorisation et l’état, y compris en panne. Mais LUNICAR ne s’engage pas à tous les racheter : certaines pannes importantes peuvent conduire à une absence d’offre. Les véhicules anciens et de collection font l’objet d’une étude individuelle."
       },
       {
         "question": "Faut-il acheter un autre véhicule pour vendre le sien ?",
@@ -141,7 +140,7 @@
       },
       {
         "h2": "Vendre à un racheteur professionnel à domicile : comment ça se passe ?",
-        "html": "<p>Avec un racheteur professionnel à domicile comme LUNICAR, vous décrivez votre voiture en ligne, recevez une fourchette de prix indicative sous 24 h ouvrées, puis le rendez-vous a lieu à l’adresse de votre choix. Après vérification du véhicule par un technicien, le prix définitif vous est présenté ; si vous l’acceptez, le paiement est effectué par virement bancaire instantané, sans achat imposé.</p><p>Le prix n’est revu que si l’état réel diffère de votre description, et vous pouvez refuser sans frais, même le jour du rendez-vous. Le contrôle technique n’est pas exigé, et le rendez-vous à votre adresse comme l’enlèvement sont pris en charge partout en France, y compris pour un véhicule non roulant. Le certificat de cession et la déclaration sur le site de l’ANTS sont préparés avec vous.</p><p>Cette solution rapporte en général moins qu’une vente réussie entre particuliers, car le professionnel doit préparer et revendre le véhicule. Elle évite en revanche les visites, les négociations, les risques de fraude au paiement et la responsabilité au titre des vices cachés propre à la vente entre particuliers. Voir <a href=\"/rachat-voiture-ile-de-france\">rachat de voiture en Île-de-France</a>.</p>"
+        "html": "<p>Avec un racheteur professionnel à domicile comme LUNICAR, vous décrivez votre voiture en ligne, recevez une fourchette de prix indicative communiquée rapidement, puis le rendez-vous a lieu à l’adresse de votre choix. Après vérification du véhicule par un technicien, le prix définitif vous est présenté ; si vous l’acceptez, le paiement est effectué par virement bancaire instantané, sans achat imposé.</p><p>Le prix n’est revu que si l’état réel diffère de votre description, et vous pouvez refuser sans frais, même le jour du rendez-vous. Le contrôle technique n’est pas exigé, et le rendez-vous à votre adresse comme l’enlèvement sont pris en charge partout en France, y compris pour un véhicule non roulant. Le certificat de cession et la déclaration sur le site de l’ANTS sont préparés avec vous.</p><p>Cette solution rapporte en général moins qu’une vente réussie entre particuliers, car le professionnel doit préparer et revendre le véhicule. Elle évite en revanche les visites, les négociations, les risques de fraude au paiement et la responsabilité au titre des vices cachés propre à la vente entre particuliers. Voir <a href=\"/rachat-voiture-ile-de-france\">rachat de voiture en Île-de-France</a>.</p>"
       },
       {
         "h2": "Tableau comparatif : quelle solution choisir pour vendre sa voiture ?",
@@ -156,7 +155,7 @@
       },
       {
         "question": "Quelle est la façon la plus rapide de vendre sa voiture ?",
-        "answer": "La vente à un professionnel est généralement la plus rapide. Avec LUNICAR, vous recevez une fourchette de prix indicative sous 24 h ouvrées après votre description en ligne, et le paiement intervient par virement instantané à la conclusion de la vente."
+        "answer": "La vente à un professionnel est généralement la plus rapide. Avec LUNICAR, vous recevez une fourchette de prix indicative communiquée rapidement après votre description en ligne, et le paiement intervient par virement instantané à la conclusion de la vente."
       },
       {
         "question": "Comment éviter les arnaques en vendant sa voiture à un particulier ?",
@@ -204,9 +203,9 @@
     "image": "accueil",
     "nav": "Vieille voiture",
     "title": "Vendre une vieille voiture : on vient chez vous | LUNICAR",
-    "description": "Voiture de plus de 15 ans, peu roulée ou qui dort au garage : fourchette indicative sous 24 h ouvrées, vérification chez vous, virement instantané.",
+    "description": "Voiture de plus de 15 ans, peu roulée ou qui dort au garage : fourchette indicative communiquée rapidement, vérification chez vous, virement instantané.",
     "h1": "Vendre une vieille voiture <em>sans vous déplacer</em>",
-    "lede": "Votre voiture a quinze ou vingt ans, elle roule peu et vous ne voulez ni annonce ni visites ? Décrivez-la en ligne ou par téléphone : nous vous rappelons sous 24 h ouvrées avec une fourchette de prix indicative, puis nous venons la chercher chez vous, à Paris, dans les Hauts-de-Seine, les Yvelines et partout en France.",
+    "lede": "Votre voiture a quinze ou vingt ans, elle roule peu et vous ne voulez ni annonce ni visites ? Décrivez-la en ligne ou par téléphone : nous vous rappelons rapidement avec une fourchette de prix indicative, puis nous venons la chercher chez vous, à Paris, dans les Hauts-de-Seine, les Yvelines et partout en France.",
     "points": [
       "Voitures de plus de 15 ans acceptées",
       "Rendez-vous chez vous, sans frais",
@@ -225,7 +224,7 @@
       },
       {
         "h2": "Vendre sans internet ni déplacement : comment ça se passe",
-        "html": "<ol>\n<li><strong>Vous nous décrivez la voiture</strong>, en ligne en deux minutes ou par téléphone si vous préférez : marque, modèle, année, kilométrage et état.</li>\n<li><strong>Un conseiller vous rappelle sous 24 h ouvrées</strong> avec une fourchette de prix indicative. Vous pouvez prendre le temps d'en parler avec vos proches.</li>\n<li><strong>Nous venons chez vous</strong>, à votre domicile, dans votre garage ou au parking de votre résidence. Un proche peut être présent au rendez-vous.</li>\n<li><strong>Nous préparons ensemble les papiers</strong> : certificat de cession et déclaration de cession sur le site de l'ANTS.</li>\n<li><strong>Vous êtes payé par virement bancaire</strong> instantané, à la conclusion de la vente. Jamais d'espèces, jamais de chèque, aucun frais.</li>\n</ol>\n<p>Vous n'avez ni annonce à publier, ni appels d'inconnus à gérer, ni essais à organiser. C'est souvent ce qui décide les propriétaires de voitures anciennes, qui ne veulent pas recevoir de visites chez eux.</p>"
+        "html": "<ol>\n<li><strong>Vous nous décrivez la voiture</strong>, en ligne en deux minutes ou par téléphone si vous préférez : marque, modèle, année, kilométrage et état.</li>\n<li><strong>Un conseiller vous rappelle rapidement</strong> avec une fourchette de prix indicative. Vous pouvez prendre le temps d'en parler avec vos proches.</li>\n<li><strong>Nous venons chez vous</strong>, à votre domicile, dans votre garage ou au parking de votre résidence. Un proche peut être présent au rendez-vous.</li>\n<li><strong>Nous préparons ensemble les papiers</strong> : certificat de cession et déclaration de cession sur le site de l'ANTS.</li>\n<li><strong>Vous êtes payé par virement bancaire</strong> instantané, à la conclusion de la vente. Jamais d'espèces, jamais de chèque, aucun frais.</li>\n</ol>\n<p>Vous n'avez ni annonce à publier, ni appels d'inconnus à gérer, ni essais à organiser. C'est souvent ce qui décide les propriétaires de voitures anciennes, qui ne veulent pas recevoir de visites chez eux.</p>"
       },
       {
         "h2": "Vendre une vieille voiture : particulier, garage ou professionnel ?",
@@ -252,7 +251,7 @@
     "faq": [
       {
         "question": "Peut-on vendre une voiture de plus de 20 ans ?",
-        "answer": "Oui. Il n'y a pas d'âge limite pour vendre une voiture à un professionnel. L'offre dépend de l'état réel, de l'entretien et du modèle. Décrivez la voiture et vous recevez une fourchette de prix indicative sous 24 h ouvrées."
+        "answer": "Oui. Il n'y a pas d'âge limite pour vendre une voiture à un professionnel. L'offre dépend de l'état réel, de l'entretien et du modèle. Décrivez la voiture et vous recevez une fourchette de prix indicative communiquée rapidement."
       },
       {
         "question": "Ma voiture a très peu roulé, est-ce que cela compte ?",
@@ -304,11 +303,11 @@
     "image": "panne",
     "nav": "Fort kilométrage",
     "title": "Vendre une voiture à fort kilométrage | LUNICAR",
-    "description": "Voiture à 200 000 km ou plus, vieux diesel : fourchette indicative sous 24 h, étude au cas par cas, virement instantané à la vente.",
+    "description": "Voiture à 200 000 km ou plus, vieux diesel : fourchette indicative communiquée rapidement, étude au cas par cas, virement instantané à la vente.",
     "h1": "Vendre une voiture qui a beaucoup roulé, <em>sans brader ni attendre</em>",
     "lede": "Une voiture à 200 000 km ou plus se vend moins facilement entre particuliers. Elle garde pourtant une valeur réelle. Voici ce qui compte pour l'estimer et comment LUNICAR l'étudie, au cas par cas, partout en France.",
     "points": [
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Prix définitif après vérification par un technicien",
       "Contrôle technique non exigé",
       "Paiement par virement instantané à la vente"
@@ -340,7 +339,7 @@
       },
       {
         "h2": "Comment LUNICAR étudie une voiture à fort kilométrage ?",
-        "html": "<p>Vous décrivez la voiture en ligne en 2 minutes, plaque facultative. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Si elle vous convient, un technicien vient vérifier la voiture à l'adresse de votre choix, partout en France, sans frais, puis vous présente le prix définitif. Le paiement se fait par virement bancaire instantané à la conclusion de la vente, sans frais de dossier.</p><p>Le contrôle technique n'est pas exigé, car il n'est obligatoire que pour une vente entre particuliers. Si la voiture ne roule plus, l'enlèvement reste à notre charge, y compris depuis un parking souterrain. Le certificat de cession (Cerfa 15776) et la déclaration de cession sur le site de l'ANTS sont préparés avec vous sur place.</p><p>Vous gardez la main jusqu'au bout : vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais. Aucun achat d'un autre véhicule n'est demandé. Si votre voiture est aussi en panne ou sans contrôle technique, consultez nos pages <a href=\"/rachat-voiture-en-panne-paris\">rachat de voiture en panne</a> et <a href=\"/vendre-voiture-sans-controle-technique-paris\">vente sans contrôle technique</a>.</p>"
+        "html": "<p>Vous décrivez la voiture en ligne en 2 minutes, plaque facultative. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Si elle vous convient, un technicien vient vérifier la voiture à l'adresse de votre choix, partout en France, sans frais, puis vous présente le prix définitif. Le paiement se fait par virement bancaire instantané à la conclusion de la vente, sans frais de dossier.</p><p>Le contrôle technique n'est pas exigé, car il n'est obligatoire que pour une vente entre particuliers. Si la voiture ne roule plus, l'enlèvement reste à notre charge, y compris depuis un parking souterrain. Le certificat de cession (Cerfa 15776) et la déclaration de cession sur le site de l'ANTS sont préparés avec vous sur place.</p><p>Vous gardez la main jusqu'au bout : vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais. Aucun achat d'un autre véhicule n'est demandé. Si votre voiture est aussi en panne ou sans contrôle technique, consultez nos pages <a href=\"/rachat-voiture-en-panne-paris\">rachat de voiture en panne</a> et <a href=\"/vendre-voiture-sans-controle-technique-paris\">vente sans contrôle technique</a>.</p>"
       },
       {
         "h2": "Comment préparer la vente pour obtenir une offre juste ?",
@@ -351,11 +350,11 @@
     "faq": [
       {
         "question": "Combien vaut une voiture à 200 000 km ?",
-        "answer": "Il n'existe pas de prix type : à 200 000 km, la valeur dépend surtout du modèle, de l'entretien prouvé et des frais à prévoir (distribution, embrayage, pneus). Une voiture bien suivie se vend encore. Pour une estimation, décrivez-la en ligne : vous recevez une fourchette de prix indicative sous 24 h ouvrées."
+        "answer": "Il n'existe pas de prix type : à 200 000 km, la valeur dépend surtout du modèle, de l'entretien prouvé et des frais à prévoir (distribution, embrayage, pneus). Une voiture bien suivie se vend encore. Pour une estimation, décrivez-la en ligne : vous recevez une fourchette de prix indicative communiquée rapidement."
       },
       {
         "question": "Étudiez-vous les voitures à plus de 300 000 km ?",
-        "answer": "Oui, au cas par cas. Toute voiture peut être étudiée, quel que soit le kilométrage, mais une offre n'est pas systématique : elle dépend de l'état réel, de l'entretien et du modèle. Décrivez le véhicule en ligne pour recevoir une fourchette de prix indicative sous 24 h ouvrées."
+        "answer": "Oui, au cas par cas. Toute voiture peut être étudiée, quel que soit le kilométrage, mais une offre n'est pas systématique : elle dépend de l'état réel, de l'entretien et du modèle. Décrivez le véhicule en ligne pour recevoir une fourchette de prix indicative communiquée rapidement."
       },
       {
         "question": "Faut-il un contrôle technique pour vous vendre ma voiture ?",
@@ -399,12 +398,12 @@
     "image": "ile-de-france",
     "nav": "Voiture diesel",
     "title": "Vendre sa voiture diesel en Île-de-France | LUNICAR",
-    "description": "Vous vendez un diesel en Île-de-France ? Crit'Air, état du FAP ou de l'EGR : fourchette indicative sous 24 h, virement instantané à la vente.",
+    "description": "Vous vendez un diesel en Île-de-France ? Crit'Air, état du FAP ou de l'EGR : fourchette indicative communiquée rapidement, virement instantané à la vente.",
     "h1": "Vendre sa voiture diesel en Île-de-France, <em>récente ou ancienne</em>",
     "lede": "Vignette Crit'Air, règles de circulation qui évoluent, pièces sensibles des diesels modernes : vendre un diesel en Île-de-France soulève des questions. Voici des repères clairs et la façon dont LUNICAR étudie votre voiture.",
     "points": [
       "Diesels récents et anciens étudiés",
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Rendez-vous à l'adresse de votre choix",
       "Virement bancaire instantané à la vente"
     ],
@@ -432,7 +431,7 @@
       },
       {
         "h2": "Comment LUNICAR rachète votre voiture diesel ?",
-        "html": "<p>Vous décrivez votre diesel en ligne en 2 minutes. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Le rendez-vous a lieu chez vous, au travail, dans un parking ou un garage en Île-de-France. Le paiement se fait par virement bancaire instantané à la conclusion de la vente.</p><ul class=\"ticks\"><li><strong>Sans contrôle technique</strong> : il n'est pas exigé pour une vente à LUNICAR.</li><li><strong>Démarches préparées</strong> : certificat de cession (Cerfa 15776) et déclaration de cession sur l'ANTS remplis avec vous.</li><li><strong>Sans frais</strong> : pas de frais de dossier, rendez-vous et enlèvement à notre charge, partout en France.</li><li><strong>Libre de refuser</strong> : vous pouvez dire non, même le jour du rendez-vous, sans frais.</li></ul><p>Nous intervenons à Paris, dans tous les départements d'Île-de-France et partout ailleurs en France, voir <a href=\"/rachat-voiture-ile-de-france\">rachat de voiture en Île-de-France</a>.</p>"
+        "html": "<p>Vous décrivez votre diesel en ligne en 2 minutes. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Le rendez-vous a lieu chez vous, au travail, dans un parking ou un garage en Île-de-France. Le paiement se fait par virement bancaire instantané à la conclusion de la vente.</p><ul class=\"ticks\"><li><strong>Sans contrôle technique</strong> : il n'est pas exigé pour une vente à LUNICAR.</li><li><strong>Démarches préparées</strong> : certificat de cession (Cerfa 15776) et déclaration de cession sur l'ANTS remplis avec vous.</li><li><strong>Sans frais</strong> : pas de frais de dossier, rendez-vous et enlèvement à notre charge, partout en France.</li><li><strong>Libre de refuser</strong> : vous pouvez dire non, même le jour du rendez-vous, sans frais.</li></ul><p>Nous intervenons à Paris, dans tous les départements d'Île-de-France et partout ailleurs en France, voir <a href=\"/rachat-voiture-ile-de-france\">rachat de voiture en Île-de-France</a>.</p>"
       }
     ],
     "faqTitle": "Questions sur la vente d'une voiture diesel",
@@ -483,12 +482,12 @@
     "image": "accueil",
     "nav": "Électrique et hybride",
     "title": "Vendre sa voiture électrique ou hybride | LUNICAR",
-    "description": "Électrique, hybride ou hybride rechargeable : état de la batterie, location de batterie, aides. Estimation indicative sous 24 h, virement instantané à la vente.",
+    "description": "Électrique, hybride ou hybride rechargeable : état de la batterie, location de batterie, aides. Estimation indicative rapide, virement instantané à la vente.",
     "h1": "Vendre sa voiture électrique ou hybride, <em>batterie comprise</em>",
     "lede": "Pour une voiture électrique ou hybride, la batterie compte autant que le kilométrage. État de santé, contrat de location, garantie constructeur, aides perçues : voici ce qu'il faut vérifier avant de vendre, et comment LUNICAR procède.",
     "points": [
       "Électriques et hybrides étudiés",
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Prix définitif après vérification par un technicien",
       "Virement bancaire instantané à la vente"
     ],
@@ -520,7 +519,7 @@
       },
       {
         "h2": "Comment LUNICAR rachète votre voiture électrique ou hybride ?",
-        "html": "<p>Vous décrivez la voiture en ligne en 2 minutes, en précisant l'état de la batterie si vous le connaissez. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Un technicien vient vérifier la voiture sans frais à l'adresse de votre choix, partout en France, et, si la vente est conclue, le paiement se fait par virement instantané.</p><p>Le certificat de cession et la déclaration sur l'ANTS sont préparés avec vous. Le prix n'est revu que si l'état réel diffère de la description. Vous pouvez refuser l'offre, même le jour du rendez-vous, sans frais. Les modalités de notre service sont détaillées sur la page <a href=\"/reprise\">reprise</a>.</p>"
+        "html": "<p>Vous décrivez la voiture en ligne en 2 minutes, en précisant l'état de la batterie si vous le connaissez. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Un technicien vient vérifier la voiture sans frais à l'adresse de votre choix, partout en France, et, si la vente est conclue, le paiement se fait par virement instantané.</p><p>Le certificat de cession et la déclaration sur l'ANTS sont préparés avec vous. Le prix n'est revu que si l'état réel diffère de la description. Vous pouvez refuser l'offre, même le jour du rendez-vous, sans frais. Les modalités de notre service sont détaillées sur la page <a href=\"/reprise\">reprise</a>.</p>"
       }
     ],
     "faqTitle": "Questions sur la vente d'une voiture électrique ou hybride",
@@ -547,7 +546,7 @@
       },
       {
         "question": "Étudiez-vous les hybrides rechargeables ?",
-        "answer": "Oui, ainsi que les hybrides classiques et les électriques. L'offre tient compte de l'état de la batterie, de l'entretien du moteur thermique et des accessoires présents. Elle vous parvient sous 24 h ouvrées."
+        "answer": "Oui, ainsi que les hybrides classiques et les électriques. L'offre tient compte de l'état de la batterie, de l'entretien du moteur thermique et des accessoires présents. Elle vous parvient rapidement."
       }
     ],
     "sources": [
@@ -592,7 +591,7 @@
       },
       {
         "h2": "Quand est-il intéressant de lever l'option pour revendre ?",
-        "html": "<p>Lever l'option pour revendre est intéressant quand la valeur de marché de la voiture dépasse le prix de l'option. L'écart, une fois les éventuels frais déduits, vous revient. À l'inverse, si l'option coûte plus que ce que vaut la voiture, la restitution est souvent le choix le plus simple.</p><p>Pour comparer, il vous faut deux chiffres : le prix de l'option, inscrit au contrat ou communiqué par l'organisme, et une estimation pour la voiture. C'est là que LUNICAR intervient. Vous décrivez la voiture en ligne avant la fin du contrat. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Vous pouvez ainsi décider en connaissance de cause.</p><p class=\"note\">Pensez aussi aux frais de restitution que vous éviteriez en levant l'option : kilométrage dépassé, rayures, pneus usés. Ils entrent dans la comparaison.</p>"
+        "html": "<p>Lever l'option pour revendre est intéressant quand la valeur de marché de la voiture dépasse le prix de l'option. L'écart, une fois les éventuels frais déduits, vous revient. À l'inverse, si l'option coûte plus que ce que vaut la voiture, la restitution est souvent le choix le plus simple.</p><p>Pour comparer, il vous faut deux chiffres : le prix de l'option, inscrit au contrat ou communiqué par l'organisme, et une estimation pour la voiture. C'est là que LUNICAR intervient. Vous décrivez la voiture en ligne avant la fin du contrat. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Vous pouvez ainsi décider en connaissance de cause.</p><p class=\"note\">Pensez aussi aux frais de restitution que vous éviteriez en levant l'option : kilométrage dépassé, rayures, pneus usés. Ils entrent dans la comparaison.</p>"
       },
       {
         "h2": "Peut-on racheter sa voiture avant la fin du contrat ?",
@@ -600,7 +599,7 @@
       },
       {
         "h2": "Que fait LUNICAR pour une voiture en leasing ?",
-        "html": "<p>LUNICAR ne peut racheter la voiture qu'une fois que vous en êtes propriétaire, c'est-à-dire après la levée de l'option ou un achat anticipé. Avant cela, nous vous communiquons une fourchette indicative pour vous aider à décider. Le rachat du contrat et les démarches auprès de l'organisme financier restent de votre ressort.</p><ul class=\"ticks\"><li><strong>Avant la levée</strong> : décrivez la voiture en ligne et recevez une fourchette de prix indicative sous 24 h ouvrées.</li><li><strong>Après la levée</strong> : rendez-vous sans frais à l'adresse de votre choix, partout en France, vérification du véhicule, certificat de cession et déclaration ANTS préparés avec vous.</li><li><strong>Paiement</strong> : par virement bancaire instantané à la conclusion de la vente, sans frais de dossier.</li><li><strong>Liberté</strong> : vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais.</li></ul><p>Pour l'enchaînement des étapes, la levée d'option prend parfois quelques jours. Prévenez votre conseiller : le rendez-vous se cale sur la date où vous serez propriétaire.</p>"
+        "html": "<p>LUNICAR ne peut racheter la voiture qu'une fois que vous en êtes propriétaire, c'est-à-dire après la levée de l'option ou un achat anticipé. Avant cela, nous vous communiquons une fourchette indicative pour vous aider à décider. Le rachat du contrat et les démarches auprès de l'organisme financier restent de votre ressort.</p><ul class=\"ticks\"><li><strong>Avant la levée</strong> : décrivez la voiture en ligne et recevez une fourchette de prix indicative communiquée rapidement.</li><li><strong>Après la levée</strong> : rendez-vous sans frais à l'adresse de votre choix, partout en France, vérification du véhicule, certificat de cession et déclaration ANTS préparés avec vous.</li><li><strong>Paiement</strong> : par virement bancaire instantané à la conclusion de la vente, sans frais de dossier.</li><li><strong>Liberté</strong> : vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais.</li></ul><p>Pour l'enchaînement des étapes, la levée d'option prend parfois quelques jours. Prévenez votre conseiller : le rendez-vous se cale sur la date où vous serez propriétaire.</p>"
       },
       {
         "h2": "Quels documents préparer après la levée d'option ?",
@@ -623,7 +622,7 @@
       },
       {
         "question": "Comment savoir si lever l'option est rentable ?",
-        "answer": "Comparez le prix de l'option à l'estimation de la voiture. Si elle est supérieure, l'écart vous revient après la revente. Décrivez la voiture en ligne pour recevoir une fourchette de prix indicative sous 24 h ouvrées."
+        "answer": "Comparez le prix de l'option à l'estimation de la voiture. Si elle est supérieure, l'écart vous revient après la revente. Décrivez la voiture en ligne pour recevoir une fourchette de prix indicative communiquée rapidement."
       },
       {
         "question": "Que se passe-t-il si la levée d'option prend du temps ?",
@@ -660,7 +659,7 @@
     "lede": "Un crédit en cours n'empêche pas toujours de vendre sa voiture. Tout dépend du type de prêt et de la présence d'un gage. Voici comment vérifier votre situation et comment la vente peut s'organiser avec LUNICAR.",
     "points": [
       "Décompte vérifié avec vous",
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Prix définitif après vérification par un technicien",
       "Paiement par virement instantané"
     ],
@@ -688,7 +687,7 @@
       },
       {
         "h2": "Comment se déroule la vente avec LUNICAR ?",
-        "html": "<p>Vous décrivez la voiture en ligne en 2 minutes et signalez le crédit en cours. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Vous demandez le décompte à votre organisme, nous l'examinons avec vous, puis nous venons à l'adresse de votre choix, sans frais, où que vous soyez en France.</p><p>Le jour du rendez-vous, la voiture est vérifiée et le prix définitif vous est présenté ; si vous l'acceptez, le certificat de cession (Cerfa 15776) et la déclaration de cession sur l'ANTS sont préparés avec vous. Le prix n'est revu que si l'état réel diffère de la description. Vous pouvez refuser le prix définitif, même ce jour-là, sans frais. Aucun achat d'un autre véhicule n'est demandé. Pour une voiture en location, consultez plutôt notre page <a href=\"/reprise-voiture-leasing\">LOA et LLD</a>.</p>"
+        "html": "<p>Vous décrivez la voiture en ligne en 2 minutes et signalez le crédit en cours. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Vous demandez le décompte à votre organisme, nous l'examinons avec vous, puis nous venons à l'adresse de votre choix, sans frais, où que vous soyez en France.</p><p>Le jour du rendez-vous, la voiture est vérifiée et le prix définitif vous est présenté ; si vous l'acceptez, le certificat de cession (Cerfa 15776) et la déclaration de cession sur l'ANTS sont préparés avec vous. Le prix n'est revu que si l'état réel diffère de la description. Vous pouvez refuser le prix définitif, même ce jour-là, sans frais. Aucun achat d'un autre véhicule n'est demandé. Pour une voiture en location, consultez plutôt notre page <a href=\"/reprise-voiture-leasing\">LOA et LLD</a>.</p>"
       }
     ],
     "faqTitle": "Questions sur la vente d'une voiture à crédit",
@@ -776,7 +775,7 @@
       },
       {
         "h2": "Comment LUNICAR vous accompagne ?",
-        "html": "<p>Vous décrivez la voiture en ligne en 2 minutes, plaque facultative. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative, ce qui laisse le temps aux héritiers d'en parler. Un technicien vient vérifier la voiture sans frais à votre adresse, partout en France, et, si la vente est conclue, le paiement se fait par virement instantané.</p><p>Le certificat de cession (Cerfa 15776) et la déclaration de cession sur l'ANTS sont préparés avec vous, au nom des héritiers. Pas de frais de dossier. Vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais. Pour toute question avant de vous lancer, écrivez à contact@lunicar.fr.</p>"
+        "html": "<p>Vous décrivez la voiture en ligne en 2 minutes, plaque facultative. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, ce qui laisse le temps aux héritiers d'en parler. Un technicien vient vérifier la voiture sans frais à votre adresse, partout en France, et, si la vente est conclue, le paiement se fait par virement instantané.</p><p>Le certificat de cession (Cerfa 15776) et la déclaration de cession sur l'ANTS sont préparés avec vous, au nom des héritiers. Pas de frais de dossier. Vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais. Pour toute question avant de vous lancer, écrivez à contact@lunicar.fr.</p>"
       }
     ],
     "faqTitle": "Questions sur la vente de la voiture d'un proche décédé",
@@ -828,11 +827,11 @@
     "image": "accueil",
     "nav": "Renault",
     "title": "Reprise Renault : vendez sans achat imposé | LUNICAR",
-    "description": "Reprise Renault en concession ou vente directe ? Vendez votre Clio, Captur ou Mégane sans racheter de voiture : estimation sous 24 h, virement instantané.",
+    "description": "Reprise Renault en concession ou vente directe ? Vendez votre Clio, Captur ou Mégane sans racheter de voiture : estimation rapide, virement instantané.",
     "h1": "Reprise Renault : vendez votre Renault <em>sans achat imposé</em>",
     "lede": "Clio, Captur, Mégane, Zoe ou Kangoo : comparez la reprise en concession et la vente directe à un professionnel. Vous recevez une estimation, distincte de tout achat, et vous restez libre de la refuser.",
     "points": [
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Aucun véhicule à acheter en échange",
       "Paiement par virement instantané à la vente",
       "Rendez-vous chez vous, sans frais"
@@ -861,7 +860,7 @@
       },
       {
         "h2": "Comment se déroule la vente de votre Renault avec LUNICAR ?",
-        "html": "<p>Vous décrivez votre Renault en ligne en deux minutes, la plaque est facultative. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix, puis le paiement est effectué par virement bancaire instantané à la conclusion de la vente.</p><p>Lors du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Vous pouvez refuser l’offre sans frais, même ce jour-là. Aucune somme n’est versée en espèces ni par chèque.</p>"
+        "html": "<p>Vous décrivez votre Renault en ligne en deux minutes, la plaque est facultative. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix, puis le paiement est effectué par virement bancaire instantané à la conclusion de la vente.</p><p>Lors du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Vous pouvez refuser l’offre sans frais, même ce jour-là. Aucune somme n’est versée en espèces ni par chèque.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur la reprise d’une Renault",
@@ -946,7 +945,7 @@
       },
       {
         "h2": "Une Peugeot en panne ou très kilométrée peut-elle être étudiée ?",
-        "html": "<p>Oui. Une 208 dont la courroie a cédé, une 308 avec un voyant moteur allumé ou une 3008 qui dépasse les 200 000 km peuvent être étudiées. L’offre intègre le coût de remise en état. Partout en France, LUNICAR vient à votre adresse et organise l’enlèvement à ses frais, y compris en parking souterrain.</p><p>Vous décrivez la situation en ligne, un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative, et le prix n’est revu que si l’état réel diffère de votre description. Le paiement se fait par virement instantané à la conclusion de la vente. Voir aussi <a href=\"/rachat-voiture-en-panne-paris\">rachat de voiture en panne</a>.</p>"
+        "html": "<p>Oui. Une 208 dont la courroie a cédé, une 308 avec un voyant moteur allumé ou une 3008 qui dépasse les 200 000 km peuvent être étudiées. L’offre intègre le coût de remise en état. Partout en France, LUNICAR vient à votre adresse et organise l’enlèvement à ses frais, y compris en parking souterrain.</p><p>Vous décrivez la situation en ligne, un conseiller vous rappelle rapidement avec une fourchette de prix indicative, et le prix n’est revu que si l’état réel diffère de votre description. Le paiement se fait par virement instantané à la conclusion de la vente. Voir aussi <a href=\"/rachat-voiture-en-panne-paris\">rachat de voiture en panne</a>.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur la reprise d’une Peugeot",
@@ -998,7 +997,7 @@
     "h1": "Reprise Citroën : vendez votre C3, C4 ou Berlingo <em>en toute liberté</em>",
     "lede": "Reprise en concession ou vente directe ? Pour une Citroën, le choix dépend de votre projet d’achat, de l’état du véhicule et de son historique. Voici les points à connaître avant de vendre.",
     "points": [
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Aucune obligation d’acheter",
       "Utilitaires Citroën acceptés",
       "Enlèvement à nos frais"
@@ -1027,7 +1026,7 @@
       },
       {
         "h2": "Comment vendre sa Citroën avec LUNICAR ?",
-        "html": "<p>Décrivez votre Citroën en ligne en deux minutes, sans obligation de saisir la plaque. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix et le paiement est effectué par virement instantané à la conclusion de la vente.</p><p>Le jour du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont remplis avec vous. Aucun frais de dossier n’est demandé, et vous pouvez toujours refuser.</p>"
+        "html": "<p>Décrivez votre Citroën en ligne en deux minutes, sans obligation de saisir la plaque. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix et le paiement est effectué par virement instantané à la conclusion de la vente.</p><p>Le jour du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont remplis avec vous. Aucun frais de dossier n’est demandé, et vous pouvez toujours refuser.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur la reprise d’une Citroën",
@@ -1079,7 +1078,7 @@
     "image": "accueil",
     "nav": "Dacia",
     "title": "Reprise Dacia : vendez sans achat imposé | LUNICAR",
-    "description": "Reprise Dacia sans achat imposé : Sandero, Duster, Jogger ou Spring, essence, GPL ou électrique. Estimation sous 24 h, virement instantané à la vente.",
+    "description": "Reprise Dacia sans achat imposé : Sandero, Duster, Jogger ou Spring, essence, GPL ou électrique. Estimation rapide, virement instantané à la vente.",
     "h1": "Reprise Dacia : vendez votre Sandero ou votre Duster <em>simplement</em>",
     "lede": "Les Dacia sont très demandées en occasion. Reprise en concession ou vente directe à un professionnel : voici comment choisir et ce qui influence la valeur d’une Sandero, d’un Duster ou d’une Spring.",
     "points": [
@@ -1112,7 +1111,7 @@
       },
       {
         "h2": "Une Dacia en panne ou très kilométrée peut-elle être vendue ?",
-        "html": "<p>Oui. Une Logan à plus de 250 000 km, un Duster avec un embrayage fatigué ou une Sandero qui ne démarre plus peuvent être étudiés. L’offre tient compte des réparations et du kilométrage. LUNICAR vient à votre adresse partout en France et organise l’enlèvement à ses frais, même pour un véhicule non roulant.</p><p>Vous décrivez votre Dacia en ligne, un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative, puis le paiement est effectué par virement instantané à la conclusion de la vente. Voir aussi <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a> et <a href=\"/rachat-voiture-en-panne-paris\">voiture en panne</a>.</p>"
+        "html": "<p>Oui. Une Logan à plus de 250 000 km, un Duster avec un embrayage fatigué ou une Sandero qui ne démarre plus peuvent être étudiés. L’offre tient compte des réparations et du kilométrage. LUNICAR vient à votre adresse partout en France et organise l’enlèvement à ses frais, même pour un véhicule non roulant.</p><p>Vous décrivez votre Dacia en ligne, un conseiller vous rappelle rapidement avec une fourchette de prix indicative, puis le paiement est effectué par virement instantané à la conclusion de la vente. Voir aussi <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a> et <a href=\"/rachat-voiture-en-panne-paris\">voiture en panne</a>.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur la reprise d’une Dacia",
@@ -1160,7 +1159,7 @@
     "h1": "Reprise Volkswagen : vendez votre Golf, Polo ou Tiguan <em>sans contrepartie</em>",
     "lede": "Une Volkswagen garde une forte demande en occasion, à condition que son historique soit clair. Comparez la reprise en concession et la vente directe, et préparez les documents qui comptent pour une Golf, un T-Roc ou une ID.3.",
     "points": [
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Aucun achat de véhicule demandé",
       "Boîte DSG en panne acceptée",
       "Paiement par virement instantané à la vente"
@@ -1189,7 +1188,7 @@
       },
       {
         "h2": "Une Volkswagen en panne ou à fort kilométrage est-elle étudiée ?",
-        "html": "<p>Oui. Une Golf TDI à 280 000 km, un Tiguan dont la boîte DSG patine ou une Polo qui ne démarre plus peuvent être étudiés. L’offre intègre le coût de remise en état. Partout en France, le rendez-vous à votre adresse et l’enlèvement sont à la charge de LUNICAR, y compris pour un véhicule non roulant garé en sous-sol.</p><p>Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Lors du rendez-vous, le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sont préparés avec vous, puis, si la vente est conclue, vous êtes payé par virement instantané. Voir aussi <a href=\"/rachat-voiture-en-panne-paris\">voiture en panne</a> et <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a>.</p>"
+        "html": "<p>Oui. Une Golf TDI à 280 000 km, un Tiguan dont la boîte DSG patine ou une Polo qui ne démarre plus peuvent être étudiés. L’offre intègre le coût de remise en état. Partout en France, le rendez-vous à votre adresse et l’enlèvement sont à la charge de LUNICAR, y compris pour un véhicule non roulant garé en sous-sol.</p><p>Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Lors du rendez-vous, le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sont préparés avec vous, puis, si la vente est conclue, vous êtes payé par virement instantané. Voir aussi <a href=\"/rachat-voiture-en-panne-paris\">voiture en panne</a> et <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a>.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur la reprise d’une Volkswagen",
@@ -1212,7 +1211,7 @@
       },
       {
         "question": "En combien de temps puis-je vendre ma Volkswagen ?",
-        "answer": "Après votre description en ligne, un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Le rendez-vous est fixé selon vos disponibilités, du lundi au samedi, et le paiement intervient par virement instantané à la conclusion de la vente."
+        "answer": "Après votre description en ligne, un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Le rendez-vous est fixé selon vos disponibilités, du lundi au samedi, et le paiement intervient par virement instantané à la conclusion de la vente."
       }
     ],
     "sources": [
@@ -1237,7 +1236,7 @@
     "image": "accueil",
     "nav": "Toyota",
     "title": "Reprise Toyota : vendez votre hybride librement | LUNICAR",
-    "description": "Reprise Toyota sans achat imposé : Yaris, C-HR, Corolla ou RAV4 hybride, même très kilométrée. Estimation indicative sous 24 h, virement instantané à la vente.",
+    "description": "Reprise Toyota sans achat imposé : Yaris, C-HR, Corolla ou RAV4 hybride, même très kilométrée. Estimation indicative rapide, virement instantané à la vente.",
     "h1": "Reprise Toyota : vendez votre Yaris, C-HR ou RAV4 <em>hybride</em>",
     "lede": "Les Toyota hybrides sont parmi les voitures les plus suivies sur le marché de l’occasion. Voici comment choisir entre reprise en concession et vente directe, et ce qui compte pour la valeur d’une hybride.",
     "points": [
@@ -1258,7 +1257,7 @@
       },
       {
         "h2": "Reprise Toyota en concession ou vente directe ?",
-        "html": "<p>La reprise en concession Toyota est pratique si vous remplacez votre hybride par un modèle neuf de la marque : un seul rendez-vous suffit. La vente directe à un professionnel convient si vous ne rachetez rien, si votre Toyota a beaucoup roulé ou si vous voulez connaître son prix indépendamment d’une remise.</p><p>LUNICAR vous transmet une fourchette de prix indicative sous 24 h ouvrées, sans lien avec un achat. Vous pouvez la comparer avec la reprise proposée par la concession avant de décider. Notre <a href=\"/comparatif-reprise-auto\">comparatif</a> présente les autres voies de vente.</p>"
+        "html": "<p>La reprise en concession Toyota est pratique si vous remplacez votre hybride par un modèle neuf de la marque : un seul rendez-vous suffit. La vente directe à un professionnel convient si vous ne rachetez rien, si votre Toyota a beaucoup roulé ou si vous voulez connaître son prix indépendamment d’une remise.</p><p>LUNICAR vous transmet une fourchette de prix indicative communiquée rapidement, sans lien avec un achat. Vous pouvez la comparer avec la reprise proposée par la concession avant de décider. Notre <a href=\"/comparatif-reprise-auto\">comparatif</a> présente les autres voies de vente.</p>"
       },
       {
         "h2": "Batterie hybride, entretien : qu’est-ce qui pèse sur la valeur d’une Toyota ?",
@@ -1266,11 +1265,11 @@
       },
       {
         "h2": "Que préparer avant de vendre sa Toyota ?",
-        "html": "<p>Préparez la carte grise à votre nom, les deux clés, le carnet ou les factures d’entretien, les comptes rendus de contrôle de la batterie hybride et un rapport Histovec. Si votre Toyota a servi en VTC, indiquez-le : la transparence évite que le prix soit revu au moment du rendez-vous.</p><ul class=\"ticks\"><li><strong>Contrôles hybrides</strong> : les comptes rendus d’atelier, avec dates et kilométrages.</li><li><strong>Usage professionnel</strong> : VTC, taxi ou flotte, à préciser dans la description.</li><li><strong>Rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a></strong> : il retrace les propriétaires successifs et les sinistres déclarés.</li><li><strong>Équipements</strong> : finition, sellerie, aides à la conduite, attelage éventuel.</li></ul>"
+        "html": "<p>Préparez la carte grise à votre nom, les deux clés, le carnet ou les factures d’entretien, les comptes rendus de contrôle de la batterie hybride et un rapport Histovec. Si votre Toyota a servi en VTC, indiquez-le : la transparence évite que le prix soit revu au moment du rendez-vous.</p><ul class=\"ticks\"><li><strong>Contrôles hybrides</strong> : les comptes rendus d’atelier, avec dates et kilométrages.</li><li><strong>Usage professionnel</strong> : VTC, taxi ou flotte, à préciser dans la description.</li><li><strong>Rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a></strong> : il retrace les propriétaires successifs et l’historique administratif.</li><li><strong>Équipements</strong> : finition, sellerie, aides à la conduite, attelage éventuel.</li></ul>"
       },
       {
         "h2": "Une Toyota en panne ou à très fort kilométrage peut-elle être étudiée ?",
-        "html": "<p>Oui. Une Prius à plus de 300 000 km, une Auris avec un voyant du système hybride ou une Yaris accidentée peuvent être étudiées. L’offre tient compte de la réparation à prévoir. Nous venons à votre adresse sans frais, où que vous soyez en France, et l’enlèvement est à notre charge, même pour un véhicule non roulant.</p><p>Lors du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Si la vente est conclue, le paiement se fait par virement instantané. Voir <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a> et <a href=\"/rachat-voiture-accidentee-paris\">voiture accidentée</a>.</p>"
+        "html": "<p>Oui. Une Prius à plus de 300 000 km ou une Auris avec un voyant du système hybride peuvent être étudiées. L’offre tient compte de la réparation à prévoir. Nous venons à votre adresse sans frais, où que vous soyez en France, et l’enlèvement est à notre charge, même pour un véhicule non roulant.</p><p>Lors du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Si la vente est conclue, le paiement se fait par virement instantané. Voir <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a>.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur la reprise d’une Toyota",
@@ -1322,7 +1321,7 @@
     "h1": "Reprise Ford : vendez votre Fiesta, Focus ou Kuga <em>sans achat</em>",
     "lede": "Fiesta et Focus ne sont plus produites, mais elles restent très présentes en occasion. Reprise en concession ou vente directe : voici les repères pour vendre une Ford dans de bonnes conditions.",
     "points": [
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Transit et utilitaires Ford acceptés",
       "Aucun achat de véhicule imposé",
       "Rendez-vous chez vous, sans frais"
@@ -1351,7 +1350,7 @@
       },
       {
         "h2": "Comment vendre sa Ford avec LUNICAR ?",
-        "html": "<p>Décrivez votre Ford en ligne en deux minutes, la plaque est facultative. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix et vous êtes payé par virement bancaire instantané à la conclusion de la vente.</p><p>Le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Aucun frais de dossier n’est demandé.</p>"
+        "html": "<p>Décrivez votre Ford en ligne en deux minutes, la plaque est facultative. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix et vous êtes payé par virement bancaire instantané à la conclusion de la vente.</p><p>Le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Aucun frais de dossier n’est demandé.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur la reprise d’une Ford",
@@ -1443,7 +1442,7 @@
     "faq": [
       {
         "question": "Comment vendre sa voiture Mercedes sans en racheter une ?",
-        "answer": "Vous pouvez la vendre directement à un professionnel. Avec LUNICAR, vous décrivez votre Mercedes en ligne, recevez une fourchette de prix indicative sous 24 h ouvrées, et êtes payé par virement instantané à la conclusion de la vente, sans achat demandé."
+        "answer": "Vous pouvez la vendre directement à un professionnel. Avec LUNICAR, vous décrivez votre Mercedes en ligne, recevez une fourchette de prix indicative communiquée rapidement, et êtes payé par virement instantané à la conclusion de la vente, sans achat demandé."
       },
       {
         "question": "Les options de ma Mercedes sont-elles prises en compte ?",
@@ -1488,7 +1487,7 @@
     "h1": "Reprise BMW : vendez votre Série 1, Série 3 ou X1 <em>librement</em>",
     "lede": "Une BMW d’occasion se juge sur son entretien, sa motorisation et ses options. Voici comment choisir entre la reprise en concession et la vente directe, et comment présenter votre BMW pour obtenir une offre juste.",
     "points": [
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Aucun véhicule à acheter en échange",
       "Moteur ou boîte en panne acceptés",
       "Virement bancaire instantané à la vente"
@@ -1517,7 +1516,7 @@
       },
       {
         "h2": "Comment se passe la vente de votre BMW avec LUNICAR ?",
-        "html": "<p>Vous décrivez votre BMW en ligne en deux minutes, plaque facultative. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix et le paiement est effectué par virement bancaire instantané à la conclusion de la vente.</p><p>Le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Vous pouvez refuser sans frais, même ce jour-là.</p>"
+        "html": "<p>Vous décrivez votre BMW en ligne en deux minutes, plaque facultative. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix et le paiement est effectué par virement bancaire instantané à la conclusion de la vente.</p><p>Le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Vous pouvez refuser sans frais, même ce jour-là.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur la reprise d’une BMW",
@@ -1602,7 +1601,7 @@
       },
       {
         "h2": "Comment vendre son Audi avec LUNICAR ?",
-        "html": "<p>Décrivez votre Audi en ligne en deux minutes, sans obligation de saisir la plaque. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix, et le paiement est effectué par virement bancaire instantané à la conclusion de la vente.</p><p>Le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Aucun frais de dossier n’est demandé.</p>"
+        "html": "<p>Décrivez votre Audi en ligne en deux minutes, sans obligation de saisir la plaque. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix, et le paiement est effectué par virement bancaire instantané à la conclusion de la vente.</p><p>Le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Aucun frais de dossier n’est demandé.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur la reprise d’une Audi",
@@ -1658,7 +1657,7 @@
     "h1": "Reprise Fiat : vendez votre 500, Panda ou Tipo <em>simplement</em>",
     "lede": "Les Fiat 500 et Panda sont des citadines très répandues en Île-de-France. Voici comment choisir entre reprise en concession et vente directe, et ce qui compte pour la valeur d’une Fiat d’occasion.",
     "points": [
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Aucune obligation d’acheter",
       "Ducato et utilitaires Fiat acceptés",
       "Paiement par virement instantané à la vente"
@@ -1687,7 +1686,7 @@
       },
       {
         "h2": "Comment vendre sa Fiat avec LUNICAR ?",
-        "html": "<p>Vous décrivez votre Fiat en ligne en deux minutes, la plaque est facultative. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix et le paiement est effectué par virement bancaire instantané à la conclusion de la vente.</p><p>Le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Vous pouvez refuser l’offre sans frais, même le jour du rendez-vous.</p>"
+        "html": "<p>Vous décrivez votre Fiat en ligne en deux minutes, la plaque est facultative. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Le rendez-vous a lieu à l’adresse de votre choix et le paiement est effectué par virement bancaire instantané à la conclusion de la vente.</p><p>Le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Vous pouvez refuser l’offre sans frais, même le jour du rendez-vous.</p>"
       }
     ],
     "faqTitle": "Questions fréquentes sur la reprise d’une Fiat",
@@ -1748,7 +1747,7 @@
     "sections": [
       {
         "h2": "Reprise Seat en concession ou vente directe : quelle option choisir ?",
-        "html": "<p>La reprise en concession Seat convient si vous commandez une nouvelle Seat ou une Cupra et souhaitez régler les deux opérations ensemble. Si vous n’achetez rien, si vous changez de marque ou si votre Seat est en panne, la vente directe à un professionnel vous donne un prix propre à votre véhicule.</p><p>LUNICAR établit une fourchette de prix indicative sous 24 h ouvrées, sans lien avec un achat. Vous pouvez la présenter en concession et comparer les montants. Notre <a href=\"/comparatif-reprise-auto\">comparatif</a> présente toutes les solutions pour vendre sa voiture.</p>"
+        "html": "<p>La reprise en concession Seat convient si vous commandez une nouvelle Seat ou une Cupra et souhaitez régler les deux opérations ensemble. Si vous n’achetez rien, si vous changez de marque ou si votre Seat est en panne, la vente directe à un professionnel vous donne un prix propre à votre véhicule.</p><p>LUNICAR établit une fourchette de prix indicative communiquée rapidement, sans lien avec un achat. Vous pouvez la présenter en concession et comparer les montants. Notre <a href=\"/comparatif-reprise-auto\">comparatif</a> présente toutes les solutions pour vendre sa voiture.</p>"
       },
       {
         "h2": "Ibiza, Leon, Arona, Ateca : quelles Seat se revendent le plus ?",
@@ -1819,9 +1818,9 @@
     "image": "panne",
     "nav": "Voiture en panne",
     "title": "Rachat de voiture en panne partout en France | LUNICAR",
-    "description": "Moteur HS, boîte cassée, voiture qui ne démarre plus : décrivez la panne, LUNICAR étudie votre voiture partout en France. Estimation sous 24 h.",
+    "description": "Moteur HS, boîte cassée, voiture qui ne démarre plus : décrivez la panne, LUNICAR étudie votre voiture partout en France. Estimation rapide.",
     "h1": "Rachat de voiture en panne, <em>étudiée partout en France dans l'état où elle est</em>",
-    "lede": "Votre voiture ne roule plus et le devis du garage dépasse ce qu'elle vaut ? Inutile d'avancer les réparations. Décrivez la panne en ligne, où que vous soyez en France, et recevez une fourchette de prix indicative sous 24 h ouvrées.",
+    "lede": "Votre voiture ne roule plus et le devis du garage dépasse ce qu'elle vaut ? Inutile d'avancer les réparations. Décrivez la panne en ligne, où que vous soyez en France, et recevez une fourchette de prix indicative communiquée rapidement.",
     "points": [
       "Véhicule non roulant étudié",
       "Aucune réparation à avancer",
@@ -1834,7 +1833,7 @@
     "sections": [
       {
         "h2": "Peut-on vendre une voiture en panne, où que l'on soit en France ?",
-        "html": "<p>Souvent, oui. Toute voiture en panne peut être étudiée par LUNICAR, partout en France, dans l'état où elle se trouve. Selon la nature de la panne et l'état du reste du véhicule, une offre n'est pas toujours possible : c'est l'étude de votre demande qui le dit. Vous décrivez le véhicule et les symptômes en ligne, un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative, puis, si elle vous convient, un technicien vient vérifier la voiture à votre adresse, sans frais, et vous présente le prix définitif. Aucune réparation n'est à prévoir.</p>\n<p>Une voiture en panne garde une valeur. Elle correspond au prix du véhicule une fois remis en état, moins le coût de la réparation, ou à la valeur de ses éléments quand la réparation n'est pas raisonnable. Entre particuliers, cette valeur se négocie mal : peu d'acheteurs acceptent une voiture qu'ils ne peuvent pas essayer. Vendre à un professionnel du rachat évite cette impasse.</p>"
+        "html": "<p>Souvent, oui. Toute voiture en panne peut être étudiée par LUNICAR, partout en France, dans l'état où elle se trouve. Selon la nature de la panne et l'état du reste du véhicule, une offre n'est pas toujours possible : c'est l'étude de votre demande qui le dit. Vous décrivez le véhicule et les symptômes en ligne, un conseiller vous rappelle rapidement avec une fourchette de prix indicative, puis, si elle vous convient, un technicien vient vérifier la voiture à votre adresse, sans frais, et vous présente le prix définitif. Aucune réparation n'est à prévoir.</p>\n<p>Une voiture en panne garde une valeur. Elle correspond au prix du véhicule une fois remis en état, moins le coût de la réparation, ou à la valeur de ses éléments quand la réparation n'est pas raisonnable. Entre particuliers, cette valeur se négocie mal : peu d'acheteurs acceptent une voiture qu'ils ne peuvent pas essayer. Vendre à un professionnel du rachat évite cette impasse.</p>"
       },
       {
         "h2": "Dans quelles situations vendre une voiture en panne ?",
@@ -1873,7 +1872,7 @@
       },
       {
         "question": "Ma voiture est tombée en panne dans une autre région : puis-je la vendre ?",
-        "answer": "Oui. Indiquez dans votre demande où se trouve le véhicule, par exemple chez un garagiste ou sur un lieu de vacances. Un conseiller vous rappelle sous 24 h ouvrées avec une fourchette indicative ; si elle vous convient, un technicien se rend sur place sans frais, et l'enlèvement reste à notre charge si la vente se conclut."
+        "answer": "Oui. Indiquez dans votre demande où se trouve le véhicule, par exemple chez un garagiste ou sur un lieu de vacances. Un conseiller vous rappelle rapidement avec une fourchette indicative ; si elle vous convient, un technicien se rend sur place sans frais, et l'enlèvement reste à notre charge si la vente se conclut."
       },
       {
         "question": "Faut-il connaître le diagnostic exact de la panne ?",
@@ -1917,12 +1916,12 @@
     "image": "accidentee",
     "nav": "Voiture accidentée",
     "title": "Rachat de voiture accidentée partout en France | LUNICAR",
-    "description": "Choc avant, carrosserie enfoncée, airbags déclenchés : LUNICAR étudie votre voiture accidentée partout en France. Estimation indicative sous 24 h.",
+    "description": "Choc avant, carrosserie enfoncée, airbags déclenchés : LUNICAR étudie votre voiture accidentée partout en France. Estimation indicative rapide.",
     "h1": "Rachat de voiture accidentée, <em>sans réparer ni attendre</em>",
-    "lede": "Après un accrochage ou un accident, réparer n'est pas toujours la bonne décision. Où que vous soyez en France, décrivez les dégâts en ligne et recevez une fourchette de prix indicative sous 24 h ouvrées pour votre voiture en l'état.",
+    "lede": "Après un accrochage ou un accident, réparer n'est pas toujours la bonne décision. Où que vous soyez en France, décrivez les dégâts en ligne et recevez une fourchette de prix indicative communiquée rapidement pour votre voiture en l'état.",
     "points": [
       "Voiture accidentée étudiée en l'état",
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Prix définitif après vérification par un technicien",
       "Virement instantané à la conclusion de la vente"
     ],
@@ -1932,7 +1931,7 @@
     "sections": [
       {
         "h2": "Peut-on vendre une voiture accidentée sans la réparer ?",
-        "html": "<p>Souvent, oui. LUNICAR étudie les voitures accidentées partout en France, sans réparation préalable. Chaque dossier fait l'objet d'un examen individuel : selon la gravité des dommages, une offre n'est pas toujours possible. Vous décrivez les dommages en ligne, photos à l'appui si possible, et un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative. Si elle vous convient, un technicien vient vérifier la voiture à votre adresse, sans frais, puis vous présente le prix définitif ; si vous l'acceptez, le paiement se fait par virement instantané.</p>\n<p>Réparer avant de vendre n'est pas toujours rentable. Une réparation de carrosserie et de structure peut coûter cher, immobiliser la voiture longtemps, et un acheteur particulier reste méfiant devant un véhicule réparé. La vente en l'état transfère ce travail et ce risque au repreneur.</p>"
+        "html": "<p>Souvent, oui. LUNICAR étudie les voitures accidentées partout en France, sans réparation préalable. Chaque dossier fait l'objet d'un examen individuel : selon la gravité des dommages, une offre n'est pas toujours possible. Vous décrivez les dommages en ligne, photos à l'appui si possible, et un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Si elle vous convient, un technicien vient vérifier la voiture à votre adresse, sans frais, puis vous présente le prix définitif ; si vous l'acceptez, le paiement se fait par virement instantané.</p>\n<p>Réparer avant de vendre n'est pas toujours rentable. Une réparation de carrosserie et de structure peut coûter cher, immobiliser la voiture longtemps, et un acheteur particulier reste méfiant devant un véhicule réparé. La vente en l'état transfère ce travail et ce risque au repreneur.</p>"
       },
       {
         "h2": "Quels types de dommages pouvez-vous étudier ?",
@@ -2021,7 +2020,7 @@
     "title": "Vendre sa voiture sans contrôle technique | LUNICAR",
     "description": "Contrôle technique expiré, contre-visite ou défaillance critique : la vente à un professionnel reste possible. LUNICAR étudie votre voiture partout en France.",
     "h1": "Vendre sa voiture sans contrôle technique, <em>partout en France</em>",
-    "lede": "Le contrôle technique est obligatoire pour vendre à un particulier, pas pour vendre à un professionnel. Où que vous soyez, décrivez votre voiture en ligne et recevez une fourchette de prix indicative sous 24 h ouvrées, sans passer par le centre de contrôle.",
+    "lede": "Le contrôle technique est obligatoire pour vendre à un particulier, pas pour vendre à un professionnel. Où que vous soyez, décrivez votre voiture en ligne et recevez une fourchette de prix indicative communiquée rapidement, sans passer par le centre de contrôle.",
     "points": [
       "Contrôle technique non exigé",
       "Contre-visite non faite acceptée",
@@ -2129,11 +2128,11 @@
     "image": "cash",
     "nav": "Vente rapide",
     "title": "Vendre sa voiture rapidement, virement instantané | LUNICAR",
-    "description": "Vendez votre voiture vite, partout en France : fourchette indicative sous 24 h, prix définitif après vérification, virement instantané.",
+    "description": "Vendez votre voiture vite, partout en France : fourchette indicative communiquée rapidement, prix définitif après vérification, virement instantané.",
     "h1": "Vendre sa voiture rapidement, <em>payé par virement instantané</em>",
-    "lede": "Déménagement, nouveau véhicule déjà commandé, besoin de trésorerie : quand il faut vendre vite, l'annonce entre particuliers prend trop de temps. Décrivez votre voiture en ligne et recevez une fourchette de prix indicative sous 24 h ouvrées.",
+    "lede": "Déménagement, nouveau véhicule déjà commandé, besoin de trésorerie : quand il faut vendre vite, l'annonce entre particuliers prend trop de temps. Décrivez votre voiture en ligne et recevez une fourchette de prix indicative communiquée rapidement.",
     "points": [
-      "Fourchette de prix indicative sous 24 h ouvrées",
+      "Fourchette de prix indicative communiquée rapidement",
       "Prix définitif après vérification par un technicien",
       "Virement instantané à la conclusion de la vente",
       "Aucun frais de dossier"
@@ -2142,11 +2141,11 @@
     "sections": [
       {
         "h2": "Comment vendre sa voiture rapidement ?",
-        "html": "<p>Le plus rapide est de vendre directement à un professionnel du rachat. Avec LUNICAR, vous décrivez la voiture en ligne en deux minutes, un conseiller vous rappelle sous 24 h ouvrées avec une fourchette de prix indicative; si elle vous convient, un technicien vérifie la voiture à votre adresse et vous présente le prix définitif, payé par virement instantané si vous l'acceptez. Ce parcours fonctionne partout en France.</p>\n<p>Une vente entre particuliers impose de nombreuses étapes : photos, annonce, réponses aux messages, visites, essais, négociation, contrôle technique de moins de six mois, puis vérification du paiement. Chacune peut prendre du temps, et l'issue reste incertaine. Le rachat direct remplace ces étapes par un interlocuteur unique, une fourchette indicative dès le rappel et un prix définitif après vérification.</p>"
+        "html": "<p>Le plus rapide est de vendre directement à un professionnel du rachat. Avec LUNICAR, vous décrivez la voiture en ligne en deux minutes, un conseiller vous rappelle rapidement avec une fourchette de prix indicative; si elle vous convient, un technicien vérifie la voiture à votre adresse et vous présente le prix définitif, payé par virement instantané si vous l'acceptez. Ce parcours fonctionne partout en France.</p>\n<p>Une vente entre particuliers impose de nombreuses étapes : photos, annonce, réponses aux messages, visites, essais, négociation, contrôle technique de moins de six mois, puis vérification du paiement. Chacune peut prendre du temps, et l'issue reste incertaine. Le rachat direct remplace ces étapes par un interlocuteur unique, une fourchette indicative dès le rappel et un prix définitif après vérification.</p>"
       },
       {
         "h2": "Combien de temps prend une vente, étape par étape ?",
-        "html": "<p>Le premier délai est connu : un conseiller vous rappelle sous 24 h ouvrées après votre demande, avec une fourchette de prix indicative. Ensuite, c'est vous qui fixez le rythme. La date du rendez-vous est choisie avec vous, le rendez-vous à votre adresse est sans frais, et le paiement intervient par virement instantané à la conclusion de la vente.</p>\n<ul class=\"ticks\">\n<li><strong>Demande en ligne</strong> : deux minutes, plaque facultative.</li>\n<li><strong>Fourchette indicative</strong> : communiquée par téléphone sous 24 h ouvrées, du lundi au vendredi de 9 h à 19 h et le samedi de 10 h à 18 h.</li>\n<li><strong>Accord de principe</strong> : si la fourchette vous convient, un rendez-vous est fixé, sans engagement.</li>\n<li><strong>Vérification et prix définitif</strong> : un technicien vient sans frais à votre adresse, vérifie le véhicule et vous présente le prix définitif, que vous acceptez ou refusez librement.</li>\n<li><strong>Paiement</strong> : virement bancaire instantané à la conclusion de la vente.</li>\n</ul>\n<p>Pour aller plus vite encore, préparez vos documents avant le rappel du conseiller.</p>"
+        "html": "<p>Le premier délai est connu : un conseiller vous rappelle rapidement après votre demande, avec une fourchette de prix indicative. Ensuite, c'est vous qui fixez le rythme. La date du rendez-vous est choisie avec vous, le rendez-vous à votre adresse est sans frais, et le paiement intervient par virement instantané à la conclusion de la vente.</p>\n<ul class=\"ticks\">\n<li><strong>Demande en ligne</strong> : deux minutes, plaque facultative.</li>\n<li><strong>Fourchette indicative</strong> : communiquée par téléphone rapidement, du lundi au vendredi de 9 h à 19 h et le samedi de 10 h à 18 h.</li>\n<li><strong>Accord de principe</strong> : si la fourchette vous convient, un rendez-vous est fixé, sans engagement.</li>\n<li><strong>Vérification et prix définitif</strong> : un technicien vient sans frais à votre adresse, vérifie le véhicule et vous présente le prix définitif, que vous acceptez ou refusez librement.</li>\n<li><strong>Paiement</strong> : virement bancaire instantané à la conclusion de la vente.</li>\n</ul>\n<p>Pour aller plus vite encore, préparez vos documents avant le rappel du conseiller.</p>"
       },
       {
         "h2": "Quels documents préparer pour vendre plus vite ?",
@@ -2169,7 +2168,7 @@
     "faq": [
       {
         "question": "En combien de temps puis-je recevoir une estimation ?",
-        "answer": "Un conseiller vous rappelle sous 24 h ouvrées après votre demande en ligne, avec une fourchette de prix indicative. Le prix définitif est ensuite fixé après vérification du véhicule par un technicien, partout en France."
+        "answer": "Un conseiller vous rappelle rapidement après votre demande en ligne, avec une fourchette de prix indicative. Le prix définitif est ensuite fixé après vérification du véhicule par un technicien, partout en France."
       },
       {
         "question": "Quand suis-je payé ?",
@@ -2225,9 +2224,9 @@
     "image": "utilitaire",
     "nav": "Véhicule utilitaire",
     "title": "Rachat de véhicule utilitaire partout en France | LUNICAR",
-    "description": "Fourgon, fourgonnette, benne, plateau ou utilitaire aménagé : LUNICAR étudie votre utilitaire partout en France. Estimation indicative sous 24 h.",
+    "description": "Fourgon, fourgonnette, benne, plateau ou utilitaire aménagé : LUNICAR étudie votre utilitaire partout en France. Estimation indicative rapide.",
     "h1": "Rachat de véhicule utilitaire, <em>de la fourgonnette au plateau benne</em>",
-    "lede": "Artisan qui renouvelle son véhicule, entreprise qui allège sa flotte ou particulier qui n'a plus besoin de son fourgon : LUNICAR étudie les utilitaires partout en France. Décrivez le vôtre : une fourchette indicative vous est communiquée sous 24 h ouvrées.",
+    "lede": "Artisan qui renouvelle son véhicule, entreprise qui allège sa flotte ou particulier qui n'a plus besoin de son fourgon : LUNICAR étudie les utilitaires partout en France. Décrivez le vôtre : une fourchette indicative vous est communiquée rapidement.",
     "points": [
       "Particuliers et professionnels",
       "Utilitaires aménagés acceptés",
@@ -2238,11 +2237,11 @@
     "sections": [
       {
         "h2": "Quels utilitaires étudiez-vous ?",
-        "html": "<p>Tous les véhicules utilitaires légers peuvent être étudiés. LUNICAR examine partout en France les fourgonnettes, fourgons, grands volumes, plateaux, bennes, châssis-cabines et pick-up, qu'ils soient récents, très kilométrés, en panne, accidentés ou sans contrôle technique, sans promesse de rachat systématique. Les utilitaires aménagés sont étudiés aussi, auprès des particuliers comme des professionnels.</p>\n<ul class=\"ticks\">\n<li><strong>Fourgonnette</strong> : petit utilitaire de livraison ou d'intervention, souvent dérivé d'une voiture.</li>\n<li><strong>Fourgon et grand volume</strong> : artisans du bâtiment, déménagement, livraison.</li>\n<li><strong>Plateau, benne, châssis-cabine</strong> : chantiers, espaces verts, travaux publics.</li>\n<li><strong>Pick-up</strong> : exploitations agricoles, forestières, viticoles.</li>\n<li><strong>Utilitaire aménagé</strong> : atelier, étagères, galerie, hayon, caisse isotherme ou frigorifique.</li>\n</ul>"
+        "html": "<p>Tous les véhicules utilitaires légers peuvent être étudiés. LUNICAR examine partout en France les fourgonnettes, fourgons, grands volumes, plateaux, bennes, châssis-cabines et pick-up, qu'ils soient récents, très kilométrés, en panne ou sans contrôle technique, sans promesse de rachat systématique. Les utilitaires aménagés sont étudiés aussi, auprès des particuliers comme des professionnels.</p>\n<ul class=\"ticks\">\n<li><strong>Fourgonnette</strong> : petit utilitaire de livraison ou d'intervention, souvent dérivé d'une voiture.</li>\n<li><strong>Fourgon et grand volume</strong> : artisans du bâtiment, déménagement, livraison.</li>\n<li><strong>Plateau, benne, châssis-cabine</strong> : chantiers, espaces verts, travaux publics.</li>\n<li><strong>Pick-up</strong> : exploitations agricoles, forestières, viticoles.</li>\n<li><strong>Utilitaire aménagé</strong> : atelier, étagères, galerie, hayon, caisse isotherme ou frigorifique.</li>\n</ul>"
       },
       {
         "h2": "Qu'est-ce qui fait le prix d'un utilitaire d'occasion ?",
-        "html": "<p>Le prix d'un utilitaire dépend de sa carrosserie, de son volume utile ou de sa charge utile, de sa motorisation, de son kilométrage et de son entretien. L'état du plancher, des flancs et de l'embrayage compte aussi beaucoup, car ces éléments s'usent vite avec la charge et les arrêts fréquents. Un modèle recherché se revend plus vite.</p>\n<ul class=\"ticks\">\n<li><strong>Volume et longueur</strong> : un format courant intéresse plus de repreneurs.</li>\n<li><strong>Embrayage et boîte</strong> : très sollicités par la charge et les petits trajets. Signalez les remplacements récents.</li>\n<li><strong>Caisse intérieure</strong> : plancher, habillage, points d'arrimage, traces de chocs.</li>\n<li><strong>Entretien</strong> : factures et carnet, surtout pour un utilitaire très kilométré.</li>\n<li><strong>Motorisation</strong> : beaucoup d'utilitaires roulent au diesel. Voir la page <a href=\"/reprise-voiture-diesel\">reprise d'une voiture diesel</a>.</li>\n</ul>"
+        "html": "<p>Le prix d'un utilitaire dépend de sa carrosserie, de son volume utile ou de sa charge utile, de sa motorisation, de son kilométrage et de son entretien. L'état du plancher, des flancs et de l'embrayage compte aussi beaucoup, car ces éléments s'usent vite avec la charge et les arrêts fréquents. Un modèle recherché se revend plus vite.</p>\n<ul class=\"ticks\">\n<li><strong>Volume et longueur</strong> : un format courant intéresse plus de repreneurs.</li>\n<li><strong>Embrayage et boîte</strong> : très sollicités par la charge et les petits trajets. Signalez les remplacements récents.</li>\n<li><strong>Caisse intérieure</strong> : plancher, habillage, points d'arrimage, traces d'usure.</li>\n<li><strong>Entretien</strong> : factures et carnet, surtout pour un utilitaire très kilométré.</li>\n<li><strong>Motorisation</strong> : beaucoup d'utilitaires roulent au diesel. Voir la page <a href=\"/reprise-voiture-diesel\">reprise d'une voiture diesel</a>.</li>\n</ul>"
       },
       {
         "h2": "Faut-il retirer l'aménagement avant de vendre ?",
@@ -2265,7 +2264,7 @@
     "faq": [
       {
         "question": "Étudiez-vous les utilitaires des particuliers ?",
-        "answer": "Oui. LUNICAR étudie les utilitaires des particuliers comme ceux des artisans et des entreprises. Le parcours est le même : description en ligne, fourchette indicative sous 24 h ouvrées, vérification par un technicien, puis virement instantané à la conclusion de la vente."
+        "answer": "Oui. LUNICAR étudie les utilitaires des particuliers comme ceux des artisans et des entreprises. Le parcours est le même : description en ligne, fourchette indicative communiquée rapidement, vérification par un technicien, puis virement instantané à la conclusion de la vente."
       },
       {
         "question": "Mon fourgon a plus de 300 000 km : est-il étudié ?",
