@@ -1580,7 +1580,9 @@ body.modal-ouvert { overflow: hidden; }
     const LIBC = { kilometrage: 'Kilométrage', prix_souhaite: 'Prix souhaité', annee: 'Année', mecanique: 'État mécanique', controle_technique: 'Contrôle technique', carrosserie: 'Carrosserie', delai: 'Vendre quand' };
     function compteRendu(d) {
         const x = d.data || {}, R = etat.resultats || {};
-        const saisie = { resultat: '', note: '', corrections: {}, offre: '', reestimer: !!etat.estimation.actif && !!x.vehicule };
+        // Rappel convenu : demain par défaut (date locale), heure facultative.
+        const demain = (() => { const t = new Date(Date.now() + 864e5); return new Date(t.getTime() - t.getTimezoneOffset() * 6e4).toISOString().slice(0, 10); })();
+        const saisie = { resultat: '', note: '', corrections: {}, offre: '', reestimer: !!etat.estimation.actif && !!x.vehicule, rappel_date: demain, rappel_heure: '' };
         const fermerCR = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
         const sel = (k) => `<select class="in" name="${k}"><option value="">${esc(x[k] || '—')} (inchangé)</option>${OPT[k].filter(o => o !== x[k]).map(o => `<option${saisie.corrections[k] === o ? ' selected' : ''}>${esc(o)}</option>`).join('')}</select>`;
         const etape1 = () => {
@@ -1588,6 +1590,10 @@ body.modal-ouvert { overflow: hidden; }
                 <p class="sub">${esc([x.vehicule, x.annee].filter(Boolean).join(' '))} · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Vendeur')}</p>
                 <p class="cr-l">Résultat de l'appel</p>
                 <div class="cr-res">${Object.entries(R).map(([k, l]) => `<button type="button" class="cr-chip${saisie.resultat === k ? ' on' : ''}" data-res="${k}">${esc(l)}</button>`).join('')}</div>
+                <div class="cr-grille" id="crRappel"${saisie.resultat === 'rappel_prevu' ? '' : ' hidden'}>
+                    <label class="f">Rappeler le<input class="in" type="date" id="crRapDate" value="${esc(saisie.rappel_date)}"></label>
+                    <label class="f">Vers <small>(facultatif)</small><input class="in" type="time" id="crRapHeure" step="900" value="${esc(saisie.rappel_heure)}"></label>
+                </div>
                 <label class="f">Ce qui a été dit<textarea class="in" id="crNote" rows="5" placeholder="État réel, entretien, défauts, prix proposé ailleurs, urgence, documents, disponibilités…">${esc(saisie.note)}</textarea></label>
                 <details class="cr-corr"${Object.keys(saisie.corrections).length ? ' open' : ''}><summary>Corriger les infos de la voiture</summary>
                     <div class="cr-grille" id="crCorr">
@@ -1604,12 +1610,14 @@ body.modal-ouvert { overflow: hidden; }
                 <label class="chk cr-chk"><input type="checkbox" id="crReest"${saisie.reestimer ? ' checked' : ''}${etat.estimation.actif && x.vehicule ? '' : ' disabled'}> Mettre à jour l'estimation avec ces informations <small>(≈ 0,30 €, 2 à 4 min)</small></label>
                 <p class="err" id="crErr"></p>
                 <div class="cr-btns"><button type="button" class="btn" id="crAnnul">Annuler</button><button type="button" class="btn btn-p" id="crSuite">Vérifier →</button></div>`;
-            $('#crIn').querySelectorAll('[data-res]').forEach(b => b.onclick = () => { saisie.resultat = b.dataset.res; $('#crIn').querySelectorAll('[data-res]').forEach(c => c.classList.toggle('on', c === b)); });
+            $('#crIn').querySelectorAll('[data-res]').forEach(b => b.onclick = () => { saisie.resultat = b.dataset.res; $('#crIn').querySelectorAll('[data-res]').forEach(c => c.classList.toggle('on', c === b)); $('#crRappel').hidden = saisie.resultat !== 'rappel_prevu'; });
             $('#crX').onclick = $('#crAnnul').onclick = fermerCR;
             $('#crSuite').onclick = () => {
                 saisie.note = $('#crNote').value.trim(); saisie.offre = $('#crOffre').value.replace(/[^\d]/g, ''); saisie.reestimer = $('#crReest').checked;
                 saisie.corrections = {}; $('#crCorr').querySelectorAll('[name]').forEach(f => { const v = f.value.trim(); if (v && v !== String(x[f.name] || '')) saisie.corrections[f.name] = v; });
                 if (!saisie.resultat) { $('#crErr').textContent = 'Choisissez le résultat de l\'appel.'; return; }
+                saisie.rappel_date = $('#crRapDate').value; saisie.rappel_heure = $('#crRapHeure').value;
+                if (saisie.resultat === 'rappel_prevu' && !saisie.rappel_date) { $('#crErr').textContent = 'Indiquez la date du rappel convenu.'; return; }
                 etape2();
             };
         };
@@ -1618,6 +1626,7 @@ body.modal-ouvert { overflow: hidden; }
             $('#crIn').innerHTML = `<div class="cr-tete"><h3>Confirmer le compte rendu</h3><button class="close" type="button" id="crX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
                 <dl class="cr-recap">
                     <dt>Résultat</dt><dd><b>${esc(R[saisie.resultat])}</b></dd>
+                    ${saisie.resultat === 'rappel_prevu' ? `<dt>Rappel</dt><dd><b>le ${jj(saisie.rappel_date)}${saisie.rappel_heure ? ' vers ' + esc(saisie.rappel_heure.replace(':', ' h ')) : ''}</b></dd>` : ''}
                     <dt>Ce qui a été dit</dt><dd>${saisie.note ? esc(saisie.note).replace(/\n/g, '<br>') : '<span class="vide">rien de noté</span>'}</dd>
                     ${corr.length ? `<dt>Infos corrigées</dt><dd>${corr.map(([k, v]) => `${LIBC[k]} : ${esc(x[k] || '—')} → <b>${esc(v)}</b>`).join('<br>')}</dd>` : ''}
                     ${saisie.offre ? `<dt>Offre faite</dt><dd><b>${eur(saisie.offre)}</b></dd>` : ''}
@@ -1630,12 +1639,12 @@ body.modal-ouvert { overflow: hidden; }
             $('#crOk').onclick = async () => {
                 $('#crOk').disabled = true; $('#crOk').innerHTML = '<span class="spin"></span> Enregistrement…';
                 try {
-                    courant = await api('/api/admin/demandes/' + d.ref + '/appel', { method: 'POST', body: JSON.stringify({ resultat: saisie.resultat, note: saisie.note, corrections: saisie.corrections, offre: saisie.offre, reestimer: saisie.reestimer }) });
+                    courant = await api('/api/admin/demandes/' + d.ref + '/appel', { method: 'POST', body: JSON.stringify({ resultat: saisie.resultat, note: saisie.note, corrections: saisie.corrections, offre: saisie.offre, reestimer: saisie.reestimer, rappel_date: saisie.rappel_date, rappel_heure: saisie.rappel_heure }) });
                     fermerCR();
                     if (saisie.resultat === 'accepte') history.replaceState(history.state, '', location.pathname + '#rdv');
                     if (saisie.reestimer) courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' };
                     maj(courant); fiche(); if (saisie.reestimer) surveiller(true);
-                    toast(saisie.resultat === 'accepte' ? 'Offre acceptée : fixez le rendez-vous' : saisie.reestimer ? 'Compte rendu enregistré · estimation en cours' : courant.suivi.rappel_le ? 'Compte rendu enregistré · relance le ' + jj(courant.suivi.rappel_le) : 'Compte rendu enregistré');
+                    toast(saisie.resultat === 'accepte' ? 'Offre acceptée : fixez le rendez-vous' : saisie.reestimer ? 'Compte rendu enregistré · estimation en cours' : saisie.resultat === 'rappel_prevu' ? 'Rappel prévu le ' + jj(courant.suivi.rappel_le) + (courant.suivi.rappel_heure ? ' vers ' + courant.suivi.rappel_heure.replace(':', ' h ') : '') : courant.suivi.rappel_le ? 'Compte rendu enregistré · relance le ' + jj(courant.suivi.rappel_le) : 'Compte rendu enregistré');
                 } catch (e) { $('#crOk').disabled = false; $('#crOk').textContent = 'Confirmer et enregistrer'; toast(e.message); }
             };
         };
@@ -2575,7 +2584,7 @@ body.modal-ouvert { overflow: hidden; }
                     <label class="f">Prix d'achat final (€)<input class="in num" name="prix_achat" inputmode="numeric" value="${esc(s.prix_achat || '')}"></label>
                     <label class="f">Prix max retenu (€)<input class="in num" name="prix_manuel_max" inputmode="numeric" value="${esc(s.prix_manuel_max || '')}" placeholder="${p.max_achat || ''}"></label>
                     <label class="f">Prix de vente retenu (€)<input class="in num" name="prix_manuel_vente" inputmode="numeric" value="${esc(s.prix_manuel_vente || '')}" placeholder="${p.vente_estime || ''}"></label>
-                    <label class="f">Relance prévue le<input class="in" name="rappel_le" type="date" value="${esc((s.rappel_le || '').slice(0, 10))}"></label>
+                    <label class="f">${s.rappel_convenu ? 'Rappel convenu le' + (s.rappel_heure ? ' <small>(vers ' + esc(s.rappel_heure.replace(':', ' h ')) + ')</small>' : '') : 'Relance prévue le'}<input class="in" name="rappel_le" type="date" value="${esc((s.rappel_le || '').slice(0, 10))}"></label>
                     <div style="align-self:end"><button class="btn btn-p">Enregistrer</button></div>
                 </form>
                 <ol class="fil">
