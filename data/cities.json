@@ -8968,5 +8968,245 @@
     "lat": 50.291,
     "lon": 3.9119,
     "dep": "59"
+  },
+  {
+    "nom": "Francheville",
+    "slug": "francheville",
+    "codePostal": "69340",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7386,
+    "lon": 4.7537,
+    "dep": "69"
+  },
+  {
+    "nom": "Belleville-en-Beaujolais",
+    "slug": "belleville-en-beaujolais",
+    "codePostal": "69220",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.1145,
+    "lon": 4.7291,
+    "dep": "69"
+  },
+  {
+    "nom": "Brignais",
+    "slug": "brignais",
+    "codePostal": "69530",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6751,
+    "lon": 4.7527,
+    "dep": "69"
+  },
+  {
+    "nom": "Craponne",
+    "slug": "craponne",
+    "codePostal": "69290",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7456,
+    "lon": 4.7294,
+    "dep": "69"
+  },
+  {
+    "nom": "Genlis",
+    "slug": "genlis",
+    "codePostal": "21110",
+    "departement": "Côte-d'Or",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.2403,
+    "lon": 5.2196,
+    "dep": "21"
+  },
+  {
+    "nom": "Pontarlier",
+    "slug": "pontarlier",
+    "codePostal": "25300",
+    "departement": "Doubs",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 46.9167,
+    "lon": 6.3796,
+    "dep": "25"
+  },
+  {
+    "nom": "Audincourt",
+    "slug": "audincourt",
+    "codePostal": "25400",
+    "departement": "Doubs",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.4779,
+    "lon": 6.8498,
+    "dep": "25"
+  },
+  {
+    "nom": "Valentigney",
+    "slug": "valentigney",
+    "codePostal": "25700",
+    "departement": "Doubs",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.464,
+    "lon": 6.8243,
+    "dep": "25"
+  },
+  {
+    "nom": "Morteau",
+    "slug": "morteau",
+    "codePostal": "25500",
+    "departement": "Doubs",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 47.0643,
+    "lon": 6.5891,
+    "dep": "25"
+  },
+  {
+    "nom": "Villeneuve-sur-Yonne",
+    "slug": "villeneuve-sur-yonne",
+    "codePostal": "89500",
+    "departement": "Yonne",
+    "region": "Bourgogne-Franche-Comté",
+    "lat": 48.0829,
+    "lon": 3.3137,
+    "dep": "89"
+  },
+  {
+    "nom": "Plérin",
+    "slug": "plerin",
+    "codePostal": "22190",
+    "departement": "Côtes-d'Armor",
+    "region": "Bretagne",
+    "lat": 48.5467,
+    "lon": -2.7818,
+    "dep": "22"
+  },
+  {
+    "nom": "Ploufragan",
+    "slug": "ploufragan",
+    "codePostal": "22440",
+    "departement": "Côtes-d'Armor",
+    "region": "Bretagne",
+    "lat": 48.4915,
+    "lon": -2.8001,
+    "dep": "22"
+  },
+  {
+    "nom": "Loudéac",
+    "slug": "loudeac",
+    "codePostal": "22600",
+    "departement": "Côtes-d'Armor",
+    "region": "Bretagne",
+    "lat": 48.1737,
+    "lon": -2.7442,
+    "dep": "22"
+  },
+  {
+    "nom": "Trégueux",
+    "slug": "tregueux",
+    "codePostal": "22950",
+    "departement": "Côtes-d'Armor",
+    "region": "Bretagne",
+    "lat": 48.4769,
+    "lon": -2.7454,
+    "dep": "22"
+  },
+  {
+    "nom": "Geispolsheim",
+    "slug": "geispolsheim",
+    "codePostal": "67118",
+    "departement": "Bas-Rhin",
+    "region": "Grand Est",
+    "lat": 48.5117,
+    "lon": 7.6586,
+    "dep": "67"
+  },
+  {
+    "nom": "Eckbolsheim",
+    "slug": "eckbolsheim",
+    "codePostal": "67201",
+    "departement": "Bas-Rhin",
+    "region": "Grand Est",
+    "lat": 48.58,
+    "lon": 7.6829,
+    "dep": "67"
+  },
+  {
+    "nom": "Barr",
+    "slug": "barr",
+    "codePostal": "67140",
+    "departement": "Bas-Rhin",
+    "region": "Grand Est",
+    "lat": 48.4136,
+    "lon": 7.3988,
+    "dep": "67"
+  },
+  {
+    "nom": "Vendenheim",
+    "slug": "vendenheim",
+    "codePostal": "67550",
+    "departement": "Bas-Rhin",
+    "region": "Grand Est",
+    "lat": 48.6692,
+    "lon": 7.7417,
+    "dep": "67"
+  },
+  {
+    "nom": "Vitry-le-François",
+    "slug": "vitry-le-francois",
+    "codePostal": "51300",
+    "departement": "Marne",
+    "region": "Grand Est",
+    "lat": 48.7292,
+    "lon": 4.5947,
+    "dep": "51"
+  },
+  {
+    "nom": "La Bassée",
+    "slug": "la-bassee",
+    "codePostal": "59480",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.5393,
+    "lon": 2.8103,
+    "dep": "59"
+  },
+  {
+    "nom": "Estaires",
+    "slug": "estaires",
+    "codePostal": "59940",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6576,
+    "lon": 2.7221,
+    "dep": "59"
+  },
+  {
+    "nom": "Cuincy",
+    "slug": "cuincy",
+    "codePostal": "59553",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3746,
+    "lon": 3.0313,
+    "dep": "59"
+  },
+  {
+    "nom": "Louvroil",
+    "slug": "louvroil",
+    "codePostal": "59720",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.2597,
+    "lon": 3.9517,
+    "dep": "59"
+  },
+  {
+    "nom": "Lallaing",
+    "slug": "lallaing",
+    "codePostal": "59167",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3868,
+    "lon": 3.1719,
+    "dep": "59"
   }
 ]
