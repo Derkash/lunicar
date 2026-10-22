@@ -19636,7 +19636,7 @@
       },
       {
         "h2": "Comment le paiement est-il sécurisé ?",
-        "html": "<p>LUNICAR paie uniquement par virement instantané, à la conclusion de la vente. Jamais d'espèces, jamais de chèque. Le virement laisse une trace bancaire claire et évite les risques liés aux faux chèques de banque, une fraude bien connue des ventes de voitures entre particuliers.</p>\n<p>La vente est conclue par une société identifiée : LUNICAR est une marque d'OPTIMERCH, SAS immatriculée sous le SIREN 100 047 281. Vous savez à qui vous vendez, et le certificat de cession porte ces informations.</p>\n<ul class=\"ticks\">\n<li><strong>Pas de frais de dossier</strong> : le prix annoncé est celui que vous recevez.</li>\n<li><strong>Pas d'obligation d'achat</strong> : vous n'avez aucun autre véhicule à acheter en échange.</li>\n<li><strong>Droit de refuser</strong> : vous pouvez dire non, même le jour du rendez-vous, sans frais.</li>\n</ul>\n<p>Pour le détail des engagements, consultez la page <a href=\"/garanties\">nos engagements</a> ou découvrez qui nous sommes sur la page <a href=\"/a-propos\">à propos</a>.</p>"
+        "html": "<p>LUNICAR paie uniquement par virement instantané, à la conclusion de la vente. Jamais d'espèces, jamais de chèque. Le virement laisse une trace bancaire claire et évite les risques liés aux faux chèques de banque, une fraude bien connue des ventes de voitures entre particuliers.</p>\n<p>La vente est conclue par une société immatriculée, dont l'identité figure dans nos mentions légales. Vous savez à qui vous vendez, et le certificat de cession porte ces informations.</p>\n<ul class=\"ticks\">\n<li><strong>Pas de frais de dossier</strong> : le prix annoncé est celui que vous recevez.</li>\n<li><strong>Pas d'obligation d'achat</strong> : vous n'avez aucun autre véhicule à acheter en échange.</li>\n<li><strong>Droit de refuser</strong> : vous pouvez dire non, même le jour du rendez-vous, sans frais.</li>\n</ul>\n<p>Pour le détail des engagements, consultez la page <a href=\"/garanties\">nos engagements</a> ou découvrez qui nous sommes sur la page <a href=\"/a-propos\">à propos</a>.</p>"
       },
       {
         "h2": "Pourquoi vendre à un professionnel plutôt qu'entre particuliers ?",
@@ -19695,9 +19695,9 @@
     "image": "signature",
     "nav": "Qui sommes-nous",
     "title": "Qui sommes-nous | LUNICAR, rachat de voitures en France",
-    "description": "LUNICAR, marque d'OPTIMERCH, rachète les voitures des particuliers et des professionnels partout en France : offre claire, virement, aucun frais caché.",
+    "description": "LUNICAR rachète les voitures des particuliers et des professionnels partout en France : estimation gratuite, technicien à votre adresse, virement instantané.",
     "h1": "Qui sommes-nous ? <em>LUNICAR, rachat de voitures partout en France</em>",
-    "lede": "LUNICAR est la marque de rachat de voitures de la société OPTIMERCH. Nous achetons les véhicules des particuliers et des professionnels partout en France, avec des règles simples et écrites.",
+    "lede": "LUNICAR rachète les voitures partout en France. Nous achetons les véhicules des particuliers et des professionnels partout en France, avec des règles simples et écrites.",
     "points": [
       "Fourchette de prix indicative communiquée rapidement",
       "Prix définitif après vérification",
@@ -19708,7 +19708,7 @@
     "sections": [
       {
         "h2": "Qui est derrière LUNICAR ?",
-        "html": "<p>LUNICAR est une marque d'OPTIMERCH, société par actions simplifiée immatriculée sous le SIREN 100 047 281. Son activité est le rachat de voitures d'occasion auprès des particuliers et des professionnels, à Paris, en Île-de-France et partout ailleurs en France.</p>\n<p>Toute voiture peut être étudiée, de la récente à celle qui ne roule plus : citadines, SUV, premium, électriques, hybrides, utilitaires, véhicules à fort kilométrage, en panne ou sans contrôle technique ; selon l'importance des dommages, une offre n'est pas toujours possible. Nous ne sommes pas un épaviste. Chaque véhicule reçoit une fourchette de prix indicative qui tient compte de sa valeur réelle.</p>"
+        "html": "<p>LUNICAR est une entreprise immatriculée en France, dont l'identité complète figure dans nos <a href=\"/mentions-legales\">mentions légales</a>. Son activité est le rachat de voitures d'occasion auprès des particuliers et des professionnels, à Paris, en Île-de-France et partout ailleurs en France.</p>\n<p>Toute voiture peut être étudiée, de la récente à celle qui ne roule plus : citadines, SUV, premium, électriques, hybrides, utilitaires, véhicules à fort kilométrage, en panne ou sans contrôle technique ; selon l'importance des dommages, une offre n'est pas toujours possible. Nous ne sommes pas un épaviste. Chaque véhicule reçoit une fourchette de prix indicative qui tient compte de sa valeur réelle.</p>"
       },
       {
         "h2": "Comment votre offre est-elle établie ?",
@@ -19731,7 +19731,7 @@
     "faq": [
       {
         "question": "Quelle société exploite LUNICAR ?",
-        "answer": "LUNICAR est une marque d'OPTIMERCH, société par actions simplifiée immatriculée sous le SIREN 100 047 281. Son activité est le rachat de voitures auprès des particuliers et des professionnels partout en France."
+        "answer": "LUNICAR est exploitée par une société immatriculée en France, dont la dénomination et le numéro SIREN figurent dans les mentions légales du site. Son activité est le rachat de voitures auprès des particuliers et des professionnels partout en France."
       },
       {
         "question": "Achetez-vous aux professionnels ?",
