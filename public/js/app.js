@@ -487,7 +487,7 @@
     simpleForm('callbackForm', '/api/reprise', f => ({
         type: 'rappel', prenom: f.prenom.value, telephone: f.telephone.value, site_web: f.site_web.value,
         source: 'rappel', page: location.pathname, provenance: provenance(), clicAds: clicAds()
-    }), 'C\'est noté : un conseiller vous rappelle sous 24 h ouvrées.', 'generate_lead');
+    }), 'C\'est noté : un conseiller vous rappelle sous 24 h ouvrées pour étudier votre voiture.', 'generate_lead');
 
     simpleForm('contactForm', '/api/contact', f => ({
         nom: f.nom.value, email: f.email.value, telephone: f.telephone.value, message: f.message.value, site_web: f.site_web.value

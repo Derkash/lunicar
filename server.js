@@ -210,6 +210,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/reprise', (req, res) => html(res, pages.reprise()));
+app.get(`/${pages.METHODE_SLUG}`, (req, res) => html(res, pages.methode()));
 
 // Île-de-France : région, départements, pages par situation
 app.get(`/${idf.HUB_SLUG}`, (req, res) => html(res, pages.hub(CITIES)));
@@ -260,7 +261,7 @@ app.get('/garanties', (req, res) => html(res, pages.garanties()));
 app.get('/chiffres-cles-vente-voiture-occasion', (req, res) => html(res, pages.chiffres()));
 app.get('/contact', (req, res) => html(res, pages.contact()));
 app.get('/mentions-legales', (req, res) => html(res, pages.legal('mentions-legales', 'Mentions légales | LUNICAR', 'Mentions légales du site lunicar.fr : éditeur et propriétaire OPTIMERCH (SAS), hébergement, propriété intellectuelle et contact pour toute question.')));
-app.get('/politique-confidentialite', (req, res) => html(res, pages.legal('politique-confidentialite', 'Politique de confidentialité | LUNICAR', 'Comment LUNICAR collecte, utilise et protège vos données personnelles lors d\'une demande d\'offre de rachat : finalités, durée de conservation, vos droits.')));
+app.get('/politique-confidentialite', (req, res) => html(res, pages.legal('politique-confidentialite', 'Politique de confidentialité | LUNICAR', 'Comment LUNICAR collecte, utilise et protège vos données personnelles lors d\'une demande d\'estimation : finalités, durée de conservation, vos droits.')));
 
 // ============ API ARTICLES ============
 
@@ -937,7 +938,8 @@ function indexablePages() {
     const list = [];
     const add = (loc, priority, lastmod = T) => list.push({ loc, priority, lastmod });
     add('/', '1.0');
-    add('/reprise', '0.9', '2026-10-18');
+    add('/reprise', '0.9', '2026-10-22');
+    add(`/${pages.METHODE_SLUG}`, '0.9', pages.METHODE_UPDATED);
     add('/reprise-auto-paris', '0.9', (LOCAL.paris && LOCAL.paris.updated) || T);
     add(`/${idf.HUB_SLUG}`, '0.9');
     idf.DEPARTMENTS.forEach(d => add(`/${d.slug}`, '0.8', d.updated || T));
@@ -1019,7 +1021,7 @@ Sitemap: ${SITE.baseUrl}/sitemap-redirections.xml
 const strip = h => String(h || '').replace(/<li>/g, '\n- ').replace(/<\/(p|h2|h3|ul|ol|table|tr)>/g, '\n').replace(/<(td|th)[^>]*>/g, ' | ').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n\n').trim();
 const title = t => String(t || '').replace(/<[^>]+>/g, '');
 
-const LLMS_SUMMARY = `LUNICAR rachète les voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels, partout en France, avec une présence renforcée en Île-de-France. LUNICAR intervient partout en France : le rendez-vous à l'adresse du vendeur et l'enlèvement sont gratuits, y compris pour une voiture qui ne roule plus ou garée en parking souterrain. Le vendeur décrit son véhicule en ligne en deux minutes ; un conseiller le rappelle sous 24 h ouvrées avec une offre chiffrée, valable 7 jours ; le rendez-vous a lieu à l'adresse choisie ; le paiement se fait par virement bancaire le jour de la vente. LUNICAR est une marque de OPTIMERCH (SAS, SIREN 100 047 281).`;
+const LLMS_SUMMARY = `LUNICAR achète des voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels, partout en France. Toute voiture peut faire l'objet d'une demande d'estimation, mais LUNICAR ne s'engage pas à toutes les racheter : certaines pannes ou dégradations importantes peuvent conduire à une absence d'offre. Le vendeur décrit son véhicule en ligne en deux minutes ; l'équipe étudie la demande et un conseiller le rappelle sous 24 h ouvrées avec une fourchette de prix indicative (pas un prix ferme) ; si elle lui convient, un technicien LUNICAR vient vérifier le véhicule à son adresse, sans frais ; LUNICAR présente ensuite le prix définitif, que le vendeur accepte ou refuse librement. Si l'état réel correspond à la description, LUNICAR respecte le positionnement annoncé, sans renégociation injustifiée ; un écart constaté peut modifier le prix. Si la vente est conclue, les documents de cession sont préparés ensemble, l'enlèvement est offert et le paiement se fait par virement instantané, sous réserve des conditions bancaires. LUNICAR est une marque de OPTIMERCH (SAS, SIREN 100 047 281).`;
 
 app.get('/llms.txt', (req, res) => {
     const b = SITE.baseUrl;
@@ -1031,24 +1033,27 @@ app.get('/llms.txt', (req, res) => {
 Dernière mise à jour : ${pages.TEMPLATE_DATE}
 
 ## Faits clés
-- Zone : intervention partout en France, rendez-vous et enlèvement gratuits ; présence renforcée à Paris et en Île-de-France
-- Véhicules rachetés : toutes marques, récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, anciens, fort kilométrage, en panne, accidentés, sans contrôle technique
-- Véhicules rachetés en l'état, sans réparation à avancer
+- Zone : partout en France ; un technicien LUNICAR se déplace sur rendez-vous à l'adresse du vendeur, selon les disponibilités convenues, sans frais
+- Véhicules étudiés : toutes marques, récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, anciens, fort kilométrage, sans contrôle technique
+- Voitures en panne ou accidentées : peuvent être étudiées sur description de la panne ou des dommages ; selon leur importance, une offre n'est pas toujours possible
+- Aucune réparation à avancer avant la vente
 - Contrôle technique non exigé : il n'est obligatoire que pour une vente entre particuliers
-- Offre gratuite et sans engagement, valable 7 jours ; refus possible même le jour du rendez-vous, sans frais
-- Rendez-vous à l'adresse du vendeur et enlèvement à la charge de LUNICAR partout en France, y compris véhicule non roulant ou en parking souterrain
-- Paiement par virement bancaire uniquement, le jour de la vente (ni espèces ni chèque)
+- Estimation gratuite et sans engagement : fourchette indicative au téléphone sous 24 h ouvrées, prix définitif après vérification du véhicule ; refus possible même le jour du rendez-vous, sans frais
+- Révision du prix uniquement en cas d'écart constaté avec la description (dommage ou panne non déclarés, kilométrage différent…)
+- Enlèvement à la charge de LUNICAR si la vente est conclue, y compris véhicule non roulant ou en parking souterrain
+- Paiement par virement instantané à la conclusion de la vente, sous réserve des conditions bancaires (ni espèces ni chèque)
 - Certificat de cession (Cerfa 15776) et déclaration de cession ANTS préparés avec le vendeur
 - Aucune obligation d'acheter un autre véhicule
 - Horaires : ${SITE.hours} ; contact : ${SITE.email}
 
 ## Pages principales
 - [Accueil](${b}/): présentation, déroulé, comparatif, FAQ
-- [Estimation voiture gratuite](${b}/reprise): comment est estimée une voiture, estimation avec la plaque, demande d'offre
+- [Comment fonctionne LUNICAR](${b}/${pages.METHODE_SLUG}): la méthode de bout en bout (demande, fourchette indicative, technicien, prix définitif, virement instantané), ce qui est garanti et ce qui ne l'est pas
+- [Estimation voiture gratuite](${b}/reprise): comment est calculée l'estimation, fourchette indicative et prix définitif, motifs de révision, estimation avec la plaque
 - [Vendre une vieille voiture sans se déplacer](${b}/vendre-vieille-voiture): voitures de plus de 15 ans, peu roulées
-- [Toutes les voitures](${b}/reprise-voiture-occasion): ce que LUNICAR rachète et ce qui fait le prix
+- [Toutes les voitures](${b}/reprise-voiture-occasion): ce que LUNICAR étudie et ce qui fait le prix
 - [Qui sommes-nous](${b}/a-propos): société, méthode, engagements
-- [Garanties](${b}/garanties): les six engagements
+- [Nos engagements](${b}/garanties): les six engagements
 - [Comparer particulier, concession et professionnel](${b}/comparatif-reprise-auto)
 - [Chiffres clés de la vente d'une voiture d'occasion](${b}/chiffres-cles-vente-voiture-occasion): données officielles sourcées (SDES, service-public, UTAC, Banque de France, Code civil, Code des assurances, Code général des impôts)
 
@@ -1097,6 +1102,7 @@ app.get('/llms-full.txt', (req, res) => {
     const b = SITE.baseUrl;
     const block = (url, h, lede, sections, faq) => `# ${title(h)}\nURL : ${url}\n\n${lede ? lede + '\n\n' : ''}${(sections || []).map(s => `## ${title(s.h2)}\n\n${strip(s.html)}`).join('\n\n')}${faq && faq.length ? '\n\n## Questions fréquentes\n\n' + faq.map(f => `**${f.question}**\n${strip(f.answer)}`).join('\n\n') : ''}\n`;
     const parts = [`# LUNICAR\n\n> ${LLMS_SUMMARY}\n\nDernière mise à jour : ${pages.TEMPLATE_DATE}\n`];
+    parts.push(pages.methodeTexte(`${b}/${pages.METHODE_SLUG}`));
     if (LOCAL.aPropos) parts.push(block(`${b}/a-propos`, LOCAL.aPropos.h1, LOCAL.aPropos.lede, LOCAL.aPropos.sections, LOCAL.aPropos.faq));
     if (LOCAL.france) parts.push(block(`${b}/${zones.FRANCE_SLUG}`, LOCAL.france.h1, LOCAL.france.lede, LOCAL.france.sections, LOCAL.france.faq));
     if (LOCAL.paris) parts.push(block(`${b}/reprise-auto-paris`, LOCAL.paris.h1, LOCAL.paris.lede, LOCAL.paris.sections, LOCAL.paris.faq));

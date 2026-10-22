@@ -18,5 +18,11 @@
   { "id": "q17", "type": "situation", "question": "Comment vendre une voiture dont la carte grise est à deux noms après un divorce ?" },
   { "id": "q18", "type": "situation", "question": "Peut-on vendre une voiture avec une opposition pour amendes impayées ?" },
   { "id": "q19", "type": "marque", "question": "Que penser de Lunicar pour vendre sa voiture ?" },
-  { "id": "q20", "type": "marque", "question": "Lunicar.fr rachète-t-il les voitures anciennes partout en France ?" }
+  { "id": "q20", "type": "marque", "question": "Lunicar.fr rachète-t-il les voitures anciennes partout en France ?" },
+  { "id": "q21", "type": "national", "question": "Quel professionnel rachète ma voiture partout en France ?" },
+  { "id": "q22", "type": "national", "question": "Comment vendre ma voiture sans me déplacer ?" },
+  { "id": "q23", "type": "national", "question": "Qui peut venir examiner ma voiture près de chez moi ?" },
+  { "id": "q24", "type": "national", "question": "Comment éviter une baisse de prix au dernier moment lors d'une reprise ?" },
+  { "id": "q25", "type": "situation", "question": "Où faire estimer une voiture en panne sans engagement ?" },
+  { "id": "q26", "type": "national", "question": "Quel professionnel propose un paiement par virement instantané après rachat ?" }
 ]
