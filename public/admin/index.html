@@ -658,6 +658,40 @@ ul.plain li { margin: 3px 0; }
 .cr-recap dd { margin: 0; }
 body.modal-ouvert { overflow: hidden; }
 
+/* ---------- Note de frais, documents, cession ---------- */
+.nf { display: grid; gap: 10px; }
+.nf-photo { display: flex; align-items: center; gap: 12px; border: 1.5px dashed #C9C4B8; border-radius: var(--r); padding: 14px 16px; background: #FAF9F6; cursor: pointer; }
+.nf-photo svg { width: 28px; height: 28px; color: var(--marine-6); flex: none; }
+.nf-photo b { display: block; font-size: .95rem; }
+.nf-photo small { color: var(--ink-5); font-size: .78rem; }
+.nf-lecture { font-size: .86rem; background: var(--marine-1); color: var(--marine); border-radius: var(--r-s); padding: 9px 12px; }
+.nf-lecture.ok { background: var(--green-1); color: #1B5E3A; }
+.nf-edit { margin: 0; font-size: .86rem; color: var(--ink-5); }
+.nf-type { grid-column: 1 / -1; display: flex; gap: 6px; }
+.nf-veh { grid-column: 1 / -1; position: relative; }
+.nf-liste { display: grid; gap: 4px; margin-top: 6px; }
+.nf-opt { text-align: left; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r-s); padding: 9px 12px; display: grid; }
+.nf-opt:hover { border-color: var(--marine-6); }
+.nf-opt span, .nf-choix span { font-size: .78rem; color: var(--ink-5); }
+.nf-choix { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "b x" "s x"; align-items: center; border: 1px solid var(--marine-6); background: var(--marine-1); border-radius: var(--r-s); padding: 8px 6px 8px 12px; }
+.nf-choix b { grid-area: b; } .nf-choix span { grid-area: s; } .nf-choix button { grid-area: x; }
+.nf-recup { align-self: end; }
+.dep-mt small { display: block; font-size: .7rem; font-weight: 500; color: var(--ink-4); }
+.doc-check { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+.doc-check span { font-size: .78rem; padding: 4px 10px; border-radius: 99px; background: #F1EFEA; color: var(--ink-5); }
+.doc-check span.ok { background: var(--green-1); color: var(--green); font-weight: 600; }
+.doc-act { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 10px; }
+.doc-act select.in { width: auto; }
+.doc-liste { display: grid; gap: 6px; }
+.doc { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid var(--line-2); border-radius: var(--r-s); padding: 8px 6px 8px 12px; }
+.doc a { text-decoration: none; color: var(--ink); min-width: 0; }
+.doc a b { display: block; font-size: .9rem; }
+.doc a span { display: block; font-size: .74rem; color: var(--ink-4); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ces-form { display: grid; gap: 12px; }
+.ces-form fieldset { border: 1px solid var(--line); border-radius: var(--r-s); padding: 10px 12px 12px; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.ces-form legend { font-weight: 650; font-size: .9rem; padding: 0 4px; }
+.ces-form .chk { grid-column: 1 / -1; height: auto; }
+
 /* ---------- Confirmation ---------- */
 .confirm { position: fixed; inset: 0; z-index: 90; background: rgba(14,35,64,.45); display: grid; place-items: center; padding: 16px; }
 .confirm-in { width: 100%; max-width: 400px; background: var(--surface); border-radius: 16px; padding: 22px 20px 18px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
@@ -737,6 +771,10 @@ body.modal-ouvert { overflow: hidden; }
     .pc-et span { font-size: .66rem; }
     .pc-fl { display: none; }
     .parcours { gap: 6px; overflow: visible; }
+
+    /* Note de frais, cession */
+    .doc-act .btn, .doc-act select.in { flex: 1 1 100%; justify-content: center; }
+    .ces-form fieldset { grid-template-columns: 1fr 1fr; }
 
     /* Fiche */
     .dec-grille { grid-template-columns: 1fr 1fr; }
@@ -1998,17 +2036,11 @@ body.modal-ouvert { overflow: hidden; }
             <div class="prices vh-prix" id="vPrix">${chiffresVehicule(v)}</div>
             <section class="sec">
                 <h3>Dépenses du véhicule <small>${Object.entries(b.par_payeur).filter(([, m]) => m).map(([k, m]) => `${PAYCOURT[k]} ${euro(m)}`).join(' · ') || 'aucune'}</small></h3>
-                <form id="vDepForm" class="dep-form">
-                    <label class="f">Montant (€)<input class="in num" name="montant" inputmode="decimal" required placeholder="0"></label>
-                    <label class="f">Catégorie<select class="in" name="categorie">${cats.map(c => `<option>${esc(c)}</option>`).join('')}</select></label>
-                    <label class="f">Payé par${selPayeur('payeur', payeurDefaut())}</label>
-                    <label class="f">Date<input class="in" type="date" name="date" value="${jourAuj()}"></label>
-                    <label class="f dep-lib">Détail<input class="in" name="libelle" placeholder="Ex. : billet Paris → Lyon, plaquettes AV…"></label>
-                    <div class="dep-act"><label class="btn">Justificatif<input type="file" name="justificatif" accept="image/*,application/pdf" hidden></label><button class="btn btn-p">Ajouter</button></div>
-                </form>
+                <div id="vNf"></div>
                 ${deps.length ? `<div class="dep-list">${deps.map(ligneDepense).join('')}</div>` : '<p class="vide">Aucune dépense pour l\'instant : train, carburant, péages, réparations, contrôle technique…</p>'}
                 ${Object.keys(b.par_categorie).length > 1 ? `<div class="hbars" style="margin-top:14px">${hbars(Object.entries(b.par_categorie).sort((x, y) => y[1] - x[1]).map(([c, m]) => [c, Math.round(m)]), Math.max(...Object.values(b.par_categorie)))}</div>` : ''}
             </section>
+            ${['prospect', 'perdu'].includes(v.statut) ? '' : blocDocuments(v)}
             <section class="sec">
                 <h3>Achat et vente <small id="vEtat">chaque champ s'enregistre dès que vous le quittez</small></h3>
                 <form id="vForm" class="form-grid" autocomplete="off">
@@ -2051,29 +2083,20 @@ body.modal-ouvert { overflow: hidden; }
             try {
                 const d = await api('/api/admin/demandes/' + v.ref + '/rdv', { method: 'PATCH', body: JSON.stringify(corps) }); maj(d);
                 await chargerCompta(); toast(a === 'achetee' ? 'Voiture achetée : bravo !' : 'Rendez-vous mis à jour');
-                if (vehiculeDe(v.id)) afficherVehicule(v.id); else { history.replaceState({}, '', BASE); quitterVehicule(); allerOnglet('vehicules'); }
+                if (vehiculeDe(v.id)) { afficherVehicule(v.id); if (a === 'achetee') setTimeout(() => ecranCession(vehiculeDe(v.id)), 300); } else { history.replaceState({}, '', BASE); quitterVehicule(); allerOnglet('vehicules'); }
             } catch (err) { toast(err.message); }
         });
 
-        let depModif = null;
-        $('#vDepForm').onsubmit = async e => {
-            e.preventDefault();
-            const fd = new FormData(e.target); fd.append('vehicule_id', v.id); retenirPayeur(fd.get('payeur'));
-            if (!(fd.get('justificatif') || {}).size) fd.delete('justificatif');
-            try { await api('/api/admin/compta/depenses' + (depModif ? '/' + depModif : ''), { method: depModif ? 'PATCH' : 'POST', body: fd }); await chargerCompta(); afficherVehicule(v.id); toast(depModif ? 'Dépense modifiée' : 'Dépense ajoutée'); }
-            catch (err) { toast(err.message); }
-        };
+        // Note de frais du véhicule (photo / PDF lu automatiquement) ; toucher une dépense la modifie.
+        noteFrais($('#vNf'), { vehiculeFixe: v.id, apres: () => afficherVehicule(v.id) });
         $('#vpageIn').querySelectorAll('.dep[data-dep]').forEach(row => row.onclick = ev => {
             if (ev.target.closest('a,button')) return;
             const dp = compta.depenses.find(x => x.id === row.dataset.dep); if (!dp) return;
-            depModif = dp.id; const f = $('#vDepForm');
-            f.montant.value = dp.montant; f.categorie.value = dp.categorie; f.payeur.value = dp.payeur; f.date.value = dp.date; f.libelle.value = dp.libelle || '';
-            f.querySelector('button.btn-p').textContent = 'Enregistrer la modification';
-            if (!f.querySelector('#vDepAnnul')) { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.id = 'vDepAnnul'; b.textContent = 'Annuler'; b.onclick = () => afficherVehicule(v.id); f.querySelector('.dep-act').appendChild(b); }
             $('#vpageIn').querySelectorAll('.dep').forEach(x => x.classList.toggle('edit', x === row));
-            f.scrollIntoView({ block: 'center', behavior: 'smooth' }); f.montant.focus();
+            noteFrais($('#vNf'), { vehiculeFixe: v.id, depense: dp, apres: () => afficherVehicule(v.id) });
+            $('#vNf').scrollIntoView({ block: 'center', behavior: 'smooth' });
         });
-        $('#vDepForm [name=justificatif]').onchange = ev => { ev.target.closest('label').firstChild.textContent = ev.target.files.length ? '✓ Justificatif' : 'Justificatif'; };
+        if ($('#vDocs')) lierDocuments(v);
         lierDepenses($('#vpageIn'), () => afficherVehicule(v.id));
         if ($('#vDemande')) $('#vDemande').onclick = () => { quitterVehicule(); history.pushState({ ref: v.ref }, '', BASE + '/demande/' + v.ref); afficherFiche(v.ref); };
         $('#vSuppr').onclick = async () => {
@@ -2099,7 +2122,7 @@ body.modal-ouvert { overflow: hidden; }
             <div class="dep-d">${dateCourte(d.date)}</div>
             <div class="dep-m"><b>${esc(d.libelle || d.categorie)}</b><span>${[d.libelle ? esc(d.categorie) : '', v && !$('#vpage').hidden ? '' : v ? '🚗 ' + esc(v.libelle) : '', d.beneficiaire ? 'à ' + PAYCOURT[d.beneficiaire] : ''].filter(Boolean).join(' · ')}</span></div>
             <span class="payeur p-${esc(d.payeur)}">${PAYCOURT[d.payeur]}</span>
-            <b class="dep-mt num">${euro(d.montant)}</b>
+            <b class="dep-mt num">${euro(d.montant)}${d.tva ? `<small>TVA ${euro(d.tva)}${d.tva_recuperable ? ' récup.' : ''}</small>` : ''}</b>
             <div class="dep-a">${d.justificatif ? `<a class="btn btn-s btn-ghost" href="${photoUrl(d.justificatif.path)}" target="_blank" title="Justificatif">📎</a>` : ''}<button class="btn btn-s btn-ghost" data-dep-del="${esc(d.id)}" aria-label="Supprimer">✕</button></div>
         </div>`;
     }
@@ -2124,37 +2147,8 @@ body.modal-ouvert { overflow: hidden; }
     }
     function formDepense() {
         const d = depEdit ? compta.depenses.find(x => x.id === depEdit) : null;
-        const vehs = compta.vehicules.filter(v => v.statut !== 'vendu' || (d && d.vehicule_id === v.id));
-        const vid = d ? d.vehicule_id || '' : '';
-        const cats = vid ? compta.categories.vehicule : compta.categories.generales;
-        $('#depForm').innerHTML = `<h3>${d ? 'Modifier la dépense' : 'Nouvelle dépense'}</h3>
-            <form id="depF" class="dep-form">
-                <label class="f">Montant (€)<input class="in num" name="montant" inputmode="decimal" required value="${d ? d.montant : ''}" placeholder="0"></label>
-                <label class="f">Véhicule<select class="in" name="vehicule_id"><option value="">— Dépense générale —</option>${vehs.map(v => `<option value="${esc(v.id)}"${v.id === vid ? ' selected' : ''}>${esc(v.libelle)}${v.plaque ? ' · ' + esc(v.plaque) : ''}</option>`).join('')}</select></label>
-                <label class="f">Catégorie<select class="in" name="categorie">${cats.map(c => `<option${d && d.categorie === c ? ' selected' : ''}>${esc(c)}</option>`).join('')}</select></label>
-                <label class="f">Payé par${selPayeur('payeur', d ? d.payeur : payeurDefaut())}</label>
-                <label class="f" id="depBenef"${d && d.beneficiaire ? '' : ' hidden'}>Remboursé à${selPayeur('beneficiaire', d && d.beneficiaire || 'abdoul', 'societe')}</label>
-                <label class="f">Date<input class="in" type="date" name="date" value="${d ? d.date : jourAuj()}"></label>
-                <label class="f dep-lib">Détail<input class="in" name="libelle" value="${esc(d ? d.libelle : '')}" placeholder="Ex. : Google Ads octobre, assurance flotte…"></label>
-                <div class="dep-act"><label class="btn">${d && d.justificatif ? '✓ Justificatif (remplacer)' : 'Justificatif'}<input type="file" name="justificatif" accept="image/*,application/pdf" hidden></label>
-                    <button class="btn btn-p">${d ? 'Enregistrer' : 'Ajouter'}</button>${d ? '<button type="button" class="btn" id="depAnnul">Annuler</button>' : ''}</div>
-            </form>`;
-        const f = $('#depF');
-        const majBenef = () => { $('#depBenef').hidden = f.categorie.value !== compta.remboursement; };
-        f.vehicule_id.onchange = () => { const c = f.vehicule_id.value ? compta.categories.vehicule : compta.categories.generales; f.categorie.innerHTML = c.map(x => `<option>${esc(x)}</option>`).join(''); majBenef(); };
-        f.categorie.onchange = majBenef; majBenef();
-        f.justificatif.onchange = ev => { ev.target.closest('label').firstChild.textContent = ev.target.files.length ? '✓ Justificatif' : 'Justificatif'; };
-        if ($('#depAnnul')) $('#depAnnul').onclick = () => { depEdit = null; formDepense(); };
-        f.onsubmit = async e => {
-            e.preventDefault();
-            const fd = new FormData(f); retenirPayeur(fd.get('payeur'));
-            if (!(fd.get('justificatif') || {}).size) fd.delete('justificatif');
-            if (f.categorie.value !== compta.remboursement) fd.delete('beneficiaire');
-            try {
-                await api('/api/admin/compta/depenses' + (d ? '/' + d.id : ''), { method: d ? 'PATCH' : 'POST', body: fd });
-                depEdit = null; toast(d ? 'Dépense modifiée' : 'Dépense ajoutée'); vueDepenses();
-            } catch (err) { toast(err.message); }
-        };
+        $('#depForm').innerHTML = `<h3>${d ? 'Modifier la dépense' : 'Nouvelle note de frais'}</h3><div id="depNf"></div>`;
+        noteFrais($('#depNf'), { depense: d, annulable: !!d, apres: () => { depEdit = null; vueDepenses(); } });
     }
     function listeDepenses() {
         const per = $('#depPer').value, pay = $('#depPay').value, typ = $('#depTyp').value, auj = jourAuj();
@@ -2298,7 +2292,7 @@ body.modal-ouvert { overflow: hidden; }
                 const v = await demander({ titre: 'Annuler le rendez-vous ?', texte: 'Une relance est programmée pour le lendemain.', boutons: [['Annulé par le vendeur', 'Annulé par le vendeur', 'btn-rouge'], ['Annulé par nous', 'Annulé par nous'], ['', 'Garder le rendez-vous']] });
                 if (!v) return; corps = { statut: 'annule', motif: v };
             }
-            try { courant = await api('/api/admin/demandes/' + d.ref + '/rdv', { method: 'PATCH', body: JSON.stringify(corps) }); maj(courant); fiche(); toast(a === 'achetee' ? 'Voiture achetée : bravo !' : 'Rendez-vous mis à jour'); }
+            try { courant = await api('/api/admin/demandes/' + d.ref + '/rdv', { method: 'PATCH', body: JSON.stringify(corps) }); maj(courant); fiche(); toast(a === 'achetee' ? 'Voiture achetée : certificat de cession à générer' : 'Rendez-vous mis à jour'); if (a === 'achetee') apresAchat(d.ref); }
             catch (err) { toast(err.message); }
         });
         if (location.hash === '#rdv') { history.replaceState(history.state, '', location.pathname); if (!$('#rdvF')) ouvrirForm(); bloc.scrollIntoView({ block: 'start' }); $('#rdvF [name=date]').focus(); }
@@ -2347,6 +2341,202 @@ body.modal-ouvert { overflow: hidden; }
     $('#plBande').addEventListener('click', e => { const b = e.target.closest('[data-plj]'); if (b) { plJour = plJour === b.dataset.plj ? null : b.dataset.plj; vuePlanning(); } });
     $('#plVues').addEventListener('click', e => { const b = e.target.closest('[data-plv]'); if (b) { plVue = b.dataset.plv; plJour = null; vuePlanning(); } });
     $('#plListe').addEventListener('click', e => { if (e.target.closest('a')) return; const c = e.target.closest('[data-plref]'); if (c) ouvrir(c.dataset.plref); });
+
+    // ---------------- Note de frais : photo ou PDF → lecture automatique (TTC, HT, TVA, date, fournisseur) → rattachement
+    // à un frais général ou à un véhicule (recherche par plaque, modèle ou nom du vendeur).
+    const TAUX = ['20', '10', '5.5', '2.1', '0'];
+    const sansAccent = t => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    function vendeurDe(v) { const d = v.ref && demandes.find(x => x.ref === v.ref); const x = d ? d.data || {} : {}; return [x.prenom, x.nom].filter(Boolean).join(' '); }
+    function chercherVehicules(q) {
+        const n = sansAccent(q).replace(/[\s-]/g, '');
+        if (!n) return [];
+        return compta.vehicules.map(v => ({ v, h: sansAccent([v.plaque, v.libelle, vendeurDe(v), v.ref].join(' ')).replace(/[\s-]/g, '') }))
+            .filter(o => o.h.includes(n)).map(o => o.v)
+            .sort((a, b) => (a.statut === 'vendu') - (b.statut === 'vendu') || (a.statut === 'perdu') - (b.statut === 'perdu')).slice(0, 8);
+    }
+    function noteFrais(cible, opts = {}) {
+        const dep = opts.depense || null;
+        const st = { fichier: null, vehicule_id: opts.vehiculeFixe || (dep && dep.vehicule_id) || null, type: opts.vehiculeFixe || (dep && dep.vehicule_id) ? 'vehicule' : 'general' };
+        if (dep && dep.beneficiaire) st.type = 'general';
+        const val = (k, def = '') => dep && dep[k] != null ? dep[k] : def;
+        const rendre = () => {
+            const vsel = st.vehicule_id && vehiculeDe(st.vehicule_id);
+            const cats = st.type === 'vehicule' ? compta.categories.vehicule : compta.categories.generales;
+            cible.innerHTML = `<div class="nf">
+                ${dep ? `<p class="nf-edit">Modification de la dépense du ${dateCourte(dep.date)} · ${euro(dep.montant)}${dep.justificatif ? ` · <a href="${photoUrl(dep.justificatif.path)}" target="_blank">justificatif</a>` : ''}</p>` : ''}
+                <label class="nf-photo"><input type="file" id="nfFile" accept="image/*,application/pdf" hidden>
+                    <svg><use href="#i-pho"/></svg><span><b>${dep ? 'Remplacer le justificatif' : 'Photo ou PDF de la note de frais'}</b><small>lecture automatique : montants, TVA, date, fournisseur, plaque</small></span></label>
+                <div class="nf-lecture" id="nfLecture" hidden></div>
+                <form id="nfForm" class="dep-form" autocomplete="off">
+                    ${opts.vehiculeFixe ? '' : `<div class="nf-type"><button type="button" class="seg${st.type === 'general' ? ' on' : ''}" data-nft="general">Frais général</button><button type="button" class="seg${st.type === 'vehicule' ? ' on' : ''}" data-nft="vehicule">Frais d'un véhicule</button></div>
+                    <div class="nf-veh"${st.type === 'vehicule' ? '' : ' hidden'}>
+                        ${vsel ? `<div class="nf-choix"><b>${esc(vsel.libelle)}</b><span>${[vsel.plaque, vendeurDe(vsel), compta.statuts[vsel.statut]].filter(Boolean).map(esc).join(' · ')}</span><button type="button" class="btn btn-s btn-ghost" id="nfDeVeh" aria-label="Changer de véhicule">✕</button></div>`
+                        : `<label class="f">Véhicule<input class="in" id="nfVq" placeholder="Plaque, modèle ou nom du vendeur…" autocomplete="off" autocapitalize="characters"></label><div class="nf-liste" id="nfListe"></div>`}
+                    </div>`}
+                    <label class="f">Montant TTC (€)<input class="in num" name="montant" inputmode="decimal" required value="${val('montant')}" placeholder="0,00"></label>
+                    <label class="f">Taux de TVA<select class="in" name="taux_tva"><option value="">—</option>${TAUX.map(t => `<option value="${t}"${String(val('taux_tva')) === t ? ' selected' : ''}>${t.replace('.', ',')} %</option>`).join('')}</select></label>
+                    <label class="f">Montant HT (€)<input class="in num" name="montant_ht" inputmode="decimal" value="${val('montant_ht')}"></label>
+                    <label class="f">TVA (€)<input class="in num" name="tva" inputmode="decimal" value="${val('tva')}"></label>
+                    <label class="chk nf-recup"><input type="checkbox" name="tva_recuperable"${val('tva_recuperable', false) ? ' checked' : ''}> TVA récupérable</label>
+                    <label class="f">Catégorie<select class="in" name="categorie">${cats.map(c => `<option${val('categorie') === c ? ' selected' : ''}>${esc(c)}</option>`).join('')}</select></label>
+                    <label class="f">Payé par${selPayeur('payeur', val('payeur', payeurDefaut()))}</label>
+                    <label class="f nf-benef"${val('categorie') === compta.remboursement ? '' : ' hidden'}>Remboursé à${selPayeur('beneficiaire', val('beneficiaire', 'abdoul'), 'societe')}</label>
+                    <label class="f">Date<input class="in" type="date" name="date" value="${val('date', jourAuj())}"></label>
+                    <label class="f">Fournisseur<input class="in" name="fournisseur" value="${esc(val('fournisseur'))}" placeholder="Total, SNCF, Sanef…"></label>
+                    <label class="f dep-lib">Détail<input class="in" name="libelle" value="${esc(val('libelle'))}" placeholder="Ex. : plein retour, billet Paris → Lyon, plaquettes AV…"></label>
+                    <div class="dep-act"><button class="btn btn-p">${dep ? 'Enregistrer la modification' : 'Ajouter la dépense'}</button>${dep || opts.annulable ? '<button type="button" class="btn" id="nfAnnul">Annuler</button>' : ''}<span class="sub" id="nfFic"></span></div>
+                </form></div>`;
+            lier();
+        };
+        const calc = (source) => {
+            const F = cible.querySelector('#nfForm'); const ttc = Number(String(F.montant.value).replace(',', '.')), t = Number(F.taux_tva.value);
+            if (source !== 'ht' && ttc && F.taux_tva.value !== '') { const ht = Math.round(ttc / (1 + t / 100) * 100) / 100; F.montant_ht.value = ht.toFixed(2).replace('.', ','); F.tva.value = (Math.round((ttc - ht) * 100) / 100).toFixed(2).replace('.', ','); }
+        };
+        const lier = () => {
+            const F = cible.querySelector('#nfForm');
+            cible.querySelector('#nfFile').onchange = e => { const fi = e.target.files[0]; if (fi) lireJustif(fi); };
+            cible.querySelectorAll('[data-nft]').forEach(b => b.onclick = () => { st.type = b.dataset.nft; if (st.type === 'general') st.vehicule_id = null; const garde = Object.fromEntries(new FormData(F)); rendre(); remettre(garde); });
+            const q = cible.querySelector('#nfVq');
+            if (q) {
+                const montrer = () => { const L = chercherVehicules(q.value); cible.querySelector('#nfListe').innerHTML = q.value.trim() ? (L.length ? L.map(v => `<button type="button" class="nf-opt" data-nfv="${esc(v.id)}"><b>${esc(v.libelle)}</b><span>${[v.plaque, vendeurDe(v), compta.statuts[v.statut]].filter(Boolean).map(esc).join(' · ')}</span></button>`).join('') : '<p class="vide">Aucun véhicule ne correspond.</p>') : ''; };
+                q.oninput = montrer; montrer();
+                cible.querySelector('#nfListe').onclick = e => { const b = e.target.closest('[data-nfv]'); if (!b) return; st.vehicule_id = b.dataset.nfv; const garde = Object.fromEntries(new FormData(F)); rendre(); remettre(garde); };
+            }
+            if (cible.querySelector('#nfDeVeh')) cible.querySelector('#nfDeVeh').onclick = () => { st.vehicule_id = null; const garde = Object.fromEntries(new FormData(F)); rendre(); remettre(garde); setTimeout(() => cible.querySelector('#nfVq') && cible.querySelector('#nfVq').focus(), 50); };
+            F.montant.oninput = () => calc('ttc'); F.taux_tva.onchange = () => calc('taux');
+            F.categorie.onchange = () => { cible.querySelector('.nf-benef').hidden = F.categorie.value !== compta.remboursement; };
+            if (cible.querySelector('#nfAnnul')) cible.querySelector('#nfAnnul').onclick = () => opts.apres && opts.apres(false);
+            F.onsubmit = async e => {
+                e.preventDefault();
+                if (st.type === 'vehicule' && !st.vehicule_id) { toast('Choisissez le véhicule concerné'); cible.querySelector('#nfVq') && cible.querySelector('#nfVq').focus(); return; }
+                const fd = new FormData(F); retenirPayeur(fd.get('payeur'));
+                fd.set('tva_recuperable', F.tva_recuperable.checked ? 'true' : 'false');
+                fd.set('vehicule_id', st.type === 'vehicule' ? st.vehicule_id : '');
+                if (F.categorie.value !== compta.remboursement) fd.delete('beneficiaire');
+                if (st.fichier) fd.append('justificatif', st.fichier);
+                const btn = F.querySelector('.btn-p'); btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Enregistrement…';
+                try {
+                    await api('/api/admin/compta/depenses' + (dep ? '/' + dep.id : ''), { method: dep ? 'PATCH' : 'POST', body: fd });
+                    await chargerCompta(); toast(dep ? 'Dépense modifiée' : 'Dépense ajoutée'); opts.apres && opts.apres(true);
+                } catch (err) { btn.disabled = false; btn.textContent = dep ? 'Enregistrer la modification' : 'Ajouter la dépense'; toast(err.message); }
+            };
+            if (st.fichier) cible.querySelector('#nfFic').textContent = '📎 ' + st.fichier.name;
+        };
+        const remettre = garde => { const F = cible.querySelector('#nfForm'); Object.entries(garde).forEach(([k, v]) => { if (F.elements[k] && F.elements[k].type !== 'checkbox' && !(k === 'categorie' && ![...F.categorie.options].some(o => o.value === v))) F.elements[k].value = v; }); if (garde.tva_recuperable) F.tva_recuperable.checked = true; if (st.fichier) cible.querySelector('#nfFic').textContent = '📎 ' + st.fichier.name; };
+        async function lireJustif(fi) {
+            st.fichier = fi;
+            const zone = cible.querySelector('#nfLecture'); zone.hidden = false; zone.className = 'nf-lecture'; zone.innerHTML = `<span class="spin"></span> Lecture de « ${esc(fi.name)} »…`;
+            cible.querySelector('#nfFic').textContent = '📎 ' + fi.name;
+            if (!etat.estimation.actif) { zone.textContent = 'Lecture automatique indisponible (clé IA absente) : saisissez les montants.'; return; }
+            try {
+                const fd = new FormData(); fd.append('justificatif', fi);
+                const o = await api('/api/admin/compta/lire', { method: 'POST', body: fd });
+                const F = cible.querySelector('#nfForm');
+                if (!opts.vehiculeFixe && !dep) {
+                    if (o.plaque) { const v = compta.vehicules.find(w => (w.plaque || '').replace(/-/g, '') === o.plaque.replace(/-/g, '')); if (v) { st.vehicule_id = v.id; st.type = 'vehicule'; } }
+                    if (!st.vehicule_id) st.type = o.generale ? 'general' : 'vehicule';
+                    const garde = Object.fromEntries(new FormData(F)); rendre(); remettre(garde);
+                }
+                const G = cible.querySelector('#nfForm'), mettre = (k, v) => { if (v != null && v !== '' && G.elements[k]) G.elements[k].value = String(v).replace('.', ','); };
+                mettre('montant', o.montant_ttc); mettre('montant_ht', o.montant_ht); mettre('tva', o.tva);
+                if (o.taux_tva != null && TAUX.includes(String(o.taux_tva))) G.taux_tva.value = String(o.taux_tva);
+                if (o.date) G.date.value = o.date; if (o.fournisseur) G.fournisseur.value = o.fournisseur; if (o.libelle) G.libelle.value = o.libelle;
+                if (o.categorie && [...G.categorie.options].some(op => op.value === o.categorie)) G.categorie.value = o.categorie;
+                if (o.tva_recuperable != null) G.tva_recuperable.checked = o.tva_recuperable;
+                if (o.montant_ttc && o.montant_ht == null && G.taux_tva.value) calc('taux');
+                const z = cible.querySelector('#nfLecture'); z.hidden = false; z.className = 'nf-lecture ok';
+                z.innerHTML = o.lisible === false ? '⚠️ Justificatif peu lisible : vérifiez les montants.' : `✓ Lu : <b>${o.montant_ttc != null ? euro(o.montant_ttc) : '?'}</b> TTC${o.tva != null ? ` dont TVA ${euro(o.tva)}` : ''}${o.fournisseur ? ' · ' + esc(o.fournisseur) : ''}${o.date ? ' · ' + dateCourte(o.date) : ''}${o.plaque ? ' · plaque ' + esc(o.plaque) + (st.vehicule_id ? ' (véhicule trouvé)' : ' (aucun véhicule à cette plaque)') : ''}. Vérifiez puis enregistrez.`;
+            } catch (e) { const z = cible.querySelector('#nfLecture'); z.className = 'nf-lecture'; z.textContent = 'Lecture impossible (' + e.message + ') : saisissez les montants.'; }
+        }
+        rendre();
+    }
+
+    // ---------------- Documents du véhicule et certificat de cession (Cerfa 15776*01)
+    const DOCS_ACHAT = ['carte_grise', 'cession_achat', 'declaration_achat', 'non_gage'];
+    function blocDocuments(v) {
+        const docs = v.documents || [], T = compta.types_document || {};
+        return `<section class="sec" id="vDocs">
+            <h3>Documents du véhicule <small>${docs.length} fichier${docs.length > 1 ? 's' : ''}</small></h3>
+            <div class="doc-check">${[...DOCS_ACHAT, ...(v.statut === 'vendu' ? ['cession_vente'] : [])].map(t => `<span class="${docs.some(d => d.type === t) ? 'ok' : ''}">${docs.some(d => d.type === t) ? '✓' : '○'} ${esc(T[t] || t)}</span>`).join('')}</div>
+            <div class="doc-act">
+                <button class="btn btn-g" id="vCession" type="button">Générer le certificat de cession</button>
+                <select class="in" id="vDocType">${Object.entries(T).map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select>
+                <label class="btn">Ajouter un document<input type="file" id="vDocFile" accept="image/*,application/pdf" hidden></label>
+            </div>
+            ${docs.length ? `<div class="doc-liste">${docs.slice().reverse().map(d => `<div class="doc"><a href="${photoUrl(d.path)}" target="_blank" rel="noopener"><b>${esc(d.libelle || T[d.type] || 'Document')}</b><span>${esc(d.name)}${d.genere ? ' · généré' : ''}</span></a><button class="btn btn-s btn-ghost" data-docdel="${esc(d.path)}" aria-label="Supprimer">✕</button></div>`).join('')}</div>` : ''}
+        </section>`;
+    }
+    function lierDocuments(v) {
+        $('#vDocFile').onchange = async e => {
+            const fi = e.target.files[0]; if (!fi) return;
+            const fd = new FormData(); fd.append('justificatif', fi); fd.append('type', $('#vDocType').value);
+            toast('Envoi…');
+            try { await api('/api/admin/compta/vehicules/' + v.id + '/documents', { method: 'POST', body: fd }); await chargerCompta(); afficherVehicule(v.id); toast('Document ajouté'); } catch (err) { toast(err.message); }
+        };
+        $('#vpageIn').querySelectorAll('[data-docdel]').forEach(b => b.onclick = async () => {
+            if (await demander({ titre: 'Supprimer ce document ?', boutons: [['ok', 'Supprimer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
+            try { await api('/api/admin/compta/vehicules/' + v.id + '/documents?path=' + encodeURIComponent(b.dataset.docdel), { method: 'DELETE' }); await chargerCompta(); afficherVehicule(v.id); } catch (err) { toast(err.message); }
+        });
+        $('#vCession').onclick = () => ecranCession(v);
+    }
+    async function ecranCession(v) {
+        let c;
+        try { c = await api('/api/admin/compta/vehicules/' + v.id + '/cession'); } catch (e) { return toast(e.message); }
+        const ch = (k, l, attrs = '') => `<label class="f">${l}<input class="in" name="${k}" value="${esc(c[k] == null ? '' : c[k])}" ${attrs}></label>`;
+        const coche = (k, l) => `<label class="chk"><input type="checkbox" name="${k}"${c[k] ? ' checked' : ''}> ${l}</label>`;
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>Certificat de cession</h3><button class="close" type="button" id="cesX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <p class="sub">Cerfa n° 15776*01 pré-rempli : vérifiez et complétez, puis générez le PDF (2 exemplaires). Le SIRET de la société est retenu pour les prochaines cessions.</p>
+            <form id="cesF" class="ces-form" autocomplete="off">
+                <fieldset><legend>Le véhicule</legend>
+                    ${ch('immatriculation', 'Immatriculation (A)', 'autocapitalize="characters"')}${ch('vin', 'N° d\'identification / VIN (E)', 'autocapitalize="characters"')}
+                    ${ch('date_immatriculation', '1re immatriculation (B)', 'type="date"')}${ch('marque', 'Marque (D.1)')}${ch('type_version', 'Type, variante, version (D.2)')}
+                    ${ch('genre', 'Genre national (J.1)')}${ch('denomination', 'Dénomination commerciale (D.3)')}${ch('kilometrage', 'Kilométrage au compteur', 'inputmode="numeric"')}
+                    ${coche('certificat_present', 'Certificat d\'immatriculation présent')}
+                    ${ch('numero_formule', 'N° de formule (ex. 2020AN09227)', 'autocapitalize="characters"')}${ch('date_certificat', 'Ou date du certificat (ancien format)', 'type="date"')}${ch('motif_absence', 'Motif d\'absence du certificat')}
+                </fieldset>
+                <fieldset><legend>Ancien propriétaire (le vendeur)</legend>
+                    <label class="f">Type<select class="in" name="vendeur_morale"><option value="">Personne physique</option><option value="true"${c.vendeur_morale ? ' selected' : ''}>Personne morale</option></select></label>
+                    <label class="f">Sexe<select class="in" name="vendeur_sexe"><option value="">—</option><option value="M"${c.vendeur_sexe === 'M' ? ' selected' : ''}>M</option><option value="F"${c.vendeur_sexe === 'F' ? ' selected' : ''}>F</option></select></label>
+                    ${ch('vendeur_nom', 'Nom, nom d\'usage et prénom (ou raison sociale)')}${ch('vendeur_siret', 'SIRET (si société)', 'inputmode="numeric"')}
+                    ${ch('vendeur_num', 'N° de voie', 'inputmode="numeric"')}${ch('vendeur_extension', 'Extension (bis, ter)')}${ch('vendeur_type_voie', 'Type de voie')}${ch('vendeur_voie', 'Nom de la voie')}
+                    ${ch('vendeur_cp', 'Code postal', 'inputmode="numeric"')}${ch('vendeur_commune', 'Commune')}
+                </fieldset>
+                <fieldset><legend>La cession</legend>
+                    ${ch('date_vente', 'Date de la cession', 'type="date"')}${ch('heure_vente', 'Heure', 'type="time"')}${ch('lieu_signature', 'Fait à')}
+                    <label class="f">Nature<select class="in" name="destruction"><option value="">Céder</option><option value="true"${c.destruction ? ' selected' : ''}>Céder pour destruction</option></select></label>
+                    ${coche('certif_situation', 'Certificat de situation administrative (moins de 15 jours) remis')}${coche('sans_transformation', 'Pas de transformation notable du véhicule')}
+                </fieldset>
+                <fieldset><legend>Nouveau propriétaire (la société)</legend>
+                    ${ch('acheteur_nom', 'Raison sociale')}${ch('acheteur_siret', 'SIRET (gardé pour les prochaines fois)', 'inputmode="numeric" placeholder="14 chiffres"')}
+                    ${ch('acheteur_num', 'N° de voie')}${ch('acheteur_extension', 'Extension')}${ch('acheteur_type_voie', 'Type de voie')}${ch('acheteur_voie', 'Nom de la voie')}
+                    ${ch('acheteur_cp', 'Code postal')}${ch('acheteur_commune', 'Commune')}
+                </fieldset>
+                <div class="cr-btns"><button type="button" class="btn" id="cesAnnul">Annuler</button><button class="btn btn-p" id="cesOk">Générer le PDF</button></div>
+            </form>`;
+        const fermerC = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        $('#cesX').onclick = $('#cesAnnul').onclick = fermerC;
+        $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermerC(); };
+        $('#cesF').onsubmit = async e => {
+            e.preventDefault();
+            const F = e.target, b = Object.fromEntries(new FormData(F));
+            ['certificat_present', 'certif_situation', 'sans_transformation'].forEach(k => b[k] = F.elements[k].checked);
+            $('#cesOk').disabled = true; $('#cesOk').innerHTML = '<span class="spin"></span> Génération…';
+            try {
+                const r = await api('/api/admin/compta/vehicules/' + v.id + '/cession', { method: 'POST', body: JSON.stringify(b) });
+                fermerC(); await chargerCompta(); afficherVehicule(v.id);
+                toast('Certificat de cession généré');
+                window.open(photoUrl(r.document.path), '_blank');
+            } catch (err) { $('#cesOk').disabled = false; $('#cesOk').textContent = 'Générer le PDF'; toast(err.message); }
+        };
+    }
+
+    // Achat confirmé : ouvrir le véhicule et proposer tout de suite le certificat de cession pré-rempli.
+    async function apresAchat(ref) {
+        try { await chargerCompta(); } catch (e) { return; }
+        const v = compta.vehicules.find(x => x.ref === ref); if (!v) return;
+        quitterFiche(); ouvrirVehicule(v.id); setTimeout(() => { const w = vehiculeDe(v.id); if (w) ecranCession(w); }, 400);
+    }
 
     // ---------------- Fiche d'une demande
     // Routage : la liste vit sur /admino, chaque fiche sur /admino/demande/REF.
@@ -2629,7 +2819,7 @@ body.modal-ouvert { overflow: hidden; }
         rendreMail();
         $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#secEmail').scrollIntoView({ block: 'start', behavior: 'smooth' }); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 400); });
         $('#versNote').onclick = () => { $('#noteIn').scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(() => $('#noteIn').focus(), 350); };
-        $('#stSel').onchange = async ev => { await sauver({ statut: ev.target.value }); toast('Statut mis à jour'); };
+        $('#stSel').onchange = async ev => { await sauver({ statut: ev.target.value }); toast('Statut mis à jour'); if (ev.target.value === 'achetee') apresAchat(d.ref); };
         const eb = $('#estBtn');
         if (eb) eb.onclick = async () => {
             try { await api('/api/admin/demandes/' + d.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; fiche(); surveiller(true); } catch (err) { toast(err.message); }
