@@ -1254,6 +1254,19 @@ const releverAnnonces = async () => {
 setTimeout(releverAnnonces, 90 * 1000).unref();
 setInterval(releverAnnonces, 30 * 60 * 1000).unref();
 
+// Boîte mail contact@ : relue toutes les 3 min (BOITE_AUTO=0 pour couper), en lecture seule (BODY.PEEK).
+// Notification « 📧 <expéditeur> » pour chaque e-mail utile (regroupées si plusieurs), jamais entre 22 h et 7 h
+// (heure de Paris) : retenues et envoyées en une fois au matin. Voir lib/boite.js.
+const boite = require('./lib/boite');
+const releverBoite = async () => {
+    try {
+        if (process.env.BOITE_AUTO === '0' || !boite.imap()) return;
+        await boite.relever('auto');
+    } catch (e) { console.error('Boîte planifiée :', e.message); }
+};
+setTimeout(releverBoite, 60 * 1000).unref();
+setInterval(releverBoite, 3 * 60 * 1000).unref();
+
 // Import Gmail demandé hors interface : fichier DATA_DIR/import.todo (créé depuis le shell Render).
 // Vérifié chaque minute ; effacé seulement quand l'import a abouti, donc repris après un redémarrage.
 const IMPORT_TODO = path.join(process.env.DATA_DIR || dataPath, 'import.todo');

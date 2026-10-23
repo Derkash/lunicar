@@ -423,6 +423,45 @@ ul.plain li { margin: 3px 0; }
     .vl-b .btn { flex: 1 1 auto; justify-content: center; height: 44px; }
     [data-view="forums"] .toolbar .btn { width: 100%; justify-content: center; height: 44px; }
 }
+/* ---------- Boîte mail ---------- */
+.bx { display: grid; gap: 2px; width: 100%; padding: 13px 20px; background: none; border: 0; border-bottom: 1px solid var(--line-2); text-align: left; cursor: pointer; font: inherit; color: var(--ink-7); }
+.bx:last-child { border-bottom: 0; }
+.bx:hover { background: #FCFBF9; }
+.bx-l1 { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
+.bx-qui { flex: 1; min-width: 0; font-weight: 500; color: var(--ink-7); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bx-date { flex: none; font-size: .78rem; color: var(--ink-4); font-family: var(--mono); }
+.bx-o, .bx-x { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bx-o { font-size: .9rem; color: var(--ink-7); }
+.bx-x { font-size: .84rem; color: var(--ink-4); }
+.bx.nonlu .bx-qui, .bx.nonlu .bx-o { font-weight: 700; color: var(--ink); }
+.bx.nonlu .bx-qui::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin-right: 8px; vertical-align: 1px; }
+.bx-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.bx-tags:empty { display: none; }
+.bx-dem { font-size: .74rem; padding: 2px 9px; border-radius: 99px; background: var(--marine-1); color: var(--marine-6); font-weight: 600; text-decoration: none; }
+.bx-rep, .bx-raison, .bx-pj { font-size: .72rem; padding: 2px 8px; border-radius: 99px; background: #F1EFEA; color: var(--ink-5); display: inline-flex; align-items: center; gap: 3px; }
+.bx-pj svg { width: 12px; height: 12px; }
+.bx-nav { display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin: 0 0 12px; }
+.bx-nav .bx-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.bx-titre { margin: 0 0 8px; font-size: 1.12rem; font-weight: 650; line-height: 1.35; color: var(--ink); overflow-wrap: anywhere; }
+.bx-meta { font-size: .84rem; color: var(--ink-5); line-height: 1.55; overflow-wrap: anywhere; }
+.bx-meta b { color: var(--ink); font-weight: 600; }
+.bx-lien { margin: 12px 0 0; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.bx-lien .sub { margin: 0; font-size: .8rem; }
+.bx-pjs { list-style: none; margin: 14px 0 0; padding: 10px 12px; border: 1px solid var(--line-2); border-radius: var(--r-s); display: grid; gap: 4px; font-size: .84rem; color: var(--ink-7); }
+.bx-pjs li { display: flex; gap: 6px; align-items: center; overflow-wrap: anywhere; }
+.bx-pjs svg { width: 14px; height: 14px; flex: none; color: var(--ink-4); }
+.bx-pjs small { color: var(--ink-4); }
+.bx-corps { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line-2); }
+.bx-img { display: flex; gap: 8px 12px; flex-wrap: wrap; align-items: center; font-size: .8rem; color: var(--ink-5); margin: 0 0 10px; }
+.bx-img button { border: 0; background: none; padding: 0; color: var(--marine-6); font-weight: 600; font-size: .8rem; cursor: pointer; }
+.bx-frame { display: block; width: 100%; min-height: 160px; height: 360px; border: 0; background: #fff; }
+.bx-texte { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ink-7); font-size: .93rem; line-height: 1.55; }
+.bx-a { font-size: .8rem; color: var(--ink-5); margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 720px) {
+    .bx { padding: 13px 16px; }
+    [data-view="boite"] .toolbar .btn { width: 100%; justify-content: center; height: 44px; }
+    .bx-rep-b .btn { flex: 1 1 auto; justify-content: center; height: 44px; }
+}
 /* ---------- Annonces Leboncoin ---------- */
 .an { border-bottom: 1px solid var(--line-2); }
 .an:last-child { border-bottom: 0; }
@@ -987,6 +1026,8 @@ body.modal-ouvert { overflow: hidden; }
     <symbol id="i-bulle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18.5l1.1-3.3A7.5 7.5 0 1 1 9 18z"/></symbol>
     <symbol id="i-envoi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12L19.5 5l-4 14-3.6-5.6z"/><path d="M11.9 13.4L19.5 5"/></symbol>
     <symbol id="i-non" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="7.5"/><path d="M6.8 17.2L17.2 6.8"/></symbol>
+    <symbol id="i-boite" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13.5l2.1-6.6A1.5 1.5 0 0 1 7.5 5.8h9a1.5 1.5 0 0 1 1.4 1.1l2.1 6.6v4.2a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.7z"/><path d="M4 13.5h4.4l1.3 2.2h4.6l1.3-2.2H20"/></symbol>
+    <symbol id="i-pj" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 8l-6.4 6.4a1.7 1.7 0 0 0 2.4 2.4l6.6-6.6a3.3 3.3 0 0 0-4.7-4.7l-6.8 6.8a5 5 0 0 0 7 7l5.2-5.2"/></symbol>
     <symbol id="i-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/></symbol>
 </svg>
 
@@ -1014,6 +1055,7 @@ body.modal-ouvert { overflow: hidden; }
             <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
             <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
             <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
+            <button data-tab="boite"><svg><use href="#i-boite"/></svg>Boîte mail<span class="count" data-count="boite"></span></button>
             <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
             <button data-tab="annonces"><svg><use href="#i-annonce"/></svg>Annonces<span class="count discret" data-count="annonces"></span></button>
             <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
@@ -1046,7 +1088,7 @@ body.modal-ouvert { overflow: hidden; }
                     <label class="f">Région<select class="in" id="fRegion"><option value="">Toutes les régions</option></select></label>
                     <label class="f">Distance de Paris<select class="in" id="fDist"><option value="">Toute distance</option><option value="30">≤ 30 km de Paris</option><option value="60">≤ 60 km</option><option value="120">≤ 120 km</option><option value="250">≤ 250 km (couloir)</option><option value="500">≤ 500 km</option></select></label>
                     <label class="f">Origine<select class="in" id="fOrigine">
-                    <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option><option value="leboncoin">Leboncoin</option>
+                    <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option><option value="leboncoin">Leboncoin</option><option value="email">E-mail</option>
                 </select></label>
                     <label class="f">Canal<select class="in" id="fCanal"><option value="">Tous les canaux</option><option value="pub">Publicité Google Ads</option><option value="google">Google (naturel)</option><option value="ia">ChatGPT et IA</option><option value="autres">Direct, liens, autres</option><option value="inconnu">Non renseigné</option></select></label>
                     <label class="f">État du véhicule<select class="in" id="fMeca"><option value="">Tous les états</option><option value="v">Roule bien</option><option value="o">Roule avec soucis</option><option value="r">En panne ou accidentée</option><option value="?">Non précisé</option></select></label>
@@ -1177,6 +1219,17 @@ body.modal-ouvert { overflow: hidden; }
             <div class="card" id="messages"></div>
         </section>
 
+        <section data-view="boite" hidden>
+            <div id="bxTete">
+                <div class="page-h"><h1>Boîte mail</h1><span id="bxSous">e-mails reçus sur la boîte contact</span></div>
+                <div id="bxAvis"></div>
+                <div class="toolbar"><div class="segs" id="bxSegs" style="margin:0;flex:1"></div><button class="btn btn-p" id="bxRelever" type="button"><svg><use href="#i-cherche"/></svg>Relever maintenant</button></div>
+                <p class="sub vl-etat" id="bxEtat"></p>
+            </div>
+            <div id="bxListe"></div>
+            <div id="bxLecture" hidden></div>
+        </section>
+
         <section data-view="forums" hidden>
             <div class="page-h"><h1>Forums</h1><span>discussions où un particulier demande comment vendre sa voiture</span></div>
             <div id="vlAvis"></div>
@@ -1263,6 +1316,7 @@ body.modal-ouvert { overflow: hidden; }
     <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
     <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
+    <button data-tab="boite"><svg><use href="#i-boite"/></svg>Boîte mail<span class="count" data-count="boite"></span></button>
     <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
     <button data-tab="annonces"><svg><use href="#i-annonce"/></svg>Annonces<span class="count discret" data-count="annonces"></span></button>
     <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
@@ -1335,6 +1389,7 @@ body.modal-ouvert { overflow: hidden; }
         await Promise.all([charger(), chargerMessages()]);
         chargerVeille().catch(() => {});
         chargerAnnonces().catch(() => {});
+        chargerBoite().catch(() => {});
         ouvrirDepuisHash();
         activerPush();
         nettoyerContacts();
@@ -1408,11 +1463,12 @@ body.modal-ouvert { overflow: hidden; }
         P.addListener('registrationError', e => console.warn('Push :', e && e.error));
         P.addListener('pushNotificationActionPerformed', a => {
             const dn = (a && a.notification && a.notification.data) || {};
+            if (dn.onglet === 'boite' && dn.mail) { bxOuvert = String(dn.mail); allerOnglet('boite'); return; }
             if (dn.onglet) { allerOnglet(String(dn.onglet)); return; }
             const ref = dn.ref;
             if (ref) { courant = null; ouvrir(String(ref)); }
         });
-        P.addListener('pushNotificationReceived', () => charger().catch(() => {}));
+        P.addListener('pushNotificationReceived', () => { charger().catch(() => {}); chargerBoite().catch(() => {}); });
         P.requestPermissions().then(r => { if (r.receive === 'granted') P.register(); }).catch(() => {});
     }
     function afficherAvis() {
@@ -1427,7 +1483,7 @@ body.modal-ouvert { overflow: hidden; }
     function allerOnglet(tab) {
         $('#plusSheet').hidden = true;
         if (!$('#sheet').hidden || !$('#vpage').hidden) { history.pushState({}, '', BASE); quitterFiche(); quitterVehicule(); }
-        const dansPlus = ['stats', 'photos', 'messages', 'forums', 'annonces', 'reglages'].includes(tab);
+        const dansPlus = ['stats', 'photos', 'messages', 'boite', 'forums', 'annonces', 'reglages'].includes(tab);
         document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
         document.querySelectorAll('#navbas button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab || (dansPlus && x.dataset.tab === 'plus')));
         document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== tab);
@@ -1441,6 +1497,7 @@ body.modal-ouvert { overflow: hidden; }
         if (tab === 'planning') vuePlanning();
         if (tab === 'forums') vueForums();
         if (tab === 'annonces') vueAnnonces();
+        if (tab === 'boite') vueBoite();
     }
     const onglet = e => {
         const b = e.target.closest('button[data-tab]'); if (!b) return;
@@ -1454,8 +1511,8 @@ body.modal-ouvert { overflow: hidden; }
     const compter = (k, n) => {
         nbs[k] = n || 0;
         document.querySelectorAll(`[data-count="${k}"]`).forEach(c => c.textContent = n || '');
-        // Le bouton « Plus » du bas additionne ce qu'il contient : messages non lus + discussions à traiter.
-        if (k === 'msg' || k === 'veille' || k === 'annonces') document.querySelectorAll('[data-count="plus"]').forEach(c => c.textContent = ((nbs.msg || 0) + (nbs.veille || 0) + (nbs.annonces || 0)) || '');
+        // Le bouton « Plus » du bas additionne ce qu'il contient : messages et e-mails non lus + discussions et annonces à traiter.
+        if (['msg', 'boite', 'veille', 'annonces'].includes(k)) document.querySelectorAll('[data-count="plus"]').forEach(c => c.textContent = ((nbs.msg || 0) + (nbs.boite || 0) + (nbs.veille || 0) + (nbs.annonces || 0)) || '');
     };
 
     // ---------------- Demandes
@@ -1894,7 +1951,7 @@ body.modal-ouvert { overflow: hidden; }
     let vuLe = Date.now();
     document.addEventListener('visibilitychange', () => {
         if (document.hidden || !token || $('#app').hidden || Date.now() - vuLe < 30000) return;
-        vuLe = Date.now(); charger().catch(() => {}); chargerMessages().catch(() => {});
+        vuLe = Date.now(); charger().catch(() => {}); chargerMessages().catch(() => {}); chargerBoite().then(() => { if (!$('[data-view="boite"]').hidden && !bxOuvert) rendreBoite(); }).catch(() => {});
     });
 
     // ---------------- Tableau de bord
@@ -3488,6 +3545,195 @@ body.modal-ouvert { overflow: hidden; }
         try { await api('/api/admin/annonces/relever', { method: 'POST' }); annoncesE.etat = { ...annoncesE.etat, en_cours: true }; rendreAnnonces(); suivreAnnonces(); }
         catch (e) { $('#anRelever').disabled = false; toast(e.message); }
     });
+
+    // ---------------- Boîte mail contact@ : e-mails reçus, lecture, réponse avec le gabarit LUNICAR, lien avec le CRM
+    // Le HTML reçu est assaini côté serveur, puis affiché dans une iframe sans script (CSP stricte), images distantes bloquées.
+    let boiteE = { messages: [], etat: {}, dernier: null }, bxFiltre = 'tous', bxOuvert = null, bxLu = null, bxImages = false, bxTexte = false, bxRep = null, bxPoll = null;
+    const BX_FILTRES = { tous: 'Tous', non_lus: 'Non lus', lies: 'Liés à une demande', autres: 'Autres' };
+    const BX_GARDE = { tous: m => m.categorie === 'utile', non_lus: m => m.categorie === 'utile' && !m.lu, lies: m => m.categorie === 'utile' && !!m.ref, autres: m => m.categorie !== 'utile' };
+    const bxNonLus = () => boiteE.messages.filter(BX_GARDE.non_lus).length;
+    const bxQui = m => m.nom || m.de || 'Expéditeur inconnu';
+    const bxQuand = s => { const d = new Date(s); return d.toDateString() === new Date().toDateString() ? d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) : d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }); };
+    const bxTaille = n => n >= 1048576 ? (n / 1048576).toFixed(1).replace('.', ',') + ' Mo' : Math.max(1, Math.round(n / 1024)) + ' Ko';
+    async function chargerBoite() {
+        boiteE = await api('/api/admin/boite');
+        compter('boite', bxNonLus());
+    }
+    async function vueBoite() {
+        try { await chargerBoite(); } catch (e) { return toast(e.message); }
+        if (bxOuvert) return ouvrirMail(bxOuvert);
+        rendreBoite(); suivreBoite();
+    }
+    function suivreBoite() {
+        clearTimeout(bxPoll);
+        if (!(boiteE.etat || {}).en_cours) return;
+        bxPoll = setTimeout(async () => {
+            if ($('[data-view="boite"]').hidden) return;
+            try { await chargerBoite(); } catch (e) { return; }
+            if (!boiteE.etat.en_cours) { const d = boiteE.dernier || {}; toast(d.erreurs && d.erreurs.length ? 'Relève : ' + d.erreurs[0] : (d.utiles || 0) + ' nouvel(s) e-mail(s)'); }
+            if (!bxOuvert) rendreBoite();
+            suivreBoite();
+        }, 2500);
+    }
+    function rendreBoite() {
+        $('#bxTete').hidden = false; $('#bxListe').hidden = false; $('#bxLecture').hidden = true;
+        const e = boiteE.etat || {}, dj = boiteE.dernier, M = boiteE.messages;
+        $('#bxSous').textContent = e.boite ? e.boite : 'e-mails reçus sur la boîte contact';
+        $('#bxAvis').innerHTML = [
+            !e.boite ? '<div class="notice">Boîte non configurée : définir CONTACT_IMAP_HOST / CONTACT_IMAP_USER / CONTACT_IMAP_PASS sur le serveur.</div>' : '',
+            e.boite && !e.envoi ? '<div class="notice">Envoi non configuré (CONTACT_SMTP_* ou SMTP_*) : lecture seulement, les réponses ne peuvent pas partir.</div>' : ''
+        ].join('');
+        $('#bxRelever').disabled = !!e.en_cours || !e.boite;
+        $('#bxEtat').innerHTML = e.en_cours ? '<span class="spin"></span> Lecture de la boîte en cours…'
+            : [e.derniere_lecture ? `Dernière lecture le ${date(e.derniere_lecture)}` : 'Jamais lue', e.auto ? 'relève automatique toutes les 3 min' : 'relève automatique coupée (BOITE_AUTO=0)',
+               e.attente_notif ? `${e.attente_notif} notification(s) retenue(s) pour le matin` : '',
+               dj && dj.erreurs && dj.erreurs.length ? `<span style="color:var(--red)">${esc(dj.erreurs[0])}</span>` : ''].filter(Boolean).join(' · ') + '.';
+        $('#bxSegs').innerHTML = Object.entries(BX_FILTRES).map(([k, v]) => `<button class="seg ${bxFiltre === k ? 'on' : ''}" data-bx="${k}">${v} <b>${M.filter(BX_GARDE[k]).length}</b></button>`).join('');
+        const liste = M.filter(BX_GARDE[bxFiltre]);
+        $('#bxListe').innerHTML = liste.length ? `<div class="card vl-card">${liste.map(m => `<button class="bx ${m.lu ? '' : 'nonlu'}" type="button" data-bx-ouvrir="${esc(m.id)}">
+                <span class="bx-l1"><b class="bx-qui">${esc(bxQui(m))}</b><span class="bx-date">${esc(bxQuand(m.date))}</span></span>
+                <span class="bx-o">${esc(m.objet || '(sans objet)')}</span>
+                <span class="bx-x">${esc(m.extrait || '')}</span>
+                <span class="bx-tags">${m.ref ? `<span class="bx-dem">Demande ${esc(m.ref)}</span>` : ''}${(m.pieces || []).length ? `<span class="bx-pj"><svg><use href="#i-pj"/></svg>${m.pieces.length}</span>` : ''}${(m.reponses || []).length ? '<span class="bx-rep">Répondu</span>' : ''}${m.categorie !== 'utile' && m.raison ? `<span class="bx-raison">${esc(m.raison)}</span>` : ''}</span>
+            </button>`).join('')}</div>`
+            : `<div class="empty">${bxFiltre === 'non_lus' ? 'Aucun e-mail non lu.' : bxFiltre === 'autres' ? 'Rien ici : alertes Leboncoin, nos envois et notifications automatiques arrivent dans ce filtre.' : 'Aucun e-mail pour l\'instant.'}</div>`;
+    }
+    $('#bxSegs').addEventListener('click', e => { const b = e.target.closest('[data-bx]'); if (!b) return; bxFiltre = b.dataset.bx; rendreBoite(); });
+    $('#bxListe').addEventListener('click', e => { const b = e.target.closest('[data-bx-ouvrir]'); if (b) ouvrirMail(b.dataset.bxOuvrir); });
+    $('#bxRelever').addEventListener('click', async () => {
+        $('#bxRelever').disabled = true;
+        try { await api('/api/admin/boite/relever', { method: 'POST' }); boiteE.etat = { ...boiteE.etat, en_cours: true }; rendreBoite(); suivreBoite(); }
+        catch (e) { $('#bxRelever').disabled = false; toast(e.message); }
+    });
+    const bxLocal = m => { const i = boiteE.messages.findIndex(x => x.id === m.id); if (i >= 0) { const { texte, ...sans } = m; boiteE.messages[i] = sans; } compter('boite', bxNonLus()); };
+    async function ouvrirMail(id) {
+        bxOuvert = id; bxImages = false; bxTexte = false; bxRep = null;
+        $('#bxTete').hidden = true; $('#bxListe').hidden = true; $('#bxLecture').hidden = false;
+        $('#bxLecture').innerHTML = '<div class="card"><span class="spin"></span> Ouverture…</div>';
+        window.scrollTo(0, 0);
+        try { bxLu = await api('/api/admin/boite/' + encodeURIComponent(id)); }
+        catch (e) { bxOuvert = null; toast(e.message); return rendreBoite(); }
+        if (!bxLu.message.lu) {
+            bxLu.message.lu = true;
+            api('/api/admin/boite/' + encodeURIComponent(id), { method: 'PATCH', body: JSON.stringify({ lu: true }) }).then(bxLocal).catch(() => {});
+        }
+        rendreLecture();
+    }
+    function fermerMail() { bxOuvert = null; bxLu = null; bxRep = null; rendreBoite(); window.scrollTo(0, 0); }
+    // Document de l'iframe : CSP sans script, images data: seulement (distantes en https sur demande).
+    function bxDoc(html, images) {
+        const corps = images ? html.replace(/ data-lunicar-src=/g, ' src=') : html;
+        return `<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:${images ? ' https:' : ''}; style-src 'unsafe-inline'; font-src data:"><meta name="referrer" content="no-referrer"><base target="_blank"><style>html,body{margin:0;padding:0;background:#fff}body{padding:2px;font:15px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#121826;overflow-wrap:anywhere}img{max-width:100%;height:auto}table{max-width:100%!important}a{color:#0D2541}blockquote{margin:0 0 0 8px;padding-left:10px;border-left:2px solid #E7E4DD;color:#6B7180}</style></head><body>${corps}</body></html>`;
+    }
+    function rendreLecture() {
+        if (!bxLu) return;
+        const L = bxLu, m = L.message, D = L.demande, E = L.etat || {}, utile = m.categorie === 'utile';
+        const distantes = !!L.html && / data-lunicar-src=/.test(L.html);
+        const formeHtml = !!L.html && !bxTexte;
+        $('#bxLecture').innerHTML = `
+            <div class="bx-nav"><button class="btn btn-ghost" type="button" id="bxRetour">← Boîte mail</button>
+                <div class="bx-actions"><button class="btn btn-s" type="button" id="bxNonLu">Marquer non lu</button>
+                <button class="btn btn-s btn-ghost" type="button" id="bxClasse">${utile ? 'Ranger dans Autres' : 'Remettre dans la boîte'}</button></div></div>
+            <div class="card">
+                <h2 class="bx-titre">${esc(m.objet || '(sans objet)')}</h2>
+                <div class="bx-meta"><b>${esc(m.nom || m.de)}</b>${m.nom ? ` &lt;${esc(m.de)}&gt;` : ''}<br>${esc(new Date(m.date).toLocaleString('fr-FR', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }))}${m.a ? ` · à ${esc(m.a)}` : ''}${m.reply_to ? `<br>Répondre à : ${esc(m.reply_to)}` : ''}${!utile && m.raison ? `<br>Classé dans Autres : ${esc(m.raison)}` : ''}</div>
+                <div class="bx-lien">${D ? `<a class="bx-dem" href="${BASE}/demande/${esc(D.ref)}" data-ouvrir="${esc(D.ref)}">Demande ${esc(D.ref)}${D.nom ? ' · ' + esc(D.nom) : ''}${D.vehicule ? ' · ' + esc(D.vehicule) : ''} →</a><span class="sub">l'e-mail figure dans les échanges de la fiche</span>`
+                    : utile ? `<button class="btn btn-s" type="button" id="bxCreer"><svg><use href="#i-dem"/></svg>Créer une demande</button><span class="sub">aucune demande avec cette adresse</span>` : ''}</div>
+                ${(m.pieces || []).length ? `<ul class="bx-pjs">${m.pieces.map(p => `<li><svg><use href="#i-pj"/></svg>${esc(p.nom)} <small>${esc(bxTaille(p.taille || 0))}</small></li>`).join('')}<li><small>Pièces jointes à ouvrir dans la messagerie.</small></li></ul>` : ''}
+                <div class="bx-corps">
+                    ${L.html ? `<div class="bx-img">${formeHtml && distantes ? (bxImages ? '<span>Images distantes affichées</span>' : '<span>Images distantes bloquées</span><button type="button" id="bxImg">Afficher les images</button>') : ''}<button type="button" id="bxVT">${formeHtml ? 'Version texte' : 'Version mise en forme'}</button></div>` : ''}
+                    ${formeHtml ? '<iframe class="bx-frame" id="bxFrame" title="Contenu de l\'e-mail" sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer"></iframe>' : `<p class="bx-texte">${esc(m.texte || '')}</p>`}
+                </div>
+            </div>
+            ${(m.reponses || []).length ? `<div class="card"><h3>Réponses envoyées</h3><ol class="conv" style="margin:10px 0 0">${m.reponses.map(r => `<li class="envoye"><div class="t"><b>LUNICAR</b><span>${date(r.date)}</span><span>à ${esc(r.a || '')}</span></div><p class="o">${esc(r.objet)}</p><p class="x">${esc(r.texte)}</p></li>`).join('')}</ol></div>` : ''}
+            <div class="card" id="bxRepondre">${bxRep ? formReponse(L) : `<button class="btn btn-p" type="button" id="bxRep"${E.envoi ? '' : ' disabled'}><svg><use href="#i-envoi"/></svg>Répondre</button>${E.envoi ? '' : ' <span class="sub">Envoi non configuré sur le serveur.</span>'}`}</div>`;
+        const f = $('#bxFrame');
+        if (f) {
+            const ajuster = () => { try { f.style.height = Math.min(Math.max(f.contentDocument.documentElement.scrollHeight + 6, 160), 6000) + 'px'; } catch (e) {} };
+            f.onload = () => { ajuster(); setTimeout(ajuster, 600); setTimeout(ajuster, 2000); };
+            f.srcdoc = bxDoc(L.html, bxImages);
+        }
+        $('#bxRetour').onclick = fermerMail;
+        $('#bxNonLu').onclick = async () => {
+            try { bxLocal(await api('/api/admin/boite/' + encodeURIComponent(m.id), { method: 'PATCH', body: JSON.stringify({ lu: false }) })); fermerMail(); toast('Marqué non lu'); } catch (e) { toast(e.message); }
+        };
+        $('#bxClasse').onclick = async () => {
+            try { const r = await api('/api/admin/boite/' + encodeURIComponent(m.id), { method: 'PATCH', body: JSON.stringify({ categorie: utile ? 'autre' : 'utile' }) }); bxLocal(r); bxLu.message = { ...m, ...r }; rendreLecture(); toast(utile ? 'Rangé dans Autres' : 'Remis dans la boîte'); } catch (e) { toast(e.message); }
+        };
+        if ($('#bxImg')) $('#bxImg').onclick = () => { bxImages = true; rendreLecture(); };
+        if ($('#bxVT')) $('#bxVT').onclick = () => { bxTexte = !bxTexte; rendreLecture(); };
+        $('#bxLecture').querySelectorAll('[data-ouvrir]').forEach(a => a.onclick = ev => { ev.preventDefault(); ouvrir(a.dataset.ouvrir); });
+        if ($('#bxCreer')) $('#bxCreer').onclick = async () => {
+            if (await demander({ titre: 'Créer une demande ?', texte: `Demande pré-remplie (origine « E-mail ») avec ${m.nom || m.de}, son adresse et le texte de l'e-mail. Les e-mails de cette adresse y seront reliés.`, boutons: [['', 'Annuler'], ['ok', 'Créer', 'btn-p']] }) !== 'ok') return;
+            const b = $('#bxCreer'); b.disabled = true;
+            try { const r = await api('/api/admin/boite/' + encodeURIComponent(m.id) + '/demande', { method: 'POST' }); toast(r.existante ? 'Relié à la demande ' + r.ref : 'Demande ' + r.ref + ' créée'); charger().catch(() => {}); await chargerBoite().catch(() => {}); ouvrirMail(m.id); }
+            catch (e) { b.disabled = false; toast(e.message); }
+        };
+        if ($('#bxRep')) $('#bxRep').onclick = () => { bxRep = { objet: L.objet_re, texte: '' }; rendreLecture(); $('#bxTxt').focus(); };
+        if ($('#bxForm')) brancherReponse(L);
+    }
+    function formReponse(L) {
+        const E = L.etat || {}, lim = L.limites || {};
+        return `<form class="mail-form" id="bxForm" novalidate style="border-top:0;padding-top:0">
+            <h3 style="margin:0">Répondre</h3>
+            <p class="bx-a">À : ${esc(L.a)}${L.demande ? ` · copie dans la fiche ${esc(L.demande.ref)}` : ''}</p>
+            <label class="f">Objet<input class="in" id="bxObjet" maxlength="${lim.objet || 200}" value="${esc(bxRep.objet)}"></label>
+            <div class="mail-modeles"><span>Modèles</span>${(L.modeles || []).map(m => `<button type="button" class="cr-chip" data-bx-modele="${esc(m.id)}">${esc(m.titre)}</button>`).join('')}</div>
+            <label class="f">Message<textarea class="in" id="bxTxt" rows="10" maxlength="${lim.texte || 10000}" placeholder="Votre réponse…">${esc(bxRep.texte)}</textarea></label>
+            <p class="err" id="bxErr"></p>
+            <div class="mail-pied"><small>${E.from ? 'De : ' + esc(E.from) + (E.reply_to ? ' · réponses à ' + esc(E.reply_to) : '') : ''} · gabarit LUNICAR</small>
+                <div class="btns bx-rep-b"><button type="button" class="btn btn-ghost" id="bxAnnuler">Annuler</button><button type="button" class="btn" id="bxApercu">Envoyer un aperçu…</button><button class="btn btn-p" id="bxEnv"><svg><use href="#i-envoi"/></svg>Envoyer</button></div></div>
+        </form>`;
+    }
+    function brancherReponse(L) {
+        const garder = () => { bxRep = { objet: $('#bxObjet').value, texte: $('#bxTxt').value }; };
+        $('#bxObjet').oninput = $('#bxTxt').oninput = garder;
+        $('#bxAnnuler').onclick = () => { bxRep = null; rendreLecture(); };
+        $('#bxForm').querySelectorAll('[data-bx-modele]').forEach(b => b.onclick = async () => {
+            const m = L.modeles.find(z => z.id === b.dataset.bxModele); if (!m) return;
+            const t = $('#bxTxt');
+            if (t.value.trim() && !L.modeles.some(z => z.texte === t.value)) {
+                if (await demander({ titre: 'Remplacer le message en cours ?', texte: 'Le texte déjà saisi sera remplacé par le modèle « ' + m.titre + ' ».', boutons: [['', 'Annuler'], ['ok', 'Remplacer', 'btn-p']] }) !== 'ok') return;
+            }
+            t.value = m.texte; garder();
+            const i = m.texte.search(/\[[^\]]+\]/);
+            t.focus(); if (i >= 0) t.setSelectionRange(i, m.texte.indexOf(']', i) + 1); else t.setSelectionRange(0, 0);
+        });
+        const lire = () => {
+            const objet = $('#bxObjet').value.trim(), texte = $('#bxTxt').value.trim();
+            $('#bxErr').textContent = '';
+            if (!objet || !texte) { $('#bxErr').textContent = 'Objet et message obligatoires.'; return null; }
+            const rep = texte.match(/\[(montant|date|heure|lieu|à compléter)[^\]]*\]/i);
+            if (rep) { $('#bxErr').textContent = 'Il reste un repère à compléter : ' + rep[0]; return null; }
+            return { objet, texte };
+        };
+        $('#bxApercu').onclick = async () => {
+            const v = lire(); if (!v) return;
+            let dernier = ''; try { dernier = localStorage.getItem('lunicar-apercu') || ''; } catch (e) {}
+            const a = window.prompt('Envoyer un aperçu à (adresses séparées par des virgules) :', dernier);
+            if (!a || !a.trim()) return;
+            try { localStorage.setItem('lunicar-apercu', a.trim()); } catch (e) {}
+            const b = $('#bxApercu'); b.disabled = true; b.textContent = 'Envoi…';
+            try { const r = await api('/api/admin/boite/' + encodeURIComponent(L.message.id) + '/apercu', { method: 'POST', body: JSON.stringify({ ...v, a }) }); toast('Aperçu envoyé à ' + r.envoye_a.join(', ')); }
+            catch (e) { $('#bxErr').textContent = e.message; toast('Aperçu non envoyé'); }
+            b.disabled = false; b.textContent = 'Envoyer un aperçu…';
+        };
+        $('#bxForm').onsubmit = async ev => {
+            ev.preventDefault();
+            const v = lire(); if (!v) return;
+            if (await demander({ titre: 'Envoyer cette réponse ?', texte: 'À ' + L.a + ' · « ' + v.objet + ' »', boutons: [['', 'Annuler'], ['ok', 'Envoyer', 'btn-p']] }) !== 'ok') return;
+            const b = $('#bxEnv'); b.disabled = true; b.innerHTML = '<span class="spin"></span> Envoi…';
+            try {
+                const r = await api('/api/admin/boite/' + encodeURIComponent(L.message.id) + '/repondre', { method: 'POST', body: JSON.stringify(v) });
+                bxRep = null; bxLu.message = r.message; bxLocal(r.message); rendreLecture();
+                if (r.demande) charger().catch(() => {});
+                toast('Réponse envoyée' + (r.demande ? ' · copiée dans la fiche ' + r.demande.ref : ''));
+            } catch (e) {
+                b.disabled = false; b.innerHTML = '<svg><use href="#i-envoi"/></svg>Envoyer';
+                $('#bxErr').textContent = e.message; toast('Réponse non envoyée');
+            }
+        };
+    }
 
     // ---------------- Réglages, import, estimation en masse
     async function reglages() {
