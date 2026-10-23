@@ -2029,7 +2029,7 @@ body.modal-ouvert { overflow: hidden; }
         <div class="sh-top">
             <button class="retour" id="vRetour" aria-label="Retour aux véhicules"><svg><use href="#i-retour"/></svg><span>Véhicules</span></button>
             <div class="sh-titre"><h2>${esc(v.libelle || 'Véhicule')}</h2><small>${[v.plaque && `<span class="mono">${esc(v.plaque)}</span>`, v.annee && esc(v.annee), v.kilometrage && Number(v.kilometrage).toLocaleString('fr-FR') + ' km', v.date_achat && 'acheté le ' + dateCourte(v.date_achat)].filter(Boolean).join(' · ')}</small></div>
-            <select class="in" id="vStatut">${Object.entries(compta.statuts).map(([k, l]) => `<option value="${k}"${k === v.statut ? ' selected' : ''}>${esc(l)}</option>`).join('')}</select>
+            <select class="in" id="vStatut"${v.statut === 'vendu' ? ' disabled title="Véhicule vendu : statut définitif"' : ''}>${Object.entries(compta.statuts).filter(([k]) => statutPossible(v.statut, k)).map(([k, l]) => `<option value="${k}"${k === v.statut ? ' selected' : ''}>${esc(l)}</option>`).join('')}</select>
         </div>
         <div class="sh-body">
             ${pros || (v.statut === 'perdu' && r.date) ? `<section class="sec rdv-bloc"><h3>${pros ? 'Rendez-vous pris' : 'Rendez-vous sans suite'}</h3>
@@ -2118,6 +2118,13 @@ body.modal-ouvert { overflow: hidden; }
             try { await api('/api/admin/compta/vehicules/' + v.id, { method: 'DELETE' }); history.replaceState({}, '', BASE); quitterVehicule(); allerOnglet('vehicules'); toast('Véhicule supprimé'); } catch (e) { toast(e.message); }
         };
         window.scrollTo(0, 0);
+    }
+    // Acheté → en préparation → en vente → vendu : jamais de retour en arrière (ni vers « RDV pris » / « Sans suite »).
+    const ORDRE_ACHETE = ['stock', 'preparation', 'en_vente', 'vendu'];
+    function statutPossible(avant, k) {
+        const i = ORDRE_ACHETE.indexOf(avant);
+        if (i < 0) return true;
+        return ORDRE_ACHETE.indexOf(k) >= i;
     }
     function chiffresVehicule(v) {
         const b = v.bilan, vendu = v.statut === 'vendu', pros = v.statut === 'prospect';
@@ -2654,7 +2661,7 @@ body.modal-ouvert { overflow: hidden; }
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
                 <button class="btn" type="button" data-vers-mail>E-mail</button>
             </div>
-            <select class="in" id="stSel">${Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}"${k === d.statut ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>
+            <select class="in" id="stSel"${d.statut === 'achetee' ? ' disabled title="Véhicule acheté : le suivi continue dans Nos véhicules"' : ''}>${Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}"${k === d.statut ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>
         </div>
         <div class="sh-bas">
             ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>Appeler</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener"><svg><use href="#i-bulle"/></svg>WhatsApp</a>` : ''}
