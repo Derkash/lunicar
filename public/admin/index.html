@@ -2063,7 +2063,7 @@ body.modal-ouvert { overflow: hidden; }
                     <label class="f" style="grid-column:1/-1">Notes<textarea class="in" name="notes" rows="2">${esc(v.notes || '')}</textarea></label>
                 </form>
             </section>
-            <div class="danger">${v.ref ? `<button class="btn" id="vDemande">Voir la demande ${esc(v.ref)}</button>` : ''}<button class="btn btn-d" id="vSuppr">Supprimer le véhicule</button></div>
+            <div class="danger">${v.ref ? `<button class="btn" id="vDemande">Voir la demande ${esc(v.ref)}</button>` : ''}${ORDRE_ACHETE.includes(v.statut) ? `<button class="btn btn-d" id="vAnnulAchat">${v.statut === 'vendu' ? 'Annuler la vente (erreur)' : 'Annuler l\'achat (erreur)'}</button>` : ''}<button class="btn btn-d" id="vSuppr">Supprimer le véhicule</button></div>
         </div>`;
         $('#vRetour').onclick = () => { if (history.state && history.state.veh) history.back(); else { history.replaceState({}, '', BASE); quitterVehicule(); } };
         // Un champ modifié = enregistré tout de suite, sans redessiner la page (on ne perd jamais une saisie en cours).
@@ -2112,6 +2112,7 @@ body.modal-ouvert { overflow: hidden; }
         });
         if ($('#vDocs')) lierDocuments(v);
         lierDepenses($('#vpageIn'), () => afficherVehicule(v.id));
+        if ($('#vAnnulAchat')) $('#vAnnulAchat').onclick = () => annulerAchatVehicule(v);
         if ($('#vDemande')) $('#vDemande').onclick = () => { quitterVehicule(); history.pushState({ ref: v.ref }, '', BASE + '/demande/' + v.ref); afficherFiche(v.ref); };
         $('#vSuppr').onclick = async () => {
             if (await demander({ titre: 'Supprimer ce véhicule ?', texte: `${v.libelle} et ses ${deps.length} dépense(s) seront effacés de la compta. La demande d'origine n'est pas touchée.`, boutons: [['ok', 'Supprimer définitivement', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
@@ -2125,6 +2126,20 @@ body.modal-ouvert { overflow: hidden; }
         const i = ORDRE_ACHETE.indexOf(avant);
         if (i < 0) return true;
         return ORDRE_ACHETE.indexOf(k) >= i;
+    }
+    // Annuler un achat / une vente saisis par erreur : confirmation + motif (seul retour en arrière possible).
+    async function annulerAchatVehicule(v) {
+        const vente = v.statut === 'vendu';
+        const motif = await demander({ titre: vente ? 'Annuler la vente ?' : 'Annuler l\'achat ?',
+            texte: vente ? `${v.libelle} repasse « En vente » ; le prix et la date de vente sont effacés.` : `${v.libelle} n'est plus compté comme acheté : prix et date d'achat effacés, certificat de cession généré supprimé. ${v.rdv ? 'Il redevient « RDV pris ».' : ''} Les frais déjà saisis sont gardés.`,
+            boutons: [['Erreur de saisie', 'Erreur de saisie', 'btn-rouge'], [vente ? 'Vente finalement annulée' : 'Achat finalement annulé', vente ? 'Vente finalement annulée' : 'Achat finalement annulé', 'btn-rouge'], ['', 'Ne rien changer']] });
+        if (!motif) return;
+        try {
+            const r = await api('/api/admin/compta/vehicules/' + v.id + '/annuler', { method: 'POST', body: JSON.stringify({ motif }) });
+            await Promise.all([chargerCompta(), charger()]);
+            toast(vente ? 'Vente annulée' : 'Achat annulé');
+            if (r.vehicule && vehiculeDe(r.vehicule.id)) afficherVehicule(r.vehicule.id); else { history.replaceState({}, '', BASE); quitterVehicule(); allerOnglet('vehicules'); }
+        } catch (e) { toast(e.message); }
     }
     function chiffresVehicule(v) {
         const b = v.bilan, vendu = v.statut === 'vendu', pros = v.statut === 'prospect';
