@@ -1223,7 +1223,8 @@ ${neuves.length ? `<h3 style="color:#0D2541">Nouvelles demandes pas encore appel
     } catch (e) { console.error('Récapitulatif :', e.message); }
 }, 10 * 60 * 1000).unref();
 
-// Veille forums : un passage par semaine, le lundi à partir de 8 h (heure de Paris), et à la demande depuis l'admin.
+// Veille forums : un passage par jour à partir de 9 h (heure de Paris ; VEILLE_FREQUENCE=hebdo = le lundi seulement),
+// et à la demande depuis l'admin.
 // Notification sur l'app iOS quand de nouvelles discussions sont à traiter.
 const veille = require('./lib/veille');
 setInterval(async () => {
@@ -1231,10 +1232,11 @@ setInterval(async () => {
         if (process.env.VEILLE_AUTO === '0') return;
         const jour = relances.aujourdhui();
         const p = new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris', weekday: 'short', hour: '2-digit', hourCycle: 'h23' }).split(', ');
-        if (p[0] !== 'Mon' || Number(p[1]) < 8 || (await store.lireReglage('veille_semaine', '')) === jour) return;
+        const hebdo = process.env.VEILLE_FREQUENCE === 'hebdo';
+        if ((hebdo && p[0] !== 'Mon') || Number(p[1]) < 9 || (await store.lireReglage('veille_semaine', '')) === jour) return;
         await store.ecrireReglage('veille_semaine', jour);
         const j = await veille.passage('auto');
-        if (j.nouvelles) push.notifier({ titre: `💬 ${j.nouvelles} nouvelle${j.nouvelles > 1 ? 's' : ''} discussion${j.nouvelles > 1 ? 's' : ''} à traiter`, texte: 'Forums : réponses proposées, à relire et poster vous-même.' }).catch(() => {});
+        if (j.nouvelles) push.notifier({ titre: `💬 À vous d'intervenir : ${j.nouvelles} discussion${j.nouvelles > 1 ? 's' : ''}`, texte: 'Réponse prête : touchez « Copier et ouvrir », collez dans Reddit ou le forum, puis « Posté ».', onglet: 'forums' }).catch(() => {});
     } catch (e) { console.error('Veille planifiée :', e.message); }
 }, 10 * 60 * 1000).unref();
 

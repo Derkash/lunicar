@@ -413,6 +413,8 @@ ul.plain li { margin: 3px 0; }
 .vl-note { margin: 0; font-size: .84rem; color: var(--ink-5); }
 .vl-alerte { margin: 0; font-size: .84rem; color: var(--red); font-weight: 550; }
 .vl-b { display: flex; gap: 8px; flex-wrap: wrap; }
+.vl-go { width: 100%; justify-content: center; height: 48px; margin-bottom: 6px; }
+.vl-mode { margin: 0 0 12px; }
 .vl-relire { margin: 0; font-size: .8rem; }
 .vl-pied { margin: 4px 0 0; font-size: .82rem; }
 @media (max-width: 720px) {
@@ -1364,7 +1366,9 @@ body.modal-ouvert { overflow: hidden; }
         P.addListener('registration', t => api('/api/admin/push', { method: 'POST', body: JSON.stringify({ token: t.value, nom: navigator.platform || '' }) }).catch(() => {}));
         P.addListener('registrationError', e => console.warn('Push :', e && e.error));
         P.addListener('pushNotificationActionPerformed', a => {
-            const ref = a && a.notification && a.notification.data && a.notification.data.ref;
+            const dn = (a && a.notification && a.notification.data) || {};
+            if (dn.onglet) { allerOnglet(String(dn.onglet)); return; }
+            const ref = dn.ref;
             if (ref) { courant = null; ouvrir(String(ref)); }
         });
         P.addListener('pushNotificationReceived', () => charger().catch(() => {}));
@@ -3263,13 +3267,14 @@ body.modal-ouvert { overflow: hidden; }
                     <span class="vl-t"><b>${esc(s.titre)}</b><span class="vl-m">${esc(s.source)}${s.date ? ' · ' + esc(vlJour(s.date)) : ''}${s.mention_lunicar ? ' · <span class="vl-lu">cite LUNICAR</span>' : ''}${!s.verifiee ? ' · lien non vérifié' : ''}</span><span class="vl-r">${esc(s.resume)}</span></span>
                 </button>
                 ${ouverte ? `<div class="vl-d">
-                    <a class="btn btn-s" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Ouvrir la discussion ↗</a>
+                    <button class="btn btn-p vl-go" data-vl-go="${esc(s.id)}"><svg><use href="#i-copie"/></svg>Copier la réponse et ouvrir ${/reddit\.com/i.test(s.url) ? 'Reddit' : 'la discussion'} ↗</button>
+                    <p class="sub vl-mode">La réponse est copiée : dans ${/reddit\.com/i.test(s.url) ? 'l\'application Reddit' : 'le forum'}, connectez-vous, touchez « Répondre » puis « Coller ». Revenez ensuite toucher « Posté ».</p>
                     <p class="vl-regle">${esc(s.regles || '')}</p>
                     ${s.note ? `<p class="vl-note">${esc(s.note)}</p>` : ''}
                     ${(s.alertes || []).length ? `<p class="vl-alerte">${s.alertes.map(esc).join(' · ')}</p>` : ''}
                     <label class="f">Réponse proposée (modifiable)<textarea class="in vl-rep" data-vl-rep="${esc(s.id)}" rows="10" placeholder="Aucune réponse proposée : écrivez la vôtre.">${esc(s.reponse || '')}</textarea></label>
                     <div class="vl-b">
-                        <button class="btn btn-p" data-vl-copier="${esc(s.id)}"><svg><use href="#i-copie"/></svg>Copier</button>
+                        <button class="btn" data-vl-copier="${esc(s.id)}"><svg><use href="#i-copie"/></svg>Copier seulement</button>
                         ${s.statut !== 'postee' ? `<button class="btn" data-vl-statut="postee" data-id="${esc(s.id)}"><svg><use href="#i-envoi"/></svg>Posté</button>` : ''}
                         ${s.statut !== 'ignoree' ? `<button class="btn btn-ghost" data-vl-statut="ignoree" data-id="${esc(s.id)}"><svg><use href="#i-non"/></svg>Ignorer</button>` : ''}
                         ${s.statut !== 'a_traiter' ? `<button class="btn btn-ghost" data-vl-statut="a_traiter" data-id="${esc(s.id)}">Remettre à traiter</button>` : ''}
@@ -3298,6 +3303,15 @@ body.modal-ouvert { overflow: hidden; }
     $('#vlListe').addEventListener('click', async e => {
         const o = e.target.closest('[data-vl-ouvrir]');
         if (o) { if (vlOuverte) await enregistrerReponse(vlOuverte); vlOuverte = vlOuverte === o.dataset.vlOuvrir ? null : o.dataset.vlOuvrir; rendreForums(); const el = document.querySelector(`.vl[data-id="${CSS.escape(o.dataset.vlOuvrir)}"]`); if (el && vlOuverte) el.scrollIntoView({ block: 'nearest' }); return; }
+        // Copier puis ouvrir : sur iPhone, un lien reddit.com s'ouvre dans l'application Reddit si elle est installée.
+        const g = e.target.closest('[data-vl-go]');
+        if (g) {
+            const id = g.dataset.vlGo, s = sugg(id), t = document.querySelector(`[data-vl-rep="${CSS.escape(id)}"]`);
+            if (!s) return;
+            if (t && t.value.trim()) { await enregistrerReponse(id); toast((await copierTexte(t.value)) ? 'Réponse copiée : collez-la dans la discussion' : 'Copie impossible : sélectionnez le texte'); }
+            setTimeout(() => { window.open(s.url, '_blank', 'noopener'); }, 350);
+            return;
+        }
         const c = e.target.closest('[data-vl-copier]');
         if (c) { const t = document.querySelector(`[data-vl-rep="${CSS.escape(c.dataset.vlCopier)}"]`); if (!t || !t.value.trim()) return toast('Réponse vide'); await enregistrerReponse(c.dataset.vlCopier); toast((await copierTexte(t.value)) ? 'Réponse copiée' : 'Copie impossible : sélectionnez le texte'); return; }
         const b = e.target.closest('[data-vl-statut]');
