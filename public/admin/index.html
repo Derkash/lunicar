@@ -1579,10 +1579,14 @@ body.modal-ouvert { overflow: hidden; }
     }
     async function lot(action, valeur) {
         const refs = [...choisies];
+        if (action === 'statut' && valeur === 'sans_suite') {
+            const avecMail = refs.map(r => demandes.find(x => x.ref === r)).filter(x => x && /\S+@\S+\.\S+/.test((x.data || {}).email || '') && !((x.suivi || {}).emails || []).some(m => m.type === 'pas_interesse')).length;
+            if (await demander({ titre: `Passer ${refs.length} demande${refs.length > 1 ? 's' : ''} en « Sans suite » ?`, texte: `${avecMail ? `${avecMail} client${avecMail > 1 ? 's recevront' : ' recevra'} l'e-mail de refus habituel. ` : 'Aucun client à prévenir par e-mail. '}Les demandes seront archivées.`, boutons: [['ok', avecMail ? 'Envoyer et archiver' : 'Archiver', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
+        }
         if (action === 'supprimer' && await demander({ titre: `Supprimer ${refs.length} demande${refs.length > 1 ? 's' : ''} ?`, texte: 'Les demandes et leurs photos seront effacées définitivement.', boutons: [['ok', 'Supprimer définitivement', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
         if (action === 'estimer' && !confirm(`Lancer l'estimation de ${refs.length} demande(s) ? (≈ 0,15 à 0,30 € chacune)`)) return;
         try { const r = await api('/api/admin/lot', { method: 'POST', body: JSON.stringify({ refs, action, valeur }) });
-            toast(`${r.traitees} demande(s) traitée(s)`); if (action !== 'estimer') choisies.clear(); await charger(); barreLot(); }
+            toast(`${r.traitees} demande(s) traitée(s)${r.emails ? ` · ${r.emails} e-mail(s) de refus envoyé(s)` : ''}${(r.echecs || []).length ? ` · ${r.echecs.length} échec(s) d'envoi` : ''}`); if (action !== 'estimer') choisies.clear(); await charger(); barreLot(); }
         catch (e) { toast(e.message); }
     }
     $('#lotStatut').onchange = e => { if (e.target.value) lot('statut', e.target.value); e.target.value = ''; };
@@ -2819,7 +2823,10 @@ body.modal-ouvert { overflow: hidden; }
         rendreMail();
         $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#secEmail').scrollIntoView({ block: 'start', behavior: 'smooth' }); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 400); });
         $('#versNote').onclick = () => { $('#noteIn').scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(() => $('#noteIn').focus(), 350); };
-        $('#stSel').onchange = async ev => { await sauver({ statut: ev.target.value }); toast('Statut mis à jour'); if (ev.target.value === 'achetee') apresAchat(d.ref); };
+        $('#stSel').onchange = async ev => {
+            if (ev.target.value === 'sans_suite') { ev.target.value = d.statut; return pasInteresse(d); } // e-mail de refus puis archivage
+            await sauver({ statut: ev.target.value }); toast('Statut mis à jour'); if (ev.target.value === 'achetee') apresAchat(d.ref);
+        };
         const eb = $('#estBtn');
         if (eb) eb.onclick = async () => {
             try { await api('/api/admin/demandes/' + d.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; fiche(); surveiller(true); } catch (err) { toast(err.message); }
@@ -3012,7 +3019,7 @@ body.modal-ouvert { overflow: hidden; }
                     : !x.email ? `<p class="notice">Pas d'adresse e-mail sur cette demande : elle peut seulement être classée « ${esc(SS)} » sans prévenir le client.</p>`
                     : !I.email_valide ? `<p class="notice">Adresse e-mail invalide (${esc(x.email)}) : la demande peut seulement être classée sans envoi.</p>`
                     : !E.envoi ? `<p class="notice">Envoi d'e-mails non configuré sur le serveur : la demande peut seulement être classée sans envoi.</p>`
-                    : `<p class="sub" style="margin:0">E-mail à <b>${esc(x.email)}</b>, à relire et modifier avant envoi. Ensuite, la demande passe en « ${esc(SS)} » et les relances s'arrêtent.</p>`}
+                    : `<p class="sub" style="margin:0">E-mail à <b>${esc(x.email)}</b>, à relire et modifier avant envoi. Ensuite, la demande passe en « ${esc(SS)} », est archivée et les relances s'arrêtent.</p>`}
                 ${peutEnvoyer ? `<label class="f">Objet<input class="in" id="piObjet" maxlength="200" value="${esc(saisie.objet)}"></label>
                 <label class="f">Message<textarea class="in" id="piTxt" rows="11" maxlength="10000">${esc(saisie.texte)}</textarea></label>` : ''}
                 <p class="err" id="piErr"></p>
@@ -3030,7 +3037,7 @@ body.modal-ouvert { overflow: hidden; }
             $('#crIn').innerHTML = `<div class="cr-tete"><h3>${envoi ? 'Envoyer le refus ?' : 'Classer sans envoyer ?'}</h3><button class="close" type="button" id="piX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
                 ${envoi ? `<dl class="cr-recap"><dt>À</dt><dd>${esc(x.email)}</dd><dt>Objet</dt><dd>${esc(saisie.objet)}</dd></dl><p class="apercu">${esc(saisie.texte)}</p>`
                     : `<p class="sub" style="margin:0">Aucun e-mail ne partira. ${x.email ? 'Le client ne sera pas prévenu.' : ''}</p>`}
-                <p class="sub" style="margin:0">La demande passe en « ${esc(SS)} » (motif : véhicule non retenu)${rdvPrevu(d) ? ', le rendez-vous prévu est annulé' : ''} et les relances s'arrêtent.</p>
+                <p class="sub" style="margin:0">La demande passe en « ${esc(SS)} » (motif : véhicule non retenu)${rdvPrevu(d) ? ', le rendez-vous prévu est annulé' : ''}, elle est archivée et les relances s'arrêtent.</p>
                 <p class="err" id="piErr"></p>
                 <div class="cr-btns"><button type="button" class="btn" id="piRetour">← Modifier</button><button type="button" class="btn ${envoi ? 'btn-p' : 'btn-d'}" id="piOk">${envoi ? 'Envoyer et classer' : 'Classer sans envoyer'}</button></div>`;
             $('#piX').onclick = fermerPI;
