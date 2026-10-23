@@ -3244,7 +3244,7 @@ body.modal-ouvert { overflow: hidden; }
     function rendreForums() {
         const e = veille.etat || {}, dj = veille.dernier;
         $('#vlAvis').innerHTML = [
-            !e.openai ? '<div class="notice">Forums non interrogés : OPENAI_API_KEY n\'est pas défini sur le serveur. Seul Reddit est cherché.</div>' : '',
+            !e.recherche ? '<div class="notice">Forums non interrogés : aucune clé IA (ANTHROPIC_API_KEY ou OPENAI_API_KEY) sur le serveur. Seul Reddit est cherché.</div>' : '',
             !e.redaction ? '<div class="notice">Pas de réponse proposée : ni ANTHROPIC_API_KEY ni OPENAI_API_KEY ne sont définis sur le serveur.</div>' : e.redaction === 'openai' ? '<div class="notice">ANTHROPIC_API_KEY absent : les réponses sont rédigées par OpenAI.</div>' : ''
         ].join('');
         $('#vlChercher').disabled = !!e.en_cours;
