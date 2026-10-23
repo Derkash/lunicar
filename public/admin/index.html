@@ -390,6 +390,37 @@ ul.plain li { margin: 3px 0; }
 .folder .lab span { font-size: .74rem; color: var(--ink-4); font-family: var(--mono); word-break: break-all; }
 
 /* ---------- Messages, réglages ---------- */
+/* ---------- Forums (veille) ---------- */
+.count.discret { background: rgba(217,184,108,.35); color: inherit; }
+.vl-etat { margin: 0 0 12px; }
+.vl-card { padding: 4px 0; }
+.vl { border-bottom: 1px solid var(--line-2); }
+.vl:last-child { border-bottom: 0; }
+.vl-h { display: flex; gap: 14px; align-items: flex-start; width: 100%; padding: 14px 20px; background: none; border: 0; text-align: left; cursor: pointer; }
+.vl-h:hover { background: #FCFBF9; }
+.vl-score { flex: none; width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; font: 600 .95rem var(--mono); background: #F1EFEA; color: var(--ink-5); }
+.vl-score.haut { background: var(--green-1); color: var(--green); }
+.vl-score.moyen { background: var(--gold-1); color: #7A5A12; }
+.vl-t { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.vl-t b { font-weight: 600; color: var(--ink); line-height: 1.35; }
+.vl-m { font-size: .8rem; color: var(--ink-5); }
+.vl-lu { color: var(--marine-6); font-weight: 600; }
+.vl-r { font-size: .86rem; color: var(--ink-7); }
+.vl-d { padding: 0 20px 18px 72px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.vl-d label.f { width: 100%; }
+.vl-rep { width: 100%; min-height: 220px; resize: vertical; }
+.vl-regle { margin: 0; font-size: .84rem; color: var(--ink-7); padding-left: 10px; border-left: 2px solid var(--gold-l); }
+.vl-note { margin: 0; font-size: .84rem; color: var(--ink-5); }
+.vl-alerte { margin: 0; font-size: .84rem; color: var(--red); font-weight: 550; }
+.vl-b { display: flex; gap: 8px; flex-wrap: wrap; }
+.vl-relire { margin: 0; font-size: .8rem; }
+.vl-pied { margin: 4px 0 0; font-size: .82rem; }
+@media (max-width: 720px) {
+    .vl-h { padding: 14px 16px; gap: 12px; }
+    .vl-d { padding: 0 16px 18px; }
+    .vl-b .btn { flex: 1 1 auto; justify-content: center; height: 44px; }
+    [data-view="forums"] .toolbar .btn { width: 100%; justify-content: center; height: 44px; }
+}
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px 22px; margin: 0 0 16px; box-shadow: var(--shadow); }
 .card h3 { margin: 0 0 4px; font-size: 1.05rem; font-weight: 650; letter-spacing: -.01em; color: var(--ink); }
 .card p.sub { margin: 0 0 16px; }
@@ -914,6 +945,8 @@ body.modal-ouvert { overflow: hidden; }
     <symbol id="i-euro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 6.5A7 7 0 1 0 17.5 17.5"/><path d="M4.5 10.5h9M4.5 13.5h9"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></symbol>
     <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4"/><path d="M6 4.5c3.5-1.8 6.5 1.8 12 0v8c-5.5 1.8-8.5-1.8-12 0"/></symbol>
+    <symbol id="i-forum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.5A1.5 1.5 0 0 1 5 4h9a1.5 1.5 0 0 1 1.5 1.5v6A1.5 1.5 0 0 1 14 13H8.5L5 16v-3a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M18.5 8.5h.5A1.5 1.5 0 0 1 20.5 10v6a1.5 1.5 0 0 1-1.5 1.5v3l-3.5-3H11a1.5 1.5 0 0 1-1.5-1.5v-.5"/><path d="M7 7.5h5M7 10h3"/></symbol>
+    <symbol id="i-copie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="8.5" width="11" height="11" rx="1.6"/><path d="M15.5 8.5V6A1.5 1.5 0 0 0 14 4.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 15.5h2.5"/></symbol>
     <symbol id="i-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h9l3 3v13H6z"/><path d="M9 10h6M9 13.5h6M9 17h4"/></symbol>
     <symbol id="i-cherche" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></symbol>
     <symbol id="i-filtre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"/></symbol>
@@ -950,6 +983,7 @@ body.modal-ouvert { overflow: hidden; }
             <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
             <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
             <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
+            <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
             <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
             <a href="/admino/articles"><svg><use href="#i-art"/></svg>Articles</a>
         </nav>
@@ -1111,6 +1145,15 @@ body.modal-ouvert { overflow: hidden; }
             <div class="card" id="messages"></div>
         </section>
 
+        <section data-view="forums" hidden>
+            <div class="page-h"><h1>Forums</h1><span>discussions où un particulier demande comment vendre sa voiture</span></div>
+            <div id="vlAvis"></div>
+            <div class="toolbar"><div class="segs" id="vlSegs" style="margin:0;flex:1"></div><button class="btn btn-p" id="vlChercher" type="button"><svg><use href="#i-cherche"/></svg>Chercher maintenant</button></div>
+            <p class="sub vl-etat" id="vlEtat"></p>
+            <div id="vlListe"></div>
+            <p class="sub vl-pied">Le robot ne poste rien : relisez, adaptez à votre voix et postez vous-même depuis votre compte. 2 à 3 réponses par jour au maximum.</p>
+        </section>
+
         <section data-view="reglages" hidden>
             <div class="page-h"><h1>Réglages et import</h1></div>
             <div class="card">
@@ -1173,12 +1216,13 @@ body.modal-ouvert { overflow: hidden; }
     <button data-tab="planning"><svg><use href="#i-cal"/></svg>Planning<span class="count" data-count="rdv"></span></button>
     <button data-tab="vehicules"><svg><use href="#i-cle"/></svg>Véhicules</button>
     <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Dépenses</button>
-    <button data-tab="plus"><svg><use href="#i-plus"/></svg>Plus<span class="count" data-count="msg"></span></button>
+    <button data-tab="plus"><svg><use href="#i-plus"/></svg>Plus<span class="count" data-count="plus"></span></button>
 </nav>
 <div class="plus-sheet" id="plusSheet" hidden><div class="plus-in">
     <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
     <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
+    <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
     <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
     <a href="/admino/articles"><svg><use href="#i-art"/></svg>Articles du blog</a>
 </div></div>
@@ -1247,6 +1291,7 @@ body.modal-ouvert { overflow: hidden; }
         $('#fStatut').innerHTML = '<option value="">Tous les statuts</option>' + Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
         afficherAvis();
         await Promise.all([charger(), chargerMessages()]);
+        chargerVeille().catch(() => {});
         ouvrirDepuisHash();
         activerPush();
         nettoyerContacts();
@@ -1337,7 +1382,7 @@ body.modal-ouvert { overflow: hidden; }
     function allerOnglet(tab) {
         $('#plusSheet').hidden = true;
         if (!$('#sheet').hidden || !$('#vpage').hidden) { history.pushState({}, '', BASE); quitterFiche(); quitterVehicule(); }
-        const dansPlus = ['stats', 'photos', 'messages', 'reglages'].includes(tab);
+        const dansPlus = ['stats', 'photos', 'messages', 'forums', 'reglages'].includes(tab);
         document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
         document.querySelectorAll('#navbas button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab || (dansPlus && x.dataset.tab === 'plus')));
         document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== tab);
@@ -1349,6 +1394,7 @@ body.modal-ouvert { overflow: hidden; }
         if (tab === 'depenses') vueDepenses();
         if (tab === 'stats') tableau();
         if (tab === 'planning') vuePlanning();
+        if (tab === 'forums') vueForums();
     }
     const onglet = e => {
         const b = e.target.closest('button[data-tab]'); if (!b) return;
@@ -1358,7 +1404,13 @@ body.modal-ouvert { overflow: hidden; }
     $('#tabs').addEventListener('click', onglet);
     $('#navbas').addEventListener('click', onglet);
     $('#plusSheet').addEventListener('click', e => { if (e.target.id === 'plusSheet') $('#plusSheet').hidden = true; else onglet(e); });
-    const compter = (k, n) => document.querySelectorAll(`[data-count="${k}"]`).forEach(c => c.textContent = n || '');
+    const nbs = {};
+    const compter = (k, n) => {
+        nbs[k] = n || 0;
+        document.querySelectorAll(`[data-count="${k}"]`).forEach(c => c.textContent = n || '');
+        // Le bouton « Plus » du bas additionne ce qu'il contient : messages non lus + discussions à traiter.
+        if (k === 'msg' || k === 'veille') document.querySelectorAll('[data-count="plus"]').forEach(c => c.textContent = ((nbs.msg || 0) + (nbs.veille || 0)) || '');
+    };
 
     // ---------------- Demandes
     async function charger() {
@@ -3162,6 +3214,110 @@ body.modal-ouvert { overflow: hidden; }
             await chargerMessages(); rendreMessages();
         });
     }
+
+    // ---------------- Forums : veille des discussions, réponses proposées à poster à la main
+    let veille = { suggestions: [], etat: {}, dernier: null }, vlFiltre = 'a_traiter', vlOuverte = null, vlPoll = null;
+    const VL_STATUTS = { a_traiter: 'À traiter', postee: 'Postées', ignoree: 'Ignorées' };
+    async function chargerVeille() {
+        veille = await api('/api/admin/veille');
+        compter('veille', veille.suggestions.filter(s => s.statut === 'a_traiter').length);
+    }
+    async function vueForums() {
+        try { await chargerVeille(); } catch (e) { return toast(e.message); }
+        rendreForums();
+        suivreVeille();
+    }
+    // Pendant un passage, on rafraîchit l'écran toutes les 8 s jusqu'à la fin.
+    function suivreVeille() {
+        clearTimeout(vlPoll);
+        if (!(veille.etat || {}).en_cours) return;
+        vlPoll = setTimeout(async () => {
+            if ($('[data-view="forums"]').hidden) return;
+            const avant = veille.suggestions.length;
+            try { await chargerVeille(); } catch (e) { return; }
+            if (!veille.etat.en_cours) { const n = veille.suggestions.length - avant; toast(n > 0 ? `${n} nouvelle${n > 1 ? 's' : ''} discussion${n > 1 ? 's' : ''}` : 'Recherche terminée : rien de nouveau'); }
+            rendreForums(); suivreVeille();
+        }, 8000);
+    }
+    const scoreCls = n => n == null ? '' : n >= 70 ? 'haut' : n >= 45 ? 'moyen' : 'bas';
+    const vlJour = s => { const d = s && new Date(String(s).length === 10 ? s + 'T12:00:00' : s); return d && !isNaN(d) ? d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }) : ''; };
+    function rendreForums() {
+        const e = veille.etat || {}, dj = veille.dernier;
+        $('#vlAvis').innerHTML = [
+            !e.openai ? '<div class="notice">Forums non interrogés : OPENAI_API_KEY n\'est pas défini sur le serveur. Seul Reddit est cherché.</div>' : '',
+            !e.redaction ? '<div class="notice">Pas de réponse proposée : ni ANTHROPIC_API_KEY ni OPENAI_API_KEY ne sont définis sur le serveur.</div>' : e.redaction === 'openai' ? '<div class="notice">ANTHROPIC_API_KEY absent : les réponses sont rédigées par OpenAI.</div>' : ''
+        ].join('');
+        $('#vlChercher').disabled = !!e.en_cours;
+        $('#vlEtat').innerHTML = e.en_cours ? '<span class="spin"></span> Recherche en cours : Reddit puis forums, une requête à la fois (quelques minutes).'
+            : dj ? `Dernière recherche le ${date(dj.date)} : ${dj.nouvelles} nouvelle${dj.nouvelles > 1 ? 's' : ''} sur ${dj.trouvees} trouvée${dj.trouvees > 1 ? 's' : ''}${dj.erreurs && dj.erreurs.length ? ` · <span style="color:var(--red)">${dj.erreurs.length} erreur${dj.erreurs.length > 1 ? 's' : ''}</span>` : ''}. Recherche automatique chaque lundi à 8 h.`
+            : 'Aucune recherche pour l\'instant. Recherche automatique chaque lundi à 8 h.';
+        const nb = k => veille.suggestions.filter(s => s.statut === k).length;
+        $('#vlSegs').innerHTML = Object.entries(VL_STATUTS).map(([k, v]) => `<button class="seg ${vlFiltre === k ? 'on' : ''}" data-vl="${k}">${v} <b>${nb(k)}</b></button>`).join('');
+        const liste = veille.suggestions.filter(s => s.statut === vlFiltre)
+            .sort((a, b) => vlFiltre === 'a_traiter' ? (b.score ?? -1) - (a.score ?? -1) : String(b.statut_le || '').localeCompare(String(a.statut_le || '')));
+        $('#vlListe').innerHTML = liste.length ? `<div class="card vl-card">${liste.map(s => {
+            const ouverte = vlOuverte === s.id;
+            return `<article class="vl ${ouverte ? 'open' : ''}" data-id="${esc(s.id)}">
+                <button class="vl-h" data-vl-ouvrir="${esc(s.id)}" aria-expanded="${ouverte}">
+                    <span class="vl-score ${scoreCls(s.score)}">${s.score == null ? '–' : s.score}</span>
+                    <span class="vl-t"><b>${esc(s.titre)}</b><span class="vl-m">${esc(s.source)}${s.date ? ' · ' + esc(vlJour(s.date)) : ''}${s.mention_lunicar ? ' · <span class="vl-lu">cite LUNICAR</span>' : ''}${!s.verifiee ? ' · lien non vérifié' : ''}</span><span class="vl-r">${esc(s.resume)}</span></span>
+                </button>
+                ${ouverte ? `<div class="vl-d">
+                    <a class="btn btn-s" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Ouvrir la discussion ↗</a>
+                    <p class="vl-regle">${esc(s.regles || '')}</p>
+                    ${s.note ? `<p class="vl-note">${esc(s.note)}</p>` : ''}
+                    ${(s.alertes || []).length ? `<p class="vl-alerte">${s.alertes.map(esc).join(' · ')}</p>` : ''}
+                    <label class="f">Réponse proposée (modifiable)<textarea class="in vl-rep" data-vl-rep="${esc(s.id)}" rows="10" placeholder="Aucune réponse proposée : écrivez la vôtre.">${esc(s.reponse || '')}</textarea></label>
+                    <div class="vl-b">
+                        <button class="btn btn-p" data-vl-copier="${esc(s.id)}"><svg><use href="#i-copie"/></svg>Copier</button>
+                        ${s.statut !== 'postee' ? `<button class="btn" data-vl-statut="postee" data-id="${esc(s.id)}"><svg><use href="#i-envoi"/></svg>Posté</button>` : ''}
+                        ${s.statut !== 'ignoree' ? `<button class="btn btn-ghost" data-vl-statut="ignoree" data-id="${esc(s.id)}"><svg><use href="#i-non"/></svg>Ignorer</button>` : ''}
+                        ${s.statut !== 'a_traiter' ? `<button class="btn btn-ghost" data-vl-statut="a_traiter" data-id="${esc(s.id)}">Remettre à traiter</button>` : ''}
+                    </div>
+                    <p class="sub vl-relire">Relisez avant de poster : vérifiez que le fil est ouvert et que personne n'a déjà donné la même réponse.</p>
+                </div>` : ''}
+            </article>`;
+        }).join('')}</div>` : `<div class="empty">${vlFiltre === 'a_traiter' ? 'Aucune discussion à traiter. « Chercher maintenant » lance une recherche.' : 'Rien ici pour l\'instant.'}</div>`;
+    }
+    const sugg = id => veille.suggestions.find(s => s.id === id);
+    async function enregistrerReponse(id) {
+        const s = sugg(id), t = document.querySelector(`[data-vl-rep="${CSS.escape(id)}"]`);
+        if (!s || !t || t.value === s.reponse) return;
+        s.reponse = t.value;
+        try { await api('/api/admin/veille/' + encodeURIComponent(id), { method: 'PATCH', body: JSON.stringify({ reponse: t.value }) }); } catch (e) { toast(e.message); }
+    }
+    async function copierTexte(t) {
+        try { await navigator.clipboard.writeText(t); return true; } catch (e) {
+            const a = document.createElement('textarea'); a.value = t; a.setAttribute('readonly', ''); a.style.position = 'fixed'; a.style.opacity = '0';
+            document.body.appendChild(a); a.select(); a.setSelectionRange(0, t.length);
+            let ok = false; try { ok = document.execCommand('copy'); } catch (e2) {} a.remove(); return ok;
+        }
+    }
+    $('#vlSegs').addEventListener('click', e => { const b = e.target.closest('[data-vl]'); if (!b) return; vlFiltre = b.dataset.vl; vlOuverte = null; rendreForums(); });
+    $('#vlListe').addEventListener('focusout', e => { const t = e.target.closest('[data-vl-rep]'); if (t) enregistrerReponse(t.dataset.vlRep); });
+    $('#vlListe').addEventListener('click', async e => {
+        const o = e.target.closest('[data-vl-ouvrir]');
+        if (o) { if (vlOuverte) await enregistrerReponse(vlOuverte); vlOuverte = vlOuverte === o.dataset.vlOuvrir ? null : o.dataset.vlOuvrir; rendreForums(); const el = document.querySelector(`.vl[data-id="${CSS.escape(o.dataset.vlOuvrir)}"]`); if (el && vlOuverte) el.scrollIntoView({ block: 'nearest' }); return; }
+        const c = e.target.closest('[data-vl-copier]');
+        if (c) { const t = document.querySelector(`[data-vl-rep="${CSS.escape(c.dataset.vlCopier)}"]`); if (!t || !t.value.trim()) return toast('Réponse vide'); await enregistrerReponse(c.dataset.vlCopier); toast((await copierTexte(t.value)) ? 'Réponse copiée' : 'Copie impossible : sélectionnez le texte'); return; }
+        const b = e.target.closest('[data-vl-statut]');
+        if (b) {
+            const id = b.dataset.id, s = sugg(id); if (!s) return;
+            await enregistrerReponse(id);
+            try {
+                Object.assign(s, await api('/api/admin/veille/' + encodeURIComponent(id), { method: 'PATCH', body: JSON.stringify({ statut: b.dataset.vlStatut }) }));
+                vlOuverte = null;
+                compter('veille', veille.suggestions.filter(x => x.statut === 'a_traiter').length);
+                rendreForums();
+                toast(b.dataset.vlStatut === 'postee' ? 'Marquée « Postée »' : b.dataset.vlStatut === 'ignoree' ? 'Discussion ignorée' : 'Remise à traiter');
+            } catch (err) { toast(err.message); }
+        }
+    });
+    $('#vlChercher').addEventListener('click', async () => {
+        $('#vlChercher').disabled = true;
+        try { await api('/api/admin/veille/chercher', { method: 'POST' }); veille.etat = { ...veille.etat, en_cours: true }; rendreForums(); suivreVeille(); }
+        catch (e) { $('#vlChercher').disabled = false; toast(e.message); }
+    });
 
     // ---------------- Réglages, import, estimation en masse
     async function reglages() {

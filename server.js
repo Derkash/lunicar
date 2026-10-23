@@ -1223,6 +1223,21 @@ ${neuves.length ? `<h3 style="color:#0D2541">Nouvelles demandes pas encore appel
     } catch (e) { console.error('Récapitulatif :', e.message); }
 }, 10 * 60 * 1000).unref();
 
+// Veille forums : un passage par semaine, le lundi à partir de 8 h (heure de Paris), et à la demande depuis l'admin.
+// Notification sur l'app iOS quand de nouvelles discussions sont à traiter.
+const veille = require('./lib/veille');
+setInterval(async () => {
+    try {
+        if (process.env.VEILLE_AUTO === '0') return;
+        const jour = relances.aujourdhui();
+        const p = new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris', weekday: 'short', hour: '2-digit', hourCycle: 'h23' }).split(', ');
+        if (p[0] !== 'Mon' || Number(p[1]) < 8 || (await store.lireReglage('veille_semaine', '')) === jour) return;
+        await store.ecrireReglage('veille_semaine', jour);
+        const j = await veille.passage('auto');
+        if (j.nouvelles) push.notifier({ titre: `💬 ${j.nouvelles} nouvelle${j.nouvelles > 1 ? 's' : ''} discussion${j.nouvelles > 1 ? 's' : ''} à traiter`, texte: 'Forums : réponses proposées, à relire et poster vous-même.' }).catch(() => {});
+    } catch (e) { console.error('Veille planifiée :', e.message); }
+}, 10 * 60 * 1000).unref();
+
 // Import Gmail demandé hors interface : fichier DATA_DIR/import.todo (créé depuis le shell Render).
 // Vérifié chaque minute ; effacé seulement quand l'import a abouti, donc repris après un redémarrage.
 const IMPORT_TODO = path.join(process.env.DATA_DIR || dataPath, 'import.todo');
