@@ -2035,7 +2035,7 @@ body.modal-ouvert { overflow: hidden; }
             ${pros || (v.statut === 'perdu' && r.date) ? `<section class="sec rdv-bloc"><h3>${pros ? 'Rendez-vous pris' : 'Rendez-vous sans suite'}</h3>
                 <div class="rdv-quand"><b>${r.date ? libJour(r.date) : ''}</b><span>${r.heure || ''} · ${esc(AVEC[r.avec] || '')}</span></div>
                 <div class="rdv-info">${r.lieu ? `<a href="https://maps.apple.com/?daddr=${encodeURIComponent(r.lieu)}" target="_blank" rel="noopener">📍 ${esc(r.lieu)}</a>` : ''}${v.prix_convenu ? `<span>Prix convenu <b class="num">${euro(v.prix_convenu)}</b></span>` : ''}</div>
-                ${pros && v.ref ? `<div class="rdv-act"><button class="btn btn-g" data-vrdv="achetee">Voiture achetée</button><button class="btn" data-vrdv="fait">Fait, pas d'achat</button><button class="btn btn-d" data-vrdv="annule">RDV annulé</button></div>` : ''}
+                ${pros && v.ref ? `<div class="rdv-act"><button class="btn btn-g" data-vrdv="achetee">Voiture achetée</button><button class="btn" data-vrdv="fait">Fait, pas d'achat</button><button class="btn btn-d" data-vrdv="annule">RDV annulé</button><button class="btn btn-d" id="vPasInt">Pas intéressé (e-mail de refus)</button></div>` : ''}
             </section>` : ''}
             <div class="prices vh-prix" id="vPrix">${chiffresVehicule(v)}</div>
             <section class="sec">
@@ -2077,7 +2077,17 @@ body.modal-ouvert { overflow: hidden; }
         };
         $('#vForm').addEventListener('change', e => { const f = e.target; if (f.name) autoV({ [f.name]: f.value }, f); });
         $('#vForm').onsubmit = e => e.preventDefault();
-        $('#vStatut').onchange = e => autoV({ statut: e.target.value }, e.target);
+        const refusVehicule = async () => {
+            let d = demandes.find(x => x.ref === v.ref);
+            try { if (!d) d = await api('/api/admin/demandes/' + v.ref); await chargerMailInfo(v.ref, d.updated_at); } catch (err) { return toast(err.message); }
+            pasInteresse(d, async () => { await chargerCompta(); if (vehiculeDe(v.id)) afficherVehicule(v.id); else { history.replaceState({}, '', BASE); quitterVehicule(); allerOnglet('vehicules'); } });
+        };
+        $('#vStatut').onchange = e => {
+            // Prospect (RDV pris, pas encore acheté) passé « Sans suite » : on prévient le vendeur avec l'e-mail de refus.
+            if (e.target.value === 'perdu' && v.ref && v.statut === 'prospect') { e.target.value = v.statut; return refusVehicule(); }
+            autoV({ statut: e.target.value }, e.target);
+        };
+        if ($('#vPasInt')) $('#vPasInt').onclick = refusVehicule;
         // Issue du rendez-vous depuis la page véhicule : même effet que depuis la fiche de la demande.
         $('#vpageIn').querySelectorAll('[data-vrdv]').forEach(btn => btn.onclick = async () => {
             const a = btn.dataset.vrdv; let corps;
@@ -3006,7 +3016,7 @@ body.modal-ouvert { overflow: hidden; }
         $('#pasInt').onclick = () => pasInteresse(d);
     }
 
-    function pasInteresse(d) {
+    function pasInteresse(d, apres) {
         const x = d.data || {}, I = mailInfo && mailInfo.ref === d.ref && !mailInfo.chargement && mailInfo.refus ? mailInfo : null;
         const E = (I && I.etat) || {}, peutEnvoyer = !!(I && I.email_valide && E.envoi);
         const saisie = { objet: (I && I.refus.objet) || `Votre demande LUNICAR ${d.ref}${x.vehicule ? ' – ' + x.vehicule : ''}`, texte: (I && I.refus.texte) || '' };
@@ -3045,8 +3055,9 @@ body.modal-ouvert { overflow: hidden; }
             $('#piOk').onclick = async () => {
                 const b = $('#piOk'); b.disabled = true; b.innerHTML = '<span class="spin"></span> ' + (envoi ? 'Envoi…' : 'Enregistrement…');
                 try {
-                    courant = await api('/api/admin/demandes/' + d.ref + '/pas-interesse', { method: 'POST', body: JSON.stringify(envoi ? { objet: saisie.objet, texte: saisie.texte } : { sans_envoi: true }) });
-                    fermerPI(); fiche(); maj(courant); toast(envoi ? 'Client prévenu · demande classée « ' + SS + ' »' : 'Demande classée « ' + SS + ' » sans e-mail');
+                    const rep = await api('/api/admin/demandes/' + d.ref + '/pas-interesse', { method: 'POST', body: JSON.stringify(envoi ? { objet: saisie.objet, texte: saisie.texte } : { sans_envoi: true }) });
+                    fermerPI(); maj(rep);
+                    if (apres) apres(rep); else { courant = rep; fiche(); } toast(envoi ? 'Client prévenu · demande classée « ' + SS + ' »' : 'Demande classée « ' + SS + ' » sans e-mail');
                 } catch (e) {
                     // L'e-mail n'est pas parti : statut inchangé. L'admin peut corriger ou classer sans envoyer.
                     b.disabled = false; b.textContent = envoi ? 'Réessayer l\'envoi' : 'Classer sans envoyer';
