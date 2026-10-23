@@ -423,6 +423,34 @@ ul.plain li { margin: 3px 0; }
     .vl-b .btn { flex: 1 1 auto; justify-content: center; height: 44px; }
     [data-view="forums"] .toolbar .btn { width: 100%; justify-content: center; height: 44px; }
 }
+/* ---------- Annonces Leboncoin ---------- */
+.an { border-bottom: 1px solid var(--line-2); }
+.an:last-child { border-bottom: 0; }
+.an-h { display: flex; gap: 12px; align-items: flex-start; width: 100%; padding: 14px 20px; background: none; border: 0; text-align: left; cursor: pointer; }
+.an-h:hover { background: #FCFBF9; }
+.an-ph { flex: none; width: 76px; height: 58px; border-radius: 8px; object-fit: cover; background: #F1EFEA; display: grid; place-items: center; color: var(--ink-4); }
+.an-ph svg { width: 26px; height: 26px; }
+.an-t { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.an-t b { font-weight: 600; color: var(--ink); line-height: 1.3; }
+.an-prix { display: flex; gap: 10px; flex-wrap: wrap; font-size: .86rem; color: var(--ink-7); }
+.an-prix .num { font-family: var(--mono); }
+.an-prix .plus { color: var(--green); font-weight: 600; }
+.an-prix .moins { color: var(--red); font-weight: 600; }
+.an-mots { display: flex; gap: 4px; flex-wrap: wrap; }
+.an-mot { font-size: .72rem; padding: 1px 7px; border-radius: 99px; background: var(--gold-1); color: #7A5A12; }
+.an-mot.non { background: #F6E3E0; color: var(--red); }
+.an-d { padding: 0 20px 18px 108px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.an-d dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; font-size: .86rem; }
+.an-d dt { color: var(--ink-5); }
+.an-d dd { margin: 0; color: var(--ink-7); }
+.an-full { width: 100%; font-size: .86rem; color: var(--ink-7); padding-left: 10px; border-left: 2px solid var(--gold-l); }
+@media (max-width: 720px) {
+    .an-h { padding: 14px 16px; gap: 10px; }
+    .an-ph { width: 64px; height: 50px; }
+    .an-d { padding: 0 16px 18px; }
+    .an-d .vl-b .btn { flex: 1 1 auto; justify-content: center; height: 44px; }
+    [data-view="annonces"] .toolbar .btn { width: 100%; justify-content: center; height: 44px; }
+}
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px 22px; margin: 0 0 16px; box-shadow: var(--shadow); }
 .card h3 { margin: 0 0 4px; font-size: 1.05rem; font-weight: 650; letter-spacing: -.01em; color: var(--ink); }
 .card p.sub { margin: 0 0 16px; }
@@ -948,6 +976,7 @@ body.modal-ouvert { overflow: hidden; }
     <symbol id="i-plus" viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></symbol>
     <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4"/><path d="M6 4.5c3.5-1.8 6.5 1.8 12 0v8c-5.5 1.8-8.5-1.8-12 0"/></symbol>
     <symbol id="i-forum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.5A1.5 1.5 0 0 1 5 4h9a1.5 1.5 0 0 1 1.5 1.5v6A1.5 1.5 0 0 1 14 13H8.5L5 16v-3a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M18.5 8.5h.5A1.5 1.5 0 0 1 20.5 10v6a1.5 1.5 0 0 1-1.5 1.5v3l-3.5-3H11a1.5 1.5 0 0 1-1.5-1.5v-.5"/><path d="M7 7.5h5M7 10h3"/></symbol>
+    <symbol id="i-annonce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 15l1.3-3.7A1.8 1.8 0 0 1 6.5 10h6.2"/><path d="M3.5 15v2.5h11"/><circle cx="7" cy="17.5" r="1.4"/><path d="M14.5 4.5h5.5v5.5l-5 5-5.5-5.5z"/><circle cx="17.5" cy="7" r=".9" fill="currentColor"/></symbol>
     <symbol id="i-copie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="8.5" width="11" height="11" rx="1.6"/><path d="M15.5 8.5V6A1.5 1.5 0 0 0 14 4.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 15.5h2.5"/></symbol>
     <symbol id="i-art" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h9l3 3v13H6z"/><path d="M9 10h6M9 13.5h6M9 17h4"/></symbol>
     <symbol id="i-cherche" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L20 20"/></symbol>
@@ -986,6 +1015,7 @@ body.modal-ouvert { overflow: hidden; }
             <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
             <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
             <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
+            <button data-tab="annonces"><svg><use href="#i-annonce"/></svg>Annonces<span class="count discret" data-count="annonces"></span></button>
             <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
             <a href="/admino/articles"><svg><use href="#i-art"/></svg>Articles</a>
         </nav>
@@ -1016,7 +1046,7 @@ body.modal-ouvert { overflow: hidden; }
                     <label class="f">Région<select class="in" id="fRegion"><option value="">Toutes les régions</option></select></label>
                     <label class="f">Distance de Paris<select class="in" id="fDist"><option value="">Toute distance</option><option value="30">≤ 30 km de Paris</option><option value="60">≤ 60 km</option><option value="120">≤ 120 km</option><option value="250">≤ 250 km (couloir)</option><option value="500">≤ 500 km</option></select></label>
                     <label class="f">Origine<select class="in" id="fOrigine">
-                    <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option>
+                    <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option><option value="leboncoin">Leboncoin</option>
                 </select></label>
                     <label class="f">Canal<select class="in" id="fCanal"><option value="">Tous les canaux</option><option value="pub">Publicité Google Ads</option><option value="google">Google (naturel)</option><option value="ia">ChatGPT et IA</option><option value="autres">Direct, liens, autres</option><option value="inconnu">Non renseigné</option></select></label>
                     <label class="f">État du véhicule<select class="in" id="fMeca"><option value="">Tous les états</option><option value="v">Roule bien</option><option value="o">Roule avec soucis</option><option value="r">En panne ou accidentée</option><option value="?">Non précisé</option></select></label>
@@ -1156,6 +1186,15 @@ body.modal-ouvert { overflow: hidden; }
             <p class="sub vl-pied">Le robot ne poste rien : relisez, adaptez à votre voix et postez vous-même depuis votre compte. 2 à 3 réponses par jour au maximum.</p>
         </section>
 
+        <section data-view="annonces" hidden>
+            <div class="page-h"><h1>Annonces</h1><span>petites citadines repérées dans vos alertes Leboncoin</span></div>
+            <div id="anAvis"></div>
+            <div class="toolbar"><div class="segs" id="anSegs" style="margin:0;flex:1"></div><button class="btn btn-p" id="anRelever" type="button"><svg><use href="#i-cherche"/></svg>Relever maintenant</button></div>
+            <p class="sub vl-etat" id="anEtat"></p>
+            <div id="anListe"></div>
+            <p class="sub vl-pied">Le robot lit seulement les e-mails d'alerte : il ne visite pas Leboncoin et ne contacte personne. Prix max conseillé = estimation rapide sans recherche web ; « Estimation complète » pour chiffrer sérieusement.</p>
+        </section>
+
         <section data-view="reglages" hidden>
             <div class="page-h"><h1>Réglages et import</h1></div>
             <div class="card">
@@ -1225,6 +1264,7 @@ body.modal-ouvert { overflow: hidden; }
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
     <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
     <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
+    <button data-tab="annonces"><svg><use href="#i-annonce"/></svg>Annonces<span class="count discret" data-count="annonces"></span></button>
     <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
     <a href="/admino/articles"><svg><use href="#i-art"/></svg>Articles du blog</a>
 </div></div>
@@ -1294,6 +1334,7 @@ body.modal-ouvert { overflow: hidden; }
         afficherAvis();
         await Promise.all([charger(), chargerMessages()]);
         chargerVeille().catch(() => {});
+        chargerAnnonces().catch(() => {});
         ouvrirDepuisHash();
         activerPush();
         nettoyerContacts();
@@ -1386,7 +1427,7 @@ body.modal-ouvert { overflow: hidden; }
     function allerOnglet(tab) {
         $('#plusSheet').hidden = true;
         if (!$('#sheet').hidden || !$('#vpage').hidden) { history.pushState({}, '', BASE); quitterFiche(); quitterVehicule(); }
-        const dansPlus = ['stats', 'photos', 'messages', 'forums', 'reglages'].includes(tab);
+        const dansPlus = ['stats', 'photos', 'messages', 'forums', 'annonces', 'reglages'].includes(tab);
         document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
         document.querySelectorAll('#navbas button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab || (dansPlus && x.dataset.tab === 'plus')));
         document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== tab);
@@ -1399,6 +1440,7 @@ body.modal-ouvert { overflow: hidden; }
         if (tab === 'stats') tableau();
         if (tab === 'planning') vuePlanning();
         if (tab === 'forums') vueForums();
+        if (tab === 'annonces') vueAnnonces();
     }
     const onglet = e => {
         const b = e.target.closest('button[data-tab]'); if (!b) return;
@@ -1413,7 +1455,7 @@ body.modal-ouvert { overflow: hidden; }
         nbs[k] = n || 0;
         document.querySelectorAll(`[data-count="${k}"]`).forEach(c => c.textContent = n || '');
         // Le bouton « Plus » du bas additionne ce qu'il contient : messages non lus + discussions à traiter.
-        if (k === 'msg' || k === 'veille') document.querySelectorAll('[data-count="plus"]').forEach(c => c.textContent = ((nbs.msg || 0) + (nbs.veille || 0)) || '');
+        if (k === 'msg' || k === 'veille' || k === 'annonces') document.querySelectorAll('[data-count="plus"]').forEach(c => c.textContent = ((nbs.msg || 0) + (nbs.veille || 0) + (nbs.annonces || 0)) || '');
     };
 
     // ---------------- Demandes
@@ -3331,6 +3373,120 @@ body.modal-ouvert { overflow: hidden; }
         $('#vlChercher').disabled = true;
         try { await api('/api/admin/veille/chercher', { method: 'POST' }); veille.etat = { ...veille.etat, en_cours: true }; rendreForums(); suivreVeille(); }
         catch (e) { $('#vlChercher').disabled = false; toast(e.message); }
+    });
+
+    // ---------------- Annonces : alertes Leboncoin triées par le robot (il ne visite pas Leboncoin)
+    let annoncesE = { annonces: [], etat: {}, dernier: null }, anFiltre = 'a_traiter', anOuverte = null, anPoll = null;
+    const AN_STATUTS = { a_traiter: 'À traiter', contactee: 'Contactées', ignoree: 'Ignorées' };
+    async function chargerAnnonces() {
+        annoncesE = await api('/api/admin/annonces');
+        compter('annonces', annoncesE.annonces.filter(a => a.statut === 'a_traiter' && a.score >= ((annoncesE.etat || {}).seuil || 70)).length);
+    }
+    async function vueAnnonces() {
+        try { await chargerAnnonces(); } catch (e) { return toast(e.message); }
+        rendreAnnonces(); suivreAnnonces();
+    }
+    // Relève ou estimation complète en cours : rafraîchissement toutes les 6 s.
+    function suivreAnnonces() {
+        clearTimeout(anPoll);
+        const occupe = (annoncesE.etat || {}).en_cours || annoncesE.annonces.some(a => a.estimation_complete_statut === 'en_cours');
+        if (!occupe) return;
+        anPoll = setTimeout(async () => {
+            if ($('[data-view="annonces"]').hidden) return;
+            const avant = (annoncesE.etat || {}).en_cours;
+            try { await chargerAnnonces(); } catch (e) { return; }
+            if (avant && !annoncesE.etat.en_cours) { const d = annoncesE.dernier || {}; toast(d.erreurs && d.erreurs.length ? 'Relève : ' + d.erreurs[0] : `${d.nouvelles || 0} nouvelle(s) annonce(s)`); }
+            rendreAnnonces(); suivreAnnonces();
+        }, 6000);
+    }
+    const an = id => annoncesE.annonces.find(a => a.id === id);
+    function rendreAnnonces() {
+        const e = annoncesE.etat || {}, dj = annoncesE.dernier;
+        $('#anAvis').innerHTML = [
+            !e.boite ? '<div class="notice">Boîte non configurée : définir ANNONCES_IMAP_USER / ANNONCES_IMAP_PASS (ou CONTACT_IMAP_*) sur le serveur.</div>' : '',
+            !e.ia ? '<div class="notice">ANTHROPIC_API_KEY absent : annonces triées par règles seulement, sans prix max conseillé.</div>' : ''
+        ].join('');
+        $('#anRelever').disabled = !!e.en_cours || !e.boite;
+        $('#anEtat').innerHTML = e.en_cours ? '<span class="spin"></span> Lecture de la boîte en cours…'
+            : [e.boite ? `Boîte ${esc(e.boite)}` : '', e.derniere_lecture ? `dernière lecture le ${date(e.derniere_lecture)}` : 'jamais lue',
+               `${annoncesE.alertes_recues || 0} alerte(s) reçue(s) sur les 20 dernières relèves`,
+               dj ? `dernière relève : ${dj.nouvelles || 0} nouvelle(s), ${dj.rejetees || 0} écartée(s)${dj.cout_usd ? `, IA ≈ ${dj.cout_usd.toFixed(3)} $` : ''}${dj.erreurs && dj.erreurs.length ? ` · <span style="color:var(--red)">${esc(dj.erreurs[0])}</span>` : ''}` : '',
+               'relève automatique toutes les 30 min'].filter(Boolean).join(' · ') + '.';
+        const nb = k => annoncesE.annonces.filter(a => a.statut === k).length;
+        $('#anSegs').innerHTML = Object.entries(AN_STATUTS).map(([k, v]) => `<button class="seg ${anFiltre === k ? 'on' : ''}" data-an="${k}">${v} <b>${nb(k)}</b></button>`).join('');
+        const liste = annoncesE.annonces.filter(a => a.statut === anFiltre)
+            .sort((a, b) => anFiltre === 'a_traiter' ? (b.score ?? -1) - (a.score ?? -1) : String(b.statut_le || b.trouvee_le || '').localeCompare(String(a.statut_le || a.trouvee_le || '')));
+        $('#anListe').innerHTML = liste.length ? `<div class="card vl-card">${liste.map(a => {
+            const ouverte = anOuverte === a.id, fc = a.estimation_complete, enc = a.estimation_complete_statut === 'en_cours';
+            const lieu = [a.ville || a.code_postal || (a.dep ? 'dép. ' + a.dep : ''), a.distance_km != null ? (a.distance_km < 60 ? 'Île-de-France' : '≈ ' + a.distance_km + ' km') : ''].filter(Boolean).join(' · ');
+            const mots = [...(a.bonus || []).map(m => `<span class="an-mot">${esc(m)}</span>`), ...(a.rejet ? (a.raisons || []).map(m => `<span class="an-mot non">${esc(m)}</span>`) : [])].join('');
+            return `<article class="an ${ouverte ? 'open' : ''}" data-id="${esc(a.id)}">
+                <button class="an-h" data-an-ouvrir="${esc(a.id)}" aria-expanded="${ouverte}">
+                    <span class="vl-score ${scoreCls(a.score)}">${a.score == null ? '–' : a.score}</span>
+                    ${a.image ? `<img class="an-ph" src="${esc(a.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : '<span class="an-ph"><svg><use href="#i-annonce"/></svg></span>'}
+                    <span class="an-t"><b>${esc(a.titre || a.modele || 'Annonce')}</b>
+                        <span class="an-prix"><span>demandé <b class="num">${eur(a.prix)}</b></span>${a.prix_max ? `<span>max conseillé <b class="num">${eur(a.prix_max)}</b></span>` : ''}${a.marge != null && a.prix_max ? `<span class="${a.marge >= 0 ? 'plus' : 'moins'}">marge ${a.marge >= 0 ? '+' : ''}${Number(a.marge).toLocaleString('fr-FR')} €</span>` : ''}</span>
+                        <span class="vl-m">${esc([a.annee, a.km && Number(a.km).toLocaleString('fr-FR') + ' km', lieu].filter(Boolean).join(' · '))}</span>
+                        ${mots ? `<span class="an-mots">${mots}</span>` : ''}
+                    </span>
+                </button>
+                ${ouverte ? `<div class="an-d">
+                    <a class="btn btn-p vl-go" href="${esc(a.url)}" target="_blank" rel="noopener">Ouvrir l'annonce ↗</a>
+                    <dl>
+                        ${a.estimation ? `<dt>Cote de revente</dt><dd>${eur(a.estimation.cote_revente)} (remise en état ≈ ${eur(a.estimation.frais_remise)}, revente ${a.estimation.liquidite}/100${a.estimation.confiance ? ', confiance ' + esc(a.estimation.confiance) : ''})</dd>` : ''}
+                        ${a.calcul ? `<dt>Calcul</dt><dd>${eur(a.calcul.prix_vente_estime)} − ${eur(a.calcul.frais_remise_en_etat)} − frais ${eur(a.calcul.frais_fixes)} − trajet ${eur(a.calcul.deplacement)} − marge ${eur(a.calcul.marge)}</dd>` : ''}
+                        ${a.estimation && a.estimation.commentaire ? `<dt>Avis rapide</dt><dd>${esc(a.estimation.commentaire)}</dd>` : ''}
+                        <dt>Score</dt><dd>${esc(a.score_detail || '')}</dd>
+                        <dt>Alerte</dt><dd>${esc(a.alerte || '')} · reçue le ${date(a.recue_le)}</dd>
+                        ${a.estimation_reportee ? '<dt>Estimation</dt><dd>reportée (plafond d\'appels IA du passage atteint)</dd>' : ''}
+                    </dl>
+                    ${fc && fc.prix ? `<div class="an-full"><b>Estimation complète</b> du ${date(fc.date)} : prix max <b>${eur(fc.prix.max_achat)}</b> · revente ${eur(fc.prix.vente_estime)} · marché ${eur(fc.prix.marche)}${fc.attractivite ? ` · revente ${fc.attractivite.score}/100` : ''}<br>${esc(fc.resume || '')}${(fc.questions_a_poser || []).length ? `<br><b>À demander :</b> ${fc.questions_a_poser.map(esc).join(' · ')}` : ''}</div>` : ''}
+                    ${a.estimation_complete_statut === 'erreur' ? `<p class="vl-alerte">Estimation complète en échec : ${esc(a.estimation_complete_erreur || '')}</p>` : ''}
+                    <div class="vl-b">
+                        ${a.statut !== 'contactee' ? `<button class="btn" data-an-statut="contactee" data-id="${esc(a.id)}"><svg><use href="#i-tel"/></svg>Contacté</button>` : ''}
+                        <button class="btn" data-an-estimer="${esc(a.id)}" ${enc ? 'disabled' : ''}>${enc ? '<span class="spin"></span> Estimation en cours (2 à 3 min)' : fc ? 'Refaire l\'estimation complète' : 'Estimation complète'}</button>
+                        ${a.demande_ref ? `<a class="btn" href="${BASE}/demande/${esc(a.demande_ref)}">Voir la demande ${esc(a.demande_ref)}</a>` : `<button class="btn" data-an-demande="${esc(a.id)}"><svg><use href="#i-dem"/></svg>Créer une demande</button>`}
+                        ${a.statut !== 'ignoree' ? `<button class="btn btn-ghost" data-an-statut="ignoree" data-id="${esc(a.id)}"><svg><use href="#i-non"/></svg>Ignorer</button>` : ''}
+                        ${a.statut !== 'a_traiter' ? `<button class="btn btn-ghost" data-an-statut="a_traiter" data-id="${esc(a.id)}">Remettre à traiter</button>` : ''}
+                    </div>
+                </div>` : ''}
+            </article>`;
+        }).join('')}</div>` : `<div class="empty">${anFiltre === 'a_traiter' ? 'Aucune annonce à traiter. Les alertes Leboncoin arrivent par e-mail ; « Relever maintenant » relit la boîte.' : 'Rien ici pour l\'instant.'}</div>`;
+    }
+    $('#anSegs').addEventListener('click', e => { const b = e.target.closest('[data-an]'); if (!b) return; anFiltre = b.dataset.an; anOuverte = null; rendreAnnonces(); });
+    $('#anListe').addEventListener('click', async e => {
+        const o = e.target.closest('[data-an-ouvrir]');
+        if (o) { anOuverte = anOuverte === o.dataset.anOuvrir ? null : o.dataset.anOuvrir; rendreAnnonces(); const el = document.querySelector(`.an[data-id="${CSS.escape(o.dataset.anOuvrir)}"]`); if (el && anOuverte) el.scrollIntoView({ block: 'nearest' }); return; }
+        const s = e.target.closest('[data-an-statut]');
+        if (s) {
+            const a = an(s.dataset.id); if (!a) return;
+            try {
+                Object.assign(a, await api('/api/admin/annonces/' + encodeURIComponent(a.id), { method: 'PATCH', body: JSON.stringify({ statut: s.dataset.anStatut }) }));
+                anOuverte = null; compter('annonces', annoncesE.annonces.filter(x => x.statut === 'a_traiter' && x.score >= ((annoncesE.etat || {}).seuil || 70)).length); rendreAnnonces();
+                toast(s.dataset.anStatut === 'contactee' ? 'Marquée « Contactée »' : s.dataset.anStatut === 'ignoree' ? 'Annonce ignorée' : 'Remise à traiter');
+            } catch (err) { toast(err.message); }
+            return;
+        }
+        const est = e.target.closest('[data-an-estimer]');
+        if (est) {
+            const a = an(est.dataset.anEstimer); if (!a) return;
+            if (await demander({ titre: 'Lancer l\'estimation complète ?', texte: 'Recherche web des annonces comparables et de la cote : environ 0,15 à 0,30 € et 2 à 3 minutes.', boutons: [['ok', 'Estimer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') return;
+            try { await api('/api/admin/annonces/' + encodeURIComponent(a.id) + '/estimation', { method: 'POST' }); a.estimation_complete_statut = 'en_cours'; rendreAnnonces(); suivreAnnonces(); }
+            catch (err) { toast(err.message); }
+            return;
+        }
+        const dm = e.target.closest('[data-an-demande]');
+        if (dm) {
+            const a = an(dm.dataset.anDemande); if (!a) return;
+            dm.disabled = true;
+            try { const r = await api('/api/admin/annonces/' + encodeURIComponent(a.id) + '/demande', { method: 'POST' }); a.demande_ref = r.ref; rendreAnnonces(); charger().catch(() => {}); toast('Demande ' + r.ref + ' créée (origine Leboncoin)'); }
+            catch (err) { dm.disabled = false; toast(err.message); }
+        }
+    });
+    $('#anRelever').addEventListener('click', async () => {
+        $('#anRelever').disabled = true;
+        try { await api('/api/admin/annonces/relever', { method: 'POST' }); annoncesE.etat = { ...annoncesE.etat, en_cours: true }; rendreAnnonces(); suivreAnnonces(); }
+        catch (e) { $('#anRelever').disabled = false; toast(e.message); }
     });
 
     // ---------------- Réglages, import, estimation en masse

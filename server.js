@@ -1240,6 +1240,20 @@ setInterval(async () => {
     } catch (e) { console.error('Veille planifiée :', e.message); }
 }, 10 * 60 * 1000).unref();
 
+// Annonces Leboncoin : la boîte des alertes e-mail est relue toutes les 30 min (ANNONCES_AUTO=0 pour couper).
+// Notification « 🚗 N annonce(s) intéressante(s) » pour les nouvelles annonces à score ≥ 70, jamais entre 22 h et 8 h
+// (heure de Paris) : ce qui arrive la nuit est regroupé dans la première notification du matin.
+const annonces = require('./lib/annonces');
+const releverAnnonces = async () => {
+    try {
+        if (process.env.ANNONCES_AUTO === '0' || !(await annonces.etat()).boite) return;
+        const j = await annonces.passage('auto');
+        await annonces.notifier(j.interessantes || 0);
+    } catch (e) { console.error('Annonces planifiées :', e.message); }
+};
+setTimeout(releverAnnonces, 90 * 1000).unref();
+setInterval(releverAnnonces, 30 * 60 * 1000).unref();
+
 // Import Gmail demandé hors interface : fichier DATA_DIR/import.todo (créé depuis le shell Render).
 // Vérifié chaque minute ; effacé seulement quand l'import a abouti, donc repris après un redémarrage.
 const IMPORT_TODO = path.join(process.env.DATA_DIR || dataPath, 'import.todo');
