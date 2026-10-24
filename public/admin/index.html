@@ -1252,8 +1252,16 @@ body.modal-ouvert { overflow: hidden; }
             <div class="page-h"><h1>Réglages et import</h1></div>
             <div class="card">
                 <h3>Calcul du prix maximum d'achat</h3>
-                <p class="sub">Prix max = prix de vente estimé − remise en état − frais fixes − déplacement − marge (en % du prix de vente, jamais sous la marge minimale), arrondi à l'inférieur.</p>
+                <p class="sub"><b>Mode marchand</b> (LUNICAR revend aux professionnels) : cote marchand calée sur vendezvotrevoiture.fr (annonces de particuliers × âge × kilométrage × état), offre = cote + prime, plafonnée pour garder la marge minimale sur la revente aux pros. <b>Mode particulier</b> : prix de vente estimé − remise en état − frais fixes − déplacement − marge.</p>
                 <form id="regForm" class="form-grid">
+                    <label class="f">Mode de calcul<select class="in" name="mode"><option value="marchand">Marchand (façon vendezvotrevoiture)</option><option value="particulier">Particulier (ancien calcul)</option></select></label>
+                    <label class="f">Prime sur la cote marchand (%)<input class="in num" name="prime_pct" type="number" min="0" step="1"></label>
+                    <label class="f">Prime fixe (€)<input class="in num" name="prime_eur" type="number" min="0" step="10"></label>
+                    <label class="f">Revente aux pros : cote + (%)<input class="in num" name="revente_marchand_pct" type="number" min="0" step="1"></label>
+                    <label class="f">Revente aux pros : au moins + (€)<input class="in num" name="revente_marchand_min" type="number" min="0" step="50"></label>
+                    <label class="f">Frais fixes revente pro (€)<input class="in num" name="frais_fixes_marchand" type="number" min="0" step="10"></label>
+                    <label class="f">Marge minimale revente pro (€)<input class="in num" name="marge_min_marchand" type="number" min="0" step="50"></label>
+                    <p class="sub" style="grid-column:1/-1;margin:6px 0 0"><b>Mode particulier</b></p>
                     <label class="f">Marge visée (%)<input class="in num" name="marge_pct" type="number" min="0" step="1"></label>
                     <label class="f">Marge minimale (€)<input class="in num" name="marge_min" type="number" min="0" step="50"></label>
                     <label class="f">Frais fixes par véhicule (€)<input class="in num" name="frais_fixes" type="number" min="0" step="10"></label>
@@ -1274,7 +1282,7 @@ body.modal-ouvert { overflow: hidden; }
                     <label class="f">Ticket trajet local (€)<input class="in num" name="train_local_eur" type="number" step="0.5" min="0"></label>
                     <div style="align-self:end"><button class="btn btn-p">Enregistrer</button></div>
                 </form>
-                <p class="sub" style="margin:12px 0 0">Les nouvelles valeurs s'appliquent aux prochaines estimations (relancez une estimation pour la recalculer).</p>
+                <p class="sub" style="margin:12px 0 0">Les nouvelles valeurs s'appliquent aux prochaines estimations. <button class="btn btn-s" id="recalcBtn" type="button">Recalculer toutes les estimations existantes</button> <span id="recalcEtat"></span></p>
             </div>
             <div class="card">
                 <h3>Reprendre les anciennes demandes depuis Gmail</h3>
@@ -1577,6 +1585,11 @@ body.modal-ouvert { overflow: hidden; }
     function maxRecalcule(d) {
         const e = d.estimation, s = d.suivi || {}, v = Number(s.prix_manuel_vente);
         if (!e || !e.calcul || !v) return 0;
+        if (e.calcul.mode === 'marchand') {
+            const r = e.reglages || {}, arr = Math.max(1, Number(r.arrondi) || 50);
+            const plafond = v - (Number(e.calcul.frais_fixes) || 0) - (Number(e.calcul.deplacement) || 0) - (Number(r.marge_min_marchand) || 0);
+            return Math.max(0, Math.floor(Math.min(Number(e.calcul.offre_cible) || plafond, plafond) / arr) * arr);
+        }
         const r = e.reglages || {}, marge = Math.max(Number(r.marge_min) || 0, Math.round(v * (Number(r.marge_pct) || 0) / 100));
         const brut = v - (Number(e.calcul.frais_remise_en_etat) || 0) - (Number(e.calcul.frais_fixes) || 0) - (Number(e.calcul.deplacement) || 0) - marge;
         const arr = Math.max(1, Number(r.arrondi) || 50);
@@ -2847,9 +2860,9 @@ body.modal-ouvert { overflow: hidden; }
                 </div>
                 <div class="dec-grille">
                     <div><span>Le vendeur veut</span><b class="num">${x.prix_souhaite ? eur(x.prix_souhaite) : '—'}</b>${x.prix_souhaite && prixMax(d) ? (ec => `<small class="${ec > 0 ? 'neg' : 'pos'}">${ec > 0 ? eur(ec) + ' au-dessus du max' : ec < 0 ? eur(-ec) + ' sous le max' : 'pile le max'}</small>`)(Number(x.prix_souhaite) - prixMax(d)) : '<small>&nbsp;</small>'}</div>
-                    <div><span>Revente estimée</span><b class="num">${eur(s.prix_manuel_vente || p.vente_estime)}</b><small>${s.prix_manuel_vente ? 'retenue à la main' : e ? esc({ reparer_revendre: 'après remise en état', en_l_etat_marchand: 'en l\'état, marchand', export: 'export', pieces: 'pour pièces' }[e.canal_revente] || '') : '&nbsp;'}</small></div>
+                    <div><span>Revente estimée</span><b class="num">${eur(s.prix_manuel_vente || p.vente_estime)}</b><small>${s.prix_manuel_vente ? 'retenue à la main' : e && e.calcul && e.calcul.mode === 'marchand' ? 'aux professionnels' : e ? esc({ reparer_revendre: 'après remise en état', en_l_etat_marchand: 'en l\'état, marchand', export: 'export', pieces: 'pour pièces' }[e.canal_revente] || '') : '&nbsp;'}</small></div>
                     <div><span>Marché (médiane)</span><b class="num">${eur(p.marche || p.leboncoin)}</b><small>${e && (e.marche || e.leboncoin) ? ((e.marche || e.leboncoin).nb_annonces || 0) + ' annonces' : '&nbsp;'}</small></div>
-                    <div><span>Frais prévus</span><b class="num">${e && e.calcul ? eur((e.calcul.frais_remise_en_etat || 0) + (e.calcul.deplacement || 0)) : '—'}</b><small>remise en état + trajet</small></div>
+                    ${e && e.calcul && e.calcul.mode === 'marchand' ? `<div><span>Cote marchand</span><b class="num">${eur(e.calcul.cote_marchand)}</b><small>≈ vendezvotrevoiture</small></div>` : `<div><span>Frais prévus</span><b class="num">${e && e.calcul ? eur((e.calcul.frais_remise_en_etat || 0) + (e.calcul.deplacement || 0)) : '—'}</b><small>remise en état + trajet</small></div>`}
                 </div>
                 <div class="dec-faits">${[x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.annee, [x.ville || x.code_postal, geo(x.code_postal) && geo(x.code_postal).km ? geo(x.code_postal).km + ' km' : ''].filter(Boolean).join(' · '), d.origine_txt && esc(d.origine_txt.split(' · ')[0]), s.offre && 'offre faite ' + eur(s.offre), s.prix_achat && 'acheté ' + eur(s.prix_achat)].filter(Boolean).map(t => `<span>${t}</span>`).join('')}</div>
                 ${e && e.resume ? `<p class="resume">${esc(e.resume)}</p>` : ''}
@@ -2871,14 +2884,23 @@ body.modal-ouvert { overflow: hidden; }
             <section class="sec">
                 <h3>Détail de l'estimation <small>${e ? `confiance ${esc(e.confiance || '?')} · ${date(d.estimation_at)} · ${(e.usage || {}).recherches || 0} recherches` : ''}</small></h3>
                 ${!e ? `<p class="vide">${enCours ? 'Estimation en cours…' : 'Pas encore d\'estimation : lancez-la depuis la carte du haut.'}</p>` : ''}
-                ${e ? `<div class="calc-strip">
+                ${e && e.calcul.mode === 'marchand' ? `<div class="calc-strip">
+                    <div><span>Annonces particuliers</span><b class="num">${eur(e.calcul.prix_particulier)}</b></div>
+                    <div><span>Cote marchand (${Math.round((e.calcul.cote_detail.coef_global || 0) * 100)} %)</span><b class="num">${eur(e.calcul.cote_marchand)}</b></div>
+                    <div><span>+ Prime (${esc(e.reglages.prime_pct)} % + ${eur(e.reglages.prime_eur)})</span><b class="num">${eur(e.calcul.offre_cible)}</b></div>
+                    <div><span>Revente aux pros</span><b class="num">${eur(e.calcul.prix_vente_estime)}</b></div>
+                    <div><span>Marge prévue</span><b class="num ${e.calcul.marge < (Number(e.reglages.marge_min_marchand) || 0) ? 'neg' : ''}">${eur(e.calcul.marge)}</b></div>
+                    <div class="tot"><span>= Prix max d'achat${e.calcul.plafonne ? ' (plafonné)' : ''}</span><b class="num">${eur(e.calcul.prix_max_achat)}</b></div>
+                </div>
+                <p class="sub" style="margin:8px 0 0">${e.calcul.cote_detail.etapes.map(t => `${esc(t.libelle)} → ${eur(t.valeur)}`).join(' · ')}${e.calcul.deplacement ? ` · déplacement ${eur(e.calcul.deplacement)}` : ''}</p>` : ''}
+                ${e ? `${e.calcul.mode !== 'marchand' ? `<div class="calc-strip">
                     <div><span>Vente estimée</span><b class="num">${eur(e.calcul.prix_vente_estime)}</b></div>
                     <div><span>− Remise en état</span><b class="num">${eur(e.calcul.frais_remise_en_etat)}</b></div>
                     <div><span>− Frais fixes</span><b class="num">${eur(e.calcul.frais_fixes)}</b></div>
                     ${e.calcul.deplacement ? `<div><span>− Déplacement</span><b class="num">${eur(e.calcul.deplacement)}</b></div>` : ''}
                     <div><span>− Marge (${esc(e.reglages.marge_pct)} %, min. ${eur(e.reglages.marge_min)})</span><b class="num">${eur(e.calcul.marge)}</b></div>
                     <div class="tot"><span>= Prix max d'achat</span><b class="num">${eur(e.calcul.prix_max_achat)}</b></div>
-                </div>
+                </div>` : ''}
                 ${e.deplacement_detail ? (t => `<p class="sub" style="margin:8px 0 0">Déplacement ${esc(t.depart)} → ${esc(t.arrivee)} : ${t.km} km (${Math.floor(t.minutes / 60)} h ${String(t.minutes % 60).padStart(2, '0')}) · train aller ${eur(t.train)} <span style="color:var(--ink-4)">(${esc(t.train_source)})</span> · carburant retour ${eur(t.carburant)} <span style="color:var(--ink-4)">(${esc(t.energie)})</span> · péages ${eur(t.peages)}</p>`)(e.deplacement_detail) : ''}
                 ${attractivite(e.attractivite)}
                 ${e.vehicule_identifie ? `<p class="retenu"><b>Véhicule retenu :</b> ${esc(e.vehicule_identifie)}</p>` : ''}
@@ -3745,6 +3767,11 @@ body.modal-ouvert { overflow: hidden; }
         e.preventDefault();
         await api('/api/admin/reglages', { method: 'PUT', body: JSON.stringify(Object.fromEntries(new FormData(e.target))) });
         toast('Réglages enregistrés');
+    });
+    $('#recalcBtn').addEventListener('click', async () => {
+        $('#recalcEtat').innerHTML = '<span class="spin"></span> recalcul…';
+        try { const r = await api('/api/admin/estimations/recalculer', { method: 'POST' }); $('#recalcEtat').textContent = `${r.recalculees} estimations recalculées (mode ${r.mode}).`; }
+        catch (e) { $('#recalcEtat').textContent = e.message; }
     });
     function etatImport() {
         const i = etat.import_gmail || {}, b = i.dernier;
