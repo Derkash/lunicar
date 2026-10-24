@@ -251,6 +251,10 @@ body.page-fiche main { display: none; }
 .pr.main small { opacity: .75; }
 .est-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: .82rem; color: var(--ink-5); margin: 12px 0 0; }
 .resume { font-size: .95rem; margin: 14px 0 0; color: var(--ink-7); }
+.fourchette { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 12px 0 4px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--r-s); background: #FAF9F6; }
+.fourchette span { display: block; font-size: .74rem; color: var(--ink-5); }
+.fourchette b { font-size: 1.15rem; color: var(--marine); }
+.fourchette small { display: block; font-size: .78rem; color: var(--ink-5); }
 .calc-strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); margin-top: 14px; border: 1px solid var(--line); border-radius: var(--r-s); overflow: hidden; }
 .calc-strip div { padding: 10px 14px; border-right: 1px solid var(--line); }
 .calc-strip div:last-child { border-right: 0; }
@@ -1261,6 +1265,13 @@ body.modal-ouvert { overflow: hidden; }
                     <label class="f">Revente aux pros : au moins + (€)<input class="in num" name="revente_marchand_min" type="number" min="0" step="50"></label>
                     <label class="f">Frais fixes revente pro (€)<input class="in num" name="frais_fixes_marchand" type="number" min="0" step="10"></label>
                     <label class="f">Marge minimale revente pro (€)<input class="in num" name="marge_min_marchand" type="number" min="0" step="50"></label>
+                    <p class="sub" style="grid-column:1/-1;margin:6px 0 0"><b>Fourchette client</b> : le bas = prix max d'achat (engagement si les infos sont exactes). Haut : sous le 1er seuil → montant 1 ; sous le 2e seuil → montant 2 ; au-delà → prix max + %, au moins + le minimum (jamais sous le montant 2).</p>
+                    <label class="f">1er seuil (€)<input class="in num" name="fourchette_seuil1" type="number" min="0" step="50"></label>
+                    <label class="f">Haut sous le 1er seuil (€)<input class="in num" name="fourchette_haut1" type="number" min="0" step="50"></label>
+                    <label class="f">2e seuil (€)<input class="in num" name="fourchette_seuil2" type="number" min="0" step="50"></label>
+                    <label class="f">Haut sous le 2e seuil (€)<input class="in num" name="fourchette_haut2" type="number" min="0" step="50"></label>
+                    <label class="f">Au-delà : + (%)<input class="in num" name="fourchette_pct" type="number" min="0" step="1"></label>
+                    <label class="f">Au-delà : au moins + (€)<input class="in num" name="fourchette_min_eur" type="number" min="0" step="50"></label>
                     <p class="sub" style="grid-column:1/-1;margin:6px 0 0"><b>Mode particulier</b></p>
                     <label class="f">Marge visée (%)<input class="in num" name="marge_pct" type="number" min="0" step="1"></label>
                     <label class="f">Marge minimale (€)<input class="in num" name="marge_min" type="number" min="0" step="50"></label>
@@ -1596,6 +1607,17 @@ body.modal-ouvert { overflow: hidden; }
         return Math.max(0, Math.floor(brut / arr) * arr);
     }
     const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || maxRecalcule(d) || ((d.estimation || {}).prix || {}).max_achat || 0;
+    let reglagesFourchette = {};
+    // Fourchette annoncée au client (même règle que lib/fourchette.js) : bas = prix max d'achat retenu.
+    function fourchette(d) {
+        const base = Math.round(prixMax(d)); if (!base) return null;
+        const r = { fourchette_seuil1: 500, fourchette_haut1: 1000, fourchette_seuil2: 800, fourchette_haut2: 1200, fourchette_pct: 20, fourchette_min_eur: 300, ...(((d.estimation || {}).reglages) || {}), ...reglagesFourchette };
+        const N = Number;
+        const haut = base < N(r.fourchette_seuil1) ? N(r.fourchette_haut1) : base < N(r.fourchette_seuil2) ? N(r.fourchette_haut2)
+            : Math.max(N(r.fourchette_haut2), Math.ceil((base + Math.max(N(r.fourchette_min_eur), base * N(r.fourchette_pct) / 100)) / 50) * 50);
+        return { min: base, max: Math.max(haut, base) };
+    }
+    const texteFourchette = f => `Notre estimation pour votre voiture : entre ${eur(f.min)} et ${eur(f.max)}.\n\nSous réserve que les informations que vous nous avez transmises soient exactes, nous nous engageons à vous proposer au moins ${eur(f.min)}.\n\nL'écart entre ces deux montants dépend de l'état général de la voiture, que notre technicien vérifie lors de l'inspection à votre adresse : entretien, carrosserie, intérieur, pneus et fonctionnement mécanique. Plus la voiture est soignée, plus le prix se rapproche du haut de la fourchette.`;
     const origineMax = d => Number((d.suivi || {}).prix_manuel_max) ? 'retenu à la main' : maxRecalcule(d) ? 'recalculé avec votre prix de vente' : 'calculé par l\'estimation';
     // Score d'attractivité à la revente (0-100) : vert ≥ 75, orange 50-74, rouge < 50.
     const scoreDe = d => { const a = (d.estimation || {}).attractivite; return a && a.score != null ? Number(a.score) : null; };
@@ -2858,6 +2880,7 @@ body.modal-ouvert { overflow: hidden; }
                     <div class="dec-max"><span>Prix max d'achat</span><b class="num">${enCours ? '<span class="spin"></span>' : prixMax(d) ? eur(prixMax(d)) : '—'}</b><small>${enCours ? 'estimation en cours (' + ESTIM_DUREE + ')' : prixMax(d) ? origineMax(d) : 'pas encore estimé'}</small></div>
                     ${scoreDe(d) != null ? `<div class="dec-score">${badgeScore(d, true)}<small>${esc({ acheter: 'à acheter', prix_serre: 'à prix serré', eviter: 'à éviter' }[(e.attractivite || {}).verdict] || '')}${(e.attractivite || {}).delai_revente ? ' · revente ' + esc({ rapide: 'rapide', moyen: 'moyenne', lent: 'lente' }[e.attractivite.delai_revente] || '') : ''}</small></div>` : ''}
                 </div>
+                ${fourchette(d) ? (f => `<div class="fourchette"><div><span>Fourchette client</span><b class="num">${eur(f.min)} – ${eur(f.max)}</b><small>engagement : au moins ${eur(f.min)} si les infos sont exactes</small></div><button class="btn btn-s" type="button" id="copieFourchette">Copier le texte client</button></div>`)(fourchette(d)) : ''}
                 <div class="dec-grille">
                     <div><span>Le vendeur veut</span><b class="num">${x.prix_souhaite ? eur(x.prix_souhaite) : '—'}</b>${x.prix_souhaite && prixMax(d) ? (ec => `<small class="${ec > 0 ? 'neg' : 'pos'}">${ec > 0 ? eur(ec) + ' au-dessus du max' : ec < 0 ? eur(-ec) + ' sous le max' : 'pile le max'}</small>`)(Number(x.prix_souhaite) - prixMax(d)) : '<small>&nbsp;</small>'}</div>
                     <div><span>Revente estimée</span><b class="num">${eur(s.prix_manuel_vente || p.vente_estime)}</b><small>${s.prix_manuel_vente ? 'retenue à la main' : e && e.calcul && e.calcul.mode === 'marchand' ? 'aux professionnels' : e ? esc({ reparer_revendre: 'après remise en état', en_l_etat_marchand: 'en l\'état, marchand', export: 'export', pieces: 'pour pièces' }[e.canal_revente] || '') : '&nbsp;'}</small></div>
@@ -3036,6 +3059,8 @@ body.modal-ouvert { overflow: hidden; }
             if (ev.target.value === 'sans_suite') { ev.target.value = d.statut; return pasInteresse(d); } // e-mail de refus puis archivage
             await sauver({ statut: ev.target.value }); toast('Statut mis à jour'); if (ev.target.value === 'achetee') apresAchat(d.ref);
         };
+        const cf = $('#copieFourchette');
+        if (cf) cf.onclick = async () => { const f = fourchette(d); toast(f && await copierTexte(texteFourchette(f)) ? 'Texte copié' : 'Copie impossible'); };
         const eb = $('#estBtn');
         if (eb) eb.onclick = async () => {
             try { await api('/api/admin/demandes/' + d.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; fiche(); surveiller(true); } catch (err) { toast(err.message); }
@@ -3761,6 +3786,7 @@ body.modal-ouvert { overflow: hidden; }
     async function reglages() {
         const r = await api('/api/admin/reglages');
         const f = $('#regForm'); Object.entries(r).forEach(([k, v]) => { if (f.elements[k]) f.elements[k].value = v; });
+        reglagesFourchette = Object.fromEntries(Object.entries(r).filter(([k]) => k.startsWith('fourchette_')));
         etat = await api('/api/admin/etat'); etatImport();
     }
     $('#regForm').addEventListener('submit', async e => {
