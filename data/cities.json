@@ -22888,5 +22888,1535 @@
     "lat": 48.925,
     "lon": 2.2147,
     "dep": "95"
+  },
+  {
+    "nom": "Tarnos",
+    "slug": "tarnos",
+    "codePostal": "40220",
+    "departement": "Landes",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.5338,
+    "lon": -1.4717,
+    "dep": "40"
+  },
+  {
+    "nom": "Marmande",
+    "slug": "marmande",
+    "codePostal": "47200",
+    "departement": "Lot-et-Garonne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.5014,
+    "lon": 0.1689,
+    "dep": "47"
+  },
+  {
+    "nom": "Urrugne",
+    "slug": "urrugne",
+    "codePostal": "64122",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3507,
+    "lon": -1.7018,
+    "dep": "64"
+  },
+  {
+    "nom": "Lézignan-Corbières",
+    "slug": "lezignan-corbieres",
+    "codePostal": "11200",
+    "departement": "Aude",
+    "region": "Occitanie",
+    "lat": 43.1983,
+    "lon": 2.7649,
+    "dep": "11"
+  },
+  {
+    "nom": "Limoux",
+    "slug": "limoux",
+    "codePostal": "11300",
+    "departement": "Aude",
+    "region": "Occitanie",
+    "lat": 43.0464,
+    "lon": 2.2452,
+    "dep": "11"
+  },
+  {
+    "nom": "Onet-le-Château",
+    "slug": "onet-le-chateau",
+    "codePostal": "12000",
+    "departement": "Aveyron",
+    "region": "Occitanie",
+    "lat": 44.3824,
+    "lon": 2.5614,
+    "dep": "12"
+  },
+  {
+    "nom": "Villefranche-de-Rouergue",
+    "slug": "villefranche-de-rouergue",
+    "codePostal": "12200",
+    "departement": "Aveyron",
+    "region": "Occitanie",
+    "lat": 44.3471,
+    "lon": 2.0296,
+    "dep": "12"
+  },
+  {
+    "nom": "Pont-Saint-Esprit",
+    "slug": "pont-saint-esprit",
+    "codePostal": "30130",
+    "departement": "Gard",
+    "region": "Occitanie",
+    "lat": 44.2518,
+    "lon": 4.6422,
+    "dep": "30"
+  },
+  {
+    "nom": "Saint-Gilles",
+    "slug": "saint-gilles",
+    "codePostal": "30800",
+    "departement": "Gard",
+    "region": "Occitanie",
+    "lat": 43.6606,
+    "lon": 4.4128,
+    "dep": "30"
+  },
+  {
+    "nom": "Vauvert",
+    "slug": "vauvert",
+    "codePostal": "30600",
+    "departement": "Gard",
+    "region": "Occitanie",
+    "lat": 43.626,
+    "lon": 4.3103,
+    "dep": "30"
+  },
+  {
+    "nom": "Villeneuve-lès-Avignon",
+    "slug": "villeneuve-les-avignon",
+    "codePostal": "30400",
+    "departement": "Gard",
+    "region": "Occitanie",
+    "lat": 43.9776,
+    "lon": 4.792,
+    "dep": "30"
+  },
+  {
+    "nom": "Auterive",
+    "slug": "auterive",
+    "codePostal": "31190",
+    "departement": "Haute-Garonne",
+    "region": "Occitanie",
+    "lat": 43.3579,
+    "lon": 1.4822,
+    "dep": "31"
+  },
+  {
+    "nom": "Balma",
+    "slug": "balma",
+    "codePostal": "31130",
+    "departement": "Haute-Garonne",
+    "region": "Occitanie",
+    "lat": 43.6108,
+    "lon": 1.5037,
+    "dep": "31"
+  },
+  {
+    "nom": "Castanet-Tolosan",
+    "slug": "castanet-tolosan",
+    "codePostal": "31320",
+    "departement": "Haute-Garonne",
+    "region": "Occitanie",
+    "lat": 43.5083,
+    "lon": 1.5069,
+    "dep": "31"
+  },
+  {
+    "nom": "Herblay-sur-Seine",
+    "slug": "herblay-sur-seine",
+    "codePostal": "95220",
+    "departement": "Val-d'Oise",
+    "region": "Île-de-France",
+    "lat": 49.0052,
+    "lon": 2.1556,
+    "dep": "95"
+  },
+  {
+    "nom": "Louvres",
+    "slug": "louvres",
+    "codePostal": "95380",
+    "departement": "Val-d'Oise",
+    "region": "Île-de-France",
+    "lat": 49.0444,
+    "lon": 2.5011,
+    "dep": "95"
+  },
+  {
+    "nom": "Montmagny",
+    "slug": "montmagny",
+    "codePostal": "95360",
+    "departement": "Val-d'Oise",
+    "region": "Île-de-France",
+    "lat": 48.9677,
+    "lon": 2.3471,
+    "dep": "95"
+  },
+  {
+    "nom": "Osny",
+    "slug": "osny",
+    "codePostal": "95520",
+    "departement": "Val-d'Oise",
+    "region": "Île-de-France",
+    "lat": 49.0668,
+    "lon": 2.0618,
+    "dep": "95"
+  },
+  {
+    "nom": "Pierrelaye",
+    "slug": "pierrelaye",
+    "codePostal": "95220",
+    "departement": "Val-d'Oise",
+    "region": "Île-de-France",
+    "lat": 49.0185,
+    "lon": 2.1629,
+    "dep": "95"
+  },
+  {
+    "nom": "Éragny-sur-Oise",
+    "slug": "eragny-sur-oise",
+    "codePostal": "95610",
+    "departement": "Val-d'Oise",
+    "region": "Île-de-France",
+    "lat": 49.0224,
+    "lon": 2.1002,
+    "dep": "95"
+  },
+  {
+    "nom": "Saint-Brice-sous-Forêt",
+    "slug": "saint-brice-sous-foret",
+    "codePostal": "95350",
+    "departement": "Val-d'Oise",
+    "region": "Île-de-France",
+    "lat": 49.0034,
+    "lon": 2.3453,
+    "dep": "95"
+  },
+  {
+    "nom": "Soisy-sous-Montmorency",
+    "slug": "soisy-sous-montmorency",
+    "codePostal": "95230",
+    "departement": "Val-d'Oise",
+    "region": "Île-de-France",
+    "lat": 48.9888,
+    "lon": 2.3003,
+    "dep": "95"
+  },
+  {
+    "nom": "Ornex",
+    "slug": "ornex",
+    "codePostal": "01210",
+    "departement": "Ain",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.2779,
+    "lon": 6.0953,
+    "dep": "01"
+  },
+  {
+    "nom": "Prévessin-Moëns",
+    "slug": "prevessin-moens",
+    "codePostal": "01280",
+    "departement": "Ain",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.2594,
+    "lon": 6.0722,
+    "dep": "01"
+  },
+  {
+    "nom": "Saint-Péray",
+    "slug": "saint-peray",
+    "codePostal": "07130",
+    "departement": "Ardèche",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.9394,
+    "lon": 4.8314,
+    "dep": "07"
+  },
+  {
+    "nom": "Le Teil",
+    "slug": "le-teil",
+    "codePostal": "07400",
+    "departement": "Ardèche",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.5476,
+    "lon": 4.6664,
+    "dep": "07"
+  },
+  {
+    "nom": "Bourg-de-Péage",
+    "slug": "bourg-de-peage",
+    "codePostal": "26300",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.0189,
+    "lon": 5.0492,
+    "dep": "26"
+  },
+  {
+    "nom": "Chabeuil",
+    "slug": "chabeuil",
+    "codePostal": "26120",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.9088,
+    "lon": 5.0038,
+    "dep": "26"
+  },
+  {
+    "nom": "Chatuzange-le-Goubet",
+    "slug": "chatuzange-le-goubet",
+    "codePostal": "26300",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.0068,
+    "lon": 5.0973,
+    "dep": "26"
+  },
+  {
+    "nom": "Crest",
+    "slug": "crest",
+    "codePostal": "26400",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.7311,
+    "lon": 5.0211,
+    "dep": "26"
+  },
+  {
+    "nom": "Donzère",
+    "slug": "donzere",
+    "codePostal": "26290",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.4347,
+    "lon": 4.71,
+    "dep": "26"
+  },
+  {
+    "nom": "Étoile-sur-Rhône",
+    "slug": "etoile-sur-rhone",
+    "codePostal": "26800",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.8353,
+    "lon": 4.8747,
+    "dep": "26"
+  },
+  {
+    "nom": "Livron-sur-Drôme",
+    "slug": "livron-sur-drome",
+    "codePostal": "26250",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.7912,
+    "lon": 4.8257,
+    "dep": "26"
+  },
+  {
+    "nom": "Loriol-sur-Drôme",
+    "slug": "loriol-sur-drome",
+    "codePostal": "26270",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.7495,
+    "lon": 4.8141,
+    "dep": "26"
+  },
+  {
+    "nom": "Nyons",
+    "slug": "nyons",
+    "codePostal": "26110",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.3585,
+    "lon": 5.1243,
+    "dep": "26"
+  },
+  {
+    "nom": "Saint-Marcel-lès-Valence",
+    "slug": "saint-marcel-les-valence",
+    "codePostal": "26320",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.9724,
+    "lon": 4.9506,
+    "dep": "26"
+  },
+  {
+    "nom": "Saint-Paul-Trois-Châteaux",
+    "slug": "saint-paul-trois-chateaux",
+    "codePostal": "26130",
+    "departement": "Drôme",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 44.3489,
+    "lon": 4.7617,
+    "dep": "26"
+  },
+  {
+    "nom": "Les Abrets en Dauphiné",
+    "slug": "les-abrets-en-dauphine",
+    "codePostal": "38490",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5314,
+    "lon": 5.5852,
+    "dep": "38"
+  },
+  {
+    "nom": "Beaurepaire",
+    "slug": "beaurepaire",
+    "codePostal": "38270",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.3376,
+    "lon": 5.0439,
+    "dep": "38"
+  },
+  {
+    "nom": "Claix",
+    "slug": "claix",
+    "codePostal": "38640",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.1187,
+    "lon": 5.659,
+    "dep": "38"
+  },
+  {
+    "nom": "Coublevie",
+    "slug": "coublevie",
+    "codePostal": "38500",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.3573,
+    "lon": 5.618,
+    "dep": "38"
+  },
+  {
+    "nom": "Crolles",
+    "slug": "crolles",
+    "codePostal": "38920",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.2816,
+    "lon": 5.8853,
+    "dep": "38"
+  },
+  {
+    "nom": "Domène",
+    "slug": "domene",
+    "codePostal": "38420",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.2053,
+    "lon": 5.8367,
+    "dep": "38"
+  },
+  {
+    "nom": "Gières",
+    "slug": "gieres",
+    "codePostal": "38610",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.1828,
+    "lon": 5.7902,
+    "dep": "38"
+  },
+  {
+    "nom": "Moirans",
+    "slug": "moirans",
+    "codePostal": "38430",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.3227,
+    "lon": 5.5676,
+    "dep": "38"
+  },
+  {
+    "nom": "Montbonnot-Saint-Martin",
+    "slug": "montbonnot-saint-martin",
+    "codePostal": "38330",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.2213,
+    "lon": 5.8148,
+    "dep": "38"
+  },
+  {
+    "nom": "Le Péage-de-Roussillon",
+    "slug": "le-peage-de-roussillon",
+    "codePostal": "38550",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.3723,
+    "lon": 4.7825,
+    "dep": "38"
+  },
+  {
+    "nom": "Pontcharra",
+    "slug": "pontcharra",
+    "codePostal": "38530",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.4225,
+    "lon": 6.0228,
+    "dep": "38"
+  },
+  {
+    "nom": "Pont-de-Chéruy",
+    "slug": "pont-de-cheruy",
+    "codePostal": "38230",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7494,
+    "lon": 5.1728,
+    "dep": "38"
+  },
+  {
+    "nom": "Rives",
+    "slug": "rives",
+    "codePostal": "38140",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.3606,
+    "lon": 5.4848,
+    "dep": "38"
+  },
+  {
+    "nom": "Roussillon",
+    "slug": "roussillon",
+    "codePostal": "38150",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.3818,
+    "lon": 4.8133,
+    "dep": "38"
+  },
+  {
+    "nom": "Saint-Ismier",
+    "slug": "saint-ismier",
+    "codePostal": "38330",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.2503,
+    "lon": 5.8274,
+    "dep": "38"
+  },
+  {
+    "nom": "Saint-Marcellin",
+    "slug": "saint-marcellin",
+    "codePostal": "38160",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.1526,
+    "lon": 5.3166,
+    "dep": "38"
+  },
+  {
+    "nom": "Saint-Martin-d'Uriage",
+    "slug": "saint-martin-d-uriage",
+    "codePostal": "38410",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.1568,
+    "lon": 5.8592,
+    "dep": "38"
+  },
+  {
+    "nom": "Brioude",
+    "slug": "brioude",
+    "codePostal": "43100",
+    "departement": "Haute-Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.2968,
+    "lon": 3.3847,
+    "dep": "43"
+  },
+  {
+    "nom": "Monistrol-sur-Loire",
+    "slug": "monistrol-sur-loire",
+    "codePostal": "43120",
+    "departement": "Haute-Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.2857,
+    "lon": 4.1856,
+    "dep": "43"
+  },
+  {
+    "nom": "Sainte-Sigolène",
+    "slug": "sainte-sigolene",
+    "codePostal": "43600",
+    "departement": "Haute-Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.2436,
+    "lon": 4.2265,
+    "dep": "43"
+  },
+  {
+    "nom": "Yssingeaux",
+    "slug": "yssingeaux",
+    "codePostal": "43200",
+    "departement": "Haute-Loire",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.1342,
+    "lon": 4.1246,
+    "dep": "43"
+  },
+  {
+    "nom": "Mornant",
+    "slug": "mornant",
+    "codePostal": "69440",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6162,
+    "lon": 4.6747,
+    "dep": "69"
+  },
+  {
+    "nom": "Vernaison",
+    "slug": "vernaison",
+    "codePostal": "69390",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6464,
+    "lon": 4.8121,
+    "dep": "69"
+  },
+  {
+    "nom": "Saint-Bonnet-de-Mure",
+    "slug": "saint-bonnet-de-mure",
+    "codePostal": "69720",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6975,
+    "lon": 5.0241,
+    "dep": "69"
+  },
+  {
+    "nom": "Saint-Laurent-de-Mure",
+    "slug": "saint-laurent-de-mure",
+    "codePostal": "69720",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6842,
+    "lon": 5.0597,
+    "dep": "69"
+  },
+  {
+    "nom": "Ternay",
+    "slug": "ternay",
+    "codePostal": "69360",
+    "departement": "Rhône",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6083,
+    "lon": 4.803,
+    "dep": "69"
+  },
+  {
+    "nom": "Entrelacs",
+    "slug": "entrelacs",
+    "codePostal": "73410",
+    "departement": "Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7865,
+    "lon": 5.9149,
+    "dep": "73"
+  },
+  {
+    "nom": "Barberaz",
+    "slug": "barberaz",
+    "codePostal": "73000",
+    "departement": "Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5528,
+    "lon": 5.9388,
+    "dep": "73"
+  },
+  {
+    "nom": "Bassens",
+    "slug": "bassens-73",
+    "codePostal": "73000",
+    "departement": "Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.582,
+    "lon": 5.9387,
+    "dep": "73"
+  },
+  {
+    "nom": "Le Bourget-du-Lac",
+    "slug": "le-bourget-du-lac",
+    "codePostal": "73370",
+    "departement": "Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.642,
+    "lon": 5.8536,
+    "dep": "73"
+  },
+  {
+    "nom": "Bourg-Saint-Maurice",
+    "slug": "bourg-saint-maurice",
+    "codePostal": "73700",
+    "departement": "Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.6638,
+    "lon": 6.7614,
+    "dep": "73"
+  },
+  {
+    "nom": "Scionzier",
+    "slug": "scionzier",
+    "codePostal": "74950",
+    "departement": "Haute-Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.0497,
+    "lon": 6.545,
+    "dep": "74"
+  },
+  {
+    "nom": "Sillingy",
+    "slug": "sillingy",
+    "codePostal": "74330",
+    "departement": "Haute-Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.9517,
+    "lon": 6.035,
+    "dep": "74"
+  },
+  {
+    "nom": "Thyez",
+    "slug": "thyez",
+    "codePostal": "74300",
+    "departement": "Haute-Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.0899,
+    "lon": 6.536,
+    "dep": "74"
+  },
+  {
+    "nom": "Thônes",
+    "slug": "thones",
+    "codePostal": "74230",
+    "departement": "Haute-Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.8834,
+    "lon": 6.3329,
+    "dep": "74"
+  },
+  {
+    "nom": "Viry",
+    "slug": "viry",
+    "codePostal": "74580",
+    "departement": "Haute-Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 46.115,
+    "lon": 6.0229,
+    "dep": "74"
+  },
+  {
+    "nom": "Perros-Guirec",
+    "slug": "perros-guirec",
+    "codePostal": "22700",
+    "departement": "Côtes-d'Armor",
+    "region": "Bretagne",
+    "lat": 48.8376,
+    "lon": -3.476,
+    "dep": "22"
+  },
+  {
+    "nom": "Bannalec",
+    "slug": "bannalec",
+    "codePostal": "29380",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 47.9362,
+    "lon": -3.6883,
+    "dep": "29"
+  },
+  {
+    "nom": "Briec",
+    "slug": "briec",
+    "codePostal": "29510",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.0964,
+    "lon": -4.0011,
+    "dep": "29"
+  },
+  {
+    "nom": "Carhaix-Plouguer",
+    "slug": "carhaix-plouguer",
+    "codePostal": "29270",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.2708,
+    "lon": -3.5654,
+    "dep": "29"
+  },
+  {
+    "nom": "Châteaulin",
+    "slug": "chateaulin",
+    "codePostal": "29150",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.2023,
+    "lon": -4.0765,
+    "dep": "29"
+  },
+  {
+    "nom": "Crozon",
+    "slug": "crozon",
+    "codePostal": "29160",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.2396,
+    "lon": -4.4679,
+    "dep": "29"
+  },
+  {
+    "nom": "Ergué-Gabéric",
+    "slug": "ergue-gaberic",
+    "codePostal": "29500",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.0115,
+    "lon": -4.0111,
+    "dep": "29"
+  },
+  {
+    "nom": "Gouesnou",
+    "slug": "gouesnou",
+    "codePostal": "29850",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.4471,
+    "lon": -4.4614,
+    "dep": "29"
+  },
+  {
+    "nom": "Inzinzac-Lochrist",
+    "slug": "inzinzac-lochrist",
+    "codePostal": "56650",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.8599,
+    "lon": -3.2568,
+    "dep": "56"
+  },
+  {
+    "nom": "Kervignac",
+    "slug": "kervignac",
+    "codePostal": "56700",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.7722,
+    "lon": -3.2573,
+    "dep": "56"
+  },
+  {
+    "nom": "Languidic",
+    "slug": "languidic",
+    "codePostal": "56440",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.8295,
+    "lon": -3.1485,
+    "dep": "56"
+  },
+  {
+    "nom": "Larmor-Plage",
+    "slug": "larmor-plage",
+    "codePostal": "56260",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.7161,
+    "lon": -3.3913,
+    "dep": "56"
+  },
+  {
+    "nom": "Plescop",
+    "slug": "plescop",
+    "codePostal": "56890",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.6972,
+    "lon": -2.8318,
+    "dep": "56"
+  },
+  {
+    "nom": "Ploeren",
+    "slug": "ploeren",
+    "codePostal": "56880",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.6585,
+    "lon": -2.8394,
+    "dep": "56"
+  },
+  {
+    "nom": "Plouay",
+    "slug": "plouay",
+    "codePostal": "56240",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.9296,
+    "lon": -3.3455,
+    "dep": "56"
+  },
+  {
+    "nom": "Plouhinec",
+    "slug": "plouhinec-56",
+    "codePostal": "56680",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.6909,
+    "lon": -3.2399,
+    "dep": "56"
+  },
+  {
+    "nom": "Pluneret",
+    "slug": "pluneret",
+    "codePostal": "56400",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.6756,
+    "lon": -2.9373,
+    "dep": "56"
+  },
+  {
+    "nom": "Pluvigner",
+    "slug": "pluvigner",
+    "codePostal": "56330",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.7821,
+    "lon": -3.0204,
+    "dep": "56"
+  },
+  {
+    "nom": "Quéven",
+    "slug": "queven",
+    "codePostal": "56530",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.7871,
+    "lon": -3.4172,
+    "dep": "56"
+  },
+  {
+    "nom": "Riantec",
+    "slug": "riantec",
+    "codePostal": "56670",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.7208,
+    "lon": -3.3029,
+    "dep": "56"
+  },
+  {
+    "nom": "Sarzeau",
+    "slug": "sarzeau",
+    "codePostal": "56370",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.5253,
+    "lon": -2.7584,
+    "dep": "56"
+  },
+  {
+    "nom": "Séné",
+    "slug": "sene",
+    "codePostal": "56860",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.6227,
+    "lon": -2.7394,
+    "dep": "56"
+  },
+  {
+    "nom": "Biguglia",
+    "slug": "biguglia",
+    "codePostal": "20620",
+    "departement": "Haute-Corse",
+    "region": "Corse",
+    "lat": 42.6133,
+    "lon": 9.4401,
+    "dep": "2B"
+  },
+  {
+    "nom": "Calvi",
+    "slug": "calvi",
+    "codePostal": "20260",
+    "departement": "Haute-Corse",
+    "region": "Corse",
+    "lat": 42.5498,
+    "lon": 8.7611,
+    "dep": "2B"
+  },
+  {
+    "nom": "Corte",
+    "slug": "corte",
+    "codePostal": "20250",
+    "departement": "Haute-Corse",
+    "region": "Corse",
+    "lat": 42.2737,
+    "lon": 9.0691,
+    "dep": "2B"
+  },
+  {
+    "nom": "Furiani",
+    "slug": "furiani",
+    "codePostal": "20600",
+    "departement": "Haute-Corse",
+    "region": "Corse",
+    "lat": 42.6548,
+    "lon": 9.4213,
+    "dep": "2B"
+  },
+  {
+    "nom": "Lucciana",
+    "slug": "lucciana",
+    "codePostal": "20290",
+    "departement": "Haute-Corse",
+    "region": "Corse",
+    "lat": 42.5393,
+    "lon": 9.465,
+    "dep": "2B"
+  },
+  {
+    "nom": "Arès",
+    "slug": "ares",
+    "codePostal": "33740",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.7997,
+    "lon": -1.0837,
+    "dep": "33"
+  },
+  {
+    "nom": "Artigues-près-Bordeaux",
+    "slug": "artigues-pres-bordeaux",
+    "codePostal": "33370",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8592,
+    "lon": -0.4878,
+    "dep": "33"
+  },
+  {
+    "nom": "Audenge",
+    "slug": "audenge",
+    "codePostal": "33980",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.7133,
+    "lon": -0.9533,
+    "dep": "33"
+  },
+  {
+    "nom": "Le Barp",
+    "slug": "le-barp",
+    "codePostal": "33114",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.6297,
+    "lon": -0.7437,
+    "dep": "33"
+  },
+  {
+    "nom": "Bassens",
+    "slug": "bassens-33",
+    "codePostal": "33530",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9068,
+    "lon": -0.526,
+    "dep": "33"
+  },
+  {
+    "nom": "Belin-Béliet",
+    "slug": "belin-beliet",
+    "codePostal": "33830",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.4959,
+    "lon": -0.7989,
+    "dep": "33"
+  },
+  {
+    "nom": "Blaye",
+    "slug": "blaye",
+    "codePostal": "33390",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.1311,
+    "lon": -0.667,
+    "dep": "33"
+  },
+  {
+    "nom": "Cadaujac",
+    "slug": "cadaujac",
+    "codePostal": "33140",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.7468,
+    "lon": -0.5316,
+    "dep": "33"
+  },
+  {
+    "nom": "Canéjan",
+    "slug": "canejan",
+    "codePostal": "33610",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.7572,
+    "lon": -0.659,
+    "dep": "33"
+  },
+  {
+    "nom": "Carbon-Blanc",
+    "slug": "carbon-blanc",
+    "codePostal": "33560",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9019,
+    "lon": -0.5008,
+    "dep": "33"
+  },
+  {
+    "nom": "Coutras",
+    "slug": "coutras",
+    "codePostal": "33230",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.0408,
+    "lon": -0.1003,
+    "dep": "33"
+  },
+  {
+    "nom": "Izon",
+    "slug": "izon",
+    "codePostal": "33450",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9188,
+    "lon": -0.3561,
+    "dep": "33"
+  },
+  {
+    "nom": "Lacanau",
+    "slug": "lacanau",
+    "codePostal": "33680",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9879,
+    "lon": -1.096,
+    "dep": "33"
+  },
+  {
+    "nom": "Langon",
+    "slug": "langon",
+    "codePostal": "33210",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.5355,
+    "lon": -0.2422,
+    "dep": "33"
+  },
+  {
+    "nom": "Lanton",
+    "slug": "lanton",
+    "codePostal": "33138",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.7719,
+    "lon": -0.9799,
+    "dep": "33"
+  },
+  {
+    "nom": "Lège-Cap-Ferret",
+    "slug": "lege-cap-ferret",
+    "codePostal": "33950",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.7452,
+    "lon": -1.174,
+    "dep": "33"
+  },
+  {
+    "nom": "Lesparre-Médoc",
+    "slug": "lesparre-medoc",
+    "codePostal": "33340",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.2796,
+    "lon": -0.9235,
+    "dep": "33"
+  },
+  {
+    "nom": "Ludon-Médoc",
+    "slug": "ludon-medoc",
+    "codePostal": "33290",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9814,
+    "lon": -0.5903,
+    "dep": "33"
+  },
+  {
+    "nom": "Martignas-sur-Jalle",
+    "slug": "martignas-sur-jalle",
+    "codePostal": "33127",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8451,
+    "lon": -0.8006,
+    "dep": "33"
+  },
+  {
+    "nom": "Pauillac",
+    "slug": "pauillac",
+    "codePostal": "33250",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.1983,
+    "lon": -0.755,
+    "dep": "33"
+  },
+  {
+    "nom": "Bon-Encontre",
+    "slug": "bon-encontre",
+    "codePostal": "47240",
+    "departement": "Lot-et-Garonne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.2089,
+    "lon": 0.6906,
+    "dep": "47"
+  },
+  {
+    "nom": "Foulayronnes",
+    "slug": "foulayronnes",
+    "codePostal": "47510",
+    "departement": "Lot-et-Garonne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.2562,
+    "lon": 0.6426,
+    "dep": "47"
+  },
+  {
+    "nom": "Nérac",
+    "slug": "nerac",
+    "codePostal": "47600",
+    "departement": "Lot-et-Garonne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.1339,
+    "lon": 0.347,
+    "dep": "47"
+  },
+  {
+    "nom": "Le Passage",
+    "slug": "le-passage",
+    "codePostal": "47520",
+    "departement": "Lot-et-Garonne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.1898,
+    "lon": 0.5873,
+    "dep": "47"
+  },
+  {
+    "nom": "Sainte-Livrade-sur-Lot",
+    "slug": "sainte-livrade-sur-lot",
+    "codePostal": "47110",
+    "departement": "Lot-et-Garonne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.4064,
+    "lon": 0.6005,
+    "dep": "47"
+  },
+  {
+    "nom": "Bidart",
+    "slug": "bidart",
+    "codePostal": "64210",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.4385,
+    "lon": -1.5754,
+    "dep": "64"
+  },
+  {
+    "nom": "Boucau",
+    "slug": "boucau",
+    "codePostal": "64340",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.5259,
+    "lon": -1.4814,
+    "dep": "64"
+  },
+  {
+    "nom": "Cambo-les-Bains",
+    "slug": "cambo-les-bains",
+    "codePostal": "64250",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3622,
+    "lon": -1.3886,
+    "dep": "64"
+  },
+  {
+    "nom": "Ciboure",
+    "slug": "ciboure",
+    "codePostal": "64500",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3764,
+    "lon": -1.6661,
+    "dep": "64"
+  },
+  {
+    "nom": "Gan",
+    "slug": "gan",
+    "codePostal": "64290",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.2074,
+    "lon": -0.4096,
+    "dep": "64"
+  },
+  {
+    "nom": "Hasparren",
+    "slug": "hasparren",
+    "codePostal": "64240",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3951,
+    "lon": -1.3196,
+    "dep": "64"
+  },
+  {
+    "nom": "Idron",
+    "slug": "idron",
+    "codePostal": "64320",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3008,
+    "lon": -0.3078,
+    "dep": "64"
+  },
+  {
+    "nom": "Jurançon",
+    "slug": "jurancon",
+    "codePostal": "64110",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.2716,
+    "lon": -0.4117,
+    "dep": "64"
+  },
+  {
+    "nom": "Mouguerre",
+    "slug": "mouguerre",
+    "codePostal": "64990",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.4588,
+    "lon": -1.4057,
+    "dep": "64"
+  },
+  {
+    "nom": "Saint-Pée-sur-Nivelle",
+    "slug": "saint-pee-sur-nivelle",
+    "codePostal": "64310",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3469,
+    "lon": -1.5605,
+    "dep": "64"
+  },
+  {
+    "nom": "Fosses",
+    "slug": "fosses",
+    "codePostal": "95470",
+    "departement": "Val-d'Oise",
+    "region": "Île-de-France",
+    "lat": 49.1003,
+    "lon": 2.5043,
+    "dep": "95"
+  },
+  {
+    "nom": "Persan",
+    "slug": "persan",
+    "codePostal": "95340",
+    "departement": "Val-d'Oise",
+    "region": "Île-de-France",
+    "lat": 49.1479,
+    "lon": 2.2672,
+    "dep": "95"
+  },
+  {
+    "nom": "Saint-Flour",
+    "slug": "saint-flour",
+    "codePostal": "15100",
+    "departement": "Cantal",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.0251,
+    "lon": 3.073,
+    "dep": "15"
+  },
+  {
+    "nom": "Chavanoz",
+    "slug": "chavanoz",
+    "codePostal": "38230",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7696,
+    "lon": 5.1719,
+    "dep": "38"
+  },
+  {
+    "nom": "Chasse-sur-Rhône",
+    "slug": "chasse-sur-rhone",
+    "codePostal": "38670",
+    "departement": "Isère",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.578,
+    "lon": 4.8129,
+    "dep": "38"
+  },
+  {
+    "nom": "Challes-les-Eaux",
+    "slug": "challes-les-eaux",
+    "codePostal": "73190",
+    "departement": "Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5498,
+    "lon": 5.9829,
+    "dep": "73"
+  },
+  {
+    "nom": "Cognin",
+    "slug": "cognin",
+    "codePostal": "73160",
+    "departement": "Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5602,
+    "lon": 5.8915,
+    "dep": "73"
+  },
+  {
+    "nom": "La Ravoire",
+    "slug": "la-ravoire",
+    "codePostal": "73490",
+    "departement": "Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.5552,
+    "lon": 5.9579,
+    "dep": "73"
+  },
+  {
+    "nom": "Saint-Alban-Leysse",
+    "slug": "saint-alban-leysse",
+    "codePostal": "73230",
+    "departement": "Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.59,
+    "lon": 5.9585,
+    "dep": "73"
+  },
+  {
+    "nom": "Ugine",
+    "slug": "ugine",
+    "codePostal": "73400",
+    "departement": "Savoie",
+    "region": "Auvergne-Rhône-Alpes",
+    "lat": 45.7796,
+    "lon": 6.425,
+    "dep": "73"
+  },
+  {
+    "nom": "Saint-Aubin-de-Médoc",
+    "slug": "saint-aubin-de-medoc",
+    "codePostal": "33160",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9343,
+    "lon": -0.7478,
+    "dep": "33"
+  },
+  {
+    "nom": "Saint-Denis-de-Pile",
+    "slug": "saint-denis-de-pile",
+    "codePostal": "33910",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9893,
+    "lon": -0.1833,
+    "dep": "33"
+  },
+  {
+    "nom": "Saint-Jean-d'Illac",
+    "slug": "saint-jean-d-illac",
+    "codePostal": "33127",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.7973,
+    "lon": -0.8156,
+    "dep": "33"
+  },
+  {
+    "nom": "Saint-Pierre-d'Irube",
+    "slug": "saint-pierre-d-irube",
+    "codePostal": "64990",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.4628,
+    "lon": -1.4447,
+    "dep": "64"
+  },
+  {
+    "nom": "Ustaritz",
+    "slug": "ustaritz",
+    "codePostal": "64480",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.4019,
+    "lon": -1.4704,
+    "dep": "64"
+  },
+  {
+    "nom": "Lavelanet",
+    "slug": "lavelanet",
+    "codePostal": "09300",
+    "departement": "Ariège",
+    "region": "Occitanie",
+    "lat": 42.934,
+    "lon": 1.8466,
+    "dep": "09"
+  },
+  {
+    "nom": "Saint-Girons",
+    "slug": "saint-girons",
+    "codePostal": "09200",
+    "departement": "Ariège",
+    "region": "Occitanie",
+    "lat": 42.9681,
+    "lon": 1.1591,
+    "dep": "09"
+  },
+  {
+    "nom": "Coursan",
+    "slug": "coursan",
+    "codePostal": "11110",
+    "departement": "Aude",
+    "region": "Occitanie",
+    "lat": 43.2458,
+    "lon": 3.062,
+    "dep": "11"
   }
 ]
