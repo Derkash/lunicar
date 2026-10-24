@@ -1272,6 +1272,7 @@ body.modal-ouvert { overflow: hidden; }
                     <label class="f">Haut sous le 2e seuil (€)<input class="in num" name="fourchette_haut2" type="number" min="0" step="50"></label>
                     <label class="f">Au-delà : + (%)<input class="in num" name="fourchette_pct" type="number" min="0" step="1"></label>
                     <label class="f">Au-delà : au moins + (€)<input class="in num" name="fourchette_min_eur" type="number" min="0" step="50"></label>
+                    <label class="f">Vendeur sous la base : son prix − (€)<input class="in num" name="fourchette_souhait_moins" type="number" min="0" step="50"></label>
                     <p class="sub" style="grid-column:1/-1;margin:6px 0 0"><b>Mode particulier</b></p>
                     <label class="f">Marge visée (%)<input class="in num" name="marge_pct" type="number" min="0" step="1"></label>
                     <label class="f">Marge minimale (€)<input class="in num" name="marge_min" type="number" min="0" step="50"></label>
@@ -1611,11 +1612,15 @@ body.modal-ouvert { overflow: hidden; }
     // Fourchette annoncée au client (même règle que lib/fourchette.js) : bas = prix max d'achat retenu.
     function fourchette(d) {
         const base = Math.round(prixMax(d)); if (!base) return null;
-        const r = { fourchette_seuil1: 500, fourchette_haut1: 1000, fourchette_seuil2: 800, fourchette_haut2: 1200, fourchette_pct: 20, fourchette_min_eur: 300, ...(((d.estimation || {}).reglages) || {}), ...reglagesFourchette };
+        const r = { fourchette_seuil1: 500, fourchette_haut1: 1000, fourchette_seuil2: 800, fourchette_haut2: 1200, fourchette_pct: 20, fourchette_min_eur: 300, fourchette_souhait_moins: 300, ...(((d.estimation || {}).reglages) || {}), ...reglagesFourchette };
         const N = Number;
-        const haut = base < N(r.fourchette_seuil1) ? N(r.fourchette_haut1) : base < N(r.fourchette_seuil2) ? N(r.fourchette_haut2)
-            : Math.max(N(r.fourchette_haut2), Math.ceil((base + Math.max(N(r.fourchette_min_eur), base * N(r.fourchette_pct) / 100)) / 50) * 50);
-        return { min: base, max: Math.max(haut, base) };
+        const haut = m => m < N(r.fourchette_seuil1) ? N(r.fourchette_haut1) : m < N(r.fourchette_seuil2) ? N(r.fourchette_haut2)
+            : Math.max(N(r.fourchette_haut2), Math.ceil((m + Math.max(N(r.fourchette_min_eur), m * N(r.fourchette_pct) / 100)) / 50) * 50);
+        // Le vendeur demande moins que notre base : le bas devient son prix − 300 € (arrondi à 50 €).
+        const souhaite = N(String((d.data || {}).prix_souhaite || '').replace(/\D/g, '')) || 0;
+        let min = base, ajustee = false;
+        if (souhaite >= 100 && souhaite < base) { min = Math.max(50, Math.floor((souhaite - N(r.fourchette_souhait_moins)) / 50) * 50); ajustee = true; }
+        return { min, max: Math.max(haut(min), min), base, ajustee, souhaite };
     }
     const texteFourchette = f => `Notre estimation pour votre voiture : entre ${eur(f.min)} et ${eur(f.max)}.\n\nSous réserve que les informations que vous nous avez transmises soient exactes, nous nous engageons à vous proposer au moins ${eur(f.min)}.\n\nL'écart entre ces deux montants dépend de l'état général de la voiture, que notre technicien vérifie lors de l'inspection à votre adresse : entretien, carrosserie, intérieur, pneus et fonctionnement mécanique. Plus la voiture est soignée, plus le prix se rapproche du haut de la fourchette.`;
     const origineMax = d => Number((d.suivi || {}).prix_manuel_max) ? 'retenu à la main' : maxRecalcule(d) ? 'recalculé avec votre prix de vente' : 'calculé par l\'estimation';
@@ -2880,7 +2885,7 @@ body.modal-ouvert { overflow: hidden; }
                     <div class="dec-max"><span>Prix max d'achat</span><b class="num">${enCours ? '<span class="spin"></span>' : prixMax(d) ? eur(prixMax(d)) : '—'}</b><small>${enCours ? 'estimation en cours (' + ESTIM_DUREE + ')' : prixMax(d) ? origineMax(d) : 'pas encore estimé'}</small></div>
                     ${scoreDe(d) != null ? `<div class="dec-score">${badgeScore(d, true)}<small>${esc({ acheter: 'à acheter', prix_serre: 'à prix serré', eviter: 'à éviter' }[(e.attractivite || {}).verdict] || '')}${(e.attractivite || {}).delai_revente ? ' · revente ' + esc({ rapide: 'rapide', moyen: 'moyenne', lent: 'lente' }[e.attractivite.delai_revente] || '') : ''}</small></div>` : ''}
                 </div>
-                ${fourchette(d) ? (f => `<div class="fourchette"><div><span>Fourchette client</span><b class="num">${eur(f.min)} – ${eur(f.max)}</b><small>engagement : au moins ${eur(f.min)} si les infos sont exactes</small></div><button class="btn btn-s" type="button" id="copieFourchette">Copier le texte client</button></div>`)(fourchette(d)) : ''}
+                ${fourchette(d) ? (f => `<div class="fourchette"><div><span>Fourchette client</span><b class="num">${eur(f.min)} – ${eur(f.max)}</b><small>engagement : au moins ${eur(f.min)} si les infos sont exactes${f.ajustee ? ` · ajustée : le vendeur demande ${eur(f.souhaite)} (base calculée ${eur(f.base)})` : ''}</small></div><button class="btn btn-s" type="button" id="copieFourchette">Copier le texte client</button></div>`)(fourchette(d)) : ''}
                 <div class="dec-grille">
                     <div><span>Le vendeur veut</span><b class="num">${x.prix_souhaite ? eur(x.prix_souhaite) : '—'}</b>${x.prix_souhaite && prixMax(d) ? (ec => `<small class="${ec > 0 ? 'neg' : 'pos'}">${ec > 0 ? eur(ec) + ' au-dessus du max' : ec < 0 ? eur(-ec) + ' sous le max' : 'pile le max'}</small>`)(Number(x.prix_souhaite) - prixMax(d)) : '<small>&nbsp;</small>'}</div>
                     <div><span>Revente estimée</span><b class="num">${eur(s.prix_manuel_vente || p.vente_estime)}</b><small>${s.prix_manuel_vente ? 'retenue à la main' : e && e.calcul && e.calcul.mode === 'marchand' ? 'aux professionnels' : e ? esc({ reparer_revendre: 'après remise en état', en_l_etat_marchand: 'en l\'état, marchand', export: 'export', pieces: 'pour pièces' }[e.canal_revente] || '') : '&nbsp;'}</small></div>
