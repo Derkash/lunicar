@@ -1294,7 +1294,7 @@ body.modal-ouvert { overflow: hidden; }
                     <label class="f">Ticket trajet local (€)<input class="in num" name="train_local_eur" type="number" step="0.5" min="0"></label>
                     <div style="align-self:end"><button class="btn btn-p">Enregistrer</button></div>
                 </form>
-                <p class="sub" style="margin:12px 0 0">Les nouvelles valeurs s'appliquent aux prochaines estimations. <button class="btn btn-s" id="recalcBtn" type="button">Recalculer toutes les estimations existantes</button> <span id="recalcEtat"></span></p>
+                <p class="sub" style="margin:12px 0 0">Les nouvelles valeurs s'appliquent uniquement aux prochaines estimations.<br>Les estimations déjà faites gardent les règles en vigueur à leur date ; relancez une estimation pour lui appliquer les nouvelles.</p>
             </div>
             <div class="card">
                 <h3>Reprendre les anciennes demandes depuis Gmail</h3>
@@ -1608,11 +1608,10 @@ body.modal-ouvert { overflow: hidden; }
         return Math.max(0, Math.floor(brut / arr) * arr);
     }
     const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || maxRecalcule(d) || ((d.estimation || {}).prix || {}).max_achat || 0;
-    let reglagesFourchette = {};
     // Fourchette annoncée au client (même règle que lib/fourchette.js) : bas = prix max d'achat retenu.
     function fourchette(d) {
         const base = Math.round(prixMax(d)); if (!base) return null;
-        const r = { fourchette_seuil1: 500, fourchette_haut1: 1000, fourchette_seuil2: 800, fourchette_haut2: 1200, fourchette_pct: 20, fourchette_min_eur: 300, fourchette_souhait_moins: 300, ...(((d.estimation || {}).reglages) || {}), ...reglagesFourchette };
+        const r = { fourchette_seuil1: 500, fourchette_haut1: 1000, fourchette_seuil2: 800, fourchette_haut2: 1200, fourchette_pct: 20, fourchette_min_eur: 300, fourchette_souhait_moins: 300, ...(((d.estimation || {}).reglages) || {}) }; // règles figées au moment de l'estimation
         const N = Number;
         const haut = m => m < N(r.fourchette_seuil1) ? N(r.fourchette_haut1) : m < N(r.fourchette_seuil2) ? N(r.fourchette_haut2)
             : Math.max(N(r.fourchette_haut2), Math.ceil((m + Math.max(N(r.fourchette_min_eur), m * N(r.fourchette_pct) / 100)) / 50) * 50);
@@ -3794,18 +3793,12 @@ body.modal-ouvert { overflow: hidden; }
     async function reglages() {
         const r = await api('/api/admin/reglages');
         const f = $('#regForm'); Object.entries(r).forEach(([k, v]) => { if (f.elements[k]) f.elements[k].value = v; });
-        reglagesFourchette = Object.fromEntries(Object.entries(r).filter(([k]) => k.startsWith('fourchette_')));
         etat = await api('/api/admin/etat'); etatImport();
     }
     $('#regForm').addEventListener('submit', async e => {
         e.preventDefault();
         await api('/api/admin/reglages', { method: 'PUT', body: JSON.stringify(Object.fromEntries(new FormData(e.target))) });
         toast('Réglages enregistrés');
-    });
-    $('#recalcBtn').addEventListener('click', async () => {
-        $('#recalcEtat').innerHTML = '<span class="spin"></span> recalcul…';
-        try { const r = await api('/api/admin/estimations/recalculer', { method: 'POST' }); $('#recalcEtat').textContent = `${r.recalculees} estimations recalculées (mode ${r.mode}).`; }
-        catch (e) { $('#recalcEtat').textContent = e.message; }
     });
     function etatImport() {
         const i = etat.import_gmail || {}, b = i.dernier;
