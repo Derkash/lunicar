@@ -19868,5 +19868,435 @@
     "lat": 49.0503,
     "lon": -1.0409,
     "dep": "50"
+  },
+  {
+    "nom": "Cocheren",
+    "slug": "cocheren",
+    "codePostal": "57800",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1412,
+    "lon": 6.8491,
+    "dep": "57"
+  },
+  {
+    "nom": "Grosbliederstroff",
+    "slug": "grosbliederstroff",
+    "codePostal": "57520",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1584,
+    "lon": 7.0214,
+    "dep": "57"
+  },
+  {
+    "nom": "Morhange",
+    "slug": "morhange",
+    "codePostal": "57340",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 48.928,
+    "lon": 6.6388,
+    "dep": "57"
+  },
+  {
+    "nom": "Carling",
+    "slug": "carling",
+    "codePostal": "57490",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1675,
+    "lon": 6.7139,
+    "dep": "57"
+  },
+  {
+    "nom": "Bousse",
+    "slug": "bousse",
+    "codePostal": "57310",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2755,
+    "lon": 6.2052,
+    "dep": "57"
+  },
+  {
+    "nom": "Fontoy",
+    "slug": "fontoy",
+    "codePostal": "57650",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.3583,
+    "lon": 5.996,
+    "dep": "57"
+  },
+  {
+    "nom": "Spicheren",
+    "slug": "spicheren",
+    "codePostal": "57350",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1947,
+    "lon": 6.9706,
+    "dep": "57"
+  },
+  {
+    "nom": "Manom",
+    "slug": "manom",
+    "codePostal": "57100",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.3793,
+    "lon": 6.1726,
+    "dep": "57"
+  },
+  {
+    "nom": "Gandrange",
+    "slug": "gandrange",
+    "codePostal": "57175",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.2723,
+    "lon": 6.1353,
+    "dep": "57"
+  },
+  {
+    "nom": "Puttelange-aux-Lacs",
+    "slug": "puttelange-aux-lacs",
+    "codePostal": "57510",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.0537,
+    "lon": 6.9178,
+    "dep": "57"
+  },
+  {
+    "nom": "Vittel",
+    "slug": "vittel",
+    "codePostal": "88800",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.2062,
+    "lon": 5.9552,
+    "dep": "88"
+  },
+  {
+    "nom": "Mirecourt",
+    "slug": "mirecourt",
+    "codePostal": "88500",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.2937,
+    "lon": 6.1187,
+    "dep": "88"
+  },
+  {
+    "nom": "Charmes",
+    "slug": "charmes",
+    "codePostal": "88130",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.383,
+    "lon": 6.3225,
+    "dep": "88"
+  },
+  {
+    "nom": "Courcelles-Chaussy",
+    "slug": "courcelles-chaussy",
+    "codePostal": "57530",
+    "departement": "Moselle",
+    "region": "Grand Est",
+    "lat": 49.1206,
+    "lon": 6.3946,
+    "dep": "57"
+  },
+  {
+    "nom": "Saint-Nabord",
+    "slug": "saint-nabord",
+    "codePostal": "88200",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.0423,
+    "lon": 6.5608,
+    "dep": "88"
+  },
+  {
+    "nom": "Le Val-d'Ajol",
+    "slug": "le-val-d-ajol",
+    "codePostal": "88340",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 47.9387,
+    "lon": 6.5128,
+    "dep": "88"
+  },
+  {
+    "nom": "La Bresse",
+    "slug": "la-bresse",
+    "codePostal": "88250",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.0211,
+    "lon": 6.9202,
+    "dep": "88"
+  },
+  {
+    "nom": "Vagney",
+    "slug": "vagney",
+    "codePostal": "88120",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 48.0135,
+    "lon": 6.727,
+    "dep": "88"
+  },
+  {
+    "nom": "Guesnain",
+    "slug": "guesnain",
+    "codePostal": "59287",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3486,
+    "lon": 3.148,
+    "dep": "59"
+  },
+  {
+    "nom": "Auberchicourt",
+    "slug": "auberchicourt",
+    "codePostal": "59165",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3308,
+    "lon": 3.227,
+    "dep": "59"
+  },
+  {
+    "nom": "Crespin",
+    "slug": "crespin",
+    "codePostal": "59154",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.4211,
+    "lon": 3.6507,
+    "dep": "59"
+  },
+  {
+    "nom": "Marchiennes",
+    "slug": "marchiennes",
+    "codePostal": "59870",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.4128,
+    "lon": 3.2482,
+    "dep": "59"
+  },
+  {
+    "nom": "Montigny-en-Ostrevent",
+    "slug": "montigny-en-ostrevent",
+    "codePostal": "59182",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3685,
+    "lon": 3.1833,
+    "dep": "59"
+  },
+  {
+    "nom": "Hergnies",
+    "slug": "hergnies",
+    "codePostal": "59199",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.4786,
+    "lon": 3.5278,
+    "dep": "59"
+  },
+  {
+    "nom": "Provin",
+    "slug": "provin",
+    "codePostal": "59185",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.5158,
+    "lon": 2.9107,
+    "dep": "59"
+  },
+  {
+    "nom": "Steenvoorde",
+    "slug": "steenvoorde",
+    "codePostal": "59114",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.8225,
+    "lon": 2.5762,
+    "dep": "59"
+  },
+  {
+    "nom": "Escautpont",
+    "slug": "escautpont",
+    "codePostal": "59278",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.424,
+    "lon": 3.5513,
+    "dep": "59"
+  },
+  {
+    "nom": "Bray-Dunes",
+    "slug": "bray-dunes",
+    "codePostal": "59123",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 51.0747,
+    "lon": 2.5267,
+    "dep": "59"
+  },
+  {
+    "nom": "Le Thillot",
+    "slug": "le-thillot",
+    "codePostal": "88160",
+    "departement": "Vosges",
+    "region": "Grand Est",
+    "lat": 47.8827,
+    "lon": 6.7775,
+    "dep": "88"
+  },
+  {
+    "nom": "Belleu",
+    "slug": "belleu",
+    "codePostal": "02200",
+    "departement": "Aisne",
+    "region": "Hauts-de-France",
+    "lat": 49.3597,
+    "lon": 3.3439,
+    "dep": "02"
+  },
+  {
+    "nom": "Grand-Fort-Philippe",
+    "slug": "grand-fort-philippe",
+    "codePostal": "59153",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 51.0016,
+    "lon": 2.1049,
+    "dep": "59"
+  },
+  {
+    "nom": "Sequedin",
+    "slug": "sequedin",
+    "codePostal": "59320",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.6252,
+    "lon": 2.9887,
+    "dep": "59"
+  },
+  {
+    "nom": "Guise",
+    "slug": "guise",
+    "codePostal": "02120",
+    "departement": "Aisne",
+    "region": "Hauts-de-France",
+    "lat": 49.8973,
+    "lon": 3.6229,
+    "dep": "02"
+  },
+  {
+    "nom": "Thumeries",
+    "slug": "thumeries",
+    "codePostal": "59239",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.4724,
+    "lon": 3.0656,
+    "dep": "59"
+  },
+  {
+    "nom": "Hérin",
+    "slug": "herin",
+    "codePostal": "59195",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3593,
+    "lon": 3.4489,
+    "dep": "59"
+  },
+  {
+    "nom": "Gondecourt",
+    "slug": "gondecourt",
+    "codePostal": "59147",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.5474,
+    "lon": 2.9816,
+    "dep": "59"
+  },
+  {
+    "nom": "Solesmes",
+    "slug": "solesmes",
+    "codePostal": "59730",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.173,
+    "lon": 3.5144,
+    "dep": "59"
+  },
+  {
+    "nom": "Ghyvelde",
+    "slug": "ghyvelde",
+    "codePostal": "59122",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 51.0331,
+    "lon": 2.5213,
+    "dep": "59"
+  },
+  {
+    "nom": "Bouchain",
+    "slug": "bouchain",
+    "codePostal": "59111",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.2785,
+    "lon": 3.3164,
+    "dep": "59"
+  },
+  {
+    "nom": "Abscon",
+    "slug": "abscon",
+    "codePostal": "59215",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.3293,
+    "lon": 3.2993,
+    "dep": "59"
+  },
+  {
+    "nom": "Leffrinckoucke",
+    "slug": "leffrinckoucke",
+    "codePostal": "59495",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 51.046,
+    "lon": 2.4515,
+    "dep": "59"
+  },
+  {
+    "nom": "Avesnes-sur-Helpe",
+    "slug": "avesnes-sur-helpe",
+    "codePostal": "59440",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.1224,
+    "lon": 3.9269,
+    "dep": "59"
+  },
+  {
+    "nom": "Neuville-Saint-Rémy",
+    "slug": "neuville-saint-remy",
+    "codePostal": "59554",
+    "departement": "Nord",
+    "region": "Hauts-de-France",
+    "lat": 50.187,
+    "lon": 3.2202,
+    "dep": "59"
   }
 ]
