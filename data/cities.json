@@ -30658,5 +30658,675 @@
     "lat": 45.1577,
     "lon": 0.88,
     "dep": "24"
+  },
+  {
+    "nom": "Loctudy",
+    "slug": "loctudy",
+    "codePostal": "29750",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 47.8246,
+    "lon": -4.1852,
+    "dep": "29"
+  },
+  {
+    "nom": "Loperhet",
+    "slug": "loperhet",
+    "codePostal": "29470",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.3779,
+    "lon": -4.3142,
+    "dep": "29"
+  },
+  {
+    "nom": "Melgven",
+    "slug": "melgven",
+    "codePostal": "29140",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 47.9084,
+    "lon": -3.8433,
+    "dep": "29"
+  },
+  {
+    "nom": "Mellac",
+    "slug": "mellac",
+    "codePostal": "29300",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 47.8984,
+    "lon": -3.5835,
+    "dep": "29"
+  },
+  {
+    "nom": "Pleuven",
+    "slug": "pleuven",
+    "codePostal": "29170",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 47.9132,
+    "lon": -4.049,
+    "dep": "29"
+  },
+  {
+    "nom": "Pleyben",
+    "slug": "pleyben",
+    "codePostal": "29190",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.2418,
+    "lon": -3.9783,
+    "dep": "29"
+  },
+  {
+    "nom": "Pleyber-Christ",
+    "slug": "pleyber-christ",
+    "codePostal": "29410",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.5081,
+    "lon": -3.8754,
+    "dep": "29"
+  },
+  {
+    "nom": "Plobannalec-Lesconil",
+    "slug": "plobannalec-lesconil",
+    "codePostal": "29740",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 47.8209,
+    "lon": -4.2282,
+    "dep": "29"
+  },
+  {
+    "nom": "Plogonnec",
+    "slug": "plogonnec",
+    "codePostal": "29180",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.0694,
+    "lon": -4.1759,
+    "dep": "29"
+  },
+  {
+    "nom": "Plomelin",
+    "slug": "plomelin",
+    "codePostal": "29700",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 47.9313,
+    "lon": -4.1499,
+    "dep": "29"
+  },
+  {
+    "nom": "Plomeur",
+    "slug": "plomeur",
+    "codePostal": "29120",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 47.8377,
+    "lon": -4.3007,
+    "dep": "29"
+  },
+  {
+    "nom": "Plouarzel",
+    "slug": "plouarzel",
+    "codePostal": "29810",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.4397,
+    "lon": -4.7236,
+    "dep": "29"
+  },
+  {
+    "nom": "Ploudaniel",
+    "slug": "ploudaniel",
+    "codePostal": "29260",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.5205,
+    "lon": -4.3095,
+    "dep": "29"
+  },
+  {
+    "nom": "Plouédern",
+    "slug": "plouedern",
+    "codePostal": "29800",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.4829,
+    "lon": -4.2552,
+    "dep": "29"
+  },
+  {
+    "nom": "Plouescat",
+    "slug": "plouescat",
+    "codePostal": "29430",
+    "departement": "Finistère",
+    "region": "Bretagne",
+    "lat": 48.6676,
+    "lon": -4.1851,
+    "dep": "29"
+  },
+  {
+    "nom": "Erdeven",
+    "slug": "erdeven",
+    "codePostal": "56410",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.6358,
+    "lon": -3.1568,
+    "dep": "56"
+  },
+  {
+    "nom": "Gourin",
+    "slug": "gourin",
+    "codePostal": "56110",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 48.1311,
+    "lon": -3.5996,
+    "dep": "56"
+  },
+  {
+    "nom": "Landévant",
+    "slug": "landevant",
+    "codePostal": "56690",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.7715,
+    "lon": -3.1161,
+    "dep": "56"
+  },
+  {
+    "nom": "Locmiquélic",
+    "slug": "locmiquelic",
+    "codePostal": "56570",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.7303,
+    "lon": -3.326,
+    "dep": "56"
+  },
+  {
+    "nom": "Locoal-Mendon",
+    "slug": "locoal-mendon",
+    "codePostal": "56550",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.6972,
+    "lon": -3.1084,
+    "dep": "56"
+  },
+  {
+    "nom": "Merlevenez",
+    "slug": "merlevenez",
+    "codePostal": "56700",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.7302,
+    "lon": -3.2429,
+    "dep": "56"
+  },
+  {
+    "nom": "Pluméliau-Bieuzy",
+    "slug": "plumeliau-bieuzy",
+    "codePostal": "56310",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.9726,
+    "lon": -2.9896,
+    "dep": "56"
+  },
+  {
+    "nom": "Pont-Scorff",
+    "slug": "pont-scorff",
+    "codePostal": "56620",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.8385,
+    "lon": -3.422,
+    "dep": "56"
+  },
+  {
+    "nom": "Quiberon",
+    "slug": "quiberon",
+    "codePostal": "56170",
+    "departement": "Morbihan",
+    "region": "Bretagne",
+    "lat": 47.4848,
+    "lon": -3.109,
+    "dep": "56"
+  },
+  {
+    "nom": "Village-Neuf",
+    "slug": "village-neuf",
+    "codePostal": "68128",
+    "departement": "Haut-Rhin",
+    "region": "Grand Est",
+    "lat": 47.6118,
+    "lon": 7.5693,
+    "dep": "68"
+  },
+  {
+    "nom": "Barbezieux-Saint-Hilaire",
+    "slug": "barbezieux-saint-hilaire",
+    "codePostal": "16300",
+    "departement": "Charente",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.4811,
+    "lon": -0.1554,
+    "dep": "16"
+  },
+  {
+    "nom": "Châteaubernard",
+    "slug": "chateaubernard",
+    "codePostal": "16100",
+    "departement": "Charente",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.6753,
+    "lon": -0.3168,
+    "dep": "16"
+  },
+  {
+    "nom": "Châteauneuf-sur-Charente",
+    "slug": "chateauneuf-sur-charente",
+    "codePostal": "16120",
+    "departement": "Charente",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.5968,
+    "lon": -0.0559,
+    "dep": "16"
+  },
+  {
+    "nom": "Val-de-Cognac",
+    "slug": "val-de-cognac",
+    "codePostal": "16370",
+    "departement": "Charente",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.748,
+    "lon": -0.374,
+    "dep": "16"
+  },
+  {
+    "nom": "Jarnac",
+    "slug": "jarnac",
+    "codePostal": "16200",
+    "departement": "Charente",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.6877,
+    "lon": -0.1694,
+    "dep": "16"
+  },
+  {
+    "nom": "Roullet-Saint-Estèphe",
+    "slug": "roullet-saint-estephe",
+    "codePostal": "16440",
+    "departement": "Charente",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.5776,
+    "lon": 0.0312,
+    "dep": "16"
+  },
+  {
+    "nom": "Angoulins",
+    "slug": "angoulins",
+    "codePostal": "17690",
+    "departement": "Charente-Maritime",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 46.1083,
+    "lon": -1.11,
+    "dep": "17"
+  },
+  {
+    "nom": "Arvert",
+    "slug": "arvert",
+    "codePostal": "17530",
+    "departement": "Charente-Maritime",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.7451,
+    "lon": -1.1245,
+    "dep": "17"
+  },
+  {
+    "nom": "Bourcefranc-le-Chapus",
+    "slug": "bourcefranc-le-chapus",
+    "codePostal": "17560",
+    "departement": "Charente-Maritime",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.8455,
+    "lon": -1.1369,
+    "dep": "17"
+  },
+  {
+    "nom": "Breuillet",
+    "slug": "breuillet-17",
+    "codePostal": "17920",
+    "departement": "Charente-Maritime",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.7005,
+    "lon": -1.054,
+    "dep": "17"
+  },
+  {
+    "nom": "Chaniers",
+    "slug": "chaniers",
+    "codePostal": "17610",
+    "departement": "Charente-Maritime",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.734,
+    "lon": -0.5566,
+    "dep": "17"
+  },
+  {
+    "nom": "Le Château-d'Oléron",
+    "slug": "le-chateau-d-oleron",
+    "codePostal": "17480",
+    "departement": "Charente-Maritime",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.8786,
+    "lon": -1.2182,
+    "dep": "17"
+  },
+  {
+    "nom": "Dolus-d'Oléron",
+    "slug": "dolus-d-oleron",
+    "codePostal": "17550",
+    "departement": "Charente-Maritime",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.9069,
+    "lon": -1.2583,
+    "dep": "17"
+  },
+  {
+    "nom": "Échillais",
+    "slug": "echillais",
+    "codePostal": "17620",
+    "departement": "Charente-Maritime",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.9022,
+    "lon": -0.9554,
+    "dep": "17"
+  },
+  {
+    "nom": "Brantôme en Périgord",
+    "slug": "brantome-en-perigord",
+    "codePostal": "24310",
+    "departement": "Dordogne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.3756,
+    "lon": 0.6596,
+    "dep": "24"
+  },
+  {
+    "nom": "Champcevinel",
+    "slug": "champcevinel",
+    "codePostal": "24750",
+    "departement": "Dordogne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.2198,
+    "lon": 0.7227,
+    "dep": "24"
+  },
+  {
+    "nom": "Chancelade",
+    "slug": "chancelade",
+    "codePostal": "24650",
+    "departement": "Dordogne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.2107,
+    "lon": 0.6539,
+    "dep": "24"
+  },
+  {
+    "nom": "Marsac-sur-l'Isle",
+    "slug": "marsac-sur-l-isle",
+    "codePostal": "24430",
+    "departement": "Dordogne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.1816,
+    "lon": 0.6475,
+    "dep": "24"
+  },
+  {
+    "nom": "Neuvic",
+    "slug": "neuvic",
+    "codePostal": "24190",
+    "departement": "Dordogne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.0889,
+    "lon": 0.4728,
+    "dep": "24"
+  },
+  {
+    "nom": "Sanilhac",
+    "slug": "sanilhac",
+    "codePostal": "24380",
+    "departement": "Dordogne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.1079,
+    "lon": 0.7435,
+    "dep": "24"
+  },
+  {
+    "nom": "Prigonrieux",
+    "slug": "prigonrieux",
+    "codePostal": "24130",
+    "departement": "Dordogne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8689,
+    "lon": 0.407,
+    "dep": "24"
+  },
+  {
+    "nom": "Ribérac",
+    "slug": "riberac",
+    "codePostal": "24600",
+    "departement": "Dordogne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.2428,
+    "lon": 0.3402,
+    "dep": "24"
+  },
+  {
+    "nom": "La Roche-Chalais",
+    "slug": "la-roche-chalais",
+    "codePostal": "24490",
+    "departement": "Dordogne",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.1292,
+    "lon": 0.0494,
+    "dep": "24"
+  },
+  {
+    "nom": "Ambès",
+    "slug": "ambes",
+    "codePostal": "33810",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.0123,
+    "lon": -0.5486,
+    "dep": "33"
+  },
+  {
+    "nom": "Le Porge",
+    "slug": "le-porge",
+    "codePostal": "33680",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.8649,
+    "lon": -1.1351,
+    "dep": "33"
+  },
+  {
+    "nom": "La Réole",
+    "slug": "la-reole",
+    "codePostal": "33190",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.5869,
+    "lon": -0.0447,
+    "dep": "33"
+  },
+  {
+    "nom": "Sadirac",
+    "slug": "sadirac",
+    "codePostal": "33670",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.787,
+    "lon": -0.3925,
+    "dep": "33"
+  },
+  {
+    "nom": "Saint-Ciers-sur-Gironde",
+    "slug": "saint-ciers-sur-gironde",
+    "codePostal": "33820",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.2947,
+    "lon": -0.6648,
+    "dep": "33"
+  },
+  {
+    "nom": "Sainte-Eulalie",
+    "slug": "sainte-eulalie",
+    "codePostal": "33560",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9027,
+    "lon": -0.48,
+    "dep": "33"
+  },
+  {
+    "nom": "Saint-Laurent-Médoc",
+    "slug": "saint-laurent-medoc",
+    "codePostal": "33112",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.1402,
+    "lon": -0.8557,
+    "dep": "33"
+  },
+  {
+    "nom": "Sainte-Hélène",
+    "slug": "sainte-helene",
+    "codePostal": "33480",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.9653,
+    "lon": -0.9071,
+    "dep": "33"
+  },
+  {
+    "nom": "Saint-Médard-d'Eyrans",
+    "slug": "saint-medard-d-eyrans",
+    "codePostal": "33650",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.714,
+    "lon": -0.5125,
+    "dep": "33"
+  },
+  {
+    "nom": "Saint-Selve",
+    "slug": "saint-selve",
+    "codePostal": "33650",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 44.6574,
+    "lon": -0.4726,
+    "dep": "33"
+  },
+  {
+    "nom": "Saint-Seurin-sur-l'Isle",
+    "slug": "saint-seurin-sur-l-isle",
+    "codePostal": "33660",
+    "departement": "Gironde",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 45.0093,
+    "lon": -0.004,
+    "dep": "33"
+  },
+  {
+    "nom": "Arcangues",
+    "slug": "arcangues",
+    "codePostal": "64200",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.4261,
+    "lon": -1.5079,
+    "dep": "64"
+  },
+  {
+    "nom": "Artix",
+    "slug": "artix",
+    "codePostal": "64170",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3984,
+    "lon": -0.5728,
+    "dep": "64"
+  },
+  {
+    "nom": "Ascain",
+    "slug": "ascain",
+    "codePostal": "64310",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.3383,
+    "lon": -1.6283,
+    "dep": "64"
+  },
+  {
+    "nom": "Bassussarry",
+    "slug": "bassussarry",
+    "codePostal": "64200",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.4445,
+    "lon": -1.4974,
+    "dep": "64"
+  },
+  {
+    "nom": "Bizanos",
+    "slug": "bizanos",
+    "codePostal": "64320",
+    "departement": "Pyrénées-Atlantiques",
+    "region": "Nouvelle-Aquitaine",
+    "lat": 43.2951,
+    "lon": -0.3363,
+    "dep": "64"
+  },
+  {
+    "nom": "Lespinasse",
+    "slug": "lespinasse",
+    "codePostal": "31150",
+    "departement": "Haute-Garonne",
+    "region": "Occitanie",
+    "lat": 43.7174,
+    "lon": 1.3821,
+    "dep": "31"
+  },
+  {
+    "nom": "Lherm",
+    "slug": "lherm",
+    "codePostal": "31600",
+    "departement": "Haute-Garonne",
+    "region": "Occitanie",
+    "lat": 43.4273,
+    "lon": 1.2288,
+    "dep": "31"
+  },
+  {
+    "nom": "Longages",
+    "slug": "longages",
+    "codePostal": "31410",
+    "departement": "Haute-Garonne",
+    "region": "Occitanie",
+    "lat": 43.3571,
+    "lon": 1.2114,
+    "dep": "31"
   }
 ]
