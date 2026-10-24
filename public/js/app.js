@@ -156,15 +156,22 @@
             return ok;
         };
 
-        // La carrosserie n'est demandée que si la voiture roule.
-        const roule = () => ['ok', 'soucis'].includes((form.querySelector('input[name="mecanique"]:checked') || {}).value);
-        const qCarrosserie = form.querySelector('.q[data-q="carrosserie"]');
-        const skipCarrosserie = () => {
-            const skip = !roule();
-            qCarrosserie.hidden = skip;
-            if (skip) form.querySelectorAll('input[name="carrosserie"]').forEach(i => { i.checked = false; });
-            return skip;
+        // Questions conditionnelles (data-if="champ=val1,val2") : affichées seulement si la réponse correspond.
+        const radio0 = name => (form.querySelector(`input[name="${name}"]:checked`) || {}).value || '';
+        const pertinente = q => {
+            const c = q.dataset.if;
+            if (!c) return true;
+            const [champ, vals] = c.split('=');
+            return vals.split(',').includes(radio0(champ));
         };
+        const viderQ = q => q.querySelectorAll('input[type=radio], input[type=checkbox]').forEach(i => { i.checked = false; });
+        // Réévalue les questions conditionnelles déjà atteintes après un changement de réponse.
+        const majConditions = () => qs.forEach(q => {
+            if (!q.dataset.if || !q.classList.contains('on')) return;
+            const ok = pertinente(q);
+            if (!ok && !q.hidden) { q.hidden = true; q.classList.add('done'); viderQ(q); }
+            else if (ok && q.hidden) { q.hidden = false; q.classList.remove('done'); }
+        });
 
         // Révèle la question suivante sous celle qui vient d'être remplie.
         const next = q => {
@@ -173,7 +180,8 @@
             etape = q.dataset.q;
             let i = qs.indexOf(q);
             let n = qs[i + 1];
-            if (n === qCarrosserie && skipCarrosserie()) { n.classList.add('done', 'on'); n = qs[i + 2]; }
+            while (n && n.dataset.if && !pertinente(n)) { n.hidden = true; n.classList.add('done', 'on'); viderQ(n); n = qs[qs.indexOf(n) + 1]; }
+            if (n && n.dataset.if && n.hidden) n.hidden = false;
             if (n && !n.classList.contains('on')) {
                 n.classList.add('on');
                 track('lead_question', { question: n.dataset.q, page: location.pathname });
@@ -193,14 +201,13 @@
                 q.querySelectorAll('input[name=prix]').forEach(i => { i.value = ''; });
                 next(q);
             }));
-            // Choix uniques : on avance dès la réponse (sauf « titulaire : non », qui demande un nom).
+            // Choix uniques : on avance dès la réponse (sauf « titulaire : non », qui demande un nom,
+            // et les questions à plusieurs groupes, validées par « Continuer »).
+            const plusieurs = q.querySelectorAll('.choices').length > 1;
             q.querySelectorAll('.choice input[type=radio]').forEach(el => el.addEventListener('change', () => {
                 el.closest('.choices').classList.remove('invalid');
-                if (q.dataset.q === 'mecanique' && qCarrosserie.classList.contains('on')) {
-                    const skip = skipCarrosserie();
-                    qCarrosserie.classList.toggle('done', skip);
-                    if (!skip) { qCarrosserie.hidden = false; qCarrosserie.classList.add('on'); }
-                }
+                majConditions();
+                if (plusieurs) return;
                 if (q.dataset.q === 'titulaire') {
                     const sub = q.querySelector('.q-sub');
                     sub.hidden = el.value !== 'non';
@@ -327,6 +334,7 @@
         });
 
         const radio = name => (form.querySelector(`input[name="${name}"]:checked`) || {}).value || '';
+        const coches = name => Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(i => i.value);
         const collecte = () => {
             const f = form.elements;
             return {
@@ -334,6 +342,8 @@
                 plaque: f.plaque.value, vehicule: f.vehicule.value, annee: f.annee.value, kilometrage: f.kilometrage.value,
                 prix: f.prix.value, fiche: f.fiche.value,
                 mecanique: radio('mecanique'), carrosserie: radio('carrosserie'), ct: radio('ct'), delai: radio('delai'), achat: radio('achat'),
+                organes: coches('organes'), panne: radio('panne'), deplacable: radio('deplacable'), voyant: radio('voyant'), degats: coches('degats'),
+                cles: radio('cles'), carnet: radio('carnet'), premiere_main: radio('premiere_main'), importee: radio('importee'), financement: radio('financement'),
                 prenom: f.prenom.value, nom: f.nom.value, telephone: f.telephone.value, codePostal: f.codePostal.value, ville: f.ville.value,
                 titulaire: radio('titulaire'), nomTitulaire: radio('titulaire') === 'non' ? f.nomTitulaire.value : '', numeroFormule: f.numeroFormule.value,
                 email: f.email.value, message: f.message.value, site_web: f.site_web.value,

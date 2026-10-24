@@ -379,7 +379,18 @@ function construireDemande(b, id) {
         etat: [].concat(b.etat || []).map(e => ETAT_LABELS[e]).filter(Boolean),
         mecanique: { ok: 'Roule, aucun souci', soucis: 'Roule, avec des soucis mécaniques', panne: 'Ne roule plus (en panne)', accident: 'Accidentée' }[b.mecanique] || '',
         carrosserie: { tbe: 'Très bon état', rayures: 'Quelques rayures ou petits chocs', abimee: 'Abîmée' }[b.carrosserie] || '',
-        controle_technique: { oui: 'À jour', non: 'Pas à jour', nsp: 'Ne sait pas' }[b.ct] || '',
+        controle_technique: { oui6: 'À jour (moins de 6 mois)', oui: 'À jour (plus de 6 mois)', non: 'Pas à jour', nsp: 'Ne sait pas' }[b.ct] || '',
+        // Détails façon vendezvotrevoiture : servent au chiffrage (organes, panne, dégâts, historique).
+        organes_defaillants: [].concat(b.organes || []).map(v => ({ moteur: 'Moteur', boite: 'Boîte de vitesses', embrayage: 'Embrayage', freins: 'Freins', direction: 'Direction', suspensions: 'Suspensions', clim: 'Climatisation', autre: 'Autre / ne sait pas' })[v]).filter(Boolean).join(', '),
+        nature_panne: { moteur: 'Moteur', turbo: 'Turbo', boite: 'Boîte de vitesses', embrayage: 'Embrayage', distribution: 'Distribution', culasse: 'Joint de culasse', demarreur: 'Démarreur / batterie', autre: 'Autre ou inconnue' }[b.panne] || '',
+        deplacable: { oui: 'Oui', non: 'Non, dépanneuse nécessaire', nsp: 'Ne sait pas' }[b.deplacable] || '',
+        voyant: { oui: 'Oui', non: 'Non', nsp: 'Ne sait pas' }[b.voyant] || '',
+        degats: [].concat(b.degats || []).map(v => ({ rayures: 'Rayures', bosses: 'Bosses', rouille: 'Rouille', impacts: 'Éclats, impacts', grele: 'Grêle', parebrise: 'Pare-brise fissuré', parechocs: 'Pare-chocs abîmé' })[v]).filter(Boolean).join(', '),
+        cles: { 0: 'Aucune', 1: '1 clé', 2: '2 clés ou plus' }[b.cles] || '',
+        carnet: { oui: 'Oui', partiel: 'En partie', non: 'Non' }[b.carnet] || '',
+        premiere_main: { oui: 'Oui', non: 'Non', nsp: 'Ne sait pas' }[b.premiere_main] || '',
+        importee: { oui: 'Oui', non: 'Non', nsp: 'Ne sait pas' }[b.importee] || '',
+        financement: { oui: 'Oui (crédit, LOA ou LLD)', non: 'Non', nsp: 'Ne sait pas' }[b.financement] || '',
         delai: { vite: 'Le plus vite possible', mois: 'Dans le mois', '3mois': 'Dans les 3 mois', info: 'Se renseigne' }[b.delai] || '',
         projet_achat: { oui: 'Oui, prévoit d\'acheter', deja: 'Déjà acheté ou commandé', non: 'Non' }[b.achat] || '',
         prenom: clean(b.prenom, 60),
@@ -429,7 +440,17 @@ function emailDemande(d, apiBrut, opts = {}) {
       ${row('Kilométrage', d.kilometrage ? `${Number(d.kilometrage).toLocaleString('fr-FR')} km` : '')}
       ${row('État mécanique', esc(d.mecanique || d.etat.join(', ')))}
       ${row('Carrosserie', esc(d.carrosserie))}
+      ${row('Organes en cause', esc(d.organes_defaillants))}
+      ${row('Nature de la panne', esc(d.nature_panne))}
+      ${row('Déplaçable sans dépanneuse', esc(d.deplacable))}
+      ${row('Voyant allumé', esc(d.voyant))}
+      ${row('Défauts carrosserie', esc(d.degats))}
       ${row('Contrôle technique', esc(d.controle_technique))}
+      ${row('Clés', esc(d.cles))}
+      ${row('Carnet / factures', esc(d.carnet))}
+      ${row('Première main', esc(d.premiere_main))}
+      ${row('Importée', esc(d.importee))}
+      ${row('Crédit / LOA / LLD en cours', esc(d.financement))}
       ${row('Vendre quand', esc(d.delai))}
       ${row('Autre voiture', esc(d.projet_achat))}
       ${row('Prix souhaité', d.prix_souhaite ? `${Number(d.prix_souhaite).toLocaleString('fr-FR')} €` : '')}

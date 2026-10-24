@@ -2969,8 +2969,11 @@ body.modal-ouvert { overflow: hidden; }
                         ['Véhicule', esc(x.vehicule)], ['Année', esc(x.annee)], ['Kilométrage', x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''],
                         ['Plaque', esc(x.plaque) + (x.plaque_datation ? `<br><span style="color:var(--ink-4);font-weight:400">${esc(x.plaque_datation)}</span>` : '')],
                         ['VIN', x.vin || (siv && siv.vin) ? `<code>${esc(x.vin || siv.vin)}</code>` : ''], ['Fiche confirmée', esc(x.fiche_confirmee)],
-                        ['État mécanique', esc(x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : ''))], ['Carrosserie', esc(x.carrosserie)],
-                        ['Contrôle technique', esc(x.controle_technique)], ['Carburant', esc(x.carburant)], ['Boîte', esc(x.boite)],
+                        ['État mécanique', esc(x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : ''))], ['Organes en cause', esc(x.organes_defaillants)],
+                        ['Nature de la panne', esc(x.nature_panne)], ['Sans dépanneuse', esc(x.deplacable)], ['Voyant allumé', esc(x.voyant)],
+                        ['Carrosserie', esc(x.carrosserie)], ['Défauts carrosserie', esc(x.degats)],
+                        ['Contrôle technique', esc(x.controle_technique)], ['Clés', esc(x.cles)], ['Carnet / factures', esc(x.carnet)],
+                        ['Première main', esc(x.premiere_main)], ['Importée', esc(x.importee)], ['Crédit / LOA / LLD', esc(x.financement)], ['Carburant', esc(x.carburant)], ['Boîte', esc(x.boite)],
                         ['Extérieur', esc(x.etat_exterieur)], ['Intérieur', esc(x.etat_interieur)]
                     ])}
                     ${siv ? `<details><summary>Fiche SIV complète</summary>${kv(Object.entries(siv).filter(([k, v]) => v !== null && v !== '' && typeof v !== 'object' && !['photo_modele', 'logo_marque'].includes(k)).map(([k, v]) => [k, esc(v)]))}</details>` : ''}

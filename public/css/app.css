@@ -448,6 +448,7 @@ select.q-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://
 .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .choices-3 { grid-template-columns: repeat(3, 1fr); }
 .choices-1 { grid-template-columns: 1fr; }
+.q-label-2 { margin-top: 16px; }
 .choices-1 .choice span { justify-content: flex-start; text-align: left; min-height: 50px; padding: 10px 16px; }
 .choices.invalid .choice span { border-color: var(--red); }
 .q-sub { margin-top: 12px; }
