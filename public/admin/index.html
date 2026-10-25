@@ -572,6 +572,7 @@ ul.plain li { margin: 3px 0; }
 /* ---------- Fiche : coup d'œil (photo, origine, état, estimation, demande) ---------- */
 .apercu { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
 .ap-photo { position: relative; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: var(--marine-1); display: grid; place-items: center; color: var(--ink-4); font-size: .86rem; }
+.ap-photo.vide { aspect-ratio: auto; height: 44px; }
 .ap-photo img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
 .ap-photo img.modele { object-fit: contain; background: #fff; padding: 6px; }
 .ap-col { min-width: 0; }
@@ -890,6 +891,33 @@ body.modal-ouvert { overflow: hidden; }
 .ces-form legend { font-weight: 650; font-size: .9rem; padding: 0 4px; }
 .ces-form .chk { grid-column: 1 / -1; height: auto; }
 
+/* ---------- Panneau d'appel et « Ce qui a été dit » ---------- */
+.dock-appel { position: fixed; z-index: 70; left: 50%; transform: translateX(-50%); bottom: 16px; width: min(460px, calc(100vw - 24px)); max-height: 78vh; overflow-y: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 50px rgba(14,35,64,.28); }
+.da-in { display: grid; gap: 10px; padding: 10px 14px 14px; }
+.da-tete { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "p p" "t x" "s x"; align-items: center; position: sticky; top: -10px; background: var(--surface); padding-top: 6px; z-index: 1; }
+.da-poignee { grid-area: p; justify-self: center; width: 40px; height: 4px; border-radius: 4px; background: var(--line); margin-bottom: 6px; }
+.da-tete b { grid-area: t; font-size: 1.02rem; }
+.da-tete .sub { grid-area: s; margin: 0; font-size: .8rem; }
+.da-tete .close { grid-area: x; }
+.da-memo { display: flex; flex-wrap: wrap; gap: 6px; }
+.da-memo > span:not(.meca) { font-size: .78rem; background: #F1EFEA; color: var(--ink-7); padding: 3px 9px; border-radius: 99px; }
+.da-dernier { margin: 0; font-size: .82rem; color: var(--ink-5); }
+.da-injoign { justify-content: center; height: 46px; border-color: #EDB8AF; background: var(--red-1); color: var(--red); font-weight: 650; }
+.da-res { gap: 6px; }
+.da-res .cr-chip { padding: 8px 10px; font-size: .82rem; }
+.da-rap, .da-chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
+.da-in textarea { min-height: 90px; }
+.da-btns { display: flex; gap: 8px; }
+.da-btns .btn { flex: 1; justify-content: center; height: 46px; }
+.dit-liste { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 6px; }
+.dit-liste li { background: #FAF9F6; border: 1px solid var(--line-2); border-radius: var(--r-s); padding: 8px 10px; }
+.dit-liste li span { display: block; font-size: .72rem; color: var(--ink-4); }
+.dit-liste li p { margin: 2px 0 0; font-size: .88rem; white-space: pre-wrap; }
+.dit-liste li.dit-appel { border-left-width: 1px; }
+.dit-note { display: flex; gap: 8px; }
+.dit-note .in { flex: 1; }
+.dit-act { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+
 /* ---------- Confirmation ---------- */
 .confirm { position: fixed; inset: 0; z-index: 90; background: rgba(14,35,64,.45); display: grid; place-items: center; padding: 16px; }
 .confirm-in { width: 100%; max-width: 400px; background: var(--surface); border-radius: 16px; padding: 22px 20px 18px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
@@ -973,6 +1001,14 @@ body.modal-ouvert { overflow: hidden; }
     /* Note de frais, cession */
     .doc-act .btn, .doc-act select.in { flex: 1 1 100%; justify-content: center; }
     .ces-form fieldset { grid-template-columns: 1fr 1fr; }
+
+    /* Panneau d'appel : feuille du bas, la fiche reste lisible au-dessus */
+    .dock-appel { left: 0; right: 0; bottom: 0; transform: none; width: auto; max-height: 64vh; border-radius: 18px 18px 0 0; border-bottom: 0; padding-bottom: env(safe-area-inset-bottom); }
+    body.dock-ouvert .sh-bas { display: none; }
+    .da-res { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -14px; padding: 0 14px; }
+    .da-res::-webkit-scrollbar { display: none; }
+    .da-res .cr-chip { flex: none; white-space: nowrap; }
+    body.dock-ouvert .sheet-in { padding-bottom: 66vh; }
 
     /* Fiche */
     .dec-grille { grid-template-columns: 1fr 1fr; }
@@ -1451,6 +1487,7 @@ body.modal-ouvert { overflow: hidden; }
 <div class="voile" id="voile" hidden></div>
 
 <div class="lightbox" id="lb" hidden></div>
+<div class="dock-appel" id="dockAppel" hidden><div class="da-in" id="daIn"></div></div>
 <div class="cr-modal" id="crModal" hidden><div class="cr-in" id="crIn" role="dialog" aria-modal="true"></div></div>
 <div class="confirm" id="confirm" hidden><div class="confirm-in" role="alertdialog" aria-modal="true" aria-labelledby="cfT"><h3 id="cfT"></h3><p id="cfP"></p><div class="confirm-btns" id="cfB"></div></div></div>
 
@@ -3011,6 +3048,90 @@ body.modal-ouvert { overflow: hidden; }
         quitterFiche(); ouvrirVehicule(v.id); setTimeout(() => { const w = vehiculeDe(v.id); if (w) ecranCession(w); }, 400);
     }
 
+    // ---------------- Panneau d'appel : fixé en bas de la fiche, ouvert en appuyant sur « Appeler » (ou « Panneau d'appel »).
+    // Pendant l'appel : l'essentiel à dire sous les yeux, la fiche reste lisible au-dessus, saisie rapide du compte rendu.
+    // Le brouillon est gardé sur l'appareil (par demande) tant qu'il n'est pas enregistré.
+    const brouillonCle = ref => 'lunicarAppel:' + ref;
+    const lireBrouillon = ref => { try { return JSON.parse(localStorage.getItem(brouillonCle(ref)) || 'null') || {}; } catch (e) { return {}; } };
+    const ecrireBrouillon = (ref, b) => { try { localStorage.setItem(brouillonCle(ref), JSON.stringify(b)); } catch (e) {} };
+    const effacerBrouillon = ref => { try { localStorage.removeItem(brouillonCle(ref)); } catch (e) {} };
+    let dockRef = null;
+    function fermerDock() { $('#dockAppel').hidden = true; document.body.classList.remove('dock-ouvert'); dockRef = null; }
+    function ouvrirDock(d) {
+        dockRef = d.ref;
+        const x = d.data || {}, s = d.suivi || {}, R = etat.resultats || {}, b = lireBrouillon(d.ref);
+        const pm = prixMax(d), souh = Number(x.prix_souhaite) || 0, f = typeof fourchette === 'function' ? fourchette(d) : null;
+        const dernier = (s.appels || [])[0];
+        const demain = (() => { const t = new Date(Date.now() + 864e5); return t.toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' }); })();
+        const autres = Object.entries(R).filter(([k]) => k !== 'injoignable');
+        $('#daIn').innerHTML = `
+            <div class="da-tete"><span class="da-poignee"></span><b>Pendant l'appel</b><span class="sub">${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Vendeur')} · ${esc(x.telephone || '')}</span>
+                <button class="close" type="button" id="daX" aria-label="Réduire"><svg><use href="#i-x"/></svg></button></div>
+            <div class="da-memo">
+                ${souh ? `<span>Il demande <b>${eur(souh)}</b></span>` : '<span>Pas de prix demandé</span>'}
+                ${pm ? `<span>Notre max <b>${eur(pm)}</b></span>` : ''}${f ? `<span>Fourchette <b>${eur(f.min)}–${eur(f.max)}</b></span>` : ''}
+                ${x.kilometrage ? `<span>${Number(x.kilometrage).toLocaleString('fr-FR')} km</span>` : ''}${badgeMeca(x)}
+                ${x.delai ? `<span>${esc(x.delai)}</span>` : ''}${x.projet_achat && /déjà/i.test(x.projet_achat) ? '<span>Remplaçante déjà achetée</span>' : ''}
+            </div>
+            ${dernier ? `<p class="da-dernier">Dernier appel ${date(dernier.date)} · <b>${esc(dernier.libelle || dernier.resultat)}</b>${dernier.texte ? ' — ' + esc(dernier.texte) : ''}</p>` : ''}
+            <button type="button" class="btn da-injoign" id="daInj">Injoignable · relance demain</button>
+            <div class="cr-res da-res">${autres.map(([k, l]) => `<button type="button" class="cr-chip${b.resultat === k ? ' on' : ''}" data-dres="${k}">${esc(l)}</button>`).join('')}</div>
+            <div class="da-rap"${b.resultat === 'rappel_prevu' ? '' : ' hidden'}><label class="f">Rappeler le<input class="in" type="date" id="daRapD" value="${esc(b.rappel_date || demain)}"></label><label class="f">Vers<input class="in" type="time" id="daRapH" step="900" value="${esc(b.rappel_heure || '')}"></label></div>
+            <textarea class="in" id="daNote" rows="4" placeholder="Ce qu'il dit : état réel, entretien, prix proposé ailleurs, urgence…">${esc(b.note || '')}</textarea>
+            <div class="da-chiffres">
+                <label class="f">Prix demandé<input class="in num" id="daPrix" inputmode="numeric" placeholder="${esc(x.prix_souhaite || '')}" value="${esc(b.prix || '')}"></label>
+                <label class="f">Kilométrage<input class="in num" id="daKm" inputmode="numeric" placeholder="${esc(x.kilometrage || '')}" value="${esc(b.km || '')}"></label>
+                <label class="f">Offre faite<input class="in num" id="daOffre" inputmode="numeric" placeholder="${esc(s.offre || '')}" value="${esc(b.offre || '')}"></label>
+            </div>
+            <label class="chk"><input type="checkbox" id="daReest"${b.reestimer ? ' checked' : ''}${etat.estimation.actif && x.vehicule ? '' : ' disabled'}> Mettre à jour l'estimation avec ces infos</label>
+            <div class="da-btns"><button type="button" class="btn" id="daComplet">Formulaire complet</button><button type="button" class="btn btn-p" id="daOk">Enregistrer</button></div>`;
+        const lire = () => {
+            const n = { resultat: (($('#daIn').querySelector('[data-dres].on') || {}).dataset || {}).dres || '', note: $('#daNote').value, prix: $('#daPrix').value.replace(/[^\d]/g, ''), km: $('#daKm').value.replace(/[^\d]/g, ''), offre: $('#daOffre').value.replace(/[^\d]/g, ''), reestimer: $('#daReest').checked, rappel_date: $('#daRapD').value, rappel_heure: $('#daRapH').value };
+            ecrireBrouillon(d.ref, n); return n;
+        };
+        $('#daIn').querySelectorAll('[data-dres]').forEach(c => c.onclick = () => { $('#daIn').querySelectorAll('[data-dres]').forEach(o => o.classList.toggle('on', o === c && !c.classList.contains('on'))); $('#daIn').querySelector('.da-rap').hidden = !$('#daIn').querySelector('[data-dres="rappel_prevu"].on'); lire(); });
+        $('#daIn').addEventListener('input', lire);
+        $('#daX').onclick = fermerDock;
+        const envoyer = async (corps, message) => {
+            try {
+                const r = await api('/api/admin/demandes/' + d.ref + '/appel', { method: 'POST', body: JSON.stringify(corps) });
+                effacerBrouillon(d.ref); fermerDock();
+                if (corps.resultat === 'accepte') history.replaceState(history.state, '', location.pathname + '#rdv');
+                if (corps.reestimer) r.suivi = { ...r.suivi, estimation_statut: 'en_cours' };
+                maj(r); if (courant && courant.ref === d.ref) { courant = r; fiche(); if (corps.reestimer) surveiller(true); }
+                toast(message(r));
+            } catch (e) { toast(e.message); }
+        };
+        $('#daInj').onclick = async () => {
+            const n = lire();
+            if (await demander({ titre: 'Injoignable ?', texte: `Appel noté « Injoignable », relance demain.${n.note.trim() ? ' Votre note est jointe.' : ''}`, boutons: [['ok', 'Noter injoignable', 'btn-p'], ['', 'Annuler']] }) !== 'ok') return;
+            envoyer({ resultat: 'injoignable', note: n.note.trim() }, r => 'Injoignable noté · relance le ' + jj(r.suivi.rappel_le));
+        };
+        $('#daComplet').onclick = () => { lire(); fermerDock(); compteRendu(d); };
+        $('#daOk').onclick = async () => {
+            const n = lire();
+            if (!n.resultat) { toast('Choisissez le résultat de l\'appel (ou « Injoignable »)'); return; }
+            const corrections = {}; if (n.prix && n.prix !== String(x.prix_souhaite || '')) corrections.prix_souhaite = n.prix; if (n.km && n.km !== String(x.kilometrage || '')) corrections.kilometrage = n.km;
+            const recap = [R[n.resultat], n.note.trim() && '« ' + n.note.trim().slice(0, 140) + (n.note.trim().length > 140 ? '…' : '') + ' »', corrections.prix_souhaite && 'prix demandé → ' + eur(corrections.prix_souhaite), corrections.kilometrage && 'km → ' + Number(corrections.kilometrage).toLocaleString('fr-FR'), n.offre && 'offre ' + eur(n.offre), n.resultat === 'rappel_prevu' && 'rappel le ' + jj(n.rappel_date) + (n.rappel_heure ? ' vers ' + n.rappel_heure : ''), n.reestimer && 'estimation mise à jour'].filter(Boolean).join(' · ');
+            if (await demander({ titre: 'Enregistrer le compte rendu ?', texte: recap, boutons: [['ok', 'Enregistrer', 'btn-p'], ['', 'Modifier']] }) !== 'ok') return;
+            envoyer({ resultat: n.resultat, note: n.note.trim(), corrections, offre: n.offre, reestimer: n.reestimer, rappel_date: n.rappel_date, rappel_heure: n.rappel_heure },
+                r => n.resultat === 'accepte' ? 'Offre acceptée : fixez le rendez-vous' : n.reestimer ? 'Compte rendu enregistré · estimation en cours' : r.suivi.rappel_le ? 'Compte rendu enregistré · relance le ' + jj(r.suivi.rappel_le) : 'Compte rendu enregistré');
+        };
+        $('#dockAppel').hidden = false; document.body.classList.add('dock-ouvert');
+    }
+    // Ce qui a été dit (appels, notes, e-mails), en haut de la fiche, avec ajout de note rapide.
+    function blocDit(d) {
+        const s = d.suivi || {};
+        const ev = (s.historique || []).filter(h => h.type === 'appel' || h.type === 'note' || h.type === 'email').slice(0, 4);
+        return `<section class="sec dit">
+            <h3>Ce qui a été dit <small>${s.nb_appels ? `${s.nb_appels} appel${s.nb_appels > 1 ? 's' : ''}` : 'jamais appelé'}${rappel(d) ? ` · relance <b class="${rappel(d) < jourIso() ? 'neg' : ''}">${jj(rappel(d))}${s.rappel_heure ? ' vers ' + esc(s.rappel_heure) : ''}</b>` : ''}</small></h3>
+            ${ev.length ? `<ol class="dit-liste">${ev.map(h => `<li class="dit-${h.type}"><span>${date(h.date)} · ${h.type === 'appel' ? 'Appel' : h.type === 'email' ? 'E-mail' : 'Note'}</span><p>${h.type === 'appel' ? `<b>${esc(String(h.quoi || '').replace(/^Appel : /, ''))}</b>${h.texte ? '<br>' + esc(h.texte) : ''}` : esc(h.quoi)}</p></li>`).join('')}</ol>`
+                : '<p class="vide">Rien pour l\'instant : appuyez sur « Appeler », le panneau d\'appel s\'ouvre pour noter ce qui est dit.</p>'}
+            <form class="dit-note" id="ditNote"><input class="in" id="ditTxt" placeholder="Ajouter une note rapide…" autocomplete="off"><button class="btn btn-p">Ajouter</button></form>
+            <div class="dit-act"><button class="btn btn-s" type="button" id="ditPanneau"><svg><use href="#i-tel"/></svg>Panneau d'appel</button><button class="flag${drapeau(d) ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${drapeau(d)}"><svg><use href="#i-flag"/></svg>${drapeau(d) ? 'À appeler · retirer' : 'Marquer « À appeler »'}</button><a href="#secSuivi" class="btn btn-s btn-ghost" id="ditTout">Tout l'historique</a></div>
+        </section>`;
+    }
+
     // ---------------- Fiche d'une demande
     // Routage : la liste vit sur /admino, chaque fiche sur /admino/demande/REF.
     // Le retour arrière (navigateur, geste iOS, bouton Android) ramène à la liste, à la même position.
@@ -3046,6 +3167,7 @@ body.modal-ouvert { overflow: hidden; }
         surveiller();
     }
     function quitterFiche() {
+        fermerDock();
         const etaitOuverte = !$('#sheet').hidden;
         $('#sheet').hidden = true; document.body.classList.remove('page-fiche'); courant = null; clearInterval(poll);
         document.title = 'Admin · LUNICAR';
@@ -3116,9 +3238,9 @@ body.modal-ouvert { overflow: hidden; }
             <select class="in" id="stSel"${d.statut === 'achetee' ? ' disabled title="Véhicule acheté : le suivi continue dans Nos véhicules"' : ''}>${Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}"${k === d.statut ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>
         </div>
         <div class="sh-bas">
-            ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>Appeler</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener"><svg><use href="#i-bulle"/></svg>WhatsApp</a>` : ''}
-            <button class="btn" type="button" data-vers-mail><svg><use href="#i-msg"/></svg>E-mail</button>
-            <button class="btn" type="button" id="versNote">Note</button>
+            ${x.telephone ? `<a class="btn btn-g" id="basAppel" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>Appeler</a>` : ''}
+            <button class="btn btn-p" type="button" id="basPanneau">Compte rendu</button>
+            ${x.telephone ? `<a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-bulle"/></svg></a>` : ''}
         </div>
         <div class="sh-body">
             ${d.statut === 'achetee' || rdvPrevu(d) ? `<button class="btn btn-g" id="versVehicule" style="justify-self:start">${d.statut === 'achetee' ? 'Véhicule acheté' : 'RDV pris'} : frais et suivi dans Nos véhicules →</button>` : ''}
@@ -3131,7 +3253,7 @@ body.modal-ouvert { overflow: hidden; }
                 const dernier = (s.appels || [])[0];
                 const etatTxt = [x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : ''), x.controle_technique ? 'CT ' + x.controle_technique.toLowerCase() : '', x.carrosserie ? 'carrosserie ' + x.carrosserie.toLowerCase() : ''].filter(Boolean);
                 return `<section class="sec apercu">
-                <div class="ap-col"><div class="ap-photo">${ph ? `<img src="${photoUrl(ph.path)}" alt="Photo du vendeur" data-ap-photo="0">` : photoModele ? `<img class="modele" src="${esc(photoModele)}" alt="Photo du modèle" referrerpolicy="no-referrer" onerror="this.parentElement.innerHTML='<span>Pas de photo</span>'"><small>photo du modèle, pas la voiture</small>` : '<span>Pas de photo du vendeur</span>'}</div>${(() => { const imgs = (d.photos || []).map((p, i) => ({ p, i })).filter(o => !/\.pdf$/i.test(o.p.name)); return imgs.length > 1 ? `<div class="ap-vign">${imgs.slice(0, 8).map(o => `<img src="${photoUrl(o.p.path)}" alt="" data-ap-photo="${o.i}">`).join('')}${imgs.length > 8 ? `<span>+${imgs.length - 8}</span>` : ''}</div>` : ''; })()}</div>
+                <div class="ap-col"><div class="ap-photo${!ph && !photoModele ? ' vide' : ''}">${ph ? `<img src="${photoUrl(ph.path)}" alt="Photo du vendeur" data-ap-photo="0">` : photoModele ? `<img class="modele" src="${esc(photoModele)}" alt="Photo du modèle" referrerpolicy="no-referrer" onerror="this.parentElement.innerHTML='<span>Pas de photo</span>'"><small>photo du modèle, pas la voiture</small>` : '<span>Pas de photo du vendeur</span>'}</div>${(() => { const imgs = (d.photos || []).map((p, i) => ({ p, i })).filter(o => !/\.pdf$/i.test(o.p.name)); return imgs.length > 1 ? `<div class="ap-vign">${imgs.slice(0, 8).map(o => `<img src="${photoUrl(o.p.path)}" alt="" data-ap-photo="${o.i}">`).join('')}${imgs.length > 8 ? `<span>+${imgs.length - 8}</span>` : ''}</div>` : ''; })()}</div>
                 <div class="ap-faits">
                     <div class="ap-f"><span>D'où il vient</span><b><i class="pt" style="background:${cl[2]}"></i>${esc(cl[1])}</b><small>${esc(d.origine_txt || x.origine || '—')}</small></div>
                     <div class="ap-f"><span>État annoncé</span><b>${badgeMeca(x) || esc(etatTxt[0] || '—')}</b><small>${esc(etatTxt.slice(1).join(' · ') || [x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.annee].filter(Boolean).join(' · '))}</small></div>
@@ -3142,14 +3264,7 @@ body.modal-ouvert { overflow: hidden; }
                 ${dernier ? `<p class="ap-appel"><b>Dernier appel</b> · ${date(dernier.date)} · ${esc(dernier.libelle || dernier.resultat)}${dernier.texte ? ` — ${esc(dernier.texte)}` : ''}</p>` : ''}
             </section>`;
             })()}
-            <section class="sec appel-sec">
-                <h3>Appels <small>${s.nb_appels ? `${s.nb_appels} appel${s.nb_appels > 1 ? 's' : ''} · dernier le ${date(s.dernier_appel, false)}` : 'jamais appelé'}${rappel(d) ? ` · relance <b class="${rappel(d) < jourIso() ? 'neg' : ''}">${jj(rappel(d))}</b>` : ''}</small></h3>
-                <div class="appel-actions">
-                    <button class="btn btn-p" id="crBtn"><svg><use href="#i-tel"/></svg>Compte rendu d'appel</button>
-                    <button class="flag${drapeau(d) ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${drapeau(d)}"><svg><use href="#i-flag"/></svg>${drapeau(d) ? 'À appeler · retirer' : 'Marquer « À appeler »'}</button>
-                </div>
-                ${(s.appels || []).length ? `<ol class="cr-liste">${s.appels.slice(0, 3).map(a => `<li><div><b>${esc(a.libelle || a.resultat)}</b><span>${date(a.date)}</span></div>${a.texte ? `<p>${esc(a.texte)}</p>` : ''}${(a.corrections || []).length ? `<small>Corrigé : ${a.corrections.map(esc).join(' · ')}</small>` : ''}${a.offre ? `<small>Offre faite : ${eur(a.offre)}</small>` : ''}</li>`).join('')}</ol>` : ''}
-            </section>
+            ${blocDit(d)}
             ${blocRdv(d)}
             <section class="sec decision">
                 <div class="dec-tete">
@@ -3313,7 +3428,16 @@ body.modal-ouvert { overflow: hidden; }
         rendreMail();
         $('#sheetIn').querySelectorAll('[data-ap-photo]').forEach(im => im.onclick = () => { lbSource = null; lbOuvrir(+im.dataset.apPhoto); });
         $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#secEmail').scrollIntoView({ block: 'start', behavior: 'smooth' }); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 400); });
-        $('#versNote').onclick = () => { $('#noteIn').scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(() => $('#noteIn').focus(), 350); };
+        // Appeler : l'appel part et le panneau d'appel s'ouvre aussitôt (prêt au retour dans l'app).
+        if ($('#basAppel')) $('#basAppel').addEventListener('click', () => ouvrirDock(d));
+        $('#basPanneau').onclick = () => ouvrirDock(d);
+        $('#ditPanneau').onclick = () => ouvrirDock(d);
+        $('#ditTout').onclick = e => { e.preventDefault(); $('#secSuivi').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+        $('#ditNote').onsubmit = async e => {
+            e.preventDefault(); const texte = $('#ditTxt').value.trim(); if (!texte) return;
+            try { courant = await api('/api/admin/demandes/' + d.ref + '/note', { method: 'POST', body: JSON.stringify({ texte }) }); fiche(); maj(courant); toast('Note ajoutée'); } catch (err) { toast(err.message); }
+        };
+        if (dockRef && dockRef !== d.ref) fermerDock();
         $('#stSel').onchange = async ev => {
             if (ev.target.value === 'sans_suite') { ev.target.value = d.statut; return pasInteresse(d); } // e-mail de refus puis archivage
             await sauver({ statut: ev.target.value }); toast('Statut mis à jour'); if (ev.target.value === 'achetee') apresAchat(d.ref);
@@ -3327,7 +3451,7 @@ body.modal-ouvert { overflow: hidden; }
         $('#sheetIn').querySelectorAll('[data-flag]').forEach(b => b.onclick = () => basculerDrapeau(b.dataset.flag));
         if ($('#versVehicule')) $('#versVehicule').onclick = () => vehiculeDeDemande(d.ref);
         lierRdv(d);
-        $('#crBtn').onclick = () => compteRendu(d);
+
         $('#plaqueBtn').onclick = async () => {
             const b = $('#plaqueBtn'); b.disabled = true; $('#plaqueMsg').textContent = 'Interrogation…';
             try { const r = await api('/api/admin/demandes/' + d.ref + '/plaque', { method: 'POST', body: JSON.stringify({ plaque: $('#plaqueIn').value.replace(/[^A-Za-z0-9]/g, '') }) });
