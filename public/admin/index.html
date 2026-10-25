@@ -555,6 +555,36 @@ ul.plain li { margin: 3px 0; }
 .hbar b small { font-weight: 500; color: var(--ink-4); margin-left: 4px; }
 .vide { color: var(--ink-4); font-size: .86rem; padding: 8px 0; }
 
+/* ---------- Comptabilité : Zefyr ---------- */
+.zef-liste { display: grid; gap: 8px; }
+.zef-l { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line-2); }
+.zef-l:last-child { border-bottom: 0; }
+.zef-l b { display: block; font-size: .9rem; }
+.zef-l span { display: block; font-size: .8rem; color: var(--ink-5); margin-top: 2px; }
+.zef-l .zef-x { color: var(--ink-7); font-style: italic; }
+.zef-l .zef-m { color: var(--orange); font-weight: 600; }
+.zef-l .zef-ok { color: var(--green); font-weight: 600; }
+.zef-a { display: flex; gap: 6px; flex-direction: column; }
+.dep-expl { display: block; font-size: .78rem; color: var(--ink-7); font-style: italic; margin-top: 2px; }
+.dep-mt .zef { display: block; font-size: .66rem; font-weight: 600; color: var(--orange); }
+.dep-mt .zef.ok { color: var(--green); }
+
+/* ---------- Fiche : coup d'œil (photo, origine, état, estimation, demande) ---------- */
+.apercu { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.ap-photo { position: relative; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: var(--marine-1); display: grid; place-items: center; color: var(--ink-4); font-size: .86rem; }
+.ap-photo img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+.ap-photo small { position: absolute; left: 8px; bottom: 8px; background: rgba(14,35,64,.78); color: #fff; font-size: .68rem; padding: 2px 8px; border-radius: 99px; }
+.ap-photo i { position: absolute; right: 8px; bottom: 8px; background: rgba(14,35,64,.78); color: #fff; font-style: normal; font-size: .7rem; padding: 2px 8px; border-radius: 99px; }
+.ap-faits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.ap-f { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; min-width: 0; }
+.ap-f span { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-5); font-weight: 600; }
+.ap-f b { display: block; font-size: 1.02rem; font-weight: 650; margin: 3px 0 2px; letter-spacing: -.01em; overflow: hidden; text-overflow: ellipsis; }
+.ap-f small { display: block; font-size: .74rem; color: var(--ink-4); line-height: 1.35; }
+.ap-f .pt { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 6px; vertical-align: 0; }
+.ap-msg { grid-column: 1 / -1; margin: 0; padding: 10px 14px; border-left: 3px solid var(--gold, #B8923A); background: #FAF7F0; border-radius: 0 10px 10px 0; font-size: .92rem; line-height: 1.5; color: var(--ink-7); white-space: pre-wrap; }
+.ap-appel { grid-column: 1 / -1; margin: 0; font-size: .86rem; color: var(--ink-7); line-height: 1.45; }
+@media (min-width: 760px) { .apercu { grid-template-columns: minmax(0, 300px) minmax(0, 1fr); } .ap-photo { aspect-ratio: 4 / 3; } }
+
 /* ---------- Analyses du site (mobile d'abord) ---------- */
 .an-note { margin: -4px 0 14px; font-size: .82rem; color: var(--ink-5); }
 .an-retenir { background: var(--marine); color: #fff; border-radius: var(--r); padding: 16px 18px; margin: 0 0 14px; }
@@ -1104,9 +1134,9 @@ body.modal-ouvert { overflow: hidden; }
         <div class="brand"><img src="/images/logo-lunicar-blanc.webp" width="556" height="120" alt="LUNICAR"><small>ADMIN</small></div>
         <nav class="tabs" id="tabs">
             <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
-            <button data-tab="planning"><svg><use href="#i-cal"/></svg>Planning</button>
+            <button data-tab="planning"><svg><use href="#i-cal"/></svg>Rendez-vous</button>
             <button data-tab="vehicules"><svg><use href="#i-cle"/></svg>Nos véhicules</button>
-            <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Dépenses</button>
+            <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Comptabilité</button>
             <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
             <button data-tab="analyses"><svg><use href="#i-ana"/></svg>Analyses</button>
             <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
@@ -1193,7 +1223,7 @@ body.modal-ouvert { overflow: hidden; }
         </section>
 
         <section data-view="depenses" hidden>
-            <div class="page-h"><h1>Dépenses</h1><span>qui a payé quoi, entre Abdoul-Khader, Youssouf et la société</span></div>
+            <div class="page-h"><h1>Comptabilité</h1><span>dépenses, justificatifs, et ce qu'il reste à saisir dans Zefyr</span></div>
             <div class="soldes" id="soldes"></div>
             <div class="tb-card" id="depForm" style="margin:0 0 14px"></div>
             <div class="toolbar">
@@ -1202,6 +1232,7 @@ body.modal-ouvert { overflow: hidden; }
                 <select class="in" id="depTyp" aria-label="Type"><option value="">Toutes les dépenses</option><option value="generales">Dépenses générales</option><option value="vehicules">Dépenses véhicules</option><option value="remb">Remboursements</option></select>
                 <a class="btn" id="depCsv" href="#"><svg><use href="#i-dl"/></svg>Export comptable</a>
             </div>
+            <div class="tb-card zefyr" id="zefyr" style="margin:0 0 14px"></div>
             <p class="sub" id="depTotal" style="margin:0 0 10px"></p>
             <div class="dep-grid"><div id="depList"></div><div class="tb-card"><h3>Par catégorie</h3><p class="sub">Sur la période et les filtres choisis.</p><div class="hbars" id="depCats"></div></div></div>
         </section>
@@ -1386,9 +1417,9 @@ body.modal-ouvert { overflow: hidden; }
 
 <nav class="navbas" id="navbas" hidden>
     <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
-    <button data-tab="planning"><svg><use href="#i-cal"/></svg>Planning<span class="count" data-count="rdv"></span></button>
+    <button data-tab="planning"><svg><use href="#i-cal"/></svg>Rendez-vous<span class="count" data-count="rdv"></span></button>
     <button data-tab="vehicules"><svg><use href="#i-cle"/></svg>Véhicules</button>
-    <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Dépenses</button>
+    <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Compta</button>
     <button data-tab="plus"><svg><use href="#i-plus"/></svg>Plus<span class="count" data-count="plus"></span></button>
 </nav>
 <div class="plus-sheet" id="plusSheet" hidden><div class="plus-in">
@@ -2472,9 +2503,9 @@ body.modal-ouvert { overflow: hidden; }
         const v = d.vehicule_id && vehiculeDe(d.vehicule_id);
         return `<div class="dep" data-dep="${esc(d.id)}">
             <div class="dep-d">${dateCourte(d.date)}</div>
-            <div class="dep-m"><b>${esc(d.libelle || d.categorie)}</b><span>${[d.libelle ? esc(d.categorie) : '', v && !$('#vpage').hidden ? '' : v ? '🚗 ' + esc(v.libelle) : '', d.beneficiaire ? 'à ' + PAYCOURT[d.beneficiaire] : ''].filter(Boolean).join(' · ')}</span></div>
+            <div class="dep-m"><b>${esc(d.libelle || d.categorie)}</b><span>${[d.libelle ? esc(d.categorie) : '', v && !$('#vpage').hidden ? '' : v ? '🚗 ' + esc(v.libelle) : '', d.beneficiaire ? 'à ' + PAYCOURT[d.beneficiaire] : ''].filter(Boolean).join(' · ')}</span>${d.explication ? `<span class="dep-expl">${esc(d.explication)}</span>` : ''}</div>
             <span class="payeur p-${esc(d.payeur)}">${PAYCOURT[d.payeur]}</span>
-            <b class="dep-mt num">${euro(d.montant)}${d.tva ? `<small>TVA ${euro(d.tva)}${d.tva_recuperable ? ' récup.' : ''}</small>` : ''}</b>
+            <b class="dep-mt num">${euro(d.montant)}${d.tva ? `<small>TVA ${euro(d.tva)}${d.tva_recuperable ? ' récup.' : ''}</small>` : ''}<small class="${d.zefyr ? 'zef ok' : 'zef'}">${d.zefyr ? 'Zefyr ✓' : 'à saisir'}</small></b>
             <div class="dep-a">${d.justificatif ? `<a class="btn btn-s btn-ghost" href="${photoUrl(d.justificatif.path)}" target="_blank" title="Justificatif">📎</a>` : ''}<button class="btn btn-s btn-ghost" data-dep-del="${esc(d.id)}" aria-label="Supprimer">✕</button></div>
         </div>`;
     }
@@ -2496,6 +2527,26 @@ body.modal-ouvert { overflow: hidden; }
                ${S.equilibre ? `<br><span>Pour équilibrer entre vous deux (parts égales) : ${PAYCOURT[S.equilibre.de]} verse <b>${euro(S.equilibre.montant)}</b> à ${PAYCOURT[S.equilibre.a]}.</span>` : ''}</div>`;
         formDepense();
         listeDepenses();
+        blocZefyr();
+    }
+    // Préparation de la saisie dans Zefyr : ce qui manque (justificatif, HT/TVA, explication), lignes prêtes à copier, et pointage.
+    function blocZefyr() {
+        const D = compta.depenses.filter(d => !d.zefyr).sort((a, b) => a.date.localeCompare(b.date));
+        const V = compta.vehicules.filter(v => (Number(v.prix_achat) && !v.zefyr_achat) || (v.statut === 'vendu' && Number(v.prix_vente) && !v.zefyr_vente));
+        const manque = d => [!d.justificatif && 'justificatif', d.montant_ht == null && d.taux_tva == null && 'HT/TVA', !d.explication && 'explication'].filter(Boolean);
+        const ligneTxt = d => { const v = d.vehicule_id && vehiculeDe(d.vehicule_id); return [d.date, d.categorie, (d.libelle || '') + (v ? ' · ' + v.libelle + (v.plaque ? ' ' + v.plaque : '') : ''), d.fournisseur || '', String(d.montant).replace('.', ','), d.montant_ht != null ? String(d.montant_ht).replace('.', ',') : '', d.tva != null ? String(d.tva).replace('.', ',') : '', d.taux_tva != null ? d.taux_tva + ' %' : '', d.tva_recuperable ? 'TVA récupérable' : '', PAYCOURT[d.payeur], d.explication || ''].join('\t'); };
+        const total = D.reduce((t, d) => t + d.montant, 0);
+        $('#zefyr').innerHTML = `<h3>À saisir dans Zefyr <small class="sub" style="margin:0">${D.length} dépense${D.length > 1 ? 's' : ''} · ${euro(total)}${V.length ? ` · ${V.length} achat/vente de véhicule` : ''}</small></h3>
+            <p class="sub">Chaque ligne est prête à être recopiée (date, catégorie, détail, fournisseur, TTC, HT, TVA, payeur, explication). Pointez-la une fois saisie : elle quitte la liste.</p>
+            ${D.length || V.length ? `<div class="zef-liste">${D.map(d => `<div class="zef-l"><div><b>${dateCourte(d.date)} · ${esc(d.libelle || d.categorie)}</b><span>${esc(d.categorie)}${d.fournisseur ? ' · ' + esc(d.fournisseur) : ''} · ${euro(d.montant)} TTC${d.tva != null ? ` (TVA ${euro(d.tva)})` : ''} · payé par ${PAYCOURT[d.payeur]}</span>${d.explication ? `<span class="zef-x">${esc(d.explication)}</span>` : ''}${manque(d).length ? `<span class="zef-m">Manque : ${manque(d).join(', ')}</span>` : '<span class="zef-ok">Dossier complet</span>'}</div><div class="zef-a"><button class="btn btn-s" data-zef-copie="${esc(d.id)}">Copier</button><button class="btn btn-s btn-p" data-zef-ok="${esc(d.id)}">Saisie ✓</button></div></div>`).join('')}
+            ${V.map(v => `<div class="zef-l"><div><b>${esc(v.libelle)}${v.plaque ? ' · ' + esc(v.plaque) : ''}</b><span>${Number(v.prix_achat) && !v.zefyr_achat ? `Achat ${dateCourte(v.date_achat)} · ${euro(v.prix_achat)} · payé par ${PAYCOURT[v.payeur_achat || 'societe']}` : ''}${v.statut === 'vendu' && Number(v.prix_vente) && !v.zefyr_vente ? `${Number(v.prix_achat) && !v.zefyr_achat ? ' · ' : ''}Vente ${dateCourte(v.date_vente)} · ${euro(v.prix_vente)} · encaissé par ${PAYCOURT[v.encaisse_par || 'societe']}` : ''}</span><span class="zef-x">Véhicule d'occasion : achat à un particulier sans TVA, revente sous le régime de la TVA sur la marge (à confirmer avec le comptable).</span></div><div class="zef-a"><button class="btn btn-s btn-p" data-zef-veh="${esc(v.id)}">Saisi ✓</button></div></div>`).join('')}</div>` : '<p class="vide">Tout est saisi dans Zefyr.</p>'}
+            <div class="dep-act" style="margin-top:10px"><button class="btn" id="zefCopieTout" ${D.length ? '' : 'disabled'}>Copier toutes les lignes</button><a class="btn" href="#" id="zefCsv">Export CSV (explication et pointage inclus)</a></div>`;
+        const copie = async txt => toast(await copierTexte(txt) ? 'Copié : collez dans Zefyr' : 'Copie impossible');
+        $('#zefyr').querySelectorAll('[data-zef-copie]').forEach(b => b.onclick = () => copie(ligneTxt(compta.depenses.find(d => d.id === b.dataset.zefCopie))));
+        $('#zefCopieTout').onclick = () => copie(D.map(ligneTxt).join('\n'));
+        $('#zefCsv').onclick = e => { e.preventDefault(); location.href = lien('/api/admin/compta/export.csv'); };
+        $('#zefyr').querySelectorAll('[data-zef-ok]').forEach(b => b.onclick = async () => { try { const fd = new FormData(); fd.set('zefyr', 'true'); await api('/api/admin/compta/depenses/' + b.dataset.zefOk, { method: 'PATCH', body: fd }); await chargerCompta(); listeDepenses(); blocZefyr(); } catch (e) { toast(e.message); } });
+        $('#zefyr').querySelectorAll('[data-zef-veh]').forEach(b => b.onclick = async () => { try { const v = compta.vehicules.find(x => x.id === b.dataset.zefVeh); await api('/api/admin/compta/vehicules/' + v.id, { method: 'PATCH', body: JSON.stringify({ ...(Number(v.prix_achat) ? { zefyr_achat: true } : {}), ...(v.statut === 'vendu' ? { zefyr_vente: true } : {}) }) }); await chargerCompta(); blocZefyr(); } catch (e) { toast(e.message); } });
     }
     function formDepense() {
         const d = depEdit ? compta.depenses.find(x => x.id === depEdit) : null;
@@ -2736,6 +2787,8 @@ body.modal-ouvert { overflow: hidden; }
                     <label class="f">Date<input class="in" type="date" name="date" value="${val('date', jourAuj())}"></label>
                     <label class="f">Fournisseur<input class="in" name="fournisseur" value="${esc(val('fournisseur'))}" placeholder="Total, SNCF, Sanef…"></label>
                     <label class="f dep-lib">Détail<input class="in" name="libelle" value="${esc(val('libelle'))}" placeholder="Ex. : plein retour, billet Paris → Lyon, plaquettes AV…"></label>
+                    <label class="f dep-lib">Explication pour le comptable <small>(à quoi sert cette dépense)</small><textarea class="in" name="explication" rows="2" placeholder="Ex. : carburant pour aller chercher la Clio achetée à Lyon ; abonnement du site lunicar.fr…">${esc(val('explication'))}</textarea></label>
+                    ${dep ? `<label class="chk nf-recup"><input type="checkbox" name="zefyr"${val('zefyr', false) ? ' checked' : ''}> Saisie dans Zefyr${dep.zefyr_le ? ` <small>(le ${dateCourte(dep.zefyr_le)})</small>` : ''}</label>` : ''}
                     <div class="dep-act"><button class="btn btn-p">${dep ? 'Enregistrer la modification' : 'Ajouter la dépense'}</button>${dep || opts.annulable ? '<button type="button" class="btn" id="nfAnnul">Annuler</button>' : ''}<span class="sub" id="nfFic"></span></div>
                 </form></div>`;
             lier();
@@ -2763,6 +2816,7 @@ body.modal-ouvert { overflow: hidden; }
                 if (st.type === 'vehicule' && !st.vehicule_id) { toast('Choisissez le véhicule concerné'); cible.querySelector('#nfVq') && cible.querySelector('#nfVq').focus(); return; }
                 const fd = new FormData(F); retenirPayeur(fd.get('payeur'));
                 fd.set('tva_recuperable', F.tva_recuperable.checked ? 'true' : 'false');
+                if (F.zefyr) fd.set('zefyr', F.zefyr.checked ? 'true' : 'false');
                 fd.set('vehicule_id', st.type === 'vehicule' ? st.vehicule_id : '');
                 if (F.categorie.value !== compta.remboursement) fd.delete('beneficiaire');
                 if (st.fichier) fd.append('justificatif', st.fichier);
@@ -2793,6 +2847,7 @@ body.modal-ouvert { overflow: hidden; }
                 mettre('montant', o.montant_ttc); mettre('montant_ht', o.montant_ht); mettre('tva', o.tva);
                 if (o.taux_tva != null && TAUX.includes(String(o.taux_tva))) G.taux_tva.value = String(o.taux_tva);
                 if (o.date) G.date.value = o.date; if (o.fournisseur) G.fournisseur.value = o.fournisseur; if (o.libelle) G.libelle.value = o.libelle;
+                if (o.explication && G.explication && !G.explication.value) G.explication.value = o.explication;
                 if (o.categorie && [...G.categorie.options].some(op => op.value === o.categorie)) G.categorie.value = o.categorie;
                 if (o.tva_recuperable != null) G.tva_recuperable.checked = o.tva_recuperable;
                 if (o.montant_ttc && o.montant_ht == null && G.taux_tva.value) calc('taux');
@@ -3001,6 +3056,35 @@ body.modal-ouvert { overflow: hidden; }
         </div>
         <div class="sh-body">
             ${d.statut === 'achetee' || rdvPrevu(d) ? `<button class="btn btn-g" id="versVehicule" style="justify-self:start">${d.statut === 'achetee' ? 'Véhicule acheté' : 'RDV pris'} : frais et suivi dans Nos véhicules →</button>` : ''}
+            ${(() => {
+                const ph = (d.photos || []).find(p => !/\.pdf$/i.test(p.name));
+                const oTxt = String(d.origine_txt || x.origine || '');
+                const canalFiche = d.canal || (/^Google Ads/i.test(oTxt) ? 'pub' : /^Google/i.test(oTxt) ? 'google' : /chatgpt|perplexity|openai|claude|gemini|copilot/i.test(oTxt) ? 'ia' : oTxt ? 'autres' : 'inconnu');
+                const cl = CANAUX.find(c => c[0] === canalFiche) || CANAUX[4];
+                const f = fourchette(d), pm = prixMax(d), souh = Number(x.prix_souhaite) || 0;
+                const dernier = (s.appels || [])[0];
+                const etatTxt = [x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : ''), x.controle_technique ? 'CT ' + x.controle_technique.toLowerCase() : '', x.carrosserie ? 'carrosserie ' + x.carrosserie.toLowerCase() : ''].filter(Boolean);
+                return `<section class="sec apercu">
+                <div class="ap-photo">${ph ? `<img src="${photoUrl(ph.path)}" alt="Photo du vendeur" data-ap-photo>` : photoModele ? `<img src="${esc(photoModele)}" alt="Photo du modèle" referrerpolicy="no-referrer" onerror="this.parentElement.innerHTML='<span>Pas de photo</span>'"><small>photo du modèle, pas la voiture</small>` : '<span>Pas de photo</span>'}${(d.photos || []).length > 1 ? `<i>${d.photos.length} photos</i>` : ''}</div>
+                <div class="ap-faits">
+                    <div class="ap-f"><span>D'où il vient</span><b><i class="pt" style="background:${cl[2]}"></i>${esc(cl[1])}</b><small>${esc(d.origine_txt || x.origine || '—')}</small></div>
+                    <div class="ap-f"><span>État annoncé</span><b>${badgeMeca(x) || esc(etatTxt[0] || '—')}</b><small>${esc(etatTxt.slice(1).join(' · ') || [x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.annee].filter(Boolean).join(' · '))}</small></div>
+                    <div class="ap-f"><span>Notre estimation</span><b class="num">${enCours ? '<span class="spin"></span>' : f ? `${eur(f.min)} – ${eur(f.max)}` : pm ? eur(pm) : '—'}</b><small>${f ? `prix max ${eur(pm)} · engagement ${eur(f.min)} si les infos sont exactes` : pm ? 'prix max d\'achat' : 'pas encore estimée'}</small></div>
+                    <div class="ap-f"><span>Il demande</span><b class="num">${souh ? eur(souh) : '—'}</b><small>${souh && pm ? (souh > pm ? `${eur(souh - pm)} au-dessus de notre max` : `dans notre fourchette`) : souh ? 'à comparer après estimation' : 'pas de prix en tête'}</small></div>
+                </div>
+                ${x.message ? `<blockquote class="ap-msg">« ${esc(x.message)} »</blockquote>` : ''}
+                ${dernier ? `<p class="ap-appel"><b>Dernier appel</b> · ${date(dernier.date)} · ${esc(dernier.libelle || dernier.resultat)}${dernier.texte ? ` — ${esc(dernier.texte)}` : ''}</p>` : ''}
+            </section>`;
+            })()}
+            <section class="sec appel-sec">
+                <h3>Appels <small>${s.nb_appels ? `${s.nb_appels} appel${s.nb_appels > 1 ? 's' : ''} · dernier le ${date(s.dernier_appel, false)}` : 'jamais appelé'}${rappel(d) ? ` · relance <b class="${rappel(d) < jourIso() ? 'neg' : ''}">${jj(rappel(d))}</b>` : ''}</small></h3>
+                <div class="appel-actions">
+                    <button class="btn btn-p" id="crBtn"><svg><use href="#i-tel"/></svg>Compte rendu d'appel</button>
+                    <button class="flag${drapeau(d) ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${drapeau(d)}"><svg><use href="#i-flag"/></svg>${drapeau(d) ? 'À appeler · retirer' : 'Marquer « À appeler »'}</button>
+                </div>
+                ${(s.appels || []).length ? `<ol class="cr-liste">${s.appels.slice(0, 3).map(a => `<li><div><b>${esc(a.libelle || a.resultat)}</b><span>${date(a.date)}</span></div>${a.texte ? `<p>${esc(a.texte)}</p>` : ''}${(a.corrections || []).length ? `<small>Corrigé : ${a.corrections.map(esc).join(' · ')}</small>` : ''}${a.offre ? `<small>Offre faite : ${eur(a.offre)}</small>` : ''}</li>`).join('')}</ol>` : ''}
+            </section>
+            ${blocRdv(d)}
             <section class="sec decision">
                 <div class="dec-tete">
                     <div class="dec-max"><span>Prix max d'achat</span><b class="num">${enCours ? '<span class="spin"></span>' : prixMax(d) ? eur(prixMax(d)) : '—'}</b><small>${enCours ? 'estimation en cours (' + ESTIM_DUREE + ')' : prixMax(d) ? origineMax(d) : 'pas encore estimé'}</small></div>
@@ -3020,15 +3104,6 @@ body.modal-ouvert { overflow: hidden; }
                     ${s.estimation_statut === 'erreur' ? `<span style="color:var(--red)">Échec : ${esc(s.estimation_erreur)}</span>` : ''}
                 </div>
             </section>
-            <section class="sec appel-sec">
-                <h3>Appels <small>${s.nb_appels ? `${s.nb_appels} appel${s.nb_appels > 1 ? 's' : ''} · dernier le ${date(s.dernier_appel, false)}` : 'jamais appelé'}${rappel(d) ? ` · relance <b class="${rappel(d) < jourIso() ? 'neg' : ''}">${jj(rappel(d))}</b>` : ''}</small></h3>
-                <div class="appel-actions">
-                    <button class="btn btn-p" id="crBtn"><svg><use href="#i-tel"/></svg>Compte rendu d'appel</button>
-                    <button class="flag${drapeau(d) ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${drapeau(d)}"><svg><use href="#i-flag"/></svg>${drapeau(d) ? 'À appeler · retirer' : 'Marquer « À appeler »'}</button>
-                </div>
-                ${(s.appels || []).length ? `<ol class="cr-liste">${s.appels.slice(0, 3).map(a => `<li><div><b>${esc(a.libelle || a.resultat)}</b><span>${date(a.date)}</span></div>${a.texte ? `<p>${esc(a.texte)}</p>` : ''}${(a.corrections || []).length ? `<small>Corrigé : ${a.corrections.map(esc).join(' · ')}</small>` : ''}${a.offre ? `<small>Offre faite : ${eur(a.offre)}</small>` : ''}</li>`).join('')}</ol>` : ''}
-            </section>
-            ${blocRdv(d)}
             <section class="sec mail-sec" id="secEmail"></section>
             <section class="sec">
                 <h3>Détail de l'estimation <small>${e ? `confiance ${esc(e.confiance || '?')} · ${date(d.estimation_at)} · ${(e.usage || {}).recherches || 0} recherches` : ''}</small></h3>
@@ -3119,18 +3194,6 @@ body.modal-ouvert { overflow: hidden; }
                 </section>
             </div>
 
-            <section class="sec diag" id="diag">
-                <h3>Diagnostic mécanique</h3>
-                <p class="sub" style="margin:0 0 10px">Ce que tu as constaté ou ce que dit le vendeur, et les captures de la valise (ediag, codes défaut). L'estimation en tient compte en priorité sur l'état déclaré.</p>
-                <textarea class="in" id="diagTxt" placeholder="Ex. : voyant moteur allumé, P0401 mémorisé, embrayage qui patine en 4e, fumée bleue à froid, bruit de chaîne au démarrage…">${esc((s.diagnostic || {}).texte || '')}</textarea>
-                ${((s.diagnostic || {}).captures || []).length ? `<div class="diag-caps">${s.diagnostic.captures.map((c, i) => `<figure><img src="${photoUrl(c.path)}" alt="Capture ${i + 1} du diagnostic" loading="lazy" data-diag="${i}"><button class="del" data-diag-del="${esc(c.path)}">Supprimer</button></figure>`).join('')}</div>` : ''}
-                <div class="diag-actions">
-                    <label class="btn">Ajouter des captures<input type="file" id="diagCap" accept="image/*" multiple hidden></label>
-                    <button class="btn btn-p" id="diagSave">Enregistrer</button>
-                    <button class="btn btn-g" id="diagEstimer"${etat.estimation.actif ? '' : ' disabled'}>Enregistrer et réestimer</button>
-                    <span class="sub" id="diagMsg">${(s.diagnostic || {}).maj ? 'Mis à jour le ' + date(s.diagnostic.maj) : ''}</span>
-                </div>
-            </section>
             <section class="sec" id="secSuivi">
                 <h3>Suivi et historique</h3>
                 ${decompte(d)}
@@ -3182,6 +3245,7 @@ body.modal-ouvert { overflow: hidden; }
         </div>`;
         $('#closeSheet').onclick = fermer;
         rendreMail();
+        const ap = $('#sheetIn [data-ap-photo]'); if (ap) ap.onclick = () => { lbSource = null; lbOuvrir(0); };
         $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#secEmail').scrollIntoView({ block: 'start', behavior: 'smooth' }); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 400); });
         $('#versNote').onclick = () => { $('#noteIn').scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(() => $('#noteIn').focus(), 350); };
         $('#stSel').onchange = async ev => {
@@ -3197,27 +3261,6 @@ body.modal-ouvert { overflow: hidden; }
         $('#sheetIn').querySelectorAll('[data-flag]').forEach(b => b.onclick = () => basculerDrapeau(b.dataset.flag));
         if ($('#versVehicule')) $('#versVehicule').onclick = () => vehiculeDeDemande(d.ref);
         lierRdv(d);
-        // Diagnostic : texte + captures envoyés ensemble ; « réestimer » relance l'estimation avec.
-        const envoyerDiag = async (fichiers, reestimer) => {
-            const fd = new FormData();
-            fd.append('texte', $('#diagTxt').value);
-            [...(fichiers || [])].forEach(f => fd.append('captures', f));
-            $('#diagMsg').innerHTML = '<span class="spin"></span> Envoi…';
-            try {
-                courant = await api('/api/admin/demandes/' + courant.ref + '/diagnostic', { method: 'POST', body: fd });
-                if (reestimer) { await api('/api/admin/demandes/' + courant.ref + '/estimer', { method: 'POST' }); courant.suivi = { ...courant.suivi, estimation_statut: 'en_cours' }; toast('Diagnostic enregistré, estimation relancée'); }
-                else toast('Diagnostic enregistré');
-                maj(courant); fiche(); if (reestimer) surveiller(true);
-            } catch (e) { $('#diagMsg').textContent = e.message; }
-        };
-        $('#diagCap').onchange = e => { if (e.target.files.length) envoyerDiag(e.target.files, false); };
-        $('#diagSave').onclick = () => envoyerDiag(null, false);
-        $('#diagEstimer').onclick = () => envoyerDiag(null, true);
-        $('#sheetIn').querySelectorAll('[data-diag-del]').forEach(b => b.onclick = async () => {
-            if (await demander({ titre: 'Supprimer cette capture ?', boutons: [['ok', 'Supprimer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
-            try { courant = await api('/api/admin/demandes/' + courant.ref + '/diagnostic?path=' + encodeURIComponent(b.dataset.diagDel), { method: 'DELETE' }); maj(courant); fiche(); } catch (e) { toast(e.message); }
-        });
-        $('#sheetIn').querySelectorAll('[data-diag]').forEach(img => img.onclick = () => { lbSource = (courant.suivi.diagnostic || {}).captures || []; lbOuvrir(+img.dataset.diag); });
         $('#crBtn').onclick = () => compteRendu(d);
         $('#plaqueBtn').onclick = async () => {
             const b = $('#plaqueBtn'); b.disabled = true; $('#plaqueMsg').textContent = 'Interrogation…';
