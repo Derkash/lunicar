@@ -1748,7 +1748,7 @@ body.modal-ouvert { overflow: hidden; }
             else if (r <= 1.1) { n += 12; m.push(['Prix négociable (+' + Math.round((r - 1) * 100) + ' %)', 'o']); }
             else if (r <= 1.25) { n += 5; m.push(['Prix au-dessus (+' + Math.round((r - 1) * 100) + ' %)', 'r']); }
             else { n += r > 1.5 ? -10 : 0; m.push(['Prix trop haut (+' + Math.round((r - 1) * 100) + ' %)', 'r']); }
-        } else if (!E && M) { n += 14; m.push(['Ouvert à une offre', 'o']); }
+        } else if (!E && M) n += 14; // pas de prix demandé : note neutre, sans motif affiché
         else if (E && !M) n += 10;
         else n += 8;
         // 2. Attractivité du véhicule à la revente (15) : se revend-il vite et bien ?
