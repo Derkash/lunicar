@@ -573,6 +573,11 @@ ul.plain li { margin: 3px 0; }
 .apercu { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
 .ap-photo { position: relative; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: var(--marine-1); display: grid; place-items: center; color: var(--ink-4); font-size: .86rem; }
 .ap-photo img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+.ap-photo img.modele { object-fit: contain; background: #fff; padding: 6px; }
+.ap-col { min-width: 0; }
+.ap-vign { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 6px; }
+.ap-vign img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; cursor: zoom-in; display: block; }
+.ap-vign span { display: grid; place-items: center; font-size: .8rem; color: var(--ink-5); background: var(--line-2); border-radius: 8px; }
 .ap-photo small { position: absolute; left: 8px; bottom: 8px; background: rgba(14,35,64,.78); color: #fff; font-size: .68rem; padding: 2px 8px; border-radius: 99px; }
 .ap-photo i { position: absolute; right: 8px; bottom: 8px; background: rgba(14,35,64,.78); color: #fff; font-style: normal; font-size: .7rem; padding: 2px 8px; border-radius: 99px; }
 .ap-faits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -3065,7 +3070,7 @@ body.modal-ouvert { overflow: hidden; }
                 const dernier = (s.appels || [])[0];
                 const etatTxt = [x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : ''), x.controle_technique ? 'CT ' + x.controle_technique.toLowerCase() : '', x.carrosserie ? 'carrosserie ' + x.carrosserie.toLowerCase() : ''].filter(Boolean);
                 return `<section class="sec apercu">
-                <div class="ap-photo">${ph ? `<img src="${photoUrl(ph.path)}" alt="Photo du vendeur" data-ap-photo>` : photoModele ? `<img src="${esc(photoModele)}" alt="Photo du modèle" referrerpolicy="no-referrer" onerror="this.parentElement.innerHTML='<span>Pas de photo</span>'"><small>photo du modèle, pas la voiture</small>` : '<span>Pas de photo</span>'}${(d.photos || []).length > 1 ? `<i>${d.photos.length} photos</i>` : ''}</div>
+                <div class="ap-col"><div class="ap-photo">${ph ? `<img src="${photoUrl(ph.path)}" alt="Photo du vendeur" data-ap-photo="0">` : photoModele ? `<img class="modele" src="${esc(photoModele)}" alt="Photo du modèle" referrerpolicy="no-referrer" onerror="this.parentElement.innerHTML='<span>Pas de photo</span>'"><small>photo du modèle, pas la voiture</small>` : '<span>Pas de photo du vendeur</span>'}</div>${(() => { const imgs = (d.photos || []).map((p, i) => ({ p, i })).filter(o => !/\.pdf$/i.test(o.p.name)); return imgs.length > 1 ? `<div class="ap-vign">${imgs.slice(0, 8).map(o => `<img src="${photoUrl(o.p.path)}" alt="" data-ap-photo="${o.i}">`).join('')}${imgs.length > 8 ? `<span>+${imgs.length - 8}</span>` : ''}</div>` : ''; })()}</div>
                 <div class="ap-faits">
                     <div class="ap-f"><span>D'où il vient</span><b><i class="pt" style="background:${cl[2]}"></i>${esc(cl[1])}</b><small>${esc(d.origine_txt || x.origine || '—')}</small></div>
                     <div class="ap-f"><span>État annoncé</span><b>${badgeMeca(x) || esc(etatTxt[0] || '—')}</b><small>${esc(etatTxt.slice(1).join(' · ') || [x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.annee].filter(Boolean).join(' · '))}</small></div>
@@ -3245,7 +3250,7 @@ body.modal-ouvert { overflow: hidden; }
         </div>`;
         $('#closeSheet').onclick = fermer;
         rendreMail();
-        const ap = $('#sheetIn [data-ap-photo]'); if (ap) ap.onclick = () => { lbSource = null; lbOuvrir(0); };
+        $('#sheetIn').querySelectorAll('[data-ap-photo]').forEach(im => im.onclick = () => { lbSource = null; lbOuvrir(+im.dataset.apPhoto); });
         $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#secEmail').scrollIntoView({ block: 'start', behavior: 'smooth' }); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 400); });
         $('#versNote').onclick = () => { $('#noteIn').scrollIntoView({ block: 'center', behavior: 'smooth' }); setTimeout(() => $('#noteIn').focus(), 350); };
         $('#stSel').onchange = async ev => {
