@@ -42,7 +42,8 @@
         return json;
     }
 
-    const phoneOk = v => /^0[1-9]\d{8}$/.test(String(v).replace(/[^\d+]/g, '').replace(/^(\+33|0033)/, '0'));
+    // Mêmes formes acceptées que le serveur (lib/config.js parsePhone) : 06…, +33 6…, 0033 6…, 33 6….
+    const phoneOk = v => /^0[1-9]\d{8}$/.test(String(v).replace(/[^\d+]/g, '').replace(/^(\+33|0033|33(?=\d{9}$))/, '0'));
 
     function markInvalid(input, bad) {
         const field = input.closest('.field');
@@ -198,7 +199,8 @@
         qs.forEach(q => {
             q.querySelectorAll('[data-ok]').forEach(b => b.addEventListener('click', () => next(q)));
             q.querySelectorAll('[data-skip]').forEach(b => b.addEventListener('click', () => {
-                q.querySelectorAll('input[name=prix]').forEach(i => { i.value = ''; });
+                // « Je préfère votre estimation » / « Je ne l'ai pas sous la main » : rien de la question n'est envoyé.
+                q.querySelectorAll('input[type=text], input[type=tel]').forEach(i => { i.value = ''; });
                 next(q);
             }));
             // Choix uniques : on avance dès la réponse (sauf « titulaire : non », qui demande un nom,

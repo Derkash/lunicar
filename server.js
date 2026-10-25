@@ -24,6 +24,10 @@ const PORT = process.env.PORT || 3000;
 // Derrière Cloudflare + Render : l'adresse du visiteur est dans X-Forwarded-For.
 app.set('trust proxy', true);
 app.disable('x-powered-by');
+// Adresse réelle du visiteur pour les limites de débit et le verrouillage de connexion : avec
+// `trust proxy: true`, req.ip reprend la PREMIÈRE adresse de X-Forwarded-For, que le client peut
+// forger. Cloudflare transmet l'adresse vérifiée dans CF-Connecting-IP : c'est elle qui fait foi.
+const ipClient = req => String(req.headers['cf-connecting-ip'] || req.ip || (req.connection && req.connection.remoteAddress) || '').trim();
 
 // Configuration Nodemailer
 const transporter = nodemailer.createTransport({
@@ -59,7 +63,8 @@ const upload = multer({
     storage,
     limits: { fileSize: 8 * 1024 * 1024, files: 12 },
     fileFilter: (req, file, cb) => {
-        const allowedTypes = /jpeg|jpg|png|webp/;
+        // HEIC/HEIF (photos iPhone non converties) accepté : sharp les convertit au rangement (lib/store.js).
+        const allowedTypes = /jpeg|jpg|png|webp|heic|heif/;
         const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
         const mimetype = allowedTypes.test(file.mimetype);
         if (extname && mimetype) {
@@ -92,6 +97,8 @@ app.get('/:name.html', (req, res, next) => {
 });
 
 // Les fichiers CSS/JS sont appelés avec ?v=<version> : cache long sans risque.
+// Compression à l'origine (gzip/brotli selon le client) : utile hors Cloudflare et pour les robots qui parlent directement à Render.
+app.use(require('compression')());
 app.use(express.static(path.join(__dirname, 'public'), { index: false, maxAge: '30d' }));
 // Les photos des vendeurs ne sont plus publiques : elles se consultent dans l'admin.
 
@@ -274,7 +281,7 @@ app.get('/article/:slug', (req, res) => {
 app.get('/garanties', (req, res) => html(res, pages.garanties()));
 app.get('/chiffres-cles-vente-voiture-occasion', (req, res) => html(res, pages.chiffres()));
 app.get('/contact', (req, res) => html(res, pages.contact()));
-app.get('/mentions-legales', (req, res) => html(res, pages.legal('mentions-legales', 'Mentions légales | LUNICAR', 'Mentions légales du site lunicar.fr : éditeur et propriétaire OPTIMERCH (SAS), hébergement, propriété intellectuelle et contact pour toute question.')));
+app.get('/mentions-legales', (req, res) => html(res, pages.legal('mentions-legales', 'Mentions légales | LUNICAR', 'Mentions légales du site lunicar.fr : société éditrice, hébergement, propriété intellectuelle et contact pour toute question.')));
 app.get('/politique-confidentialite', (req, res) => html(res, pages.legal('politique-confidentialite', 'Politique de confidentialité | LUNICAR', 'Comment LUNICAR collecte, utilise et protège vos données personnelles lors d\'une demande d\'estimation : finalités, durée de conservation, vos droits.')));
 
 // ============ API ARTICLES ============
@@ -301,7 +308,7 @@ app.get('/api/ville/:cp', async (req, res) => {
     const cp = String(req.params.cp || '').replace(/\D/g, '');
     if (cp.length !== 5) return res.json({ villes: [] });
     if (villesCache.has(cp)) return res.set('Cache-Control', 'public, max-age=86400').json({ villes: villesCache.get(cp) });
-    if (tooManySends(`ville:${req.ip || ''}`, 60)) return res.status(429).json({ villes: [] });
+    if (tooManySends(`ville:${ipClient(req)}`, 60)) return res.status(429).json({ villes: [] });
     try {
         const r = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${cp}&fields=nom&format=json`, { signal: AbortSignal.timeout(5000) });
         const villes = r.ok ? (await r.json()).map(c => c.nom).sort((a, b) => a.localeCompare(b, 'fr')) : [];
@@ -316,7 +323,7 @@ app.get('/api/ville/:cp', async (req, res) => {
 
 // Datation maison toujours ; caractéristiques SIV si une clé API est configurée.
 app.get('/api/vehicule/:plaque', async (req, res) => {
-    if (tooManySends(`plaque:${req.ip || ''}`, 12)) return res.status(429).json({ error: 'Trop de recherches.' });
+    if (tooManySends(`plaque:${ipClient(req)}`, 12)) return res.status(429).json({ error: 'Trop de recherches.' });
     const r = await fichePlaque.rechercher(req.params.plaque);
     res.set('Cache-Control', 'no-store').json(r);
 });
@@ -532,19 +539,25 @@ async function envoyerDemande(d, opts = {}) {
     // Estimation automatique pour les véhicules de 10 ans et plus (décision du 2026-10-20), sauf si la même
     // plaque a déjà été reçue (sans plaque : même téléphone). Les autres s'estiment à la main depuis l'admin.
     // ESTIMATION_AUTO=1 sur Render la relance pour toutes les demandes.
-    let auto = process.env.ESTIMATION_AUTO === '1';
-    if (!auto && estimation.actif() && d.type !== 'rappel' && d.vehicule && !opts.rapide) {
+    // Jamais d'estimation automatique sur un brouillon abandonné (coût IA sans vendeur au bout), ni
+    // en double : si la demande a déjà son estimation (abandon puis envoi), on la réutilise.
+    let auto = process.env.ESTIMATION_AUTO === '1' && !opts.abandon;
+    if (!auto && estimation.actif() && d.type !== 'rappel' && d.vehicule && !opts.rapide && !opts.abandon) {
         const annee = anneeVehicule(d, apiBrut), age = annee ? new Date().getFullYear() - annee : 0;
         const doublon = age >= 10 ? await dejaRecue(d).catch(() => false) : false;
         auto = age >= 10 && !doublon;
         console.log(`💶 ${ref} : ${annee ? `${annee} (${age} ans)` : 'année inconnue'}${doublon ? ', déjà reçue' : ''} → estimation ${auto ? 'automatique' : 'à la demande'}`);
     }
     if (auto && estimation.actif() && d.type !== 'rappel' && d.vehicule && !opts.rapide) {
-        const fin = estimation.planifier(ref);
-        await Promise.race([fin, new Promise(r => setTimeout(r, ESTIMATION_ATTENTE).unref())]);
-        const ligne = await store.lireDemande(ref).catch(() => null);
-        if (ligne && ligne.estimation) opts = { ...opts, estimation: ligne.estimation };
-        else opts = { ...opts, estimationEnAttente: true };
+        const deja = await store.lireDemande(ref).catch(() => null);
+        if (deja && deja.estimation) opts = { ...opts, estimation: deja.estimation };
+        else {
+            const fin = estimation.planifier(ref);
+            await Promise.race([fin, new Promise(r => setTimeout(r, ESTIMATION_ATTENTE).unref())]);
+            const ligne = await store.lireDemande(ref).catch(() => null);
+            if (ligne && ligne.estimation) opts = { ...opts, estimation: ligne.estimation };
+            else opts = { ...opts, estimationEnAttente: true };
+        }
     }
     const prefixe = (opts.abandon ? '⚠️ Abandonnée' : d.type === 'rappel' ? '📞 Rappel' : '🚗 Estimation') + (/^Google Ads/.test(origine(d)) ? ' [PUB]' : '');
     let emailed = false;
@@ -558,8 +571,10 @@ async function envoyerDemande(d, opts = {}) {
     } catch (e) {
         console.error('❌ Erreur envoi email:', e.message);
     }
-    // Le disque de Render est effacé à chaque déploiement : on journalise toujours la demande en entier.
-    console.log(`${emailed ? '✅' : '🚨 NON ENVOYÉE PAR E-MAIL'} ${opts.abandon ? 'Abandon' : 'Demande'} ${ref}: ${JSON.stringify(d)}`);
+    // Journal : la demande complète (données personnelles) n'y figure que si l'e-mail n'est pas parti,
+    // comme filet de sécurité ; sinon seulement la référence et le véhicule.
+    if (emailed) console.log(`✅ ${opts.abandon ? 'Abandon' : 'Demande'} ${ref} : ${d.vehicule || d.type} · ${d.code_postal || '-'}`);
+    else console.log(`🚨 NON ENVOYÉE PAR E-MAIL ${opts.abandon ? 'Abandon' : 'Demande'} ${ref}: ${JSON.stringify(d)}`);
     return emailed;
 }
 
@@ -578,7 +593,7 @@ app.post('/api/reprise/brouillon', express.text({ type: '*/*', limit: '20kb' }),
     if (!/^[0-9a-f-]{36}$/.test(id) || b.site_web) return res.status(204).end();
     if (terminees.has(id)) return res.status(204).end();
     if (!parsePhone(b.telephone)) return res.status(204).end();
-    if (tooManySends(`brouillon:${req.ip || ''}`, 120)) return res.status(204).end();
+    if (tooManySends(`brouillon:${ipClient(req)}`, 120)) return res.status(204).end();
     brouillons.set(id, { b, t: Date.now() });
     res.status(204).end();
 });
@@ -603,12 +618,28 @@ app.post('/api/reprise', async (req, res) => {
         const b = req.body || {};
         // Champ piège : rempli uniquement par les robots. On répond "ok" sans rien enregistrer.
         if (b.site_web) return res.json({ success: true, id: uuidv4() });
-        if (tooManySends(req.ip || '')) return res.status(429).json({ error: 'Trop de demandes. Réessayez plus tard ou écrivez-nous à contact@lunicar.fr.' });
+        if (tooManySends(ipClient(req))) return res.status(429).json({ error: 'Trop de demandes. Réessayez plus tard ou écrivez-nous à contact@lunicar.fr.' });
         if (!parsePhone(b.telephone)) return res.status(400).json({ error: 'Numéro de téléphone invalide.', field: 'telephone' });
+        if (b.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(b.email).trim())) return res.status(400).json({ error: 'Adresse e-mail invalide.', field: 'email' });
 
-        const draftId = /^[0-9a-f-]{36}$/.test(String(b.draftId || '')) ? b.draftId : null;
-        const d = construireDemande(b, draftId || uuidv4());
+        // L'identifiant du brouillon n'est repris que s'il est connu : en mémoire (brouillon en cours) ou
+        // déjà en base avec le même identifiant (brouillon abandonné puis envoyé). Sinon un client pourrait
+        // choisir un identifiant dont la référence (8 premiers caractères) écrase la fiche d'un autre vendeur.
+        const refDe = id => String(id).replace(/-/g, '').slice(0, 8).toUpperCase();
+        let draftId = null;
+        if (/^[0-9a-f-]{36}$/.test(String(b.draftId || ''))) {
+            if (brouillons.has(b.draftId)) draftId = b.draftId;
+            else { const ex = await store.lireDemande(refDe(b.draftId)).catch(() => null); if (ex && ex.id === b.draftId) draftId = b.draftId; }
+        }
+        let id = draftId || uuidv4();
+        // Référence sur 8 caractères : on évite la collision avec une fiche existante.
+        if (!draftId && await store.lireDemande(refDe(id)).catch(() => null)) id = uuidv4();
+        const d = construireDemande(b, id);
         if (d.type === 'estimation' && !d.vehicule) return res.status(400).json({ error: 'Indiquez la marque et le modèle.', field: 'vehicule' });
+        if (d.type === 'estimation' && !/^\d{4}$|^avant/i.test(String(d.annee || ''))) return res.status(400).json({ error: 'Indiquez l\'année.', field: 'annee' });
+        if (d.type === 'estimation' && !d.kilometrage) return res.status(400).json({ error: 'Indiquez le kilométrage.', field: 'kilometrage' });
+        if (!d.prenom) return res.status(400).json({ error: 'Indiquez votre prénom.', field: 'prenom' });
+        if (d.type === 'estimation' && !/^\d{5}$/.test(String(d.code_postal || ''))) return res.status(400).json({ error: 'Indiquez un code postal à 5 chiffres.', field: 'codePostal' });
         if (draftId) brouillons.delete(draftId);
         terminees.set(d.id, { demande: d, t: Date.now() });
 
@@ -631,7 +662,7 @@ app.post('/api/reprise/:id/photos', upload.array('photos', 12), async (req, res)
         const enBase = /^[0-9a-f-]{36}$/.test(id) ? await store.lireDemande(ref).catch(() => null) : null;
         const fini = terminees.get(id) || (enBase && enBase.id === id && Date.now() - new Date(enBase.created_at) < 24 * 3600 * 1000 ? { demande: { ...enBase.data, id } } : null);
         if (!fini || !files.length) return res.status(fini ? 400 : 404).json({ error: fini ? 'Aucune photo reçue.' : 'Demande introuvable, envoyez vos photos à contact@lunicar.fr.' });
-        if (tooManySends(`photos:${req.ip || ''}`, 6)) return res.status(429).json({ error: 'Trop d\'envois.' });
+        if (tooManySends(`photos:${ipClient(req)}`, 6)) return res.status(429).json({ error: 'Trop d\'envois.' });
         const d = fini.demande;
         // Rangement dans le dossier de la demande (durable), avant l'e-mail.
         try {
@@ -662,7 +693,7 @@ app.post('/api/contact', async (req, res) => {
     try {
         const b = req.body || {};
         if (b.site_web) return res.json({ success: true });
-        if (tooManySends(req.ip || '')) return res.status(429).json({ error: 'Trop de messages. Réessayez plus tard.' });
+        if (tooManySends(ipClient(req))) return res.status(429).json({ error: 'Trop de messages. Réessayez plus tard.' });
         const clean = (v, max = 200) => String(v == null ? '' : v).trim().slice(0, max);
         const message = {
             id: uuidv4(),
@@ -690,8 +721,8 @@ app.post('/api/contact', async (req, res) => {
             });
         } catch (emailError) {
             console.error('❌ Erreur envoi email:', emailError.message);
+            console.log(`🚨 Message contact non envoyé par e-mail : ${JSON.stringify(message)}`);
         }
-        console.log(`Message contact: ${JSON.stringify(message)}`);
 
         res.json({ success: true });
     } catch (error) {
@@ -740,7 +771,7 @@ setInterval(() => {
 
 // Middleware de rate limiting pour login
 function loginRateLimiter(req, res, next) {
-    const ip = req.ip || req.connection.remoteAddress;
+    const ip = ipClient(req);
     const now = Date.now();
     const attempt = loginAttempts.get(ip);
 
@@ -805,7 +836,7 @@ app.get('/api/admin/calendrier', authAdmin, (req, res) => {
 // Login admin avec rate limiting
 app.post('/api/admin/login', loginRateLimiter, (req, res) => {
     const { identifiant, password } = req.body;
-    const ip = req.ip || req.connection.remoteAddress;
+    const ip = ipClient(req);
 
     if (ADMIN_PASSWORD && String(identifiant || '').trim().toLowerCase() === ADMIN_USER.toLowerCase() && password === ADMIN_PASSWORD) {
         // Connexion réussie - réinitialiser les tentatives
@@ -986,7 +1017,7 @@ function indexablePages() {
     Object.values(LOCAL.regions || {}).forEach(r => add(`/${r.slug}`, '0.8', r.updated || T));
     DEPTS.LIST.forEach(d => add(`/${d.slug}`, '0.8', d.updated || T));
     zones.FRANCE_CITIES.forEach(s => add(`/reprise-auto-${s}`, '0.7', ((LOCAL.villes || {})[s] || {}).updated || T));
-    if (LOCAL.aPropos) add('/a-propos', '0.5');
+    if (LOCAL.aPropos) add('/a-propos', '0.5', LOCAL.aPropos.updated || T);
     add('/garanties', '0.5');
     add('/articles', '0.6');
     add('/chiffres-cles-vente-voiture-occasion', '0.8', require('./lib/faits').derniereVerif() || T);
@@ -1006,28 +1037,19 @@ const isCityUrl = u => u.loc.startsWith('/reprise-auto-') && u.loc !== '/reprise
 app.get('/sitemap.xml', (req, res) => {
     const all = indexablePages();
     const last = list => list.reduce((m, u) => (u.lastmod > m ? u.lastmod : m), '');
-    res.header('Content-Type', 'application/xml');
+    res.header('Content-Type', 'application/xml').set('Cache-Control', 'public, max-age=3600');
     res.send(`<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap><loc>${SITE.baseUrl}/sitemap-pages.xml</loc><lastmod>${last(all.filter(u => !isCityUrl(u)))}</lastmod></sitemap>
   <sitemap><loc>${SITE.baseUrl}/sitemap-villes.xml</loc><lastmod>${last(all.filter(isCityUrl))}</lastmod></sitemap>
 </sitemapindex>`);
 });
-app.get('/sitemap-pages.xml', (req, res) => { res.header('Content-Type', 'application/xml'); res.send(urlset(indexablePages().filter(u => !isCityUrl(u)))); });
-app.get('/sitemap-villes.xml', (req, res) => { res.header('Content-Type', 'application/xml'); res.send(urlset(indexablePages().filter(isCityUrl))); });
+app.get('/sitemap-pages.xml', (req, res) => { res.header('Content-Type', 'application/xml').set('Cache-Control', 'public, max-age=3600'); res.send(urlset(indexablePages().filter(u => !isCityUrl(u)))); });
+app.get('/sitemap-villes.xml', (req, res) => { res.header('Content-Type', 'application/xml').set('Cache-Control', 'public, max-age=3600'); res.send(urlset(indexablePages().filter(isCityUrl))); });
 
-// Sitemap temporaire des anciennes adresses redirigées (301) : il pousse Google et Bing à les
-// revisiter vite, à constater la redirection et à remplacer l'ancienne page dans leurs résultats.
-// À retirer quand la Search Console ne montre plus d'anciennes URL indexées (≈ 2 à 3 mois).
+// Anciennes adresses redirigées (301) : poussées à IndexNow (Bing) pour que les moteurs constatent
+// la redirection. Plus de sitemap dédié : un sitemap ne doit lister que des URL canoniques en 200.
 const redirectedUrls = () => Object.keys(REDIRECTS).map(k => `${SITE.baseUrl}/${k}`);
-app.get('/sitemap-redirections.xml', (req, res) => {
-    const today = new Date().toISOString().slice(0, 10);
-    res.header('Content-Type', 'application/xml');
-    res.send(`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${redirectedUrls().map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
-</urlset>`);
-});
 
 // Robots d'IA cités explicitement : leur accès est voulu (citations ChatGPT, Perplexity, Claude…).
 app.get('/robots.txt', (req, res) => {
@@ -1047,9 +1069,8 @@ Disallow: /admino
 Disallow: /api/
 
 Sitemap: ${SITE.baseUrl}/sitemap.xml
-Sitemap: ${SITE.baseUrl}/sitemap-redirections.xml
 `;
-    res.header('Content-Type', 'text/plain; charset=utf-8');
+    res.header('Content-Type', 'text/plain; charset=utf-8').set('Cache-Control', 'public, max-age=3600');
     res.send(robots);
 });
 
@@ -1068,11 +1089,11 @@ app.get('/llms.txt', (req, res) => {
 Dernière mise à jour : ${pages.TEMPLATE_DATE}
 
 ## Faits clés
-- Zone : partout en France ; un technicien LUNICAR se déplace sur rendez-vous à l'adresse du vendeur, selon les disponibilités convenues, sans frais
+- Zone : partout en France ; un technicien LUNICAR intervient sur rendez-vous à l'adresse du vendeur, selon les disponibilités convenues, sans frais
 - Véhicules étudiés : toutes marques, récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, anciens, fort kilométrage, sans contrôle technique
 - Voitures en panne ou accidentées : peuvent être étudiées sur description de la panne ou des dommages ; selon leur importance, une offre n'est pas toujours possible
 - Aucune réparation à avancer avant la vente
-- Contrôle technique non exigé : il n'est obligatoire que pour une vente entre particuliers
+- Contrôle technique non exigé : il n'est obligatoire que pour une vente à un particulier
 - Estimation gratuite et sans engagement : fourchette indicative au téléphone rapidement, prix définitif après vérification du véhicule ; refus possible même le jour du rendez-vous, sans frais
 - Révision du prix uniquement en cas d'écart constaté avec la description (dommage ou panne non déclarés, kilométrage différent…)
 - Enlèvement à la charge de LUNICAR si la vente est conclue, y compris véhicule non roulant ou en parking souterrain
@@ -1086,7 +1107,7 @@ ${(SITE.social || []).map(r => `- [LUNICAR sur ${r.nom}](${r.url})`).join('\n')}
 
 ## Pages principales
 - [Accueil](${b}/): présentation, déroulé, comparatif, FAQ
-- [Comment fonctionne LUNICAR](${b}/${pages.METHODE_SLUG}): la méthode de bout en bout (demande, fourchette indicative, technicien, prix définitif, virement instantané), ce qui est garanti et ce qui ne l'est pas
+- [Comment fonctionne LUNICAR](${b}/${pages.METHODE_SLUG}): la méthode de bout en bout (demande, fourchette indicative, technicien, prix définitif, virement instantané), ce que LUNICAR s'engage à faire et ce qu'il ne promet pas
 - [Estimation voiture gratuite](${b}/reprise): comment est calculée l'estimation, fourchette indicative et prix définitif, motifs de révision, estimation avec la plaque
 - [Vendre une vieille voiture sans se déplacer](${b}/vendre-vieille-voiture): voitures de plus de 15 ans, peu roulées
 - [Toutes les voitures](${b}/reprise-voiture-occasion): ce que LUNICAR étudie et ce qui fait le prix
@@ -1119,19 +1140,18 @@ ${MODELS.map(m => `- [Vendre sa ${m.nav}](${b}/${m.slug}): ${m.description}`).jo
 ## Conseils (réponses sourcées aux questions des vendeurs)
 ${articles.map(a => `- [${a.titre}](${b}/article/${a.slug}): ${a.extrait}`).join('\n')}
 
-## Toutes les villes (une page locale par ville, rédigée pour la ville)
-${(() => {
-        const kept = CITIES.filter(c => c.slug !== 'paris' && zones.isKeptCity(c));
-        const byRegion = new Map();
-        kept.forEach(c => { if (!byRegion.has(c.region)) byRegion.set(c.region, []); byRegion.get(c.region).push(c); });
-        return [...byRegion.entries()].sort((x, y) => x[0].localeCompare(y[0], 'fr')).map(([r, list]) => `### ${r}\n${list.sort((x, y) => x.nom.localeCompare(y.nom, 'fr')).map(c => `- [Rachat de voiture ${aVille(c.nom)} (${c.codePostal})](${b}/reprise-auto-${c.slug})`).join('\n')}`).join('\n\n');
-    })()}
+## Départements
+${DEPTS.LIST.map(d => `- [Rachat de voiture ${d.dans} (${d.code})](${b}/${d.slug})`).join('\n')}
+
+## Grandes villes (chaque commune couverte a sa page : voir le plan des villes)
+${zones.FRANCE_CITIES.slice(0, 100).map(s => { const c = CITIES.find(x => x.slug === s); return c ? `- [Rachat de voiture ${aVille(c.nom)} (${c.codePostal})](${b}/reprise-auto-${s})` : ''; }).filter(Boolean).join('\n')}
 
 ## Optional
 - [Texte intégral des pages clés](${b}/llms-full.txt)
-- [Plan du site (toutes les villes et pages)](${b}/sitemap.xml)
+- [Plan des pages villes (${zones.FRANCE_CITIES.length + zones.IDF_CITIES.length} communes, texte local vérifié pour chacune)](${b}/sitemap-villes.xml)
+- [Plan du site](${b}/sitemap.xml)
 `;
-    res.header('Content-Type', 'text/plain; charset=utf-8');
+    res.header('Content-Type', 'text/plain; charset=utf-8').set('Cache-Control', 'public, max-age=3600');
     res.send(llms);
 });
 
@@ -1148,7 +1168,7 @@ app.get('/llms-full.txt', (req, res) => {
     GUIDES.filter(g => !g.brand).forEach(g => parts.push(block(`${b}/${g.slug}`, g.h1, g.lede, g.sections, g.faq)));
     parts.push(`# Chiffres clés de la vente d'une voiture d'occasion en France\nURL : ${b}/chiffres-cles-vente-voiture-occasion\n\n${require('./lib/faits').FAITS.map(f => `- ${f.fait} (source : ${f.source_titre}, ${f.source_url})`).join('\n')}\n`);
     readJSON('articles.json').forEach(a => parts.push(`# ${a.titre}\nURL : ${b}/article/${a.slug}\n\n${a.extrait}\n\n${strip(a.contenu)}\n`));
-    res.header('Content-Type', 'text/plain; charset=utf-8');
+    res.header('Content-Type', 'text/plain; charset=utf-8').set('Cache-Control', 'public, max-age=3600');
     res.send(parts.join('\n---\n\n'));
 });
 
@@ -1200,6 +1220,17 @@ app.get('/admino/articles', (req, res) => {
 app.use((req, res) => {
     if (req.path.startsWith('/api/')) return res.status(404).json({ error: 'Introuvable' });
     html(res, pages.notFound(), 404);
+});
+
+// Erreurs levées par un middleware (Multer : photo trop lourde, type refusé, JSON mal formé…) :
+// réponse JSON lisible par le formulaire au lieu de la page HTML 500 d'Express.
+app.use((err, req, res, next) => {
+    if (res.headersSent) return next(err);
+    const code = err.code === 'LIMIT_FILE_SIZE' || err.code === 'LIMIT_FILE_COUNT' || err.type === 'entity.parse.failed' || /images sont autorisées/.test(err.message || '') ? 400 : (err.status || 500);
+    const message = err.code === 'LIMIT_FILE_SIZE' ? 'Photo trop lourde (8 Mo maximum par photo).' : err.code === 'LIMIT_FILE_COUNT' ? 'Trop de photos (12 au plus).' : code === 400 ? err.message : 'Erreur interne.';
+    if (code === 500) console.error('Erreur non gérée :', err);
+    if (req.path.startsWith('/api/')) return res.status(code).json({ error: message });
+    res.status(code).type('text/plain').send(message);
 });
 
 // Démarrage serveur

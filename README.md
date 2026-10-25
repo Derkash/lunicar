@@ -1,6 +1,6 @@
 # LUNICAR
 
-Site de rachat de voitures toutes marques aux particuliers et aux professionnels (lunicar.fr), partout en France, déplacement et enlèvement offerts partout en France.
+Site de rachat de voitures toutes marques aux particuliers et aux professionnels (lunicar.fr), partout en France : technicien à l'adresse du vendeur sans frais, enlèvement offert si la vente est conclue, virement instantané.
 
 Node.js + Express, sans base de données : tout le HTML public est rendu côté serveur à partir de gabarits JavaScript et de fichiers JSON.
 
@@ -105,7 +105,7 @@ data/guides.json     pages rédigées : toutes les voitures, comparatif, situati
                      fort km, LOA/LLD, crédit, succession) et 12 marques
 data/local.json      Paris, textes locaux des villes d'IDF gardées, page France, Qui sommes-nous
 data/articles.json   conseils (sources officielles, FAQ, date de mise à jour)
-data/cities.json     441 communes : sert au maillage et aux redirections, toutes n'ont pas de page
+data/cities.json     5 124 communes : sert au maillage et aux redirections, toutes n'ont pas de page
 public/css/app.css   feuille unique (polices hébergées sur le site, sans Google Fonts)
 public/js/app.js     menu, saisie de plaque, formulaire de demande, rappel, contact, mesure
 tools/check_seo.js   contrôle de toutes les pages du sitemap (title, description, H1, JSON-LD, liens)
@@ -121,8 +121,8 @@ tools/generate_images.py  photos du site (Gemini), originaux dans .image-raw/
 | Région, départements (7) | `/rachat-voiture-ile-de-france`, `/rachat-voiture-hauts-de-seine-92`… | `lib/idf.js` |
 | Situations IDF (5) | `/rachat-voiture-en-panne-paris`… | `lib/idf.js` |
 | Guides et marques (20) | `/reprise-voiture-occasion`, `/reprise-renault`… | `data/guides.json` |
-| Villes IDF (40) | `/reprise-auto-{slug}` | `lib/zones.js` + `data/local.json` (villes) |
-| Villes hors IDF (69) | `/reprise-auto-{slug}` | `lib/zones.js` + `data/local.json` (villes) |
+| Villes IDF (≈ 150) | `/reprise-auto-{slug}` | `lib/zones.js` + `data/local.json` (villes) |
+| Villes hors IDF (≈ 4 970, 5 123 pages villes au 25/10/2026) | `/reprise-auto-{slug}` | `lib/zones.js` + `data/local.json` (villes) |
 | Régions (11) | `/rachat-voiture-occitanie`… | `data/local.json` (regions) |
 | Situations nationales (5) | `/rachat-voiture-en-panne`, `/rachat-voiture-accidentee`, `/rachat-voiture-sans-controle-technique`, `/rachat-voiture-rapide`, `/rachat-vehicule-utilitaire` | `data/guides.json` |
 | France, à propos | `/rachat-voiture-france`, `/a-propos` | `data/local.json` |
