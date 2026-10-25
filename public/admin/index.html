@@ -1734,49 +1734,52 @@ body.modal-ouvert { overflow: hidden; }
     const scoreDe = d => { const a = (d.estimation || {}).attractivite; return a && a.score != null ? Number(a.score) : null; };
     const classeScore = n => n == null ? '' : n >= 75 ? 'v' : n >= 50 ? 'o' : 'r';
     // ---- Intérêt d'une demande (0-100) : le tri par défaut, pour appeler d'abord les meilleures affaires.
-    // Prix demandé vs notre prix max (35) · urgence du vendeur (20) · remplaçante déjà achetée (15) · état (15) · petit budget (15)
-    // ± facilité de revente (5) · léger recul pour une demande qui vieillit (vendeur qui refroidit).
+    // Prix demandé vs notre prix max (30) · attractivité à la revente (15) · urgence du vendeur (17) · remplaçante déjà achetée (12)
+    // · état (13) · petit budget (13) · léger recul pour une demande qui vieillit (vendeur qui refroidit).
     function interet(d) {
         const x = d.data || {}, m = [], E = Number(x.prix_souhaite) || 0, M = prixMax(d), e = d.estimation;
         let n = 0;
-        // 1. Prix
+        // 1. Prix demandé vs notre prix max (30)
         if (E && M) {
             const r = E / M;
-            if (r <= 0.8) { n += 35; m.push(['Prix ' + Math.round((r - 1) * 100) + ' % sous le max', 'v']); }
-            else if (r <= 0.9) { n += 30; m.push(['Prix sous le max', 'v']); }
-            else if (r <= 1) { n += 24; m.push(['Prix dans le max', 'v']); }
-            else if (r <= 1.1) { n += 14; m.push(['Prix négociable (+' + Math.round((r - 1) * 100) + ' %)', 'o']); }
-            else if (r <= 1.25) { n += 6; m.push(['Prix au-dessus (+' + Math.round((r - 1) * 100) + ' %)', 'r']); }
+            if (r <= 0.8) { n += 30; m.push(['Prix ' + Math.round((r - 1) * 100) + ' % sous le max', 'v']); }
+            else if (r <= 0.9) { n += 26; m.push(['Prix sous le max', 'v']); }
+            else if (r <= 1) { n += 21; m.push(['Prix dans le max', 'v']); }
+            else if (r <= 1.1) { n += 12; m.push(['Prix négociable (+' + Math.round((r - 1) * 100) + ' %)', 'o']); }
+            else if (r <= 1.25) { n += 5; m.push(['Prix au-dessus (+' + Math.round((r - 1) * 100) + ' %)', 'r']); }
             else { n += r > 1.5 ? -10 : 0; m.push(['Prix trop haut (+' + Math.round((r - 1) * 100) + ' %)', 'r']); }
-        } else if (!E && M) { n += 16; m.push(['Ouvert à une offre', 'o']); }
-        else if (E && !M) n += 12;
-        else n += 10;
-        // 2. Urgence
+        } else if (!E && M) { n += 14; m.push(['Ouvert à une offre', 'o']); }
+        else if (E && !M) n += 10;
+        else n += 8;
+        // 2. Attractivité du véhicule à la revente (15) : se revend-il vite et bien ?
+        const sc = scoreDe(d);
+        if (sc == null) n += 7;
+        else { n += Math.round(sc / 100 * 15); if (sc >= 75) m.push(['Se revend vite', 'v']); else if (sc < 50) m.push(['Revente difficile', 'r']); }
+        // 3. Urgence du vendeur (17)
         const dl = String(x.delai || '').toLowerCase();
-        if (/plus vite/.test(dl)) { n += 20; m.push(['Pressé', 'v']); } else if (/mois/.test(dl) && !/3/.test(dl)) { n += 13; m.push(['Sous 1 mois', 'o']); }
-        else if (/3 mois/.test(dl)) n += 5; else if (/renseigne/.test(dl)) n += 0; else n += 6;
-        // 3. Voiture de remplacement
+        if (/plus vite/.test(dl)) { n += 17; m.push(['Pressé', 'v']); } else if (/mois/.test(dl) && !/3/.test(dl)) { n += 11; m.push(['Sous 1 mois', 'o']); }
+        else if (/3 mois/.test(dl)) n += 4; else if (/renseigne/.test(dl)) n += 0; else n += 5;
+        // 4. Voiture de remplacement déjà achetée (12)
         const pa = String(x.projet_achat || '').toLowerCase();
-        if (/déjà|deja/.test(pa)) { n += 15; m.push(['Remplaçante déjà achetée', 'v']); } else if (/prévoit|prevoit|oui/.test(pa)) n += 8; else if (!pa) n += 3;
-        // 4. État
+        if (/déjà|deja/.test(pa)) { n += 12; m.push(['Remplaçante déjà achetée', 'v']); } else if (/prévoit|prevoit|oui/.test(pa)) n += 6; else if (!pa) n += 2;
+        // 5. État (13)
         const em = etatMeca(x);
-        if (!em) n += 7;
-        else if (em.c === 'v') { n += 15; m.push(['Roule', 'v']); }
-        else if (em.c === 'o') { n += 10; m.push(['Roule avec soucis', 'o']); }
+        if (!em) n += 6;
+        else if (em.c === 'v') { n += 13; m.push(['Roule', 'v']); }
+        else if (em.c === 'o') { n += 9; m.push(['Roule avec soucis', 'o']); }
         else { n -= 10; m.push([em.l, 'r']); }
-        // 5. Petit budget
+        // 6. Petit budget (13)
         const P = E || M || (e && e.prix && e.prix.vente_estime ? Math.round(e.prix.vente_estime * 0.6) : 0);
-        if (!P) n += 6;
-        else { const b = P <= 1500 ? 15 : P <= 3000 ? 13 : P <= 5000 ? 10 : P <= 8000 ? 6 : P <= 12000 ? 3 : 0; n += b; if (b >= 13) m.push(['Petit budget', 'v']); }
-        // Ajustements
-        const sc = scoreDe(d); if (sc != null) n += Math.max(-5, Math.min(5, Math.round((sc - 50) / 10)));
+        if (!P) n += 5;
+        else { const b = P <= 1500 ? 13 : P <= 3000 ? 11 : P <= 5000 ? 8 : P <= 8000 ? 5 : P <= 12000 ? 2 : 0; n += b; if (b >= 11) m.push(['Petit budget', 'v']); }
+        // Fraîcheur : un vendeur refroidit vite
         const age = (Date.now() - new Date(d.created_at)) / 864e5; if (age > 3) n -= Math.min(10, Math.round((age - 3) / 2));
         return { n: Math.max(0, Math.min(100, Math.round(n))), m };
     }
     const cacheInteret = new Map();
     const interetDe = d => { const k = d.ref + '|' + d.updated_at; if (!cacheInteret.has(k)) cacheInteret.set(k, interet(d)); return cacheInteret.get(k); };
     const badgeInteret = d => { const i = interetDe(d); return `<span class="score s-${classeScore(i.n)}" title="Intérêt de l'affaire : ${esc(i.m.map(x => x[0]).join(', ') || 'peu d\'informations')}">${i.n}<small>/100</small></span>`; };
-    const motifsInteret = d => interetDe(d).m.slice(0, 3).map(([t, c]) => `<span class="motif m-${c}">${esc(t)}</span>`).join('');
+    const motifsInteret = d => interetDe(d).m.slice(0, 4).map(([t, c]) => `<span class="motif m-${c}">${esc(t)}</span>`).join('');
     const badgeScore = (d, grand) => { const n = scoreDe(d); return n == null ? '' : `<span class="score s-${classeScore(n)}${grand ? ' grand' : ''}" title="Attractivité à la revente">${n}<small>/100</small></span>`; };
     // Groupes de la liste : à traiter (jamais joint), déjà contactées, sans suite (toujours en bas).
     const CLOS = ['sans_suite', 'refusee', 'vendue_ailleurs'];
