@@ -2715,7 +2715,7 @@ body.modal-ouvert { overflow: hidden; }
         const ch = (k, l, attrs = '') => `<label class="f">${l}<input class="in" name="${k}" value="${esc(c[k] == null ? '' : c[k])}" ${attrs}></label>`;
         const coche = (k, l) => `<label class="chk"><input type="checkbox" name="${k}"${c[k] ? ' checked' : ''}> ${l}</label>`;
         $('#crIn').innerHTML = `<div class="cr-tete"><h3>Certificat de cession</h3><button class="close" type="button" id="cesX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
-            <p class="sub">Cerfa n° 15776*01 pré-rempli (modèle tamponné YAK SERVICES), générable dès le rendez-vous pris. L'adresse du vendeur, la date, l'heure et le lieu de la cession sont laissés vides, à remplir à la main le jour de la vente.</p>
+            <p class="sub">Cerfa n° 15776*01 pré-rempli (modèle tamponné de la société acheteuse), générable dès le rendez-vous pris. L'adresse du vendeur, la date, l'heure et le lieu de la cession sont laissés vides, à remplir à la main le jour de la vente.</p>
             <form id="cesF" class="ces-form" autocomplete="off">
                 <fieldset><legend>Le véhicule</legend>
                     ${ch('immatriculation', 'Immatriculation (A)', 'autocapitalize="characters"')}${ch('vin', 'N° d\'identification / VIN (E)', 'autocapitalize="characters"')}
