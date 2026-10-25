@@ -654,6 +654,15 @@ ul.plain li { margin: 3px 0; }
 .grp-2 { color: var(--ink-4); }
 .row.clos { opacity: .62; }
 
+/* ---------- Intérêt : motifs et tri rapide ---------- */
+.motifs { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.row .car .motifs { display: flex; }
+.motif { font-size: .68rem; font-weight: 650; padding: 2px 7px; border-radius: 99px; white-space: nowrap; }
+.motif.m-v { background: var(--green-1); color: var(--green); }
+.motif.m-o { background: var(--orange-1); color: var(--orange); }
+.motif.m-r { background: var(--red-1); color: var(--red); }
+.tri-rapide { display: flex; gap: 6px; margin: 0 0 10px; }
+
 /* ---------- Glisser une demande (archiver / supprimer) ---------- */
 .swipe { position: relative; overflow: hidden; }
 .swipe > .row { position: relative; z-index: 1; background: var(--surface); }
@@ -1172,7 +1181,7 @@ body.modal-ouvert { overflow: hidden; }
             <div class="panneau" id="panneau" hidden>
                 <div class="panneau-h"><b>Filtres</b><button class="close" type="button" id="fermerFiltres" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
                 <div class="filtres-grille">
-                    <label class="f">Trier par<select class="in" id="fTri"><option value="recent">Plus récentes d'abord</option><option value="ancien">Plus anciennes d'abord</option><option value="distance">Plus proches de Paris</option><option value="prix">Prix max d'achat décroissant</option><option value="score">Meilleur score d'abord</option></select></label>
+                    <label class="f">Trier par<select class="in" id="fTri"><option value="interet">Les plus intéressantes d'abord</option><option value="recent">Plus récentes d'abord</option><option value="ancien">Plus anciennes d'abord</option><option value="distance">Plus proches de Paris</option><option value="prix">Prix max d'achat décroissant</option><option value="score">Meilleur score d'abord</option></select></label>
                     <label class="f">Statut<select class="in" id="fStatut"><option value="">Tous les statuts</option></select></label>
                     <label class="f">Relance<select class="in" id="fRelance"><option value="">Toutes les relances</option><option value="appeler">À appeler (drapeau + rappels arrivés)</option><option value="drapeau">Marquées « À appeler »</option><option value="dues">Rappels arrivés (aujourd'hui et retard)</option><option value="semaine">À rappeler sous 7 jours</option><option value="jamais">Jamais appelées</option><option value="sans">Actives sans relance prévue</option></select></label>
                     <label class="f">Période<select class="in" id="fPeriode"><option value="">Toute la période</option><option value="1">Aujourd'hui</option><option value="7">7 derniers jours</option><option value="30">30 derniers jours</option><option value="90">3 derniers mois</option><option value="365">12 derniers mois</option></select></label>
@@ -1209,6 +1218,7 @@ body.modal-ouvert { overflow: hidden; }
                 </div>
                 <button class="close" data-lot="aucune" aria-label="Tout désélectionner" style="background:transparent;border-color:rgba(255,255,255,.2);color:#fff"><svg><use href="#i-x"/></svg></button>
             </div>
+            <div class="tri-rapide" id="triRapide"></div>
             <div class="list" id="list"></div>
         </section>
 
@@ -1723,6 +1733,50 @@ body.modal-ouvert { overflow: hidden; }
     // Score d'attractivité à la revente (0-100) : vert ≥ 75, orange 50-74, rouge < 50.
     const scoreDe = d => { const a = (d.estimation || {}).attractivite; return a && a.score != null ? Number(a.score) : null; };
     const classeScore = n => n == null ? '' : n >= 75 ? 'v' : n >= 50 ? 'o' : 'r';
+    // ---- Intérêt d'une demande (0-100) : le tri par défaut, pour appeler d'abord les meilleures affaires.
+    // Prix demandé vs notre prix max (35) · urgence du vendeur (20) · remplaçante déjà achetée (15) · état (15) · petit budget (15)
+    // ± facilité de revente (5) · léger recul pour une demande qui vieillit (vendeur qui refroidit).
+    function interet(d) {
+        const x = d.data || {}, m = [], E = Number(x.prix_souhaite) || 0, M = prixMax(d), e = d.estimation;
+        let n = 0;
+        // 1. Prix
+        if (E && M) {
+            const r = E / M;
+            if (r <= 0.8) { n += 35; m.push(['Prix ' + Math.round((r - 1) * 100) + ' % sous le max', 'v']); }
+            else if (r <= 0.9) { n += 30; m.push(['Prix sous le max', 'v']); }
+            else if (r <= 1) { n += 24; m.push(['Prix dans le max', 'v']); }
+            else if (r <= 1.1) { n += 14; m.push(['Prix négociable (+' + Math.round((r - 1) * 100) + ' %)', 'o']); }
+            else if (r <= 1.25) { n += 6; m.push(['Prix au-dessus (+' + Math.round((r - 1) * 100) + ' %)', 'r']); }
+            else { n += r > 1.5 ? -10 : 0; m.push(['Prix trop haut (+' + Math.round((r - 1) * 100) + ' %)', 'r']); }
+        } else if (!E && M) { n += 16; m.push(['Ouvert à une offre', 'o']); }
+        else if (E && !M) n += 12;
+        else n += 10;
+        // 2. Urgence
+        const dl = String(x.delai || '').toLowerCase();
+        if (/plus vite/.test(dl)) { n += 20; m.push(['Pressé', 'v']); } else if (/mois/.test(dl) && !/3/.test(dl)) { n += 13; m.push(['Sous 1 mois', 'o']); }
+        else if (/3 mois/.test(dl)) n += 5; else if (/renseigne/.test(dl)) n += 0; else n += 6;
+        // 3. Voiture de remplacement
+        const pa = String(x.projet_achat || '').toLowerCase();
+        if (/déjà|deja/.test(pa)) { n += 15; m.push(['Remplaçante déjà achetée', 'v']); } else if (/prévoit|prevoit|oui/.test(pa)) n += 8; else if (!pa) n += 3;
+        // 4. État
+        const em = etatMeca(x);
+        if (!em) n += 7;
+        else if (em.c === 'v') { n += 15; m.push(['Roule', 'v']); }
+        else if (em.c === 'o') { n += 10; m.push(['Roule avec soucis', 'o']); }
+        else { n -= 10; m.push([em.l, 'r']); }
+        // 5. Petit budget
+        const P = E || M || (e && e.prix && e.prix.vente_estime ? Math.round(e.prix.vente_estime * 0.6) : 0);
+        if (!P) n += 6;
+        else { const b = P <= 1500 ? 15 : P <= 3000 ? 13 : P <= 5000 ? 10 : P <= 8000 ? 6 : P <= 12000 ? 3 : 0; n += b; if (b >= 13) m.push(['Petit budget', 'v']); }
+        // Ajustements
+        const sc = scoreDe(d); if (sc != null) n += Math.max(-5, Math.min(5, Math.round((sc - 50) / 10)));
+        const age = (Date.now() - new Date(d.created_at)) / 864e5; if (age > 3) n -= Math.min(10, Math.round((age - 3) / 2));
+        return { n: Math.max(0, Math.min(100, Math.round(n))), m };
+    }
+    const cacheInteret = new Map();
+    const interetDe = d => { const k = d.ref + '|' + d.updated_at; if (!cacheInteret.has(k)) cacheInteret.set(k, interet(d)); return cacheInteret.get(k); };
+    const badgeInteret = d => { const i = interetDe(d); return `<span class="score s-${classeScore(i.n)}" title="Intérêt de l'affaire : ${esc(i.m.map(x => x[0]).join(', ') || 'peu d\'informations')}">${i.n}<small>/100</small></span>`; };
+    const motifsInteret = d => interetDe(d).m.slice(0, 3).map(([t, c]) => `<span class="motif m-${c}">${esc(t)}</span>`).join('');
     const badgeScore = (d, grand) => { const n = scoreDe(d); return n == null ? '' : `<span class="score s-${classeScore(n)}${grand ? ' grand' : ''}" title="Attractivité à la revente">${n}<small>/100</small></span>`; };
     // Groupes de la liste : à traiter (jamais joint), déjà contactées, sans suite (toujours en bas).
     const CLOS = ['sans_suite', 'refusee', 'vendue_ailleurs'];
@@ -1754,17 +1808,17 @@ body.modal-ouvert { overflow: hidden; }
         liste();
     });
     // Segments rapides : statut ou relance, un clic.
-    const SEGS = [['', 'Toutes'], ['r:appeler', 'À appeler'], ['nouvelle', 'Nouvelles'], ['contactee', 'Contactées'], ['offre', 'Offre faite'], ['a:archivees', 'Archivées'], ['v:nos', 'Nos véhicules →']];
+    const SEGS = [['', 'Toutes'], ['r:appeler', 'À appeler'], ['nouvelle', 'Nouvelles'], ['contactee', 'Contactées'], ['offre', 'Offre faite'], ['a:archivees', 'Archivées'], ['v:nos', 'Rendez-vous →']];
     // Une demande avec un rendez-vous pris (ou achetée) quitte la liste : elle vit dans « Nos véhicules ».
     const versVehicules = d => d.statut === 'achetee' || (d.statut === 'rdv' && rdvPrevu(d));
     function segments() {
         const vivantes = demandes.filter(d => !(d.suivi || {}).archivee), auj = jourIso();
-        const n = k => !k ? vivantes.filter(d => !versVehicules(d)).length : k === 'v:nos' ? vivantes.filter(versVehicules).length : k === 'a:archivees' ? demandes.length - vivantes.length : k === 'r:appeler' ? vivantes.filter(aAppeler).length : vivantes.filter(d => d.statut === k).length;
+        const n = k => !k ? vivantes.filter(d => !versVehicules(d)).length : k === 'v:nos' ? vivantes.filter(d => rdvPrevu(d)).length : k === 'a:archivees' ? demandes.length - vivantes.length : k === 'r:appeler' ? vivantes.filter(aAppeler).length : vivantes.filter(d => d.statut === k).length;
         const actif = $('#fArchive').value === 'oui' ? (!$('#fStatut').value && !$('#fRelance').value ? 'a:archivees' : null)
             : $('#fArchive').value ? null
             : $('#fRelance').value === 'appeler' && !$('#fStatut').value ? 'r:appeler' : !$('#fRelance').value ? $('#fStatut').value : null;
         $('#segs').innerHTML = SEGS.map(([k, l]) => `<button class="seg${actif === k ? ' on' : ''}${k === 'r:appeler' && n(k) ? ' urgent' : ''}" data-seg="${k}">${l}<b class="num">${n(k)}</b></button>`).join('');
-        const nb = FILTRES.filter(f => $(f).value).length + $('#fPhotos').checked + $('#fSansEst').checked + ($('#fTri').value !== 'recent');
+        const nb = FILTRES.filter(f => $(f).value).length + $('#fPhotos').checked + $('#fSansEst').checked + (!['interet', 'recent'].includes($('#fTri').value));
         $('#nbFiltres').textContent = nb || '';
         document.querySelectorAll('[data-kpi]').forEach(b => b.classList.toggle('on',
             ({ dues: $('#fRelance').value === 'appeler', jamais: $('#fRelance').value === 'jamais', j30: $('#fPeriode').value === '30', sansEst: $('#fSansEst').checked, achetee: $('#fStatut').value === 'achetee' })[b.dataset.kpi] && nb === 1));
@@ -1772,7 +1826,7 @@ body.modal-ouvert { overflow: hidden; }
     $('#segs').addEventListener('click', e => {
         const b = e.target.closest('[data-seg]'); if (!b) return;
         const k = b.dataset.seg;
-        if (k === 'v:nos') { vhSeg = 'prospects'; return allerOnglet('vehicules'); }
+        if (k === 'v:nos') { plVue = 'avenir'; plJour = null; return allerOnglet('planning'); }
         $('#fStatut').value = /^[ra]:/.test(k) ? '' : k; $('#fRelance').value = k === 'r:appeler' ? 'appeler' : '';
         $('#fArchive').value = k === 'a:archivees' ? 'oui' : '';
         liste();
@@ -1780,7 +1834,7 @@ body.modal-ouvert { overflow: hidden; }
     const panneau = ouvert => { $('#panneau').hidden = !ouvert; $('#voile').hidden = !(ouvert && matchMedia('(max-width: 760px)').matches); };
     $('#btnFiltres').onclick = () => panneau($('#panneau').hidden);
     $('#fermerFiltres').onclick = $('#voirRes').onclick = $('#voile').onclick = () => panneau(false);
-    $('#razFiltres').onclick = () => { raz(); $('#fTri').value = 'recent'; liste(); };
+    $('#razFiltres').onclick = () => { raz(); $('#fTri').value = 'interet'; liste(); };
     function filtrees() {
         const q = $('#q').value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
         const st = $('#fStatut').value, or = $('#fOrigine').value, ty = $('#fType').value;
@@ -1815,13 +1869,16 @@ body.modal-ouvert { overflow: hidden; }
     function liste() {
         const tri = $('#fTri').value;
         const km = d => { const g = geo((d.data || {}).code_postal); return g && g.km != null ? g.km : 1e6; };
-        const parTri = tri === 'ancien' ? (p, q) => p.created_at.localeCompare(q.created_at)
+        const parTri = tri === 'interet' ? (p, q) => interetDe(q).n - interetDe(p).n || q.created_at.localeCompare(p.created_at)
+            : tri === 'ancien' ? (p, q) => p.created_at.localeCompare(q.created_at)
             : tri === 'distance' ? (p, q) => km(p) - km(q) || q.created_at.localeCompare(p.created_at)
             : tri === 'prix' ? (p, q) => prixMax(q) - prixMax(p)
             : tri === 'score' ? (p, q) => (scoreDe(q) ?? -1) - (scoreDe(p) ?? -1) || q.created_at.localeCompare(p.created_at)
             : (p, q) => q.created_at.localeCompare(p.created_at);
-        // Groupe (à traiter, contactées, sans suite en bas), puis rappels arrivés et « À appeler », puis le tri choisi.
-        const a = affichees = filtrees().sort((p, q) => groupe(p) - groupe(q) || priorite(p) - priorite(q) || (priorite(p) === 0 ? rappel(p).localeCompare(rappel(q)) : 0) || parTri(p, q));
+        // Groupe (à traiter, contactées, sans suite en bas), puis le tri choisi. Par défaut : l'intérêt de l'affaire,
+        // qui passe AVANT les rappels et drapeaux (ils restent signalés en couleur sur la carte).
+        const a = affichees = filtrees().sort((p, q) => groupe(p) - groupe(q) || (tri === 'interet' ? 0 : priorite(p) - priorite(q) || (priorite(p) === 0 ? rappel(p).localeCompare(rappel(q)) : 0)) || parTri(p, q));
+        $('#triRapide').innerHTML = [['interet', 'Les plus intéressantes'], ['recent', 'Les plus récentes']].map(([k, l]) => `<button type="button" class="seg${tri === k ? ' on' : ''}" data-tri="${k}">${l}</button>`).join('');
         const titres = ['À traiter · jamais appelées', 'Déjà contactées', 'Sans suite'];
         const nbGroupe = [0, 1, 2].map(g => a.filter(d => groupe(d) === g).length);
         let gPrec = -1;
@@ -1842,9 +1899,9 @@ body.modal-ouvert { overflow: hidden; }
             return `${entete}<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}${clos ? ' clos' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
-                <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span></div>
+                <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
-                <div class="price num">${badgeScore(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
+                <div class="price num">${badgeInteret(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
                 <div class="ph num">${(d.photos || []).length || ''}</div>
                 <div class="quand-m">${date(d.created_at, false)}</div>
@@ -1852,6 +1909,8 @@ body.modal-ouvert { overflow: hidden; }
         }).join('') : '<div class="empty">Aucune demande ne correspond.</div>');
         barreLot();
     }
+    try { const t = localStorage.getItem('lunicarTri'); if (t && [...$('#fTri').options].some(o => o.value === t)) $('#fTri').value = t; } catch (e) {}
+    $('#triRapide').addEventListener('click', e => { const b = e.target.closest('[data-tri]'); if (!b) return; $('#fTri').value = b.dataset.tri; try { localStorage.setItem('lunicarTri', b.dataset.tri); } catch (er) {} liste(); });
     ['#q', '#fStatut', '#fCanal', '#fMeca', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
     $('#list').addEventListener('click', e => {
         if (e.target.id === 'toutCocher') { affichees.forEach(d => e.target.checked ? choisies.add(d.ref) : choisies.delete(d.ref)); liste(); return; }
@@ -2300,7 +2359,7 @@ body.modal-ouvert { overflow: hidden; }
         const b = e.target.closest('[data-aller]'); if (!b) return;
         const k = b.dataset.aller;
         if (k === 'rdv' || k === 'cr') { plVue = k === 'cr' ? 'retard' : 'avenir'; plJour = k === 'rdv' ? jourIso() : null; return allerOnglet('planning'); }
-        raz(); $('#fTri').value = 'recent';
+        raz(); $('#fTri').value = 'interet';
         if (k === 'appeler') $('#fRelance').value = 'appeler'; else $('#fStatut').value = 'nouvelle';
         allerOnglet('demandes'); liste();
     });
@@ -2313,7 +2372,7 @@ body.modal-ouvert { overflow: hidden; }
     });
 
     // ---------------- Compta : véhicules achetés et dépenses entre associés
-    let compta = null, vhSeg = 'prospects', depEdit = null;
+    let compta = null, vhSeg = 'actifs', depEdit = null;
     const PAYCOURT = { abdoul: 'Abdoul-Khader', youssouf: 'Youssouf', societe: 'Société' };
     const euro = v => (Number(v) || 0).toLocaleString('fr-FR', { minimumFractionDigits: Number(v) % 1 ? 2 : 0, maximumFractionDigits: 2 }) + ' €';
     const signe = v => v == null ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') + euro(Math.abs(v));
@@ -2333,18 +2392,17 @@ body.modal-ouvert { overflow: hidden; }
         const immob = actifs.reduce((t, v) => t + v.bilan.cout, 0), ca = vendus.reduce((t, v) => t + (Number(v.prix_vente) || 0), 0);
         const marge = vendus.reduce((t, v) => t + (v.bilan.marge || 0), 0), fraisPerdus = perdus.reduce((t, v) => t + v.bilan.frais, 0);
         const delais = vendus.map(v => v.bilan.jours).filter(j => j != null);
+        // Règle : l'onglet Véhicules ne montre QUE les voitures effectivement achetées (les RDV pris sont dans « Rendez-vous »).
+        if (!['actifs', 'vendus', 'tous'].includes(vhSeg)) vhSeg = 'actifs';
         $('#vhKpis').innerHTML = [
-            [prospects.length, 'RDV pris', `<span class="delta">${euro(prospects.reduce((t, v) => t + (Number(v.prix_convenu) || 0), 0))} convenus</span>`],
             [actifs.length, 'en stock', `<span class="delta">${euro(immob)} immobilisés</span>`],
             [vendus.length, 'vendus', `<span class="delta">${euro(ca)} de CA</span>`],
             [signe(marge), 'marge réalisée', `<span class="delta">${delais.length ? 'revente en ' + Math.round(delais.reduce((a, b) => a + b, 0) / delais.length) + ' j en moyenne' : '&nbsp;'}</span>`, marge < 0 ? 'alerte' : ''],
-            [euro(fraisPerdus), 'frais sans achat', `<span class="delta">${perdus.length} RDV sans suite</span>`, fraisPerdus ? 'alerte' : '']
         ].map(([v, l, d, c]) => `<div class="kpi ${c || ''}"><b class="num">${v}</b><span>${l}</span>${d}</div>`).join('');
-        $('#vhSous').textContent = `prospects sérieux (RDV pris) et véhicules achetés`;
-        $('#vhSegs').innerHTML = [['prospects', 'RDV pris', prospects.length], ['actifs', 'En stock', actifs.length], ['vendus', 'Vendus', vendus.length], ['perdus', 'Sans suite', perdus.length], ['tous', 'Tous', V.length]]
+        $('#vhSous').textContent = `voitures effectivement achetées`;
+        $('#vhSegs').innerHTML = [['actifs', 'En stock', actifs.length], ['vendus', 'Vendus', vendus.length], ['tous', 'Tous', actifs.length + vendus.length]]
             .map(([k, l, n]) => `<button class="seg${vhSeg === k ? ' on' : ''}" data-vhseg="${k}">${l}<b class="num">${n}</b></button>`).join('');
-        const liste = (vhSeg === 'prospects' ? prospects : vhSeg === 'actifs' ? actifs : vhSeg === 'vendus' ? vendus : vhSeg === 'perdus' ? perdus : V)
-            .slice().sort((a, b) => vhSeg === 'prospects' ? String((a.rdv || {}).date || '') + ((a.rdv || {}).heure || '') > String((b.rdv || {}).date || '') + ((b.rdv || {}).heure || '') ? 1 : -1 : 0);
+        const liste = (vhSeg === 'vendus' ? vendus : vhSeg === 'tous' ? [...actifs, ...vendus] : actifs).slice();
         $('#vhList').innerHTML = liste.length ? liste.map(v => {
             const b = v.bilan, vendu = v.statut === 'vendu', pros = v.statut === 'prospect', r = v.rdv || {};
             if (pros) return `<button class="vh vh-pros" data-vh="${esc(v.id)}">
