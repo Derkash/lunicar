@@ -77953,6 +77953,79 @@
         }
       ],
       "updated": "2026-10-15"
+    },
+    "rachat-voiture-corse": {
+      "slug": "rachat-voiture-corse",
+      "region": "Corse",
+      "image": "accueil",
+      "nav": "Rachat en Corse",
+      "title": "Rachat de voiture en Corse : estimation rapide | LUNICAR",
+      "description": "Ajaccio, Bastia, Porto-Vecchio, Calvi : vendez votre voiture sans annonce ni visites. Fourchette de prix indicative communiquée rapidement, virement instantané.",
+      "h1": "Rachat de voiture en Corse, <em>d'Ajaccio à Bastia, de Calvi à Bonifacio</em>",
+      "lede": "Voiture de tous les jours sur la T20, citadine ajaccienne ou véhicule qui monte chaque semaine vers un village de montagne : LUNICAR étudie les voitures corses, toutes marques. Décrivez la vôtre en ligne et recevez une estimation rapide.",
+      "points": [
+        "Fourchette de prix indicative communiquée rapidement",
+        "Enlèvement sur place offert",
+        "Contrôle technique non exigé",
+        "Virement instantané à la signature"
+      ],
+      "etat": [],
+      "sections": [
+        {
+          "h2": "Comment vendre sa voiture à Ajaccio, Bastia ou Porto-Vecchio ?",
+          "html": "<p>Décrivez la voiture en ligne, plaque facultative. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Si vous l'acceptez, un technicien LUNICAR vient à votre adresse sans frais, sur rendez-vous, d'Ajaccio à Bastia, de Porto-Vecchio à Calvi, et vous êtes payé par virement instantané à la conclusion de la vente.</p>\n<p>En Corse, les grands axes sont les routes territoriales : la T20 relie Ajaccio à Lucciana en passant par Bocognano, Vivario et Corte, la T10 longe la côte orientale de Lucciana à Bonifacio en traversant Aléria, Ghisonaccia et Porto-Vecchio, et la T30 relie Ponte-Leccia à Calvi par L'Île-Rousse. Les trajets quotidiens y sont souvent longs : décrire l'usage réel de la voiture, entretien à l'appui, aide à bien la valoriser.</p>"
+        },
+        {
+          "h2": "Le relief et le climat corses font-ils perdre de la valeur à une voiture ?",
+          "html": "<p>Ils peuvent user certaines pièces, sans retirer toute valeur à la voiture. Le relief corse est très escarpé et l'été est chaud et sec, avec un hiver plus doux et plus humide. Une voiture entretenue garde une bonne valeur. Les défauts visibles entrent simplement dans l'estimation.</p>\n<ul class=\"ticks\">\n<li><strong>Freins et pneus</strong> : les routes de montagne et les cols sollicitent la mécanique. Signalez les dernières révisions.</li>\n<li><strong>Chaleur</strong> : une voiture stationnée au soleil peut avoir une peinture ternie, un tableau de bord marqué ou une batterie fatiguée.</li>\n<li><strong>Littoral</strong> : une voiture garée près de la mer peut présenter de la rouille. Précisez-la, photos à l'appui.</li>\n<li><strong>Habitacle</strong> : signalez toute trace d'humidité ou de moisissure, ainsi que l'état de la climatisation.</li>\n</ul>"
+        },
+        {
+          "h2": "Rachetez-vous les voitures rurales, les utilitaires et les véhicules des villages de montagne ?",
+          "html": "<p>Oui. En Corse, une grande partie des communes se trouve à plus d'une heure de route d'Ajaccio ou de Bastia, et la voiture ou l'utilitaire sont souvent indispensables au quotidien. LUNICAR rachète ces véhicules, même très kilométrés ou fatigués, auprès des particuliers et des professionnels, avec le même parcours en ligne.</p>\n<p>Pour un véhicule situé à Corte, à Sartène, dans l'Alta Rocca ou en Balagne, précisez simplement la commune dans votre demande : LUNICAR intervient en Corse, à l'adresse du vendeur et sur rendez-vous. Pour un fourgon, un plateau ou une benne, consultez la page <a href=\"/rachat-vehicule-utilitaire\">rachat de véhicule utilitaire</a>. Pour une voiture qui ne démarre plus, voyez la page <a href=\"/rachat-voiture-en-panne\">rachat de voiture en panne</a>.</p>"
+        },
+        {
+          "h2": "Quelles démarches pour vendre sa voiture en Corse ?",
+          "html": "<p>Les démarches sont identiques dans toute la France. Vous remettez la carte grise barrée et signée, le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession</a> (Cerfa 15776) est rempli en deux exemplaires et la cession est déclarée sur le site de l'<a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">ANTS</a>. Avec LUNICAR, ces documents sont préparés avec vous, et le paiement se fait par virement instantané à la conclusion de la vente.</p>\n<p>Le contrôle technique n'est pas exigé. Vous pouvez transmettre le rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>, gratuit. Il n'y a ni frais de dossier, ni obligation d'acheter un autre véhicule, et vous pouvez refuser l'offre sans frais. Une étude ne débouche pas toujours sur une offre. Le parcours détaillé est sur la page <a href=\"/rachat-voiture-france\">rachat de voiture partout en France</a>.</p>"
+        }
+      ],
+      "faqTitle": "Questions fréquentes sur le rachat de voiture en Corse",
+      "faq": [
+        {
+          "question": "LUNICAR rachète-t-il des voitures à Ajaccio et à Bastia ?",
+          "answer": "Oui. LUNICAR étudie les voitures de toute la Corse, d'Ajaccio à Bastia, de Porto-Vecchio à Calvi. La demande se fait en ligne, un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Une offre n'est pas toujours possible."
+        },
+        {
+          "question": "Ma voiture a beaucoup roulé en montagne : est-ce un problème ?",
+          "answer": "Non. Un kilométrage élevé ou un usage sur routes de montagne n'empêche pas l'étude. Précisez l'usage et joignez vos factures d'entretien : l'estimation en tiendra compte. Les voitures très kilométrées sont étudiées."
+        },
+        {
+          "question": "Je vis dans un village de montagne ou loin d'Ajaccio et de Bastia : puis-je vendre ?",
+          "answer": "Oui. Indiquez la commune dans votre demande en ligne. La fourchette de prix indicative arrive rapidement comme pour toute autre voiture, et le technicien LUNICAR vient à votre adresse sans frais, sur rendez-vous. L'enlèvement est offert si la vente est conclue."
+        },
+        {
+          "question": "Rachetez-vous les utilitaires d'éleveurs, d'artisans et de professionnels du tourisme ?",
+          "answer": "Oui. Fourgonnettes, fourgons, plateaux et pick-up sont étudiés auprès des particuliers et des professionnels, même très kilométrés ou sans contrôle technique. Décrivez l'usage, la carrosserie et l'entretien."
+        },
+        {
+          "question": "Comment suis-je payé ?",
+          "answer": "Par virement instantané, à la conclusion de la vente. Il n'y a pas de frais de dossier. Le prix définitif est confirmé après la vérification du technicien, si l'état correspond à la description."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Corse, Wikipédia",
+          "url": "https://fr.wikipedia.org/wiki/Corse"
+        },
+        {
+          "label": "Route territoriale 20, Wikipédia",
+          "url": "https://fr.wikipedia.org/wiki/Route_territoriale_20"
+        },
+        {
+          "label": "Route territoriale 10, Wikipédia",
+          "url": "https://fr.wikipedia.org/wiki/Route_territoriale_10"
+        }
+      ],
+      "updated": "2026-10-25"
     }
   },
   "departements": {
@@ -79635,6 +79708,54 @@
         }
       ],
       "updated": "2026-10-22"
+    },
+    "2A": {
+      "nom": "Corse-du-Sud",
+      "region": "Corse",
+      "de": "de Corse-du-Sud",
+      "dans": "en Corse-du-Sud",
+      "h2": "Comment vendre sa voiture en Corse-du-Sud, d'Ajaccio à Bonifacio ?",
+      "intro": "<p>En Corse-du-Sud, vous pouvez vendre votre voiture directement à LUNICAR. Après une description en ligne de 2 minutes, un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Un technicien LUNICAR vient ensuite à l'adresse de votre choix dans le département, sans frais, sur rendez-vous. Les documents sont préparés ensemble et le paiement est fait par virement instantané à la conclusion de la vente.</p><p>Le département regroupe Ajaccio, la préfecture, et Sartène, la sous-préfecture. Au sud, Porto-Vecchio, Propriano, Bonifacio, Zonza et Lecci se succèdent le long de la côte, tandis que l'intérieur, comme Bocognano, est montagneux. Le département est limitrophe de la Haute-Corse au nord-est, et la Sardaigne est contiguë au sud.</p><p>Les axes principaux sont la T20, qui relie Ajaccio à Bastia par Bocognano et le col de Vizzavona, la T40, qui relie Ajaccio à Bonifacio, et la T10, qui rejoint Bonifacio par la côte orientale en passant par Porto-Vecchio. Le climat est méditerranéen, chaud et sec en été, doux et pluvieux en hiver, avec des sommets souvent enneigés jusqu'en mai-juin. Dans les villages de l'intérieur, les transports en commun restent limités.</p><p>Résidents d'Ajaccio, habitants de l'Alta Rocca, saisonniers du Sud ou retraités ne vivent pas la voiture de la même manière, mais tous peuvent se retrouver avec un véhicule qui ne sert plus. Qu'il soit ancien, très kilométré ou sans contrôle technique récent, nous l'étudions partout en Corse-du-Sud. Une offre n'est pas toujours possible.</p>",
+      "description": "Vendre sa voiture en Corse-du-Sud (2A) : fourchette de prix indicative communiquée, enlèvement gratuit à Ajaccio, Porto-Vecchio, Sartène, virement instantané.",
+      "faq": [
+        {
+          "question": "Peut-on vendre sa voiture à Ajaccio sans passer d'annonce ?",
+          "answer": "Oui. Décrivez-la en ligne : un conseiller rappelle rapidement. Un technicien LUNICAR vient à votre adresse à Ajaccio, sans frais, et le virement instantané arrive à la conclusion de la vente."
+        },
+        {
+          "question": "Rachetez-vous des voitures à Porto-Vecchio, Propriano ou Bonifacio ?",
+          "answer": "Oui. Nous étudions les voitures du littoral comme de l'intérieur, à Porto-Vecchio, Propriano, Bonifacio ou Sartène. La fourchette de prix indicative est communiquée rapidement, le prix définitif est confirmé après vérification du technicien."
+        },
+        {
+          "question": "Une voiture qui roule surtout en montagne reste-t-elle rachetable ?",
+          "answer": "Oui, nous étudions aussi les voitures marquées par l'usure ou très kilométrées, si elles roulent. La fourchette de prix indicative tient compte de l'état réel."
+        }
+      ],
+      "updated": "2026-10-25"
+    },
+    "2B": {
+      "nom": "Haute-Corse",
+      "region": "Corse",
+      "de": "de Haute-Corse",
+      "dans": "en Haute-Corse",
+      "h2": "Comment vendre sa voiture en Haute-Corse, de Bastia à Calvi ?",
+      "intro": "<p>En Haute-Corse, vous pouvez vendre votre voiture directement à LUNICAR. Après une description en ligne de 2 minutes, un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Un technicien LUNICAR vient ensuite à l'adresse de votre choix dans le département, sans frais, sur rendez-vous. Les documents sont préparés ensemble et le paiement est fait par virement instantané à la conclusion de la vente.</p><p>Le département regroupe Bastia, la préfecture, ainsi que Calvi et Corte, les deux sous-préfectures. Biguglia, Furiani, Borgo et Lucciana forment l'agglomération au sud de Bastia, L'Île-Rousse et Calenzana animent la Balagne, tandis qu'Aléria, Ghisonaccia et Cervione bordent la côte orientale. Le département occupe le nord-est de l'île, du côté du Cismonte, et sa chaîne montagneuse centrale le sépare de la Corse-du-Sud.</p><p>Les axes principaux sont la T11, voie rapide à 2x2 voies au sud de Bastia, la T20 vers Corte et Ajaccio, la T30 qui relie Ponte-Leccia à Calvi par L'Île-Rousse, et la T10 qui longe la côte orientale par Aléria et Ghisonaccia. Le climat est méditerranéen, chaud et sec en été, doux et pluvieux en hiver, avec des sommets souvent enneigés jusqu'en mai-juin.</p><p>Habitants de Bastia, travailleurs de la plaine orientale, saisonniers de la Balagne ou étudiants de Corte ne vivent pas la voiture de la même manière, mais tous peuvent se retrouver avec un véhicule qui ne sert plus. Qu'il soit ancien, très kilométré ou sans contrôle technique récent, nous l'étudions partout en Haute-Corse. Une offre n'est pas toujours possible.</p>",
+      "description": "Vendre sa voiture en Haute-Corse (2B) : fourchette de prix indicative communiquée, enlèvement gratuit à Bastia, Calvi, Corte, virement instantané.",
+      "faq": [
+        {
+          "question": "Peut-on vendre sa voiture à Bastia, Borgo ou Biguglia sans annonce ?",
+          "answer": "Oui. Décrivez-la en ligne : un conseiller rappelle rapidement. Un technicien LUNICAR vient à votre adresse, sans frais, et le virement instantané arrive à la conclusion de la vente."
+        },
+        {
+          "question": "Rachetez-vous des voitures à Calvi, L'Île-Rousse et Corte ?",
+          "answer": "Oui. Nous étudions les voitures de Balagne comme du centre de l'île, à Calvi, L'Île-Rousse, Corte ou Calenzana. La fourchette de prix indicative est communiquée rapidement, le prix définitif est confirmé après vérification du technicien."
+        },
+        {
+          "question": "Ma voiture est à Aléria ou Ghisonaccia, sur la côte orientale : est-ce possible ?",
+          "answer": "Oui. Indiquez la commune dans votre demande en ligne. Le technicien LUNICAR vient à votre adresse sans frais, sur rendez-vous, et l'enlèvement est offert si la vente est conclue."
+        }
+      ],
+      "updated": "2026-10-25"
     }
   }
 }
