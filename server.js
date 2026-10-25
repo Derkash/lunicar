@@ -1,4 +1,5 @@
 require('dotenv').config();
+const suivi = require('./lib/suivi');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -610,7 +611,7 @@ async function traiterAbandons(tout) {
 setInterval(() => traiterAbandons(false), Math.min(60 * 1000, ABANDON_MS / 2)).unref();
 // Redéploiement Render : on envoie les brouillons en cours plutôt que de les perdre.
 process.on('SIGTERM', async () => {
-    try { await traiterAbandons(true); } finally { process.exit(0); }
+    try { await traiterAbandons(true); await suivi.vider(); } finally { process.exit(0); }
 });
 
 app.post('/api/reprise', async (req, res) => {
@@ -883,6 +884,17 @@ app.get('/api/admin/stats', authAdmin, async (req, res) => {
         console.error('Erreur:', error);
         res.status(500).json({ error: 'Erreur serveur' });
     }
+});
+
+// Mesure interne du site (public/js/suivi.js) : événements anonymes, par balise ou fetch keepalive.
+app.post('/api/suivi', express.text({ type: '*/*', limit: '16kb' }), (req, res) => {
+    if (tooManySends(`suivi:${ipClient(req)}`, 600)) return res.status(204).end();
+    suivi.recevoir(req.body);
+    res.status(204).end();
+});
+// Onglet « Analyses » de l'admin : visites, canaux, entonnoir du formulaire, vitesse des pages.
+app.get('/api/admin/analyses', authAdmin, async (req, res) => {
+    try { res.json(await suivi.analyser(req.query.jours)); } catch (e) { console.error('Analyses :', e.message); res.status(500).json({ error: 'Analyse impossible pour le moment.' }); }
 });
 
 // Demandes, estimations, photos, import Gmail, réglages : lib/admin.js

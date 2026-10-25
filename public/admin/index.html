@@ -555,6 +555,56 @@ ul.plain li { margin: 3px 0; }
 .hbar b small { font-weight: 500; color: var(--ink-4); margin-left: 4px; }
 .vide { color: var(--ink-4); font-size: .86rem; padding: 8px 0; }
 
+/* ---------- Analyses du site (mobile d'abord) ---------- */
+.an-note { margin: -4px 0 14px; font-size: .82rem; color: var(--ink-5); }
+.an-retenir { background: var(--marine); color: #fff; border-radius: var(--r); padding: 16px 18px; margin: 0 0 14px; }
+.an-retenir h3 { margin: 0 0 8px; font-size: .78rem; font-weight: 650; text-transform: uppercase; letter-spacing: .06em; color: #D4B26A; }
+.an-retenir ul { margin: 0; padding: 0 0 0 1.1em; display: grid; gap: 8px; font-size: .9rem; line-height: 1.45; }
+.an-kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0 0 14px; }
+.an-kpis .kpi b { font-size: 1.45rem; }
+.an-kpis .kpi small { font-size: .74rem; color: var(--ink-4); }
+.an-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.an-sec { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; box-shadow: var(--shadow); min-width: 0; }
+.an-sec h3 { margin: 0 0 2px; font-size: .98rem; font-weight: 650; letter-spacing: -.01em; }
+.an-sec .sub { margin: 0 0 12px; font-size: .82rem; color: var(--ink-5); }
+.an-sec details summary { cursor: pointer; font-size: .86rem; color: var(--marine-6); font-weight: 600; margin: 8px 0 0; }
+.ent { display: grid; gap: 6px; }
+.ent-l { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line-2); }
+.ent-l:last-child { border-bottom: 0; }
+.ent-l .lib { font-size: .86rem; font-weight: 600; color: var(--ink); }
+.ent-l .lib small { display: block; font-weight: 500; color: var(--ink-4); font-size: .74rem; margin-top: 2px; }
+.ent-l .t { grid-column: 1 / -1; height: 10px; border-radius: 5px; background: var(--line-2); overflow: hidden; }
+.ent-l .t i { display: block; height: 100%; border-radius: 5px; background: var(--marine-6); }
+.ent-l .t i.cond { background: #86b6ef; }
+.ent-l .num { text-align: right; font-variant-numeric: tabular-nums; font-size: .9rem; font-weight: 650; }
+.ent-l .num small { display: block; font-weight: 500; font-size: .72rem; color: var(--ink-4); }
+.pill { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: .72rem; font-weight: 650; background: var(--green-1); color: var(--green); }
+.pill.moyen { background: var(--orange-1); color: var(--orange); }
+.pill.mauvais { background: var(--red-1); color: var(--red); }
+.pill.neutre { background: var(--line-2); color: var(--ink-5); }
+.an-tab { width: 100%; border-collapse: collapse; font-size: .84rem; }
+.an-tab th, .an-tab td { padding: 8px 6px; border-bottom: 1px solid var(--line-2); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.an-tab th { font-size: .66rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-5); }
+.an-tab td:first-child, .an-tab th:first-child { text-align: left; white-space: normal; }
+.an-tab tr:last-child td { border-bottom: 0; }
+.an-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -18px; padding: 0 18px; }
+.an-jours { display: flex; align-items: flex-end; gap: 2px; height: 110px; margin: 6px 0 4px; }
+.an-jours i { flex: 1 1 0; display: block; background: var(--marine-1); border-radius: 3px 3px 0 0; position: relative; min-width: 3px; }
+.an-jours i b { position: absolute; left: 0; right: 0; bottom: 0; background: var(--marine-6); border-radius: 3px 3px 0 0; }
+.an-jours-ax { display: flex; justify-content: space-between; font-size: .7rem; color: var(--ink-4); }
+.an-vital { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.an-vital .v { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.an-vital .v span { display: block; font-size: .72rem; color: var(--ink-5); }
+.an-vital .v b { display: block; font-size: 1.2rem; font-weight: 650; margin: 2px 0; }
+.an-vital .v small { font-size: .7rem; color: var(--ink-4); }
+.an-vital .v.bon b { color: var(--green); } .an-vital .v.moyen b { color: var(--orange); } .an-vital .v.mauvais b { color: var(--red); }
+@media (min-width: 760px) {
+    .an-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .an-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .an-grid .an-large { grid-column: 1 / -1; }
+    .an-vital { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
 /* ---------- Score d'attractivité et groupes de la liste ---------- */
 .score { display: inline-flex; align-items: baseline; gap: 1px; height: 24px; padding: 0 8px; border-radius: 99px; font-size: .82rem; font-weight: 750; line-height: 24px; margin-right: 6px; vertical-align: 1px; }
 .score small { font-size: .62rem; font-weight: 600; opacity: .75; }
@@ -1012,6 +1062,7 @@ body.modal-ouvert { overflow: hidden; }
     <symbol id="i-pho" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h2.2l1.4-2h5.8l1.4 2h2.2A1.5 1.5 0 0 1 20 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><circle cx="12" cy="12.8" r="3.3"/></symbol>
     <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><path d="M4.5 6l7.5 6 7.5-6"/></symbol>
     <symbol id="i-reg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-ana" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5V12l5.5 4"/></symbol>
     <symbol id="i-stat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6.5 16.5v-4M10.5 16.5V8M14.5 16.5v-6M18.5 16.5V5"/></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/><path d="M8 14h2M14 14h2M8 17h2"/></symbol>
     <symbol id="i-cle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></symbol>
@@ -1057,6 +1108,7 @@ body.modal-ouvert { overflow: hidden; }
             <button data-tab="vehicules"><svg><use href="#i-cle"/></svg>Nos véhicules</button>
             <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Dépenses</button>
             <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
+            <button data-tab="analyses"><svg><use href="#i-ana"/></svg>Analyses</button>
             <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
             <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
             <button data-tab="boite"><svg><use href="#i-boite"/></svg>Boîte mail<span class="count" data-count="boite"></span></button>
@@ -1212,6 +1264,13 @@ body.modal-ouvert { overflow: hidden; }
             </details>
         </section>
 
+        <section data-view="analyses" hidden>
+            <div class="page-h"><h1>Analyses du site</h1><span id="anSous"></span></div>
+            <p class="an-note">Mesure interne, sans cookie ni donnée personnelle : chaque visite, chaque question du formulaire, chaque clic et la vitesse réelle des pages.</p>
+            <div class="tb-bar"><div class="segs" id="anPeriode"></div><button class="btn sm" id="anRafraichir" type="button">Actualiser</button></div>
+            <div id="anCorps"><p class="vide">Chargement…</p></div>
+        </section>
+
         <section data-view="photos" hidden>
             <div class="page-h"><h1>Photos</h1><span>un dossier par demande</span></div>
             <div class="filters"><input class="in grow" id="qPhotos" type="search" placeholder="Chercher un dossier (réf., véhicule, date)"></div>
@@ -1334,6 +1393,7 @@ body.modal-ouvert { overflow: hidden; }
 </nav>
 <div class="plus-sheet" id="plusSheet" hidden><div class="plus-in">
     <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
+    <button data-tab="analyses"><svg><use href="#i-ana"/></svg>Analyses du site</button>
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
     <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
     <button data-tab="boite"><svg><use href="#i-boite"/></svg>Boîte mail<span class="count" data-count="boite"></span></button>
@@ -1503,7 +1563,7 @@ body.modal-ouvert { overflow: hidden; }
     function allerOnglet(tab) {
         $('#plusSheet').hidden = true;
         if (!$('#sheet').hidden || !$('#vpage').hidden) { history.pushState({}, '', BASE); quitterFiche(); quitterVehicule(); }
-        const dansPlus = ['stats', 'photos', 'messages', 'boite', 'forums', 'annonces', 'reglages'].includes(tab);
+        const dansPlus = ['stats', 'analyses', 'photos', 'messages', 'boite', 'forums', 'annonces', 'reglages'].includes(tab);
         document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
         document.querySelectorAll('#navbas button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab || (dansPlus && x.dataset.tab === 'plus')));
         document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== tab);
@@ -1514,6 +1574,7 @@ body.modal-ouvert { overflow: hidden; }
         if (tab === 'vehicules') vueVehicules();
         if (tab === 'depenses') vueDepenses();
         if (tab === 'stats') tableau();
+        if (tab === 'analyses') vueAnalyses();
         if (tab === 'planning') vuePlanning();
         if (tab === 'forums') vueForums();
         if (tab === 'annonces') vueAnnonces();
@@ -1992,6 +2053,67 @@ body.modal-ouvert { overflow: hidden; }
         if (document.hidden || !token || $('#app').hidden || Date.now() - vuLe < 30000) return;
         vuLe = Date.now(); charger().catch(() => {}); chargerMessages().catch(() => {}); chargerBoite().then(() => { if (!$('[data-view="boite"]').hidden && !bxOuvert) rendreBoite(); }).catch(() => {});
     });
+
+    // ---------------- Analyses du site (mesure interne : visites, formulaire, vitesse)
+    let anJours = 30, anData = null;
+    const anPct = v => v == null ? '—' : v.toLocaleString('fr-FR') + ' %';
+    const anSec = s => s == null ? '—' : s < 60 ? `${s} s` : `${Math.floor(s / 60)} min ${s % 60 ? (s % 60) + ' s' : ''}`.trim();
+    const anMs = v => v == null ? '—' : v >= 1000 ? (Math.round(v / 100) / 10).toLocaleString('fr-FR') + ' s' : v + ' ms';
+    const anNiveau = (v, [bon, moyen], inverse) => v == null ? 'neutre' : v <= bon ? 'bon' : v <= moyen ? 'moyen' : 'mauvais';
+    const anPill = (v, bon, moyen, texte) => `<span class="pill ${v == null ? 'neutre' : v < bon ? '' : v < moyen ? 'moyen' : 'mauvais'}">${texte}</span>`;
+    async function vueAnalyses(force) {
+        $('#anPeriode').innerHTML = [[7, '7 jours'], [30, '30 jours'], [90, '3 mois']].map(([j, l]) => `<button class="seg${j === anJours ? ' on' : ''}" data-j="${j}">${l}</button>`).join('');
+        if (!anData || anData.periode.jours !== anJours || force) {
+            $('#anCorps').innerHTML = '<p class="vide">Chargement…</p>';
+            try { anData = await api(`/api/admin/analyses?jours=${anJours}${force ? '&t=' + Date.now() : ''}`); } catch (e) { $('#anCorps').innerHTML = `<p class="vide">${esc(e.message)}</p>`; return; }
+        }
+        rendreAnalyses(anData);
+    }
+    function rendreAnalyses(a) {
+        const r = a.resume, e = a.entonnoir, fmtJ = iso => new Date(iso + 'T12:00:00Z').toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+        $('#anSous').textContent = `${r.visites.toLocaleString('fr-FR')} visite${r.visites > 1 ? 's' : ''} du ${fmtJ(a.periode.depuis)} au ${fmtJ(a.periode.jusqu)}${a.periode.premier_jour && a.periode.premier_jour > a.periode.depuis ? ` (mesure depuis le ${fmtJ(a.periode.premier_jour)})` : ''}`;
+        const kpi = (l, v, sub) => `<div class="kpi"><span>${l}</span><b>${v}</b><small>${sub || ''}</small></div>`;
+        const maxJ = Math.max(1, ...a.jours.map(j => j.visites));
+        const jours = `<div class="an-jours">${a.jours.map(j => `<i style="height:${Math.max(3, j.visites / maxJ * 100)}%" title="${fmtJ(j.j)} : ${j.visites} visites, ${j.envois} demandes, ${j.chatgpt} via IA"><b style="height:${j.visites ? j.envois / j.visites * 100 : 0}%"></b></i>`).join('')}</div><div class="an-jours-ax"><span>${fmtJ(a.jours[0].j)}</span><span>clair : visites · foncé : demandes</span><span>${fmtJ(a.jours[a.jours.length - 1].j)}</span></div>`;
+        const maxAtt = Math.max(1, e.etapes[0] ? e.etapes[0].atteint : 1, ...e.etapes.map(x => x.atteint));
+        const etapes = e.etapes.map(x => `<div class="ent-l"><div class="lib">${esc(x.libelle)}${x.conditionnelle ? '<small>question posée seulement à certains vendeurs</small>' : ''}${x.temps_median != null && x.atteint ? `<small>temps passé : ${anSec(x.temps_median)} en médiane</small>` : ''}</div><div class="num">${x.atteint}<small>${anPct(e.demarre ? Math.round(x.atteint / e.demarre * 1000) / 10 : null)} des départs</small>${['envoi', 'photos'].includes(x.k) || !x.atteint ? '' : anPill(x.abandon_pct, 10, 25, `${x.abandons} abandon${x.abandons > 1 ? 's' : ''} · ${anPct(x.abandon_pct)}`)}</div><div class="t"><i class="${x.conditionnelle ? 'cond' : ''}" style="width:${Math.max(1, x.atteint / maxAtt * 100)}%"></i></div></div>`).join('');
+        const tab = (cols, lignes) => `<div class="an-scroll"><table class="an-tab"><tr>${cols.map(c => `<th>${c}</th>`).join('')}</tr>${lignes.length ? lignes.join('') : '<tr><td class="vide">Rien sur la période.</td></tr>'}</table></div>`;
+        const grp = (liste, libelleVide) => liste.filter(g => g.visites).map(g => `<tr><td>${esc(g.libelle)}</td><td>${g.visites}</td><td>${anPct(r.visites ? Math.round(g.visites / r.visites * 1000) / 10 : null)}</td><td>${g.envois}</td><td>${anPill(g.taux == null ? null : 100 - g.taux, 90, 97, anPct(g.taux))}</td><td>${anPct(g.rebond)}</td></tr>`);
+        const colsG = ['', 'Visites', 'Part', 'Demandes', 'Conversion', 'Rebond'];
+        const vital = (o, seuils) => ['lcp', 'inp', 'cls', 'ttfb'].map(k => { const v = o[k]; const niv = anNiveau(v, seuils[k]); return `<div class="v ${niv}"><span>${{ lcp: 'Affichage principal (LCP)', inp: 'Réaction aux touches (INP)', cls: 'Stabilité visuelle (CLS)', ttfb: 'Réponse du serveur (TTFB)' }[k]}</span><b>${k === 'cls' ? (v == null ? '—' : v.toLocaleString('fr-FR')) : anMs(v)}</b><small>${niv === 'bon' ? 'bon' : niv === 'moyen' ? 'à améliorer' : niv === 'mauvais' ? 'lent' : 'pas assez de mesures'} · seuil ${k === 'cls' ? seuils[k][0] : anMs(seuils[k][0])}</small></div>`; }).join('');
+        const perfRows = a.perf.types.filter(t => t.n >= 3).map(t => `<tr><td>${esc(t.libelle)}</td><td>${t.n}</td><td><span class="pill ${anNiveau(t.lcp, a.perf.seuils.lcp)}">${anMs(t.lcp)}</span></td><td><span class="pill ${anNiveau(t.inp, a.perf.seuils.inp)}">${anMs(t.inp)}</span></td><td><span class="pill ${anNiveau(t.cls, a.perf.seuils.cls)}">${t.cls == null ? '—' : t.cls.toLocaleString('fr-FR')}</span></td><td>${anMs(t.ttfb)}</td><td>${anSec(t.duree)}</td><td>${t.scroll == null ? '—' : t.scroll + ' %'}</td></tr>`);
+        const totalScroll = Math.max(1, a.engagement.scroll.reduce((t, x) => t + x.n, 0));
+        const mobile = a.perf.appareils.find(x => x.k === 'm') || a.perf.appareils[0] || {};
+        $('#anCorps').innerHTML = `
+            ${a.retenir.length ? `<div class="an-retenir"><h3>Ce qu'il faut retenir</h3><ul>${a.retenir.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>` : ''}
+            <div class="an-kpis">
+                ${kpi('Visites', r.visites.toLocaleString('fr-FR'), `${r.pages_vues.toLocaleString('fr-FR')} pages vues · ${r.pages_par_visite || '—'} par visite`)}
+                ${kpi('Demandes envoyées', r.demandes, `${anPct(r.taux)} des visites`)}
+                ${kpi('Formulaire commencé → envoyé', anPct(e.taux), `${e.demarre} commencés · ${e.envoyes} envoyés`)}
+                ${kpi('Durée du formulaire', anSec(e.duree_mediane), 'médiane, du 1er champ à l\'envoi')}
+                ${kpi('Sur mobile', anPct(r.mobile_pct), `visite médiane ${anSec(r.duree_mediane)}`)}
+                ${kpi('Venus d\'une IA', anPct(r.ia_pct), 'ChatGPT, Perplexity, autres assistants')}
+            </div>
+            <div class="an-grid">
+                <div class="an-sec an-large"><h3>Visites par jour</h3><p class="sub">Chaque barre est une journée ; la partie foncée, les demandes envoyées. Touchez une barre pour le détail.</p>${jours}</div>
+                <div class="an-sec an-large"><h3>Le formulaire, question par question</h3><p class="sub">Combien de vendeurs atteignent chaque question, combien s'arrêtent là, et le temps passé dessus. Une étape rouge est une étape à simplifier.</p>
+                    <div class="ent">${etapes || '<p class="vide">Aucun formulaire commencé sur la période.</p>'}</div>
+                    ${e.par_appareil.length ? `<details><summary>Par appareil</summary>${tab(['', 'Commencés', 'Envoyés', 'Taux'], e.par_appareil.map(x => `<tr><td>${x.libelle}</td><td>${x.demarre}</td><td>${x.envoyes}</td><td>${anPct(x.taux)}</td></tr>`))}<p class="sub" style="margin-top:8px">Plaque reconnue (remplissage automatique) : ${e.plaque} formulaire${e.plaque > 1 ? 's' : ''}.</p></details>` : ''}
+                </div>
+                <div class="an-sec"><h3>D'où viennent les visiteurs</h3><p class="sub">Conversion = part des visites qui envoient une demande. Rebond = une seule page vue, sans rien commencer.</p>${tab(colsG, grp(a.canaux))}</div>
+                <div class="an-sec"><h3>Par appareil</h3><p class="sub">Le mobile doit convertir aussi bien que l'ordinateur.</p>${tab(colsG, grp(a.appareils))}</div>
+                <div class="an-sec an-large"><h3>Par type de page d'entrée</h3><p class="sub">La page sur laquelle le visiteur arrive, et ce qu'il fait ensuite.</p>${tab(colsG, grp(a.types))}
+                    <details><summary>Les 15 pages d'entrée les plus visitées</summary>${tab(['Page', 'Visites', 'Part', 'Demandes', 'Conversion', 'Rebond'], grp(a.entrees))}</details></div>
+                <div class="an-sec an-large"><h3>Vitesse réelle des pages sur mobile</h3><p class="sub">Mesurée chez les visiteurs (p75 : trois visiteurs sur quatre font mieux), avec les seuils de Google.</p>
+                    <div class="an-vital">${vital(mobile, a.perf.seuils)}</div>
+                    <details><summary>Par type de page (tous appareils)</summary>${tab(['Type', 'Mesures', 'LCP', 'INP', 'CLS', 'Serveur', 'Durée', 'Lu'], perfRows)}</details>
+                </div>
+                <div class="an-sec"><h3>Lecture des pages</h3><p class="sub">Jusqu'où les visiteurs descendent.</p><div class="hbars">${a.engagement.scroll.map(x => `<div class="hbar"><span>${x.libelle}</span><div class="t"><i style="width:${Math.max(2, x.n / totalScroll * 100)}%"></i></div><b>${anPct(Math.round(x.n / totalScroll * 1000) / 10)}</b></div>`).join('')}</div></div>
+                <div class="an-sec"><h3>Boutons d'action</h3><p class="sub">Clics sur les boutons estimer, appeler, WhatsApp, rappel.</p>${a.engagement.clics.length ? `<div class="hbars">${a.engagement.clics.map(x => `<div class="hbar"><span>${esc(x.libelle)}</span><div class="t"><i style="width:${Math.max(2, x.n / a.engagement.clics[0].n * 100)}%"></i></div><b>${x.n}</b></div>`).join('')}</div>` : '<p class="vide">Aucun clic mesuré.</p>'}</div>
+            </div>`;
+    }
+    $('#anPeriode').addEventListener('click', e => { const b = e.target.closest('[data-j]'); if (!b) return; anJours = Number(b.dataset.j); vueAnalyses(); });
+    $('#anRafraichir').addEventListener('click', () => vueAnalyses(true));
 
     // ---------------- Tableau de bord
     // Couleurs validées (ordre fixe, sûr pour les daltoniens) ; « non renseignée » en gris neutre.

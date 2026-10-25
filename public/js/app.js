@@ -3,8 +3,10 @@
     'use strict';
 
     // Mesure : uniquement si l'audience a été acceptée (gtag n'existe pas sinon).
+    // Deux destinations : Google Analytics (si consentement) et la mesure interne du site (anonyme, suivi.js).
     function track(name, params) {
         if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+        if (typeof window.lunicarSuivi === 'function') { try { window.lunicarSuivi(name, params || {}); } catch (e) {} }
     }
 
     // D'où vient le visiteur : conservé pour la durée de la visite et joint à la demande.
