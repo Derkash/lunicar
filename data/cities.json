@@ -51118,5 +51118,125 @@
     "lat": 49.0177,
     "lon": 2.0607,
     "dep": "95"
+  },
+  {
+    "nom": "Samois-sur-Seine",
+    "slug": "samois-sur-seine",
+    "codePostal": "77920",
+    "departement": "Seine-et-Marne",
+    "region": "Île-de-France",
+    "lat": 48.4534,
+    "lon": 2.7535,
+    "dep": "77"
+  },
+  {
+    "nom": "Soignolles-en-Brie",
+    "slug": "soignolles-en-brie",
+    "codePostal": "77111",
+    "departement": "Seine-et-Marne",
+    "region": "Île-de-France",
+    "lat": 48.6465,
+    "lon": 2.7108,
+    "dep": "77"
+  },
+  {
+    "nom": "Varreddes",
+    "slug": "varreddes",
+    "codePostal": "77910",
+    "departement": "Seine-et-Marne",
+    "region": "Île-de-France",
+    "lat": 49.0055,
+    "lon": 2.9284,
+    "dep": "77"
+  },
+  {
+    "nom": "Villevaudé",
+    "slug": "villevaude",
+    "codePostal": "77410",
+    "departement": "Seine-et-Marne",
+    "region": "Île-de-France",
+    "lat": 48.9137,
+    "lon": 2.6647,
+    "dep": "77"
+  },
+  {
+    "nom": "Villiers-sur-Morin",
+    "slug": "villiers-sur-morin",
+    "codePostal": "77580",
+    "departement": "Seine-et-Marne",
+    "region": "Île-de-France",
+    "lat": 48.8506,
+    "lon": 2.8679,
+    "dep": "77"
+  },
+  {
+    "nom": "Bonnelles",
+    "slug": "bonnelles",
+    "codePostal": "78830",
+    "departement": "Yvelines",
+    "region": "Île-de-France",
+    "lat": 48.6203,
+    "lon": 2.0327,
+    "dep": "78"
+  },
+  {
+    "nom": "Bréval",
+    "slug": "breval",
+    "codePostal": "78980",
+    "departement": "Yvelines",
+    "region": "Île-de-France",
+    "lat": 48.9567,
+    "lon": 1.5402,
+    "dep": "78"
+  },
+  {
+    "nom": "Follainville-Dennemont",
+    "slug": "follainville-dennemont",
+    "codePostal": "78520",
+    "departement": "Yvelines",
+    "region": "Île-de-France",
+    "lat": 49.0293,
+    "lon": 1.7027,
+    "dep": "78"
+  },
+  {
+    "nom": "Guerville",
+    "slug": "guerville",
+    "codePostal": "78930",
+    "departement": "Yvelines",
+    "region": "Île-de-France",
+    "lat": 48.9544,
+    "lon": 1.7409,
+    "dep": "78"
+  },
+  {
+    "nom": "Limetz-Villez",
+    "slug": "limetz-villez",
+    "codePostal": "78270",
+    "departement": "Yvelines",
+    "region": "Île-de-France",
+    "lat": 49.0585,
+    "lon": 1.5512,
+    "dep": "78"
+  },
+  {
+    "nom": "Mézy-sur-Seine",
+    "slug": "mezy-sur-seine",
+    "codePostal": "78250",
+    "departement": "Yvelines",
+    "region": "Île-de-France",
+    "lat": 49.0033,
+    "lon": 1.8692,
+    "dep": "78"
+  },
+  {
+    "nom": "Bouray-sur-Juine",
+    "slug": "bouray-sur-juine",
+    "codePostal": "91850",
+    "departement": "Essonne",
+    "region": "Île-de-France",
+    "lat": 48.5115,
+    "lon": 2.2968,
+    "dep": "91"
   }
 ]
