@@ -753,6 +753,15 @@ ul.plain li { margin: 3px 0; }
 .rdv-act { display: flex; flex-wrap: wrap; gap: 8px; }
 .rdv-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 12px; margin-top: 12px; }
 .rdv-form .rdv-lieu { grid-column: 1 / -1; }
+.pl-btn { margin-top: 10px; justify-self: start; }
+.sg-liste { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+.sg-liste li { display: grid; grid-template-columns: 92px 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; }
+.sg-j b { display: block; text-transform: capitalize; font-size: .9rem; } .sg-j span { font-size: .78rem; color: var(--ink-5); }
+.sg-m { font-size: .84rem; min-width: 0; } .sg-m small { display: block; color: var(--ink-5); margin-top: 3px; font-size: .74rem; }
+.sg-t { display: inline-block; font-size: .7rem; font-weight: 650; padding: 1px 8px; border-radius: 99px; margin-right: 6px; background: var(--marine-1); }
+.sg-route .sg-t, .sg-proche .sg-t { background: #DDF1E4; color: #1D6B3D; } .sg-route, .sg-proche { border-color: #BFE3CC; }
+.sg-loin { opacity: .7; } .sg-loin .sg-t { background: #F6E3DF; color: #9A3A2B; }
+@media (max-width: 520px) { .sg-liste li { grid-template-columns: 1fr auto; } .sg-m { grid-column: 1 / -1; grid-row: 2; } }
 .rdv-form label.f { display: flex; flex-direction: column; justify-content: flex-end; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .rdv-form .in { height: 42px; line-height: 40px; text-align: left; -webkit-appearance: none; appearance: none; box-sizing: border-box; }
 .rdv-form input[type="date"]::-webkit-date-and-time-value, .rdv-form input[type="time"]::-webkit-date-and-time-value { text-align: left; margin: 0; }
@@ -2789,6 +2798,7 @@ body.modal-ouvert { overflow: hidden; }
         const hist = r && r.statut !== 'prevu' ? `<p class="sub" style="margin:0 0 4px">Dernier rendez-vous : ${jourCourt(r.date)} à ${r.heure} · ${r.statut === 'fait' ? 'fait' : 'annulé'}${r.motif ? ' (' + esc(r.motif) + ')' : ''}</p>` : '';
         if (['achetee', 'vendue_ailleurs', 'refusee', 'sans_suite'].includes(d.statut)) return hist ? `<section class="sec rdv-bloc" id="rdvBloc"><h3>Rendez-vous</h3>${hist}</section>` : '';
         return `<section class="sec rdv-bloc" id="rdvBloc"><h3>Fixer le rendez-vous <small>le véhicule passe dans « Nos véhicules »</small></h3>${hist}
+            <button type="button" class="btn btn-g pl-btn" data-rdv="planifier">Trouver le meilleur jour pour Youssouf</button>
             <div id="rdvForm">${formRdv(d, true)}</div></section>`;
     }
     function formRdv(d, inline) {
@@ -2805,6 +2815,41 @@ body.modal-ouvert { overflow: hidden; }
             <label class="f rdv-lieu">Note<input class="in" name="note" value="${esc(r.note || '')}" placeholder="Code portail, documents à préparer, double des clés…"></label>
             <div class="rdv-act"><button class="btn btn-p">${r.date ? 'Enregistrer le nouvel horaire' : 'Fixer le rendez-vous'}</button>${inline ? '' : '<button type="button" class="btn" id="rdvAnnulForm">Fermer</button>'}</div>
         </form>`;
+    }
+    // Assistant de planification : Youssouf se déplace ; on propose d'abord les jours où il passe déjà près (ou sur la route).
+    async function planifierRdv(d) {
+        const fermerP = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        const tete = `<div class="cr-tete"><h3>Planifier le rendez-vous</h3><button class="close" type="button" id="plX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>`;
+        const lier = () => { $('#plX').onclick = fermerP; };
+        $('#crIn').innerHTML = tete + '<p class="sub"><span class="spin"></span> Recherche du meilleur jour pour Youssouf…</p>'; lier();
+        $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermerP(); };
+        let P;
+        try { P = await api('/api/admin/demandes/' + d.ref + '/planning'); } catch (e) { P = { erreur: e.message, suggestions: [] }; }
+        const TYPE = { route: ['Sur la route', 'sg-route'], proche: ['Groupé', 'sg-proche'], libre: ['Jour libre', 'sg-libre'], loin: ['Journée chargée', 'sg-loin'] };
+        const formulaire = (date, heure) => {
+            $('#crIn').innerHTML = tete + `<p class="sub">${esc([(d.data || {}).vehicule, (d.data || {}).ville].filter(Boolean).join(' · '))}</p><div id="plForm">${formRdv(d).replace('id="rdvF"', 'id="plF"')}</div>`; lier();
+            const f = $('#plF'); if (date) f.date.value = date; if (heure) f.heure.value = heure; f.avec.value = 'youssouf';
+            const ret = f.querySelector('#rdvAnnulForm'); if (ret) { ret.id = 'plRetour'; ret.textContent = '← Autres jours'; ret.onclick = liste; }
+            f.onsubmit = async e => {
+                e.preventDefault();
+                try { const r = await api('/api/admin/demandes/' + d.ref + '/rdv', { method: 'POST', body: JSON.stringify(Object.fromEntries(new FormData(f))) }); maj(r); compta = null; if (courant && courant.ref === d.ref) { courant = r; fiche(); } fermerP(); toast('Rendez-vous fixé le ' + jourLong(r.suivi.rdv.date) + ' à ' + r.suivi.rdv.heure); }
+                catch (err) { toast(err.message); }
+            };
+        };
+        const liste = () => {
+            const S = P.suggestions || [];
+            $('#crIn').innerHTML = tete + (P.erreur ? `<p class="notice">${esc(P.erreur)}</p>` : `<p class="sub">Youssouf part de ${esc(P.depart)} · ${esc(P.cible.ville)} à ${P.cible.km_depart} km (≈ ${Math.floor(P.cible.minutes_depart / 60)} h ${String(P.cible.minutes_depart % 60).padStart(2, '0')}). Les jours où il passe déjà près sont proposés en premier.</p>`)
+                + `<ol class="sg-liste">${S.map((x, i) => `<li class="${TYPE[x.type][1]}">
+                    <div class="sg-j"><b>${esc(x.jour)} ${new Date(x.date + "T12:00:00Z").toLocaleDateString("fr-FR", { day: "numeric", month: "short", timeZone: "UTC" })}</b><span>vers ${esc(x.heure.replace(':', ' h '))}</span></div>
+                    <div class="sg-m"><span class="sg-t">${TYPE[x.type][0]}</span>${esc(x.motif)}${x.visites.length ? `<small>Déjà prévu : ${x.visites.map(v => `${esc(v.heure.replace(':', ' h '))} ${esc(v.ville)}${v.vehicule ? ' (' + esc(v.vehicule) + ')' : ''}`).join(' · ')}</small>` : ''}${x.km_gagnes >= 30 ? `<small>≈ ${x.km_gagnes} km économisés par rapport à un jour à part</small>` : ''}</div>
+                    <button type="button" class="btn ${i === 0 ? 'btn-p' : ''}" data-pl="${i}">Choisir</button></li>`).join('')}</ol>
+                <div class="cr-btns"><button type="button" class="btn" id="plAutre">Autre date</button></div>`;
+            lier();
+            $('#crIn').querySelectorAll('[data-pl]').forEach(b => b.onclick = () => { const x = S[+b.dataset.pl]; formulaire(x.date, x.heure); });
+            $('#plAutre').onclick = () => formulaire();
+        };
+        liste();
     }
     function lierRdv(d) {
         const bloc = $('#rdvBloc'); if (!bloc) return;
@@ -2824,6 +2869,7 @@ body.modal-ouvert { overflow: hidden; }
             const a = b.dataset.rdv, r = rdvDe(d) || {};
             if (a === 'nouveau' || a === 'modifier') return ouvrirForm();
             if (a === 'confirmer') return messageConfirmation(d);
+            if (a === 'planifier') return planifierRdv(d);
             if (a === 'cession') return cessionDepuisDemande(d.ref);
             let corps;
             if (a === 'achetee') {
@@ -3122,7 +3168,7 @@ body.modal-ouvert { overflow: hidden; }
                 <label class="f">Offre faite<input class="in num" id="daOffre" inputmode="numeric" placeholder="${esc(s.offre || '')}" value="${esc(b.offre || '')}"></label>
             </div>
             <label class="chk"><input type="checkbox" id="daReest"${b.reestimer ? ' checked' : ''}${etat.estimation.actif && x.vehicule ? '' : ' disabled'}> Mettre à jour l'estimation avec ces infos</label>
-            <div class="da-btns"><button type="button" class="btn" id="daComplet">Formulaire complet</button><button type="button" class="btn btn-p" id="daOk">Enregistrer</button></div>`;
+            <div class="da-btns"><button type="button" class="btn btn-g" id="daRdv">Rendez-vous</button><button type="button" class="btn" id="daComplet">Formulaire complet</button><button type="button" class="btn btn-p" id="daOk">Enregistrer</button></div>`;
         const lire = () => {
             const n = { resultat: (($('#daIn').querySelector('[data-dres].on') || {}).dataset || {}).dres || '', note: $('#daNote').value, prix: $('#daPrix').value.replace(/[^\d]/g, ''), km: $('#daKm').value.replace(/[^\d]/g, ''), offre: $('#daOffre').value.replace(/[^\d]/g, ''), reestimer: $('#daReest').checked, rappel_date: $('#daRapD').value, rappel_heure: $('#daRapH').value };
             ecrireBrouillon(d.ref, n); return n;
@@ -3134,7 +3180,7 @@ body.modal-ouvert { overflow: hidden; }
             try {
                 const r = await api('/api/admin/demandes/' + d.ref + '/appel', { method: 'POST', body: JSON.stringify(corps) });
                 effacerBrouillon(d.ref); fermerDock();
-                if (corps.resultat === 'accepte') history.replaceState(history.state, '', location.pathname + '#rdv');
+                if (corps.resultat === 'accepte') setTimeout(() => planifierRdv(r), 300);
                 if (corps.reestimer) r.suivi = { ...r.suivi, estimation_statut: 'en_cours' };
                 maj(r); if (courant && courant.ref === d.ref) { courant = r; fiche(); if (corps.reestimer) surveiller(true); }
                 toast(message(r));
@@ -3146,6 +3192,7 @@ body.modal-ouvert { overflow: hidden; }
             envoyer({ resultat: 'injoignable', note: n.note.trim() }, r => 'Injoignable noté · relance le ' + jj(r.suivi.rappel_le));
         };
         $('#daComplet').onclick = () => { lire(); fermerDock(); compteRendu(d); };
+        $('#daRdv').onclick = () => { lire(); fermerDock(); planifierRdv(d); };   // le brouillon d'appel reste gardé
         $('#daOk').onclick = async () => {
             const n = lire();
             if (!n.resultat) { toast('Choisissez le résultat de l\'appel (ou « Injoignable »)'); return; }
