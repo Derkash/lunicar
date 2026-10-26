@@ -894,6 +894,10 @@ body.modal-ouvert { overflow: hidden; }
 /* ---------- Panneau d'appel et « Ce qui a été dit » ---------- */
 .mail-cci { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
 .mail-cci .in { flex: 1 1 220px; max-width: 320px; width: auto; height: 38px; }
+.rdv-docs { margin-top: 8px; }
+.mc-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.mc-btns .btn { flex: 1 1 auto; justify-content: center; height: 44px; }
+#mcTxt { min-height: 280px; line-height: 1.5; }
 .dock-appel { position: fixed; z-index: 70; left: 50%; transform: translateX(-50%); bottom: 16px; width: min(460px, calc(100vw - 24px)); max-height: 78vh; overflow-y: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 50px rgba(14,35,64,.28); }
 .da-in { display: grid; gap: 10px; padding: 10px 14px 14px; }
 .da-tete { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "p p" "t x" "s x"; align-items: center; position: sticky; top: -10px; background: var(--surface); padding-top: 6px; z-index: 1; }
@@ -2450,7 +2454,7 @@ body.modal-ouvert { overflow: hidden; }
             if (pros) return `<button class="vh vh-pros" data-vh="${esc(v.id)}">
                 <div class="vh-t"><b>${esc(v.libelle || 'Véhicule')}</b>${v.plaque ? `<span class="mono">${esc(v.plaque)}</span>` : ''}</div>
                 <div class="vh-st"><span class="badge-rdv${r.date === jourIso() ? ' auj' : r.date < jourIso() ? ' passe' : ''}">RDV ${r.date ? (r.date === jourIso() ? "aujourd'hui" : jourCourt(r.date)) + ' · ' + r.heure : ''}</span><small>${esc(AVEC[r.avec] || '')}${r.lieu ? ' · ' + esc(r.lieu) : ''}</small></div>
-                <div class="vh-c"><span>Prix convenu<b class="num">${v.prix_convenu ? euro(v.prix_convenu) : '—'}</b></span><span>Frais engagés<b class="num">${euro(b.frais)}</b></span><span>Marge prévue<b class="num ${b.marge_prevue < 0 ? 'neg' : 'pos'}">${signe(b.marge_prevue)}</b></span></div>
+                <div class="vh-c"><span>Fourchette<b class="num">${fourchetteRdv(v.rdv) || (v.prix_convenu ? euro(v.prix_convenu) : '—')}</b></span><span>Frais engagés<b class="num">${euro(b.frais)}</b></span><span>Marge prévue<b class="num ${b.marge_prevue < 0 ? 'neg' : 'pos'}">${signe(b.marge_prevue)}</b></span></div>
             </button>`;
             return `<button class="vh" data-vh="${esc(v.id)}">
                 <div class="vh-t"><b>${esc(v.libelle || 'Véhicule')}</b>${v.plaque ? `<span class="mono">${esc(v.plaque)}</span>` : ''}</div>
@@ -2486,7 +2490,8 @@ body.modal-ouvert { overflow: hidden; }
         <div class="sh-body">
             ${pros || (v.statut === 'perdu' && r.date) ? `<section class="sec rdv-bloc"><h3>${pros ? 'Rendez-vous pris' : 'Rendez-vous sans suite'}</h3>
                 <div class="rdv-quand"><b>${r.date ? libJour(r.date) : ''}</b><span>${r.heure || ''} · ${esc(AVEC[r.avec] || '')}</span></div>
-                <div class="rdv-info">${r.lieu ? `<a href="https://maps.apple.com/?daddr=${encodeURIComponent(r.lieu)}" target="_blank" rel="noopener">📍 ${esc(r.lieu)}</a>` : ''}${v.prix_convenu ? `<span>Prix convenu <b class="num">${euro(v.prix_convenu)}</b></span>` : ''}</div>
+                <div class="rdv-info">${r.lieu ? `<a href="https://maps.apple.com/?daddr=${encodeURIComponent(r.lieu)}" target="_blank" rel="noopener">📍 ${esc(r.lieu)}</a>` : ''}${fourchetteRdv(v.rdv) ? `<span>Fourchette annoncée <b class="num">${fourchetteRdv(v.rdv)}</b></span>` : v.prix_convenu ? `<span>Fourchette annoncée <b class="num">${euro(v.prix_convenu)}</b></span>` : ''}</div>
+                ${pros && v.ref ? `<div class="rdv-act rdv-docs"><button class="btn btn-p" type="button" id="vConfirm">Message de confirmation</button></div>` : ''}
                 ${pros && v.ref ? `<div class="rdv-act"><button class="btn btn-g" data-vrdv="achetee">Voiture achetée</button><button class="btn" data-vrdv="fait">Fait, pas d'achat</button><button class="btn btn-d" data-vrdv="annule">RDV annulé</button><button class="btn btn-d" id="vPasInt">Pas intéressé (e-mail de refus)</button></div>` : ''}
             </section>` : ''}
             <div class="prices vh-prix" id="vPrix">${chiffresVehicule(v)}</div>
@@ -2540,10 +2545,11 @@ body.modal-ouvert { overflow: hidden; }
             autoV({ statut: e.target.value }, e.target);
         };
         if ($('#vPasInt')) $('#vPasInt').onclick = refusVehicule;
+        if ($('#vConfirm')) $('#vConfirm').onclick = async () => { const d = demandes.find(x => x.ref === v.ref) || await api('/api/admin/demandes/' + v.ref).catch(() => null); if (d) messageConfirmation(d); };
         // Issue du rendez-vous depuis la page véhicule : même effet que depuis la fiche de la demande.
         $('#vpageIn').querySelectorAll('[data-vrdv]').forEach(btn => btn.onclick = async () => {
             const a = btn.dataset.vrdv; let corps;
-            if (a === 'achetee') { if (await demander({ titre: 'Voiture achetée ?', texte: `Au prix convenu ${v.prix_convenu ? euro(v.prix_convenu) : ''} (modifiable ensuite dans « Achat et vente »).`, boutons: [['ok', 'Oui, achetée', 'btn-g'], ['', 'Annuler']] }) !== 'ok') return; corps = { statut: 'fait', achetee: true, prix_achat: v.prix_convenu }; }
+            if (a === 'achetee') { const prix = await demanderPrixAchat(v.rdv || { prix: v.prix_convenu }, v.libelle); if (!prix) return; corps = { statut: 'fait', achetee: true, prix_achat: prix }; }
             else if (a === 'fait') { const m = await demander({ titre: 'Rendez-vous fait sans achat', texte: 'Les frais engagés restent comptés (« Sans suite »).', boutons: [['Prix refusé sur place', 'Prix refusé sur place'], ['Voiture pas conforme', 'Voiture pas conforme'], ['Le vendeur a renoncé', 'Le vendeur a renoncé'], ['', 'Annuler']] }); if (!m) return; corps = { statut: 'fait', motif: m }; }
             else { const m = await demander({ titre: 'Rendez-vous annulé ?', boutons: [['Annulé par le vendeur', 'Annulé par le vendeur', 'btn-rouge'], ['Annulé par nous', 'Annulé par nous'], ['', 'Garder']] }); if (!m) return; corps = { statut: 'annule', motif: m }; }
             try {
@@ -2596,7 +2602,7 @@ body.modal-ouvert { overflow: hidden; }
     function chiffresVehicule(v) {
         const b = v.bilan, vendu = v.statut === 'vendu', pros = v.statut === 'prospect';
         const m = vendu ? b.marge : b.marge_prevue;
-        return `<div class="pr"><span>${pros ? 'Prix convenu' : 'Prix d\'achat'}</span><b class="num">${euro(pros ? v.prix_convenu : v.prix_achat)}</b><small>${pros ? 'au rendez-vous' : v.prix_achat ? 'payé par ' + PAYCOURT[v.payeur_achat || 'societe'] : 'à renseigner ci-dessous'}</small></div>
+        return `<div class="pr"><span>${pros ? 'Fourchette annoncée' : 'Prix d\'achat'}</span><b class="num">${pros ? (fourchetteRdv(v.rdv) || euro(v.prix_convenu)) : euro(v.prix_achat)}</b><small>${pros ? 'au rendez-vous (haut de fourchette compté)' : v.prix_achat ? 'payé par ' + PAYCOURT[v.payeur_achat || 'societe'] : 'à renseigner ci-dessous'}</small></div>
             <div class="pr"><span>Dépenses</span><b class="num">${euro(b.frais)}</b><small>${b.nb_depenses} ligne${b.nb_depenses > 1 ? 's' : ''}</small></div>
             <div class="pr main"><span>${pros ? 'Coût prévu' : 'Coût de revient'}</span><b class="num">${euro(b.cout)}</b><small>${pros ? 'prix convenu + frais' : 'achat + dépenses'}</small></div>
             <div class="pr"><span>${vendu ? 'Marge réalisée' : 'Marge prévue'}</span><b class="num ${m < 0 ? 'neg' : 'pos'}">${signe(m)}</b><small>${vendu ? 'vendu ' + euro(v.prix_vente) : v.estimation_vente ? 'si vendu ' + euro(v.estimation_vente) : 'renseigner la vente estimée'}</small></div>`;
@@ -2742,7 +2748,8 @@ body.modal-ouvert { overflow: hidden; }
             return `<section class="sec rdv-bloc${passe ? ' passe' : ''}" id="rdvBloc">
                 <h3>Rendez-vous ${passe ? '<small class="neg">date passée : indiquez comment il s\'est passé</small>' : ''}</h3>
                 <div class="rdv-quand"><b>${libJour(r.date)}</b><span>${r.heure} · ${r.duree || 45} min · ${AVEC[r.avec] || ''}</span></div>
-                <div class="rdv-info">${r.lieu ? `<a href="${itineraire(d, r)}" target="_blank" rel="noopener">📍 ${esc(r.lieu)}</a>` : `<a href="${itineraire(d, r)}" target="_blank" rel="noopener">📍 ${esc([x.code_postal, x.ville].filter(Boolean).join(' ') || 'Lieu à préciser')}</a>`}${r.prix ? `<span>Prix convenu <b class="num">${eur(r.prix)}</b></span>` : ''}${r.note ? `<span>${esc(r.note)}</span>` : ''}</div>
+                <div class="rdv-info">${r.lieu ? `<a href="${itineraire(d, r)}" target="_blank" rel="noopener">📍 ${esc(r.lieu)}</a>` : `<a href="${itineraire(d, r)}" target="_blank" rel="noopener">📍 ${esc([x.code_postal, x.ville].filter(Boolean).join(' ') || 'Lieu à préciser')}</a>`}${fourchetteRdv(r) ? `<span>Fourchette annoncée <b class="num">${fourchetteRdv(r)}</b></span>` : ''}${r.note ? `<span>${esc(r.note)}</span>` : ''}</div>
+                <div class="rdv-act rdv-docs"><button class="btn btn-p" type="button" data-rdv="confirmer">Message de confirmation</button><button class="btn" type="button" data-rdv="cession">Certificat de cession</button></div>
                 <div class="rdv-act">
                     <button class="btn btn-g" data-rdv="achetee">Fait : voiture achetée</button>
                     <button class="btn" data-rdv="fait">Fait, pas d'achat</button>
@@ -2764,7 +2771,8 @@ body.modal-ouvert { overflow: hidden; }
         return `<form id="rdvF" class="rdv-form">
             <label class="f">Date<input class="in" type="date" name="date" required value="${r.date || dem}" min="${jourIso()}"></label>
             <label class="f">Heure<input class="in" type="time" name="heure" required step="900" value="${r.heure || '14:00'}"></label>
-            <label class="f">Prix convenu (€)<input class="in num" name="prix" inputmode="decimal" value="${r.prix || s.offre || ''}"></label>
+            ${(fo => `<label class="f">Fourchette annoncée : de (€)<input class="in num" name="prix_min" inputmode="numeric" value="${r.prix_min || r.prix || (fo ? fo.min : '')}"></label>
+            <label class="f">à (€)<input class="in num" name="prix_max" inputmode="numeric" value="${r.prix_max || r.prix || (fo ? fo.max : '')}"></label>`)(fourchette(d))}
             <label class="f">Qui y va<select class="in" name="avec">${Object.entries(AVEC).map(([k, l]) => `<option value="${k}"${(r.avec || payeurDefaut()) === k ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
             <label class="f rdv-lieu">Adresse du rendez-vous<input class="in" name="lieu" value="${esc(r.lieu || [x.code_postal, x.ville].filter(Boolean).join(' '))}" placeholder="N°, rue, ville" autocomplete="street-address"></label>
             <label class="f">Durée<select class="in" name="duree">${[30, 45, 60, 90, 120].map(m => `<option value="${m}"${(r.duree || 45) === m ? ' selected' : ''}>${m < 60 ? m + ' min' : m / 60 + ' h' + (m % 60 ? ' 30' : '')}</option>`).join('')}</select></label>
@@ -2789,10 +2797,12 @@ body.modal-ouvert { overflow: hidden; }
         bloc.querySelectorAll('[data-rdv]').forEach(b => b.onclick = async () => {
             const a = b.dataset.rdv, r = rdvDe(d) || {};
             if (a === 'nouveau' || a === 'modifier') return ouvrirForm();
+            if (a === 'confirmer') return messageConfirmation(d);
+            if (a === 'cession') return cessionDepuisDemande(d.ref);
             let corps;
             if (a === 'achetee') {
-                const v = await demander({ titre: 'Voiture achetée ?', texte: `Prix convenu : ${r.prix ? eur(r.prix) : 'non renseigné'}. La demande passe en « Achetée » et le véhicule entre dans la compta.`, boutons: [['ok', 'Oui, achetée' + (r.prix ? ' ' + eur(r.prix) : ''), 'btn-g'], ['', 'Annuler']] });
-                if (v !== 'ok') return; corps = { statut: 'fait', achetee: true, prix_achat: r.prix };
+                const prix = await demanderPrixAchat(r, [(d.data || {}).vehicule, (d.data || {}).annee].filter(Boolean).join(' '));
+                if (!prix) return; corps = { statut: 'fait', achetee: true, prix_achat: prix };
             } else if (a === 'fait') {
                 const v = await demander({ titre: 'Rendez-vous fait sans achat', texte: 'Pourquoi ?', boutons: [['Prix refusé sur place', 'Prix refusé sur place'], ['Voiture pas conforme', 'Voiture pas conforme à la description'], ['Le vendeur a renoncé', 'Le vendeur a renoncé'], ['', 'Annuler']] });
                 if (!v) return; corps = { statut: 'fait', motif: v };
@@ -2839,7 +2849,7 @@ body.modal-ouvert { overflow: hidden; }
                     <span>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Vendeur')} · ${AVEC[r.avec] || ''}</span>
                     <span class="pl-lieu">📍 ${esc(r.lieu || [x.code_postal, x.ville].filter(Boolean).join(' ') || 'Lieu à préciser')}</span>
                     ${r.statut !== 'prevu' ? `<span class="pill ${r.statut === 'fait' && d.statut === 'achetee' ? 'st-achetee' : r.statut === 'fait' ? 'st-contactee' : 'st-sans_suite'}">${r.statut === 'fait' ? (d.statut === 'achetee' ? 'Fait · achetée' : 'Fait · pas d\'achat') : 'Annulé'}</span>` : ''}</div>
-                <div class="pl-p">${r.prix ? `<b class="num">${eur(r.prix)}</b>` : ''}${r.statut === 'prevu' ? `<div class="pl-a">${x.telephone ? `<a class="btn btn-s btn-g" href="tel:+${esc(tel)}" aria-label="Appeler">📞</a>` : ''}<a class="btn btn-s" href="${itineraire(d, r)}" target="_blank" rel="noopener" aria-label="Itinéraire">🧭</a></div>` : ''}</div>
+                <div class="pl-p">${fourchetteRdv(r) ? `<b class="num">${fourchetteRdv(r)}</b>` : ''}${r.statut === 'prevu' ? `<div class="pl-a">${x.telephone ? `<a class="btn btn-s btn-g" href="tel:+${esc(tel)}" aria-label="Appeler">📞</a>` : ''}<a class="btn btn-s" href="${itineraire(d, r)}" target="_blank" rel="noopener" aria-label="Itinéraire">🧭</a></div>` : ''}</div>
             </div>`; }).join('')}</div>`).join('')
             : `<div class="empty">${plJour ? 'Aucun rendez-vous ce jour-là.' : plVue === 'retard' ? 'Tous les rendez-vous passés ont un compte rendu.' : plVue === 'passes' ? 'Aucun rendez-vous terminé pour l\'instant.' : 'Aucun rendez-vous prévu. Fixez-en un depuis la fiche d\'une demande, après l\'appel.'}</div>`;
         if (!calUrl) { try { calUrl = await api('/api/admin/calendrier'); } catch (e) { calUrl = {}; } }
@@ -3132,6 +3142,79 @@ body.modal-ouvert { overflow: hidden; }
             <form class="dit-note" id="ditNote"><input class="in" id="ditTxt" placeholder="Ajouter une note rapide…" autocomplete="off"><button class="btn btn-p">Ajouter</button></form>
             <div class="dit-act"><button class="btn btn-s" type="button" id="ditPanneau"><svg><use href="#i-tel"/></svg>Panneau d'appel</button><button class="flag${drapeau(d) ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${drapeau(d)}"><svg><use href="#i-flag"/></svg>${drapeau(d) ? 'À appeler · retirer' : 'Marquer « À appeler »'}</button><a href="#secSuivi" class="btn btn-s btn-ghost" id="ditTout">Tout l'historique</a></div>
         </section>`;
+    }
+
+    // ---------------- Fourchette du rendez-vous, prix d'achat réel, message de confirmation au client
+    const fourchetteRdv = r => { if (!r) return ''; const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0; return !mn && !mx ? '' : mn === mx ? eur(mn) : `${eur(mn)} – ${eur(mx)}`; };
+    // Prix d'achat réel saisi au moment de l'achat (le rendez-vous n'annonçait qu'une fourchette).
+    function demanderPrixAchat(r, libelle) {
+        return new Promise(fin => {
+            const mn = Number(r && (r.prix_min || r.prix)) || '', fx = fourchetteRdv(r);
+            $('#crIn').innerHTML = `<div class="cr-tete"><h3>Voiture achetée</h3><button class="close" type="button" id="paX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+                <p class="sub">${esc(libelle || '')}${fx ? ` · fourchette annoncée ${fx}` : ''}</p>
+                <label class="f">Prix d'achat payé au vendeur (€)<input class="in num" id="paPrix" inputmode="numeric" value="${mn}" required></label>
+                <p class="sub" style="margin:0">La demande passe en « Achetée », le véhicule entre dans Véhicules et le certificat de cession vous est proposé.</p>
+                <div class="cr-btns"><button type="button" class="btn" id="paNon">Annuler</button><button type="button" class="btn btn-g" id="paOk">Valider l'achat</button></div>`;
+            const fermer = v => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); fin(v); };
+            $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+            $('#paX').onclick = $('#paNon').onclick = () => fermer(null);
+            $('#paOk').onclick = () => { const v = Number($('#paPrix').value.replace(/[^\d]/g, '')); if (!v) { $('#paPrix').focus(); return; } fermer(v); };
+            setTimeout(() => $('#paPrix').select(), 50);
+        });
+    }
+    // Message de confirmation du rendez-vous : pré-rempli, modifiable, à envoyer par SMS, WhatsApp ou e-mail.
+    function texteConfirmation(d) {
+        const x = d.data || {}, r = rdvPrevu(d) || {}, f = x.fiche_api || {};
+        const nom = [x.prenom, x.nom].filter(Boolean).join(' ').trim();
+        const veh = (f.marque ? [f.marque, f.modele, f.version || f.sra_commercial].filter(Boolean).join(' ') : x.vehicule || 'véhicule').replace(/\s+/g, ' ').trim();
+        const annee = x.annee || (String(f.date1erCir_fr || '').match(/\d{4}/) || [''])[0];
+        const [h, m] = String(r.heure || '14:00').split(':').map(Number), fin = new Date(Date.UTC(2000, 0, 1, h, m + (r.duree || 45)));
+        const heureFin = String(fin.getUTCHours()).padStart(2, '0') + ':' + String(fin.getUTCMinutes()).padStart(2, '0');
+        const hh = t => t.replace(':', ' h ').replace(/ h 00$/, ' h');
+        const lieu = String(r.lieu || '').trim(), adresseConnue = /\d/.test(lieu) && /[a-zé]{3,}/i.test(lieu.replace(/\d{5}.*/, '')) && lieu.replace(/\d{5}/, '').trim().split(/\s+/).length >= 3;
+        const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0;
+        const signe = { abdoul: 'Abdoul-Khader', youssouf: 'Youssouf' }[r.avec] || '';
+        return [`Bonjour ${nom || 'Madame, Monsieur'},`, '',
+            `Suite à votre demande concernant votre ${veh}${annee ? ' ' + annee : ''}, nous vous proposons un rendez-vous ${jourLong(r.date)}, entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}, ${adresseConnue ? `à l'adresse suivante : ${lieu}.` : `${x.ville ? 'à ' + x.ville : 'à votre adresse'}.`}`, '',
+            mn ? `Notre technicien examinera le véhicule sur place et vous fera une proposition d'achat ${mn === mx ? `d'environ ${mn.toLocaleString('fr-FR')} €` : `entre ${mn.toLocaleString('fr-FR')} € et ${mx.toLocaleString('fr-FR')} €`}, selon l'état constaté.` : `Notre technicien examinera le véhicule sur place et vous fera une proposition d'achat selon l'état constaté.`,
+            ...(adresseConnue ? [] : ['', 'Pouvez-vous me communiquer l\'adresse exacte du rendez-vous ?']), '',
+            'Pour préparer les documents de cession, pourriez-vous nous envoyer une photo de votre carte grise ?', '',
+            'Si vous avez une question avant le rendez-vous, n\'hésitez pas à me contacter.', '',
+            'Cordialement,', `${signe ? signe + ' de ' : ''}LUNICAR`].join('\n');
+    }
+    function messageConfirmation(d) {
+        const x = d.data || {}, r = rdvPrevu(d) || {};
+        const tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
+        const objet = `Votre rendez-vous LUNICAR du ${jourLong(r.date)}`;
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>Confirmation du rendez-vous</h3><button class="close" type="button" id="mcX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <p class="sub">À relire et modifier avant envoi.</p>
+            <textarea class="in" id="mcTxt" rows="14">${esc(texteConfirmation(d))}</textarea>
+            <div class="mc-btns">
+                ${x.telephone ? `<a class="btn btn-g" id="mcSms" href="#">SMS</a><a class="btn" id="mcWa" href="#" target="_blank" rel="noopener">WhatsApp</a>` : ''}
+                ${x.email ? `<button type="button" class="btn" id="mcMail">E-mail à ${esc(x.email)}</button>` : ''}
+                <button type="button" class="btn" id="mcCopie">Copier</button>
+            </div>`;
+        const fermer = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        $('#mcX').onclick = fermer; $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermer(); };
+        const txt = () => $('#mcTxt').value.trim();
+        if ($('#mcSms')) $('#mcSms').onclick = e => { e.preventDefault(); location.href = `sms:+${tel}${/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?'}body=${encodeURIComponent(txt())}`; };
+        if ($('#mcWa')) $('#mcWa').onclick = e => { e.preventDefault(); window.open(`https://wa.me/${tel}?text=${encodeURIComponent(txt())}`, '_blank'); };
+        $('#mcCopie').onclick = async () => { try { await navigator.clipboard.writeText(txt()); toast('Message copié'); } catch (e) { $('#mcTxt').select(); document.execCommand('copy'); toast('Message copié'); } };
+        if ($('#mcMail')) $('#mcMail').onclick = async () => {
+            if (await demander({ titre: 'Envoyer la confirmation par e-mail ?', texte: `À ${x.email} · objet « ${objet} »`, boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
+            try { const r2 = await api('/api/admin/demandes/' + d.ref + '/email', { method: 'POST', body: JSON.stringify({ objet, texte: txt() }) }); maj(r2); if (courant && courant.ref === d.ref) { courant = r2; fiche(); } fermer(); toast('Confirmation envoyée par e-mail'); }
+            catch (e) { toast(e.message); $('#crModal').hidden = false; }
+        };
+    }
+    // Certificat de cession dès le rendez-vous pris : on retrouve (ou crée) le véhicule de la demande.
+    async function cessionDepuisDemande(ref) {
+        try {
+            await chargerCompta();
+            let v = compta.vehicules.find(x => x.ref === ref);
+            if (!v) { v = await api('/api/admin/compta/vehicules', { method: 'POST', body: JSON.stringify({ ref }) }); await chargerCompta(); v = vehiculeDe(v.id) || v; }
+            ecranCession(v);
+        } catch (e) { toast(e.message); }
     }
 
     // ---------------- Fiche d'une demande
