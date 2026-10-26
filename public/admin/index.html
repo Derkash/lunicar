@@ -764,6 +764,12 @@ ul.plain li { margin: 3px 0; }
 .cg-l small { grid-column: 3; color: var(--ink-5); font-size: .72rem; }
 @media (max-width: 520px) { .cg-l { grid-template-columns: 22px 1fr; } .cg-l .in, .cg-l small { grid-column: 2; } }
 .mi-lien { border: 0; background: none; padding: 0; color: var(--bleu, #2453A6); font: inherit; text-decoration: underline; cursor: pointer; }
+.ancrages { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
+.anc { display: grid; gap: 1px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: inherit; min-width: 0; flex: 1 1 150px; }
+.anc span { font-size: .68rem; color: var(--ink-5); text-transform: uppercase; letter-spacing: .04em; } .anc b { font-size: .98rem; } .anc small { font-size: .7rem; color: var(--ink-5); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.analyse { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 7px; font-size: .86rem; line-height: 1.4; }
+.analyse li b { display: block; color: var(--ink-5); font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 1px; }
+.vvv { display: flex; align-items: flex-end; gap: 8px; margin-top: 12px; flex-wrap: wrap; } .vvv .f { flex: 1 1 220px; } .vvv small { color: var(--ink-5); font-size: .74rem; align-self: center; }
 .pl-btn { margin-top: 10px; justify-self: start; }
 .sg-liste { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
 .sg-liste li { display: grid; grid-template-columns: 92px 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; }
@@ -1959,7 +1965,8 @@ body.modal-ouvert { overflow: hidden; }
             : (p, q) => q.created_at.localeCompare(p.created_at);
         // Groupe (à traiter, contactées, sans suite en bas), puis le tri choisi. Par défaut : l'intérêt de l'affaire,
         // qui passe AVANT les rappels et drapeaux (ils restent signalés en couleur sur la carte).
-        const a = affichees = filtrees().sort((p, q) => groupe(p) - groupe(q) || (tri === 'interet' ? 0 : priorite(p) - priorite(q) || (priorite(p) === 0 ? rappel(p).localeCompare(rappel(q)) : 0)) || parTri(p, q));
+        // Les rappels et le drapeau « À appeler » restent des signaux de couleur : ils ne changent pas l'ordre.
+        const a = affichees = filtrees().sort((p, q) => groupe(p) - groupe(q) || parTri(p, q));
         $('#triRapide').innerHTML = [['interet', 'Les plus intéressantes'], ['recent', 'Les plus récentes']].map(([k, l]) => `<button type="button" class="seg${tri === k ? ' on' : ''}" data-tri="${k}">${l}</button>`).join('')
             + (nbFusion() ? `<button type="button" class="seg" id="btFusion" title="Même vendeur, même voiture : on garde la demande la plus renseignée, complétée par les autres">Fusionner ${nbFusion()} doublon${nbFusion() > 1 ? 's' : ''}</button>` : '');
         const titres = ['À traiter · jamais appelées', 'Déjà contactées', 'Sans suite'];
@@ -3472,7 +3479,7 @@ body.modal-ouvert { overflow: hidden; }
     const md = t => esc(t).replace(/^### (.*)$/gm, '<h4>$1</h4>').replace(/^## (.*)$/gm, '<h4>$1</h4>').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
         .replace(/^(?:- |\* )(.*)$/gm, '<li>$1</li>').replace(/(<li>.*<\/li>\n?)+/g, m => `<ul class="plain">${m}</ul>`).replace(/\n{2,}/g, '<br><br>').replace(/\n/g, ' ');
     const kv = rows => `<table class="kv">${rows.filter(r => r[1]).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join('')}</table>`;
-    const ESTIM_DUREE = 'une à deux minutes';
+    const ESTIM_DUREE = 'environ une minute';
 
     // Attractivité à la revente : score, verdict, délai, raisons (issus de l'estimation).
     function attractivite(a) {
@@ -3555,12 +3562,14 @@ body.modal-ouvert { overflow: hidden; }
                 ${fourchette(d) ? (f => `<div class="fourchette"><div><span>Fourchette client</span><b class="num">${eur(f.min)} – ${eur(f.max)}</b><small>engagement : au moins ${eur(f.min)} si les infos sont exactes${f.ajustee ? ` · ajustée : le vendeur demande ${eur(f.souhaite)} (base calculée ${eur(f.base)})` : ''}</small></div><button class="btn btn-s" type="button" id="copieFourchette">Copier le texte client</button></div>`)(fourchette(d)) : ''}
                 <div class="dec-grille">
                     <div><span>Le vendeur veut</span><b class="num">${x.prix_souhaite ? eur(x.prix_souhaite) : '—'}</b>${x.prix_souhaite && prixMax(d) ? (ec => `<small class="${ec > 0 ? 'neg' : 'pos'}">${ec > 0 ? eur(ec) + ' au-dessus du max' : ec < 0 ? eur(-ec) + ' sous le max' : 'pile le max'}</small>`)(Number(x.prix_souhaite) - prixMax(d)) : '<small>&nbsp;</small>'}</div>
-                    <div><span>Revente estimée</span><b class="num">${eur(s.prix_manuel_vente || p.vente_estime)}</b><small>${s.prix_manuel_vente ? 'retenue à la main' : e && e.calcul && e.calcul.mode === 'marchand' ? 'aux professionnels' : e ? esc({ reparer_revendre: 'après remise en état', en_l_etat_marchand: 'en l\'état, marchand', export: 'export', pieces: 'pour pièces' }[e.canal_revente] || '') : '&nbsp;'}</small></div>
-                    <div><span>Marché (médiane)</span><b class="num">${eur(p.marche || p.leboncoin)}</b><small>${e && (e.marche || e.leboncoin) ? ((e.marche || e.leboncoin).nb_annonces || 0) + ' annonces' : '&nbsp;'}</small></div>
-                    ${e && e.calcul && e.calcul.mode === 'marchand' ? `<div><span>Cote marchand</span><b class="num">${eur(e.calcul.cote_marchand)}</b><small>≈ vendezvotrevoiture</small></div>` : `<div><span>Frais prévus</span><b class="num">${e && e.calcul ? eur((e.calcul.frais_remise_en_etat || 0) + (e.calcul.deplacement || 0)) : '—'}</b><small>remise en état + trajet</small></div>`}
+                    <div><span>Prix de marché</span><b class="num">${eur(p.marche || p.leboncoin)}</b><small>${e ? (e.ancrages ? `${e.ancrages.length} source${e.ancrages.length > 1 ? 's' : ''} · confiance ${esc(e.confiance || '?')}` : ((e.marche || e.leboncoin || {}).nb_annonces || 0) + ' annonces') : '&nbsp;'}</small></div>
+                    ${e && e.calcul && e.calcul.mode === 'marchand' ? `<div><span>Cote reprise pro</span><b class="num">${eur(e.calcul.cote_marchand)}</b><small>≈ vendezvotrevoiture${p.reprise_concurrents ? ' · constaté ' + eur(p.reprise_concurrents) : ''}</small></div>` : `<div><span>Frais prévus</span><b class="num">${e && e.calcul ? eur((e.calcul.frais_remise_en_etat || 0) + (e.calcul.deplacement || 0)) : '—'}</b><small>remise en état + trajet</small></div>`}
+                    <div><span>Revente aux pros</span><b class="num">${eur(s.prix_manuel_vente || p.vente_estime)}</b><small>${s.prix_manuel_vente ? 'retenue à la main' : e && e.calcul ? 'marge ≈ ' + eur(e.calcul.marge) : '&nbsp;'}</small></div>
                 </div>
+                ${e && (e.ancrages || []).length ? `<div class="ancrages">${e.ancrages.map(a => `<a class="anc" ${a.url ? `href="${esc(a.url)}" target="_blank" rel="noopener noreferrer"` : ''} title="${esc(a.detail || '')}"><span>${esc(a.libelle)}</span><b>${eur(a.valeur)}</b><small>${esc(a.detail || '')}</small></a>`).join('')}</div>` : ''}
                 <div class="dec-faits">${[x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.annee, [x.ville || x.code_postal, geo(x.code_postal) && geo(x.code_postal).km ? geo(x.code_postal).km + ' km' : ''].filter(Boolean).join(' · '), d.origine_txt && esc(d.origine_txt.split(' · ')[0]), s.offre && 'offre faite ' + eur(s.offre), s.prix_achat && 'acheté ' + eur(s.prix_achat)].filter(Boolean).map(t => `<span>${t}</span>`).join('')}</div>
-                ${e && e.resume ? `<p class="resume">${esc(e.resume)}</p>` : ''}
+                ${e && e.analyse ? `<ol class="analyse">${e.analyse.map(l => `<li><b>${esc(l.t)}</b>${esc(l.s)}</li>`).join('')}</ol>` : e && e.resume ? `<p class="resume">${esc(e.resume)}</p>` : ''}
+                ${e ? `<div class="vvv"><label class="f">Prix vendezvotrevoiture obtenu pour cette voiture (€)<input class="in num" id="vvvPrix" inputmode="numeric" value="${esc((s.reference_vvv || {}).prix || '')}" placeholder="sert à caler nos cotes"></label><button type="button" class="btn btn-s" id="vvvOk">Noter</button>${s.reference_vvv ? `<small>noté le ${date(s.reference_vvv.date, false)}</small>` : ''}</div>` : ''}
                 <div class="est-meta">
                     <button class="btn btn-s ${e ? '' : 'btn-g'}" id="estBtn" ${enCours || !etat.estimation.actif ? 'disabled' : ''}>${enCours ? '<span class="spin"></span> Estimation en cours' : e ? 'Relancer l\'estimation' : 'Estimer maintenant'}</button>
                     ${s.estimation_statut === 'erreur' ? `<span style="color:var(--red)">Échec : ${esc(s.estimation_erreur)}</span>` : ''}
@@ -3726,6 +3735,7 @@ body.modal-ouvert { overflow: hidden; }
             if (ev.target.value === 'sans_suite') { ev.target.value = d.statut; return pasInteresse(d); } // e-mail de refus puis archivage
             await sauver({ statut: ev.target.value }); toast('Statut mis à jour'); if (ev.target.value === 'achetee') apresAchat(d.ref);
         };
+        if ($('#vvvOk')) $('#vvvOk').onclick = async () => { try { courant = await api('/api/admin/demandes/' + d.ref + '/reference', { method: 'PATCH', body: JSON.stringify({ prix_vvv: $('#vvvPrix').value }) }); maj(courant); fiche(); toast('Prix vendezvotrevoiture noté : il cale les prochaines estimations'); } catch (er) { toast(er.message); } };
         const cf = $('#copieFourchette');
         if (cf) cf.onclick = async () => { const f = fourchette(d); toast(f && await copierTexte(texteFourchette(f)) ? 'Texte copié' : 'Copie impossible'); };
         const eb = $('#estBtn');

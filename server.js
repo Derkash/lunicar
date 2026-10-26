@@ -494,9 +494,9 @@ function blocEstimation(e, ref) {
     return `<div style="margin:0 0 18px">
       <div style="font-weight:700;color:#0D2541;margin-bottom:8px">Estimation automatique <span style="font-weight:400;color:#6F6B64">· confiance ${esc(e.confiance || '?')}</span></div>
       <table style="border-collapse:separate;border-spacing:6px 0;width:100%"><tr>
-        ${case_('PRIX MAX ACHAT', p.max_achat, true)}${case_('MARCHÉ (MÉDIANE)', p.marche || p.leboncoin)}${case_('COTE ARGUS', p.argus)}${case_('PRIX DE VENTE', p.vente_estime)}
+        ${case_('PRIX MAX ACHAT', p.max_achat, true)}${case_('PRIX DE MARCHÉ', p.marche || p.leboncoin)}${case_(p.cote_marchand ? 'COTE REPRISE PRO' : 'COTE ARGUS', p.cote_marchand || p.argus)}${case_('REVENTE PROS', p.vente_estime)}
       </tr></table>
-      ${e.resume ? `<p style="margin:10px 0 0;font-size:13px;color:#3B3833">${esc(e.resume)}</p>` : ''}
+      ${Array.isArray(e.analyse) ? `<ul style="margin:10px 0 0;padding:0;list-style:none;font-size:13px;color:#3B3833;line-height:1.45">${e.analyse.map(l => `<li style="margin:0 0 5px"><strong style="color:#0D2541">${esc(l.t)} :</strong> ${esc(l.s)}</li>`).join('')}</ul>` : e.resume ? `<p style="margin:10px 0 0;font-size:13px;color:#3B3833">${esc(e.resume)}</p>` : ''}
       ${e.attractivite && e.attractivite.score != null ? `<p style="margin:8px 0 0;font-size:13px;color:#3B3833"><strong>Attractivité à la revente : ${e.attractivite.score}/100 · ${esc({ acheter: 'acheter', prix_serre: 'acheter à prix serré', eviter: 'éviter' }[e.attractivite.verdict] || '')}${e.attractivite.delai_commentaire ? ' · ' + esc(e.attractivite.delai_commentaire) : ''}</strong>${e.attractivite.resume ? '<br>' + esc(e.attractivite.resume) : ''}</p>` : ''}
       ${(e.questions_a_poser || []).length ? `<p style="margin:8px 0 0;font-size:13px;color:#3B3833"><strong>À demander :</strong> ${e.questions_a_poser.map(esc).join(' · ')}</p>` : ''}
       <p style="margin:8px 0 0;font-size:13px"><a href="${SITE.baseUrl}/admino/demande/${ref}" style="color:#B8923A;font-weight:700">Détail, annonces et sources dans l'admin →</a></p>
