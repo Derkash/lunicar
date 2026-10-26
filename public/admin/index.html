@@ -3531,13 +3531,14 @@ body.modal-ouvert { overflow: hidden; }
             <ol class="conv">${fil.length ? fil.map(m => `<li class="${m.sens === 'envoye' ? 'envoye' : 'recu'}${m.type === 'pas_interesse' ? ' refus' : ''}">
                 <div class="t"><b>${m.sens === 'envoye' ? 'LUNICAR' : m.contact ? 'Client · formulaire de contact' : 'Client'}</b><span>${date(m.date)}</span>${m.type === 'pas_interesse' ? '<span>refus</span>' : ''}${m.pieces ? `<span>${m.pieces} pièce${m.pieces > 1 ? 's' : ''} jointe${m.pieces > 1 ? 's' : ''} (dans la boîte)</span>` : ''}</div>
                 ${m.objet && !m.contact ? `<p class="o">${esc(m.objet)}</p>` : ''}
-                <p class="x${String(m.texte || '').length > 420 ? ' court' : ''}">${esc(m.texte || '')}</p>${String(m.texte || '').length > 420 ? '<button type="button" class="lire">Lire tout</button>' : ''}
+                <p class="x${String(m.texte || '').length > 420 ? ' court' : ''}">${esc(m.texte || '')}</p>${String(m.texte || '').length > 420 ? '<button type="button" class="lire">Lire tout</button>' : ''}${m.sens === 'envoye' && !m.contact ? `<button type="button" class="btn btn-s" data-renvoi="${esc(m.id)}">Modifier et renvoyer</button>` : ''}
             </li>`).join('') : '<li class="vide">Aucun e-mail échangé depuis l\'espace pour l\'instant.</li>'}</ol>
             ${I && E.reponses && valide ? `<div class="mail-tete"><button type="button" class="btn btn-s" id="mailRep">Vérifier les réponses du client</button><span class="sub">${(d.suivi || {}).reponses_lues ? 'Vérifié le ' + date(d.suivi.reponses_lues) : 'Boîte ' + esc(E.boite)}</span></div>` : ''}
             ${valide ? `<form class="mail-form" id="mailForm" novalidate>
                 <label class="f">Objet<input class="in" id="mailObjet" maxlength="${(I && I.limites || {}).objet || 200}" value="${esc(objet)}"></label>
                 <div class="mail-modeles"><span>Modèles</span>${I && I.modeles ? I.modeles.map(m => `<button type="button" class="cr-chip" data-modele="${esc(m.id)}">${esc(m.titre)}</button>`).join('') : '<span class="spin"></span>'}</div>
                 <label class="f">Message<textarea class="in" id="mailTxt" rows="9" maxlength="${(I && I.limites || {}).texte || 10000}" placeholder="Votre message au client…">${esc(mailBrouillon.texte)}</textarea></label>
+                <label class="chk mail-cci"><input type="checkbox" id="mailCci"> Copie cachée à <input class="in" id="mailCciA" value="abdoul.guirassy@gmail.com" style="max-width:240px;height:32px"></label>
                 <p class="err" id="mailErr"></p>
                 <div class="mail-pied"><small>${E.from ? 'De : ' + esc(E.from) + (E.reply_to ? ' · réponses à ' + esc(E.reply_to) : '') : ''}</small>
                     <div class="btns"><button type="button" class="btn" id="mailApercu"${I && E.envoi ? '' : ' disabled'}>Envoyer un aperçu…</button><button class="btn btn-p" id="mailEnv"${I && E.envoi ? '' : ' disabled'}><svg><use href="#i-envoi"/></svg>Envoyer au client</button></div></div>
@@ -3547,6 +3548,14 @@ body.modal-ouvert { overflow: hidden; }
                 <small>Prévient poliment le client (texte modifiable avant envoi) et classe la demande « ${esc(etat.statuts.sans_suite || 'Sans suite')} ».</small>
             </div>`;
         sec.querySelectorAll('.conv .lire').forEach(b => b.onclick = () => { b.previousElementSibling.classList.remove('court'); b.remove(); });
+        // Renvoyer un e-mail déjà envoyé : il revient dans le formulaire, modifiable, avec copie cachée cochée.
+        sec.querySelectorAll('[data-renvoi]').forEach(b => b.onclick = () => {
+            const m = fil.find(z => z.id === b.dataset.renvoi); if (!m || !$('#mailForm')) return;
+            $('#mailObjet').value = m.objet || ''; $('#mailTxt').value = m.texte || ''; $('#mailCci').checked = true;
+            mailBrouillon = { ref, objet: m.objet || '', texte: m.texte || '' };
+            $('#mailForm').scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(() => $('#mailTxt').focus(), 400);
+            toast('E-mail repris : modifiez-le puis « Envoyer au client »');
+        });
         const f = $('#mailForm');
         if (f) {
             const garder = () => { mailBrouillon = { ref, objet: $('#mailObjet').value, texte: $('#mailTxt').value }; };
@@ -3569,10 +3578,10 @@ body.modal-ouvert { overflow: hidden; }
                 if (!objet || !texte) { $('#mailErr').textContent = 'Objet et message obligatoires.'; return; }
                 const rep = texte.match(/\[(montant|date|heure|lieu)[^\]]*\]/i);
                 if (rep) { $('#mailErr').textContent = 'Il reste un repère à compléter : ' + rep[0]; return; }
-                if (await demander({ titre: 'Envoyer cet e-mail ?', texte: 'À ' + x.email + ' · « ' + objet + ' »', boutons: [['', 'Annuler'], ['ok', 'Envoyer', 'btn-p']] }) !== 'ok') return;
+                if (await demander({ titre: 'Envoyer cet e-mail ?', texte: 'À ' + x.email + ' · « ' + objet + ' »' + ($('#mailCci').checked ? ' · copie cachée à ' + $('#mailCciA').value.trim() : ''), boutons: [['', 'Annuler'], ['ok', 'Envoyer', 'btn-p']] }) !== 'ok') return;
                 const b = $('#mailEnv'); b.disabled = true; b.innerHTML = '<span class="spin"></span> Envoi…';
                 try {
-                    courant = await api('/api/admin/demandes/' + ref + '/email', { method: 'POST', body: JSON.stringify({ objet, texte }) });
+                    courant = await api('/api/admin/demandes/' + ref + '/email', { method: 'POST', body: JSON.stringify({ objet, texte, cci: $('#mailCci').checked ? $('#mailCciA').value.trim() : '' }) });
                     mailBrouillon = null; fiche(); maj(courant); toast('E-mail envoyé au client');
                 } catch (e) {
                     b.disabled = false; b.innerHTML = '<svg><use href="#i-envoi"/></svg>Envoyer au client';
