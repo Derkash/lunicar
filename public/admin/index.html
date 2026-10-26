@@ -753,6 +753,11 @@ ul.plain li { margin: 3px 0; }
 .rdv-act { display: flex; flex-wrap: wrap; gap: 8px; }
 .rdv-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 12px; margin-top: 12px; }
 .rdv-form .rdv-lieu { grid-column: 1 / -1; }
+.mi-form .mi-g { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 6px 0 10px; }
+.mi-form .mi-titre { margin: 4px 0 10px; }
+.mi-form #miCherche { margin: 0 8px 6px 0; }
+.mi-btn { float: right; margin-top: -4px; }
+.mi-lien { border: 0; background: none; padding: 0; color: var(--bleu, #2453A6); font: inherit; text-decoration: underline; cursor: pointer; }
 .pl-btn { margin-top: 10px; justify-self: start; }
 .sg-liste { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
 .sg-liste li { display: grid; grid-template-columns: 92px 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; }
@@ -2815,11 +2820,84 @@ body.modal-ouvert { overflow: hidden; }
             ${(fo => `<label class="f">Fourchette de (€)<input class="in num" name="prix_min" inputmode="numeric" value="${r.prix_min || r.prix || (fo ? fo.min : '')}"></label>
             <label class="f">à (€)<input class="in num" name="prix_max" inputmode="numeric" value="${r.prix_max || r.prix || (fo ? fo.max : '')}"></label>`)(fourchette(d))}
             <label class="f">Qui y va<select class="in" name="avec">${Object.entries(AVEC).map(([k, l]) => `<option value="${k}"${(r.avec || 'youssouf') === k ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
-            <label class="f rdv-lieu">Adresse du rendez-vous<input class="in" name="lieu" value="${esc(r.lieu || [x.code_postal, x.ville].filter(Boolean).join(' '))}" placeholder="N°, rue, ville" autocomplete="street-address"></label>
+            <label class="f rdv-lieu">Adresse du rendez-vous<input class="in" name="lieu" value="${esc(r.lieu || [x.adresse, [x.code_postal, x.ville].filter(Boolean).join(' ')].filter(Boolean).join(', '))}" placeholder="N°, rue, ville" autocomplete="street-address"></label>
             <label class="f">Durée<select class="in" name="duree">${[30, 45, 60, 90, 120].map(m => `<option value="${m}"${(r.duree || 45) === m ? ' selected' : ''}>${m < 60 ? m + ' min' : m / 60 + ' h' + (m % 60 ? ' 30' : '')}</option>`).join('')}</select></label>
             <label class="f rdv-lieu">Note<input class="in" name="note" value="${esc(r.note || '')}" placeholder="Code portail, documents à préparer, double des clés…"></label>
             <div class="rdv-act"><button class="btn btn-p">${r.date ? 'Enregistrer le nouvel horaire' : 'Fixer le rendez-vous'}</button>${inline ? '' : '<button type="button" class="btn" id="rdvAnnulForm">Fermer</button>'}</div>
         </form>`;
+    }
+    // Modifier les informations saisies par le client : véhicule (marque, modèle, finition, motorisation, titre), vendeur, adresse.
+    let catalogue = null;
+    async function modifierInfos(d) {
+        const x = d.data || {}, f = x.fiche_api || {};
+        if (!catalogue) catalogue = await api('/api/admin/catalogue/marques').catch(() => ({}));
+        const marques = Object.keys(catalogue);
+        const marqueDe = t => marques.find(m => new RegExp('^' + m.replace(/[-\s]/g, '[-\\s]?') + '(?=\\s|$)', 'i').test(String(t || '').trim())) || '';
+        const m0 = x.marque || f.marque && marques.find(m => m.toLowerCase() === String(f.marque).toLowerCase()) || marqueDe(x.vehicule);
+        const reste = m0 ? String(x.vehicule || '').trim().slice(m0.length).trim() : '';
+        const mo0 = x.modele || (m0 && (catalogue[m0] || []).filter(o => new RegExp('^' + o.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?=\\s|$)', 'i').test(reste)).sort((a, b) => b.length - a.length)[0]) || '';
+        const fermerI = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        const champ = (k, l, v, o = '') => `<label class="f">${l}<input class="in" name="${k}" value="${esc(v || '')}" ${o}></label>`;
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>Modifier les informations</h3><button class="close" type="button" id="miX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <form id="miF" class="mi-form" autocomplete="off">
+                <p class="cr-l">Véhicule</p>
+                <div class="mi-g">
+                    ${champ('marque', 'Marque', m0, 'list="miMarques"')}
+                    ${champ('modele', 'Modèle', mo0, 'list="miModeles"')}
+                    ${champ('annee', 'Année', x.annee, 'inputmode="numeric" maxlength="4"')}
+                    ${champ('kilometrage', 'Kilométrage', x.kilometrage, 'inputmode="numeric"')}
+                </div>
+                <button type="button" class="btn btn-s" id="miCherche"${etat.estimation.actif ? '' : ' disabled'}>Chercher les finitions et motorisations</button>
+                <span class="sub" id="miMsg"></span>
+                <div class="mi-g">
+                    ${champ('finition', 'Finition', x.finition, 'list="miFinitions"')}
+                    ${champ('motorisation', 'Motorisation', x.motorisation, 'list="miMotos"')}
+                    ${champ('carrosserie_type', 'Carrosserie', x.carrosserie_type, 'list="miCarros" placeholder="5 portes, SW, break…"')}
+                    <label class="f">Carburant<select class="in" name="carburant">${['', 'Essence', 'Diesel', 'Hybride', 'Électrique', 'GPL', 'Éthanol'].map(o => `<option${o === (x.carburant || '') ? ' selected' : ''}>${o}</option>`).join('')}${x.carburant && !['Essence', 'Diesel', 'Hybride', 'Électrique', 'GPL', 'Éthanol'].includes(x.carburant) ? `<option selected>${esc(x.carburant)}</option>` : ''}</select></label>
+                    <label class="f">Boîte<select class="in" name="boite">${['', 'Manuelle', 'Automatique'].map(o => `<option${o === (x.boite || '') ? ' selected' : ''}>${o}</option>`).join('')}${x.boite && !['Manuelle', 'Automatique'].includes(x.boite) ? `<option selected>${esc(x.boite)}</option>` : ''}</select></label>
+                    ${champ('plaque', 'Plaque', x.plaque, 'autocapitalize="characters" placeholder="AB-123-CD"')}
+                </div>
+                <label class="f mi-titre">Titre de la fiche <small>(composé automatiquement, modifiable)</small><input class="in" name="vehicule" value="${esc(x.vehicule || '')}"></label>
+                <p class="cr-l">Vendeur</p>
+                <div class="mi-g">
+                    ${champ('prenom', 'Prénom', x.prenom)}${champ('nom', 'Nom', x.nom)}
+                    ${champ('telephone', 'Téléphone', x.telephone, 'inputmode="tel"')}${champ('email', 'E-mail', x.email, 'inputmode="email"')}
+                </div>
+                <label class="f mi-titre">Adresse <small>(n°, rue)</small><input class="in" name="adresse" value="${esc(x.adresse || '')}" autocomplete="street-address"></label>
+                <div class="mi-g">${champ('code_postal', 'Code postal', x.code_postal, 'inputmode="numeric" maxlength="5"')}${champ('ville', 'Ville', x.ville)}${champ('prix_souhaite', 'Prix souhaité (€)', x.prix_souhaite, 'inputmode="numeric"')}</div>
+                <datalist id="miMarques">${marques.map(m => `<option value="${esc(m)}">`).join('')}</datalist>
+                <datalist id="miModeles"></datalist><datalist id="miFinitions"></datalist><datalist id="miMotos"></datalist><datalist id="miCarros"></datalist>
+                <div class="cr-btns"><button type="button" class="btn" id="miNon">Annuler</button><button class="btn btn-p">Enregistrer</button></div>
+            </form>`;
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        $('#miX').onclick = $('#miNon').onclick = fermerI;
+        const F = $('#miF');
+        const remplirModeles = () => { $('#miModeles').innerHTML = (catalogue[marques.find(m => m.toLowerCase() === F.marque.value.trim().toLowerCase())] || []).map(o => `<option value="${esc(o)}">`).join(''); };
+        remplirModeles();
+        // Titre recomposé tant qu'il n'a pas été retouché à la main.
+        let titreMain = false;
+        const titre = () => { if (!titreMain) F.vehicule.value = [F.marque.value, F.modele.value, F.carrosserie_type.value, F.motorisation.value, F.finition.value].map(v => v.trim()).filter(Boolean).join(' '); };
+        F.vehicule.addEventListener('input', () => { titreMain = true; });
+        ['marque', 'modele', 'finition', 'motorisation', 'carrosserie_type'].forEach(k => F[k].addEventListener('input', () => { if (k === 'marque') remplirModeles(); titre(); }));
+        $('#miCherche').onclick = async () => {
+            if (!F.marque.value.trim() || !F.modele.value.trim()) { toast('Indiquez la marque et le modèle'); return; }
+            $('#miMsg').innerHTML = '<span class="spin"></span> Recherche…'; $('#miCherche').disabled = true;
+            try {
+                const r = await api('/api/admin/catalogue/finitions?' + new URLSearchParams({ marque: F.marque.value, modele: F.modele.value, annee: F.annee.value }));
+                const sivV = [f.version, f.sra_commercial].filter(Boolean);
+                const opts = (id, l) => { $(id).innerHTML = [...new Set(l)].map(o => `<option value="${esc(o)}">`).join(''); };
+                opts('#miFinitions', [...sivV, ...r.finitions]); opts('#miMotos', r.motorisations); opts('#miCarros', r.carrosseries);
+                $('#miMsg').innerHTML = `${r.finitions.length} finitions · ${r.motorisations.length} motorisations : touchez un champ pour choisir`;
+                F.finition.focus();
+            } catch (e) { $('#miMsg').textContent = e.message; }
+            $('#miCherche').disabled = false;
+        };
+        F.onsubmit = async e => {
+            e.preventDefault();
+            const corps = Object.fromEntries(new FormData(F));
+            try { const r = await api('/api/admin/demandes/' + d.ref + '/infos', { method: 'PATCH', body: JSON.stringify(corps) }); maj(r); if (courant && courant.ref === d.ref) { courant = r; fiche(); } fermerI(); toast('Informations mises à jour'); }
+            catch (err) { toast(err.message); }
+        };
     }
     // Assistant de planification : Youssouf se déplace ; on propose d'abord les jours où il passe déjà près (ou sur la route).
     async function planifierRdv(d, pre = {}) {
@@ -3389,7 +3467,7 @@ body.modal-ouvert { overflow: hidden; }
         <div class="sh-top">
             <button class="retour" id="closeSheet" aria-label="Retour aux demandes"><svg><use href="#i-retour"/></svg><span>Demandes</span></button>
             <div class="sh-titre"><h2>${esc(x.vehicule || 'Véhicule non précisé')} ${esc(x.annee || '')}${badgeMeca(x)}</h2>
-                <small>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
+                <small><button type="button" class="mi-lien" data-infos>Modifier</button> · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
                 <button class="btn" type="button" data-vers-mail>E-mail</button>
@@ -3490,7 +3568,7 @@ body.modal-ouvert { overflow: hidden; }
 
             <div class="cols">
                 <section class="sec">
-                    <h3>Véhicule</h3>
+                    <h3>Véhicule <button type="button" class="btn btn-s mi-btn" data-infos>Modifier</button></h3>
                     ${photoModele ? `<img class="photo-modele" src="${esc(photoModele)}" alt="Photo du modèle" loading="lazy" referrerpolicy="no-referrer" onerror="this.nextElementSibling.remove();this.remove()"><small>Photo type du modèle (API plaque)</small>` : ''}
                     ${(() => {
                         const energieSiv = x.energie_siv || (siv && (siv.energieNGC || siv.energie_ngc || siv.carburant)) || '';
@@ -3507,7 +3585,7 @@ body.modal-ouvert { overflow: hidden; }
                     })()}
                     ${(x.corrections || []).length ? `<p class="corr"><b>Corrigé au téléphone :</b> ${x.corrections.slice(-4).map(c => esc({ kilometrage: 'km', prix_souhaite: 'prix souhaité', mecanique: 'mécanique', controle_technique: 'CT', carrosserie: 'carrosserie', delai: 'délai', annee: 'année' }[c.champ] || c.champ) + ' ' + esc(c.avant || '—') + ' → <b>' + esc(c.apres) + '</b>').join(' · ')}</p>` : ''}
                     ${kv([
-                        ['Véhicule', esc(x.vehicule)], ['Année', esc(x.annee)], ['Kilométrage', x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''],
+                        ['Véhicule', esc(x.vehicule)], ['Finition', esc(x.finition)], ['Motorisation', esc(x.motorisation)], ['Année', esc(x.annee)], ['Kilométrage', x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''],
                         ['Plaque', esc(x.plaque) + (x.plaque_datation ? `<br><span style="color:var(--ink-4);font-weight:400">${esc(x.plaque_datation)}</span>` : '')],
                         ['VIN', x.vin || (siv && siv.vin) ? `<code>${esc(x.vin || siv.vin)}</code>` : ''], ['Fiche confirmée', esc(x.fiche_confirmee)],
                         ['État mécanique', esc(x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : ''))], ['Organes en cause', esc(x.organes_defaillants)],
@@ -3521,10 +3599,10 @@ body.modal-ouvert { overflow: hidden; }
                     ${x.autres ? `<details><summary>Autres informations de l'e-mail</summary>${kv(Object.entries(x.autres).map(([k, v]) => [k, esc(v)]))}</details>` : ''}
                 </section>
                 <section class="sec">
-                    <h3>Vendeur et projet</h3>
+                    <h3>Vendeur et projet <button type="button" class="btn btn-s mi-btn" data-infos>Modifier</button></h3>
                     ${kv([
                         ['Nom', esc([x.prenom, x.nom].filter(Boolean).join(' '))], ['Téléphone', esc(x.telephone)], ['E-mail', x.email ? `<a href="mailto:${esc(x.email)}">${esc(x.email)}</a>` : ''],
-                        ['Ville', esc([x.code_postal, x.ville].filter(Boolean).join(' ')) + (idf(d) ? ' · Île-de-France' : '') + (geo(x.code_postal) && geo(x.code_postal).km ? ` · ${geo(x.code_postal).km} km de Paris` : '')],
+                        ['Adresse', esc(x.adresse)], ['Ville', esc([x.code_postal, x.ville].filter(Boolean).join(' ')) + (idf(d) ? ' · Île-de-France' : '') + (geo(x.code_postal) && geo(x.code_postal).km ? ` · ${geo(x.code_postal).km} km de Paris` : '')],
                         ['Prix souhaité', x.prix_souhaite ? eur(x.prix_souhaite) : ''], ['Vendre quand', esc(x.delai)], ['Autre voiture', esc(x.projet_achat)],
                         ['Titulaire de la carte grise', x.titulaire ? (x.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : ''], ['Nom du titulaire', esc(x.nom_titulaire)], ['N° du certificat', esc(x.numero_formule)],
                         ['Origine', esc(d.origine_txt || x.origine)]
@@ -3584,6 +3662,7 @@ body.modal-ouvert { overflow: hidden; }
             <div class="danger"><button type="button" class="btn btn-d btn-ghost" id="delDem">Supprimer la demande</button></div>
         </div>`;
         $('#closeSheet').onclick = fermer;
+        $('#sheetIn').querySelectorAll('[data-infos]').forEach(b => b.onclick = () => modifierInfos(d));
         rendreMail();
         $('#sheetIn').querySelectorAll('[data-ap-photo]').forEach(im => im.onclick = () => { lbSource = null; lbOuvrir(+im.dataset.apPhoto); });
         $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#mailLayer').hidden = false; document.body.classList.add('modal-ouvert'); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 200); });
