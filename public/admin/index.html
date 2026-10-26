@@ -753,6 +753,17 @@ ul.plain li { margin: 3px 0; }
 .rdv-act { display: flex; flex-wrap: wrap; gap: 8px; }
 .rdv-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 12px; margin-top: 12px; }
 .rdv-form .rdv-lieu { grid-column: 1 / -1; }
+.rdv-form label.f { display: flex; flex-direction: column; justify-content: flex-end; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rdv-form .in { height: 42px; line-height: 40px; text-align: left; -webkit-appearance: none; appearance: none; box-sizing: border-box; }
+.rdv-form input[type="date"]::-webkit-date-and-time-value, .rdv-form input[type="time"]::-webkit-date-and-time-value { text-align: left; margin: 0; }
+.mail-ouvrir { justify-self: start; }
+.mail-ouvrir b { background: var(--marine-1); border-radius: 99px; padding: 0 7px; font-size: .78rem; }
+.mail-layer { position: fixed; inset: 0; z-index: 86; background: rgba(14,35,64,.45); display: grid; place-items: center; padding: 16px; }
+.mail-layer .ml-in { position: relative; width: min(720px, 100%); max-height: calc(100vh - 32px); overflow: auto; border-radius: 16px; background: var(--surface); }
+.mail-layer .ml-in .mail-sec { margin: 0; border: 0; }
+.mail-layer .ml-x { position: absolute; right: 10px; top: 10px; z-index: 1; }
+.mail-layer .mail-sec > h3 { padding-right: 52px; }
+@media (max-width: 760px) { .mail-layer { place-items: end stretch; padding: 0; } .mail-layer .ml-in { max-height: 92vh; border-radius: 16px 16px 0 0; padding-bottom: env(safe-area-inset-bottom); } }
 .rdv-form .rdv-act { grid-column: 1 / -1; }
 .pl-bande { display: grid; grid-template-columns: repeat(14, minmax(46px, 1fr)); gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 0 14px; padding: 1px; }
 .pl-bande::-webkit-scrollbar { display: none; }
@@ -2786,9 +2797,9 @@ body.modal-ouvert { overflow: hidden; }
         return `<form id="rdvF" class="rdv-form">
             <label class="f">Date<input class="in" type="date" name="date" required value="${r.date || dem}" min="${jourIso()}"></label>
             <label class="f">Heure<input class="in" type="time" name="heure" required step="900" value="${r.heure || '14:00'}"></label>
-            ${(fo => `<label class="f">Fourchette annoncée : de (€)<input class="in num" name="prix_min" inputmode="numeric" value="${r.prix_min || r.prix || (fo ? fo.min : '')}"></label>
+            ${(fo => `<label class="f">Fourchette de (€)<input class="in num" name="prix_min" inputmode="numeric" value="${r.prix_min || r.prix || (fo ? fo.min : '')}"></label>
             <label class="f">à (€)<input class="in num" name="prix_max" inputmode="numeric" value="${r.prix_max || r.prix || (fo ? fo.max : '')}"></label>`)(fourchette(d))}
-            <label class="f">Qui y va<select class="in" name="avec">${Object.entries(AVEC).map(([k, l]) => `<option value="${k}"${(r.avec || payeurDefaut()) === k ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
+            <label class="f">Qui y va<select class="in" name="avec">${Object.entries(AVEC).map(([k, l]) => `<option value="${k}"${(r.avec || 'youssouf') === k ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
             <label class="f rdv-lieu">Adresse du rendez-vous<input class="in" name="lieu" value="${esc(r.lieu || [x.code_postal, x.ville].filter(Boolean).join(' '))}" placeholder="N°, rue, ville" autocomplete="street-address"></label>
             <label class="f">Durée<select class="in" name="duree">${[30, 45, 60, 90, 120].map(m => `<option value="${m}"${(r.duree || 45) === m ? ' selected' : ''}>${m < 60 ? m + ' min' : m / 60 + ' h' + (m % 60 ? ' 30' : '')}</option>`).join('')}</select></label>
             <label class="f rdv-lieu">Note<input class="in" name="note" value="${esc(r.note || '')}" placeholder="Code portail, documents à préparer, double des clés…"></label>
@@ -3353,7 +3364,7 @@ body.modal-ouvert { overflow: hidden; }
                 const dernier = (s.appels || [])[0];
                 const etatTxt = [x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : ''), x.controle_technique ? 'CT ' + x.controle_technique.toLowerCase() : '', x.carrosserie ? 'carrosserie ' + x.carrosserie.toLowerCase() : ''].filter(Boolean);
                 return `<section class="sec apercu">
-                <div class="ap-col"><div class="ap-photo${!ph && !photoModele ? ' vide' : ''}">${ph ? `<img src="${photoUrl(ph.path)}" alt="Photo du vendeur" data-ap-photo="0">` : photoModele ? `<img class="modele" src="${esc(photoModele)}" alt="Photo du modèle" referrerpolicy="no-referrer" onerror="this.parentElement.innerHTML='<span>Pas de photo</span>'"><small>photo du modèle, pas la voiture</small>` : '<span>Pas de photo du vendeur</span>'}</div>${(() => { const imgs = (d.photos || []).map((p, i) => ({ p, i })).filter(o => !/\.pdf$/i.test(o.p.name)); return imgs.length > 1 ? `<div class="ap-vign">${imgs.slice(0, 8).map(o => `<img src="${photoUrl(o.p.path)}" alt="" data-ap-photo="${o.i}">`).join('')}${imgs.length > 8 ? `<span>+${imgs.length - 8}</span>` : ''}</div>` : ''; })()}</div>
+                <div class="ap-col"><div class="ap-photo${!ph && !photoModele ? ' vide' : ''}">${photoModele ? `<img class="modele" src="${esc(photoModele)}" alt="Photo du modèle" referrerpolicy="no-referrer" onerror="this.parentElement.innerHTML='<span>Pas de photo</span>'"><small>photo du modèle, pas la voiture</small>` : ph ? `<img src="${photoUrl(ph.path)}" alt="Photo du vendeur" data-ap-photo="${(d.photos || []).indexOf(ph)}">` : '<span>Pas de photo du vendeur</span>'}</div>${(() => { const imgs = (d.photos || []).map((p, i) => ({ p, i })).filter(o => !/\.pdf$/i.test(o.p.name)); return imgs.length > (photoModele ? 0 : 1) ? `<div class="ap-vign">${imgs.slice(0, 8).map(o => `<img src="${photoUrl(o.p.path)}" alt="" data-ap-photo="${o.i}">`).join('')}${imgs.length > 8 ? `<span>+${imgs.length - 8}</span>` : ''}</div>` : ''; })()}</div>
                 <div class="ap-faits">
                     <div class="ap-f"><span>D'où il vient</span><b><i class="pt" style="background:${cl[2]}"></i>${esc(cl[1])}</b><small>${esc(d.origine_txt || x.origine || '—')}</small></div>
                     <div class="ap-f"><span>État annoncé</span><b>${badgeMeca(x) || esc(etatTxt[0] || '—')}</b><small>${esc(etatTxt.slice(1).join(' · ') || [x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.annee].filter(Boolean).join(' · '))}</small></div>
@@ -3364,7 +3375,6 @@ body.modal-ouvert { overflow: hidden; }
                 ${dernier ? `<p class="ap-appel"><b>Dernier appel</b> · ${date(dernier.date)} · ${esc(dernier.libelle || dernier.resultat)}${dernier.texte ? ` — ${esc(dernier.texte)}` : ''}</p>` : ''}
             </section>`;
             })()}
-            ${blocDit(d)}
             ${blocRdv(d)}
             <section class="sec decision">
                 <div class="dec-tete">
@@ -3385,8 +3395,9 @@ body.modal-ouvert { overflow: hidden; }
                     ${s.estimation_statut === 'erreur' ? `<span style="color:var(--red)">Échec : ${esc(s.estimation_erreur)}</span>` : ''}
                 </div>
             </section>
-            <section class="sec mail-sec" id="secEmail"></section>
-            <section class="sec">
+            <button type="button" class="btn mail-ouvrir" data-vers-mail>Échanges par e-mail${(((d.suivi || {}).emails || []).length) ? ` <b>${d.suivi.emails.length}</b>` : ''}</button>
+            <div class="mail-layer" id="mailLayer" hidden><div class="ml-in"><button class="close ml-x" type="button" id="mailLayerX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button><section class="sec mail-sec" id="secEmail"></section></div></div>
+            <section class="sec" hidden>
                 <h3>Détail de l'estimation <small>${e ? `confiance ${esc(e.confiance || '?')} · ${date(d.estimation_at)} · ${(e.usage || {}).recherches || 0} recherches` : ''}</small></h3>
                 ${!e ? `<p class="vide">${enCours ? 'Estimation en cours…' : 'Pas encore d\'estimation : lancez-la depuis la carte du haut.'}</p>` : ''}
                 ${e && e.calcul.mode === 'marchand' ? `<div class="calc-strip">
@@ -3475,7 +3486,7 @@ body.modal-ouvert { overflow: hidden; }
                 </section>
             </div>
 
-            <section class="sec" id="secSuivi">
+            <section class="sec" id="secSuivi" hidden>
                 <h3>Suivi et historique</h3>
                 ${decompte(d)}
                 <form id="suiviForm" class="form-grid suivi-chiffres">
@@ -3510,7 +3521,7 @@ body.modal-ouvert { overflow: hidden; }
                 <div class="gal">${(d.photos || []).map((p, i) => `<figure>${/\.pdf$/i.test(p.name) ? `<a class="pdf" href="${photoUrl(p.path)}" target="_blank">PDF<br>${esc(p.name)}</a>` : `<img src="${photoUrl(p.path)}" alt="" loading="lazy" data-i="${i}">`}<button class="del" data-del="${esc(p.path)}">Supprimer</button></figure>`).join('')}</div>
             </section>
 
-            <section class="sec">
+            <section class="sec" hidden>
                 <h3>Assistant IA <small>pannes connues, questions techniques</small></h3>
                 <div class="assist-l">
                     <button class="btn btn-g" id="pannesBtn" ${etat.estimation.actif ? '' : 'disabled'}>Pannes connues de ce modèle</button>
@@ -3527,13 +3538,13 @@ body.modal-ouvert { overflow: hidden; }
         $('#closeSheet').onclick = fermer;
         rendreMail();
         $('#sheetIn').querySelectorAll('[data-ap-photo]').forEach(im => im.onclick = () => { lbSource = null; lbOuvrir(+im.dataset.apPhoto); });
-        $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#secEmail').scrollIntoView({ block: 'start', behavior: 'smooth' }); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 400); });
+        $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#mailLayer').hidden = false; document.body.classList.add('modal-ouvert'); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 200); });
+        const fermerMail = () => { $('#mailLayer').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        $('#mailLayerX').onclick = fermerMail; $('#mailLayer').onclick = e => { if (e.target.id === 'mailLayer') fermerMail(); };
         // Appeler : l'appel part et le panneau d'appel s'ouvre aussitôt (prêt au retour dans l'app).
         if ($('#basAppel')) $('#basAppel').addEventListener('click', () => ouvrirDock(d));
         $('#basPanneau').onclick = () => ouvrirDock(d);
-        $('#ditPanneau').onclick = () => ouvrirDock(d);
-        $('#ditTout').onclick = e => { e.preventDefault(); $('#secSuivi').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-        $('#ditNote').onsubmit = async e => {
+        if ($('#ditNote')) $('#ditNote').onsubmit = async e => {
             e.preventDefault(); const texte = $('#ditTxt').value.trim(); if (!texte) return;
             try { courant = await api('/api/admin/demandes/' + d.ref + '/note', { method: 'POST', body: JSON.stringify({ texte }) }); fiche(); maj(courant); toast('Note ajoutée'); } catch (err) { toast(err.message); }
         };
