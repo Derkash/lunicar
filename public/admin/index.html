@@ -892,6 +892,8 @@ body.modal-ouvert { overflow: hidden; }
 .ces-form .chk { grid-column: 1 / -1; height: auto; }
 
 /* ---------- Panneau d'appel et « Ce qui a été dit » ---------- */
+.mail-cci { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+.mail-cci .in { flex: 1 1 220px; max-width: 320px; width: auto; height: 38px; }
 .dock-appel { position: fixed; z-index: 70; left: 50%; transform: translateX(-50%); bottom: 16px; width: min(460px, calc(100vw - 24px)); max-height: 78vh; overflow-y: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 50px rgba(14,35,64,.28); }
 .da-in { display: grid; gap: 10px; padding: 10px 14px 14px; }
 .da-tete { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "p p" "t x" "s x"; align-items: center; position: sticky; top: -10px; background: var(--surface); padding-top: 6px; z-index: 1; }
@@ -3538,7 +3540,7 @@ body.modal-ouvert { overflow: hidden; }
                 <label class="f">Objet<input class="in" id="mailObjet" maxlength="${(I && I.limites || {}).objet || 200}" value="${esc(objet)}"></label>
                 <div class="mail-modeles"><span>Modèles</span>${I && I.modeles ? I.modeles.map(m => `<button type="button" class="cr-chip" data-modele="${esc(m.id)}">${esc(m.titre)}</button>`).join('') : '<span class="spin"></span>'}</div>
                 <label class="f">Message<textarea class="in" id="mailTxt" rows="9" maxlength="${(I && I.limites || {}).texte || 10000}" placeholder="Votre message au client…">${esc(mailBrouillon.texte)}</textarea></label>
-                <label class="chk mail-cci"><input type="checkbox" id="mailCci"> Copie cachée à <input class="in" id="mailCciA" value="abdoul.guirassy@gmail.com" style="max-width:240px;height:32px"></label>
+                <div class="mail-cci"><label class="chk"><input type="checkbox" id="mailCci"> Copie cachée à</label><input class="in" id="mailCciA" type="email" value="abdoul.guirassy@gmail.com" autocomplete="email"></div>
                 <p class="err" id="mailErr"></p>
                 <div class="mail-pied"><small>${E.from ? 'De : ' + esc(E.from) + (E.reply_to ? ' · réponses à ' + esc(E.reply_to) : '') : ''}</small>
                     <div class="btns"><button type="button" class="btn" id="mailApercu"${I && E.envoi ? '' : ' disabled'}>Envoyer un aperçu…</button><button class="btn btn-p" id="mailEnv"${I && E.envoi ? '' : ' disabled'}><svg><use href="#i-envoi"/></svg>Envoyer au client</button></div></div>
