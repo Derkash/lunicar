@@ -756,7 +756,13 @@ ul.plain li { margin: 3px 0; }
 .mi-form .mi-g { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 6px 0 10px; }
 .mi-form .mi-titre { margin: 4px 0 10px; }
 .mi-form #miCherche { margin: 0 8px 6px 0; }
-.mi-btn { float: right; margin-top: -4px; }
+.mi-btn { float: right; margin: -4px 0 0 6px; }
+.cg-liste { display: grid; gap: 8px; margin: 8px 0; }
+.cg-l { display: grid; grid-template-columns: 22px 130px 1fr; gap: 4px 8px; align-items: center; font-size: .82rem; }
+.cg-l input[type=checkbox] { width: 18px; height: 18px; }
+.cg-l .cg-n { color: var(--ink-5); font-weight: 550; }
+.cg-l small { grid-column: 3; color: var(--ink-5); font-size: .72rem; }
+@media (max-width: 520px) { .cg-l { grid-template-columns: 22px 1fr; } .cg-l .in, .cg-l small { grid-column: 2; } }
 .mi-lien { border: 0; background: none; padding: 0; color: var(--bleu, #2453A6); font: inherit; text-decoration: underline; cursor: pointer; }
 .pl-btn { margin-top: 10px; justify-self: start; }
 .sg-liste { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
@@ -2826,6 +2832,45 @@ body.modal-ouvert { overflow: hidden; }
             <div class="rdv-act"><button class="btn btn-p">${r.date ? 'Enregistrer le nouvel horaire' : 'Fixer le rendez-vous'}</button>${inline ? '' : '<button type="button" class="btn" id="rdvAnnulForm">Fermer</button>'}</div>
         </form>`;
     }
+    // Carte grise : photo → lecture IA → écran de vérification → les champs cochés sont reportés dans la fiche.
+    function scannerCarteGrise(d) {
+        const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*,application/pdf';
+        inp.onchange = async () => {
+            const fichier = inp.files[0]; if (!fichier) return;
+            const fermerG = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+            const tete = `<div class="cr-tete"><h3>Carte grise</h3><button class="close" type="button" id="cgX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>`;
+            $('#crIn').innerHTML = tete + '<p class="sub"><span class="spin"></span> Lecture de la carte grise (15 à 30 s)…</p>';
+            $('#crModal').hidden = false; document.body.classList.add('modal-ouvert'); $('#cgX').onclick = fermerG;
+            const fd = new FormData(); fd.append('photo', fichier);
+            let r; try { r = await api('/api/admin/demandes/' + d.ref + '/carte-grise', { method: 'POST', body: fd }); } catch (e) { $('#crIn').innerHTML = tete + `<p class="notice">${esc(e.message)}</p>`; $('#cgX').onclick = fermerG; return; }
+            maj(r.demande); if (courant && courant.ref === d.ref) { courant = r.demande; fiche(); }
+            const g = r.lu, x = r.demande.data || {};
+            const adresse = [[g.numero, g.extension, g.type_voie, g.voie].filter(Boolean).join(' '), g.complement].filter(Boolean).join(', ');
+            const annee = (g.date_premiere_immatriculation || '').slice(0, 4);
+            // Champ de la fiche ← valeur lue. Coché d'office si la fiche est vide ou différente.
+            const L = [
+                ['nom_titulaire', 'Titulaire (C.1)', g.titulaire], ['adresse', 'Adresse (C.3)', adresse], ['code_postal', 'Code postal', g.code_postal], ['ville', 'Ville', g.commune],
+                ['numero_formule', 'N° de formule', g.numero_formule], ['plaque', 'Immatriculation (A)', g.immatriculation], ['vin', 'VIN (E)', g.vin], ['annee', 'Année (B)', annee],
+                ['nom', 'Nom du vendeur', !g.personne_morale ? g.titulaire_nom : ''], ['prenom', 'Prénom du vendeur', !g.personne_morale ? g.titulaire_prenom : '']
+            ].filter(([, , v]) => v);
+            const norm = v => String(v || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            $('#crIn').innerHTML = tete + `${g.lisible ? '' : '<p class="notice">Photo difficile à lire : vérifiez bien chaque valeur.</p>'}
+                <p class="sub">Cochez ce qu'il faut reporter dans la fiche (modifiable). Tout est aussi gardé pour le certificat de cession${g.date_certificat ? ` · certificat du ${g.date_certificat.split('-').reverse().join('/')}` : ''}${g.co_titulaire ? ` · co-titulaire : ${esc(g.co_titulaire)}` : ''}.</p>
+                <form id="cgF" class="cg-liste">${L.map(([k, l, v]) => { const act = x[k] || ''; const diff = norm(act) !== norm(v); return `<label class="cg-l"><input type="checkbox" name="ok_${k}"${diff && !(k === 'prenom' || k === 'nom') || !act ? ' checked' : ''}>
+                    <span class="cg-n">${l}</span><input class="in" name="${k}" value="${esc(v)}">${act && diff ? `<small>dans la fiche : ${esc(act)}</small>` : act ? '<small>identique à la fiche</small>' : ''}</label>`; }).join('') || '<p class="vide">Rien de lisible sur cette photo.</p>'}
+                <p class="sub">${esc([g.marque, g.denomination_commerciale, g.type_variante_version, g.energie, g.puissance_fiscale && g.puissance_fiscale + ' CV'].filter(Boolean).join(' · '))}</p>
+                <div class="cr-btns"><button type="button" class="btn" id="cgNon">Fermer</button><button class="btn btn-p">Intégrer à la fiche</button></div></form>`;
+            $('#cgX').onclick = $('#cgNon').onclick = fermerG;
+            $('#cgF').onsubmit = async e => {
+                e.preventDefault(); const F = e.target, corps = {};
+                L.forEach(([k]) => { if (F['ok_' + k].checked) corps[k] = F[k].value; });
+                if (!Object.keys(corps).length) return fermerG();
+                try { const m = await api('/api/admin/demandes/' + d.ref + '/infos', { method: 'PATCH', body: JSON.stringify(corps) }); maj(m); if (courant && courant.ref === d.ref) { courant = m; fiche(); } fermerG(); toast('Carte grise intégrée à la fiche'); }
+                catch (err) { toast(err.message); }
+            };
+        };
+        inp.click();
+    }
     // Modifier les informations saisies par le client : véhicule (marque, modèle, finition, motorisation, titre), vendeur, adresse.
     let catalogue = null;
     async function modifierInfos(d) {
@@ -3467,7 +3512,7 @@ body.modal-ouvert { overflow: hidden; }
         <div class="sh-top">
             <button class="retour" id="closeSheet" aria-label="Retour aux demandes"><svg><use href="#i-retour"/></svg><span>Demandes</span></button>
             <div class="sh-titre"><h2>${esc(x.vehicule || 'Véhicule non précisé')} ${esc(x.annee || '')}${badgeMeca(x)}</h2>
-                <small><button type="button" class="mi-lien" data-infos>Modifier</button> · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
+                <small><button type="button" class="mi-lien" data-infos>Modifier</button> · <button type="button" class="mi-lien" data-cg>Carte grise</button> · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
                 <button class="btn" type="button" data-vers-mail>E-mail</button>
@@ -3568,7 +3613,7 @@ body.modal-ouvert { overflow: hidden; }
 
             <div class="cols">
                 <section class="sec">
-                    <h3>Véhicule <button type="button" class="btn btn-s mi-btn" data-infos>Modifier</button></h3>
+                    <h3>Véhicule <button type="button" class="btn btn-s mi-btn" data-infos>Modifier</button><button type="button" class="btn btn-s mi-btn" data-cg>Scanner la carte grise</button></h3>
                     ${photoModele ? `<img class="photo-modele" src="${esc(photoModele)}" alt="Photo du modèle" loading="lazy" referrerpolicy="no-referrer" onerror="this.nextElementSibling.remove();this.remove()"><small>Photo type du modèle (API plaque)</small>` : ''}
                     ${(() => {
                         const energieSiv = x.energie_siv || (siv && (siv.energieNGC || siv.energie_ngc || siv.carburant)) || '';
@@ -3599,12 +3644,12 @@ body.modal-ouvert { overflow: hidden; }
                     ${x.autres ? `<details><summary>Autres informations de l'e-mail</summary>${kv(Object.entries(x.autres).map(([k, v]) => [k, esc(v)]))}</details>` : ''}
                 </section>
                 <section class="sec">
-                    <h3>Vendeur et projet <button type="button" class="btn btn-s mi-btn" data-infos>Modifier</button></h3>
+                    <h3>Vendeur et projet <button type="button" class="btn btn-s mi-btn" data-infos>Modifier</button><button type="button" class="btn btn-s mi-btn" data-cg>Scanner la carte grise</button></h3>
                     ${kv([
                         ['Nom', esc([x.prenom, x.nom].filter(Boolean).join(' '))], ['Téléphone', esc(x.telephone)], ['E-mail', x.email ? `<a href="mailto:${esc(x.email)}">${esc(x.email)}</a>` : ''],
                         ['Adresse', esc(x.adresse)], ['Ville', esc([x.code_postal, x.ville].filter(Boolean).join(' ')) + (idf(d) ? ' · Île-de-France' : '') + (geo(x.code_postal) && geo(x.code_postal).km ? ` · ${geo(x.code_postal).km} km de Paris` : '')],
                         ['Prix souhaité', x.prix_souhaite ? eur(x.prix_souhaite) : ''], ['Vendre quand', esc(x.delai)], ['Autre voiture', esc(x.projet_achat)],
-                        ['Titulaire de la carte grise', x.titulaire ? (x.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : ''], ['Nom du titulaire', esc(x.nom_titulaire)], ['N° du certificat', esc(x.numero_formule)],
+                        ['Titulaire de la carte grise', x.titulaire ? (x.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : ''], ['Nom du titulaire', esc(x.nom_titulaire)], ['N° du certificat', esc(x.numero_formule)], ['Carte grise', x.carte_grise ? `scannée le ${date(x.carte_grise.lue_le, false)}` : ''],
                         ['Origine', esc(d.origine_txt || x.origine)]
                     ])}
                     <details><summary>Détail technique de la provenance</summary>${kv([['Page', esc(x.page)], ['Provenance', esc(x.provenance)], ['Clic Google Ads', x.clic_ads ? '<span class="pill st-achetee">oui</span>' : '']])}</details>
@@ -3663,6 +3708,7 @@ body.modal-ouvert { overflow: hidden; }
         </div>`;
         $('#closeSheet').onclick = fermer;
         $('#sheetIn').querySelectorAll('[data-infos]').forEach(b => b.onclick = () => modifierInfos(d));
+        $('#sheetIn').querySelectorAll('[data-cg]').forEach(b => b.onclick = () => scannerCarteGrise(d));
         rendreMail();
         $('#sheetIn').querySelectorAll('[data-ap-photo]').forEach(im => im.onclick = () => { lbSource = null; lbOuvrir(+im.dataset.apPhoto); });
         $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#mailLayer').hidden = false; document.body.classList.add('modal-ouvert'); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 200); });
