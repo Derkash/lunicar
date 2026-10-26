@@ -930,6 +930,11 @@ body.modal-ouvert { overflow: hidden; }
 .da-dernier { margin: 0; font-size: .82rem; color: var(--ink-5); }
 .da-injoign { justify-content: center; height: 46px; border-color: #EDB8AF; background: var(--red-1); color: var(--red); font-weight: 650; }
 .da-res { gap: 6px; }
+.da-haut { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.da-haut .btn { justify-content: center; min-width: 0; white-space: normal; text-align: center; line-height: 1.15; height: auto; min-height: 46px; padding: 6px 10px; }
+.da-haut > * { min-width: 0; }
+#daIn { min-width: 0; overflow-x: hidden; }
+.da-chiffres { grid-template-columns: 1fr 1fr !important; }
 .da-res .cr-chip { padding: 8px 10px; font-size: .82rem; }
 .da-rap, .da-chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
 .da-in textarea { min-height: 90px; }
@@ -1031,9 +1036,9 @@ body.modal-ouvert { overflow: hidden; }
     /* Panneau d'appel : feuille du bas, la fiche reste lisible au-dessus */
     .dock-appel { left: 0; right: 0; bottom: 0; transform: none; width: auto; max-height: 64vh; border-radius: 18px 18px 0 0; border-bottom: 0; padding-bottom: env(safe-area-inset-bottom); }
     body.dock-ouvert .sh-bas { display: none; }
-    .da-res { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -14px; padding: 0 14px; }
+    .da-res { flex-wrap: wrap; }
     .da-res::-webkit-scrollbar { display: none; }
-    .da-res .cr-chip { flex: none; white-space: nowrap; }
+    .da-res .cr-chip { white-space: nowrap; padding: 6px 10px; font-size: .78rem; }
     body.dock-ouvert .sheet-in { padding-bottom: 66vh; }
 
     /* Fiche */
@@ -2817,7 +2822,7 @@ body.modal-ouvert { overflow: hidden; }
         </form>`;
     }
     // Assistant de planification : Youssouf se déplace ; on propose d'abord les jours où il passe déjà près (ou sur la route).
-    async function planifierRdv(d) {
+    async function planifierRdv(d, pre = {}) {
         const fermerP = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
         $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
         const tete = `<div class="cr-tete"><h3>Planifier le rendez-vous</h3><button class="close" type="button" id="plX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>`;
@@ -2830,6 +2835,8 @@ body.modal-ouvert { overflow: hidden; }
         const formulaire = (date, heure) => {
             $('#crIn').innerHTML = tete + `<p class="sub">${esc([(d.data || {}).vehicule, (d.data || {}).ville].filter(Boolean).join(' · '))}</p><div id="plForm">${formRdv(d).replace('id="rdvF"', 'id="plF"')}</div>`; lier();
             const f = $('#plF'); if (date) f.date.value = date; if (heure) f.heure.value = heure; f.avec.value = 'youssouf';
+            const s0 = d.suivi || {}, pmin = pre.prix_min || pre.prix_max || s0.offre_min || s0.offre, pmax = pre.prix_max || pre.prix_min || s0.offre;
+            if (pmin) f.prix_min.value = pmin; if (pmax) f.prix_max.value = pmax;
             const ret = f.querySelector('#rdvAnnulForm'); if (ret) { ret.id = 'plRetour'; ret.textContent = '← Autres jours'; ret.onclick = liste; }
             f.onsubmit = async e => {
                 e.preventDefault();
@@ -3151,26 +3158,19 @@ body.modal-ouvert { overflow: hidden; }
         $('#daIn').innerHTML = `
             <div class="da-tete"><span class="da-poignee"></span><b>Pendant l'appel</b><span class="sub">${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Vendeur')} · ${esc(x.telephone || '')}</span>
                 <button class="close" type="button" id="daX" aria-label="Réduire"><svg><use href="#i-x"/></svg></button></div>
-            <div class="da-memo">
-                ${souh ? `<span>Il demande <b>${eur(souh)}</b></span>` : '<span>Pas de prix demandé</span>'}
-                ${pm ? `<span>Notre max <b>${eur(pm)}</b></span>` : ''}${f ? `<span>Fourchette <b>${eur(f.min)}–${eur(f.max)}</b></span>` : ''}
-                ${x.kilometrage ? `<span>${Number(x.kilometrage).toLocaleString('fr-FR')} km</span>` : ''}${badgeMeca(x)}
-                ${x.delai ? `<span>${esc(x.delai)}</span>` : ''}${x.projet_achat && /déjà/i.test(x.projet_achat) ? '<span>Remplaçante déjà achetée</span>' : ''}
-            </div>
             ${dernier ? `<p class="da-dernier">Dernier appel ${date(dernier.date)} · <b>${esc(dernier.libelle || dernier.resultat)}</b>${dernier.texte ? ' — ' + esc(dernier.texte) : ''}</p>` : ''}
-            <button type="button" class="btn da-injoign" id="daInj">Injoignable · relance demain</button>
+            <div class="da-haut"><button type="button" class="btn btn-g" id="daRdv">Prendre un rendez-vous</button><button type="button" class="btn da-injoign" id="daInj">Injoignable · relance demain</button></div>
             <div class="cr-res da-res">${autres.map(([k, l]) => `<button type="button" class="cr-chip${b.resultat === k ? ' on' : ''}" data-dres="${k}">${esc(l)}</button>`).join('')}</div>
             <div class="da-rap"${b.resultat === 'rappel_prevu' ? '' : ' hidden'}><label class="f">Rappeler le<input class="in" type="date" id="daRapD" value="${esc(b.rappel_date || demain)}"></label><label class="f">Vers<input class="in" type="time" id="daRapH" step="900" value="${esc(b.rappel_heure || '')}"></label></div>
             <textarea class="in" id="daNote" rows="4" placeholder="Ce qu'il dit : état réel, entretien, prix proposé ailleurs, urgence…">${esc(b.note || '')}</textarea>
             <div class="da-chiffres">
-                <label class="f">Prix demandé<input class="in num" id="daPrix" inputmode="numeric" placeholder="${esc(x.prix_souhaite || '')}" value="${esc(b.prix || '')}"></label>
-                <label class="f">Kilométrage<input class="in num" id="daKm" inputmode="numeric" placeholder="${esc(x.kilometrage || '')}" value="${esc(b.km || '')}"></label>
-                <label class="f">Offre faite<input class="in num" id="daOffre" inputmode="numeric" placeholder="${esc(s.offre || '')}" value="${esc(b.offre || '')}"></label>
+                <label class="f">Offre min (€)<input class="in num" id="daOmin" inputmode="numeric" placeholder="${esc(s.offre_min || (f ? f.min : '') || '')}" value="${esc(b.omin || '')}"></label>
+                <label class="f">Offre max (€)<input class="in num" id="daOmax" inputmode="numeric" placeholder="${esc(s.offre || (f ? f.max : '') || '')}" value="${esc(b.omax || '')}"></label>
             </div>
             <label class="chk"><input type="checkbox" id="daReest"${b.reestimer ? ' checked' : ''}${etat.estimation.actif && x.vehicule ? '' : ' disabled'}> Mettre à jour l'estimation avec ces infos</label>
-            <div class="da-btns"><button type="button" class="btn btn-g" id="daRdv">Rendez-vous</button><button type="button" class="btn" id="daComplet">Formulaire complet</button><button type="button" class="btn btn-p" id="daOk">Enregistrer</button></div>`;
+            <div class="da-btns"><button type="button" class="btn" id="daComplet">Formulaire complet</button><button type="button" class="btn btn-p" id="daOk">Enregistrer</button></div>`;
         const lire = () => {
-            const n = { resultat: (($('#daIn').querySelector('[data-dres].on') || {}).dataset || {}).dres || '', note: $('#daNote').value, prix: $('#daPrix').value.replace(/[^\d]/g, ''), km: $('#daKm').value.replace(/[^\d]/g, ''), offre: $('#daOffre').value.replace(/[^\d]/g, ''), reestimer: $('#daReest').checked, rappel_date: $('#daRapD').value, rappel_heure: $('#daRapH').value };
+            const n = { resultat: (($('#daIn').querySelector('[data-dres].on') || {}).dataset || {}).dres || '', note: $('#daNote').value, omin: $('#daOmin').value.replace(/[^\d]/g, ''), omax: $('#daOmax').value.replace(/[^\d]/g, ''), reestimer: $('#daReest').checked, rappel_date: $('#daRapD').value, rappel_heure: $('#daRapH').value };
             ecrireBrouillon(d.ref, n); return n;
         };
         $('#daIn').querySelectorAll('[data-dres]').forEach(c => c.onclick = () => { $('#daIn').querySelectorAll('[data-dres]').forEach(o => o.classList.toggle('on', o === c && !c.classList.contains('on'))); $('#daIn').querySelector('.da-rap').hidden = !$('#daIn').querySelector('[data-dres="rappel_prevu"].on'); lire(); });
@@ -3192,14 +3192,15 @@ body.modal-ouvert { overflow: hidden; }
             envoyer({ resultat: 'injoignable', note: n.note.trim() }, r => 'Injoignable noté · relance le ' + jj(r.suivi.rappel_le));
         };
         $('#daComplet').onclick = () => { lire(); fermerDock(); compteRendu(d); };
-        $('#daRdv').onclick = () => { lire(); fermerDock(); planifierRdv(d); };   // le brouillon d'appel reste gardé
+        $('#daRdv').onclick = () => { const n = lire(); fermerDock(); planifierRdv(d, { prix_min: n.omin, prix_max: n.omax }); };   // le brouillon d'appel reste gardé
         $('#daOk').onclick = async () => {
             const n = lire();
             if (!n.resultat) { toast('Choisissez le résultat de l\'appel (ou « Injoignable »)'); return; }
-            const corrections = {}; if (n.prix && n.prix !== String(x.prix_souhaite || '')) corrections.prix_souhaite = n.prix; if (n.km && n.km !== String(x.kilometrage || '')) corrections.kilometrage = n.km;
-            const recap = [R[n.resultat], n.note.trim() && '« ' + n.note.trim().slice(0, 140) + (n.note.trim().length > 140 ? '…' : '') + ' »', corrections.prix_souhaite && 'prix demandé → ' + eur(corrections.prix_souhaite), corrections.kilometrage && 'km → ' + Number(corrections.kilometrage).toLocaleString('fr-FR'), n.offre && 'offre ' + eur(n.offre), n.resultat === 'rappel_prevu' && 'rappel le ' + jj(n.rappel_date) + (n.rappel_heure ? ' vers ' + n.rappel_heure : ''), n.reestimer && 'estimation mise à jour'].filter(Boolean).join(' · ');
+            const corrections = {};
+            const offreTxt = n.omin && n.omax && n.omin !== n.omax ? eur(n.omin) + ' – ' + eur(n.omax) : (n.omax || n.omin) ? eur(n.omax || n.omin) : '';
+            const recap = [R[n.resultat], n.note.trim() && '« ' + n.note.trim().slice(0, 140) + (n.note.trim().length > 140 ? '…' : '') + ' »', corrections.prix_souhaite && 'prix demandé → ' + eur(corrections.prix_souhaite), corrections.kilometrage && 'km → ' + Number(corrections.kilometrage).toLocaleString('fr-FR'), offreTxt && 'offre ' + offreTxt, n.resultat === 'rappel_prevu' && 'rappel le ' + jj(n.rappel_date) + (n.rappel_heure ? ' vers ' + n.rappel_heure : ''), n.reestimer && 'estimation mise à jour'].filter(Boolean).join(' · ');
             if (await demander({ titre: 'Enregistrer le compte rendu ?', texte: recap, boutons: [['ok', 'Enregistrer', 'btn-p'], ['', 'Modifier']] }) !== 'ok') return;
-            envoyer({ resultat: n.resultat, note: n.note.trim(), corrections, offre: n.offre, reestimer: n.reestimer, rappel_date: n.rappel_date, rappel_heure: n.rappel_heure },
+            envoyer({ resultat: n.resultat, note: n.note.trim(), corrections, offre_min: n.omin, offre_max: n.omax, reestimer: n.reestimer, rappel_date: n.rappel_date, rappel_heure: n.rappel_heure },
                 r => n.resultat === 'accepte' ? 'Offre acceptée : fixez le rendez-vous' : n.reestimer ? 'Compte rendu enregistré · estimation en cours' : r.suivi.rappel_le ? 'Compte rendu enregistré · relance le ' + jj(r.suivi.rappel_le) : 'Compte rendu enregistré');
         };
         $('#dockAppel').hidden = false; document.body.classList.add('dock-ouvert');
