@@ -1924,7 +1924,8 @@ body.modal-ouvert { overflow: hidden; }
         // Groupe (à traiter, contactées, sans suite en bas), puis le tri choisi. Par défaut : l'intérêt de l'affaire,
         // qui passe AVANT les rappels et drapeaux (ils restent signalés en couleur sur la carte).
         const a = affichees = filtrees().sort((p, q) => groupe(p) - groupe(q) || (tri === 'interet' ? 0 : priorite(p) - priorite(q) || (priorite(p) === 0 ? rappel(p).localeCompare(rappel(q)) : 0)) || parTri(p, q));
-        $('#triRapide').innerHTML = [['interet', 'Les plus intéressantes'], ['recent', 'Les plus récentes']].map(([k, l]) => `<button type="button" class="seg${tri === k ? ' on' : ''}" data-tri="${k}">${l}</button>`).join('');
+        $('#triRapide').innerHTML = [['interet', 'Les plus intéressantes'], ['recent', 'Les plus récentes']].map(([k, l]) => `<button type="button" class="seg${tri === k ? ' on' : ''}" data-tri="${k}">${l}</button>`).join('')
+            + (nbFusion() ? `<button type="button" class="seg" id="btFusion" title="Même vendeur, même voiture : on garde la demande la plus renseignée, complétée par les autres">Fusionner ${nbFusion()} doublon${nbFusion() > 1 ? 's' : ''}</button>` : '');
         const titres = ['À traiter · jamais appelées', 'Déjà contactées', 'Sans suite'];
         const nbGroupe = [0, 1, 2].map(g => a.filter(d => groupe(d) === g).length);
         let gPrec = -1;
@@ -1956,6 +1957,20 @@ body.modal-ouvert { overflow: hidden; }
         barreLot();
     }
     try { const t = localStorage.getItem('lunicarTri'); if (t && [...$('#fTri').options].some(o => o.value === t)) $('#fTri').value = t; } catch (e) {}
+    // Doublons fusionnables : même téléphone et même voiture (plaque, sinon marque ; véhicule vide d'un côté accepté). Même règle que lib/doublons.js.
+    function memeVehicule(a, b) {
+        const xa = a.data || {}, xb = b.data || {}, t = v => String(v || '').replace(/\D/g, '').slice(-9), pl = v => String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, ''), mq = v => String(v || '').trim().split(/\s+/)[0].toLowerCase();
+        if (t(xa.telephone).length < 9 || t(xa.telephone) !== t(xb.telephone)) return false;
+        if (pl(xa.plaque) && pl(xb.plaque)) return pl(xa.plaque) === pl(xb.plaque);
+        return !mq(xa.vehicule) || !mq(xb.vehicule) || mq(xa.vehicule) === mq(xb.vehicule);
+    }
+    const nbFusion = () => demandes.filter(d => d.doublon && demandes.some(o => o.ref !== d.ref && memeVehicule(d, o))).length;
+    $('#triRapide').addEventListener('click', async e => {
+        if (!e.target.closest('#btFusion')) return;
+        if (await demander({ titre: 'Fusionner les doublons ?', texte: 'Pour chaque vendeur ayant envoyé plusieurs demandes pour la même voiture, la demande la plus renseignée est gardée et complétée par les autres (appels, notes, e-mails, photos, rendez-vous). Les autres sont supprimées.', boutons: [['ok', 'Fusionner', 'btn-p'], ['', 'Annuler']] }) !== 'ok') return;
+        try { const r = await api('/api/admin/doublons/fusionner', { method: 'POST' }); await charger(); toast(r.fusions.length ? `${r.fusions.reduce((n, f) => n + f.supprimees.length, 0)} doublon(s) fusionné(s)` : 'Aucun doublon à fusionner (les demandes de moins de 5 min attendent)'); }
+        catch (er) { toast(er.message); }
+    });
     $('#triRapide').addEventListener('click', e => { const b = e.target.closest('[data-tri]'); if (!b) return; $('#fTri').value = b.dataset.tri; try { localStorage.setItem('lunicarTri', b.dataset.tri); } catch (er) {} liste(); });
     ['#q', '#fStatut', '#fCanal', '#fMeca', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
     $('#list').addEventListener('click', e => {

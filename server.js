@@ -579,6 +579,12 @@ async function envoyerDemande(d, opts = {}) {
     return emailed;
 }
 
+// Doublons (même vendeur, même voiture) : on garde la demande la plus renseignée, complétée par les autres.
+const doublons = require('./lib/doublons');
+const fusionDoublons = () => doublons.fusionnerTout().catch(e => console.error('Doublons :', e.message));
+setTimeout(fusionDoublons, 60 * 1000).unref();
+setInterval(fusionDoublons, 15 * 60 * 1000).unref();
+
 // ---------- Brouillons : demandes commencées mais pas envoyées ----------
 // Dès que le téléphone est saisi, le formulaire envoie son état à chaque étape.
 // Sans envoi final après ABANDON_MS d'inactivité, la demande part en « abandonnée ».
