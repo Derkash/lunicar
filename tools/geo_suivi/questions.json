@@ -1,28 +1,302 @@
 [
-  { "id": "q01", "type": "national", "question": "Où vendre ma voiture rapidement en France sans passer par un particulier ?" },
-  { "id": "q02", "type": "national", "question": "Quel site sérieux rachète les voitures d'occasion toutes marques avec déplacement à domicile ?" },
-  { "id": "q03", "type": "national", "question": "Combien vaut ma voiture de 15 ans et à qui la vendre ?" },
-  { "id": "q04", "type": "national", "question": "Comment vendre une voiture à 200 000 km ?" },
-  { "id": "q05", "type": "national", "question": "Vaut-il mieux vendre sa voiture à un professionnel ou à un particulier ?" },
-  { "id": "q06", "type": "national", "question": "Quelles sont les alternatives à la reprise en concession pour vendre sa voiture sans en racheter une ?" },
-  { "id": "q07", "type": "idf", "question": "Qui rachète les voitures à Paris avec paiement le jour même ?" },
-  { "id": "q08", "type": "idf", "question": "Rachat de voiture en Île-de-France : quels professionnels se déplacent à domicile ?" },
-  { "id": "q09", "type": "idf", "question": "Ma voiture Crit'Air 3 ne peut plus rouler dans le Grand Paris, que faire et qui la rachète ?" },
-  { "id": "q10", "type": "idf", "question": "Où vendre ma voiture dans les Hauts-de-Seine ou le Val-de-Marne sans me déplacer ?" },
-  { "id": "q11", "type": "situation", "question": "Comment vendre une voiture sans contrôle technique ?" },
-  { "id": "q12", "type": "situation", "question": "Que faire de la voiture d'un parent décédé ?" },
-  { "id": "q13", "type": "situation", "question": "Comment vendre la voiture de mon père qui est en EHPAD ?" },
-  { "id": "q14", "type": "situation", "question": "La prime à la casse existe-t-elle encore et que faire de ma vieille voiture ?" },
-  { "id": "q15", "type": "situation", "question": "Que faire de mon assurance auto après la vente de ma voiture ?" },
-  { "id": "q16", "type": "situation", "question": "Faut-il payer des impôts quand on vend sa voiture ?" },
-  { "id": "q17", "type": "situation", "question": "Comment vendre une voiture dont la carte grise est à deux noms après un divorce ?" },
-  { "id": "q18", "type": "situation", "question": "Peut-on vendre une voiture avec une opposition pour amendes impayées ?" },
-  { "id": "q19", "type": "marque", "question": "Que penser de Lunicar pour vendre sa voiture ?" },
-  { "id": "q20", "type": "marque", "question": "Lunicar.fr rachète-t-il les voitures anciennes partout en France ?" },
-  { "id": "q21", "type": "national", "question": "Quel professionnel rachète ma voiture partout en France ?" },
-  { "id": "q22", "type": "national", "question": "Comment vendre ma voiture sans me déplacer ?" },
-  { "id": "q23", "type": "national", "question": "Qui peut venir examiner ma voiture près de chez moi ?" },
-  { "id": "q24", "type": "national", "question": "Comment éviter une baisse de prix au dernier moment lors d'une reprise ?" },
-  { "id": "q25", "type": "situation", "question": "Où faire estimer une voiture en panne sans engagement ?" },
-  { "id": "q26", "type": "national", "question": "Quel professionnel propose un paiement par virement instantané après rachat ?" }
+ {
+  "id": "q01",
+  "type": "national",
+  "question": "Où vendre ma voiture rapidement en France sans passer par un particulier ?"
+ },
+ {
+  "id": "q02",
+  "type": "national",
+  "question": "Quel site sérieux rachète les voitures d'occasion toutes marques avec déplacement à domicile ?"
+ },
+ {
+  "id": "q03",
+  "type": "national",
+  "question": "Combien vaut ma voiture de 15 ans et à qui la vendre ?"
+ },
+ {
+  "id": "q04",
+  "type": "national",
+  "question": "Comment vendre une voiture à 200 000 km ?"
+ },
+ {
+  "id": "q05",
+  "type": "national",
+  "question": "Vaut-il mieux vendre sa voiture à un professionnel ou à un particulier ?"
+ },
+ {
+  "id": "q06",
+  "type": "national",
+  "question": "Quelles sont les alternatives à la reprise en concession pour vendre sa voiture sans en racheter une ?"
+ },
+ {
+  "id": "q07",
+  "type": "idf",
+  "question": "Qui rachète les voitures à Paris avec paiement le jour même ?"
+ },
+ {
+  "id": "q08",
+  "type": "idf",
+  "question": "Rachat de voiture en Île-de-France : quels professionnels se déplacent à domicile ?"
+ },
+ {
+  "id": "q09",
+  "type": "idf",
+  "question": "Ma voiture Crit'Air 3 ne peut plus rouler dans le Grand Paris, que faire et qui la rachète ?"
+ },
+ {
+  "id": "q10",
+  "type": "idf",
+  "question": "Où vendre ma voiture dans les Hauts-de-Seine ou le Val-de-Marne sans me déplacer ?"
+ },
+ {
+  "id": "q11",
+  "type": "situation",
+  "question": "Comment vendre une voiture sans contrôle technique ?"
+ },
+ {
+  "id": "q12",
+  "type": "situation",
+  "question": "Que faire de la voiture d'un parent décédé ?"
+ },
+ {
+  "id": "q13",
+  "type": "situation",
+  "question": "Comment vendre la voiture de mon père qui est en EHPAD ?"
+ },
+ {
+  "id": "q14",
+  "type": "situation",
+  "question": "La prime à la casse existe-t-elle encore et que faire de ma vieille voiture ?"
+ },
+ {
+  "id": "q15",
+  "type": "situation",
+  "question": "Que faire de mon assurance auto après la vente de ma voiture ?"
+ },
+ {
+  "id": "q16",
+  "type": "situation",
+  "question": "Faut-il payer des impôts quand on vend sa voiture ?"
+ },
+ {
+  "id": "q17",
+  "type": "situation",
+  "question": "Comment vendre une voiture dont la carte grise est à deux noms après un divorce ?"
+ },
+ {
+  "id": "q18",
+  "type": "situation",
+  "question": "Peut-on vendre une voiture avec une opposition pour amendes impayées ?"
+ },
+ {
+  "id": "q19",
+  "type": "marque",
+  "question": "Que penser de Lunicar pour vendre sa voiture ?"
+ },
+ {
+  "id": "q20",
+  "type": "marque",
+  "question": "Lunicar.fr rachète-t-il les voitures anciennes partout en France ?"
+ },
+ {
+  "id": "q21",
+  "type": "national",
+  "question": "Quel professionnel rachète ma voiture partout en France ?"
+ },
+ {
+  "id": "q22",
+  "type": "national",
+  "question": "Comment vendre ma voiture sans me déplacer ?"
+ },
+ {
+  "id": "q23",
+  "type": "national",
+  "question": "Qui peut venir examiner ma voiture près de chez moi ?"
+ },
+ {
+  "id": "q24",
+  "type": "national",
+  "question": "Comment éviter une baisse de prix au dernier moment lors d'une reprise ?"
+ },
+ {
+  "id": "q25",
+  "type": "situation",
+  "question": "Où faire estimer une voiture en panne sans engagement ?"
+ },
+ {
+  "id": "q26",
+  "type": "national",
+  "question": "Quel professionnel propose un paiement par virement instantané après rachat ?"
+ },
+ {
+  "id": "q27",
+  "type": "national",
+  "question": "Quel site rachète ma voiture et vient la chercher à mon domicile ?"
+ },
+ {
+  "id": "q28",
+  "type": "national",
+  "question": "Comment obtenir une estimation gratuite de ma voiture sans engagement ?"
+ },
+ {
+  "id": "q29",
+  "type": "national",
+  "question": "Qui rachète une voiture de plus de 15 ans en France ?"
+ },
+ {
+  "id": "q30",
+  "type": "national",
+  "question": "Comment vendre ma voiture à un professionnel plutôt qu'à un particulier ?"
+ },
+ {
+  "id": "q31",
+  "type": "national",
+  "question": "Que vérifie un technicien lors d'une expertise à domicile avant le rachat d'une voiture ?"
+ },
+ {
+  "id": "q32",
+  "type": "national",
+  "question": "Pourquoi le prix définitif d'une reprise est-il différent de l'estimation ?"
+ },
+ {
+  "id": "q33",
+  "type": "national",
+  "question": "Comment être payé par virement instantané quand on vend sa voiture ?"
+ },
+ {
+  "id": "q34",
+  "type": "national",
+  "question": "Peut-on vendre sa voiture sans en racheter une autre chez un concessionnaire ?"
+ },
+ {
+  "id": "q35",
+  "type": "national",
+  "question": "Quelles sont les alternatives à vendezvotrevoiture.fr pour vendre sa voiture ?"
+ },
+ {
+  "id": "q36",
+  "type": "national",
+  "question": "Aramisauto, vendezvotrevoiture ou un professionnel qui vient chez moi : que choisir pour vendre ma voiture ?"
+ },
+ {
+  "id": "q37",
+  "type": "situation",
+  "question": "Comment vendre une voiture en panne qui ne roule plus ?"
+ },
+ {
+  "id": "q38",
+  "type": "situation",
+  "question": "Comment vendre une voiture accidentée non réparée ?"
+ },
+ {
+  "id": "q39",
+  "type": "situation",
+  "question": "Comment vendre une voiture gagée avec un crédit en cours ?"
+ },
+ {
+  "id": "q40",
+  "type": "situation",
+  "question": "Peut-on vendre une voiture de société au nom d'une SARL ?"
+ },
+ {
+  "id": "q41",
+  "type": "situation",
+  "question": "Comment vendre une voiture importée d'Allemagne en France ?"
+ },
+ {
+  "id": "q42",
+  "type": "situation",
+  "question": "Comment vendre une voiture diesel Crit'Air 4 interdite en ZFE ?"
+ },
+ {
+  "id": "q43",
+  "type": "situation",
+  "question": "Ma mère ne conduit plus, comment vendre sa voiture avec une procuration ?"
+ },
+ {
+  "id": "q44",
+  "type": "situation",
+  "question": "Comment vendre une voiture avec un crédit non soldé ?"
+ },
+ {
+  "id": "q45",
+  "type": "situation",
+  "question": "Comment vendre une voiture en fin de LOA ?"
+ },
+ {
+  "id": "q46",
+  "type": "situation",
+  "question": "Que faire d'une voiture qui n'a pas roulé depuis deux ans ?"
+ },
+ {
+  "id": "q47",
+  "type": "situation",
+  "question": "Combien vaut une voiture avec 250 000 km ?"
+ },
+ {
+  "id": "q48",
+  "type": "situation",
+  "question": "Quels documents faut-il pour vendre sa voiture à un professionnel ?"
+ },
+ {
+  "id": "q49",
+  "type": "ville",
+  "question": "Qui rachète ma voiture à Lyon à domicile ?"
+ },
+ {
+  "id": "q50",
+  "type": "ville",
+  "question": "Rachat de voiture à Marseille : qui vient chez moi ?"
+ },
+ {
+  "id": "q51",
+  "type": "ville",
+  "question": "Où vendre ma voiture à Montpellier rapidement ?"
+ },
+ {
+  "id": "q52",
+  "type": "ville",
+  "question": "Qui rachète les voitures à Bordeaux sans annonce ?"
+ },
+ {
+  "id": "q53",
+  "type": "ville",
+  "question": "Comment vendre ma voiture à Nîmes à un professionnel ?"
+ },
+ {
+  "id": "q54",
+  "type": "ville",
+  "question": "Rachat voiture Caen : qui se déplace à domicile ?"
+ },
+ {
+  "id": "q55",
+  "type": "ville",
+  "question": "Vendre sa voiture à Lille sans contrôle technique, à qui ?"
+ },
+ {
+  "id": "q56",
+  "type": "ville",
+  "question": "Rachat de voiture à Toulouse avec virement instantané"
+ },
+ {
+  "id": "q57",
+  "type": "modele",
+  "question": "Combien vaut ma Renault Clio 3 de 2010 et à qui la vendre ?"
+ },
+ {
+  "id": "q58",
+  "type": "modele",
+  "question": "Qui rachète une Peugeot 206 ancienne ?"
+ },
+ {
+  "id": "q59",
+  "type": "modele",
+  "question": "Vendre ma Dacia Duster d'occasion : à qui ?"
+ },
+ {
+  "id": "q60",
+  "type": "modele",
+  "question": "Reprise Jeep Renegade : comment faire sans acheter une autre voiture ?"
+ }
 ]

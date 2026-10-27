@@ -1,5 +1,5 @@
 /**
- * Suivi mensuel de la visibilité de LUNICAR dans ChatGPT (recherche web).
+ * Suivi hebdomadaire de la visibilité de LUNICAR dans ChatGPT (recherche web).
  *
  *   node tools/geo_suivi/suivi.js                 toutes les questions de questions.json
  *   node tools/geo_suivi/suivi.js q03 q12         seulement ces questions
@@ -86,6 +86,8 @@ function analyser(q, { texte, urls }) {
         url_lunicar: urls.find(u => domaine(u).endsWith(DOMAINE)) || null,
         sites_cites: domaines,
         concurrents_cites: [...new Set([...domaines.filter(d => !d.endsWith(DOMAINE)), ...concurrentsTexte])],
+        // Promesses retirées du site que ChatGPT répète encore (index périmé) : à surveiller jusqu'à disparition.
+        erreurs_factuelles: [['24 h', /\b24 ?h\b/i], ['7 jours', /\b7 jours|sept jours/i], ['cash', /\bcash\b/i], ['Paris seulement', /uniquement (à|en|sur) (Paris|Île-de-France)|seulement en Île-de-France/i]].filter(([, re]) => MARQUE.test(texte) && re.test(texte)).map(([n]) => n),
         extrait: texte.slice(0, 600)
     };
 }
@@ -96,12 +98,16 @@ function resume(rel) {
     const conc = {};
     r.forEach(x => x.concurrents_cites.forEach(c => { conc[c] = (conc[c] || 0) + 1; }));
     const top = Object.entries(conc).sort((a, b) => b[1] - a[1]).slice(0, 15);
+    const parType = {}; r.forEach(x => { parType[x.type] = parType[x.type] || { n: 0, c: 0 }; parType[x.type].n++; if (x.lunicar_cite) parType[x.type].c++; });
+    const fact = r.filter(x => (x.erreurs_factuelles || []).length);
     return `# Visibilité de LUNICAR dans ChatGPT : relevé du ${rel.date}
 
 - Méthode : ${rel.methode}
 - Modèle : ${rel.modele}
 - Questions posées : ${r.length}
-- **LUNICAR cité : ${cites.length} / ${r.length}** (avec lien vers lunicar.fr : ${r.filter(x => x.lunicar_lien).length})
+- **LUNICAR cité : ${cites.length} / ${r.length}** (avec lien vers lunicar.fr : ${r.filter(x => x.lunicar_lien).length}) · part de voix ${Math.round(cites.length / r.length * 100)} %
+- Par type : ${Object.entries(parType).map(([t, v]) => `${t} ${v.c}/${v.n}`).join(' · ')}
+- Erreurs factuelles sur LUNICAR (promesses retirées encore répétées) : ${fact.length ? fact.map(x => `${x.id} (${x.erreurs_factuelles.join(', ')})`).join(', ') : 'aucune'}
 
 | # | Type | Question | Cité | Rang | URL citée |
 |---|---|---|---|---|---|
@@ -109,9 +115,10 @@ ${r.map(x => `| ${x.id} | ${x.type} | ${x.question} | ${x.lunicar_cite ? 'oui' :
 
 ## Sites et concurrents les plus cités
 
-| Site ou marque | Questions |
-|---|---|
-${top.map(([n, c]) => `| ${n} | ${c} |`).join('\n')}
+| Site ou marque | Questions | Part de voix |
+|---|---|---|
+| **LUNICAR** | ${cites.length} | ${Math.round(cites.length / r.length * 100)} % |
+${top.map(([n, c]) => `| ${n} | ${c} | ${Math.round(c / r.length * 100)} % |`).join('\n')}
 
 ${rel.erreurs && rel.erreurs.length ? `## Erreurs\n\n${rel.erreurs.map(e => `- ${e}`).join('\n')}\n` : ''}
 Les réponses de ChatGPT varient d'un appel à l'autre : lire les tendances d'un mois sur l'autre.
@@ -139,6 +146,7 @@ Les réponses de ChatGPT varient d'un appel à l'autre : lire les tendances d'un
             }
             const a = analyser(q, rep);
             resultats.push(a);
+            await new Promise(r => setTimeout(r, Number(process.env.GEO_PAUSE_MS) || 4000));
             console.log(`${q.id} ${a.lunicar_cite ? 'CITÉ' + (a.rang ? ` (rang ${a.rang}/${a.nb_sites_cites})` : '') : 'absent'}  ${q.question}`);
         } catch (e) {
             if (e.status === 401) { console.log('Clé refusée par OpenAI (401). Vérifiez OPENAI_API_KEY.'); process.exit(3); }
