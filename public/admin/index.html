@@ -3439,7 +3439,7 @@ body.modal-ouvert { overflow: hidden; }
         const afficher = () => {
             $('#crIn').querySelectorAll('[data-mode]').forEach(b => b.classList.toggle('on', b.dataset.mode === mode));
             $('#mcTxt').value = brouillons[mode]; $('#mcTxt').rows = mode === 'sms' ? 7 : 12;
-            $('#mcInfo').textContent = mode === 'mail' ? `À relire avant envoi · expéditeur LUNICAR, objet « ${objet} »` : smsOk ? `Envoyé par LUNICAR via OVH${etat.sms.sender_valide ? '' : ' (expéditeur « LUNICAR » en attente de validation OVH : part d\'un numéro court)'}${etat.sms.credits != null ? ` · ${etat.sms.credits} crédits restants` : ''}` : 'SMS serveur non configuré : envoi depuis l\'iPhone.';
+            $('#mcInfo').textContent = mode === 'mail' ? `À relire avant envoi · expéditeur LUNICAR, objet « ${objet} » · copie à yakautoservices@gmail.com et guirassy.youssouf@gmail.com` : smsOk ? `Envoyé par LUNICAR via OVH${etat.sms.sender_valide ? '' : ' (expéditeur « LUNICAR » en attente de validation OVH : part d\'un numéro court)'}${etat.sms.credits != null ? ` · ${etat.sms.credits} crédits restants` : ''}` : 'SMS serveur non configuré : envoi depuis l\'iPhone.';
             $('#mcBtns').innerHTML = mode === 'mail'
                 ? `${x.email ? `<button type="button" class="btn btn-g" id="mcMail">Envoyer à ${esc(x.email)}</button>` : ''}<button type="button" class="btn" id="mcCopie">Copier</button>`
                 : `${x.telephone && smsOk ? `<button type="button" class="btn btn-g" id="mcSmsOvh">Envoyer le SMS au ${esc(x.telephone)}</button>` : ''}${x.telephone ? `<a class="btn" id="mcSms" href="#">${smsOk ? 'Depuis l\'iPhone' : 'SMS depuis l\'iPhone'}</a><a class="btn" id="mcWa" href="#" target="_blank" rel="noopener">WhatsApp</a>` : ''}<button type="button" class="btn" id="mcCopie">Copier</button>`;
@@ -3448,7 +3448,7 @@ body.modal-ouvert { overflow: hidden; }
             if ($('#mcWa')) $('#mcWa').onclick = e => { e.preventDefault(); window.open(`https://wa.me/${tel}?text=${encodeURIComponent(txt())}`, '_blank'); };
             $('#mcCopie').onclick = async () => { try { await navigator.clipboard.writeText(txt()); toast('Message copié'); } catch (e) { $('#mcTxt').select(); document.execCommand('copy'); toast('Message copié'); } };
             if ($('#mcMail')) $('#mcMail').onclick = async () => {
-                if (await demander({ titre: 'Envoyer la confirmation par e-mail ?', texte: `À ${x.email} · de LUNICAR · objet « ${objet} »`, boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
+                if (await demander({ titre: 'Envoyer la confirmation par e-mail ?', texte: `À ${x.email} · copie à yakautoservices@gmail.com et guirassy.youssouf@gmail.com · de LUNICAR · objet « ${objet} »`, boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
                 try { const r2 = await api('/api/admin/demandes/' + d.ref + '/email', { method: 'POST', body: JSON.stringify({ objet, texte: txt(), type: 'confirmation_rdv' }) }); maj(r2); if (courant && courant.ref === d.ref) { courant = r2; fiche(); } fermer(); toast('Confirmation envoyée par e-mail'); }
                 catch (e) { toast(e.message); $('#crModal').hidden = false; }
             };
