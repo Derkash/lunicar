@@ -3402,7 +3402,7 @@ body.modal-ouvert { overflow: hidden; }
             `Suite à votre demande concernant votre ${veh}${annee ? ' ' + annee : ''}, nous vous proposons un rendez-vous ${jourLong(r.date)}, entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}, ${adresseConnue ? `à l'adresse suivante : ${lieu}.` : `${x.ville ? 'à ' + x.ville : 'à votre adresse'}.`}`, '',
             mn ? `Notre technicien examinera le véhicule sur place et vous fera une proposition d'achat ${mn === mx ? `d'environ ${mn.toLocaleString('fr-FR')} €` : `entre ${mn.toLocaleString('fr-FR')} € et ${mx.toLocaleString('fr-FR')} €`}, selon l'état constaté.` : `Notre technicien examinera le véhicule sur place et vous fera une proposition d'achat selon l'état constaté.`,
             ...(adresseConnue ? [] : ['', 'Pouvez-vous me communiquer l\'adresse exacte du rendez-vous ?']), '',
-            'Pour préparer les documents de cession, pourriez-vous nous envoyer une photo de votre carte grise ?', '',
+            'Pour préparer les documents de cession, pourriez-vous nous envoyer une photo de votre carte grise en répondant à cet e-mail ?', '',
             `Si vous avez une question avant le rendez-vous, n\'hésitez pas à joindre ${[C.tel && 'votre conseiller au ' + C.tel, T.tel && 'le technicien au ' + T.tel].filter(Boolean).join(' ou ') || 'notre équipe'}.`, '',
             'Cordialement,', 'L\'équipe LUNICAR'].join('\n');
     }
