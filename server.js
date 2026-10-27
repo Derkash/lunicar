@@ -194,8 +194,13 @@ const typoFr = doc => {
 const html = (res, doc, status = 200) => {
     res.set('Content-Security-Policy', CSP);
     res.set('Cache-Control', status === 200 ? 'public, max-age=300, stale-while-revalidate=86400' : 'no-store');
+    // Date de modification réelle de la page (meta article:modified_time) : les moteurs et les assistants IA
+    // s'en servent pour décider de rafraîchir leur copie.
+    const m = /article:modified_time" content="(\d{4}-\d{2}-\d{2})/.exec(doc);
+    if (status === 200 && m) res.set('Last-Modified', new Date(m[1] + 'T06:00:00Z').toUTCString());
     return res.status(status).type('html').send(typoFr(doc));
 };
+app.set('etag', 'strong');
 
 // Contenus rédigés, lus une fois au démarrage (ils ne changent qu'au déploiement).
 const GUIDES = readJSON('guides.json');
@@ -1104,7 +1109,7 @@ app.get('/llms.txt', (req, res) => {
 
 > ${LLMS_SUMMARY}
 
-Dernière mise à jour : ${pages.TEMPLATE_DATE}
+Dernière mise à jour : ${indexablePages().reduce((m, u) => (u.lastmod > m ? u.lastmod : m), '')}
 
 ## Faits clés
 - Zone : partout en France ; un technicien LUNICAR intervient sur rendez-vous à l'adresse du vendeur, selon les disponibilités convenues, sans frais
@@ -1177,7 +1182,7 @@ ${zones.FRANCE_CITIES.slice(0, 100).map(s => { const c = CITIES.find(x => x.slug
 app.get('/llms-full.txt', (req, res) => {
     const b = SITE.baseUrl;
     const block = (url, h, lede, sections, faq) => `# ${title(h)}\nURL : ${url}\n\n${lede ? lede + '\n\n' : ''}${(sections || []).map(s => `## ${title(s.h2)}\n\n${strip(s.html)}`).join('\n\n')}${faq && faq.length ? '\n\n## Questions fréquentes\n\n' + faq.map(f => `**${f.question}**\n${strip(f.answer)}`).join('\n\n') : ''}\n`;
-    const parts = [`# LUNICAR\n\n> ${LLMS_SUMMARY}\n\nDernière mise à jour : ${pages.TEMPLATE_DATE}\n`];
+    const parts = [`# LUNICAR\n\n> ${LLMS_SUMMARY}\n\nDernière mise à jour : ${indexablePages().reduce((m, u) => (u.lastmod > m ? u.lastmod : m), '')}\n`];
     parts.push(pages.methodeTexte(`${b}/${pages.METHODE_SLUG}`));
     if (LOCAL.aPropos) parts.push(block(`${b}/a-propos`, LOCAL.aPropos.h1, LOCAL.aPropos.lede, LOCAL.aPropos.sections, LOCAL.aPropos.faq));
     if (LOCAL.france) parts.push(block(`${b}/${zones.FRANCE_SLUG}`, LOCAL.france.h1, LOCAL.france.lede, LOCAL.france.sections, LOCAL.france.faq));
@@ -1203,7 +1208,11 @@ function pingIndexNow() {
         .then(r => console.log(`IndexNow : ${urlList.length} URL soumises (HTTP ${r.status})`))
         .catch(e => console.log('IndexNow indisponible :', e.message));
 }
-if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_PING === '1')) setTimeout(pingIndexNow, 30000).unref();
+if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_PING === '1')) {
+    setTimeout(pingIndexNow, 30000).unref();
+    // Resoumission complète chaque semaine : Bing (et donc ChatGPT) revisite les pages même sans déploiement.
+    setInterval(pingIndexNow, 7 * 24 * 3600 * 1000).unref();
+}
 
 // Route admin cachée
 // Flux de conversions pour l'import planifié de Google Ads (Conversions > Importations > HTTPS).
