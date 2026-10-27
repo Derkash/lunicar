@@ -4439,5 +4439,1666 @@
       }
     ],
     "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-peugeot-2008",
+    "brand": "Peugeot",
+    "brandSlug": "reprise-peugeot",
+    "model": "2008",
+    "nav": "Peugeot 2008",
+    "title": "Vendre son Peugeot 2008 : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Peugeot 2008 de première génération (2013-2019), PureTech ou HDi : estimation gratuite, vérification chez vous, virement instantané à la vente.",
+    "h1": "Vendre son Peugeot 2008 <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'un Peugeot 2008 de première génération (2013-2019), en 1.2 PureTech, 1.6 VTi ou 1.6 HDi/BlueHDi, qui veulent le vendre sans bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2013-2019 pour le 2008 I (phase 1 : 2013-2016, phase 2 : 2016-2019, fin de production en France en janvier 2020) ; le 2008 II est produit depuis fin 2019",
+    "generations": [
+      {
+        "nom": "2008 I phase 1",
+        "annees": "2013-2016",
+        "notes": "Lancé en avril 2013, dérivé de la 208. Crossover urbain 5 portes, 5 étoiles Euro NCAP en 2013. Grip Control disponible. Moteurs 1.2 VTi 82, 1.6 VTi 120, 1.4 HDi 68, 1.6 HDi/e-HDi 92 et 115, puis 1.2 PureTech 110/130 et BlueHDi à partir de 2014-2015."
+      },
+      {
+        "nom": "2008 I phase 2",
+        "annees": "2016-2019",
+        "notes": "Restylage en 2016 : calandre verticale, feux arrière à LED, écran tactile avec Apple CarPlay, finitions Active, Allure, GT Line et séries Crossway, Urban Cross, Signature. Gamme centrée sur 1.2 PureTech 82/110/130 et 1.6 BlueHDi 75/100/120, puis 1.5 BlueHDi 100 en fin de carrière."
+      },
+      {
+        "nom": "2008 II",
+        "annees": "depuis 2019",
+        "notes": "Génération suivante sur plateforme CMP, avec version électrique e-2008. Plus récente, nous l'étudions aussi, mais cette page concerne surtout le 2008 I."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.2 VTi 82 et 1.2 PureTech 82 (EB2)",
+        "carburant": "Essence",
+        "distribution": "Courroie dans l'huile sur le PureTech 82 (les tout premiers 1.2 VTi 82 de 2013 sont donnés à chaîne : vérifiez sur le carnet)",
+        "entretien": "Le constructeur a ramené l'intervalle de courroie des PureTech à 100 000 km ou 6 ans après le rappel de fin 2020 (source Caradisiac). Huile homologuée obligatoire, niveau à surveiller.",
+        "points": "Trois cylindres atmosphérique, suffisant en ville. Consommation d'huile, ratés et catalyseur fatigué signalés sur fiches-auto.fr. Boîte pilotée ETG5 à l'agrément discuté."
+      },
+      {
+        "nom": "1.2 PureTech 110 et 130 (EB2DT/EB2DTS)",
+        "carburant": "Essence",
+        "distribution": "Courroie dans l'huile",
+        "entretien": "Intervalle ramené à 100 000 km ou 6 ans après le rappel de fin 2020 ; une courroie plus ancienne doit avoir été remplacée. Huile strictement conforme, vidanges à l'heure.",
+        "points": "Moteurs agréables et vifs, mais la dégradation de la courroie baignant dans l'huile est le défaut le plus documenté du modèle (Caradisiac, fiches-auto.fr) : débris dans la pompe à huile et la pompe à vide, perte d'assistance de frein. Rappels constructeur publiés sur RappelConso en novembre 2020 (pompe à vide) et octobre 2021 (courroie)."
+      },
+      {
+        "nom": "1.6 VTi 120 (EP6)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Pas de courroie à remplacer, mais une chaîne qui s'allonge se signale par un cliquetis à froid. Vidanges régulières indispensables.",
+        "points": "Quatre cylindres plus gourmand. Sonde de température d'eau, thermostat, boîtier d'eau, pompe à eau et bobines signalés (Caradisiac, fiches-auto.fr). Fuites d'huile entre moteur et boîte signalées."
+      },
+      {
+        "nom": "1.4 HDi 68 (DV4)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Intervalle selon le carnet, courroie à remplacer avec galets et pompe à eau.",
+        "points": "Rare sur 2008, réservé à l'entrée de gamme des premiers millésimes. Peu de retours sur les sources consultées."
+      },
+      {
+        "nom": "1.6 HDi et e-HDi 92 et 115 (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Intervalle selon le carnet (le constructeur préconise un remplacement long, mais l'âge compte) : facture utile. Vidanges régulières, FAP à régénérer sur route.",
+        "points": "Versions conseillées par Caradisiac pour leur sobriété. Signalés sur fiches-auto.fr : joints d'injecteurs, vanne EGR, FAP colmaté en usage urbain, volant moteur et embrayage, boîte bruyante sur le 115."
+      },
+      {
+        "nom": "1.6 BlueHDi 75, 100 et 120 (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Comme le HDi, plus le système AdBlue : réservoir, injecteur SCR et sonde NOx à surveiller, voyant à ne pas ignorer.",
+        "points": "Sobres, Euro 6. Le système AdBlue (réservoir, injecteur, sonde) est le point le plus signalé sur fiches-auto.fr pour le BlueHDi 100. Rappel constructeur publié en 2025 sur RappelConso concernant le voyant de défaut SCR/FAP."
+      },
+      {
+        "nom": "1.5 BlueHDi 100 (DV5)",
+        "carburant": "Diesel",
+        "distribution": "Courroie, avec une chaîne d'arbre à cames",
+        "entretien": "Intervalle selon le carnet. Huile conforme et vidanges à l'heure, la chaîne d'arbre à cames y est sensible.",
+        "points": "Arrivé en fin de carrière du 2008 I. Rappel constructeur publié sur RappelConso (fiche 47781) pour un risque de rupture de la chaîne d'arbre à cames lié à la carbonisation de l'huile ; AdBlue également signalé."
+      }
+    ],
+    "avantages": [
+      "Crossover compact très diffusé : pièces courantes, entretien connu de tous les garages.",
+      "Position de conduite surélevée et coffre généreux pour le gabarit, recherchés en occasion.",
+      "1.6 HDi/e-HDi 92 sobre et jugé parmi les versions les plus sûres par la presse.",
+      "5 étoiles Euro NCAP en 2013.",
+      "Phase 2 bien équipée : écran tactile, CarPlay, feux à LED.",
+      "Bonne tenue de la demande sur le marché de l'occasion."
+    ],
+    "inconvenients": [
+      "Courroie de distribution immergée des 1.2 PureTech, surtout 110 et 130 : le premier point à vérifier.",
+      "Amortisseurs avant et pneus qui s'usent vite d'après les témoignages (fiches-auto.fr).",
+      "Système AdBlue coûteux sur les BlueHDi quand il tombe en défaut.",
+      "Boîte pilotée ETG5 peu agréable et parfois capricieuse.",
+      "Électronique multimédia (SMEG) sujette aux bugs signalés par Caradisiac."
+    ],
+    "problemes": [
+      {
+        "titre": "Courroie de distribution des 1.2 PureTech",
+        "detail": "Signalé par Caradisiac et fiches-auto.fr : la courroie baignant dans l'huile se dégrade (carburant dans l'huile, huile non conforme), libère des débris et peut obstruer la crépine de pompe à huile ou abîmer la pompe à vide de frein. Rappels constructeur publiés sur RappelConso en novembre 2020 (pompe à vide, fiche 48836) et octobre 2021 (courroie, fiche 48589). Vérifiez si la campagne a été faite."
+      },
+      {
+        "titre": "Consommation d'huile des PureTech",
+        "detail": "Sur les 1.2 PureTech 82, 110 et 130, des témoignages sur fiches-auto.fr signalent une consommation d'huile élevée, parfois jusqu'à un litre pour 1 000 km, avec ratés et catalyseur touché. Niveau à vérifier régulièrement."
+      },
+      {
+        "titre": "AdBlue des BlueHDi",
+        "detail": "Sur le 1.6 BlueHDi 100 surtout, réservoir, injecteur SCR et sonde NOx défaillants sont signalés sur fiches-auto.fr entre 40 000 et 125 000 km. Un voyant AdBlue ignoré peut finir par bloquer le démarrage."
+      },
+      {
+        "titre": "Amortisseurs et usure des pneus",
+        "detail": "Défaut le plus cité sur fiches-auto.fr (plus de 100 témoignages) : amortisseurs avant fatigués dès 20 000 à 50 000 km, usure asymétrique ou prématurée des pneus, bruits en braquage."
+      },
+      {
+        "titre": "Sonde de température et refroidissement du 1.6 VTi",
+        "detail": "Caradisiac signale une sonde de température d'eau qui indique une surchauffe à tort, ainsi que thermostat, boîtier de sortie d'eau et pompe à eau fuyards signalés sur fiches-auto.fr."
+      },
+      {
+        "titre": "Embrayage et boîte",
+        "detail": "Embrayage qui broute ou patine, boîte manuelle bruyante ou dure à passer, signalés sur plusieurs motorisations (fiches-auto.fr). La boîte pilotée ETG5 est jugée lente et sensible."
+      },
+      {
+        "titre": "Multimédia et électricité",
+        "detail": "Écran tactile, GPS et Bluetooth capricieux, radio qui s'allume seule, lève-vitres intermittents : signalés par Caradisiac et fiches-auto.fr, souvent résolus par reprogrammation."
+      },
+      {
+        "titre": "Rappels de sécurité",
+        "detail": "RappelConso recense notamment, pour le 2008 I : vis de fixation de l'essieu arrière (2020, fiche 49060), corrosion du berceau (2021, fiche 48876), et Caradisiac cite des campagnes sur la fixation de suspension avant, le frein de parking et le réservoir. Un carnet tamponné pour ces campagnes rassure."
+      }
+    ],
+    "controles": [
+      "Sur PureTech : facture de remplacement de la courroie ou preuve de passage en campagne constructeur, et niveau d'huile.",
+      "Démarrage à froid : cliquetis de chaîne (1.6 VTi) ou bruit de pompe à vide (PureTech).",
+      "Voyants moteur, AdBlue, FAP et frein au tableau de bord.",
+      "Sur BlueHDi : historique des interventions AdBlue et des régénérations FAP.",
+      "Bruits de suspension en braquage et sur bosses, usure des pneus.",
+      "Embrayage, passage des vitesses, comportement de l'ETG5 ou de l'EAT6 à l'essai.",
+      "Fonctionnement de l'écran tactile, de la radio et du Bluetooth.",
+      "État de la carrosserie, des jantes et de l'intérieur."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, en particulier celles de courroie et d'huile.",
+      "Retrouvez les deux clés.",
+      "Sur PureTech, notez la date et le kilométrage de la dernière courroie et conservez le justificatif du rappel si la campagne a été faite.",
+      "Sur BlueHDi, gardez les factures AdBlue ou FAP si des travaux ont été réalisés.",
+      "Faites rouler la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Un 2008 de 2014 ou de 2016 n'est pas une vieille voiture, mais sur ce modèle c'est l'historique qui fait la différence. Un PureTech dont la courroie a été remplacée avec facture, un HDi aux vidanges suivies et sans voyant, deux clés et un carnet complet : voilà ce qui soutient l'offre. À l'inverse, un PureTech sans trace de courroie ni de campagne constructeur, ou un BlueHDi avec voyant AdBlue allumé, fait baisser la fourchette, car la remise en état est coûteuse. Nous regardons votre voiture telle qu'elle est, pas seulement son année.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment sur PureTech, facture ou rappel à l'appui.",
+      "Kilométrage cohérent avec un carnet d'entretien complet.",
+      "1.6 HDi/e-HDi 92 ou BlueHDi sans voyant et sans historique AdBlue.",
+      "Deux clés, carnet et factures.",
+      "Phase 2 bien équipée, carrosserie et intérieur soignés."
+    ],
+    "valeurMoins": [
+      "PureTech sans preuve de remplacement de courroie ni de campagne constructeur.",
+      "Consommation d'huile anormale ou voyant moteur allumé.",
+      "Voyant AdBlue, FAP ou frein allumé.",
+      "Amortisseurs fatigués et pneus usés de façon irrégulière.",
+      "Chocs, corrosion, intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Mon 2008 PureTech n'a jamais eu sa courroie de distribution changée, l'étudiez-vous ?",
+        "answer": "Oui. Un PureTech sans remplacement de courroie reste étudié, mais ce point pèse dans l'offre car l'intervention est connue et coûteuse. Indiquez-le dès la demande, et précisez si la campagne constructeur a été faite : le conseiller vous donne une fourchette indicative tenant compte de cet élément, puis le technicien vérifie sur place."
+      },
+      {
+        "question": "Mon Peugeot 2008 a-t-il une courroie ou une chaîne de distribution ?",
+        "answer": "Les 1.2 PureTech ont une courroie baignant dans l'huile, les 1.6 HDi et BlueHDi une courroie classique, et le 1.6 VTi 120 une chaîne. Les tout premiers 1.2 VTi 82 de 2013 sont donnés à chaîne. Le carnet d'entretien tranche. Une facture récente de courroie soutient nettement la valeur sur les PureTech."
+      },
+      {
+        "question": "Le voyant AdBlue de mon 2008 BlueHDi est allumé, puis-je le vendre ?",
+        "answer": "Oui. Ce défaut est fréquemment signalé sur le 1.6 BlueHDi 100 et nous le connaissons. Il compte dans l'offre, car la réparation peut concerner le réservoir ou l'injecteur. Signalez-le à la demande d'estimation pour une fourchette juste et éviter une mauvaise surprise au rendez-vous."
+      },
+      {
+        "question": "Reprenez-vous un 2008 avec boîte ETG5 ou EAT6 ?",
+        "answer": "Oui, toutes les boîtes sont étudiées. Au rendez-vous, le technicien fait un court essai pour vérifier le passage des rapports et l'absence d'à-coups. Une boîte ETG5 qui hésite ou claque est prise en compte dans le prix définitif, sans empêcher la vente."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre mon 2008 à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. Le technicien évalue lui-même la voiture à votre adresse, puis, si la vente est conclue, nous payons par virement instantané. L'étude n'engage pas à vendre et ne vaut pas promesse de rachat de notre part."
+      },
+      {
+        "question": "Reprenez-vous aussi le 2008 II et le e-2008 ?",
+        "answer": "Oui. Le 2008 II (depuis 2019), en PureTech, BlueHDi ou électrique, est étudié selon le même principe : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, prix définitif après contrôle, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Peugeot 2008 I",
+        "url": "https://fr.wikipedia.org/wiki/Peugeot_2008_I"
+      },
+      {
+        "label": "Caradisiac : fiabilité de la Peugeot 2008, maxi-fiche occasion",
+        "url": "https://www.caradisiac.com/fiabilite-de-la-peugeot-2008-la-maxi-fiche-occasion-de-caradisiac-114479.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Peugeot 2008 (2013-2019)",
+        "url": "https://www.fiches-auto.fr/fiabilite-peugeot/fiabilite-447-pannes-peugeot-2008.php"
+      },
+      {
+        "label": "RappelConso : rappel pompe à vide des 1.2 turbo (novembre 2020)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48836/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-citroen-berlingo",
+    "brand": "Citroën",
+    "brandSlug": "reprise-citroen",
+    "model": "Berlingo",
+    "nav": "Citroën Berlingo",
+    "title": "Vendre son Citroën Berlingo : estimation, rachat | LUNICAR",
+    "description": "Vendez votre Citroën Berlingo Multispace ou utilitaire, même à fort kilométrage : estimation gratuite, vérification chez vous, virement instantané.",
+    "h1": "Vendre son Citroën Berlingo <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'un Berlingo de première génération (1996-2008) ou d'un Berlingo II (2008-2018), en Multispace comme en fourgonnette, souvent à fort kilométrage, et aussi à ceux d'un Berlingo III plus récent. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier le véhicule à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "1996-2018 pour les Berlingo I et II (Berlingo I : 1996-2008, puis Berlingo First jusqu'en 2011 ; Berlingo II : 2008-2018) ; le Berlingo III est produit depuis 2018",
+    "generations": [
+      {
+        "nom": "Berlingo I",
+        "annees": "1996-2008",
+        "notes": "Lancé en juillet 1996, premier ludospace du segment, jumeau du Peugeot Partner. Fourgonnette et Multispace 5 places. Restylage en 2002. Environ 1,2 million d'exemplaires. Moteurs essence 1.1, 1.4, 1.6 16V et 1.8, diesels 1.9 D, 2.0 HDi puis 1.6 HDi 75/90/110 à partir de 2005."
+      },
+      {
+        "nom": "Berlingo First",
+        "annees": "2008-2011",
+        "notes": "Le Berlingo I poursuit sa carrière sous le nom Berlingo First, à côté du Berlingo II, avec une gamme réduite surtout en utilitaire."
+      },
+      {
+        "nom": "Berlingo II phase 1",
+        "annees": "2008-2012",
+        "notes": "Plus grand et plus confortable, en Multispace (5 ou 7 places) et fourgon, longueur XL disponible. Moteurs 1.6 16V 90/110 puis 1.6 VTi 95/120, diesels 1.6 HDi 75/90/110, boîtes manuelles ou pilotée."
+      },
+      {
+        "nom": "Berlingo II phases 2 et 3",
+        "annees": "2012-2018",
+        "notes": "Restylage en 2012 (face avant) puis en 2015 (Euro 6). Diesels 1.6 HDi 92/115 puis 1.6 BlueHDi 75/100/120, essence 1.6 VTi 98 puis 1.2 PureTech 110, boîtes ETG6 et EAT6. Version électrique à partir de 2013. Usines de Vigo et Mangualde."
+      },
+      {
+        "nom": "Berlingo III",
+        "annees": "depuis 2018",
+        "notes": "Génération commune avec Partner/Rifter, Combo, Proace City et Doblò. Moteurs 1.2 PureTech, 1.5 BlueHDi, puis ë-Berlingo électrique. Plus récent, nous l'étudions aussi."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.6 16V 90/110 et 1.6 VTi 95/98/120 (TU5, EP6)",
+        "carburant": "Essence",
+        "distribution": "Courroie sur le 1.6 16V TU5 (Berlingo I et début de Berlingo II), chaîne sur le 1.6 VTi",
+        "entretien": "Courroie du 1.6 16V selon le carnet, avec galets et pompe à eau. Sur VTi, surveiller un cliquetis de chaîne à froid et le niveau d'huile.",
+        "points": "Peu diffusés sur Berlingo, mais recherchés par ceux qui fuient le diesel. Sur VTi, consommation d'huile, bobines, sondes lambda, thermostat et pompe à eau signalés sur fiches-auto.fr. Caradisiac conseille le VTi 120 en surveillant la chaîne."
+      },
+      {
+        "nom": "1.2 PureTech 110 (EB2DT)",
+        "carburant": "Essence",
+        "distribution": "Courroie dans l'huile",
+        "entretien": "Intervalle ramené par le constructeur à 100 000 km ou 6 ans après la campagne de 2020-2021 ; huile strictement conforme.",
+        "points": "Berlingo II phase 3 uniquement. La courroie baignant dans l'huile peut se déliter et encrasser pompe à huile et pompe à vide (fiches-auto.fr). Rappels constructeur publiés sur RappelConso en novembre 2020 (pompe à vide, fiche 48835) et décembre 2021 (courroie, fiche 48591)."
+      },
+      {
+        "nom": "1.9 D et 2.0 HDi 90 (Berlingo I)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Intervalle selon le carnet, souvent dépassé sur ces véhicules âgés : facture utile.",
+        "points": "Moteurs anciens, réputés endurants quand ils sont entretenus. Vanne EGR, débitmètre et injection à surveiller avec l'âge."
+      },
+      {
+        "nom": "1.6 HDi 75, 90, 92, 110 et 115 (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Intervalle selon le carnet (long en kilomètres, mais l'âge compte). Vidanges régulières indispensables, FAP à régénérer sur route.",
+        "points": "Le cœur de la gamme. Signalés par Caradisiac et fiches-auto.fr : turbo fragile surtout sur le 110, fuites aux joints d'injecteurs, EGR encrassée, FAP colmaté, embrayage et volant moteur usés tôt sur les 92/110, distribution bruyante sur de nombreux exemplaires."
+      },
+      {
+        "nom": "1.6 BlueHDi 75, 100 et 120 (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Comme le HDi, plus l'AdBlue : réservoir, injecteur SCR et sonde NOx à surveiller.",
+        "points": "Euro 6, à partir de 2015. Caradisiac conseille le BlueHDi 100 et note une fiabilité améliorée après 2013-2014. Défauts antipollution (réservoir d'urée, injecteur SCR, sonde NOx) signalés sur fiches-auto.fr."
+      },
+      {
+        "nom": "Berlingo électrique",
+        "carburant": "Électrique",
+        "distribution": "Sans objet",
+        "entretien": "État de la batterie et autonomie réelle à vérifier.",
+        "points": "Berlingo II électrique à partir de 2013 (67 ch, batterie d'origine Mitsubishi), autonomie réelle modeste. Nous l'étudions sur l'état de sa batterie."
+      }
+    ],
+    "avantages": [
+      "Volume et modularité : Multispace 5 ou 7 places, portes coulissantes, coffre immense.",
+      "Pièces très courantes et entretien connu de tous les garages.",
+      "Demande soutenue en occasion, en Multispace comme en utilitaire.",
+      "1.6 HDi sobre et endurant quand il a été suivi.",
+      "BlueHDi 100 des phases 3 jugé plus fiable par la presse.",
+      "Mécanique simple partagée avec le Partner."
+    ],
+    "inconvenients": [
+      "Turbo, injecteurs et EGR des 1.6 HDi coûteux quand ils lâchent.",
+      "Embrayage et volant moteur sollicités, surtout sur véhicule chargé.",
+      "Coupelles d'amortisseurs et trains roulants bruyants, usure rapide des pneus arrière.",
+      "Peinture des rails de porte coulissante qui s'écaille, lunette arrière fragile.",
+      "Courroie immergée du 1.2 PureTech sur les derniers millésimes."
+    ],
+    "problemes": [
+      {
+        "titre": "Turbo et injection des 1.6 HDi",
+        "detail": "Signalé par Caradisiac : faiblesse du turbo, le 1.6 HDi 110 étant le plus touché, parfois avec participation du constructeur. Fuites aux joints d'injecteurs et vanne EGR encrassée signalées sur fiches-auto.fr. Symptômes : fumée, perte de puissance, mode dégradé."
+      },
+      {
+        "titre": "Embrayage et volant moteur",
+        "detail": "Usure prématurée signalée sur les 1.6 HDi 92 et 110 (Caradisiac, fiches-auto.fr), surtout en usage chargé. Symptômes : patinage, vibrations au ralenti, claquements."
+      },
+      {
+        "titre": "Courroie du 1.2 PureTech",
+        "detail": "Sur Berlingo II phase 3 en PureTech 110, la courroie baignant dans l'huile peut se dégrader et abîmer pompe à huile et pompe à vide de frein (fiches-auto.fr). Rappels constructeur publiés sur RappelConso en 2020 et 2021. Vérifiez que la campagne a été faite."
+      },
+      {
+        "titre": "Trains roulants et pneus",
+        "detail": "Claquements à l'avant, coupelles d'amortisseurs, ressorts et barres stabilisatrices en cause (42 témoignages sur fiches-auto.fr). Usure rapide et parfois asymétrique des pneus arrière dès 30 000 km."
+      },
+      {
+        "titre": "Direction",
+        "detail": "Direction assistée dure ou bruyante, crémaillère remplacée dans plusieurs cas (fiches-auto.fr). Rappel constructeur publié sur RappelConso en août 2020 pour des biellettes de direction (fiche 48888) et en 2021 pour la colonne de direction (fiche 49054)."
+      },
+      {
+        "titre": "Carrosserie et vitrage",
+        "detail": "Peinture des rails de porte coulissante qui s'écaille vite et cas de lunette arrière qui éclate, signalés sur fiches-auto.fr. Caradisiac cite un rappel constructeur de mars 2010 sur la lunette arrière."
+      },
+      {
+        "titre": "Électricité et BSI",
+        "detail": "Boîtier BSI sensible à l'humidité avec défauts intermittents signalés sur fiches-auto.fr. Rappel constructeur publié sur RappelConso en 2023 pour une boîte à fusibles exposée aux infiltrations (fiche 48175)."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de courroie de distribution, facture à l'appui.",
+      "Sur HDi : fumée, sifflement de turbo, bruits d'injection, voyant FAP ou moteur.",
+      "Sur BlueHDi : voyant AdBlue et historique des interventions antipollution.",
+      "Embrayage et volant moteur : patinage, vibrations au ralenti.",
+      "Bruits de coupelles et de train avant sur bosses, usure des pneus arrière.",
+      "Direction : dureté, claquements, assistance.",
+      "Portes coulissantes, rails, lunette et hayon.",
+      "État de la caisse : rayures d'usage, chocs, corrosion sur les plus anciens."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celles de courroie, de turbo ou d'embrayage.",
+      "Retrouvez les deux clés.",
+      "Sur utilitaire, retirez les aménagements amovibles et notez ceux qui restent.",
+      "Sur PureTech, conservez le justificatif du rappel de courroie si la campagne a été faite.",
+      "Faites rouler le véhicule quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Un Berlingo de 2006 ou de 2011 affiche souvent plus de 200 000 km, c'est normal pour ce type de véhicule. L'âge et le kilométrage ne disent pas tout. Un Berlingo au carnet suivi, à la courroie remplacée avec facture, sans voyant ni fumée, avec un embrayage franc, reste très demandé, en Multispace comme en utilitaire. À l'inverse, un HDi au turbo sifflant ou à l'historique flou fait baisser l'offre. Nous regardons votre véhicule tel qu'il est, pas seulement son année.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment, facture à l'appui.",
+      "Carnet complet et vidanges régulières sur HDi.",
+      "Multispace 7 places ou version XL, recherchées.",
+      "BlueHDi 100 ou VTi 120 en bon état.",
+      "Deux clés, intérieur propre, portes coulissantes qui fonctionnent bien."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve de remplacement.",
+      "Turbo sifflant, fumée ou voyant moteur/FAP allumé.",
+      "Embrayage qui patine ou volant moteur bruyant.",
+      "PureTech sans preuve de campagne de courroie.",
+      "Caisse abîmée, corrosion, intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Mon Berlingo utilitaire a 250 000 km, a-t-il encore une valeur ?",
+        "answer": "Oui, si la mécanique suit. Les Berlingo fourgonnette à fort kilométrage restent demandés quand le carnet est tenu et la courroie faite. Nous l'estimons sur son état réel, son historique et son équipement, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette indicative, sans obligation."
+      },
+      {
+        "question": "Mon Berlingo a-t-il une courroie ou une chaîne de distribution ?",
+        "answer": "Les 1.6 HDi, BlueHDi, 1.9 D, 2.0 HDi et 1.6 16V ont une courroie. Le 1.6 VTi a une chaîne. Le 1.2 PureTech des derniers Berlingo II a une courroie baignant dans l'huile, à remplacer à 100 000 km ou 6 ans selon le constructeur. Vérifiez votre carnet : une facture récente soutient nettement l'offre."
+      },
+      {
+        "question": "Le turbo de mon Berlingo HDi siffle, l'étudiez-vous quand même ?",
+        "answer": "Oui. C'est un défaut connu sur le 1.6 HDi, surtout le 110. Il reste à diagnostiquer et compte dans l'offre, mais il n'empêche pas la vente. Signalez-le dès la demande d'estimation pour une fourchette juste et un rendez-vous sans mauvaise surprise."
+      },
+      {
+        "question": "Reprenez-vous un Berlingo utilitaire au nom d'une société ?",
+        "answer": "Oui, nous étudions les Berlingo fourgonnette immatriculés au nom d'une entreprise ou d'un artisan. Prévoyez la carte grise, un justificatif de la société et les documents de la personne qui signe. Le principe reste le même : fourchette indicative, vérification sur place, prix définitif, virement si la vente est conclue."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre mon Berlingo à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour un Berlingo ancien dont le contrôle est expiré. Le technicien évalue lui-même le véhicule à votre adresse, puis, si la vente est conclue, nous payons par virement instantané. L'étude ne vaut pas promesse de rachat."
+      },
+      {
+        "question": "Reprenez-vous aussi le Berlingo III et le ë-Berlingo ?",
+        "answer": "Oui. Le Berlingo III (depuis 2018), en PureTech, BlueHDi ou électrique, est étudié selon le même principe : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, prix définitif après contrôle, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Citroën Berlingo II",
+        "url": "https://fr.wikipedia.org/wiki/Citro%C3%ABn_Berlingo_II"
+      },
+      {
+        "label": "Caradisiac : maxi-fiche fiabilité du Citroën Berlingo 2 en occasion",
+        "url": "https://www.caradisiac.com/maxi-fiche-fiabilite-que-vaut-le-citroen-berlingo-en-occasion-108793.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Citroën Berlingo 2 (2008-2018)",
+        "url": "https://www.fiches-auto.fr/fiabilite-citroen/fiabilite-240-pannes-citroen-berlingo-2.php"
+      },
+      {
+        "label": "RappelConso : rappel courroie de distribution des 1.2 PureTech (décembre 2021)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48591/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-renault-kangoo",
+    "brand": "Renault",
+    "brandSlug": "reprise-renault",
+    "model": "Kangoo",
+    "nav": "Renault Kangoo",
+    "title": "Vendre son Renault Kangoo : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Renault Kangoo 1 ou 2, ludospace ou Express, même à fort kilométrage : estimation gratuite, vérification chez vous, virement instantané.",
+    "h1": "Vendre son Renault Kangoo <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'un Kangoo de première génération (1997-2007) ou d'un Kangoo II (2007-2021), en ludospace comme en Kangoo Express, souvent à fort kilométrage, et aussi à ceux d'un Kangoo III plus récent. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier le véhicule à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "1997-2021 pour les Kangoo I et II (Kangoo I : 1997-2007, restylé en 2003 ; Kangoo II : 2007-2021, restylé en 2013) ; le Kangoo III est produit depuis 2021",
+    "generations": [
+      {
+        "nom": "Kangoo I phase 1",
+        "annees": "1997-2003",
+        "notes": "Présenté fin 1996, commercialisé en 1997 en Kangoo Express (utilitaire) puis en ludospace. Assemblé à Maubeuge. Moteurs essence 1.2, 1.4 et 1.6 16V, diesels 1.9 D, 1.9 dTi puis 1.9 dCi et 1.5 dCi. Environ 2,2 millions d'exemplaires sur la génération."
+      },
+      {
+        "nom": "Kangoo I phase 2",
+        "annees": "2003-2007",
+        "notes": "Restylage en 2003 (face avant, feux, planche de bord). Le 1.5 dCi s'impose en diesel. Version 4x4 Trekka disponible. Continue en utilitaire quelques années après l'arrivée du Kangoo II."
+      },
+      {
+        "nom": "Kangoo II phase 1",
+        "annees": "2007-2013",
+        "notes": "Lancé en mai 2007 sur base Scénic, plus grand et plus confortable. Kangoo ludospace, Kangoo Express, Express Compact, Express Maxi, Grand Kangoo 7 places et Be Bop (2009-2011, confidentiel). Moteurs 1.6 8V 90, 1.6 16V 105, 1.5 dCi 68 à 105. Kangoo Z.E. électrique à partir de 2011."
+      },
+      {
+        "nom": "Kangoo II phase 2",
+        "annees": "2013-2021",
+        "notes": "Restylage en 2013 (face avant inspirée du concept DeZir). Arrivée du 1.2 TCe 115 essence et des 1.5 dCi 75/90/110 Energy avec Stop & Start. Z.E. 33 kWh à partir de 2017. Fin de production en juin 2021, environ 2,4 millions d'exemplaires."
+      },
+      {
+        "nom": "Kangoo III",
+        "annees": "depuis 2021",
+        "notes": "Génération actuelle, dévoilée fin 2020, en essence, diesel et électrique E-Tech. Plus récente, nous l'étudions aussi."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.2 16V, 1.4 et 1.6 16V (D4F, E7J, K4M) sur Kangoo I",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Intervalle selon le carnet, avec galets et pompe à eau sur 1.6 16V.",
+        "points": "Moteurs simples, bien connus des garages. Bobines d'allumage et capteurs à surveiller avec l'âge. Peu diffusés sur Kangoo, souvent gardés longtemps."
+      },
+      {
+        "nom": "1.6 8V 90 et 1.6 16V 105 (K7M, K4M) sur Kangoo II",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Caradisiac rappelle la préconisation constructeur de 6 ans ou 120 000 km sur essence : vérifiez le carnet.",
+        "points": "Le 1.6 16V 105, aussi en version Ethanol, est conseillé par Caradisiac avec de rares défauts de bobines. Sobriété moyenne, mais mécanique sans mauvaise surprise."
+      },
+      {
+        "nom": "1.2 TCe 115 (H5Ft)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Niveau d'huile à vérifier très régulièrement, vidanges rapprochées.",
+        "points": "Kangoo II phase 2. Consommation d'huile pouvant mener à la casse quand le niveau n'est pas surveillé, signalée sur fiches-auto.fr ; Wikipédia mentionne un contentieux en cours sur la durabilité de ce moteur dans l'alliance. Pompe à carburant et bobines également signalées."
+      },
+      {
+        "nom": "1.9 D, 1.9 dTi et 1.9 dCi (F8Q, F9Q) sur Kangoo I",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Intervalle selon le carnet, souvent dépassé sur ces véhicules âgés : facture utile.",
+        "points": "Réputés endurants et rustiques. Vanne EGR qui s'encrasse, capteur de point mort haut et injection à surveiller avec l'âge."
+      },
+      {
+        "nom": "1.5 dCi 68 à 110 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Caradisiac rappelle la préconisation constructeur de 6 ans ou 160 000 km sur diesel ; fiches-auto.fr note une courroie parfois usée avant terme. Vidanges régulières indispensables.",
+        "points": "Le cœur de la gamme sur Kangoo I phase 2 et Kangoo II. Signalés sur Caradisiac et fiches-auto.fr : injecteurs bruyants ou défaillants, limaille de pompe sur les plus anciens, rares bielles coulées surtout sur le 105, embrayage et émetteur d'embrayage, volant moteur, turbo sur le 110, batterie juste avec le Stop & Start."
+      },
+      {
+        "nom": "Kangoo Z.E. électrique",
+        "carburant": "Électrique",
+        "distribution": "Sans objet",
+        "entretien": "État de la batterie, contrat de location de batterie éventuel et autonomie réelle à vérifier.",
+        "points": "44 kW, batterie 22 kWh puis 33 kWh à partir de 2017. Nous l'étudions sur l'état et le statut de sa batterie (achetée ou louée)."
+      }
+    ],
+    "avantages": [
+      "Volume et modularité : portes coulissantes, coffre immense, Grand Kangoo 7 places.",
+      "Pièces Renault très courantes, entretien connu de tous les garages.",
+      "Demande soutenue en occasion, en ludospace comme en Kangoo Express.",
+      "1.5 dCi sobre quand il a été bien entretenu.",
+      "1.6 16V 105 essence sans défaut majeur relevé par la presse.",
+      "Mécanique simple partagée avec Clio, Mégane et Scénic."
+    ],
+    "inconvenients": [
+      "Injecteurs et embrayage du 1.5 dCi coûteux quand ils lâchent.",
+      "Émetteur d'embrayage fragile sur Kangoo II.",
+      "1.2 TCe exposé à la consommation d'huile.",
+      "Électricité capricieuse avec l'âge : commodos, contacteur tournant, éclairage.",
+      "Insonorisation faible et plastiques fragiles, portes coulissantes qui se dérèglent."
+    ],
+    "problemes": [
+      {
+        "titre": "Injection du 1.5 dCi",
+        "detail": "Injecteurs qui claquent ou défaillent, signalés sur Caradisiac et fiches-auto.fr, surtout sur les 85 et 105. Sur les plus anciens, la pompe peut produire de la limaille qui pollue rampe et injecteurs. Symptômes : démarrage difficile, claquements, mode dégradé."
+      },
+      {
+        "titre": "Bielles coulées sur 1.5 dCi",
+        "detail": "Caradisiac et fiches-auto.fr signalent de rares casses moteur par bielles coulées, surtout sur le dCi 105, nettement moins fréquentes que sur d'autres modèles et liées au suivi des vidanges. Un bruit de bas moteur doit alerter."
+      },
+      {
+        "titre": "Embrayage et émetteur",
+        "detail": "L'émetteur d'embrayage, fixé de façon peu solide à la pédale, a tendance à se rompre sur Kangoo II (fiches-auto.fr). Embrayage et volant moteur usés tôt signalés sur plusieurs versions dCi. Symptômes : pédale molle, patinage, vibrations."
+      },
+      {
+        "titre": "Consommation d'huile du 1.2 TCe",
+        "detail": "Signalée sur fiches-auto.fr comme menant à des casses moteur entre 60 000 et 100 000 km quand le niveau n'est pas surveillé. Vérifiez le carnet et le niveau avant le rendez-vous."
+      },
+      {
+        "titre": "Direction assistée et colonne",
+        "detail": "Caradisiac cite des rappels constructeur de 2008 (repositionnement de la colonne de direction) et de janvier 2010 (recalibrage de l'assistance) sur Kangoo II ; fiches-auto.fr signale des calculateurs de direction assistée défaillants jusqu'en 2009."
+      },
+      {
+        "titre": "Électricité",
+        "detail": "Commodos, contacteur tournant, phares et essuie-glaces capricieux signalés sur fiches-auto.fr. Rappel constructeur publié sur RappelConso en 2019 pour un Stop & Start défaillant (fiche 49067)."
+      },
+      {
+        "titre": "Essieu arrière et rappels de sécurité",
+        "detail": "Rappel constructeur publié sur RappelConso (fiche 49046) pour des éléments d'essieu arrière insuffisamment serrés sur des Kangoo fabriqués à Maubeuge, et rappel de 2019 pour un catalyseur mal soudé sur Kangoo II (fiche 49129). Caradisiac cite aussi un rappel de juin 2010 sur des flexibles de frein."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de courroie de distribution, facture à l'appui.",
+      "Sur dCi : bruits d'injection à froid, fumée, bruit de bas moteur, historique des vidanges.",
+      "Sur 1.2 TCe : niveau d'huile et consommation entre deux vidanges.",
+      "Embrayage : pédale, patinage, émetteur, vibrations au ralenti.",
+      "Direction : dureté, assistance, bruits.",
+      "Portes coulissantes, serrures et hayon ou portes battantes.",
+      "Commodos, éclairage, essuie-glaces, voyants au tableau de bord.",
+      "État de la caisse : chocs d'usage, corrosion sur les plus anciens."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celles de courroie, d'injecteurs ou d'embrayage.",
+      "Retrouvez les deux clés ou cartes.",
+      "Sur Kangoo Express, retirez les aménagements amovibles et notez ceux qui restent.",
+      "Sur Z.E., préparez le contrat de batterie s'il y en a un.",
+      "Faites rouler le véhicule quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Un Kangoo de 2005 ou de 2010 affiche souvent un gros kilométrage et des traces d'usage, c'est normal pour ce type de véhicule. L'âge ne dit pas tout. Un Kangoo au carnet suivi, à la courroie remplacée avec facture, sans bruit d'injection ni voyant, avec un embrayage franc, reste très demandé. À l'inverse, un dCi à l'historique flou ou un TCe sans suivi d'huile fait baisser l'offre. Nous regardons votre véhicule tel qu'il est, pas seulement son année.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment, facture à l'appui.",
+      "Carnet complet et vidanges régulières sur dCi.",
+      "Grand Kangoo 7 places ou Express Maxi, recherchés.",
+      "1.6 16V 105 ou 1.5 dCi 90/110 en bon état.",
+      "Deux clés, intérieur propre, portes coulissantes qui fonctionnent bien."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve de remplacement.",
+      "Injecteurs bruyants, fumée ou voyant moteur allumé.",
+      "Embrayage qui patine ou émetteur défaillant.",
+      "1.2 TCe à la consommation d'huile non suivie.",
+      "Caisse abîmée, corrosion, intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Mon Kangoo Express a 280 000 km, a-t-il encore une valeur ?",
+        "answer": "Oui, si la mécanique suit. Les Kangoo utilitaires à fort kilométrage restent demandés quand le carnet est tenu et la courroie faite. Nous l'estimons sur son état réel, son historique et son équipement, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette indicative, sans obligation."
+      },
+      {
+        "question": "Mon Kangoo a-t-il une courroie ou une chaîne de distribution ?",
+        "answer": "Les 1.5 dCi, 1.9 D/dTi/dCi et les essence 1.2, 1.4 et 1.6 ont une courroie : le constructeur préconise 6 ans ou 120 000 km en essence et 160 000 km en diesel, d'après Caradisiac. Seul le 1.2 TCe 115 a une chaîne. Vérifiez votre carnet : une facture récente soutient nettement l'offre."
+      },
+      {
+        "question": "Les injecteurs de mon Kangoo dCi claquent, l'étudiez-vous quand même ?",
+        "answer": "Oui. C'est un défaut connu du 1.5 dCi. Il reste à diagnostiquer et compte dans l'offre, mais il n'empêche pas la vente. Signalez-le dès la demande d'estimation : au rendez-vous, le technicien écoute le moteur à froid et fait un court essai avant de fixer le prix définitif."
+      },
+      {
+        "question": "Reprenez-vous un Kangoo Z.E. avec batterie en location ?",
+        "answer": "Oui, nous étudions les Kangoo Z.E. Préparez le contrat de location de batterie s'il existe : il conditionne la vente et doit être transféré ou soldé. L'offre tient compte de l'état de la batterie et de l'autonomie réelle constatée au rendez-vous."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre mon Kangoo à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour un Kangoo ancien dont le contrôle est expiré. Le technicien évalue lui-même le véhicule à votre adresse, puis, si la vente est conclue, nous payons par virement instantané. L'étude ne vaut pas promesse de rachat."
+      },
+      {
+        "question": "Reprenez-vous aussi le Kangoo III ?",
+        "answer": "Oui. Le Kangoo III (depuis 2021), en essence, diesel ou électrique E-Tech, est étudié selon le même principe : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, prix définitif après contrôle, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Renault Kangoo II",
+        "url": "https://fr.wikipedia.org/wiki/Renault_Kangoo_II"
+      },
+      {
+        "label": "Caradisiac : maxi-fiche fiabilité du Renault Kangoo 2 en occasion",
+        "url": "https://www.caradisiac.com/Maxi-fiche-fiabilite-que-vaut-le-Renault-Kangoo-2-en-occasion-93188.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Renault Kangoo 2 (2007-2021)",
+        "url": "https://www.fiches-auto.fr/fiabilite-renault/fiabilite-243-pannes-renault-kangoo-2.php"
+      },
+      {
+        "label": "RappelConso : rappel essieu arrière des Kangoo fabriqués à Maubeuge",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/49046/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-opel-corsa",
+    "brand": "Opel",
+    "brandSlug": "reprise-opel",
+    "model": "Corsa",
+    "nav": "Opel Corsa",
+    "title": "Vendre son Opel Corsa : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Opel Corsa C, D ou E, essence ou CDTI, même ancienne : estimation gratuite rapide, vérification chez vous, virement instantané à la vente.",
+    "h1": "Vendre son Opel Corsa <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Corsa C (2000-2006), d'une Corsa D (2006-2014) ou d'une Corsa E (2014-2019), parfois d'une Corsa F, qui veulent la vendre sans bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2000-2019 pour les Corsa C à E (Corsa C : 2000-2006, Corsa D : 2006-2014, Corsa E : 2014-2019) ; la Corsa F est produite depuis 2019",
+    "generations": [
+      {
+        "nom": "Corsa C",
+        "annees": "2000-2006",
+        "notes": "Lancée en octobre 2000, restylée en septembre 2003. Berline 3 ou 5 portes. Moteurs essence 1.0 12V, 1.2 16V, 1.4 16V et 1.8, diesels 1.7 DI/DTI puis 1.3 CDTI et 1.7 CDTI. Boîte robotisée Easytronic disponible."
+      },
+      {
+        "nom": "Corsa D phase 1",
+        "annees": "2006-2010",
+        "notes": "Présentée en juillet 2006, développée avec Fiat (base commune à la Grande Punto). 3 portes fabriquées à Eisenach, 5 portes à Saragosse. Moteurs 1.0 60, 1.2 80, 1.4 90, 1.3 CDTI 75/90, 1.7 CDTI 125, versions GSi (150 ch) et OPC (192 ch). 2,8 millions d'exemplaires sur la génération."
+      },
+      {
+        "nom": "Corsa D phase 2",
+        "annees": "2010-2014",
+        "notes": "Restylage en 2010 : face avant et optiques revues. Moteurs 1.0 65, 1.2 85, 1.4 100, 1.3 CDTI 75/95 ecoFLEX, 1.7 CDTI 130. OPC Nürburgring Edition en fin de carrière."
+      },
+      {
+        "nom": "Corsa E",
+        "annees": "2014-2019",
+        "notes": "Évolution profonde de la Corsa D, dernière Corsa de l'ère General Motors. Moteurs 1.0 turbo 90/115, 1.2 70, 1.4 90, 1.4 turbo 100, 1.3 CDTI 75/95, versions OPC (207 ch) et GSi (150 ch)."
+      },
+      {
+        "nom": "Corsa F",
+        "annees": "depuis 2019",
+        "notes": "Première Corsa sur base PSA (plateforme CMP), fabriquée à Saragosse : 1.2 PureTech 75/100/130, 1.5 diesel 100, Corsa-e électrique. Plus récente, nous l'étudions aussi."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.0 12V 60/65 (Z10XEP, A10XEP)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Pas de courroie, mais une chaîne qui se détend se signale par un cliquetis au démarrage. Vidanges régulières indispensables.",
+        "points": "Trois cylindres d'entrée de gamme, juste sur route. Chaîne de distribution détendue entre 25 000 et 80 000 km et bobines d'allumage signalées sur fiches-auto.fr."
+      },
+      {
+        "nom": "1.2 16V 75/80/85 et 1.4 16V 90/100 (Z12XEP, A12XER, Z14XEP, A14XER)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Niveau d'huile à surveiller, vidanges régulières ; cliquetis de chaîne à froid à faire vérifier.",
+        "points": "Les plus courants. Caradisiac juge leurs reprises paresseuses sur route. Sur fiches-auto.fr, le 1.2 cumule consommation d'huile, chaîne de distribution, joint de culasse, pompe à eau, thermostat, bobines et sondes lambda. Le 1.4 est moins cité."
+      },
+      {
+        "nom": "1.0 turbo 90/115 et 1.4 turbo 100 (Corsa E)",
+        "carburant": "Essence",
+        "distribution": "Chaîne sur le 1.4 turbo, courroie sur le 1.0 turbo : vérifiez le carnet",
+        "entretien": "Intervalle de courroie du 1.0 turbo selon le carnet ; huile conforme.",
+        "points": "Plus vifs et plus sobres que les atmosphériques. Peu de retours documentés sur les sources consultées."
+      },
+      {
+        "nom": "1.3 CDTI 70 à 95 (Z13DT, Z13DTJ, A13DTE)",
+        "carburant": "Diesel",
+        "distribution": "Chaîne",
+        "entretien": "Pas de courroie, mais vidanges régulières indispensables et FAP à régénérer sur route.",
+        "points": "Caradisiac conseille le 1.3 CDTI 90 sur Corsa D. Sur fiches-auto.fr, l'injection est la panne la plus signalée (injecteurs usés ou encrassés avant 100 000 km), avec vanne EGR, turbo, boîte bruyante et embrayage sur le 90. Consommation d'huile notable en début de vie signalée par Caradisiac."
+      },
+      {
+        "nom": "1.7 CDTI 100 à 130 (Z17DTH, A17DTS)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Intervalle de courroie selon le carnet : facture utile.",
+        "points": "Plus coupleux mais brutal, jugé creux à bas régime par Caradisiac. Volant moteur, roulements et vanne EGR signalés sur fiches-auto.fr."
+      },
+      {
+        "nom": "Boîte robotisée Easytronic",
+        "carburant": "Essence ou diesel",
+        "distribution": "Sans objet",
+        "entretien": "Actionneur d'embrayage et apprentissage à faire vérifier en cas d'à-coups.",
+        "points": "Boîte manuelle pilotée disponible sur Corsa C, D et E. Agrément discuté ; un fonctionnement irrégulier compte dans l'offre."
+      }
+    ],
+    "avantages": [
+      "Citadine très diffusée : pièces courantes et entretien connu de tous les garages.",
+      "Moteurs essence à chaîne, sans courroie à remplacer.",
+      "1.3 CDTI 90 jugé bon compromis par la presse.",
+      "Gabarit urbain, 3 ou 5 portes, coffre correct sur Corsa D et E.",
+      "Habitacle et finition appréciés sur Corsa D et E pour la catégorie.",
+      "Demande régulière en occasion sur les petites essence."
+    ],
+    "inconvenients": [
+      "Chaîne de distribution et consommation d'huile sur les petits essence 1.0 et 1.2.",
+      "Injection du 1.3 CDTI coûteuse quand elle lâche.",
+      "Boîte manuelle qui manque d'endurance : roulements bruyants, vitesses qui accrochent.",
+      "Direction assistée électrique floue, parfois sans assistance.",
+      "Électronique capricieuse avec l'âge : voyants ABS/ESP/airbag, compteur, autoradio."
+    ],
+    "problemes": [
+      {
+        "titre": "Chaîne de distribution des essence",
+        "detail": "Sur 1.0 et 1.2 de Corsa C et D, une chaîne détendue produit un cliquetis au démarrage et peut décaler le calage moteur (fiches-auto.fr). Symptômes : bruit à froid, voyant moteur, perte de puissance. Remplacement avec tendeur et guides."
+      },
+      {
+        "titre": "Injection du 1.3 CDTI",
+        "detail": "Panne la plus signalée sur fiches-auto.fr pour la Corsa D : injecteurs usés ou encrassés avant 100 000 km, avec claquements, perte de puissance et démarrages difficiles. Vanne EGR et turbo aussi cités."
+      },
+      {
+        "titre": "Boîte de vitesses et embrayage",
+        "detail": "Boîte mécanique aux roulements bruyants, rapports qui accrochent ou vitesse qui saute, surtout sur 1.3 CDTI 90 (fiches-auto.fr). Caradisiac signale des passages durs moteur chaud, surtout en diesel. Embrayage cité 25 fois sur 397 témoignages."
+      },
+      {
+        "titre": "Direction assistée",
+        "detail": "Direction électrique jugée floue par Caradisiac, et perte d'assistance ou bruits signalés sur fiches-auto.fr (moteur d'assistance, capteur de couple, cardan de colonne). Caradisiac cite des campagnes constructeur de 2007-2010 sur l'arbre de direction ; RappelConso recense un rappel colonne de direction sur Corsa (fiche 48975)."
+      },
+      {
+        "titre": "Chauffage et dégivrage",
+        "detail": "Sur Corsa D, une pièce plastique du bloc de chauffage peut casser et priver l'habitacle d'air chaud, avec dépose complète de la planche de bord (pièce renforcée début 2008) ; dégivrage arrière défaillant aussi signalé (Caradisiac)."
+      },
+      {
+        "titre": "Électronique",
+        "detail": "Voyants ABS, ESP, airbag, défauts moteur, compteur, autoradio et module de carrosserie capricieux signalés sur fiches-auto.fr (33 cas sur 397). Un diagnostic est utile avant la vente."
+      },
+      {
+        "titre": "Freins et train arrière",
+        "detail": "Sifflements de freins sans solution connue (Caradisiac), frein à main, câbles, tambours ou étriers arrière qui grippent (fiches-auto.fr). Caradisiac cite des campagnes constructeur de 2007-2010 sur la suspension et les freins de Corsa D."
+      }
+    ],
+    "controles": [
+      "Démarrage à froid : cliquetis de chaîne sur les essence, claquements d'injecteurs sur CDTI.",
+      "Niveau et consommation d'huile sur 1.0 et 1.2 essence.",
+      "Boîte : bruits de roulements, rapports qui accrochent, embrayage qui patine.",
+      "Direction : assistance présente, bruits, flou excessif.",
+      "Chauffage : présence d'air chaud et dégivrage arrière.",
+      "Voyants au tableau de bord : ABS, ESP, airbag, moteur.",
+      "Freins arrière et frein à main, bruits.",
+      "État de la carrosserie : bas de caisse, coques de rétroviseurs, chocs."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celles de chaîne, d'injecteurs ou de boîte.",
+      "Retrouvez les deux clés.",
+      "Sur 1.7 CDTI, notez la date de la dernière courroie de distribution.",
+      "Notez les voyants qui s'allument et depuis quand, même par intermittence.",
+      "Faites rouler la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Une Corsa C de 2004 ou une Corsa D de 2009 a passé les quinze ans, c'est vrai. Mais l'âge ne dit pas tout. Une Corsa peu roulée, entretenue à temps, sans cliquetis de chaîne ni voyant allumé, reste une citadine saine et recherchée. Ce qui la valorise : un carnet suivi, deux clés, un moteur qui tourne rond à froid, une boîte franche, une carrosserie propre. Un faible kilométrage pèse beaucoup sur ces modèles. À l'inverse, un 1.3 CDTI aux injecteurs bruyants ou un 1.2 qui consomme de l'huile fait baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année.",
+    "valeurPlus": [
+      "Kilométrage faible et cohérent avec le carnet.",
+      "Moteur essence 1.4 ou 1.3 CDTI 90 sans bruit anormal.",
+      "Chaîne de distribution ou injecteurs remplacés avec facture.",
+      "Deux clés et carnet d'entretien complet.",
+      "5 portes, carrosserie et intérieur soignés, climatisation fonctionnelle."
+    ],
+    "valeurMoins": [
+      "Cliquetis de chaîne ou consommation d'huile marquée.",
+      "Injecteurs bruyants ou voyant moteur allumé sur CDTI.",
+      "Boîte bruyante, vitesses qui accrochent, embrayage fatigué.",
+      "Direction sans assistance ou voyants ABS/ESP/airbag allumés.",
+      "Corrosion, chocs ou intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Ma Corsa D de 2008 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Une Corsa D de 2008 peu roulée, avec un carnet suivi et un moteur qui tourne rond, intéresse toujours. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Ma Corsa a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Les essence 1.0, 1.2 et 1.4 des Corsa C et D et le 1.3 CDTI ont une chaîne, sans remplacement périodique mais à faire vérifier en cas de cliquetis. Le 1.7 CDTI a une courroie, comme le 1.0 turbo de Corsa E et le 1.2 PureTech de Corsa F. Vérifiez votre carnet. Une facture de chaîne ou de courroie soutient l'offre."
+      },
+      {
+        "question": "Ma Corsa a un cliquetis au démarrage, l'étudiez-vous ?",
+        "answer": "Oui. Sur les petits essence Opel, ce bruit vient souvent d'une chaîne de distribution détendue, un défaut connu. Il reste à diagnostiquer et compte dans l'offre, mais il n'empêche pas la vente. Signalez-le dès la demande d'estimation : une information claire permet une fourchette juste et un rendez-vous sans mauvaise surprise."
+      },
+      {
+        "question": "Le voyant moteur de ma Corsa CDTI est allumé, puis-je la vendre ?",
+        "answer": "Oui. Sur 1.3 CDTI, ce voyant vient souvent de l'injection ou de la vanne EGR. Il compte dans l'offre car la réparation peut être coûteuse. Au rendez-vous, le technicien écoute le moteur à froid et fait un court essai avant de fixer le prix définitif."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma Corsa à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour une Corsa ancienne dont le contrôle est expiré ou dont les réparations demandées ne valent pas la dépense. Le technicien évalue lui-même la voiture à votre adresse, puis, si la vente est conclue, nous payons par virement instantané. L'étude ne vaut pas promesse de rachat."
+      },
+      {
+        "question": "Reprenez-vous aussi la Corsa E, la Corsa F et la Corsa-e ?",
+        "answer": "Oui. Les Corsa E (2014-2019) et Corsa F (depuis 2019), en essence, diesel ou électrique, sont étudiées selon le même principe : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, prix définitif après contrôle, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Opel Corsa D",
+        "url": "https://fr.wikipedia.org/wiki/Opel_Corsa_D"
+      },
+      {
+        "label": "Caradisiac : fiabilité Opel Corsa D, que vaut le modèle en occasion",
+        "url": "https://www.caradisiac.com/Opel-Corsa-40390.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Opel Corsa 4 (2006-2014)",
+        "url": "https://www.fiches-auto.fr/fiabilite-opel/fiabilite-126-pannes-opel-corsa-4.php"
+      },
+      {
+        "label": "RappelConso : rappel colonne de direction Opel Corsa",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48975/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-nissan-qashqai",
+    "brand": "Nissan",
+    "brandSlug": "reprise-nissan",
+    "model": "Qashqai",
+    "nav": "Nissan Qashqai",
+    "title": "Vendre son Nissan Qashqai : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Nissan Qashqai 1 ou 2, dCi ou DIG-T, même à fort kilométrage : estimation gratuite, vérification chez vous, virement instantané à la vente.",
+    "h1": "Vendre son Nissan Qashqai <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'un Qashqai de première génération (2007-2013), y compris Qashqai+2, ou d'un Qashqai II (2014-2021), souvent à fort kilométrage, et aussi à ceux d'un Qashqai III plus récent. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2007-2021 pour les Qashqai I et II (Qashqai I/J10 : 2007-2013, restylé en 2010 ; Qashqai II/J11 : 2014-2021, restylé en 2017) ; le Qashqai III est produit depuis 2021",
+    "generations": [
+      {
+        "nom": "Qashqai I phase 1",
+        "annees": "2007-2010",
+        "notes": "Lancé début 2007, fabriqué à Sunderland. Crossover compact 5 places, 5 étoiles Euro NCAP en 2007, traction ou 4x4. Qashqai+2 allongé à 7 places à partir de 2008. Moteurs 1.6 115 et 2.0 140 essence, 1.5 dCi 106 et 2.0 dCi 150 diesel, boîte CVT sur le 2.0."
+      },
+      {
+        "nom": "Qashqai I phase 2",
+        "annees": "2010-2013",
+        "notes": "Restylage en 2010 (face avant, feux, planche de bord). 1.5 dCi 110 puis 1.6 dCi 130 à partir de 2011. Environ 2,5 millions d'exemplaires sur la génération."
+      },
+      {
+        "nom": "Qashqai II phase 1",
+        "annees": "2014-2017",
+        "notes": "Nouvelle génération début 2014, plus grande et mieux finie. Moteurs essence turbo 1.2 DIG-T 115 et 1.6 DIG-T 163, diesels 1.5 dCi 110 et 1.6 dCi 130 (seul disponible en 4x4), boîte Xtronic à variation continue."
+      },
+      {
+        "nom": "Qashqai II phase 2",
+        "annees": "2017-2021",
+        "notes": "Restylage en 2017 (face avant, feux, volant, équipements). À partir de 2018-2019 : 1.3 DIG-T 140/160 avec boîte DCT, 1.5 dCi 115 et 1.7 dCi 150."
+      },
+      {
+        "nom": "Qashqai III",
+        "annees": "depuis 2021",
+        "notes": "Génération actuelle, 1.3 DIG-T micro-hybride et e-Power, 5 étoiles Euro NCAP en 2021, phase 2 en 2024. Plus récente, nous l'étudions aussi."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.6 115 et 2.0 140 (HR16DE, MR20DE) sur Qashqai I",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Pas de courroie ; vidanges régulières et niveau d'huile à surveiller sur le 2.0.",
+        "points": "Moteurs atmosphériques simples. Sur fiches-auto.fr : embrayage et volant moteur fragiles sur le 1.6, boîte CVT, consommation d'huile et sonde lambda signalées sur le 2.0."
+      },
+      {
+        "nom": "1.2 DIG-T 115 (HRA2DDT) sur Qashqai II",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Niveau d'huile à vérifier très régulièrement, vidanges rapprochées, huile conforme.",
+        "points": "Même base que le 1.2 TCe Renault. Consommation d'huile élevée pouvant fragiliser distribution, turbo, coussinets et segments, signalée sur fiches-auto.fr ; Caradisiac cite de rares casses moteur et des bruits de chaîne."
+      },
+      {
+        "nom": "1.6 DIG-T 163 et 1.3 DIG-T 140/160 (MR16DDT, HR13DDT)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Vidanges régulières, huile conforme.",
+        "points": "Le 1.6 DIG-T 163 est conseillé par Caradisiac pour son dynamisme et sa fiabilité meilleure que le 1.2 ; sonde lambda, catalyseur et chaîne signalés sur fiches-auto.fr. Le 1.3 DIG-T, plus récent, a moins de recul."
+      },
+      {
+        "nom": "1.5 dCi 106, 110 et 115 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Courroie à remplacer selon le carnet (Caradisiac rappelle qu'elle est périodique sur ce moteur). Vidanges régulières indispensables.",
+        "points": "Le plus diffusé. Sur Qashqai I, fiches-auto.fr signale une faiblesse des coussinets de bielle menant à la casse, un volant moteur bimasse fragile, puis injecteurs, FAP et turbo sur le 110. Sur Qashqai II : FAP sensible, embrayage et volant moteur, turbo avant 80 000 km et durites d'air (Caradisiac)."
+      },
+      {
+        "nom": "1.6 dCi 130 et 1.7 dCi 150 (R9M, R9N)",
+        "carburant": "Diesel",
+        "distribution": "Chaîne",
+        "entretien": "Pas de courroie, mais vidanges régulières et FAP à régénérer sur route.",
+        "points": "Conseillé par Caradisiac sur Qashqai II (seul 4x4). Signalés sur fiches-auto.fr : turbo précoce, FAP, joint de culasse, boîte, batterie faible. Le 1.7 dCi, plus récent, a moins de recul."
+      },
+      {
+        "nom": "2.0 dCi 150 (M9R) sur Qashqai I",
+        "carburant": "Diesel",
+        "distribution": "Chaîne",
+        "entretien": "Vidanges régulières, FAP à régénérer sur route.",
+        "points": "Coupleux, souvent en 4x4. Sur fiches-auto.fr, les soucis de FAP sont nombreux et un défaut de pompe à huile a cassé de nombreux moteurs ; L'argus a aussi documenté des problèmes techniques sur cette version."
+      },
+      {
+        "nom": "Boîtes Xtronic (CVT) et DCT",
+        "carburant": "Essence ou diesel",
+        "distribution": "Sans objet",
+        "entretien": "Vidange de boîte selon le carnet, reprogrammation faite ou non à vérifier.",
+        "points": "La Xtronic est signalée par Caradisiac et fiches-auto.fr pour broutements, à-coups, perte de puissance et oscillations du compte-tours ; Caradisiac cite une campagne de reprogrammation en juin 2015. La M-CVT du Qashqai I est aussi citée."
+      }
+    ],
+    "avantages": [
+      "Crossover familial très demandé en occasion, position de conduite haute et coffre pratique.",
+      "Qashqai+2 et Grand volume recherchés par les familles.",
+      "Moteurs essence et 1.6/2.0 dCi à chaîne, sans courroie à remplacer.",
+      "1.6 DIG-T 163 et 1.6 dCi 130 jugés les plus sûrs par la presse.",
+      "5 étoiles Euro NCAP sur chaque génération.",
+      "Réseau et pièces courants, modèle fabriqué en Europe."
+    ],
+    "inconvenients": [
+      "Coussinets de bielle et pompe à huile des dCi de première génération.",
+      "Consommation d'huile du 1.2 DIG-T.",
+      "Boîte Xtronic capricieuse.",
+      "Électronique et multimédia instables : GPS, autoradio, capteurs de stationnement sous la pluie.",
+      "Étriers de frein qui grippent, bruits parasites dans l'habitacle, batterie 12 V juste."
+    ],
+    "problemes": [
+      {
+        "titre": "Coussinets de bielle et pompe à huile des dCi (Qashqai I)",
+        "detail": "Signalés sur fiches-auto.fr : faiblesse des coussinets de bielle sur 1.5 dCi 106 menant à la casse, clapet de surpression de pompe à huile problématique sur le 110, et pompe à huile qui se bloque sur 2.0 dCi 150. Un bruit de bas moteur ou une pression d'huile douteuse doivent alerter."
+      },
+      {
+        "titre": "Consommation d'huile du 1.2 DIG-T",
+        "detail": "Signalée sur fiches-auto.fr (61 témoignages) comme pouvant fragiliser distribution, turbo, coussinets et segments ; Caradisiac cite de rares casses. Vérifiez le niveau et les factures d'huile avant le rendez-vous."
+      },
+      {
+        "titre": "Boîte Xtronic",
+        "detail": "Broutements, à-coups, perte de puissance, mises en sécurité et oscillations du compte-tours signalés par Caradisiac et fiches-auto.fr. Caradisiac cite une campagne de reprogrammation en juin 2015, avec amélioration mais pas toujours disparition du défaut."
+      },
+      {
+        "titre": "Turbo, FAP et durites des diesels",
+        "detail": "Sur Qashqai II, Caradisiac signale des turbos à remplacer avant 80 000 km et des ruptures récurrentes de durites d'air d'admission sur 1.5 et 1.6 dCi ; FAP sensible en usage urbain, joint de culasse cité sur 1.6 dCi (fiches-auto.fr)."
+      },
+      {
+        "titre": "Électronique et multimédia",
+        "detail": "Autoradio qui s'arrête, GPS figé, écran noir, tactile muet, capteurs de stationnement qui se déclenchent sous la pluie, Stop & Start et batterie 12 V qui se décharge : signalés par Caradisiac et fiches-auto.fr. Caradisiac cite une reprogrammation moteur en juillet 2016 (sonde à oxygène)."
+      },
+      {
+        "titre": "Freins",
+        "detail": "Étriers qui grippent et claquements à l'arrière, usure prématurée, signalés sur fiches-auto.fr. Amortisseurs arrière fatigués tôt et géométrie qui tire à droite cités sur Qashqai I."
+      },
+      {
+        "titre": "Rappels",
+        "detail": "RappelConso recense des rappels récents sur Qashqai pour une conduite de carburant pouvant bouger dans son clip (fiche 47678, 2025) et pour un logiciel de batterie lithium-ion (2026). Pour les Qashqai I et II, les campagnes citées par Caradisiac et fiches-auto.fr concernent la Xtronic, la gestion moteur, le ventilateur de radiateur et la sécurité enfant."
+      }
+    ],
+    "controles": [
+      "Sur 1.5 dCi : date de la dernière courroie de distribution, facture à l'appui.",
+      "Bruit de bas moteur à froid et pression d'huile sur les dCi de première génération.",
+      "Sur 1.2 DIG-T : niveau d'huile et consommation entre deux vidanges.",
+      "Boîte Xtronic ou DCT : broutements, à-coups, montées en régime à l'essai.",
+      "Voyants moteur, FAP, batterie ; comportement du Stop & Start.",
+      "Fonctionnement du GPS, de l'autoradio et des capteurs de stationnement.",
+      "Freins : étriers grippés, bruits, usure.",
+      "État de la carrosserie, des jantes et de l'intérieur."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celles de courroie, de turbo ou de boîte.",
+      "Retrouvez les deux clés ou cartes mains libres.",
+      "Sur Xtronic, conservez la preuve de reprogrammation si elle a été faite.",
+      "Sur 1.2 DIG-T, notez votre consommation d'huile réelle.",
+      "Faites rouler la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Un Qashqai de 2009 ou de 2015 affiche souvent un kilométrage élevé, c'est fréquent sur ce modèle familial. L'âge ne dit pas tout. Un Qashqai au carnet suivi, à la courroie faite sur dCi, sans bruit moteur ni voyant, avec une boîte qui passe sans à-coups, reste très recherché. À l'inverse, un dCi à l'historique flou, un 1.2 DIG-T sans suivi d'huile ou une Xtronic qui broute font baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année.",
+    "valeurPlus": [
+      "Courroie remplacée récemment sur 1.5 dCi, facture à l'appui.",
+      "Carnet complet et vidanges régulières, surtout sur dCi et 1.2 DIG-T.",
+      "1.6 DIG-T 163, 1.6 dCi 130 ou 4x4 en bon état.",
+      "Boîte manuelle franche ou Xtronic sans à-coups, reprogrammation faite.",
+      "Deux clés, finition Tekna ou N-Connecta, carrosserie et intérieur soignés."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance sur 1.5 dCi ou historique de vidanges incomplet.",
+      "Bruit de bas moteur, consommation d'huile marquée, voyant moteur.",
+      "Xtronic qui broute ou se met en sécurité.",
+      "Turbo sifflant, FAP colmaté, voyants allumés.",
+      "Chocs, corrosion, intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Mon Qashqai 1.5 dCi de 2010 a plus de 200 000 km, a-t-il encore une valeur ?",
+        "answer": "Oui, si la mécanique suit. Un Qashqai dCi à fort kilométrage, avec un carnet tenu et une courroie faite, intéresse toujours. Nous l'estimons sur son état réel, son historique et ses factures, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Mon Qashqai a-t-il une courroie ou une chaîne de distribution ?",
+        "answer": "Seul le 1.5 dCi a une courroie, à remplacer selon le carnet. Les essence (1.6, 2.0, 1.2 DIG-T, 1.6 DIG-T, 1.3 DIG-T) et les 1.6, 1.7 et 2.0 dCi ont une chaîne, sans remplacement périodique mais à faire vérifier en cas de bruit. Vérifiez votre carnet. Une facture récente de courroie soutient nettement la valeur d'un 1.5 dCi."
+      },
+      {
+        "question": "Ma boîte Xtronic broute, l'étudiez-vous quand même ?",
+        "answer": "Oui. C'est un défaut connu et documenté du Qashqai II. Il reste à diagnostiquer et compte dans l'offre, mais il n'empêche pas la vente. Signalez-le dès la demande d'estimation et précisez si la reprogrammation constructeur a été faite : au rendez-vous, le technicien fait un court essai avant de fixer le prix définitif."
+      },
+      {
+        "question": "Mon 1.2 DIG-T consomme de l'huile, puis-je le vendre ?",
+        "answer": "Oui. La consommation d'huile de ce moteur est signalée par la presse, nous la connaissons. Elle compte dans l'offre selon son ampleur et le suivi du niveau. Apportez les factures d'huile et de vidange : un moteur suivi rassure et soutient la fourchette."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre mon Qashqai à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. Le technicien évalue lui-même la voiture à votre adresse, puis, si la vente est conclue, nous payons par virement instantané. L'étude n'engage pas à vendre et ne vaut pas promesse de rachat de notre part."
+      },
+      {
+        "question": "Reprenez-vous aussi le Qashqai+2 et le Qashqai III ?",
+        "answer": "Oui. Le Qashqai+2 à 7 places et le Qashqai III (depuis 2021), en micro-hybride ou e-Power, sont étudiés selon le même principe : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, prix définitif après contrôle, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Nissan Qashqai",
+        "url": "https://fr.wikipedia.org/wiki/Nissan_Qashqai"
+      },
+      {
+        "label": "Caradisiac : fiabilité du Nissan Qashqai 2, maxi-fiche occasion",
+        "url": "https://www.caradisiac.com/fiabilite-du-nissan-qashqai-2-la-maxi-fiche-occasion-de-caradisiac-165021.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Nissan Qashqai (2007-2013)",
+        "url": "https://www.fiches-auto.fr/fiabilite-nissan/fiabilite-275-pannes-nissan-qashqai.php"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Nissan Qashqai 2 (2014-2021)",
+        "url": "https://www.fiches-auto.fr/fiabilite-nissan/fiabilite-457-pannes-nissan-qashqai-2.php"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-toyota-aygo",
+    "brand": "Toyota",
+    "brandSlug": "reprise-toyota",
+    "model": "Aygo",
+    "nav": "Toyota Aygo",
+    "title": "Vendre sa Toyota Aygo : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Toyota Aygo 1 ou 2, même ancienne ou peu roulée : estimation gratuite, sans obligation d'achat, vérification chez vous, virement instantané.",
+    "h1": "Vendre sa Toyota Aygo <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Aygo de première génération (2005-2014) ou d'une Aygo II (2014-2022), souvent peu roulées et gardées longtemps, et aussi à ceux d'une Aygo X plus récente. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2005-2022 pour les Aygo I et II (Aygo I : 2005-2014, restylée en 2009 et 2012 ; Aygo II : 2014-2022, restylée en 2018) ; l'Aygo X est produite depuis 2022",
+    "generations": [
+      {
+        "nom": "Aygo I phase 1",
+        "annees": "2005-2009",
+        "notes": "Lancée en juin 2005, développée avec PSA et jumelle des Citroën C1 et Peugeot 107, fabriquée à Kolín (République tchèque). Berline 3 ou 5 portes. Moteurs 1.0 VVT-i 68 ch essence et 1.4 D 54 ch diesel, boîte manuelle ou robotisée MMT."
+      },
+      {
+        "nom": "Aygo I phases 2 et 3",
+        "annees": "2009-2014",
+        "notes": "Restylage en 2009 (boucliers, intérieur, embrayage renforcé) puis en 2012 (face avant, feux à LED). Le diesel disparaît, le 1.0 VVT-i passe à 68/69 ch. Environ 722 000 exemplaires sur la génération."
+      },
+      {
+        "nom": "Aygo II phase 1",
+        "annees": "2014-2018",
+        "notes": "Nouvelle génération au style en X, toujours produite à Kolín avec C1 et 108. Moteur 1.0 VVT-i 69 ch, boîte manuelle ou robotisée x-shift. Toit en toile x-wave disponible."
+      },
+      {
+        "nom": "Aygo II phase 2",
+        "annees": "2018-2022",
+        "notes": "Restylage en 2018 : feux à LED à signature triangulaire, feux arrière redessinés, 1.0 VVT-i porté à 72 ch, équipements de sécurité enrichis."
+      },
+      {
+        "nom": "Aygo X",
+        "annees": "depuis 2022",
+        "notes": "Remplaçante au format de petit crossover sur plateforme GA-B. Plus récente, nous l'étudions aussi."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.0 VVT-i 68 ch (1KR-FE) sur Aygo I",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Pas de courroie à remplacer. Vidanges régulières et niveau d'huile à surveiller, pompe à eau à vérifier sur les modèles d'avant mi-2009.",
+        "points": "Trois cylindres sobre et simple. Caradisiac signale des fuites de pompe à eau jusqu'à mi-2009 (prise en charge dégressive par le constructeur), une usure prématurée de l'embrayage corrigée au restylage de 2009 et de rares cas de chaîne bruyante ou cassée avant 50 000 km. Consommation d'huile et direction assistée électrique signalées sur fiches-auto.fr."
+      },
+      {
+        "nom": "1.4 D 54 ch (DV4) sur Aygo I",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Intervalle long selon le carnet (Caradisiac cite 240 000 km ou 10 ans) : sur une voiture de 2006-2010, l'échéance en années approche ou est passée.",
+        "points": "Rare, déconseillé par Caradisiac pour l'usage urbain typique de l'Aygo. Injecteurs, vanne EGR et circuit de gazole signalés sur fiches-auto.fr."
+      },
+      {
+        "nom": "1.0 VVT-i 69 puis 72 ch (1KR-FE) sur Aygo II",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Pas de courroie. Vidanges régulières, huile conforme.",
+        "points": "Même base améliorée, sobre et éprouvée. Peu de défauts moteur relevés sur les sources consultées, hormis une insonorisation légère."
+      },
+      {
+        "nom": "Boîtes robotisées MMT (Aygo I) et x-shift (Aygo II)",
+        "carburant": "Essence",
+        "distribution": "Sans objet",
+        "entretien": "Apprentissage d'embrayage à refaire en cas d'à-coups ; kit d'embrayage parfois nécessaire.",
+        "points": "La MMT aggrave l'usure d'embrayage selon fiches-auto.fr. Caradisiac signale des dysfonctionnements et patinages sur la x-shift jusqu'au 14 mars 2017, traités par kit d'embrayage."
+      }
+    ],
+    "avantages": [
+      "Citadine sobre, légère et économique à entretenir.",
+      "Moteur 1.0 à chaîne, sans courroie à remplacer.",
+      "Souvent peu roulée et gardée par un seul propriétaire, profil recherché.",
+      "Pièces communes avec C1 et 107, faciles à trouver.",
+      "Défauts majeurs de l'Aygo I corrigés sur les modèles fabriqués après janvier 2009 (Caradisiac).",
+      "Aygo II bien équipée en sécurité après 2018."
+    ],
+    "inconvenients": [
+      "Embrayage qui s'use vite sur Aygo I, surtout avec la boîte MMT.",
+      "Pompe à eau fuyarde sur les 1.0 d'avant mi-2009.",
+      "Infiltrations d'eau dans le coffre et sous les tapis.",
+      "Direction assistée électrique qui coupe en manœuvre.",
+      "Insonorisation légère, peinture et phares qui vieillissent vite."
+    ],
+    "problemes": [
+      {
+        "titre": "Embrayage",
+        "detail": "Défaut le plus signalé sur fiches-auto.fr (68 cas sur 165 témoignages d'Aygo I) : disque usé parfois avant 20 000 à 40 000 km, phénomène aggravé par la boîte MMT. Caradisiac indique qu'un embrayage renforcé a été adopté au restylage de 2009. Symptômes : patinage en montée, pédale qui vibre."
+      },
+      {
+        "titre": "Pompe à eau du 1.0",
+        "detail": "Fuites signalées par Caradisiac sur les 1.0 fabriqués jusqu'à mi-2009, avec risque de surchauffe ; fiches-auto.fr cite des défaillances entre 30 000 et 70 000 km. Le constructeur prenait en charge de façon dégressive. Une trace de liquide sous la voiture ou un niveau qui baisse doivent alerter."
+      },
+      {
+        "titre": "Chaîne de distribution",
+        "detail": "Caradisiac signale de rares cas de chaîne bruyante ou cassée avant 50 000 km sur Aygo I, avec prise en charge par le constructeur. Un cliquetis à froid doit être diagnostiqué."
+      },
+      {
+        "titre": "Infiltrations d'eau",
+        "detail": "Eau dans le coffre, sous les tapis et par les joints de portes ou le hayon, signalée par Caradisiac et fiches-auto.fr ; humidité dans les feux arrière. Moisissures et corrosion de connecteurs possibles : soulevez les tapis avant le rendez-vous."
+      },
+      {
+        "titre": "Direction assistée électrique",
+        "detail": "Coupures en manœuvre rendant le volant très lourd à basse vitesse, signalées sur fiches-auto.fr (40 cas). Rappel constructeur publié sur RappelConso en 2024 (fiche 48266) pour une borne de batterie auxiliaire pouvant désactiver l'assistance de direction sur Aygo et Aygo X."
+      },
+      {
+        "titre": "Boîtes robotisées",
+        "detail": "MMT sur Aygo I et x-shift sur Aygo II : à-coups, patinage, dysfonctionnements signalés par Caradisiac jusqu'au 14 mars 2017 pour la x-shift, résolus par kit d'embrayage. Un apprentissage mal fait donne des passages brusques."
+      },
+      {
+        "titre": "Carrosserie et habitacle",
+        "detail": "Peinture sensible aux gravillons, phares qui s'opacifient, joints de portière qui se décollent, témoin d'airbag capricieux : signalés par Caradisiac et fiches-auto.fr."
+      }
+    ],
+    "controles": [
+      "Embrayage : patinage en côte, point de prise haut, vibrations.",
+      "Pompe à eau et niveau de liquide de refroidissement sur Aygo I d'avant 2009.",
+      "Cliquetis de chaîne au démarrage à froid.",
+      "Tapis, coffre et feux arrière : traces d'humidité.",
+      "Direction assistée en manœuvre, voyant correspondant.",
+      "Boîte MMT ou x-shift : à-coups et patinage à l'essai.",
+      "Voyants airbag et moteur au tableau de bord.",
+      "État de la peinture, des phares et des joints de portes."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celles d'embrayage ou de pompe à eau.",
+      "Retrouvez les deux clés.",
+      "Sur 1.4 D, notez la date de la dernière courroie de distribution.",
+      "Séchez le coffre et soulevez les tapis s'il y a eu des infiltrations, et dites-le.",
+      "Faites rouler la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Une Aygo de 2007 ou de 2012 a souvent très peu de kilomètres, car elle a servi en ville ou en seconde voiture. C'est un atout. Une Aygo peu roulée, entretenue à temps, à l'embrayage franc et à l'habitacle sec, reste une citadine très demandée. Ce qui la valorise : un carnet suivi, deux clés, un moteur qui tourne rond à froid, une peinture préservée. À l'inverse, un embrayage qui patine, une MMT qui tape ou des infiltrations font baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année.",
+    "valeurPlus": [
+      "Kilométrage faible et cohérent avec le carnet.",
+      "Modèle fabriqué après 2009, ou embrayage et pompe à eau remplacés avec facture.",
+      "5 portes, climatisation, boîte manuelle franche.",
+      "Deux clés et carnet d'entretien complet.",
+      "Habitacle sec, peinture et phares préservés."
+    ],
+    "valeurMoins": [
+      "Embrayage qui patine ou boîte robotisée à à-coups.",
+      "Fuite de pompe à eau ou niveau de refroidissement qui baisse.",
+      "Infiltrations d'eau, moisissures, feux embués.",
+      "Direction assistée qui coupe, voyant airbag allumé.",
+      "Peinture écaillée, chocs, intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Mon Aygo de 2008 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Une Aygo de 2008 peu roulée, avec un carnet suivi et un embrayage sain, intéresse toujours. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Mon Aygo a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Le 1.0 VVT-i, sur Aygo I comme sur Aygo II, a une chaîne, sans remplacement périodique mais à faire vérifier en cas de cliquetis à froid. Seul le 1.4 D diesel de la première génération a une courroie, avec un intervalle très long selon le constructeur. Vérifiez votre carnet."
+      },
+      {
+        "question": "L'embrayage de mon Aygo patine, l'étudiez-vous quand même ?",
+        "answer": "Oui. C'est le défaut le plus signalé sur l'Aygo I, nous le connaissons. Il reste à diagnostiquer et compte dans l'offre, mais il n'empêche pas la vente. Signalez-le dès la demande d'estimation : au rendez-vous, le technicien fait un court essai avant de fixer le prix définitif."
+      },
+      {
+        "question": "Reprenez-vous une Aygo avec boîte MMT ou x-shift ?",
+        "answer": "Oui, toutes les boîtes sont étudiées. Ces boîtes robotisées sont connues pour leurs à-coups et un embrayage sollicité, surtout sur les x-shift d'avant mars 2017. Le technicien vérifie le comportement à l'essai, et ce point entre dans le prix définitif sans empêcher la vente."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre mon Aygo à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour une Aygo ancienne dont le contrôle est expiré. Le technicien évalue lui-même la voiture à votre adresse, puis, si la vente est conclue, nous payons par virement instantané. L'étude ne vaut pas promesse de rachat."
+      },
+      {
+        "question": "Reprenez-vous aussi l'Aygo II et l'Aygo X ?",
+        "answer": "Oui. L'Aygo II (2014-2022) et l'Aygo X (depuis 2022) sont étudiées selon le même principe : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, prix définitif après contrôle, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Toyota Aygo",
+        "url": "https://fr.wikipedia.org/wiki/Toyota_Aygo"
+      },
+      {
+        "label": "Caradisiac : fiabilité de la Toyota Aygo, maxi-fiche occasion",
+        "url": "https://www.caradisiac.com/fiabilite-de-la-toyota-aygo-la-maxi-fiche-occasion-de-caradisiac-175538.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Toyota Aygo (2005-2014)",
+        "url": "https://www.fiches-auto.fr/fiabilite-toyota/fiabilite-238-pannes-toyota-aygo.php"
+      },
+      {
+        "label": "RappelConso : rappel borne de batterie auxiliaire Aygo / Aygo X (octobre 2024)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48266/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-volkswagen-tiguan",
+    "brand": "Volkswagen",
+    "brandSlug": "reprise-volkswagen",
+    "model": "Tiguan",
+    "nav": "Volkswagen Tiguan",
+    "title": "Vendre son Volkswagen Tiguan : estimation, rachat | LUNICAR",
+    "description": "Vendez votre Volkswagen Tiguan 1 ou 2, TDI ou TSI, DSG ou manuel, même à fort kilométrage : estimation gratuite, vérification chez vous, virement instantané.",
+    "h1": "Vendre son Volkswagen Tiguan <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'un Tiguan de première génération (2007-2016), souvent à fort kilométrage, ou d'un Tiguan II (2016-2024) y compris Allspace, et aussi à ceux d'un Tiguan III plus récent. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2007-2024 pour les Tiguan I et II (Tiguan I : 2007-2016, restylé en 2011 ; Tiguan II : 2016-2024, Allspace à partir de 2017, restylé en 2020) ; le Tiguan III est produit depuis 2024",
+    "generations": [
+      {
+        "nom": "Tiguan I phase 1",
+        "annees": "2007-2011",
+        "notes": "Lancé à l'automne 2007 sur base Golf V. SUV compact 5 places, traction ou 4Motion (Haldex), finitions Trend & Fun, Sport & Style, Carat et Track & Field. Moteurs 1.4 TSI 150, 2.0 TSI 170/200, 2.0 TDI 140/170. Caradisiac note que ces millésimes ont connu le plus de pannes."
+      },
+      {
+        "nom": "Tiguan I phase 2",
+        "annees": "2011-2016",
+        "notes": "Restylage à l'automne 2011 : calandre, feux à LED, planche de bord. Moteurs 1.4 TSI 122/160, 2.0 TSI 180/210, 2.0 TDI 110/140/177 à rampe commune, boîtes manuelles, DSG6 et DSG7."
+      },
+      {
+        "nom": "Tiguan II",
+        "annees": "2016-2020",
+        "notes": "Nouvelle génération sur plateforme MQB en avril 2016, plus grande. Allspace à 7 places et empattement allongé à partir de 2017. Moteurs 1.4 TSI 125/150, 1.5 TSI 130/150, 2.0 TSI 180/220, 1.6 TDI 115, 2.0 TDI 150/190/240, DSG7."
+      },
+      {
+        "nom": "Tiguan II phase 2",
+        "annees": "2020-2024",
+        "notes": "Restylage fin 2020 : face avant inspirée de la Golf 8, multimédia MIB3, aides à la conduite IQ.Drive, hybride rechargeable eHybrid 245 ch et Tiguan R 320 ch. 1.5 eTSI micro-hybride."
+      },
+      {
+        "nom": "Tiguan III",
+        "annees": "depuis 2024",
+        "notes": "Génération actuelle sur MQB Evo, présentée en septembre 2023, eTSI, TDI et eHybrid ; le rôle de l'Allspace revient au Tayron. Plus récent, nous l'étudions aussi."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.4 TSI 122/150/160 (EA111) sur Tiguan I",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Pas de courroie, mais chaîne et tendeur à faire vérifier au moindre bruit métallique ; niveau d'huile à surveiller.",
+        "points": "Caradisiac signale un allongement prématuré de la chaîne ou une défaillance du tendeur sur 1.4 TSI, avec bruits métalliques et voyant. Sur fiches-auto.fr : chaîne décalée, embrayage et volant moteur vers 80 000 km, consommation d'huile."
+      },
+      {
+        "nom": "2.0 TSI 170 à 210 (EA888) sur Tiguan I",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Vidanges régulières, huile conforme, niveau à surveiller.",
+        "points": "Puissant, souvent en 4Motion et DSG. Consommation d'huile, pompe à eau et fuites d'huile signalées sur fiches-auto.fr."
+      },
+      {
+        "nom": "2.0 TDI 110 à 177 (EA189 puis EA288) sur Tiguan I",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Intervalle de courroie selon le carnet, à remplacer avec galets et pompe à eau. Vidanges régulières, FAP à régénérer sur route.",
+        "points": "Le cœur de la gamme. Signalés par Caradisiac : casse prématurée du volant moteur bimasse sur 140 et 110, EGR et FAP encrassés sur petits trajets, radiateur d'huile fuyard sur le 140, turbo à géométrie variable encrassé. Sur fiches-auto.fr : pompe à eau vers 120 000 km, injection."
+      },
+      {
+        "nom": "1.4 TSI 125/150 et 1.5 TSI 130/150 (EA211) sur Tiguan II",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Courroie à remplacer selon le carnet (Caradisiac évoque une échéance lointaine en kilomètres, mais l'âge compte).",
+        "points": "Caradisiac conseille le 1.5 TSI 150 et signale une pompe à huile défaillante sur 1.4 TSI 150 avec bruit au démarrage."
+      },
+      {
+        "nom": "1.6 TDI 115 et 2.0 TDI 150/190/240 (EA288) sur Tiguan II",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Courroie selon le carnet, vidanges régulières, AdBlue et FAP à surveiller.",
+        "points": "Caradisiac conseille le 2.0 TDI 150 et signale une consommation d'huile excessive sur certains exemplaires. Globalement jugés sérieux."
+      },
+      {
+        "nom": "Boîtes DSG6 et DSG7, transmission 4Motion",
+        "carburant": "Essence ou diesel",
+        "distribution": "Sans objet",
+        "entretien": "Vidange DSG6 et Haldex selon le carnet ; mécatronique DSG7 à diagnostiquer en cas de mode dégradé.",
+        "points": "Caradisiac signale des joints de DSG6 fuyards et une DSG7 qui peut passer en mode dégradé, avec remplacement de la mécatronique ou de la boîte ; claquements vers 60 000 km sur Tiguan II. Sur fiches-auto.fr : à-coups DSG, vibrations et claquements de Haldex avec l'âge."
+      }
+    ],
+    "avantages": [
+      "SUV compact très demandé en occasion, en traction comme en 4Motion.",
+      "Allspace 7 places recherché par les familles.",
+      "2.0 TDI 150 et 1.5 TSI 150 jugés sérieux par la presse sur Tiguan II.",
+      "Finition et confort reconnus, bonne tenue de la demande même à fort kilométrage.",
+      "Fiabilité en nette amélioration sur les millésimes récents d'après les indices ADAC cités par fiches-auto.fr.",
+      "Pièces et réseau largement disponibles."
+    ],
+    "inconvenients": [
+      "Chaîne de distribution du 1.4 TSI de première génération.",
+      "Volant moteur bimasse, EGR et FAP coûteux sur les TDI.",
+      "DSG7 sujette au mode dégradé, DSG6 aux fuites.",
+      "Haldex et cardans à surveiller sur 4Motion.",
+      "Électricité et confort : lève-vitres, serrures, compresseur de climatisation, toit ouvrant."
+    ],
+    "problemes": [
+      {
+        "titre": "Chaîne de distribution du 1.4 TSI",
+        "detail": "Signalé par Caradisiac et fiches-auto.fr sur Tiguan I : chaîne qui s'allonge ou tendeur défaillant, bruits métalliques à froid, voyant, risque de décalage. Un cliquetis au démarrage doit être diagnostiqué avant la vente."
+      },
+      {
+        "titre": "Volant moteur et embrayage des TDI",
+        "detail": "Casse prématurée du volant moteur bimasse sur 2.0 TDI 140 et 110 signalée par Caradisiac, entraînant le remplacement de l'ensemble embrayage. Symptômes : claquements au ralenti, vibrations, patinage."
+      },
+      {
+        "titre": "EGR, FAP et turbo des TDI",
+        "detail": "Encrassement fréquent de la vanne EGR et du filtre à particules sur petits trajets, turbo à géométrie variable encrassé avec perte de puissance, radiateur d'huile fuyard sur le 140 : signalés par Caradisiac et fiches-auto.fr."
+      },
+      {
+        "titre": "Boîtes DSG",
+        "detail": "DSG7 pouvant passer en mode dégradé, nécessitant parfois une mécatronique ou une boîte ; DSG6 aux joints fuyards ; à-coups et départs brusques (Caradisiac, fiches-auto.fr). Vérifiez l'historique des vidanges de boîte."
+      },
+      {
+        "titre": "4Motion",
+        "detail": "Vibrations et claquements liés au vieillissement de l'huile Haldex, à des cardans usés ou à des pneus d'usure différente, signalés sur fiches-auto.fr ; fuites au différentiel citées sur 2.0 TSI."
+      },
+      {
+        "titre": "Électricité et confort",
+        "detail": "Moteurs de lève-vitres, serrures, compresseur de climatisation au-delà de 100 000 km, toit ouvrant qui craque ou fuit, Front Assist aux freinages intempestifs sur Tiguan II : signalés sur fiches-auto.fr et Caradisiac."
+      },
+      {
+        "titre": "Rappels",
+        "detail": "RappelConso recense notamment un rappel de 2021 sur Tiguan pour des vis de ligne de frein mal serrées sur le boîtier de roue avant droite (fiche 48519). Caradisiac compte plus de quinze campagnes sur Tiguan II entre 2017 et 2022 : airbags, toit panoramique, soudure de pédale de frein, ressorts de suspension."
+      }
+    ],
+    "controles": [
+      "Sur TDI et TSI de Tiguan II : date et kilométrage de la dernière courroie de distribution, facture à l'appui.",
+      "Sur 1.4 TSI de Tiguan I : bruit de chaîne au démarrage à froid.",
+      "Volant moteur et embrayage : claquements au ralenti, vibrations, patinage.",
+      "Fumée, perte de puissance, voyants FAP, EGR ou AdBlue.",
+      "DSG : à-coups, mode dégradé, historique de vidange.",
+      "Sur 4Motion : vibrations, claquements, fuites au différentiel.",
+      "Lève-vitres, serrures, climatisation, toit ouvrant.",
+      "État de la carrosserie, des jantes et de l'intérieur."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celles de courroie, de chaîne, de volant moteur ou de DSG.",
+      "Retrouvez les deux clés.",
+      "Notez les vidanges de boîte DSG et d'Haldex si elles ont été faites.",
+      "Conservez les justificatifs des campagnes de rappel passées en concession.",
+      "Faites rouler la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Un Tiguan de 2009 ou de 2013 affiche souvent plus de 150 000 km, c'est courant sur ce SUV familial. L'âge ne dit pas tout. Un Tiguan au carnet suivi, à la courroie ou à la chaîne traitée avec facture, sans claquement de volant moteur ni voyant, avec une DSG qui passe sans à-coups, reste très recherché. À l'inverse, un TDI à l'historique flou ou une DSG7 en mode dégradé font baisser l'offre, car ces réparations sont lourdes. Nous regardons votre voiture telle qu'elle est, pas seulement son année.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment, ou chaîne du 1.4 TSI traitée, facture à l'appui.",
+      "Carnet complet, vidanges moteur et DSG régulières.",
+      "2.0 TDI 150, 1.5 TSI 150 ou phase 2 bien équipée.",
+      "Allspace 7 places ou 4Motion en bon état.",
+      "Deux clés, carrosserie et intérieur soignés."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou bruit de chaîne non traité.",
+      "Volant moteur bruyant, embrayage qui patine.",
+      "DSG en mode dégradé ou à-coups marqués.",
+      "Voyants FAP, EGR, AdBlue ou moteur allumés.",
+      "Chocs, corrosion, intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Mon Tiguan TDI de 2010 a 220 000 km, a-t-il encore une valeur ?",
+        "answer": "Oui, si la mécanique suit. Un Tiguan à fort kilométrage, avec un carnet tenu et une courroie faite, intéresse toujours. Nous l'estimons sur son état réel, son historique et ses factures, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Mon Tiguan a-t-il une courroie ou une chaîne de distribution ?",
+        "answer": "Sur Tiguan I, les essence 1.4 TSI et 2.0 TSI ont une chaîne et les 2.0 TDI une courroie. Sur Tiguan II, les 1.4 TSI, 1.5 TSI, 1.6 TDI et 2.0 TDI ont une courroie, le 2.0 TSI une chaîne. Vérifiez votre carnet. Une facture récente de courroie, ou de chaîne sur 1.4 TSI, soutient nettement l'offre."
+      },
+      {
+        "question": "Ma DSG passe en mode dégradé, l'étudiez-vous quand même ?",
+        "answer": "Oui. C'est un défaut connu de la DSG7, documenté par la presse. Il reste à diagnostiquer et compte dans l'offre, mais il n'empêche pas la vente. Signalez-le dès la demande d'estimation : au rendez-vous, le technicien fait un court essai avant de fixer le prix définitif."
+      },
+      {
+        "question": "Mon Tiguan 4Motion vibre en virage serré, puis-je le vendre ?",
+        "answer": "Oui. Sur 4Motion, ce symptôme vient souvent de l'huile Haldex vieillie, de cardans usés ou de pneus d'usure différente. Il reste à diagnostiquer et compte dans l'offre. Signalez-le à la demande d'estimation pour une fourchette juste et un rendez-vous sans mauvaise surprise."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre mon Tiguan à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. Le technicien évalue lui-même la voiture à votre adresse, puis, si la vente est conclue, nous payons par virement instantané. L'étude n'engage pas à vendre et ne vaut pas promesse de rachat de notre part."
+      },
+      {
+        "question": "Reprenez-vous aussi le Tiguan Allspace, l'eHybrid et le Tiguan III ?",
+        "answer": "Oui. L'Allspace 7 places, l'eHybrid rechargeable et le Tiguan III (depuis 2024) sont étudiés selon le même principe : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, prix définitif après contrôle, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Volkswagen Tiguan",
+        "url": "https://fr.wikipedia.org/wiki/Volkswagen_Tiguan"
+      },
+      {
+        "label": "Caradisiac : un Volkswagen Tiguan en occasion, meilleures versions par budget et fiabilité",
+        "url": "https://www.caradisiac.com/un-volkswagen-tiguan-en-occasion-les-meilleures-versions-par-budget-et-la-fiabilite-215001.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Volkswagen Tiguan (2007-2015)",
+        "url": "https://www.fiches-auto.fr/fiabilite-volkswagen/fiabilite-290-pannes-volkswagen-tiguan.php"
+      },
+      {
+        "label": "RappelConso : rappel vis de ligne de frein Tiguan (décembre 2021)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48519/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-ford-focus",
+    "brand": "Ford",
+    "brandSlug": "reprise-ford",
+    "model": "Focus",
+    "nav": "Ford Focus",
+    "title": "Vendre sa Ford Focus : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Ford Focus 1, 2 ou 3, TDCi ou essence, berline ou SW : estimation gratuite, vérification chez vous, virement instantané à la vente.",
+    "h1": "Vendre sa Ford Focus <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Focus de première génération (1998-2005), d'une Focus II (2004-2011) ou d'une Focus III (2011-2018), en 5 portes comme en SW, souvent à fort kilométrage, et aussi à ceux d'une Focus IV plus récente. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "1998-2018 pour les Focus I à III (Focus I : 1998-2005, Focus II : 2004-2011, restylée en 2008 ; Focus III : 2011-2018, restylée en 2014) ; la Focus IV est produite de 2018 à 2025",
+    "generations": [
+      {
+        "nom": "Focus I",
+        "annees": "1998-2005",
+        "notes": "Présentée au Mondial de Paris 1998, voiture européenne de l'année 1999. 3 et 5 portes, berline 4 portes et break Clipper. Moteurs essence 1.4, 1.6, 1.8 et 2.0 Zetec, diesels 1.8 TDdi puis 1.8 TDCi. Restylage en 2001."
+      },
+      {
+        "nom": "Focus II phase 1",
+        "annees": "2004-2008",
+        "notes": "Nouvelle génération fin 2004 sur base commune avec la Volvo S40 et la Mazda 3. 3 et 5 portes, berline, SW et coupé-cabriolet. Moteurs 1.4 80, 1.6 100/115, 1.8 125, 2.0 145, diesels 1.6 TDCi 90/109, 1.8 TDCi 115, 2.0 TDCi 136, ST 2.5 turbo 225."
+      },
+      {
+        "nom": "Focus II phase 2",
+        "annees": "2008-2011",
+        "notes": "Restylage début 2008 (face avant, feux, planche de bord). 1.8 Flexifuel E85, RS 2.5 turbo 305 ch en 2009."
+      },
+      {
+        "nom": "Focus III phase 1",
+        "annees": "2011-2014",
+        "notes": "Génération mondiale (One Ford), fabriquée à Sarrelouis pour l'Europe. 5 portes, SW et berline. Moteurs 1.6 Ti-VCT 85/105/125, 1.0 EcoBoost 100/125, 1.6 EcoBoost 150/182, diesels 1.6 TDCi 95/105/115 et 2.0 TDCi 115/140/163, boîte Powershift."
+      },
+      {
+        "nom": "Focus III phase 2",
+        "annees": "2014-2018",
+        "notes": "Restylage en 2014 : face avant, planche de bord, SYNC 2. Arrivée des 1.5 EcoBoost 150/182 et 1.5 TDCi 95/120, 2.0 TDCi 150. RS 350 ch à transmission intégrale en 2015."
+      },
+      {
+        "nom": "Focus IV",
+        "annees": "2018-2025",
+        "notes": "Dernière génération, 1.0 et 1.5 EcoBoost, micro-hybride, 1.5 et 2.0 EcoBlue. Plus récente, nous l'étudions aussi."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.4 80 et 1.6 100/115 Ti-VCT (Duratec 16V)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Intervalle de courroie selon le carnet, à remplacer avec galets et pompe à eau.",
+        "points": "Moteurs simples et courants sur Focus II et III. Sur fiches-auto.fr : allumage, boîtier papillon encrassé et déphaseur d'arbre à cames sur le 1.6 115 ; Caradisiac signale des à-coups corrigés par reprogrammation sur Focus II. Sur Focus III, embrayage hydraulique fragile sur le 1.6 115."
+      },
+      {
+        "nom": "1.8 125 et 2.0 145 (Duratec HE)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Pas de courroie, vidanges régulières.",
+        "points": "Plus agréables sur route. Consommation d'huile et boîtier papillon encrassé sur le 1.8 Flexifuel, alternateur et boîte automatique sur le 2.0 signalés sur fiches-auto.fr. Caradisiac conseille le 2.0 145 en essence sur Focus II."
+      },
+      {
+        "nom": "1.0 EcoBoost 100/125",
+        "carburant": "Essence",
+        "distribution": "Courroie dans l'huile",
+        "entretien": "Courroie à remplacer selon le carnet avec huile strictement conforme ; circuit de refroidissement à surveiller.",
+        "points": "Trois cylindres turbo apprécié, mais Caradisiac signale des fuites de durites ou de vase d'expansion vidant le circuit avec risque de surchauffe, et un risque de craquelure de la courroie sur 2011-2013. fiches-auto.fr cite des rappels sur ce défaut de refroidissement."
+      },
+      {
+        "nom": "1.5 et 1.6 EcoBoost 150/182",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Intervalle de courroie selon le carnet, vidanges régulières.",
+        "points": "Caradisiac conseille le 1.6 EcoBoost 150 Titanium comme essence la plus sûre de la Focus III. Peu de défauts récurrents relevés sur les sources consultées."
+      },
+      {
+        "nom": "1.6 TDCi 90 à 115 (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Intervalle selon le carnet, vidanges régulières indispensables, FAP à régénérer sur route.",
+        "points": "Très diffusé. Sur Focus II : durite d'air de turbo fendue avec sifflement et perte de puissance, EGR encrassée, joints d'injecteurs (Caradisiac, fiches-auto.fr). Sur Focus III : embrayage hydraulique, fonctionnement irrégulier entre 1 200 et 2 000 tr/min, injecteurs, volant moteur."
+      },
+      {
+        "nom": "1.8 TDCi 115 (Lynx)",
+        "carburant": "Diesel",
+        "distribution": "Courroie et chaîne (courroie d'arbre à cames, chaîne de pompe d'injection)",
+        "entretien": "Intervalle de courroie selon le carnet : facture utile.",
+        "points": "Le plus représenté sur Focus II dans les témoignages de fiches-auto.fr : volant moteur fragile, alternateur, turbo encrassé, durites de turbo fendues de façon récurrente."
+      },
+      {
+        "nom": "2.0 TDCi 110 à 163 (DW10) et 1.5 TDCi 95/120",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Intervalle selon le carnet, vidanges régulières, FAP à régénérer sur route.",
+        "points": "Caradisiac conseille le 2.0 TDCi 136 sur Focus II et le 2.0 TDCi 140 sur Focus III, jugés plus sûrs que les petits diesels. EGR, volant moteur et turbo signalés sur fiches-auto.fr ; régulation de turbo et refroidissement cités sur Focus III. Rappel constructeur publié sur RappelConso en 2026 pour un FAP fissuré sur les EcoBlue (fiche 49917), moteurs de la Focus IV."
+      },
+      {
+        "nom": "Boîte Powershift",
+        "carburant": "Essence ou diesel",
+        "distribution": "Sans objet",
+        "entretien": "Vidange selon le carnet, à-coups à diagnostiquer.",
+        "points": "Boîte à double embrayage de la Focus III. Un fonctionnement irrégulier compte dans l'offre. Rappel constructeur de 2019 publié sur RappelConso pour une plaque de pression d'embrayage pouvant casser (fiche 49130, code 18S39)."
+      }
+    ],
+    "avantages": [
+      "Compacte très diffusée, pièces courantes et entretien connu de tous les garages.",
+      "Comportement routier et confort reconnus sur chaque génération.",
+      "Version SW spacieuse, recherchée en occasion.",
+      "2.0 TDCi et 1.6 EcoBoost 150 jugés les plus sûrs par la presse.",
+      "Essence 1.8 et 2.0 à chaîne, sans courroie à remplacer.",
+      "Fiabilité en amélioration sur les derniers millésimes d'après les indices ADAC cités par fiches-auto.fr."
+    ],
+    "inconvenients": [
+      "Embrayage hydraulique de la Focus III : pédale qui reste au plancher.",
+      "Refroidissement et courroie immergée du 1.0 EcoBoost.",
+      "Alternateur, volant moteur et EGR coûteux sur les diesels de Focus II.",
+      "Infiltrations d'eau par le hayon, le pare-brise ou les joints.",
+      "Roulements et train avant bruyants avec le kilométrage."
+    ],
+    "problemes": [
+      {
+        "titre": "Embrayage de la Focus III",
+        "detail": "Caradisiac le décrit comme le défaut majeur de la Focus III, sur 1.6 115 essence et diesels hors 2.0 TDCi : la pédale reste enfoncée au plancher, parfois dès 20 000 km, avec remplacement de l'émetteur et du récepteur. fiches-auto.fr compte 63 cas sur 443 témoignages."
+      },
+      {
+        "titre": "Refroidissement et courroie du 1.0 EcoBoost",
+        "detail": "Durites poreuses ou vase d'expansion fuyard pouvant vider le circuit et provoquer une surchauffe, signalés par Caradisiac et fiches-auto.fr avec plusieurs rappels constructeur ; risque de courroie craquelée sur les 2011-2013 et dégradation de la courroie immergée citée sur fiches-auto.fr."
+      },
+      {
+        "titre": "Alternateur et électricité (Focus II)",
+        "detail": "L'alternateur est l'organe électrique le plus cité sur fiches-auto.fr (80 défaillances sur 410 témoignages) : voyant batterie, ESP perturbé, calculateurs en défaut. Jauge de température fantaisiste, bougies de préchauffage et autoradio également cités."
+      },
+      {
+        "titre": "Volant moteur, EGR et turbo des TDCi",
+        "detail": "Volant moteur bimasse qui prend du jeu (claquements, vibrations au ralenti), EGR chargée de suies avec mode dégradé, durites de turbo fendues sur 1.6 et 1.8 TDCi : signalés par Caradisiac et fiches-auto.fr sur Focus II. Injecteurs et volant moteur cités sur 1.6 TDCi de Focus III."
+      },
+      {
+        "titre": "Infiltrations d'eau",
+        "detail": "Eau au plancher passager, dans le coffre, par le hayon ou le pare-brise sur Focus II ; humidité par le feu arrière droit et joints de portes décollés sur Focus III (Caradisiac, fiches-auto.fr). Soulevez les tapis avant le rendez-vous."
+      },
+      {
+        "titre": "Train avant et roulements",
+        "detail": "Bruits, claquements et craquements du train avant (rotules, barres stabilisatrices) sur Focus II, usure rapide des roulements quelle que soit la motorisation sur Focus III, pertes d'assistance de direction : signalés par Caradisiac."
+      },
+      {
+        "titre": "Rappels de sécurité",
+        "detail": "RappelConso recense sur Focus, entre autres : plaque de pression d'embrayage (2019, fiche 49130), amplificateur de frein (code 20S05, fiche 49008), faisceau moteur pouvant frotter sur la boîte avec calage (fiche 48936), boulon de pédale de frein (18U33) et ancrages de ceintures (19S30). Un carnet tamponné pour ces campagnes rassure."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de courroie de distribution, facture à l'appui.",
+      "Embrayage : pédale qui reste au plancher, patinage, vibrations de volant moteur.",
+      "Sur 1.0 EcoBoost : niveau de liquide de refroidissement, durites, traces de fuite.",
+      "Sur TDCi : sifflement de turbo, fumée, mode dégradé, voyants.",
+      "Voyant batterie et charge de l'alternateur sur Focus II.",
+      "Tapis, coffre et feux arrière : traces d'humidité.",
+      "Bruits de train avant et de roulements pendant un court essai.",
+      "État de la carrosserie : cloques de peinture, pare-brise, chocs."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celles de courroie, d'embrayage ou d'alternateur.",
+      "Retrouvez les deux clés.",
+      "Sur 1.0 EcoBoost, conservez les justificatifs des campagnes de rappel et de la courroie.",
+      "Séchez le coffre et soulevez les tapis s'il y a eu des infiltrations, et dites-le.",
+      "Faites rouler la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Une Focus II de 2007 ou une Focus III de 2012 affiche souvent un gros kilométrage, c'est courant sur cette compacte routière. L'âge ne dit pas tout. Une Focus au carnet suivi, à la courroie remplacée avec facture, sans voyant ni bruit de volant moteur, avec un embrayage franc et un habitacle sec, reste recherchée, surtout en SW. À l'inverse, un TDCi à l'historique flou ou un EcoBoost au refroidissement douteux fait baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment, facture à l'appui.",
+      "Carnet complet et vidanges régulières, surtout sur TDCi et EcoBoost.",
+      "2.0 TDCi, 1.6 EcoBoost 150 ou 2.0 essence en bon état.",
+      "Version SW ou finition Titanium, deux clés.",
+      "Habitacle sec, carrosserie et intérieur soignés."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve de remplacement.",
+      "Embrayage défaillant ou volant moteur bruyant.",
+      "Fuite de refroidissement ou surchauffe sur EcoBoost.",
+      "Voyant batterie, moteur ou FAP allumé.",
+      "Infiltrations, cloques de peinture, chocs, intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Ma Focus II TDCi de 2008 a 230 000 km, a-t-elle encore une valeur ?",
+        "answer": "Oui, si la mécanique suit. Une Focus diesel à fort kilométrage, avec un carnet tenu et une courroie faite, intéresse toujours. Nous l'estimons sur son état réel, son historique et ses factures, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Ma Focus a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Les 1.4 et 1.6 essence, les 1.5/1.6 EcoBoost et tous les TDCi ont une courroie, et le 1.0 EcoBoost une courroie baignant dans l'huile. Les 1.8 et 2.0 essence ont une chaîne. Le 1.8 TDCi combine courroie et chaîne. Vérifiez votre carnet. Une facture récente de courroie soutient nettement l'offre."
+      },
+      {
+        "question": "La pédale d'embrayage de ma Focus III reste au plancher, l'étudiez-vous ?",
+        "answer": "Oui. C'est le défaut le plus signalé sur la Focus III, nous le connaissons. Il reste à diagnostiquer et compte dans l'offre, mais il n'empêche pas la vente. Signalez-le dès la demande d'estimation : au rendez-vous, le technicien fait un court essai avant de fixer le prix définitif."
+      },
+      {
+        "question": "Mon 1.0 EcoBoost a eu une fuite de refroidissement, puis-je le vendre ?",
+        "answer": "Oui. Ce défaut est documenté et a fait l'objet de campagnes constructeur. Apportez les factures de réparation et les justificatifs de rappel : un circuit remis en état et une courroie suivie rassurent et soutiennent la fourchette. Une surchauffe passée sans réparation compte dans l'offre."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma Focus à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour une Focus ancienne dont le contrôle est expiré. Le technicien évalue lui-même la voiture à votre adresse, puis, si la vente est conclue, nous payons par virement instantané. L'étude ne vaut pas promesse de rachat."
+      },
+      {
+        "question": "Reprenez-vous aussi la Focus SW, la Focus IV et les versions ST ?",
+        "answer": "Oui. Les Focus SW, les Focus IV (2018-2025) en EcoBoost ou EcoBlue et les versions ST sont étudiées selon le même principe : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, prix définitif après contrôle, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Ford Focus",
+        "url": "https://fr.wikipedia.org/wiki/Ford_Focus"
+      },
+      {
+        "label": "Caradisiac : maxi-fiche fiabilité de la Ford Focus 3 en occasion",
+        "url": "https://www.caradisiac.com/maxi-fiche-fiabilite-que-vaut-la-ford-focus-3-en-occasion-106907.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Ford Focus 2 (2004-2010)",
+        "url": "https://www.fiches-auto.fr/fiabilite-ford/fiabilite-116-pannes-ford-focus-2.php"
+      },
+      {
+        "label": "RappelConso : rappel plaque de pression d'embrayage Ford Focus (code 18S39)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/49130/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
   }
 ]
