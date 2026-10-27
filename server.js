@@ -19,6 +19,9 @@ const push = require('./lib/push');
 const { origine } = require('./lib/origine');
 const crypto = require('crypto');
 
+// Filet de sécurité : une promesse rejetée sans gestionnaire est journalisée, elle ne doit jamais arrêter le serveur.
+process.on('unhandledRejection', e => console.error('⚠️ Promesse rejetée non gérée :', e && e.stack || e));
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
