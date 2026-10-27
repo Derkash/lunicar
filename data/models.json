@@ -2259,5 +2259,2185 @@
         "url": "https://www.theautopian.com/ford-focus-and-fiesta-powershift-automatic-transmission-explained/"
       }
     ]
+  },
+  {
+    "slug": "reprise-mercedes-classe-a",
+    "brand": "Mercedes",
+    "brandSlug": "reprise-mercedes",
+    "model": "Classe A",
+    "nav": "Mercedes Classe A",
+    "title": "Vendre sa Mercedes Classe A : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Mercedes Classe A W168, W169 ou W176 : estimation gratuite rapide, sans obligation d'achat, un technicien vient chez vous, virement instantané.",
+    "h1": "Vendre sa Mercedes Classe A <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Classe A première génération (W168) ou deuxième génération (W169), parfois d'une W176, qui veulent la vendre sans y passer leurs week-ends. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "1997-2018 pour les Classe A W168, W169 et W176 (W168 : 1997-2004, W169 : 2004-2012, W176 : 2012-2018) ; la W177 est produite depuis 2018",
+    "generations": [
+      {
+        "nom": "Classe A W168 phase 1",
+        "annees": "1997-2001",
+        "notes": "Première Mercedes compacte à traction, avec son plancher sandwich qui rehausse l'habitacle. Rendue célèbre par le test de l'élan d'octobre 1997 : suspensions revues et ESP monté de série dans la foulée. Essence A140 82 ch, A160 102 ch, A190 125 ch ; diesels A160 CDI et A170 CDI. Boîte manuelle 5 ou automatique."
+      },
+      {
+        "nom": "Classe A W168 phase 2 et version longue",
+        "annees": "2001-2004",
+        "notes": "Restylage en 2001 avec l'arrivée de la version longue V168 (17 cm de plus, banquette coulissante) et de l'A210 Evolution 140 ch. Fin de production en 2004, près de 1,1 million d'exemplaires produits à Rastatt."
+      },
+      {
+        "nom": "Classe A W169 phase 1",
+        "annees": "2004-2008",
+        "notes": "Deuxième génération, 23 cm plus longue et environ 150 kg plus lourde. 5 portes (W169) ou 3 portes (C169). Essence A150, A170, A200 et A200 Turbo ; diesels A160 CDI, A180 CDI et A200 CDI. Boîtes manuelles 5 ou 6 rapports et automatique Autotronic à variation continue."
+      },
+      {
+        "nom": "Classe A W169 phase 2",
+        "annees": "2008-2012",
+        "notes": "Restylage en 2008 (boucliers, feux, planche de bord). La 3 portes disparaît en juillet 2010 faute de ventes. Petite série électrique E-Cell (500 exemplaires). Fin de production en 2012, environ 1,05 million d'exemplaires."
+      },
+      {
+        "nom": "Classe A W176",
+        "annees": "2012-2018",
+        "notes": "Abandonne la silhouette de petit monospace pour une compacte classique, 5 étoiles Euro NCAP en 2012. Essence 1.6 et 2.0 turbo (A160 à A250), diesels 1.5 (A160 CDI, A180 CDI) et 1.8/2.1 (A200 CDI, A220 CDI). Boîte manuelle 6 ou automatique 7G-DCT à double embrayage. Restylage en 2015."
+      },
+      {
+        "nom": "Classe A W177",
+        "annees": "2018-",
+        "notes": "Génération récente, nous la reprenons aussi. Écrans MBUX, berline V177 à partir de 2019, restylage en octobre 2022. Essence 1.3 (A160, A180, A200) et 2.0 (A220, A250), diesels 1.5 (A180 d) et 2.0 (A200 d, A220 d), hybride rechargeable A250 e. Boîtes 7G-DCT et 8G-DCT."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "A140, A160, A190 et A210 (M166)",
+        "carburant": "Essence",
+        "distribution": "Chaîne (vérifiez le carnet)",
+        "entretien": "W168. Moteur couché à 59 degrés sous le plancher sandwich, pas d'échéance de courroie de distribution connue : vérifiez le carnet. Vidanges et bougies à jour.",
+        "points": "Essence réputés moins problématiques que le diesel sur cette génération d'après Fiches-Auto. Bougies, embrayage et alternateur à surveiller. L'A160 est la version recommandée par Caradisiac."
+      },
+      {
+        "nom": "A160 CDI et A170 CDI (OM668)",
+        "carburant": "Diesel",
+        "distribution": "Chaîne",
+        "entretien": "W168. 1.7 common rail de 60 à 95 ch. Arbres à cames entraînés par chaîne. Vidanges régulières indispensables, courroie d'accessoires à surveiller.",
+        "points": "Version la plus répandue en occasion. Boîte, injecteurs, turbo et vanne EGR concentrent les pannes signalées par Fiches-Auto ; Caradisiac relève surconsommation d'huile et soucis d'injection sur le 170 CDI."
+      },
+      {
+        "nom": "A150, A170 et A200 (M266)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "W169. 1.5, 1.7 et 2.0 à injection indirecte, de 95 à environ 140 ch. Pas d'échéance de courroie, mais écoutez la chaîne et ses tendeurs à froid.",
+        "points": "Moteurs simples, moins exposés que les CDI. Pompe à carburant signalée sur l'A170. L'A200 Turbo 193 ch est plus rare et plus gourmande."
+      },
+      {
+        "nom": "A160 CDI, A180 CDI et A200 CDI (OM640)",
+        "carburant": "Diesel",
+        "distribution": "Chaîne (vérifiez le carnet)",
+        "entretien": "W169. 2.0 common rail de 82 à 140 ch. Vidanges à l'heure, courroie d'accessoires et galets à surveiller (remplacement coûteux d'après le forum Mercedes).",
+        "points": "L'A180 CDI 109 ch cumule le plus de signalements chez Fiches-Auto : vanne EGR, injecteurs, turbo, alternateur. Embrayage et volant moteur bimasse fatigués vers 100 000 km."
+      },
+      {
+        "nom": "A160, A180, A200 et A250 (M270)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "W176. 1.6 et 2.0 turbo à injection directe, de 102 à 218 ch. Tendeur de chaîne et boîtier de thermostat signalés sur l'A250 par Fiches-Auto.",
+        "points": "Bonne fiabilité d'ensemble selon Caradisiac, avec des pertes de puissance liées au turbo sur certaines essence. Injecteurs signalés sur A180 et A200."
+      },
+      {
+        "nom": "A160 CDI/d et A180 CDI/d (OM607)",
+        "carburant": "Diesel",
+        "distribution": "Courroie (vérifiez le carnet)",
+        "entretien": "W176. 1.5 d'origine Renault, 90 à 109 ch. Intervalle de courroie selon le carnet, à ne pas dépasser.",
+        "points": "Sobre. Injecteurs, vanne EGR encrassée et turbo à surveiller d'après Fiches-Auto, surtout avec des vidanges espacées."
+      },
+      {
+        "nom": "A200 CDI/d et A220 CDI/d (OM651)",
+        "carburant": "Diesel",
+        "distribution": "Chaîne",
+        "entretien": "W176. 1.8 et 2.1 common rail à injecteurs piézo, 136 à 177 ch. Vidanges à l'heure et filtre à particules à régénérer sur route.",
+        "points": "Le plus agréable sur autoroute. Turbo, filtre à particules et volant moteur signalés sur l'A220 CDI par Fiches-Auto."
+      }
+    ],
+    "avantages": [
+      "Image de marque forte, qui soutient la demande même sur une Classe A ancienne.",
+      "Habitacle surélevé et modulable sur W168 et W169, apprécié des conducteurs âgés et des familles.",
+      "Chaîne de distribution sur la plupart des moteurs : pas de grosse échéance de courroie.",
+      "Moteurs essence M166 et M266 simples, moins exposés que les diesels.",
+      "W176 bien notée en fiabilité par Caradisiac et 5 étoiles Euro NCAP.",
+      "Diesels CDI sobres quand les vidanges ont été faites à temps."
+    ],
+    "inconvenients": [
+      "Boîtes automatiques et Autotronic fragiles sur W168 et W169.",
+      "Diesels 170 CDI et 180 CDI exposés à des pannes d'injection, de turbo et d'EGR coûteuses.",
+      "Électronique capricieuse : témoins ESP et SRS, boîtiers à reprogrammer.",
+      "Entretien en réseau cher pour une compacte, pièces au tarif Mercedes.",
+      "Trains roulants et suspensions bruyants avec l'âge sur W168."
+    ],
+    "problemes": [
+      {
+        "titre": "Boîte automatique et Autotronic",
+        "detail": "Sur W168, la boîte est le premier poste de pannes relevé par Fiches-Auto (24 cas, manuelles et automatiques confondues). Sur W169, l'Autotronic à variation continue est signalée pour instabilité hydraulique, patinage et passage en mode dégradé. Symptômes : à-coups, régime qui s'emballe, message au tableau de bord."
+      },
+      {
+        "titre": "Injection et turbo des diesels CDI",
+        "detail": "Sur le 170 CDI de la W168, Caradisiac signale surconsommation d'huile, soucis d'injection et de pompe à carburant. Sur le 180 CDI de la W169, Fiches-Auto relève injecteurs, turbo et alternateur. Symptômes : démarrage difficile, fumée, manque de puissance, mode dégradé."
+      },
+      {
+        "titre": "Vanne EGR encrassée",
+        "detail": "Sur les diesels W169, la vanne EGR s'encrasse en usage urbain et limite la puissance autour de 3 000 tr/min avec voyant moteur, d'après Fiches-Auto. Nettoyage ou remplacement à prévoir, surtout sur une voiture qui a peu vu l'autoroute."
+      },
+      {
+        "titre": "Témoins ESP, SRS et bugs électroniques",
+        "detail": "Sur W169, Fiches-Auto attribue les allumages de témoins ESP et SRS à des masses corrodées ou à des connecteurs fatigués plus qu'à une panne mécanique. Caradisiac note les mêmes allumages intempestifs, le plus souvent résolus par reprogrammation des boîtiers."
+      },
+      {
+        "titre": "Embrayage, volant moteur et cardans",
+        "detail": "Sur W169, Fiches-Auto signale un volant moteur bimasse qui prend du jeu vers 100 000 km, une usure prématurée de l'embrayage sur les diesels et des soufflets de cardan déchirés qui finissent en claquements dans les virages."
+      },
+      {
+        "titre": "Suspensions bruyantes et 7G-DCT",
+        "detail": "Sur W168, Caradisiac signale des suspensions qui deviennent bruyantes avec le temps, surtout à l'arrière, et une usure rapide des pneus. Sur W176, Fiches-Auto relève des à-coups, hésitations et messages de défaut de la boîte 7G-DCT liés à la mécatronique, ainsi que des infiltrations d'eau dans le coffre."
+      },
+      {
+        "titre": "Rappels constructeur",
+        "detail": "Rappel constructeur de 2020 publié sur rappel.conso.gouv.fr : airbags Takata à générateur de gaz sans agent de séchage sur les Classe A produites de 2004 à 2016, risque d'éclatement en cas d'accident. Autres rappels officiels sur W176 : calibrage de la détection d'occupant du siège passager (véhicules 2014-2017, fiche de 2020) et collage du panneau de toit panoramique (fiche de 2021). Vérifiez auprès du réseau que les campagnes ont été faites."
+      }
+    ],
+    "controles": [
+      "Essai de la boîte automatique ou Autotronic à chaud et à froid : à-coups, patinage, message de défaut.",
+      "Démarrage à froid d'un CDI : fumée, claquements d'injecteurs, régime stable.",
+      "Bruit de chaîne de distribution à froid sur M266 et M270 (tendeurs et guides).",
+      "Témoins ESP, SRS, moteur et ABS au tableau de bord.",
+      "Point de patinage de l'embrayage et vibrations du volant moteur sur les diesels.",
+      "Claquements de cardan en braquage et état des soufflets.",
+      "Bruits de suspension arrière et usure irrégulière des pneus sur W168.",
+      "Fonctionnement du toit ouvrant, de l'électricité et traces d'humidité dans le coffre."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout vidanges et boîte.",
+      "Retrouvez les deux clés : leur absence compte sur une Mercedes.",
+      "Sur un CDI, gardez les factures d'injecteurs, de turbo, d'EGR ou d'embrayage si des travaux ont été faits.",
+      "Sur une automatique, notez si l'huile de boîte a été remplacée et quand.",
+      "Vérifiez que les campagnes de rappel (airbags, détection d'occupant) ont été réalisées, le réseau vous le confirme avec le numéro de série.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Une Classe A W168 de 2002 ou une W169 de 2007 a plus de quinze ans, c'est vrai. Mais l'âge ne dit pas tout. Une Classe A peu roulée, entretenue dans les temps et sans témoin allumé reste une voiture saine et demandée, surtout avec la silhouette surélevée des deux premières générations. Ce qui la valorise : un carnet suivi, une boîte manuelle ou une automatique qui passe ses rapports sans à-coups, un moteur essence qui tourne rond, deux clés, une carrosserie propre. Un faible kilométrage pèse beaucoup sur ces modèles. À l'inverse, un 180 CDI à l'historique flou ou une Autotronic qui patine font baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année, et le prix définitif est fixé après la vérification du technicien chez vous.",
+    "valeurPlus": [
+      "Kilométrage faible et cohérent avec le carnet d'entretien.",
+      "Moteur essence A160, A150, A170 ou A180 en bon état, boîte manuelle.",
+      "Boîte automatique ou Autotronic sans à-coups, huile de boîte remplacée avec facture.",
+      "Deux clés, carnet complet et campagnes de rappel effectuées.",
+      "Carrosserie et intérieur soignés, climatisation fonctionnelle, aucun témoin allumé."
+    ],
+    "valeurMoins": [
+      "Autotronic ou automatique qui patine, à-coups ou mode dégradé.",
+      "170 CDI ou 180 CDI sans historique d'entretien ou avec symptômes d'injection.",
+      "Témoins ESP, SRS ou moteur allumés.",
+      "Embrayage en fin de vie, cardans qui claquent, suspensions bruyantes.",
+      "Corrosion, chocs, infiltrations d'eau ou intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Ma Classe A W168 de 2003 a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Une Classe A de 2003 peu roulée, avec un carnet suivi et une boîte qui fonctionne bien, intéresse toujours, en particulier les versions essence A140 et A160. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Ma Classe A a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "La plupart des moteurs de Classe A ont une chaîne : essence M166 et M266 des W168 et W169, diesels CDI 1.7 et 2.0, essence M270 et diesel 1.8/2.1 de la W176. Exception : le 1.5 CDI de la W176 (A160 CDI, A180 CDI), d'origine Renault, a une courroie à remplacer selon le carnet. Dans tous les cas, vérifiez votre carnet et conservez la facture si la courroie ou la chaîne a été faite."
+      },
+      {
+        "question": "Ma Classe A 180 CDI a un historique incomplet, l'étudiez-vous ?",
+        "answer": "Oui, nous étudions toutes les Classe A diesel. Un historique incomplet n'empêche pas la vente, mais il compte dans l'offre car injecteurs, turbo et vanne EGR du 180 CDI peuvent coûter cher. Envoyez-nous les factures que vous avez, même partielles. Au rendez-vous, le technicien écoute le moteur à froid et fait un court essai avant de confirmer le prix définitif."
+      },
+      {
+        "question": "Ma boîte Autotronic donne des à-coups, puis-je quand même vendre ?",
+        "answer": "Oui. Les défauts de l'Autotronic sont connus sur la W169, et nous en tenons compte dans l'offre plutôt que de refuser la voiture. Signalez-le dès la demande d'estimation, avec les factures de boîte si vous en avez : une information claire évite une mauvaise surprise au rendez-vous et permet une offre juste. L'étude se fait sans promesse de rachat."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma Classe A à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour une Classe A ancienne dont le contrôle est expiré ou dont les réparations demandées ne valent pas la dépense. Le technicien évalue la voiture lui-même chez vous, sans frais, puis, si la vente est conclue, nous payons par virement instantané."
+      },
+      {
+        "question": "Reprenez-vous aussi la Classe A W176 et la W177 ?",
+        "answer": "Oui. Nous reprenons la W176 (2012-2018) et la W177 produite depuis 2018, en essence, diesel ou hybride rechargeable, avec boîte manuelle ou 7G-DCT. Le principe reste le même : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Mercedes-Benz Classe A (Type 169)",
+        "url": "https://fr.wikipedia.org/wiki/Mercedes-Benz_Classe_A_(Type_169)"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Mercedes Classe A 2004-2012",
+        "url": "https://www.fiches-auto.fr/fiabilite-mercedes/fiabilite-125-pannes-mercedes-classe-a.php"
+      },
+      {
+        "label": "Caradisiac : Mercedes Classe A (I), la fiche occasion",
+        "url": "https://www.caradisiac.com/Fiabilite-45807.htm"
+      },
+      {
+        "label": "Rappel Conso : airbags Takata, Classe A 2004-2016",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48867/interne"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-dacia-duster",
+    "brand": "Dacia",
+    "brandSlug": "reprise-dacia",
+    "model": "Duster",
+    "nav": "Dacia Duster",
+    "title": "Vendre son Dacia Duster : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Dacia Duster 1, 2 ou 3, même à fort kilométrage : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané.",
+    "h1": "Vendre son Dacia Duster <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'un Duster 1 ou d'un Duster 2, parfois d'un Duster 3, souvent en diesel 1.5 dCi et à fort kilométrage, qui veulent le vendre sans bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification, le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2010-2024 pour les Duster 1 et 2 (Duster 1 : 2010-2017 en Europe, restylé en 2013 ; Duster 2 : 2018-2024, restylé en 2021 puis 2022) ; le Duster 3 est commercialisé depuis mars 2024",
+    "generations": [
+      {
+        "nom": "Duster 1 phase 1",
+        "annees": "2010-2013",
+        "notes": "Lancé en 2010, premier SUV compact à petit prix. Essence 1.6 16V 105 ch (K4M), diesel 1.5 dCi 85, 90 ou 110 ch (K9K). Boîte manuelle 5 ou 6 rapports, 4x2 ou 4x4 à transmission intégrale semi-permanente avec sélecteur 2WD / AUTO / LOCK."
+      },
+      {
+        "nom": "Duster 1 phase 2",
+        "annees": "2013-2017",
+        "notes": "Restylage présenté en septembre 2013 : calandre, feux et habitacle revus. Arrivée du 1.2 TCe 125 ch à injection directe, puis du 1.6 SCe 115 ch (H4M) en 2015. Boîte automatique EDC 6 rapports sur le dCi 110 4x2 à partir de 2016. Versions GPL et superéthanol E85 selon les années."
+      },
+      {
+        "nom": "Duster 2 phase 1",
+        "annees": "2018-2021",
+        "notes": "Présenté à Francfort en septembre 2017, commercialisé en janvier 2018. Même base technique mais carrosserie, habitacle et équipements nouveaux. Essence 1.6 SCe 115 (jusqu'en 2019), 1.2 TCe 125, 1.3 TCe 130 et 150 ; 1.0 TCe 100 dès mi-2019 ; diesel 1.5 dCi puis Blue dCi 95, 115 (et 90, 110 au début). Toujours 4x2 ou 4x4."
+      },
+      {
+        "nom": "Duster 2 phases 2 et 3",
+        "annees": "2021-2024",
+        "notes": "Restylage en septembre 2021 (nouvelle signature lumineuse, écran central, boîte EDC élargie), puis nouvelle identité de marque en juin 2022. Le 1.0 TCe ECO-G 100 (GPL) devient une motorisation très diffusée. Fin de production en mars 2024."
+      },
+      {
+        "nom": "Duster 2 4x4",
+        "annees": "2018-2024",
+        "notes": "Versions à transmission intégrale avec 1.3 TCe 150 ou 1.5 Blue dCi 115 et boîte manuelle 6 rapports. Recherchées en zone rurale et en montagne ; nous les reprenons même avec beaucoup de kilomètres, à condition que la transmission et l'embrayage aient été suivis."
+      },
+      {
+        "nom": "Duster 3",
+        "annees": "2024-",
+        "notes": "Génération récente sur plateforme CMF-B, présentée en novembre 2023 et vendue depuis mars 2024. Plus de diesel en France : 1.2 TCe 130 mild hybrid 48 V, 1.6 Hybrid 140, 1.0 ECO-G 120 (GPL). Nous le reprenons aussi."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.6 16V 105 / 110 (K4M)",
+        "carburant": "Essence (version E85 disponible)",
+        "distribution": "Courroie",
+        "entretien": "Duster 1 de 2010 à 2015 environ. Remplacement de la courroie avec galets et pompe à eau, à un intervalle qui dépend de l'année : vérifiez le carnet.",
+        "points": "Moteur ancien et simple, sans problème majeur signalé par Caradisiac. Un peu juste en 4x4 chargé. Version bioéthanol 4x2 conseillée par Caradisiac en occasion."
+      },
+      {
+        "nom": "1.5 dCi 85 / 90 / 110 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Duster 1, toutes phases. Courroie à remplacer selon l'échéance du carnet, vidanges régulières indispensables, surtout sur les 4x4 qui travaillent.",
+        "points": "Le plus répandu. Le dCi 110 4x4 est la version jugée la plus fiable par Caradisiac. À-coups entre 1 800 et 2 000 tr/min, embrayage, injecteurs, EGR et filtre à particules sont les points de vigilance signalés."
+      },
+      {
+        "nom": "1.2 TCe 125 (H5FT)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Duster 1 phase 2 et Duster 2 jusqu'en 2019. Pas d'échéance de courroie, mais niveau d'huile à surveiller entre deux vidanges.",
+        "points": "Moteur turbo à injection directe. L'argus signale une surconsommation d'huile pouvant aller jusqu'au remplacement du moteur, des bruits de chaîne de distribution et des pertes de puissance liées au tuyau d'air du turbo."
+      },
+      {
+        "nom": "1.6 SCe 115 (H4M)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Duster 1 dès 2015, Duster 2 jusqu'en juillet 2019. Entretien classique, pas de courroie de distribution à remplacer.",
+        "points": "Moteur atmosphérique d'origine Nissan, rassurant mécaniquement mais jugé peu vif et gourmand par L'argus, avec une surconsommation d'huile signalée sur les premiers Duster 2 (pistons et couvre-culasse jusqu'à mi-2018)."
+      },
+      {
+        "nom": "1.3 TCe 130 / 150 (H5HT)",
+        "carburant": "Essence",
+        "distribution": "Chaîne (vérifiez le carnet)",
+        "entretien": "Duster 2 à partir de 2018, boîte manuelle ou EDC. Vidanges à l'heure et contrôle du niveau d'huile entre deux.",
+        "points": "Version essence la plus recommandable du Duster 2 selon L'argus. Signalés : voyant antipollution (capteur de filtre à particules), témoin injection, ralenti instable, manque de puissance sur les premiers lots."
+      },
+      {
+        "nom": "1.0 TCe 100 et ECO-G 100 (H5D)",
+        "carburant": "Essence ou GPL",
+        "distribution": "Vérifiez le carnet",
+        "entretien": "Duster 2 à partir de mi-2019. Sur les ECO-G, faire contrôler le réservoir GPL et la rampe d'alimentation aux échéances du carnet.",
+        "points": "Trois cylindres. L'argus signale un volant moteur bimasse défectueux jusqu'en janvier 2022 (à-coups, démarrage impossible), un bruit métallique du turbo et du liquide de refroidissement dans les puits de bobines. Dysfonctionnements du mode GPL signalés jusqu'en 2024."
+      },
+      {
+        "nom": "1.5 Blue dCi 95 / 115 (K9K)",
+        "carburant": "Diesel avec AdBlue",
+        "distribution": "Courroie",
+        "entretien": "Duster 2 à partir de mi-2018. Courroie selon le carnet, réservoir d'AdBlue à faire le plein, vidanges à l'heure : la consommation d'huile a fait l'objet d'une campagne constructeur.",
+        "points": "Version conseillée par L'argus pour les gros rouleurs malgré ses défauts : consommation d'huile excessive sur les moteurs produits jusqu'en mars 2020, voyant AdBlue (module de pompe d'urée jusqu'en juillet 2021), sondes NOx, pompe à carburant bruyante."
+      }
+    ],
+    "avantages": [
+      "Mécanique simple et répandue, pièces faciles à trouver, entretien possible dans tous les garages.",
+      "1.5 dCi 110 endurant quand les vidanges ont été faites, apprécié des gros rouleurs.",
+      "Vraie transmission intégrale sur les 4x4, avec mode LOCK, et garde au sol élevée.",
+      "Habitacle spacieux et coffre généreux pour un SUV compact, 5 portes de série.",
+      "Forte demande en occasion, y compris sur les exemplaires à fort kilométrage.",
+      "Versions GPL et E85 qui coûtent peu à l'usage."
+    ],
+    "inconvenients": [
+      "1.2 TCe 125 exposé à une surconsommation d'huile pouvant aller jusqu'à la casse.",
+      "Embrayage qui s'use vite, surtout sur dCi 85 et sur les 4x4 qui ont travaillé.",
+      "Diesels sensibles aux trajets courts : EGR, filtre à particules, AdBlue sur Blue dCi.",
+      "Peinture fragile et pare-brise qui se fêle, signalés par Caradisiac sur le Duster 1.",
+      "Finition et insonorisation sommaires, bruits parasites dans l'habitacle."
+    ],
+    "problemes": [
+      {
+        "titre": "Surconsommation d'huile du 1.2 TCe",
+        "detail": "Signalée par L'argus sur le Duster 2 et par la presse auto sur le Duster 1 phase 2 : niveau d'huile qui baisse entre deux vidanges, bruit de chaîne de distribution, perte de puissance par le tuyau d'air du turbo. Dans les cas sévères, le moteur a été remplacé. Un carnet avec niveaux suivis compte beaucoup."
+      },
+      {
+        "titre": "À-coups et injection du 1.5 dCi",
+        "detail": "Caradisiac signale sur le Duster 1 des à-coups entre 1 800 et 2 000 tr/min, surtout sur le dCi 110, corrigés par une reprogrammation de l'injection, ainsi que des durites de filtre à air ou de turbo qui se déboîtent. L'argus mentionne une campagne constructeur sur les bougies de préchauffage (démarrage difficile, claquements)."
+      },
+      {
+        "titre": "Embrayage usé prématurément",
+        "detail": "Caradisiac relève sur le Duster 1 une usure précoce de l'embrayage, en particulier sur le dCi 85, avec patinage à froid parfois dès 15 000 km. L'argus signale des craquements d'embrayage sur les premiers Duster 2 jusqu'en février 2020. Les 4x4 qui ont tracté ou roulé en terrain difficile sont les plus exposés."
+      },
+      {
+        "titre": "AdBlue et antipollution des Blue dCi",
+        "detail": "Sur le Duster 2 à partir de 2018, L'argus signale une consommation d'huile excessive sur les 1.5 Blue dCi produits jusqu'en mars 2020 (reprogrammation ou remplacement du moteur), un voyant AdBlue lié au module de pompe d'urée jusqu'en juillet 2021, et des sondes NOx défaillantes. Les trajets courts aggravent le tout."
+      },
+      {
+        "titre": "Jauge de carburant et témoins ABS / ESP",
+        "detail": "Caradisiac signale sur le Duster 1 un affichage fantaisiste de la jauge sur les versions 4x4, qui a fait l'objet d'une campagne préventive, ainsi que des témoins ABS et ESP qui s'allument sans raison, avec parfois remplacement de la centrale. Sur le Duster 2, L'argus signale des écrans multimédia Easy Link qui restent noirs."
+      },
+      {
+        "titre": "Carrosserie, peinture et pare-brise",
+        "detail": "Caradisiac relève sur le Duster 1 des fêlures de pare-brise fréquentes au niveau du rétroviseur intérieur, une peinture sensible aux gravillons avec vernis qui cloque, des enjoliveurs d'aile qui se décollent et de nombreux bruits parasites (portières, hayon, aérateurs). Sur le Duster 2, infiltrations par les barres de toit signalées."
+      },
+      {
+        "titre": "Rappels constructeur de 2021 et 2024",
+        "detail": "Rappel constructeur de 2021 : sur les Duster 2 fabriqués entre septembre 2017 et avril 2018, la clé peut rester bloquée en position démarrage et endommager le démarreur. Rappel constructeur de 2024 : airbag rideau gauche pouvant se déployer avec une pression excessive sur des Duster 2 produits en juillet 2022. L'argus cite aussi en 2019 des rappels sur la batterie, la direction assistée et l'amplificateur de freinage des premiers Duster 2. Vérifiez auprès du réseau que ces campagnes ont été faites."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de la courroie de distribution sur 1.6 16V et 1.5 dCi, facture à l'appui.",
+      "Niveau d'huile et historique des appoints sur 1.2 TCe, 1.6 SCe et Blue dCi.",
+      "Sur diesel : démarrage à froid, à-coups à bas régime, fumée, voyants antipollution et AdBlue.",
+      "Embrayage : point de patinage, broutement à froid, craquements, surtout sur un 4x4.",
+      "Sur 4x4 : passage des modes 2WD / AUTO / LOCK et bruits de transmission en virage serré.",
+      "Jauge de carburant, témoins ABS, ESP et airbag au tableau de bord, écran multimédia.",
+      "Pare-brise (fêlure près du rétroviseur), peinture, vernis et enjoliveurs d'aile.",
+      "Bruits de train avant et vibrations sur un court essai, état des pneus."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celles de courroie, d'embrayage et d'injection.",
+      "Retrouvez les deux clés : sur un Duster, leur absence compte.",
+      "Notez les campagnes de rappel effectuées (clé, airbag, direction, freinage) si vous avez le document du réseau.",
+      "Sur un Blue dCi, faites le plein d'AdBlue et gardez les factures de pompe d'urée ou de sondes si des travaux ont été faits.",
+      "Sur un ECO-G, assurez-vous que le passage essence / GPL fonctionne et que le contrôle du réservoir est à jour.",
+      "Videz le coffre et l'habitacle, et faites rouler la voiture quelques jours avant le rendez-vous : une batterie faible fausse l'essai."
+    ],
+    "age": "Un Duster 1 de 2012 ou un Duster 2 de 2018 affichant 200 000 km, c'est courant, et ce n'est pas rédhibitoire. Le Duster est une voiture d'usage : ce qui compte, c'est la façon dont il a été suivi. Un 1.5 dCi 110 avec vidanges régulières, courroie faite à temps et embrayage sain reste très demandé, même ancien. Ce qui le valorise : un carnet complet, des factures, deux clés, un 4x4 dont la transmission fonctionne, une carrosserie sans corrosion ni chocs. À l'inverse, un 1.2 TCe sans historique de niveau d'huile ou un Blue dCi avec voyant AdBlue allumé fait baisser l'offre. Nous regardons votre Duster tel qu'il est, pas seulement son année ni son kilométrage, et le prix définitif est fixé après la vérification à votre adresse.",
+    "valeurPlus": [
+      "Courroie de distribution et embrayage remplacés avec factures sur un 1.5 dCi.",
+      "Carnet d'entretien complet, vidanges à l'heure, niveaux d'huile suivis sur les TCe.",
+      "Version 4x4 dont la transmission fonctionne, sans bruit ni voyant.",
+      "Deux clés, campagnes de rappel effectuées, écran et équipements fonctionnels.",
+      "Carrosserie sans corrosion, pare-brise intact, pneus en bon état."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve de remplacement sur 1.6 16V et 1.5 dCi.",
+      "1.2 TCe qui consomme de l'huile ou sans historique de niveaux.",
+      "Voyants allumés : antipollution, AdBlue, ABS, ESP, airbag.",
+      "Embrayage qui patine ou transmission 4x4 bruyante.",
+      "Peinture cloquée, pare-brise fêlé, chocs ou intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Mon Duster 1.5 dCi a plus de 200 000 km, l'estimez-vous quand même ?",
+        "answer": "Oui. Le 1.5 dCi 110 du Duster est un moteur de gros rouleurs et un fort kilométrage ne nous arrête pas, à condition que l'entretien suive. Envoyez-nous les factures de vidanges, de courroie et d'embrayage. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans promesse de rachat, puis un technicien vient vérifier la voiture à votre adresse, sans frais."
+      },
+      {
+        "question": "Mon Duster a-t-il une courroie ou une chaîne de distribution ?",
+        "answer": "Cela dépend du moteur. Le 1.6 16V (K4M) et tous les 1.5 dCi et Blue dCi ont une courroie, à remplacer selon l'échéance du carnet. Le 1.2 TCe 125 et le 1.6 SCe 115 ont une chaîne, de même que le 1.3 TCe selon le constructeur. Pour le 1.0 TCe et l'ECO-G, vérifiez le carnet. Une facture de courroie récente sur un dCi soutient nettement la valeur."
+      },
+      {
+        "question": "Mon Duster 1.2 TCe consomme de l'huile, peut-on le vendre ?",
+        "answer": "Oui, nous l'étudions. La surconsommation d'huile du 1.2 TCe est un défaut signalé par la presse auto et nous en tenons compte dans l'offre plutôt que de refuser la voiture. Dites-le dès la demande d'estimation et joignez les factures ou le relevé des appoints : une information claire permet une offre juste au rendez-vous."
+      },
+      {
+        "question": "Le voyant AdBlue de mon Duster Blue dCi est allumé, est-ce bloquant ?",
+        "answer": "Non. Ce voyant est fréquent sur les Blue dCi de 2018 à 2021 et vient souvent du module de pompe d'urée ou des sondes NOx, un défaut connu qui a fait l'objet de campagnes constructeur. Il reste à diagnostiquer et pèse dans l'offre, mais il n'empêche pas la vente. Le prix définitif est fixé après la vérification du technicien chez vous."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre mon Duster à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour un Duster dont le contrôle est expiré ou dont les réparations demandées, antipollution ou trains roulants par exemple, ne valent pas la dépense. Nous vérifions la voiture nous-mêmes à votre adresse, sans frais, puis, si la vente est conclue, nous payons par virement instantané."
+      },
+      {
+        "question": "Reprenez-vous aussi le Duster 3 et les versions 4x4 ou GPL ?",
+        "answer": "Oui. Nous reprenons le Duster 3 commercialisé depuis mars 2024, en mild hybrid, Hybrid ou ECO-G, ainsi que tous les Duster 1 et 2 en 4x2, 4x4, GPL ou E85, en boîte manuelle comme en EDC. Le principe est le même : fourchette indicative communiquée rapidement, vérification à votre adresse, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Dacia Duster I",
+        "url": "https://fr.wikipedia.org/wiki/Dacia_Duster_I"
+      },
+      {
+        "label": "Caradisiac : maxi-fiche fiabilité, que vaut le Dacia Duster en occasion",
+        "url": "https://www.caradisiac.com/Maxi-fiche-fiabilite-que-vaut-le-Dacia-Duster-en-occasion-75565.htm"
+      },
+      {
+        "label": "L'argus : Dacia Duster II, quel bilan fiabilité en occasion",
+        "url": "https://www.largus.fr/guide-achat-occasion/dacia/duster/avis-fiabilite-dacia-duster-ii-hjd-30038702.html"
+      },
+      {
+        "label": "Rappel Conso : Dacia Duster II, airbag rideau gauche (2024)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48010/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-ford-kuga",
+    "brand": "Ford",
+    "brandSlug": "reprise-ford",
+    "model": "Kuga",
+    "nav": "Ford Kuga",
+    "title": "Vendre son Ford Kuga : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Ford Kuga 1, 2 ou 3, diesel, essence ou hybride : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané.",
+    "h1": "Vendre son Ford Kuga <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'un Kuga 1 ou d'un Kuga 2, souvent diesel et bien kilométrés, parfois d'un Kuga 3, qui veulent le vendre sans avoir à bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2008-2020 pour les Kuga 1 et 2 (Kuga 1 : 2008-2012/2013, Kuga 2 : 2013-2019/2020, restylage 2016) ; le Kuga 3 est produit depuis fin 2019, en version hybride rechargeable notamment",
+    "generations": [
+      {
+        "nom": "Kuga 1 phase 1",
+        "annees": "2008-2010",
+        "notes": "Lancé en juin 2008, assemblé à Sarrelouis. SUV compact 5 portes en traction ou transmission intégrale. Moteurs 2.0 TDCi 136 et, très rare, 2.5 Turbo essence 200 (5 cylindres). Finitions Trend et Titanium."
+      },
+      {
+        "nom": "Kuga 1 phase 2",
+        "annees": "2010-2012/2013",
+        "notes": "Restylage dévoilé en juillet 2010 et commercialisé fin 2010. Le 2.0 TDCi passe à 140 ch et une version 163 ch apparaît. Finition Individual à partir de 2011. Fin de carrière en 2012-2013, remplacé par le Kuga 2."
+      },
+      {
+        "nom": "Kuga 2 phase 1",
+        "annees": "2013-2016",
+        "notes": "Présenté au salon de Genève 2012, commercialisé en 2013, assemblé à Valence en Espagne. Essence 1.6 EcoBoost 150 et 182, diesels 2.0 TDCi 140 et 163. Boîte manuelle 6 ou automatique 6, 4x2 ou 4x4."
+      },
+      {
+        "nom": "Kuga 2 phase 2",
+        "annees": "2016-2019/2020",
+        "notes": "Restylage présenté à Genève 2016 : nouvelle calandre, feux LED, écran tactile 8 pouces SYNC 3. Essence 1.5 EcoBoost 120, 150 et 182, 2.0 EcoBoost 242 (2017-2018), diesels 1.5 TDCi 120, 2.0 TDCi 150 et 180. Finitions Trend, Titanium, ST-Line et Vignale."
+      },
+      {
+        "nom": "Kuga 3 phase 1",
+        "annees": "2019-2023",
+        "notes": "Génération plus récente, nous la reprenons aussi. Plateforme C2 partagée avec la Focus 4. Essence 1.5 EcoBoost 120 et 150, diesels 1.5 et 2.0 EcoBlue de 120 à 190, hybride rechargeable 2.5 de 225 ch et hybride simple de 190 ch. Boîte manuelle 6, automatique 8 ou CVT."
+      },
+      {
+        "nom": "Kuga 3 phase 2",
+        "annees": "2023-",
+        "notes": "Restylage avec calandre hexagonale, feux redessinés et grand écran 13,2 pouces. Gamme recentrée sur les hybrides. Reprise possible, mais ces voitures sont encore peu nombreuses sur le marché de la reprise."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "2.0 TDCi 136 (Duratorq)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Kuga 1 phase 1, 2008-2010. Intervalle de remplacement de la courroie selon le carnet : vérifiez-le, factures à l'appui.",
+        "points": "Moteur le plus répandu sur les premiers Kuga. Vanne EGR et filtre à particules qui s'encrassent en usage urbain. Rappel constructeur de 2009 signalé par Caradisiac pour une pédale de frein pouvant durcir sur les TDCi."
+      },
+      {
+        "nom": "2.0 TDCi 140 et 163 (Duratorq)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Kuga 1 phase 2 (2010-2013) et Kuga 2 phase 1 (2013-2016). Courroie à remplacer selon le carnet ; Caradisiac indique un intervalle long sur le Kuga 2, de l'ordre de dix ans ou plus de 200 000 km : vérifiez le carnet.",
+        "points": "Versions appréciées par la presse pour leur agrément. Sur le 140 ch du Kuga 1, Caradisiac signale des pannes d'injection liées à un défaut d'étanchéité des injecteurs, avec fuites et à-coups. FAP et EGR à surveiller."
+      },
+      {
+        "nom": "2.5 Turbo 200 (5 cylindres)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Kuga 1 uniquement, 2008-2013, très rare en France. Intervalle de courroie selon le carnet : vérifiez-le.",
+        "points": "Moteur 5 cylindres d'origine Volvo, souple et puissant, mais gourmand. Boîte manuelle 6 ou automatique 5. Peu d'exemplaires, donc peu de retours de fiabilité : l'historique d'entretien fait la différence."
+      },
+      {
+        "nom": "1.6 EcoBoost 150 et 182",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Kuga 2 phase 1, 2013-2016. Caradisiac indique une courroie prévue pour la durée de vie du véhicule : vérifiez tout de même le carnet.",
+        "points": "Le 182 ch 4x4 en boîte automatique est la version essence conseillée par Caradisiac, malgré une consommation élevée. Wikipédia rappelle des campagnes de rappel à l'étranger sur ce moteur (surchauffe), dont une sur des Kuga 2012-2014 en Afrique du Sud en 2017."
+      },
+      {
+        "nom": "1.5 EcoBoost 120, 150 et 182",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Kuga 2 phase 2, 2016-2020. Même principe que le 1.6 EcoBoost selon Caradisiac : vérifiez le carnet.",
+        "points": "Essence plus courante sur la phase 2. Rappel constructeur de janvier 2019 (RappelConso) sur des Ford dont le Kuga produits entre le 30 juin 2016 et le 30 mai 2018 : la plaque de pression d'embrayage peut se casser."
+      },
+      {
+        "nom": "1.5 TDCi 120 et 2.0 TDCi 150 et 180",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Kuga 2 phase 2, 2016-2019. Courroie à remplacer selon le carnet (Caradisiac : environ dix ans ou 210 000 km). Pour le 2.0 TDCi 115/120 de début de carrière, vérifiez le carnet.",
+        "points": "Les 2.0 TDCi 150 et 180 sont les diesels conseillés par Caradisiac ; le 1.5 TDCi 120 et le 2.0 TDCi 115/120 sont jugés trop justes. Messages d'anomalie moteur avec perte de puissance signalés : EGR, FAP, turbo ou bug électronique."
+      },
+      {
+        "nom": "Kuga 3 : 1.5 EcoBoost, EcoBlue et hybride rechargeable 2.5",
+        "carburant": "Essence, diesel ou hybride",
+        "distribution": "Vérifiez le carnet",
+        "entretien": "Depuis fin 2019. Entretien récent en général, souvent encore suivi en réseau : apportez le carnet numérique ou les factures.",
+        "points": "Hybride rechargeable concerné par un rappel constructeur de 2021 (batterie haute tension, risque d'incendie) sur les exemplaires produits du 13 janvier au 24 septembre 2020, et par un rappel de 2024 (injecteur haute pression pouvant se fissurer) sur des Kuga produits du 25 novembre 2022 au 19 décembre 2023."
+      }
+    ],
+    "avantages": [
+      "Matériaux de qualité et intérieur bien assemblé qui vieillissent bien, même à fort kilométrage, selon Caradisiac.",
+      "Diesels 2.0 TDCi 140/163 puis 150/180 agréables et endurants quand ils sont entretenus.",
+      "Kuga 2 jugé globalement très fiable par Caradisiac, sans panne immobilisante récurrente.",
+      "Transmission intégrale disponible sur toutes les générations, recherchée en zone rurale ou montagneuse.",
+      "Pièces d'usure courantes (plaquettes, disques, amortisseurs) qui tiennent bien sur le Kuga 1.",
+      "Confort, comportement routier et habitabilité salués sur le Kuga 2."
+    ],
+    "inconvenients": [
+      "Consommation élevée liée au poids, en essence comme en diesel.",
+      "Pièces détachées plus chères que chez la concurrence.",
+      "FAP et vanne EGR qui s'encrassent en usage urbain sur les diesels, avec à-coups et pertes de puissance.",
+      "Habitabilité et coffre en retrait sur le Kuga 1, ergonomie et petit écran sur le Kuga 2 phase 1.",
+      "Plusieurs rappels constructeur à vérifier selon la date de production."
+    ],
+    "problemes": [
+      {
+        "titre": "Injecteurs du 2.0 TDCi 140",
+        "detail": "Signalé par Caradisiac sur le Kuga 1 : de nombreux possesseurs du TDCi 140 font état de pannes d'injection liées à un défaut d'étanchéité, avec fuites et à-coups moteur. Une facture d'injecteurs remplacés rassure."
+      },
+      {
+        "titre": "FAP et vanne EGR encrassés",
+        "detail": "Sur Kuga 1 comme Kuga 2, Caradisiac signale des encrassements du filtre à particules et de la vanne EGR à l'origine d'à-coups et de pertes de puissance. Sur Kuga 2, des messages d'anomalie moteur avec perte de puissance peuvent venir de l'EGR, du FAP, du turbo ou d'un bug électronique."
+      },
+      {
+        "titre": "Rappel constructeur de 2019 : plaque de pression d'embrayage",
+        "detail": "Fiche RappelConso du 11 janvier 2019 : sur des C-Max, Focus, Kuga, Mondeo, S-Max et Galaxy produits entre le 30 juin 2016 et le 30 mai 2018, la plaque de pression d'embrayage peut se casser. Caradisiac signale aussi un plateau presseur pouvant rompre sur certains Kuga 1 de 2009-2013 et un léger claquement d'embrayage sur des Kuga 2 diesel."
+      },
+      {
+        "titre": "Rappels du Kuga 1 signalés par Caradisiac",
+        "detail": "Octobre 2008 : infiltration d'eau dans un boîtier électrique. Mars 2009 : pédale de frein pouvant durcir sur les TDCi. Avril 2016 : jets de lave-glace chauffants avec risque d'incendie. Sur Kuga 2, Caradisiac cite en 2014 un resserrage d'écrou de catalyseur et une reprogrammation du module moteur sur 2.0 TDCi."
+      },
+      {
+        "titre": "Électronique et équipements",
+        "detail": "Bugs de GPS et de régulateur de vitesse signalés par Caradisiac sur le Kuga 1 ; dysfonctionnements du hayon motorisé et ordinateur de bord qui sous-estime l'autonomie sur le Kuga 2. Des avaries d'alternateur, rares mais documentées, sont aussi citées sur le Kuga 1."
+      },
+      {
+        "titre": "Rappels du Kuga 3 hybride rechargeable",
+        "detail": "Fiche RappelConso de mai 2021 : sur les Kuga PHEV produits du 13 janvier au 24 septembre 2020, un défaut interne ou de charge de la batterie haute tension peut provoquer une surchauffe et un risque d'incendie. Fiche de 2024 : sur des Kuga produits du 25 novembre 2022 au 19 décembre 2023, un injecteur haute pression peut se fissurer. Vérifiez auprès du réseau que les campagnes ont été faites."
+      },
+      {
+        "titre": "Consommation et pièces",
+        "detail": "Ce n'est pas une panne, mais Caradisiac insiste sur la consommation élevée liée au poids et sur le coût des pièces détachées. Un Kuga qui a toujours été entretenu malgré ces coûts se vend mieux qu'un exemplaire où les réparations ont été repoussées."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de la courroie de distribution, facture à l'appui.",
+      "Démarrage à froid, ralenti et absence de message d'anomalie moteur au tableau de bord.",
+      "Sur diesel : fumée, à-coups, régénérations du FAP, voyants et factures d'injecteurs ou d'EGR.",
+      "Embrayage : point de patinage, bruits ou claquements, surtout sur un Kuga 2 produit entre mi-2016 et mi-2018.",
+      "Campagnes de rappel effectuées, vérifiables auprès du réseau avec le numéro de série.",
+      "Fonctionnement du hayon motorisé, du GPS, du régulateur et de l'écran SYNC.",
+      "Sur un 4x4 : essai court pour repérer bruits de transmission ou vibrations.",
+      "État de la carrosserie et des pneus, dont l'usure irrégulière sur les SUV lourds."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celle de la courroie.",
+      "Retrouvez les deux clés : leur absence compte sur un Kuga récent.",
+      "Sur un diesel, gardez les factures d'injecteurs, de FAP, d'EGR ou de turbo si des travaux ont été faits.",
+      "Notez si les rappels constructeur ont été réalisés, ou demandez l'historique au réseau.",
+      "Faites tourner la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Un Kuga 1 de 2010 ou un Kuga 2 de 2014 a plus de dix ans et souvent plus de 150 000 km, c'est vrai. Mais l'âge ne dit pas tout. Un Kuga entretenu à temps, sans message d'anomalie moteur et avec un intérieur qui a bien vieilli reste un SUV recherché, surtout en transmission intégrale. Ce qui le valorise : une courroie remplacée avec facture, un carnet suivi, deux clés, un diesel qui tourne rond sans à-coups, des rappels effectués. Un faible kilométrage pèse beaucoup sur ces modèles. À l'inverse, un historique flou sur un 2.0 TDCi ou un FAP qui se régénère sans cesse fait baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année, et le prix définitif est fixé après la vérification chez vous.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment, facture à l'appui.",
+      "Kilométrage faible et cohérent avec le carnet.",
+      "Diesel 2.0 TDCi 140, 163, 150 ou 180 sans voyant ni à-coups, ou essence EcoBoost en bon état.",
+      "Transmission intégrale, finition Titanium, ST-Line ou Vignale et deux clés.",
+      "Rappels constructeur effectués, carrosserie et intérieur soignés."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve de remplacement.",
+      "Diesel sans historique d'entretien ou avec symptômes d'injection, de FAP ou d'EGR.",
+      "Messages d'anomalie moteur, voyants allumés ou mode dégradé.",
+      "Embrayage qui patine ou claque, hayon ou électronique défaillants.",
+      "Corrosion, chocs, pneus usés de façon irrégulière ou intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Mon Ford Kuga 1 de 2010 avec 200 000 km a-t-il encore une valeur ?",
+        "answer": "Oui, s'il est en bon état. Un Kuga 1 diesel bien kilométré mais suivi, sans voyant et avec une courroie faite à temps, intéresse toujours, surtout en 4x4. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Mon Kuga a-t-il une courroie ou une chaîne de distribution ?",
+        "answer": "Les moteurs courants des Kuga 1 et 2 (2.0 TDCi, 1.5 TDCi, 1.6 et 1.5 EcoBoost) ont une courroie. Selon Caradisiac, les diesels du Kuga 2 ont un intervalle long, de l'ordre de dix ans ou 210 000 km, et les EcoBoost une courroie prévue pour la durée de vie du véhicule. Les échéances varient selon l'année : vérifiez votre carnet. Une facture de courroie soutient nettement la valeur."
+      },
+      {
+        "question": "Mon Kuga diesel affiche un message d'anomalie moteur, l'étudiez-vous ?",
+        "answer": "Oui. Sur Kuga 1 et 2, ce message vient souvent de la vanne EGR, du filtre à particules ou du turbo, parfois d'un simple bug électronique. Il reste à diagnostiquer et nous en tenons compte dans l'offre. Signalez-le dès la demande d'estimation : une information claire évite une mauvaise surprise au rendez-vous et permet une offre juste."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre mon Kuga à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour un Kuga ancien dont le contrôle est expiré ou dont les réparations demandées ne valent pas la dépense. Un technicien vérifie la voiture à votre adresse, sans frais, puis, si la vente est conclue, nous payons par virement instantané."
+      },
+      {
+        "question": "Un rappel constructeur n'a pas été fait sur mon Kuga, est-ce bloquant ?",
+        "answer": "Non. Plusieurs campagnes concernent le Kuga : embrayage sur des exemplaires produits entre mi-2016 et mi-2018, batterie haute tension sur les hybrides rechargeables de 2020, injecteur sur des Kuga produits fin 2022 à fin 2023. Un rappel non effectué n'empêche pas la vente, mais dites-le nous : le technicien le prend en compte lors de la vérification."
+      },
+      {
+        "question": "Reprenez-vous aussi le Kuga 3 et l'hybride rechargeable ?",
+        "answer": "Oui. Nous reprenons le Kuga 3, en essence, diesel, hybride simple ou hybride rechargeable, ainsi que le Kuga 2 restylé. Le principe reste le même : estimation sans engagement, fourchette indicative communiquée rapidement, vérification chez vous, prix définitif après contrôle, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Ford Kuga",
+        "url": "https://fr.wikipedia.org/wiki/Ford_Kuga"
+      },
+      {
+        "label": "Caradisiac : Ford Kuga 2008-2013 en occasion, un SUV fiabilisé",
+        "url": "https://www.caradisiac.com/ford-kuga-2008-2013-en-occasion-un-suv-fiabilise-209479.htm"
+      },
+      {
+        "label": "Caradisiac : fiabilité du Ford Kuga 2, la maxi-fiche occasion",
+        "url": "https://www.caradisiac.com/fiabilite-du-ford-kuga-2-la-maxi-fiche-occasion-de-caradisiac-112283.htm"
+      },
+      {
+        "label": "RappelConso : rappel Ford de janvier 2019, plaque de pression d'embrayage",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/49130/interne"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-renault-megane",
+    "brand": "Renault",
+    "brandSlug": "reprise-renault",
+    "model": "Mégane",
+    "nav": "Renault Mégane",
+    "title": "Vendre sa Renault Mégane : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Renault Mégane 2, 3 ou 4 : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané à la vente.",
+    "h1": "Vendre sa Renault Mégane <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Mégane 2 ou d'une Mégane 3, souvent à fort kilométrage, parfois d'une Mégane 4, qui veulent la vendre sans bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "1995-2024 pour les Mégane 1 à 4 (Mégane 1 : 1995-2002, Mégane 2 : 2002-2009, Mégane 3 : 2008-2016, Mégane 4 : 2016-2024) ; la Mégane E-Tech électrique est produite depuis 2022",
+    "generations": [
+      {
+        "nom": "Mégane 1",
+        "annees": "1995-2002",
+        "notes": "Lancée fin 1995 pour remplacer la Renault 19. Berline 3 ou 5 portes, Classic 4 portes, coupé, cabriolet et break. Restylage en 1999. Essence 1.4, 1.6, 1.8 et 2.0, diesels 1.9 D, dT, dTi puis dCi. Le Scénic a sa propre fiche."
+      },
+      {
+        "nom": "Mégane 2 phase 1",
+        "annees": "2002-2006",
+        "notes": "Voiture de l'année 2003, dessin de rupture avec la Mégane 1. Berline 3 ou 5 portes, berline 4 portes, break Estate et coupé-cabriolet. Essence 1.4 16V, 1.6 16V et 2.0 16V, diesels 1.5 dCi et 1.9 dCi. Génération la plus fréquente à fort kilométrage."
+      },
+      {
+        "nom": "Mégane 2 phase 2",
+        "annees": "2006-2009",
+        "notes": "Restylage en janvier 2006 (bouclier, projecteurs, calandre, retouches intérieures). Arrivée du 2.0 dCi 150. Selon Caradisiac, la fiabilité progresse nettement après ce restylage. Fin de carrière en Europe en 2008-2009, en parallèle de la Mégane 3."
+      },
+      {
+        "nom": "Mégane 3 phase 1",
+        "annees": "2008-2012",
+        "notes": "Berline 5 portes en novembre 2008, coupé 3 portes en janvier 2009, Estate en juin 2009, puis coupé-cabriolet. Essence 1.6 16V 110 et 1.4 TCe 130, diesels 1.5 dCi 85 à 110, 1.9 dCi 130 et 2.0 dCi 150. Boîtes manuelles 5 ou 6, automatique et EDC selon les moteurs."
+      },
+      {
+        "nom": "Mégane 3 phases 2 et 3",
+        "annees": "2012-2016",
+        "notes": "Deux restylages, en 2012 puis en 2014. Arrivée du 1.2 TCe 115 puis 130 et du 1.6 dCi 130 Energy. La presse conseille plutôt ces millésimes. Fin de production en septembre 2016, après environ 1,6 million d'exemplaires."
+      },
+      {
+        "nom": "Mégane 4",
+        "annees": "2016-2024",
+        "notes": "Génération plus récente, nous la reprenons aussi. Berline 5 portes, Estate et berline 4 portes, restylage en 2020. Essence 1.2 TCe puis 1.3 TCe, diesels 1.5 dCi, 1.6 dCi et 1.7 dCi, hybride rechargeable E-Tech 160 en fin de carrière."
+      },
+      {
+        "nom": "Mégane E-Tech électrique",
+        "annees": "2022-",
+        "notes": "Modèle 100 % électrique, distinct de la Mégane 4 thermique. Cette fiche ne la détaille pas ; contactez-nous pour en parler au cas par cas."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.4 16V 98 et 1.6 16V 110 à 115 (K4J, K4M)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Mégane 2 et Mégane 3 phase 1. Remplacement de la courroie avec galets et pompe à eau, à un intervalle qui varie selon l'année : vérifiez le carnet.",
+        "points": "Mécanique simple et connue. Caradisiac signale sur Mégane 2 des bobines d'allumage qui peuvent lâcher tôt et une poulie de variateur qui claque à chaud au-delà de 120 000 km. Le 1.6 16V 110 est jugé un peu juste dans la Mégane 3."
+      },
+      {
+        "nom": "2.0 16V 135 et 2.0 T 165 (F4R, F4RT)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Mégane 2 surtout. Intervalle de courroie selon le carnet.",
+        "points": "Versions que Caradisiac juge plus fiables que les petits essence de la Mégane 2. Consommation plus élevée, mais agrément supérieur. Vérifiez l'embrayage sur les versions turbo."
+      },
+      {
+        "nom": "1.4 TCe 130 et 1.2 TCe 115 à 130 (H4Jt, H5Ft)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Mégane 3, 1.2 TCe aussi sur Mégane 4. Pas de courroie à remplacer, mais les vidanges à temps comptent pour la chaîne et le turbo.",
+        "points": "Le 1.4 TCe 130 est conseillé par Caradisiac sur Mégane 3. Le 1.2 TCe est signalé par L'argus et par Caradisiac pour une consommation d'huile excessive sur les moteurs produits jusqu'en 2016, pouvant mener à la casse. Niveau d'huile à surveiller."
+      },
+      {
+        "nom": "1.5 dCi 80 à 110 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Mégane 2, Mégane 3 et Mégane 4. Courroie avec galets et pompe à eau selon le carnet. Vidanges régulières indispensables.",
+        "points": "Sobre et très répandu. Caradisiac signale sur Mégane 2 des coussinets de bielle fragiles et des pompes d'injection qui produisent de la limaille, et sur Mégane 3 des injecteurs, une pompe à huile et une courroie à surveiller de près. Filtre à particules à contrôler."
+      },
+      {
+        "nom": "1.9 dCi 120 à 130 (F9Q)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Mégane 2 et Mégane 3 phase 1. Intervalle de courroie selon le carnet.",
+        "points": "Coupleux et endurant une fois passé les premières années. Caradisiac signale un turbo fragile sur le 1.9 dCi 120 jusqu'à fin 2003 et un volant moteur qui peut lâcher sur le 130 de la Mégane 3. Le 1.9 dCi 130 après 2005 est la version diesel conseillée sur Mégane 2."
+      },
+      {
+        "nom": "2.0 dCi 150 à 175 (M9R)",
+        "carburant": "Diesel",
+        "distribution": "Chaîne",
+        "entretien": "Mégane 2 phase 2 et Mégane 3. Pas de courroie, mais la chaîne demande une huile propre : vidanges à temps.",
+        "points": "L'argus le présente comme le diesel le plus fiable de la Mégane 3, sans défaut récurrent notable. Apprécié pour les gros rouleurs, surtout en boîte manuelle."
+      },
+      {
+        "nom": "1.6 dCi 130 Energy (R9M)",
+        "carburant": "Diesel",
+        "distribution": "Chaîne",
+        "entretien": "Mégane 3 à partir de 2012, Mégane 4. Vidanges à temps pour préserver la chaîne et le turbo.",
+        "points": "Conseillé par Caradisiac à la place du 1.5 dCi sur Mégane 3. L'argus signale une chaîne fragile sur les toutes premières séries et des fuites de carburant sur certains millésimes 2014-2015. Sur Mégane 4, Caradisiac rapporte de rares casses de turbo."
+      }
+    ],
+    "avantages": [
+      "Pièces très courantes et entretien connu de tous les garages, y compris en zone rurale.",
+      "Large choix de carrosseries : 3 ou 5 portes, Estate, coupé, coupé-cabriolet.",
+      "Mégane 2 phase 2 (après janvier 2006) nettement plus fiable que la phase 1 selon Caradisiac.",
+      "Mégane 3 : comportement routier apprécié par la presse et 2.0 dCi réputé endurant.",
+      "Moteurs TCe et dCi récents à chaîne : pas de courroie de distribution à budgétiser.",
+      "Mégane 4 mieux finie et plus confortable, avec des moteurs 1.3 TCe et 1.7 dCi jugés fiables."
+    ],
+    "inconvenients": [
+      "Mégane 2 phase 1 : électricité et électronique capricieuses (carte, verrouillage, lève-vitres, témoins).",
+      "1.5 dCi exposé à des réparations d'injection ou de bas moteur coûteuses s'il a été mal suivi.",
+      "1.2 TCe de Mégane 3 et 4 signalé pour sa consommation d'huile.",
+      "Mégane 3 : infiltrations d'eau, bruits d'habitacle et confort ferme.",
+      "Trains roulants qui s'usent vite : pneus, silentblocs, rotules."
+    ],
+    "problemes": [
+      {
+        "titre": "Bobines d'allumage et variateur des essence 16V",
+        "detail": "Signalé par Caradisiac sur Mégane 2 : les bobines des 1.4 et 1.6 16V peuvent lâcher très tôt (à-coups, moteur sur trois cylindres, voyant) et la poulie de variateur claque à chaud au-delà de 120 000 km. Les premiers modèles, jusqu'à mi-2003, connaissaient aussi des démarrages difficiles."
+      },
+      {
+        "titre": "Bas moteur et injection du 1.5 dCi",
+        "detail": "Signalé par Caradisiac sur Mégane 2 : coussinets de bielle fragiles pouvant entraîner une casse moteur, et pompe d'injection qui produit de la limaille. Sur Mégane 3, injecteurs, pompe à huile et courroie de distribution sont cités comme points sensibles. Un historique de vidanges clair est essentiel."
+      },
+      {
+        "titre": "Turbo du 1.9 dCi 120",
+        "detail": "Signalé par Caradisiac sur les Mégane 2 jusqu'à fin 2003 : le turbo peut casser et provoquer un emballement du moteur. Symptômes : fumée bleue, perte de puissance, sifflement. Les versions 130 à partir de 2005 sont mieux notées."
+      },
+      {
+        "titre": "Électricité, carte et lève-vitres de la Mégane 2",
+        "detail": "Signalé par Caradisiac : lève-vitres fragiles (rappel constructeur de septembre 2005 sur les fixations), verrouillage centralisé et carte mains libres aléatoires, témoin d'airbag qui s'allume sans raison, eau dans le vide-poche passager. Les fiches fiabilité notent une nette amélioration après le restylage de 2006."
+      },
+      {
+        "titre": "Géométrie du train arrière de la Mégane 2",
+        "detail": "Signalé par Caradisiac sur les modèles jusqu'à fin 2004 : valeurs de géométrie non conformes à l'essieu arrière, provoquant une usure rapide et irrégulière des pneus. L'essieu n'est pas réglable, d'où un remplacement complet dans les cas sévères."
+      },
+      {
+        "titre": "Mégane 3 : eau, électronique et 1.2 TCe",
+        "detail": "Signalé par Caradisiac : infiltrations d'eau dans les bacs de porte et jusqu'aux boîtiers ABS/ESP, tirants de porte qui cassent, bruits de mobilier. L'argus et Caradisiac rapportent sur le 1.2 TCe une consommation d'huile pouvant mener au remplacement du moteur, et un rappel de septembre 2012 pour reprogrammer le calculateur du 1.2 TCe 115."
+      },
+      {
+        "titre": "Rappels constructeur",
+        "detail": "Rappel constructeur de novembre 2009 (L'argus) : soudure du support de pédale de frein à vérifier sur les Mégane 3 produites entre juin et juillet 2009. Rappel constructeur de 2020 (fiche RappelConso) : conduite de carburant pouvant être endommagée, avec risque de fuite et d'incendie, sur des Mégane 4 produites entre septembre 2018 et juin 2019. Demandez au garage si ces opérations ont été faites."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de courroie de distribution sur 1.4/1.6 16V, 1.5 dCi et 1.9 dCi, facture à l'appui.",
+      "Niveau et consommation d'huile sur 1.2 TCe, ainsi que l'historique des vidanges sur les moteurs à chaîne.",
+      "Sur 1.5 dCi : bruits de bas moteur à froid, claquements d'injection, fumée, mode dégradé.",
+      "Voyants au tableau de bord : airbag, moteur, ABS/ESP, injection.",
+      "Fonctionnement de la carte, du verrouillage, des lève-vitres et de l'ouverture du coffre sur Mégane 2.",
+      "Usure des pneus arrière et bruits de trains roulants pendant un court essai.",
+      "Traces d'humidité dans les bacs de porte, sous les tapis et dans le coffre sur Mégane 3.",
+      "Embrayage, volant moteur (vibrations au démarrage) et passage des vitesses, surtout sur diesel."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celle de la courroie.",
+      "Retrouvez les deux cartes ou clés : leur absence compte sur une Mégane.",
+      "Notez si la courroie a été faite avec la pompe à eau et les galets, ou si le moteur est à chaîne.",
+      "Sur un dCi, gardez les factures d'injection, de turbo, d'EGR ou de FAP si des travaux ont été faits.",
+      "Faites tourner la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Une Mégane 2 de 2005 ou une Mégane 3 de 2010 a quinze ans ou plus, souvent avec plus de 200 000 km. Ce n'est pas un obstacle. Une Mégane bien suivie, sans voyant allumé, avec une courroie faite à temps et des factures, reste une voiture recherchée pour son prix d'entretien raisonnable. Ce qui la valorise : un carnet complet, deux cartes, un moteur qui démarre franc à froid, des pneus usés régulièrement, un habitacle sec. À l'inverse, un 1.5 dCi sans historique ou un 1.2 TCe qui consomme de l'huile fait baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année, et l'étude ne vous engage à rien.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment, facture à l'appui.",
+      "Kilométrage cohérent avec le carnet et vidanges à intervalles réguliers.",
+      "Mégane 2 phase 2 ou Mégane 3 restylée, en 1.4 TCe, 1.6 dCi ou 2.0 dCi.",
+      "Deux cartes ou clés et carnet d'entretien complet.",
+      "Carrosserie et intérieur soignés, habitacle sec, climatisation fonctionnelle."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve de remplacement.",
+      "1.5 dCi sans historique ou avec bruits de bas moteur et d'injection.",
+      "Voyants allumés (airbag, moteur, ABS/ESP) ou carte capricieuse.",
+      "1.2 TCe avec consommation d'huile constatée ou niveau bas.",
+      "Infiltrations d'eau, corrosion, chocs ou intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Ma Mégane 2 de 2004 avec 220 000 km a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle roule bien. Un fort kilométrage sur une Mégane 2 n'est pas rédhibitoire quand le carnet est suivi, que la courroie a été faite et que l'électricité fonctionne. Nous l'estimons sur son état réel, pas seulement sur son année ou son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Ma Mégane a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Les 1.4 et 1.6 16V, le 1.5 dCi et le 1.9 dCi ont une courroie, à remplacer selon le carnet avec galets et pompe à eau. Les 1.2 TCe, 1.4 TCe, 1.6 dCi et 2.0 dCi ont une chaîne, sans remplacement programmé mais sensible à une huile fatiguée. En cas de doute, vérifiez le carnet. Une facture récente de courroie soutient nettement la valeur."
+      },
+      {
+        "question": "Ma Mégane 3 1.5 dCi a un historique incomplet, l'étudiez-vous ?",
+        "answer": "Oui, nous étudions toutes les Mégane 3 diesel. Un historique incomplet n'empêche pas la vente, mais il compte dans l'offre car l'injection et le bas moteur du 1.5 dCi peuvent coûter cher. Envoyez-nous les factures que vous avez, même partielles. Au rendez-vous, le technicien écoute le moteur et fait un court essai avant de confirmer le prix définitif."
+      },
+      {
+        "question": "Mon 1.2 TCe consomme de l'huile, puis-je quand même la vendre ?",
+        "answer": "Oui. Ce défaut est documenté par la presse sur les 1.2 TCe produits jusqu'en 2016, et nous en tenons compte dans l'offre plutôt que de refuser la voiture. Signalez-le dès la demande d'estimation, avec les éventuels travaux déjà faits : une information claire évite une mauvaise surprise au rendez-vous et permet une offre juste."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma Mégane à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour une Mégane ancienne dont le contrôle est expiré ou dont les réparations demandées ne valent pas la dépense. Le technicien vérifie la voiture lui-même à votre adresse, puis, si la vente est conclue, nous payons par virement instantané."
+      },
+      {
+        "question": "Reprenez-vous aussi la Mégane 4 et la Mégane E-Tech ?",
+        "answer": "Oui pour la Mégane 4 (2016-2024), en berline comme en Estate, essence, diesel ou hybride E-Tech. Pour la Mégane E-Tech électrique, contactez-nous : nous l'étudions au cas par cas. Le principe reste le même : fourchette indicative communiquée rapidement, vérification chez vous sans frais, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Renault Mégane III",
+        "url": "https://fr.wikipedia.org/wiki/Renault_M%C3%A9gane_III"
+      },
+      {
+        "label": "Caradisiac : fiabilité Renault Mégane 2 en occasion",
+        "url": "https://www.caradisiac.com/Renault-Megane-2-II-40410.htm"
+      },
+      {
+        "label": "Caradisiac : maxi-fiche fiabilité Renault Mégane 3",
+        "url": "https://www.caradisiac.com/Maxi-fiche-fiabilite-que-vaut-la-Renault-Megane-3-en-occasion-105588.htm"
+      },
+      {
+        "label": "RappelConso : rappel Renault Mégane, Scénic, Talisman (conduite de carburant)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48882/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-peugeot-308",
+    "brand": "Peugeot",
+    "brandSlug": "reprise-peugeot",
+    "model": "308",
+    "nav": "Peugeot 308",
+    "title": "Vendre sa Peugeot 308 : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Peugeot 308 I, II ou III : estimation gratuite rapide, sans obligation d'achat, un technicien vient chez vous, virement instantané à la vente.",
+    "h1": "Vendre sa Peugeot 308 <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une 308 I ou d'une 308 II, parfois d'une 308 III, qui veulent la vendre sans bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2007-2021 pour les 308 I et II (308 I : 2007-2014, restylée en 2011 ; 308 II : 2013-2021, restylée en 2017) ; la 308 III est produite depuis 2021",
+    "generations": [
+      {
+        "nom": "308 I phase 1",
+        "annees": "2007-2011",
+        "notes": "Lancée en septembre 2007 pour remplacer la 307. Berline 3 ou 5 portes. Moteurs essence 1.4 VTi 95/98, 1.6 VTi 120 et 1.6 THP 140 à 175, diesels 1.6 HDi 90/110 et 2.0 HDi 136. Boîtes manuelles 5 ou 6 rapports, automatique 4 rapports sur 1.6 THP et 2.0 HDi."
+      },
+      {
+        "nom": "308 I SW et CC",
+        "annees": "2008-2014",
+        "notes": "Break SW de 4,50 m lancé en 2008, souvent en 5 ou 7 places avec grand toit vitré. Coupé-cabriolet CC à toit rigide escamotable lancé en 2009. Mêmes motorisations que la berline, avec le 1.6 THP 200 réservé aux versions hautes."
+      },
+      {
+        "nom": "308 I phase 2",
+        "annees": "2011-2014",
+        "notes": "Restylage en mars 2011 : nouveaux boucliers avec feux de jour à diodes, intérieur retouché. Arrivée de l'e-HDi 112 avec Stop and Start et de la boîte robotisée 6 rapports. Le 2.0 HDi passe à 150 puis 163 ch. Fin de carrière en France en 2014."
+      },
+      {
+        "nom": "308 II phase 1",
+        "annees": "2013-2017",
+        "notes": "Commercialisée en septembre 2013, élue voiture européenne de l'année 2014. Berline 5 portes, SW en 2014, GTi en 2015. Moteurs 1.2 VTi 82, 1.2 PureTech 110/130, 1.6 THP 125/155, 1.6 HDi puis BlueHDi 92 à 120 et 2.0 BlueHDi 150/180. Boîtes BVM5, BVM6 et EAT6."
+      },
+      {
+        "nom": "308 II phase 2",
+        "annees": "2017-2021",
+        "notes": "Restylage en 2017 : face avant revue, boîte automatique EAT8 et nouveau 1.5 BlueHDi 100/130 qui remplace le 1.6 BlueHDi. Le dernier exemplaire sort de Sochaux le 10 septembre 2021."
+      },
+      {
+        "nom": "308 III",
+        "annees": "2021-",
+        "notes": "Génération plus récente, nous la reprenons aussi. Berline 5 portes et SW. Moteurs 1.2 PureTech 110/130, 1.5 BlueHDi 130, hybride rechargeable 180/225 et e-308 électrique depuis 2023. Boîtes BVM6 et EAT8."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.4 VTi 95/98 (EP3)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "308 I. Moteur de la famille Prince PSA-BMW, à chaîne de distribution sans échéance fixe : un claquement à froid doit être diagnostiqué. Vidanges régulières conseillées.",
+        "points": "Entrée de gamme un peu juste dans une 308. Fiches-auto signale sur cette version consommation d'huile, distribution, capteurs, bobines et refroidissement."
+      },
+      {
+        "nom": "1.6 VTi 120 (EP6)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "308 I. Chaîne de distribution sans échéance fixe, mais tendeur à surveiller. Vidanges régulières et thermostat à contrôler.",
+        "points": "Version essence la plus courante en occasion sur 308 I. Fiches-auto signale bobines, sondes lambda, boîtier papillon, thermostat et consommation d'huile."
+      },
+      {
+        "nom": "1.6 THP 125 à 200 (EP6DT, EP6CDT)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "308 I et 308 II. Chaîne sans échéance fixe, mais la famille Prince est connue pour son tendeur. Huile de qualité et vidanges rapprochées sont la meilleure prévention.",
+        "points": "Agréable et performant. Fiches-auto signale chaîne de distribution et tendeur, pompe haute pression, turbo, bobines, encrassement d'admission et consommation d'huile."
+      },
+      {
+        "nom": "1.2 PureTech 110/130 (EB2)",
+        "carburant": "Essence",
+        "distribution": "Courroie lubrifiée dans l'huile",
+        "entretien": "308 II et 308 III. Courroie humide dont l'intervalle de remplacement a été revu à la baisse par le constructeur au fil des années : vérifiez le carnet et exigez une huile conforme à la norme PSA.",
+        "points": "Sobre et vif. Caradisiac et Fiches-auto signalent une courroie qui se délite dans l'huile, une consommation d'huile et un encrassement des soupapes. Rappel constructeur de 2021 sur la courroie et de 2020 sur la pompe à vide."
+      },
+      {
+        "nom": "1.6 HDi 90 à 115 et 1.6 BlueHDi 100/120 (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "308 I et 308 II. Remplacement de la courroie avec galets et pompe à eau selon le carnet ; Caradisiac cite 10 ans ou un fort kilométrage sur 308 II. Vidanges régulières indispensables pour le turbo.",
+        "points": "Diesel le plus répandu, sobre. Fiches-auto signale injecteurs et joints d'injecteurs, turbo, EGR, FAP, volant moteur et embrayage ; sur BlueHDi, cristallisation du système AdBlue."
+      },
+      {
+        "nom": "2.0 HDi 136 à 163 et 2.0 BlueHDi 150/180 (DW10)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "308 I et 308 II. Intervalle de courroie selon le carnet. Fréquemment associé à une boîte automatique sur 308 I, puis aux EAT6 et EAT8 sur 308 II.",
+        "points": "Bloc endurant et coupleux. Fiches-auto signale EGR, FAP, turbo, capteurs de dépollution, embrayage et volant moteur. Rappel constructeur de 2023 sur le filtre à particules des 2.0 diesel de 308 II."
+      },
+      {
+        "nom": "1.5 BlueHDi 100/130 (DV5)",
+        "carburant": "Diesel",
+        "distribution": "Courroie, plus une courte chaîne entre arbres à cames",
+        "entretien": "308 II phase 2 et 308 III. Intervalle de courroie selon le carnet, boîte manuelle 6 rapports ou EAT8.",
+        "points": "Diesel récent. Fiches-auto signale une chaîne entre arbres à cames qui a tendance à s'allonger ; Caradisiac signale des injecteurs défaillants."
+      }
+    ],
+    "avantages": [
+      "Compacte très diffusée : pièces courantes, entretien connu de tous les garages.",
+      "Diesels 1.6 HDi et 2.0 HDi sobres et endurants quand les vidanges ont été suivies.",
+      "Chaîne de distribution sur les essence 1.4 et 1.6 VTi/THP, sans échéance de courroie.",
+      "Versions SW spacieuses, avec 7 places et grand toit vitré sur la 308 I.",
+      "308 II élue voiture européenne de l'année 2014, finition et tenue de route saluées.",
+      "Coupé-cabriolet 308 CC à toit rigide, rare sur une compacte."
+    ],
+    "inconvenients": [
+      "Tendeur de chaîne, consommation d'huile et calamine sur les moteurs Prince 1.6 VTi et THP.",
+      "Courroie humide du 1.2 PureTech qui se dégrade dans l'huile, avec rappel constructeur.",
+      "Injecteurs, turbo et FAP coûteux sur les 1.6 HDi mal entretenus.",
+      "Électronique sensible : BSI sur 308 I, écran tactile qui gèle sur les premières 308 II.",
+      "Embrayage et volant moteur bimasse qui fatiguent sur les diesels à fort kilométrage."
+    ],
+    "problemes": [
+      {
+        "titre": "Chaîne et tendeur des 1.6 VTi et THP",
+        "detail": "Signalé par Fiches-auto sur 308 I et 308 II, et décrit par Wikipédia pour la famille Prince : tendeur qui faiblit, chaîne qui s'allonge. Symptômes : claquements importants à froid, décalage de la distribution, perte de puissance, voyant moteur. Réparation lourde si elle est tardive."
+      },
+      {
+        "titre": "Courroie humide du 1.2 PureTech",
+        "detail": "Signalé par Caradisiac et Fiches-auto sur 308 II : la courroie de distribution baigne dans l'huile et peut se déliter, ses débris colmatant la crépine de la pompe à huile. Rappel constructeur de 2021 : dents de la courroie qui s'usent prématurément sur les 308 II produites de juillet 2014 à août 2018, avec risque de calage. Rappel constructeur de 2020 : pompe à vide endommagée par l'abrasion de la courroie sur les 1.2 turbo produits de 2013 à 2017."
+      },
+      {
+        "titre": "Consommation d'huile et calamine des essence Prince",
+        "detail": "Décrit par Wikipédia pour les moteurs EP : surconsommation d'huile par usure prématurée des joints de queue de soupape, et dépôts de suie sur les soupapes d'admission des versions turbo. Symptômes : niveau d'huile qui baisse entre deux vidanges, ralenti irrégulier, perte de souplesse."
+      },
+      {
+        "titre": "Injection, FAP et AdBlue des diesels",
+        "detail": "Signalé par Fiches-auto sur 1.6 HDi et 2.0 HDi : injecteurs et joints d'injecteurs, turbo, vanne EGR et filtre à particules encrassés en usage urbain. Sur BlueHDi, cristallisation du système AdBlue. Rappel constructeur de 2023 : filtre à particules des 2.0 diesel de 308 II produites de janvier 2017 à juillet 2020 pouvant surchauffer et se fissurer."
+      },
+      {
+        "titre": "Boîte, embrayage et volant moteur",
+        "detail": "Signalé par Fiches-auto sur 308 I : boîtes qui accrochent, fuites, embrayages et volants moteur bimasse qui patinent tôt sur les diesels. Caradisiac signale sur 308 II des passages de rapports durs à froid. Rappel constructeur de 2012 relayé par L'argus : émetteur hydraulique d'embrayage sur 4 175 308 produites de novembre 2008 à février 2009."
+      },
+      {
+        "titre": "Électronique : BSI, écran tactile",
+        "detail": "Signalé par Fiches-auto sur 308 I : défauts de boîtier BSI, de commande sous volant COM2000 et de capteurs ABS/ESP. Caradisiac signale sur 308 II jusqu'à mi-2015 un écran SMEG qui gèle, reste noir ou devient lent, corrigé par reprogrammation. Traverse arrière bruyante et biellettes de barre stabilisatrice sont aussi cités."
+      },
+      {
+        "titre": "Rappels constructeurs de 2025",
+        "detail": "Deux fiches officielles RappelConso concernent la 308 II : ancrages supérieurs des ceintures arrière pouvant se briser, sur les 308 vendues du 12 octobre 2015 au 1er décembre 2019 ; et température d'échappement trop basse rendant le catalyseur moins efficace, sur les 308 1.6 Euro 6.1 vendues du 16 octobre 2013 au 26 juin 2018. La réparation se fait en concession."
+      }
+    ],
+    "controles": [
+      "Sur 1.6 VTi et THP : bruit de chaîne à froid, niveau d'huile et historique des vidanges.",
+      "Sur 1.2 PureTech : date et kilométrage de la dernière courroie, passage ou non du rappel, aspect de l'huile.",
+      "Sur 1.6 ou 2.0 HDi : fumée, mode dégradé, régénérations du FAP, bruits d'injection, voyant AdBlue.",
+      "Date et kilométrage du dernier remplacement de courroie sur les diesels, facture à l'appui.",
+      "Embrayage : patinage, point de friction haut, bruits de volant moteur au ralenti.",
+      "Voyants au tableau de bord et fonctionnement de l'écran tactile sur 308 II.",
+      "Bruits de train avant et de traverse arrière pendant un court essai.",
+      "Carrosserie et toit vitré : infiltrations, bas de caisse, passages de roue, rayures."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celles de distribution et de vidange.",
+      "Retrouvez les deux clés : leur absence compte sur une 308.",
+      "Sur un PureTech, gardez la preuve du remplacement de courroie et du passage en concession pour le rappel.",
+      "Sur un HDi, conservez les factures d'injecteurs, de turbo, de FAP ou d'embrayage si des travaux ont été faits.",
+      "Faites tourner la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Une 308 I de 2009 ou une 308 II de 2014 approche ou dépasse les douze ans, souvent avec plus de 150 000 km, c'est vrai. Mais l'âge ne dit pas tout. Une 308 entretenue à temps, sans voyant allumé et sans bruit de chaîne ou de courroie reste une compacte saine et recherchée. Ce qui la valorise : un carnet suivi, une courroie remplacée récemment avec facture sur un HDi ou un PureTech, deux clés, un moteur qui ne consomme pas d'huile, une carrosserie propre. Un faible kilométrage pèse beaucoup sur ces modèles. À l'inverse, un historique flou sur un 1.6 THP ou un 1.2 PureTech fait baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année : un conseiller vous rappelle rapidement avec une fourchette indicative, et le prix définitif est fixé après vérification chez vous.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment sur HDi ou PureTech, facture à l'appui.",
+      "Kilométrage faible et cohérent avec le carnet.",
+      "Moteur 1.6 HDi, 2.0 HDi ou 1.6 VTi en bon état, sans voyant ni bruit de chaîne.",
+      "Deux clés et carnet d'entretien complet avec vidanges régulières.",
+      "Carrosserie et intérieur soignés, climatisation et écran tactile fonctionnels."
+    ],
+    "valeurMoins": [
+      "Courroie PureTech hors échéance ou sans preuve de remplacement.",
+      "1.6 THP ou VTi avec claquements à froid ou consommation d'huile marquée.",
+      "Voyants allumés (moteur, FAP, AdBlue, ABS).",
+      "Embrayage qui patine ou boîte qui accroche.",
+      "Corrosion, chocs, toit vitré qui fuit ou intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Ma Peugeot 308 de 2010 avec 200 000 km a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Une 308 I 1.6 HDi de 2010 bien entretenue, avec une courroie faite et un carnet suivi, intéresse toujours. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Ma 308 a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Cela dépend du moteur. Les essence 1.4 VTi, 1.6 VTi et 1.6 THP de la famille Prince ont une chaîne, sans échéance fixe mais avec un tendeur à surveiller. Les diesels 1.6 HDi, 2.0 HDi, 1.6 BlueHDi et 1.5 BlueHDi ont une courroie à remplacer selon le carnet. Le 1.2 PureTech a une courroie qui baigne dans l'huile, avec un intervalle réduit par le constructeur : vérifiez votre carnet. Une facture récente soutient nettement la valeur de la voiture."
+      },
+      {
+        "question": "Ma 308 II 1.2 PureTech a un problème de courroie, l'étudiez-vous ?",
+        "answer": "Oui, nous étudions toutes les 308 PureTech, y compris celles dont la courroie n'a pas été faite ou qui ont un voyant allumé. Ce défaut est connu et a fait l'objet d'un rappel constructeur : signalez-le dès la demande d'estimation avec les factures que vous avez, même partielles. Au rendez-vous, le technicien écoute le moteur et fait un court essai avant de confirmer le prix définitif."
+      },
+      {
+        "question": "Mon 1.6 THP claque à froid et consomme de l'huile, puis-je la vendre ?",
+        "answer": "Oui. Sur la famille Prince, le tendeur de chaîne et les joints de queue de soupape sont des défauts documentés. Nous en tenons compte dans l'offre, mais une information claire dès le départ évite une mauvaise surprise au rendez-vous. L'étude se fait sans promesse de rachat : vous restez libre après la vérification."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma Peugeot 308 à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour une 308 ancienne dont le contrôle est expiré ou dont les réparations demandées, FAP ou embrayage par exemple, ne valent pas la dépense. Nous évaluons la voiture nous-mêmes lors du rendez-vous à votre adresse, puis, si la vente est conclue, nous payons par virement instantané."
+      },
+      {
+        "question": "Reprenez-vous aussi la 308 III, la 308 SW et la 308 CC ?",
+        "answer": "Oui. Nous reprenons la 308 III produite depuis 2021, en PureTech, BlueHDi, hybride rechargeable ou e-308, ainsi que les SW de toutes générations et le coupé-cabriolet 308 CC. Le principe reste le même : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous sans frais, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Peugeot 308 II",
+        "url": "https://fr.wikipedia.org/wiki/Peugeot_308_II"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Peugeot 308 (2007-2013)",
+        "url": "https://www.fiches-auto.fr/fiabilite-peugeot/fiabilite-185-pannes-peugeot-308.php"
+      },
+      {
+        "label": "Caradisiac : fiabilité de la Peugeot 308 II, la maxi-fiche occasion",
+        "url": "https://www.caradisiac.com/fiabilite-de-la-peugeot-308-ii-la-maxi-fiche-occasion-de-caradisiac-109564.htm"
+      },
+      {
+        "label": "RappelConso : rappel 2021 courroie de distribution 1.2 PureTech (308 II)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48589/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-citroen-c4",
+    "brand": "Citroën",
+    "brandSlug": "reprise-citroen",
+    "model": "C4",
+    "nav": "Citroën C4",
+    "title": "Vendre sa Citroën C4 : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Citroën C4 I, II ou III : estimation gratuite rapide, sans obligation d'achat, un technicien vient chez vous, virement instantané à la vente.",
+    "h1": "Vendre sa Citroën C4 <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une C4 première génération (2004-2010) ou d'une C4 II (2010-2018), souvent à fort kilométrage, et aussi d'une C4 III ou ë-C4 plus récente. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2004-2018 pour les C4 I et II (C4 I : 2004-2010, C4 II : 2010-2018) ; la C4 III, dont la ë-C4 électrique, est produite depuis fin 2020. Les C4 Picasso, SpaceTourer et C4 Cactus ne sont pas traités ici.",
+    "generations": [
+      {
+        "nom": "C4 I phase 1, berline 5 portes",
+        "annees": "2004-2008",
+        "notes": "Lancée en novembre 2004 en remplacement de la Xsara, avec son volant à moyeu fixe. Moteurs essence 1.4 16V 88 ch et 1.6 16V 110 ch, 2.0 16V, diesels 1.6 HDi 92/110 ch et 2.0 HDi 138 ch. Boîte manuelle, automatique ou BMP6 pilotée sur le 1.6 HDi 110."
+      },
+      {
+        "nom": "C4 I coupé 3 portes",
+        "annees": "2004-2010",
+        "notes": "Même base que la berline, avec une poupe plus tronquée et des vitres arrière fixes. Versions VTR et VTS 2.0 16V 180 ch. Vendue aussi en version Entreprise 2 places."
+      },
+      {
+        "nom": "C4 I phase 2",
+        "annees": "2008-2010",
+        "notes": "Restylage fin 2008 : nouveau bouclier, capot arrondi, chevrons revus, feux arrière redessinés, compte-tours déplacé vers le tableau de bord central. Arrivée des essence VTi 95 et 120 et THP 150 à chaîne de distribution."
+      },
+      {
+        "nom": "C4 II phase 1",
+        "annees": "2010-2015",
+        "notes": "Commercialisée à partir d'octobre 2010, 5 étoiles au crash-test Euro NCAP 2010. Essence 1.4 VTi 95, 1.6 VTi 120 et 1.6 THP 155 ; diesels 1.6 HDi 92/115 et 2.0 HDi 150. Boîte manuelle, pilotée ETG6 ou automatique 4 puis 6 rapports."
+      },
+      {
+        "nom": "C4 II phase 2",
+        "annees": "2015-2018",
+        "notes": "Restylage en mars 2015 : feux de jour à LED, feux arrière fumés, écran tactile, passage à la norme Euro 6. Nouveaux moteurs 1.2 PureTech 110/130 et 1.6 BlueHDi 100/120, 2.0 BlueHDi 150 jusqu'en 2016. Fin de production en février 2018."
+      },
+      {
+        "nom": "C4 III et ë-C4",
+        "annees": "2020-",
+        "notes": "Génération récente à allure de crossover, dévoilée en juillet 2020 et commercialisée en décembre 2020, nous la reprenons aussi. Essence 1.2 PureTech 100/130/155, diesel 1.5 BlueHDi 110/130, boîte manuelle ou EAT8, puis micro-hybride 48 V 136 ch en 2024. La ë-C4 électrique existe en 50 et 54 kWh."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.4 16V 88 ch (ET3) et 1.6 16V 110 ch (TU5)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "C4 I phase 1 surtout. Remplacement de la courroie avec galets et pompe à eau, à un intervalle qui varie selon l'année : vérifiez le carnet.",
+        "points": "Moteurs simples et connus. Fiches-auto relève bobines d'allumage, sondes, boîtier papillon et circuit de refroidissement sur ces deux blocs, et des joints de culasse sur le 1.4. Le 1.6 16V est la version essence recommandée par Caradisiac sur la C4 I."
+      },
+      {
+        "nom": "1.4 VTi 95 et 1.6 VTi 120 (EP6)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "C4 I phase 2 et C4 II jusqu'en 2015. Pas de courroie à remplacer, mais des vidanges à l'heure avec la bonne huile : vérifiez le carnet.",
+        "points": "Fiches-auto signale une consommation d'huile marquée, des tendeurs de chaîne fatigués, des pompes à eau et des thermostats. Un cliquetis au démarrage à froid doit être écouté de près."
+      },
+      {
+        "nom": "1.6 THP 140 à 155 ch (EP6DT)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "C4 I phase 2 et C4 II phase 1. Vidanges rapprochées indispensables, chaîne et tendeur à écouter à froid : vérifiez le carnet.",
+        "points": "Le plus puissant des essence, mais fiches-auto relève chaîne et tendeur hydraulique, pompe haute pression, encrassement de l'admission et turbo. Un historique d'entretien complet compte beaucoup."
+      },
+      {
+        "nom": "1.2 PureTech 110 et 130 (EB2)",
+        "carburant": "Essence",
+        "distribution": "Courroie dans l'huile",
+        "entretien": "C4 II phase 2 et C4 III. La courroie baigne dans l'huile et son remplacement est préconisé par le constructeur à un intervalle devenu plus court : vérifiez le carnet.",
+        "points": "Trois cylindres sobre, mais fiches-auto signale une courroie qui se dégrade prématurément et pollue le circuit de lubrification. Rappel constructeur publié en 2020 sur les moteurs produits de mars 2013 à avril 2017 : pompe à vide endommagée par des débris de courroie."
+      },
+      {
+        "nom": "1.6 HDi 90 à 115 ch (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "C4 I et C4 II phase 1. Courroie avec galets et pompe à eau selon le carnet, et vidanges régulières avec l'huile prescrite.",
+        "points": "Sobre et agréable, version diesel recommandée par Caradisiac sur la C4 I. Fiches-auto relève joints d'injecteurs qui fuient, turbo, vanne EGR, filtre à particules et volant moteur bimasse."
+      },
+      {
+        "nom": "1.6 BlueHDi 100 et 120 (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie (vérifiez le carnet)",
+        "entretien": "C4 II phase 2. Courroie selon le carnet, niveau d'AdBlue et vidanges à suivre.",
+        "points": "Version conseillée par la presse auto avec un historique complet. Fiches-auto signale surtout des défauts du système AdBlue (cristallisation, pompe, capteurs) et des injecteurs encrassés."
+      },
+      {
+        "nom": "2.0 HDi 138/150 et 1.5 BlueHDi 110/130",
+        "carburant": "Diesel",
+        "distribution": "Courroie (vérifiez le carnet)",
+        "entretien": "2.0 HDi sur C4 I et C4 II, 1.5 BlueHDi sur C4 III. Courroie et vidanges selon le carnet.",
+        "points": "Le 2.0 est décrit par fiches-auto comme le diesel le plus rassurant quand il est entretenu : EGR, FAP et volant moteur restent à surveiller. Sur C4 III, rappel constructeur publié en 2025 pour la chaîne d'arbre à cames du 1.5 BlueHDi produit de mai 2020 à janvier 2023."
+      }
+    ],
+    "avantages": [
+      "Confort de suspension et de sièges au-dessus de la catégorie, sur les trois générations.",
+      "Pièces courantes et entretien connu de tous les garages, surtout sur C4 I et II.",
+      "Diesels 1.6 HDi et 2.0 HDi sobres et endurants quand ils sont suivis.",
+      "C4 II notée 5 étoiles au crash-test Euro NCAP, avec l'un des plus grands coffres de sa catégorie.",
+      "Qualité de construction jugée bonne par Caradisiac sur la C4 I.",
+      "Coupé 3 portes de la C4 I au style à part, encore recherché en VTS."
+    ],
+    "inconvenients": [
+      "Électronique et BSI sensibles avec l'âge : autoradio, voyants, régulateur, capteurs.",
+      "Boîtes pilotées BMP6 et ETG6 jugées médiocres, qui broutent et se dévalorisent.",
+      "Chaîne de distribution des 1.6 VTi et THP à surveiller, et consommation d'huile.",
+      "Courroie dans l'huile du 1.2 PureTech, à remplacer sans dépasser l'échéance.",
+      "Visibilité réduite sur le coupé C4 I et montants arrière épais sur la C4 II."
+    ],
+    "problemes": [
+      {
+        "titre": "Électronique et autoradio",
+        "detail": "Caradisiac signale sur la C4 I un autoradio qui se coupe par moments, un chargeur CD capricieux, des feux directionnels bloqués par un capteur d'assiette et un régulateur qui refuse de s'activer. Sur la C4 II, fiches-auto cite écran tactile, GPS et BSI."
+      },
+      {
+        "titre": "Courroie du 1.2 PureTech et pompe à vide",
+        "detail": "Rappel constructeur de 2020 : sur les 1.2 turbo essence produits de mars 2013 à avril 2017, les débris de la courroie de distribution peuvent endommager la pompe à vide et réduire l'assistance au freinage. Fiches-auto relève aussi une consommation d'huile élevée."
+      },
+      {
+        "titre": "Airbags Takata sur la C4 II",
+        "detail": "Rappel constructeur publié en 2021 pour les C4 II produites du 29 septembre 2010 au 10 février 2017 : le gonfleur d'airbag peut se dégrader avec le temps et projeter des fragments. L'argus rapporte plus de 330 000 véhicules concernés en France, sans interdiction de circuler. Vérifiez si le remplacement a été fait."
+      },
+      {
+        "titre": "Chaîne et tendeur des 1.6 VTi et THP",
+        "detail": "Fiches-auto signale sur C4 I phase 2 et C4 II une chaîne qui s'allonge et un tendeur hydraulique qui faiblit, avec cliquetis à froid, plus une consommation d'huile marquée. Le THP ajoute pompe haute pression et encrassement."
+      },
+      {
+        "titre": "Injecteurs, turbo et FAP des HDi",
+        "detail": "Sur 1.6 HDi, fiches-auto relève des joints d'injecteurs qui fuient, des turbos qui cassent entre 80 000 et 150 000 km et des vannes EGR ou filtres à particules encrassés en usage urbain. Symptômes : fumée, perte de puissance, voyant."
+      },
+      {
+        "titre": "Système AdBlue des BlueHDi",
+        "detail": "Sur la C4 II phase 2, fiches-auto compte plusieurs cas de réservoir d'urée cristallisé, de pompe ou de capteurs défaillants, avec compte à rebours au tableau de bord et refus de démarrage à terme."
+      },
+      {
+        "titre": "Train avant et amortisseurs",
+        "detail": "Caradisiac signale sur la C4 I des claquements du train avant aux démarrages vigoureux, des amortisseurs usés dès 60 000 km et des vibrations du volant au-delà de 100 km/h liées aux disques. Rappel constructeur de 2021 sur un lot de C4 II produites en mars 2015 : berceau insuffisamment protégé contre la corrosion."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de courroie de distribution, facture à l'appui (TU, HDi, PureTech).",
+      "Sur 1.6 VTi ou THP : bruit de chaîne au démarrage à froid et niveau d'huile entre deux vidanges.",
+      "Sur HDi et BlueHDi : fumée, mode dégradé, bruits de turbo, messages AdBlue.",
+      "Voyants au tableau de bord (moteur, airbag, antipollution) et fonctionnement de l'autoradio et de l'écran.",
+      "Sur boîte BMP6 ou ETG6 : passages de rapports à l'arrêt et en roulant, broutements.",
+      "Claquements du train avant et vibrations du volant pendant un court essai.",
+      "Preuve du remplacement des airbags Takata sur une C4 II de 2010 à 2017.",
+      "État de la carrosserie et de l'intérieur : velours des sièges, accoudoirs, pare-chocs."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celle de la courroie ou des vidanges.",
+      "Retrouvez les deux clés : leur absence compte sur une C4.",
+      "Notez si la courroie a été faite avec la pompe à eau et les galets, ou si la chaîne a été contrôlée.",
+      "Sur un diesel, gardez les factures d'injecteurs, de turbo, de FAP ou d'AdBlue si des travaux ont été faits.",
+      "Faites tourner la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Une C4 I de 2006 ou une C4 II de 2012 a plus de dix ans et souvent beaucoup de kilomètres, c'est vrai. Mais l'âge ne dit pas tout. Une C4 entretenue à temps, sans voyant allumé et sans bruit de chaîne ou de turbo reste une voiture saine. Ce qui la valorise : une courroie remplacée récemment avec facture, un carnet suivi, deux clés, un moteur essence 1.6 16V ou un diesel qui tourne rond, une boîte manuelle, une carrosserie propre. À l'inverse, une boîte pilotée qui broute ou un 1.2 PureTech sans suivi de courroie font baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année : un conseiller vous rappelle rapidement avec une fourchette indicative, puis le prix définitif est fixé après la vérification chez vous.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment, facture à l'appui.",
+      "Kilométrage cohérent avec le carnet et vidanges régulières.",
+      "Moteur 1.6 16V, 1.6 HDi 110 ou 2.0 HDi en bon état, avec boîte manuelle.",
+      "Deux clés et carnet d'entretien complet, rappels effectués.",
+      "Carrosserie et intérieur soignés, électronique sans défaut."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve de remplacement, surtout sur 1.2 PureTech.",
+      "Chaîne bruyante ou forte consommation d'huile sur 1.6 VTi ou THP.",
+      "Voyants allumés (moteur, airbag, antipollution, AdBlue).",
+      "Boîte BMP6 ou ETG6 qui broute ou passe mal les rapports.",
+      "Corrosion, chocs ou intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Ma Citroën C4 de 2007 avec 200 000 km a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Une C4 I bien suivie, avec une courroie faite à temps et un carnet complet, intéresse toujours, même à fort kilométrage. Nous l'estimons sur son état réel, ses factures et son moteur, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Ma C4 a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Cela dépend du moteur. Les 1.4 et 1.6 16V, les 1.6 HDi, 2.0 HDi et BlueHDi ont une courroie à remplacer selon le carnet. Les 1.6 VTi et 1.6 THP ont une chaîne, sans échéance mais sensible au manque d'huile. Le 1.2 PureTech a une courroie qui baigne dans l'huile, avec un intervalle raccourci par le constructeur. Une facture récente soutient nettement la valeur de la voiture."
+      },
+      {
+        "question": "Ma C4 II a-t-elle été concernée par le rappel des airbags Takata ?",
+        "answer": "Les C4 II produites de septembre 2010 à février 2017 font l'objet d'un rappel constructeur pour les airbags avant. Vous pouvez vérifier avec votre numéro de série auprès de la marque. Un rappel non effectué n'empêche pas la vente : signalez-le dès la demande d'estimation et nous en tenons compte au rendez-vous."
+      },
+      {
+        "question": "Ma C4 1.6 HDi a un voyant antipollution allumé, l'étudiez-vous ?",
+        "answer": "Oui, nous étudions toutes les C4 diesel. Un voyant allumé n'empêche pas la vente, mais il compte dans l'offre car injecteurs, turbo ou filtre à particules peuvent coûter cher. Envoyez-nous les factures que vous avez, même partielles. Au rendez-vous, le technicien écoute le moteur et fait un court essai avant de fixer le prix définitif."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma C4 à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour une C4 ancienne dont le contrôle est expiré ou dont les réparations demandées ne valent pas la dépense. Nous vérifions la voiture nous-mêmes lors du rendez-vous chez vous, puis, si la vente est conclue, nous payons par virement instantané."
+      },
+      {
+        "question": "Reprenez-vous aussi la C4 III, la ë-C4 et les C4 Picasso ?",
+        "answer": "Oui pour la C4 III et la ë-C4 électrique, produites depuis fin 2020, en essence, diesel ou électrique. Les C4 Picasso, SpaceTourer et C4 Cactus sont étudiés sur demande, mais cette page ne les détaille pas. Le principe reste le même : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Citroën C4 I",
+        "url": "https://fr.wikipedia.org/wiki/Citro%C3%ABn_C4_I"
+      },
+      {
+        "label": "Caradisiac : fiabilité de la Citroën C4 (2004-2010)",
+        "url": "https://www.caradisiac.com/Fiabilite-45751.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Citroën C4 II (2010-2018)",
+        "url": "https://www.fiches-auto.fr/fiabilite-citroen/fiabilite-311-pannes-citroen-c4-2.php"
+      },
+      {
+        "label": "RappelConso : rappel airbags Takata Citroën C4 II (fiche A12/01043/21)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48617/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-renault-scenic",
+    "brand": "Renault",
+    "brandSlug": "reprise-renault",
+    "model": "Scénic",
+    "nav": "Renault Scénic",
+    "title": "Vendre sa Renault Scénic : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Renault Scénic 2, 3 ou 4, Grand Scénic compris : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané.",
+    "h1": "Vendre sa Renault Scénic <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'un Scénic 2 ou d'un Scénic 3, souvent à fort kilométrage, parfois d'un Scénic 4, qui veulent le vendre sans se compliquer la vie. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier le monospace chez vous, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "1996-2022 pour les Scénic 1 à 4 (Mégane Scénic et Scénic 1 : 1996-2003, Scénic 2 : 2003-2009, Scénic 3 : 2009-2016, Scénic 4 : 2016-2022) ; le Scénic E-Tech 100 % électrique est produit depuis 2024",
+    "generations": [
+      {
+        "nom": "Mégane Scénic (Scénic 1 phase 1)",
+        "annees": "1996-1999",
+        "notes": "Premier monospace compact de Renault, élu Voiture européenne de l'année 1997. Moteurs 1.4 et 1.6 essence 8 soupapes, 2.0 essence, diesels 1.9 D et 1.9 dTi."
+      },
+      {
+        "nom": "Scénic 1 phase 2 et RX4",
+        "annees": "1999-2003",
+        "notes": "Restylage en 1999, le modèle perd le nom Mégane. Arrivée des 1.4 16V, 1.6 16V, 1.8 16V et du 1.9 dCi. Version RX4 à quatre roues motrices de 2000 à 2003."
+      },
+      {
+        "nom": "Scénic 2 et Grand Scénic 2 phase 1",
+        "annees": "2003-2006",
+        "notes": "Nouvelle plateforme, 5 places (4,26 m) ou Grand Scénic 7 places (4,49 m). Carte mains libres et frein de parking électrique. Essence 1.4 98, 1.6 16V 113, 2.0 16V 134, 2.0 Turbo 163 ; diesels 1.5 dCi, 1.9 dCi et 2.0 dCi. C'est la phase la plus exposée aux pannes."
+      },
+      {
+        "nom": "Scénic 2 et Grand Scénic 2 phase 2",
+        "annees": "2006-2009",
+        "notes": "Restylage en septembre 2006, nettement plus fiable selon la presse auto. Le 1.9 dCi 130 FAP arrive. Version Conquest surélevée sans transmission intégrale. Beaucoup de ces Scénic dépassent aujourd'hui 200 000 km."
+      },
+      {
+        "nom": "Scénic 3, Grand Scénic 3 et Xmod",
+        "annees": "2009-2016",
+        "notes": "5 places (4,34 m) ou Grand Scénic 7 places (4,56 m). Deux restylages, en 2012 puis 2013, et un Scénic Xmod d'allure baroudeuse à partir de 2013. Essence 1.6 16V 110, 1.4 TCe 130, 1.2 TCe 115/130, 2.0 140 ; diesels 1.5 dCi, 1.6 dCi 130, 1.9 dCi 130 et 2.0 dCi, boîte EDC sur certains."
+      },
+      {
+        "nom": "Scénic 4 et Grand Scénic 4",
+        "annees": "2016-2022",
+        "notes": "Génération plus récente, nous la reprenons aussi. Grandes roues de 20 pouces de série, 5 places (4,40 m) ou Grand Scénic 7 places (4,63 m). Essence 1.2 TCe puis 1.3 TCe, diesels 1.5 dCi, 1.6 dCi et 1.7 Blue dCi, boîte manuelle ou EDC. Fin du diesel en 2021, le Grand Scénic s'arrête début 2023. Remplacé en 2024 par le Scénic E-Tech électrique."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.4 16V 98 et 1.6 16V 110-115 (K4J, K4M)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Scénic 1 phase 2, Scénic 2 et Scénic 3 (1.6 110 jusqu'en 2013). Remplacement de la courroie avec galets et pompe à eau à l'intervalle du carnet, qui varie selon l'année.",
+        "points": "Moteurs simples et bien connus. Bobines d'allumage et poulie de déphaseur qui claque au démarrage signalées sur le 1.6 16V. Le 1.6 16V 115 est la version essence conseillée par Caradisiac sur le Scénic 2."
+      },
+      {
+        "nom": "1.9 dCi 105 à 130 (F9Q)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Scénic 1 (dès 2001), Scénic 2 et Scénic 3 jusqu'en 2011. Courroie à remplacer à l'intervalle du carnet, vidanges régulières.",
+        "points": "Souple et endurant une fois passé 2006. Sur Scénic 2 avant 2005, turbo fragile et vanne EGR qui s'encrasse signalés par Caradisiac. Volant moteur bimasse et embrayage à surveiller sur les gros kilométrages."
+      },
+      {
+        "nom": "1.5 dCi 80 à 110 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Scénic 2, Scénic 3 et Scénic 4. Le constructeur préconise environ 120 000 km ou 5 ans selon les versions : vérifiez le carnet. Des ruptures précoces sont signalées, la facture compte.",
+        "points": "Sobre, mais les Scénic 2 d'avant 2006 sont exposés à l'injection (pompe et injecteurs) et à la fragilité des coussinets de bielle. Sur Scénic 3, turbo, injecteurs, vanne EGR et filtre à particules à contrôler."
+      },
+      {
+        "nom": "2.0 16V 134-140 et 2.0 Turbo 163 (F4R, M4R)",
+        "carburant": "Essence",
+        "distribution": "Vérifiez le carnet",
+        "entretien": "Scénic 2 (2.0 16V et 2.0 Turbo) et Scénic 3 (2.0 140 avec boîte CVT jusqu'en 2012). Type et échéance de distribution selon le moteur : vérifiez le carnet.",
+        "points": "Versions rares. Boîtier papillon encrassé et boîte automatique défaillante signalés sur le 2.0 du Scénic 2. Le 2.0 Turbo est à préférer en phase 2 selon Caradisiac."
+      },
+      {
+        "nom": "1.2 TCe 115-130 (H5Ft)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Scénic 3 dès 2012 et Scénic 4 phase 1. Pas de courroie à remplacer, mais niveau d'huile à contrôler souvent.",
+        "points": "Point noir de la génération 3 selon fiches-auto.fr : consommation d'huile élevée qui peut priver le tendeur de chaîne de pression, avec des casses moteur signalées. Un carnet d'huile rigoureux rassure."
+      },
+      {
+        "nom": "1.6 dCi 130-160 (R9M)",
+        "carburant": "Diesel",
+        "distribution": "Chaîne",
+        "entretien": "Scénic 3 dès 2011 et Scénic 4. Pas de courroie à prévoir, vidanges et additif de FAP selon le carnet.",
+        "points": "Version diesel à privilégier si l'entretien est complet. Turbo, vanne EGR, filtre à particules, capteurs de dépollution et durite de suralimentation fendue signalés sur Scénic 3."
+      },
+      {
+        "nom": "1.3 TCe 115-160 et 1.7 Blue dCi 120-150 (Scénic 4)",
+        "carburant": "Essence ou Diesel",
+        "distribution": "Vérifiez le carnet",
+        "entretien": "Scénic 4 à partir de 2017 pour le 1.3 TCe, de 2018 pour le 1.7 Blue dCi. Entretien au carnet, boîte manuelle ou EDC.",
+        "points": "Moteurs récents, encore peu de recul. Deux rappels constructeur de 2019 et 2020 concernent des Scénic 4 diesel produits entre septembre 2018 et juin 2019 (voir problèmes connus)."
+      }
+    ],
+    "avantages": [
+      "Modularité reconnue : sièges arrière indépendants, rangements partout, coffre généreux.",
+      "Grand Scénic 7 places disponible sur les générations 2, 3 et 4.",
+      "Pièces très courantes, entretien connu de tous les garages.",
+      "Scénic 2 phase 2 et Scénic 3 jugés nettement plus fiables que le Scénic 2 phase 1.",
+      "1.6 dCi et 1.2 TCe à chaîne : pas de courroie à remplacer.",
+      "Prix de revient d'occasion modéré, donc demande régulière de familles."
+    ],
+    "inconvenients": [
+      "Scénic 2 phase 1 (2003-2006) : électronique capricieuse et pannes diesel coûteuses.",
+      "1.2 TCe du Scénic 3 exposé à la consommation d'huile et à la chaîne de distribution.",
+      "Frein de parking électrique et carte mains libres sources de pannes sur Scénic 2 et 3.",
+      "Usure rapide des pneus arrière et des trains roulants sur Scénic 2 et 3.",
+      "Grandes roues de 20 pouces du Scénic 4 : pneus chers et sensibles aux trottoirs."
+    ],
+    "problemes": [
+      {
+        "titre": "Coussinets de bielle du 1.5 dCi (Scénic 2)",
+        "detail": "Signalé par Caradisiac : les coussinets de bielle des 1.5 dCi du Scénic 2 peuvent lâcher et entraîner une casse moteur. Symptômes : claquement sourd au ralenti, voyant pression d'huile. Un historique de vidanges rapprochées compte beaucoup."
+      },
+      {
+        "titre": "Injection du 1.5 dCi et turbo du 1.9 dCi",
+        "detail": "Sur les Scénic 2 d'avant 2006, Caradisiac relève des grippages de pompe haute pression et d'injecteurs sur le 1.5 dCi, et un turbo fragile sur le 1.9 dCi 120 jusqu'en 2005, avec une vanne EGR qui s'encrasse. Les versions d'après le restylage de 2006 sont beaucoup moins touchées."
+      },
+      {
+        "titre": "Tableau de bord qui s'éteint et frein de parking électrique",
+        "detail": "Signalé par Caradisiac sur les Scénic 2 d'avant 2005 : afficheur qui se coupe sans prévenir, frein de parking qui se serre tout seul sur certains modèles 2003-2005 et assistance de direction qui faiblit par moments. Sur Scénic 3, fiches-auto.fr relève des refus de serrage ou des blocages du frein de parking."
+      },
+      {
+        "titre": "Lève-vitres qui tombent dans la porte",
+        "detail": "Sur Scénic 2 jusqu'en 2006, Caradisiac signale des vitres qui descendent dans la porte à cause de supports en plastique qui cassent. Les câbles et glissières fatiguent aussi sur Scénic 3 selon fiches-auto.fr."
+      },
+      {
+        "titre": "Consommation d'huile du 1.2 TCe (Scénic 3)",
+        "detail": "Signalé par fiches-auto.fr : le 1.2 TCe 115 et 130 peut consommer beaucoup d'huile, ce qui prive le tendeur hydraulique de la chaîne de pression et finit en casse moteur. Contrôlez le niveau et conservez les justificatifs d'appoint."
+      },
+      {
+        "titre": "Boîte EDC, plaquettes arrière et R-Link (Scénic 3)",
+        "detail": "Wikipédia mentionne un craquement métallique au passage des rapports sur les Scénic 3 à boîte EDC, corrigé en après-vente à partir de l'été 2013. L'argus signale une usure rapide des plaquettes arrière liée au frein de parking, traitée en 2014, et une mauvaise configuration du R-Link corrigée en atelier dès 2015."
+      },
+      {
+        "titre": "Rappels constructeur de 2009, 2019 et 2020",
+        "detail": "Rappel constructeur de 2009 : contrôle de la soudure de la pédale de frein sur les Scénic 3 fabriqués entre le 10 juin et le 9 juillet 2009, selon L'argus. Rappel constructeur de 2019 : capteurs de NOx mal serrés sur des Scénic 4 diesel 1.7 et 2.0 produits à Douai entre septembre 2018 et juin 2019. Rappel constructeur de 2020 : conduite de carburant pouvant être endommagée, avec risque de fuite, sur des Scénic 4 fabriqués entre septembre 2018 et juin 2019 (fiche rappel.conso.gouv.fr). Demandez au vendeur ou à un réparateur Renault si l'opération a été faite."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de courroie sur 1.5 dCi, 1.9 dCi et essence 16V, facture à l'appui.",
+      "Sur 1.5 dCi : bruit au ralenti, fumée, démarrage à froid et historique des vidanges.",
+      "Sur 1.2 TCe : niveau d'huile, fréquence des appoints et bruit de chaîne au démarrage.",
+      "Frein de parking électrique : serrage et desserrage répétés, voyant au tableau de bord.",
+      "Carte mains libres, fermeture centralisée, afficheur central et lève-vitres des quatre portes.",
+      "Sur boîte EDC : passage des rapports à froid et à chaud, bruits ou à-coups.",
+      "Usure des pneus arrière, bruits de train avant et de coupelles d'amortisseurs pendant un court essai.",
+      "Traces d'humidité sous les tapis et autour du toit panoramique."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et toutes les factures, surtout celles de courroie, d'injection ou de turbo.",
+      "Retrouvez les deux cartes mains libres : une carte manquante se remarque sur un Scénic.",
+      "Sur un 1.2 TCe, notez vos appoints d'huile et gardez les tickets, c'est un vrai argument.",
+      "Vérifiez si les rappels constructeur ont été traités, un réparateur Renault peut le confirmer avec le numéro de série.",
+      "Remettez en place les sièges arrière et les caches de rangement, la modularité fait partie de la valeur.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection, et faites rouler la voiture quelques jours avant le rendez-vous."
+    ],
+    "age": "Un Scénic 2 de 2007 ou un Scénic 3 de 2011 affiche souvent plus de 200 000 km, c'est vrai. Mais le kilométrage ne dit pas tout sur un monospace de famille. Un Scénic entretenu à temps, sans voyant allumé, dont la courroie a été faite avec facture et dont le frein de parking répond bien reste une voiture recherchée par ceux qui ont besoin de place. Ce qui le valorise : un carnet suivi, deux cartes, un 1.9 dCi 130 ou un 1.6 dCi avec historique complet, un intérieur sans sièges manquants. À l'inverse, un 1.5 dCi d'avant 2006 sans factures ou un 1.2 TCe qui boit de l'huile font baisser l'offre. Nous regardons votre Scénic tel qu'il est : un conseiller vous donne rapidement une fourchette indicative, le technicien confirme le prix définitif chez vous, et vous restez libre de refuser.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment, facture à l'appui.",
+      "Kilométrage cohérent avec le carnet et vidanges régulières sur diesel.",
+      "Scénic 2 phase 2 ou Scénic 3 en 1.9 dCi 130, 1.6 dCi ou 1.6 16V, bien suivi.",
+      "Deux cartes mains libres, carnet complet et rappels constructeur traités.",
+      "Grand Scénic 7 places avec tous ses sièges, intérieur et carrosserie soignés."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve de remplacement sur 1.5 dCi ou 1.9 dCi.",
+      "1.5 dCi de Scénic 2 phase 1 sans historique, ou claquement moteur.",
+      "1.2 TCe avec forte consommation d'huile ou bruit de chaîne.",
+      "Frein de parking, carte mains libres ou afficheur défaillants.",
+      "Infiltrations d'eau, sièges manquants, pneus 20 pouces usés sur Scénic 4."
+    ],
+    "faq": [
+      {
+        "question": "Mon Scénic 2 de 2006 a 230 000 km, a-t-il encore une valeur ?",
+        "answer": "Oui, s'il est en bon état. Un Scénic 2 phase 2 avec un carnet suivi, une courroie faite à temps et un frein de parking qui fonctionne intéresse toujours des familles. Nous l'estimons sur son état réel et ses factures, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Mon Scénic a-t-il une courroie ou une chaîne de distribution ?",
+        "answer": "Cela dépend du moteur. Les 1.5 dCi, 1.9 dCi et essence 1.4 et 1.6 16V ont une courroie, à remplacer à l'échéance du carnet, autour de 120 000 km ou 5 ans sur le 1.5 dCi selon les versions. Le 1.6 dCi et le 1.2 TCe ont une chaîne. Pour le 2.0 et les moteurs du Scénic 4, vérifiez le carnet. Une facture récente de courroie soutient nettement la valeur."
+      },
+      {
+        "question": "Mon Scénic 3 1.2 TCe consomme de l'huile, l'étudiez-vous ?",
+        "answer": "Oui, nous étudions tous les Scénic 3, y compris en 1.2 TCe. Une consommation d'huile est un défaut connu de ce moteur et elle compte dans l'offre, car la chaîne peut en souffrir. Dites-le dès la demande, envoyez les tickets d'appoint et les factures que vous avez. Au rendez-vous, le technicien écoute le moteur et fait un court essai avant de confirmer le prix définitif."
+      },
+      {
+        "question": "Le frein de parking ou la carte mains libres de mon Scénic fait des siennes, puis-je le vendre ?",
+        "answer": "Oui. Ces deux défauts sont fréquents sur Scénic 2 et 3 et ne bloquent pas la vente. Signalez-les dès l'estimation : une information claire évite une mauvaise surprise au rendez-vous et permet une offre juste. L'étude est faite sans promesse de rachat et vous restez libre de refuser."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre mon Scénic à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour un Scénic dont le contrôle est expiré ou dont les réparations demandées ne valent pas la dépense. Nous évaluons la voiture nous-mêmes lors du rendez-vous à votre adresse, sans frais, puis, si la vente est conclue, nous payons par virement instantané."
+      },
+      {
+        "question": "Reprenez-vous aussi le Scénic 4, le Grand Scénic et le Scénic E-Tech ?",
+        "answer": "Oui. Nous reprenons le Scénic 4 et le Grand Scénic 4 (2016-2022), en essence comme en diesel, boîte manuelle ou EDC, ainsi que les Grand Scénic 2 et 3. Le Scénic E-Tech électrique de 2024 peut aussi être étudié. Le principe reste le même : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Renault Scénic II",
+        "url": "https://fr.wikipedia.org/wiki/Renault_Sc%C3%A9nic_II"
+      },
+      {
+        "label": "Caradisiac : maxi-fiche fiabilité du Renault Scénic 2 en occasion",
+        "url": "https://www.caradisiac.com/Maxi-fiche-fiabilite-que-vaut-le-Renault-Scenic-2-en-occasion-98498.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Renault Scénic 3",
+        "url": "https://www.fiches-auto.fr/fiabilite-renault/fiabilite-272-pannes-renault-scenic-3.php"
+      },
+      {
+        "label": "Rappel Conso : rappel Renault Mégane, Scénic, Talisman (conduite de carburant, 2020)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48882/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-peugeot-3008",
+    "brand": "Peugeot",
+    "brandSlug": "reprise-peugeot",
+    "model": "3008",
+    "nav": "Peugeot 3008",
+    "title": "Vendre sa Peugeot 3008 : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Peugeot 3008 I, II ou III : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané à la vente.",
+    "h1": "Vendre sa Peugeot 3008 <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une 3008 de première génération (2009-2016) ou de deuxième génération (2016-2023), souvent à fort kilométrage, parfois d'une 3008 III, qui veulent la vendre sans se compliquer la vie. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2009-2023 pour les 3008 I et II (3008 I : 2009-2016, restylée en 2013 ; 3008 II : 2016-2023, restylée en 2020) ; la 3008 III et l'E-3008 sont commercialisées depuis 2024",
+    "generations": [
+      {
+        "nom": "3008 I phase 1",
+        "annees": "2009-2013",
+        "notes": "Lancée le 30 avril 2009. Crossover à mi-chemin entre monospace compact et SUV, 5 étoiles au crash-test Euro NCAP. Essence 1.6 VTi 120 et 1.6 THP 150/156, diesels 1.6 HDi 110 (16 soupapes) puis 112/115 (8 soupapes, dès 2010) et 2.0 HDi 150/163. Boîte manuelle, boîte pilotée BMP6 ou automatique."
+      },
+      {
+        "nom": "3008 I HYbrid4",
+        "annees": "2011-2016",
+        "notes": "Première hybride diesel de série : 2.0 HDi 163 à l'avant, moteur électrique de 37 kW sur le train arrière, 200 ch cumulés et quatre roues motrices à la demande. Boîte pilotée ETG6. Peu diffusée en occasion."
+      },
+      {
+        "nom": "3008 I phase 2",
+        "annees": "2013-2016",
+        "notes": "Restylage présenté le 4 novembre 2013 : nouvelle face avant, feux et planche de bord retouchés. Arrivée des 1.6 e-HDi 115, puis 1.6 BlueHDi 120 et 1.6 THP 165 avec boîte automatique EAT6 en fin de carrière. Fin de production européenne le 13 octobre 2016."
+      },
+      {
+        "nom": "3008 II phase 1",
+        "annees": "2016-2020",
+        "notes": "Devient un vrai SUV sur plateforme EMP2, avec le poste de conduite i-Cockpit. Voiture de l'année 2017 en Europe. Essence 1.2 PureTech 130, 1.6 THP 165 puis 1.6 PureTech 180 ; diesels 1.5 BlueHDi 130, 1.6 BlueHDi 100/120, 2.0 BlueHDi 150/180. Boîte manuelle 6 ou automatique EAT6 puis EAT8."
+      },
+      {
+        "nom": "3008 II phase 2",
+        "annees": "2020-2023",
+        "notes": "Restylage 2020 : face avant redessinée avec crocs lumineux à LED. Versions hybrides rechargeables Hybrid 225 (traction) et Hybrid4 300 (quatre roues motrices) avec boîte e-EAT8, à côté des 1.2 PureTech 130, 1.6 PureTech 180/225 et 1.5 BlueHDi 130. Environ 1,39 million d'exemplaires produits sur les deux phases, fin de production en février 2024."
+      },
+      {
+        "nom": "3008 III et E-3008",
+        "annees": "2024-",
+        "notes": "Génération récente, nous la reprenons aussi. Présentée le 12 septembre 2023, commercialisée le 24 février 2024 sur la plateforme STLA Medium, silhouette fastback et écran incurvé panoramique. Hybride 48 V 136 ch, hybride rechargeable 195 ch, et E-3008 électrique de 210 à 320 ch."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.6 VTi 120 et 1.6 THP 150/156/165 (EP6)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "3008 I, puis 3008 II pour le THP 165. Pas d'échéance kilométrique pour la chaîne, mais une huile de qualité changée à temps est indispensable : vérifiez le carnet.",
+        "points": "Le THP a un tendeur de chaîne faible jusqu'à fin 2010 selon Caradisiac, et des remplacements de chaîne sont rapportés par les propriétaires sur fiches-auto.fr. L'argus le classe parmi les versions à éviter en occasion. Le VTi est plus simple mais jugé gourmand par la presse."
+      },
+      {
+        "nom": "1.6 HDi 110, 112 et 115 (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "3008 I, de loin la plus répandue. Intervalle de courroie selon le carnet. L'argus signale un kit de distribution à remplacer sur les 112/115 produites d'octobre 2010 à septembre 2011 au-delà de 120 000 km.",
+        "points": "Le 110 à 16 soupapes concentre turbo, volant moteur bimasse, injecteurs et vanne EGR fragiles selon Caradisiac et L'argus ; le 8 soupapes est jugé plus sain mais les injecteurs restent signalés sur fiches-auto.fr."
+      },
+      {
+        "nom": "2.0 HDi 150 et 163 (DW10)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "3008 I, y compris la HYbrid4. Intervalle de courroie selon le carnet, pompe à eau à remplacer en même temps.",
+        "points": "Diesel préféré de L'argus et de Caradisiac sur la 3008 I. Caradisiac mentionne une campagne de contrôle de la pompe à huile sur les premiers exemplaires : vérifiez qu'elle a été faite."
+      },
+      {
+        "nom": "1.2 PureTech 130 (EB2)",
+        "carburant": "Essence",
+        "distribution": "Courroie dans l'huile",
+        "entretien": "3008 II, la motorisation essence la plus courante. Le constructeur a raccourci l'intervalle de remplacement de la courroie et impose une huile homologuée : vérifiez le carnet et les factures.",
+        "points": "La courroie baignant dans l'huile peut se déliter et encrasser pompe à huile et pompe à vide ; consommation d'huile signalée par fiches-auto.fr. Deux rappels constructeur en 2020 et 2021 sur cette distribution, et une action sur 77 000 véhicules en 2018 citée par L'argus."
+      },
+      {
+        "nom": "1.6 BlueHDi 100 et 120 (DV6)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Fin de 3008 I et début de 3008 II. Intervalle de courroie selon le carnet ; réservoir d'AdBlue à maintenir rempli.",
+        "points": "Système AdBlue qui cristallise et passe la voiture en mode dégradé, selon fiches-auto.fr. L'argus cite une reprogrammation pour émissions de NOx non conformes en septembre 2019."
+      },
+      {
+        "nom": "1.5 BlueHDi 130 (DV5)",
+        "carburant": "Diesel",
+        "distribution": "Courroie, plus une chaîne entre les arbres à cames",
+        "entretien": "3008 II dès 2018. Intervalle de courroie selon le carnet. Vidanges strictement à temps, l'huile carbonisée use la chaîne : vérifiez le carnet.",
+        "points": "Rappel constructeur publié en 2025 : la chaîne d'arbre à cames de 7 mm peut rompre, elle est remplacée par une chaîne de 8 mm sur les 3008 II produites d'octobre 2017 à janvier 2023. AdBlue et pompe à urée aussi signalés."
+      },
+      {
+        "nom": "2.0 BlueHDi 150/180 et hybrides rechargeables 225/300",
+        "carburant": "Diesel ou essence hybride",
+        "distribution": "Courroie (2.0 BlueHDi) ; vérifiez le carnet pour les hybrides",
+        "entretien": "3008 II. Le 2.0 BlueHDi est souvent associé à l'EAT8. Les hybrides ont une batterie de traction dont l'état se vérifie à l'essai.",
+        "points": "Le 2.0 BlueHDi est jugé plus robuste que les petits diesels par fiches-auto.fr, mais un rappel de 2023 vise un filtre à particules qui surchauffe. Les hybrides rechargeables ont fait l'objet de rappels sur la batterie haute tension en 2022-2023."
+      }
+    ],
+    "avantages": [
+      "Habitacle spacieux et modulable, coffre généreux, position de conduite haute.",
+      "5 étoiles Euro NCAP sur les deux premières générations, Voiture de l'année 2017 pour la 3008 II.",
+      "2.0 HDi 150 de la 3008 I jugé robuste par la presse quand il est suivi.",
+      "Pièces et main-d'œuvre courantes, modèle très diffusé en France.",
+      "Boîte automatique EAT8 agréable et bien diffusée sur la 3008 II.",
+      "Forte demande en occasion, même à kilométrage élevé pour les diesels."
+    ],
+    "inconvenients": [
+      "1.2 PureTech exposé à la courroie dans l'huile et à la consommation d'huile.",
+      "1.5 BlueHDi visé par un rappel sur la chaîne d'arbre à cames.",
+      "1.6 HDi 110 et 1.6 THP de la 3008 I fragiles : turbo, injecteurs, chaîne.",
+      "Boîte pilotée BMP6 à-coups et pannes de calculateur sur la 3008 I.",
+      "Électronique capricieuse : écran, GPS, frein de parking électrique."
+    ],
+    "problemes": [
+      {
+        "titre": "Courroie dans l'huile du 1.2 PureTech",
+        "detail": "Signalé par fiches-auto.fr sur la 3008 II : la courroie se délite et ses débris encrassent la crépine, la pompe à huile et la pompe à vide. Rappel constructeur de 2020 pour une pompe à vide endommagée par l'abrasion de la courroie (moteurs 1.2 turbo produits de mars 2013 à avril 2017), et rappel de 2021 pour des dents de courroie qui s'usent prématurément. Symptômes : voyant de pression d'huile, pédale de frein dure, mode dégradé."
+      },
+      {
+        "titre": "Chaîne d'arbre à cames du 1.5 BlueHDi",
+        "detail": "Rappel constructeur publié en 2025 (fiche RappelConso SR/02658/25) : sur les 3008 II à moteur DV5 produites du 11 octobre 2017 au 31 janvier 2023, la chaîne de 7 mm peut rompre à cause de l'huile carbonisée. Elle est remplacée par une chaîne de 8 mm. Symptômes signalés sur fiches-auto.fr : cliquetis à froid, voyant moteur, arrêt brutal."
+      },
+      {
+        "titre": "Chaîne et tendeur du 1.6 THP",
+        "detail": "Signalé par Caradisiac sur la 3008 I : tendeur de chaîne faible jusqu'à fin 2010, avec risque de décalage de distribution et voyant moteur. Les propriétaires rapportent sur fiches-auto.fr des chaînes remplacées, ainsi que des pompes haute pression et turbos. À écouter au démarrage à froid."
+      },
+      {
+        "titre": "Injecteurs, turbo et volant moteur du 1.6 HDi",
+        "detail": "Signalé par Caradisiac et L'argus sur la 3008 I : le 1.6 HDi 110 à 16 soupapes cumule turbos prématurés, volant moteur bimasse, injecteurs et vanne EGR. Sur fiches-auto.fr, des remplacements complets d'injecteurs sont rapportés aussi sur les 112/115. Symptômes : démarrage difficile, fumée, claquements, perte de puissance."
+      },
+      {
+        "titre": "AdBlue et filtre à particules des BlueHDi",
+        "detail": "Signalé par fiches-auto.fr sur la 3008 II : l'urée cristallise, bloque pompe et injecteur d'AdBlue, et déclenche un compte à rebours d'immobilisation. Rappel constructeur de 2023 sur les 2.0 BlueHDi produits de mars 2017 à janvier 2022 pour un filtre à particules qui surchauffe et se fissure. L'argus cite aussi une reprogrammation des 1.6 BlueHDi en 2019."
+      },
+      {
+        "titre": "Boîte pilotée BMP6",
+        "detail": "Signalé par L'argus sur la 3008 I : rapports qui ne s'engagent pas, afficheur bloqué au neutre, calculateur défaillant. Caradisiac relève des à-coups forts et des réactions lentes, et juge la robustesse de cette boîte discutable. Les boîtes automatiques EAT6 et EAT8 s'essaient à froid puis à chaud, avec des patinages et passages rugueux rapportés sur fiches-auto.fr."
+      },
+      {
+        "titre": "Électronique, écran et frein de parking",
+        "detail": "Signalé par L'argus sur la 3008 I : navigation RT6 à écran noir, vision tête haute qui ne se déploie pas, voyant de frein de parking, radar de recul. Sur la 3008 II, fiches-auto.fr rapporte des écrans tactiles qui s'éteignent, un GPS lent, des pertes de Bluetooth et des vibrations de capot sur autoroute. Un rappel BSI a touché 34 400 exemplaires en 2010-2011 selon Caradisiac."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de courroie, avec facture, surtout sur 1.2 PureTech et 1.6 HDi.",
+      "Sur 1.5 BlueHDi : preuve du passage en concession pour le rappel de la chaîne d'arbre à cames.",
+      "Démarrage à froid pour repérer un cliquetis de chaîne (THP, 1.5 BlueHDi) ou un claquement d'injecteur.",
+      "Voyants au tableau de bord : moteur, pression d'huile, AdBlue, frein de parking, airbag.",
+      "Niveau d'huile et traces de consommation sur un 1.2 PureTech, fumée bleue à l'accélération.",
+      "Comportement de la boîte BMP6, EAT6 ou EAT8 pendant un court essai, à froid puis à chaud.",
+      "Écran tactile, GPS, Bluetooth, vision tête haute et frein de parking électrique.",
+      "État de la carrosserie, du capot, des pneus et des trains roulants (bruits, usure irrégulière)."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, en particulier celle de la courroie ou de la chaîne.",
+      "Retrouvez les deux clés : leur absence compte sur une 3008 récente.",
+      "Sur 1.2 PureTech, gardez les preuves de vidange à l'huile homologuée et du dernier remplacement de courroie.",
+      "Sur 1.5 ou 2.0 BlueHDi, notez si les rappels chaîne ou filtre à particules ont été faits et faites le plein d'AdBlue.",
+      "Faites tourner la voiture quelques jours avant le rendez-vous, une batterie faible fausse l'essai et multiplie les voyants.",
+      "Videz l'habitacle et le coffre, rabattez les sièges pour montrer la modularité."
+    ],
+    "age": "Une 3008 I de 2011 ou une 3008 II de 2017 affiche souvent plus de 150 000 km, c'est vrai. Mais l'âge et le compteur ne disent pas tout. Une 3008 suivie à temps, sans voyant allumé, avec une courroie ou une chaîne remplacée et les rappels constructeur effectués, reste une voiture recherchée. Ce qui la valorise : un carnet complet, deux clés, un 2.0 HDi ou un 2.0 BlueHDi qui tourne rond, une boîte automatique qui passe sans à-coups, un intérieur propre. À l'inverse, un 1.2 PureTech qui consomme de l'huile ou un 1.5 BlueHDi sans preuve du rappel de chaîne fait baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année.",
+    "valeurPlus": [
+      "Courroie ou chaîne de distribution remplacée récemment, facture à l'appui.",
+      "Rappels constructeur effectués, avec le justificatif de la concession.",
+      "Moteur 2.0 HDi, 2.0 BlueHDi ou hybride rechargeable en bon état.",
+      "Deux clés, carnet d'entretien complet et kilométrage cohérent.",
+      "Carrosserie et intérieur soignés, écran et équipements fonctionnels."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve, surtout sur 1.2 PureTech.",
+      "1.5 BlueHDi sans trace du rappel de chaîne, ou cliquetis à froid.",
+      "Voyants allumés (moteur, pression d'huile, AdBlue, frein de parking).",
+      "Boîte BMP6 à-coups ou boîte automatique qui patine.",
+      "Corrosion, chocs, capot qui vibre ou intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Ma Peugeot 3008 de 2011 avec 200 000 km a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Une 3008 I 1.6 HDi ou 2.0 HDi à fort kilométrage, avec un carnet suivi et une courroie faite à temps, intéresse toujours. Nous l'estimons sur son état réel, ses factures et son comportement à l'essai, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Ma 3008 a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Cela dépend du moteur. Les 1.6 VTi et 1.6 THP ont une chaîne. Les 1.6 HDi, 2.0 HDi, 1.6 BlueHDi et 2.0 BlueHDi ont une courroie classique. Le 1.2 PureTech a une courroie qui baigne dans l'huile, avec un intervalle raccourci par le constructeur. Le 1.5 BlueHDi combine une courroie et une chaîne entre les arbres à cames, visée par un rappel. Dans tous les cas, vérifiez votre carnet : une facture récente soutient nettement la valeur."
+      },
+      {
+        "question": "Mon 1.2 PureTech consomme de l'huile, l'étudiez-vous quand même ?",
+        "answer": "Oui, nous étudions toutes les 3008 II, y compris les PureTech qui consomment de l'huile. Ce défaut est connu et compte dans l'offre, car la courroie dans l'huile et la pompe à vide peuvent coûter cher. Envoyez-nous les factures de courroie et de vidange que vous avez. Au rendez-vous, le technicien contrôle le niveau d'huile, écoute le moteur et fait un court essai avant de confirmer le prix définitif."
+      },
+      {
+        "question": "Ma 3008 1.5 BlueHDi n'a pas encore fait le rappel de la chaîne, est-ce bloquant ?",
+        "answer": "Non, ce n'est pas bloquant. Signalez-le dès la demande d'estimation et précisez si la voiture cliquette à froid. Le rappel reste gratuit en concession et nous en tenons compte dans l'offre. Un voyant AdBlue ou un compte à rebours d'immobilisation se signale aussi : une information claire permet une offre juste et évite une mauvaise surprise au rendez-vous."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma 3008 à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour une 3008 dont le contrôle est expiré ou dont les réparations demandées, injecteurs ou filtre à particules par exemple, ne valent pas la dépense. Nous évaluons la voiture nous-mêmes lors du rendez-vous à domicile, puis, si la vente est conclue, nous payons par virement instantané."
+      },
+      {
+        "question": "Reprenez-vous aussi la 3008 III, l'E-3008 et les hybrides rechargeables ?",
+        "answer": "Oui. Nous reprenons la 3008 III commercialisée depuis 2024, l'E-3008 électrique et les 3008 II Hybrid 225 et Hybrid4 300. Sur ces versions, nous vérifions l'état de la batterie de traction, les rappels effectués et la présence du câble de recharge. Le principe reste le même : estimation gratuite, fourchette indicative communiquée rapidement, vérification chez vous, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Peugeot 3008 II",
+        "url": "https://fr.wikipedia.org/wiki/Peugeot_3008_II"
+      },
+      {
+        "label": "Caradisiac : fiche fiabilité Peugeot 3008 (2009-2016)",
+        "url": "https://www.caradisiac.com/modele--peugeot-3008/fiche-fiabilite/"
+      },
+      {
+        "label": "L'argus : Peugeot 3008, tous les rappels et actions cachées",
+        "url": "https://www.largus.fr/actualite-automobile/peugeot-3008-tous-les-rappels-et-actions-cachees-10045391.html"
+      },
+      {
+        "label": "RappelConso : rappel chaîne d'arbre à cames 1.5 BlueHDi (3008 II)",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/47781/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-volkswagen-golf",
+    "brand": "Volkswagen",
+    "brandSlug": "reprise-volkswagen",
+    "model": "Golf",
+    "nav": "Volkswagen Golf",
+    "title": "Vendre sa Volkswagen Golf : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Volkswagen Golf IV, V, VI ou plus récente : fourchette de prix rapide, sans obligation d'achat, technicien chez vous, virement instantané.",
+    "h1": "Vendre sa Volkswagen Golf <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'une Golf IV, d'une Golf V ou d'une Golf VI, souvent à fort kilométrage, parfois d'une Golf VII ou VIII, qui veulent la vendre sans se compliquer la vie. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "1997-2012 pour les Golf IV à VI (Golf IV : 1997-2003, Golf V : 2003-2008, Golf VI : 2008-2012) ; la Golf VII (2012-2019) et la Golf VIII (depuis 2019) sont reprises aussi",
+    "generations": [
+      {
+        "nom": "Golf IV",
+        "annees": "1997-2003",
+        "notes": "Commercialisée de septembre 1997 à début 2004 en Europe. Berline 3 ou 5 portes et break. Essence 1.4 16V 75, 1.6 et 1.8 T ; diesels 1.9 SDI 68 et 1.9 TDI de 90 à 150 ch. Boîtes manuelles 5 ou 6 rapports, automatiques 4 ou 5 rapports."
+      },
+      {
+        "nom": "Golf V",
+        "annees": "2003-2008",
+        "notes": "Produite d'octobre 2003 à septembre 2008. 3 portes, 5 portes et break. Essence 1.4 16V 75/80, 1.6, 1.6 FSI 115 et 1.4 TSI 122 à 170 ; diesels 1.9 TDI 90/105, 2.0 SDI et 2.0 TDI 136 à 170. Première boîte DSG 6 puis DSG 7."
+      },
+      {
+        "nom": "Golf VI",
+        "annees": "2008-2012",
+        "notes": "Présentée comme une évolution profonde de la Golf V, elle reprend en grande partie sa mécanique. Essence 1.2 TSI 85/105, 1.4 16V 80 et 1.4 TSI 122/160 ; diesels 1.6 TDI 90/105 et 2.0 TDI 110 à 170. Boîtes manuelles, DSG 6 et DSG 7. Voiture mondiale de l'année 2009."
+      },
+      {
+        "nom": "Golf VI cabriolet",
+        "annees": "2011-2016",
+        "notes": "Version découvrable dérivée de la Golf VI, vendue après l'arrivée de la Golf VII, avec une retouche en 2015. Mêmes moteurs TSI et TDI. Nous la reprenons aussi."
+      },
+      {
+        "nom": "Golf VII phase 1",
+        "annees": "2012-2017",
+        "notes": "Génération plus récente, nous la reprenons aussi. Nouveaux moteurs essence à courroie 1.2 TSI et 1.4 TSI, diesels 1.6 TDI et 2.0 TDI de nouvelle génération. Berline, SW, Sportsvan et Alltrack."
+      },
+      {
+        "nom": "Golf VII phase 2",
+        "annees": "2017-2019",
+        "notes": "Restylage présenté fin 2016 et commercialisé en 2017. Arrivée des 1.0 TSI et 1.5 TSI Evo, DSG 7 généralisée sur les petites motorisations. Remplacée par la Golf VIII fin 2019."
+      },
+      {
+        "nom": "Golf VIII",
+        "annees": "2019-",
+        "notes": "Lancée en 2020, restylée au printemps 2024. 5 portes et SW. Essence 1.0 et 1.5 TSI, versions eTSI à hybridation légère, eHybrid rechargeable, diesels 2.0 TDI. Nous l'étudions aussi, en particulier en fin de financement."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "1.4 16V 75 et 80",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Golf IV, V et VI. Fiches-Auto situe le remplacement entre 100 000 et 150 000 km selon les années : vérifiez le carnet.",
+        "points": "Moteur simple, jugé le plus fiable de la Golf VI par Fiches-Auto. Un peu juste pour la voiture. Bobines d'allumage et ruptures de courroie signalées par Caradisiac sur la Golf IV."
+      },
+      {
+        "nom": "1.6 100/102 et 1.6 FSI 115",
+        "carburant": "Essence",
+        "distribution": "Courroie sur le 1.6 classique ; vérifiez le carnet pour le 1.6 FSI",
+        "entretien": "Golf IV et V. Intervalle de courroie variable selon la motorisation et l'année, de 90 000 à 180 000 km selon Caradisiac : vérifiez le carnet.",
+        "points": "Le 1.6 est décrit comme « simple et honnête » par Fiches-Auto, et c'est la version conseillée par Caradisiac sur la Golf IV. Le 1.6 FSI de la Golf V compte peu de pannes signalées."
+      },
+      {
+        "nom": "1.4 TSI 122 à 170 (EA111)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Golf V et VI. Chaîne sans intervalle de remplacement, mais tendeur à surveiller. Vidanges régulières indispensables, le moteur peut consommer de l'huile.",
+        "points": "Agréable et sobre, mais Fiches-Auto signale un tendeur de chaîne faible (bruit au démarrage, risque de décalage), une consommation d'huile et des soucis de turbo. Souvent associé à la DSG 7."
+      },
+      {
+        "nom": "1.2 TSI et 1.4 TSI (EA211)",
+        "carburant": "Essence",
+        "distribution": "Courroie",
+        "entretien": "Golf VII. Courroie à longue durée de vie : Caradisiac indique un contrôle tous les 10 ans ou 210 000 km. Vérifiez le carnet.",
+        "points": "Nouvelle famille qui remplace l'EA111 à chaîne. Consommation d'huile et fuites de pompe à eau signalées par Fiches-Auto sur le 1.2 TSI. Le 1.4 TSI 140 ACT est la version conseillée par Caradisiac."
+      },
+      {
+        "nom": "1.9 TDI 90 à 150 (pompe-injecteur)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Golf IV et V. Intervalle variable selon les versions, 60 000 km sur certains TDI selon Caradisiac : vérifiez le carnet. Huile conforme aux spécifications du constructeur obligatoire.",
+        "points": "Réputé endurant, surtout en 90 et 100 ch, avec des kilométrages élevés courants. Le 115 ch est pointé par Caradisiac et Fiches-Auto pour des avaries lourdes. Volant moteur, turbo, débitmètre et vanne EGR à surveiller."
+      },
+      {
+        "nom": "2.0 TDI 136 à 170 (EA189) et 2.0 TDI 150 (EA288)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Golf V, VI et VII. Caradisiac indique une courroie à 210 000 km maximum sur la Golf VII ; intervalles plus courts sur les générations précédentes : vérifiez le carnet.",
+        "points": "Sur Golf V, Fiches-Auto classe le 2.0 TDI parmi les moteurs les plus en panne (injecteurs, volant moteur). Les EA189 de 2009 à 2015 sont concernés par l'affaire des moteurs truqués et une mise à jour logicielle. Le 2.0 TDI 150 de la Golf VII est au contraire la version conseillée."
+      },
+      {
+        "nom": "1.6 TDI 90 à 115",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Golf VI et VII. Courroie selon le carnet. Filtre à particules à régénérer sur route.",
+        "points": "Moteur le plus signalé de la Golf VI chez Fiches-Auto : vanne EGR, injecteurs, filtre à particules, volant moteur. Sur Golf VII, Caradisiac relève des défaillances précoces du turbo."
+      }
+    ],
+    "avantages": [
+      "Finition et insonorisation réputées, surtout sur Golf IV et VI, ce qui aide la voiture à bien vieillir.",
+      "Pièces et main-d'œuvre disponibles partout, mécanique partagée avec de nombreux modèles du groupe.",
+      "1.9 TDI 90 et 100 capables de très gros kilométrages quand l'huile est conforme.",
+      "Moteurs essence 1.4 16V et 1.6 simples et peu coûteux à entretenir.",
+      "Carrosseries variées : 3 ou 5 portes, break, cabriolet, Sportsvan.",
+      "Image solide sur le marché de l'occasion, qui soutient la demande même sur les anciennes générations."
+    ],
+    "inconvenients": [
+      "Électricité fragile sur Golf IV et V : lève-vitres, serrures, centralisation.",
+      "1.4 TSI à chaîne (EA111) exposé au tendeur de chaîne et à la consommation d'huile.",
+      "DSG 7 à sec (DQ200) sujette à des à-coups et à des pannes de mécatronique.",
+      "Diesels TDI : volant moteur bi-masse, vanne EGR, turbo et filtre à particules coûteux.",
+      "Golf V et VI jugées moins fiables que la Golf IV par Fiches-Auto, l'historique compte d'autant plus."
+    ],
+    "problemes": [
+      {
+        "titre": "Lève-vitres et électricité",
+        "detail": "Signalé par Fiches-Auto et Caradisiac sur la Golf IV, puis sur la Golf V : câbles et mécanismes de lève-vitres, serrures, centralisation, instruments de bord. Pannes nombreuses mais en général peu graves."
+      },
+      {
+        "titre": "Tendeur de chaîne du 1.4 TSI",
+        "detail": "Signalé par Fiches-Auto sur Golf V et VI : un tendeur faible provoque un bruit au démarrage et un risque de décalage de la distribution. Consommation d'huile et turbo également cités sur ce moteur."
+      },
+      {
+        "titre": "Mécatronique de la DSG 7 (DQ200)",
+        "detail": "Signalé par Fiches-Auto sur Golf VI et VII : passages de rapports hésitants, à-coups, vibrations au démarrage, parfois malgré les reprogrammations. Caradisiac cite aussi des difficultés d'engagement de la marche arrière sur Golf VII."
+      },
+      {
+        "titre": "Volant moteur bi-masse et embrayage des TDI",
+        "detail": "Signalé par Fiches-Auto sur Golf IV, V et VI : claquements, vibrations au ralenti, à-coups. Caradisiac le relève aussi sur le 2.0 TDI 110 de la Golf VI. Réparation coûteuse car l'embrayage est souvent remplacé en même temps."
+      },
+      {
+        "titre": "Injection, EGR et filtre à particules",
+        "detail": "Signalé par Fiches-Auto sur 1.6 TDI et 2.0 TDI : injecteurs usés, vanne EGR encrassée, filtre à particules saturé en usage urbain. Sur Golf IV, débitmètre fatigué et turbo à géométrie variable qui grippe. Sur Golf VII, Caradisiac cite des turbos de 1.6 TDI défaillants tôt."
+      },
+      {
+        "titre": "Moteurs EA189 et affaire des moteurs truqués",
+        "detail": "Les 1.6 et 2.0 TDI EA189 produits de 2009 à 2015 embarquaient un logiciel reconnaissant les tests d'homologation, révélé en septembre 2015. Une mise à jour logicielle a été proposée par le constructeur. Précisez si elle a été faite."
+      },
+      {
+        "titre": "Rappel constructeur de 2020 : airbag conducteur Takata",
+        "detail": "Rappel officiel publié sur rappel.conso.gouv.fr pour des Golf et Passat produites de 1997 à 1999 équipées d'un gonfleur d'airbag Takata NADI, montées uniquement avec le volant à jante bois en option. Risque de blessure en cas d'accident."
+      }
+    ],
+    "controles": [
+      "Date et kilométrage du dernier remplacement de courroie de distribution, facture à l'appui (1.4, 1.6, TDI, TSI EA211).",
+      "Sur 1.4 TSI EA111 : bruit de chaîne au démarrage à froid et niveau d'huile.",
+      "Sur DSG 7 : à-coups au démarrage, hésitations entre rapports, engagement de la marche arrière.",
+      "Sur TDI : vibrations au ralenti et claquements du volant moteur, fumée, mode dégradé, voyant de filtre à particules.",
+      "Fonctionnement des lève-vitres, de la centralisation et des instruments de bord.",
+      "Voyants au tableau de bord (moteur, EPC, airbag, ABS).",
+      "Bruits de train avant et d'amortisseurs pendant un court essai.",
+      "Carrosserie : bas de caisse, passages de roue, infiltrations d'eau dans l'habitacle."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celle de la courroie.",
+      "Retrouvez les deux clés : leur absence compte sur une Golf.",
+      "Sur un TDI, gardez les factures de volant moteur, d'injection, d'EGR ou de turbo si des travaux ont été faits.",
+      "Sur un 1.4 TSI ou une DSG 7, notez les interventions sur la chaîne ou la mécatronique.",
+      "Si votre 2.0 TDI EA189 a reçu la mise à jour logicielle du constructeur, retrouvez le justificatif.",
+      "Videz l'habitacle et le coffre pour faciliter l'inspection."
+    ],
+    "age": "Une Golf IV de 2002 ou une Golf V de 2007 a plus de quinze ans, c'est vrai. Mais l'âge ne dit pas tout. Une Golf entretenue à temps, sans voyant allumé et sans bruit de chaîne ou de volant moteur reste une voiture recherchée, même avec beaucoup de kilomètres. Ce qui la valorise : une courroie remplacée récemment avec facture, un carnet suivi, deux clés, un moteur essence simple ou un 1.9 TDI 90/100 qui tourne rond, une boîte manuelle en bon état, une carrosserie propre. À l'inverse, une DSG 7 qui broute ou un 1.4 TSI qui claque au démarrage fait baisser l'offre. Nous regardons votre voiture telle qu'elle est, pas seulement son année, et un conseiller vous donne rapidement une fourchette indicative, sans promesse de rachat.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment, facture à l'appui.",
+      "Kilométrage cohérent avec le carnet, même élevé sur un 1.9 TDI bien suivi.",
+      "Moteur essence 1.4 16V, 1.6 ou 1.4 TSI EA211 en bon état.",
+      "Boîte manuelle, ou DSG révisée avec factures et sans à-coups.",
+      "Deux clés, carnet complet, carrosserie et intérieur soignés."
+    ],
+    "valeurMoins": [
+      "Courroie hors échéance ou sans preuve de remplacement.",
+      "1.4 TSI EA111 avec bruit de chaîne ou consommation d'huile anormale.",
+      "DSG 7 qui broute, hésite ou se met en sécurité.",
+      "TDI avec volant moteur bruyant, filtre à particules saturé ou injection fatiguée.",
+      "Voyants allumés, électricité défaillante, corrosion ou chocs."
+    ],
+    "faq": [
+      {
+        "question": "Ma Golf IV de 2001 avec 250 000 km a-t-elle encore une valeur ?",
+        "answer": "Oui, si elle est en bon état. Fiches-Auto relève que les Golf IV bien entretenues dépassent régulièrement 250 000 km, surtout en 1.9 TDI 90 ou 100. Nous l'estimons sur son état réel, ses factures et son kilométrage, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
+      },
+      {
+        "question": "Ma Golf a-t-elle une courroie ou une chaîne de distribution ?",
+        "answer": "Cela dépend du moteur. Les 1.4 16V, 1.6, 1.9 TDI, 1.6 TDI et 2.0 TDI ont une courroie, de même que les 1.2 et 1.4 TSI EA211 de la Golf VII. Les 1.4 TSI EA111 des Golf V et VI ont une chaîne, avec un tendeur à surveiller. Pour le 1.6 FSI, vérifiez le carnet. Une facture récente de courroie soutient nettement la valeur."
+      },
+      {
+        "question": "Ma Golf VI 1.4 TSI avec DSG 7 a des à-coups, l'étudiez-vous ?",
+        "answer": "Oui. Les à-coups de la DSG 7 et le bruit de chaîne du 1.4 TSI sont des défauts connus, signalés par la presse auto, et ils comptent dans l'offre. Signalez-les dès la demande d'estimation : une information claire évite une mauvaise surprise au rendez-vous. Le technicien fait un court essai avant de confirmer le prix définitif."
+      },
+      {
+        "question": "Mon 2.0 TDI est concerné par l'affaire des moteurs truqués, est-ce un problème pour vendre ?",
+        "answer": "Non, cela n'empêche pas la vente. Les 1.6 et 2.0 TDI EA189 de 2009 à 2015 ont fait l'objet d'une mise à jour logicielle proposée par le constructeur. Dites-nous si elle a été faite et gardez le justificatif. Nous étudions la voiture sur son état et son historique, sans obligation d'achat de votre part ni de la nôtre."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre ma Golf à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour une Golf ancienne dont le contrôle est expiré ou dont les réparations demandées ne valent pas la dépense. Un technicien vient vérifier la voiture chez vous, sans frais, puis, si la vente est conclue, nous payons par virement instantané."
+      },
+      {
+        "question": "Reprenez-vous aussi la Golf VII, la Golf VIII et les SW ?",
+        "answer": "Oui. Nous reprenons la Golf VII (2012-2019), la Golf VIII (depuis 2019) et les versions SW, Sportsvan ou cabriolet, en essence, diesel ou hybride. Le principe reste le même : fourchette indicative communiquée rapidement, vérification chez vous, prix définitif après vérification, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Volkswagen Golf V",
+        "url": "https://fr.wikipedia.org/wiki/Volkswagen_Golf_V"
+      },
+      {
+        "label": "Caradisiac : Volkswagen Golf 4 d'occasion",
+        "url": "https://www.caradisiac.com/Volkswagen-Golf-40201.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Volkswagen Golf VI",
+        "url": "https://www.fiches-auto.fr/fiabilite-volkswagen/fiabilite-193-pannes-volkswagen-golf-vi.php"
+      },
+      {
+        "label": "RappelConso : rappel airbag Takata Golf et Passat 1997-1999",
+        "url": "https://rappel.conso.gouv.fr/fiche-rappel/48948/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-renault-captur",
+    "brand": "Renault",
+    "brandSlug": "reprise-renault",
+    "model": "Captur",
+    "nav": "Renault Captur",
+    "title": "Vendre son Renault Captur : estimation et rachat | LUNICAR",
+    "description": "Vendez votre Renault Captur 1 ou 2, même à fort kilométrage : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané.",
+    "h1": "Vendre son Renault Captur <em>sans obligation d'achat</em>",
+    "lede": "Cette page s'adresse aux propriétaires d'un Captur de première génération (2013-2019), souvent à fort kilométrage, et aussi à ceux d'un Captur 2 plus récent. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous, sans frais. Le prix définitif est fixé après cette vérification, le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
+    "annees": "2013-2019 pour le Captur 1 (restylé en 2017) ; le Captur 2 est produit depuis fin 2019 (commercialisé en janvier 2020, restylé en 2024)",
+    "generations": [
+      {
+        "nom": "Captur 1 phase 1",
+        "annees": "2013-2017",
+        "notes": "Présenté en janvier 2013, en vente dès avril 2013. SUV urbain dérivé de la Clio 4 (même plateforme), assemblé à Valladolid en Espagne. Banquette arrière coulissante et housses de sièges déhoussables. Moteurs 0.9 TCe 90, 1.2 TCe 120 (surtout avec boîte EDC) et 1.5 dCi 90 ou 110. C'est la génération la plus répandue, souvent au-delà de 150 000 km aujourd'hui."
+      },
+      {
+        "nom": "Captur 1 phase 2",
+        "annees": "2017-2019",
+        "notes": "Restylage dévoilé au salon de Genève 2017 : feux à LED en forme de crochet, nouveaux boucliers, feux arrière revus, qualité perçue en hausse et finition haute Initiale Paris. Les moteurs 0.9 TCe 90, 1.2 TCe 120 et 1.5 dCi 90/110 restent au catalogue, puis le 1.3 TCe 130/150 remplace le 1.2 TCe en fin de carrière."
+      },
+      {
+        "nom": "Captur 2 phase 1",
+        "annees": "2019-2024",
+        "notes": "Dévoilé le 3 juillet 2019, commercialisé en janvier 2020. Nouvelle plateforme CMF-B partagée avec la Clio 5, gabarit plus grand, écran central vertical. Moteurs 1.0 TCe 90/100 (y compris GPL), 1.3 TCe 130 à 160 avec boîte EDC à 7 rapports, 1.5 Blue dCi 95/115, hybride E-Tech 145 et hybride rechargeable E-Tech 160 (arrêtée en avril 2023). Génération récente, nous la reprenons aussi."
+      },
+      {
+        "nom": "Captur 2 phase 2",
+        "annees": "2024-",
+        "notes": "Restylage présenté le 4 avril 2024 : nouvelle face avant à la dernière identité Renault, feux arrière à fond transparent, système multimédia OpenR sur les finitions hautes et finition Esprit Alpine. Gamme recentrée sur le 1.0 TCe, le 1.3 TCe et l'hybride E-Tech. Nous l'étudions au même titre que les autres, sur son état réel."
+      }
+    ],
+    "motorisations": [
+      {
+        "nom": "0.9 TCe 90 (H4Bt)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Captur 1. Trois cylindres turbo à injection indirecte, chaîne de distribution sans échéance de remplacement prévue : vérifiez tout de même le carnet et les vidanges.",
+        "points": "Suffisant en ville, juste sur autoroute. Fuites au boîtier de thermostat, sonde lambda, bruit de pompe à eau et défauts de suralimentation signalés par L'argus et Fiches-Auto. Concerné par le rappel de 2020 sur la borne de batterie."
+      },
+      {
+        "nom": "1.2 TCe 120 (H5Ft)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Captur 1, souvent avec boîte EDC. Chaîne de distribution, mais un bruit de chaîne doit être pris au sérieux (kit et carter remplacés en action constructeur jusqu'en avril 2018 selon L'argus). Niveau d'huile à contrôler très régulièrement.",
+        "points": "Moteur le plus sensible du Captur 1 : surconsommation d'huile signalée sur les moteurs produits de 2012 à 2015-2016, avec risque de casse moteur. L'argus déconseille cette version en occasion. Des factures de suivi (reprogrammation, remise à niveau) rassurent."
+      },
+      {
+        "nom": "1.5 dCi 90 et 110 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Captur 1. Courroie de distribution à remplacer à l'intervalle fixé par le constructeur, en kilomètres et en années : vérifiez le carnet. Tendeur et courroie ont fait l'objet d'une action constructeur sur les premiers millésimes (bruit moteur jusqu'en février 2015 selon L'argus).",
+        "points": "Sobre et endurant, mais bruyant. Avant 2015 : vibrations du train avant et du volant moteur, soucis d'injection. Vanne EGR, filtre à particules, turbo et pompe à carburant à surveiller à fort kilométrage. Le dCi 110 après restylage est la version préférée de la presse."
+      },
+      {
+        "nom": "1.3 TCe 130 et 150 (H5Ht)",
+        "carburant": "Essence",
+        "distribution": "Chaîne",
+        "entretien": "Captur 1 de fin de carrière et Captur 2 (130 à 160 ch, souvent EDC 7). Chaîne de distribution ; surveillez le niveau d'huile entre deux vidanges et conservez les factures d'injection.",
+        "points": "Nettement plus vif et plus fiable que le 1.2 TCe selon L'argus. Fiches-Auto signale des défauts d'injecteurs et de rampe d'injection, et une consommation d'huile à surveiller sur certains exemplaires."
+      },
+      {
+        "nom": "1.0 TCe 90 et 100 (H4Dt)",
+        "carburant": "Essence (ou GPL)",
+        "distribution": "Chaîne",
+        "entretien": "Captur 2. Trois cylindres turbo à injection indirecte, chaîne de distribution. Sur la version GPL, gardez les justificatifs d'entretien du réservoir et de l'installation.",
+        "points": "Moteur d'entrée de gamme simple, cité par la presse parmi les choix les plus sûrs du Captur 2. À-coups à froid et défauts d'injection signalés par Fiches-Auto. La version GPL a fait l'objet de rappels sur le réservoir (2024 et 2026)."
+      },
+      {
+        "nom": "1.5 Blue dCi 95 et 115 (K9K)",
+        "carburant": "Diesel",
+        "distribution": "Courroie",
+        "entretien": "Captur 2. Courroie de distribution à remplacer selon le carnet. Système AdBlue : gardez un historique de remplissage et des éventuelles interventions.",
+        "points": "Silencieux et sobre, c'est la version la plus appréciée de Caradisiac sur le Captur 2. Défauts AdBlue, capteurs antipollution, injection et turbo signalés par Fiches-Auto."
+      },
+      {
+        "nom": "1.6 E-Tech 145 hybride et 160 rechargeable (H4M)",
+        "carburant": "Hybride essence",
+        "distribution": "Vérifiez le carnet",
+        "entretien": "Captur 2 depuis 2020. Moteur atmosphérique associé à une boîte multimode sans embrayage. Suivi en réseau conseillé : les mises à jour logicielles comptent sur ces versions.",
+        "points": "Agréable en ville. Pannes de boîte électrifiée, de moteur électrique ou de batterie de traction et fuites d'huile de transmission signalées par Fiches-Auto. La presse note que les exemplaires produits après 2021 ont reçu des corrections techniques."
+      }
+    ],
+    "avantages": [
+      "SUV urbain très répandu : pièces courantes et entretien connu de tous les garages.",
+      "Position de conduite haute et banquette coulissante pratique sur Captur 1 comme sur Captur 2.",
+      "0.9 TCe 90 et 1.5 dCi : moteurs simples, le diesel reste sobre à fort kilométrage.",
+      "Captur 1 phase 2 (2017-2019) mieux fini, avec feux à LED et défauts de jeunesse corrigés.",
+      "Captur 2 plus grand, avec hybride E-Tech et boîte EDC 7 rapports.",
+      "Taux de contre-visite au contrôle technique inférieur à la moyenne nationale sur les deux générations."
+    ],
+    "inconvenients": [
+      "1.2 TCe 120 exposé à la surconsommation d'huile et à des casses moteur, surtout avant 2016.",
+      "Boîte EDC sujette aux à-coups, craquements et mises en sécurité sur Captur 1.",
+      "1.5 dCi d'avant 2015 : vibrations du train avant et soucis d'injection.",
+      "Électronique R-Link ou Easy Link capricieuse, batterie 12 V et Start & Stop fragiles.",
+      "Plusieurs rappels constructeur à vérifier : freins, carburant, catalyseur, batterie, frein de stationnement."
+    ],
+    "problemes": [
+      {
+        "titre": "Surconsommation d'huile du 1.2 TCe",
+        "detail": "Signalée par L'argus et Fiches-Auto sur le 1.2 TCe 120 produit entre 2012 et 2015-2016 : calibration d'injection en cause, niveau d'huile qui baisse, puis bruit, perte de puissance et casse moteur possible sans avertissement. Action constructeur : remise à niveau et reprogrammation du calculateur. Vérifiez la jauge et les factures."
+      },
+      {
+        "titre": "Chaîne de distribution et refroidissement",
+        "detail": "L'argus signale un bruit de chaîne de distribution sur le 1.2 TCe (kit et carter remplacés jusqu'en avril 2018) et de l'huile dans le circuit de refroidissement (échangeur eau/huile). Fiches-Auto relève des fuites au boîtier de thermostat et des ruptures de chaîne sur le 0.9 TCe. Symptômes : cliquetis à froid, niveau de liquide qui baisse, « mayonnaise » dans le bocal."
+      },
+      {
+        "titre": "Rappel constructeur de 2020 : borne de batterie (0.9 TCe)",
+        "detail": "Rappel constructeur publié en mars 2020 sur RappelConso pour les Clio et Captur à moteur H4Bt fabriqués avant le 24 juillet 2019 : la borne positive de la batterie peut toucher le dissipateur de chaleur de l'alternateur, avec risque de court-circuit et d'incendie. Le réseau Renault peut confirmer si l'intervention a été faite."
+      },
+      {
+        "titre": "Rappel constructeur de 2019 : catalyseur mal soudé",
+        "detail": "Rappel constructeur publié en janvier 2019 sur RappelConso pour les Captur, Clio 4 et Kangoo 2 construits entre le 20 février et le 14 avril 2018 : convertisseur catalytique mal soudé, avec fuite possible de gaz d'échappement. Un Captur de 2018 doit avoir reçu cette intervention."
+      },
+      {
+        "titre": "Boîte EDC capricieuse",
+        "detail": "L'argus signale des craquements de la boîte EDC jusqu'en février 2016 ; Fiches-Auto relève des à-coups, des vibrations en manœuvre, des messages de défaut et un passage temporaire au point mort, parfois réglés par une reprogrammation. Sur boîte manuelle, broutage d'embrayage à froid et pédale lente à remonter sont aussi cités."
+      },
+      {
+        "titre": "Vibrations et antipollution du 1.5 dCi",
+        "detail": "Sur les 1.5 dCi d'avant 2015, L'argus et Fiches-Auto signalent des vibrations du train avant entre 110 et 125 km/h (volant moteur), des soucis d'injection et une pompe à carburant qui empêche le démarrage. À fort kilométrage, vanne EGR encrassée et filtre à particules qui ne se régénère plus."
+      },
+      {
+        "titre": "Électronique, batterie et rappel 2025 sur Captur 2",
+        "detail": "R-Link puis Easy Link qui se figent ou redémarrent, caméra de recul muette, batterie 12 V fatiguée qui neutralise le Start & Stop : défauts signalés par L'argus et Fiches-Auto. Sur Captur 2, rappel constructeur publié sur RappelConso en 2025-2026 pour un capteur de frein de stationnement mal positionné (véhicules produits d'avril 2024 à mai 2025)."
+      }
+    ],
+    "controles": [
+      "Sur 1.2 TCe : niveau d'huile à la jauge, factures de remise à niveau ou de reprogrammation, bruit de chaîne à froid.",
+      "Sur 1.5 dCi : date et kilométrage du dernier remplacement de courroie, facture à l'appui.",
+      "Niveau et couleur du liquide de refroidissement, traces de fuite au thermostat ou à la pompe à eau.",
+      "Boîte EDC : passage des rapports à chaud et à froid, marche arrière, messages au tableau de bord.",
+      "Vibrations du train avant entre 110 et 125 km/h pendant un court essai (surtout dCi d'avant 2015).",
+      "Voyants moteur, antipollution, AdBlue sur Blue dCi, et état de la batterie 12 V.",
+      "Écran R-Link ou Easy Link, caméra de recul, radars et Bluetooth.",
+      "Rappels constructeur effectués (freins, carburant, catalyseur, batterie, frein de stationnement) : le réseau Renault peut le confirmer."
+    ],
+    "preparation": [
+      "Rassemblez la carte grise, le carnet d'entretien et les factures, surtout celles de vidange sur un TCe et de courroie sur un dCi.",
+      "Retrouvez les deux cartes mains libres : leur absence compte sur un Captur.",
+      "Si des rappels constructeur ont été faits, gardez les justificatifs du réseau Renault.",
+      "Sur boîte EDC, notez les éventuelles reprogrammations ou remplacements d'embrayage.",
+      "Faites rouler la voiture quelques jours avant le rendez-vous : une batterie faible perturbe le Start & Stop et l'électronique.",
+      "Videz l'habitacle et le coffre, replacez les housses de sièges si vous les avez retirées."
+    ],
+    "age": "Un Captur de 2014 ou 2015 a déjà plus de dix ans et souvent 150 000 km, c'est vrai. Mais l'âge et le compteur ne disent pas tout. Un 0.9 TCe ou un 1.5 dCi suivi à temps, sans voyant allumé et sans vibration, reste une voiture recherchée pour sa position haute et sa modularité. Ce qui le valorise : un carnet complet, une courroie remplacée avec facture sur un diesel, des vidanges rapprochées et un niveau d'huile stable sur un 1.2 TCe, les deux cartes, une boîte EDC qui passe ses rapports sans à-coups. À l'inverse, un 1.2 TCe sans historique ou une boîte qui craque font baisser l'offre. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, puis le technicien fixe le prix définitif après avoir vu la voiture chez vous.",
+    "valeurPlus": [
+      "Courroie de distribution remplacée récemment sur un 1.5 dCi, facture à l'appui.",
+      "1.2 TCe avec niveau d'huile stable et factures de suivi, ou moteur 0.9 TCe, 1.3 TCe et 1.0 TCe en bon état.",
+      "Kilométrage cohérent avec le carnet et rappels constructeur effectués.",
+      "Deux cartes mains libres, carnet d'entretien complet, écran multimédia fonctionnel.",
+      "Captur 1 phase 2 ou Captur 2, carrosserie et intérieur soignés."
+    ],
+    "valeurMoins": [
+      "1.2 TCe qui consomme de l'huile ou sans historique de vidanges.",
+      "Courroie hors échéance ou sans preuve de remplacement sur un diesel.",
+      "Boîte EDC qui craque, patine ou affiche des défauts.",
+      "Voyants allumés (moteur, antipollution, AdBlue, airbag).",
+      "Vibrations du train avant, corrosion, chocs ou intérieur très usé."
+    ],
+    "faq": [
+      {
+        "question": "Mon Captur de 2014 affiche 180 000 km, a-t-il encore une valeur ?",
+        "answer": "Oui, s'il est en état de rouler et entretenu. Un Captur 1 à fort kilométrage avec un carnet suivi, sans voyant et sans vibration, intéresse toujours. Nous l'estimons sur son état réel, son moteur et ses factures, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation d'achat."
+      },
+      {
+        "question": "Mon Captur a-t-il une courroie ou une chaîne de distribution ?",
+        "answer": "Les moteurs essence TCe (0.9, 1.2, 1.3 et 1.0) ont une chaîne, sans échéance de remplacement prévue : un bruit de chaîne doit en revanche être pris au sérieux. Les diesels 1.5 dCi et Blue dCi ont une courroie, à remplacer à l'intervalle fixé dans le carnet. Sur l'hybride E-Tech, vérifiez le carnet. Une facture récente de courroie soutient nettement la valeur d'un dCi."
+      },
+      {
+        "question": "Mon 1.2 TCe consomme de l'huile, l'étudiez-vous quand même ?",
+        "answer": "Oui, nous étudions tous les Captur, y compris un 1.2 TCe qui consomme de l'huile. C'est un défaut connu de ce moteur et il compte dans l'offre, car il peut annoncer une casse. Dites-le dès la demande d'estimation et envoyez-nous vos factures de vidange ou de remise à niveau. Le technicien vérifie le moteur chez vous avant de fixer le prix définitif."
+      },
+      {
+        "question": "Ma boîte EDC a des à-coups, puis-je vendre mon Captur ?",
+        "answer": "Oui. Les à-coups, craquements et mises en sécurité de la boîte EDC sont signalés par la presse sur le Captur 1, parfois réglés par une reprogrammation. Signalez le symptôme dès la demande : nous en tenons compte dans l'offre, et une information claire évite une mauvaise surprise au rendez-vous."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre mon Captur à LUNICAR ?",
+        "answer": "Non, nous n'exigeons pas de contrôle technique. C'est utile pour un Captur dont le contrôle est expiré ou dont les réparations demandées ne valent pas la dépense. Le technicien évalue la voiture lui-même lors du rendez-vous à votre adresse, sans frais, puis, si la vente est conclue, nous payons par virement instantané."
+      },
+      {
+        "question": "Reprenez-vous aussi le Captur 2 et les versions hybrides E-Tech ?",
+        "answer": "Oui. Nous reprenons le Captur 2 (depuis 2020, restylé en 2024) en 1.0 TCe, 1.3 TCe, Blue dCi, GPL, hybride E-Tech et hybride rechargeable. Le principe reste le même : étude sans promesse de rachat, fourchette indicative communiquée rapidement, vérification chez vous, sans obligation d'acheter un autre véhicule."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Wikipédia : Renault Captur I",
+        "url": "https://fr.wikipedia.org/wiki/Renault_Captur_I"
+      },
+      {
+        "label": "L'argus : avis fiabilité Renault Captur I",
+        "url": "https://www.largus.fr/guide-achat-occasion/renault/captur/avis-fiabilite-renault-captur-i-j87-30039383.html"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité Renault Captur (2013-2019)",
+        "url": "https://www.fiches-auto.fr/fiabilite-renault/fiabilite-446-pannes-renault-captur.php"
+      },
+      {
+        "label": "RappelConso : rappel Renault Clio et Captur moteur H4Bt (mars 2020)",
+        "url": "https://rappel.conso.gouv.fr/affichettepdf/49020/rapex"
+      }
+    ],
+    "updated": "2026-10-27"
   }
 ]
