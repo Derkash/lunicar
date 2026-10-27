@@ -3420,12 +3420,18 @@ body.modal-ouvert { overflow: hidden; }
         const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0, E = v => v.toLocaleString('fr-FR');
         const prix = mn ? (mn === mx ? `Estimation env. ${E(mn)} €` : `Estimation ${E(mn)}-${E(mx)} €`) : '';
         const tech = T.tel ? `Technicien : ${T.tel}.` : '';
-        const quand = `${jourLong(r.date)} entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}`, quandCourt = `${jourCourt(r.date)} ${hh(r.heure || '14:00')}-${hh(heureFin)}`;
+        const quand = `${jourCourt(r.date)} ${hh(r.heure || '14:00')}-${hh(heureFin)}`;
+        const lieu = (String(r.lieu || '').trim() || [x.adresse, [x.code_postal, x.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ')).replace(/\s+/g, ' ');
+        const L = (...p) => p.filter(Boolean).join('\n');
+        const coupe = (t, n) => t.length <= n ? t : t.slice(0, n).replace(/\s+\S*$/, '');   // coupe entre deux mots
+        // Lieu et formule de politesse toujours présents ; on raccourcit le reste jusqu'à tenir en un SMS.
         return unSeulSMS([
-            `Bonjour, LUNICAR confirme votre rendez-vous ${quand}. ${prix ? prix + ' selon l\'état constaté. ' : ''}${tech} Bonne journée, l'équipe LUNICAR`,
-            `Bonjour, LUNICAR confirme votre RDV ${quand}. ${prix ? prix + ' selon l\'état. ' : ''}${tech} L'équipe LUNICAR`,
-            `Bonjour, LUNICAR confirme votre RDV ${quandCourt}. ${prix ? prix + ' selon l\'état. ' : ''}${tech} L'équipe LUNICAR`,
-            `LUNICAR confirme votre RDV ${quandCourt}. ${prix ? prix + '. ' : ''}${tech} L'équipe LUNICAR`
+            L('Bonjour,', `LUNICAR confirme votre RDV ${quand}`, lieu, prix && prix + ' selon l\'état', tech, 'Bonne journée, l\'équipe LUNICAR'),
+            L('Bonjour,', `RDV LUNICAR ${quand}`, lieu, prix, tech, 'Bonne journée, l\'équipe LUNICAR'),
+            L('Bonjour,', `RDV LUNICAR ${quand}`, lieu, prix, T.tel && `Technicien ${T.tel}`, 'Cordialement, LUNICAR'),
+            L('Bonjour,', `RDV LUNICAR ${quand.replace(/\./g, '')}`, lieu, prix.replace('Estimation ', 'Estim. '), T.tel && `Tech. ${T.tel}`, 'Cordialement, LUNICAR'),
+            L('Bonjour,', `RDV LUNICAR ${quand.replace(/\./g, '')}`, coupe(lieu, 42), prix.replace('Estimation ', 'Estim. '), T.tel && `Tech. ${T.tel}`, 'Cordialement, LUNICAR'),
+            L('Bonjour,', `RDV LUNICAR ${quand.replace(/\./g, '')}`, coupe(lieu, 30), prix.replace('Estimation ', ''), T.tel && `Tech. ${T.tel}`, 'Cordialement, LUNICAR')
         ]);
     }
     // SMS au technicien : tout ce qu'il lui faut pour la visite.
@@ -3459,10 +3465,10 @@ body.modal-ouvert { overflow: hidden; }
             <p class="sub">${r.confirme_le ? `Déjà confirmé le ${date(r.confirme_le)} · ` : ''}Un seul envoi : e-mail et SMS au client, SMS au technicien. Chaque texte est modifiable.</p>
             <section class="mc-bloc"><label class="chk"><input type="checkbox" id="mcOkMail"${x.email ? ' checked' : ' disabled'}> <b>E-mail au client</b> <small>${x.email ? esc(x.email) + ' · de LUNICAR · objet « ' + esc(objet) + ' »' : 'pas d\'adresse e-mail sur la fiche'}</small></label>
                 <textarea class="in" id="mcMailTxt" rows="10">${esc(texteConfirmation(d))}</textarea></section>
-            <section class="mc-bloc"><label class="chk"><input type="checkbox" id="mcOkSms"${x.telephone && smsOk ? ' checked' : ' disabled'}> <b>SMS au client</b> <small>${x.telephone ? esc(x.telephone) + (smsOk ? ' · via OVH' + (etat.sms.sender_valide ? '' : ' (numéro court en attendant la validation de LUNICAR)') : ' · SMS serveur non configuré') : 'pas de numéro'}</small></label>
+            <section class="mc-bloc"><label class="chk"><input type="checkbox" id="mcOkSms"${x.telephone ? ' checked' : ' disabled'}> <b>SMS au client</b> <small>${x.telephone ? esc(x.telephone) + ' · via OVH' + (smsOk ? (etat.sms.sender_valide ? '' : ' (numéro court en attendant la validation de LUNICAR)') : ' — clés OVH absentes sur Render : l\'envoi échouera') : 'pas de numéro'}</small></label>
                 <textarea class="in" id="mcSmsTxt" rows="4">${esc(texteConfirmationSMS(d))}</textarea><p class="sub mc-cpt" id="mcCptSms"></p>
                 ${x.telephone && !smsOk ? `<div class="mc-btns"><a class="btn btn-s" id="mcSms" href="#">Envoyer depuis l'iPhone</a><a class="btn btn-s" id="mcWa" href="#" target="_blank" rel="noopener">WhatsApp</a></div>` : ''}</section>
-            <section class="mc-bloc"><label class="chk"><input type="checkbox" id="mcOkTech"${T.tel && smsOk ? ' checked' : ' disabled'}> <b>SMS au technicien</b> <small>${T.tel ? esc(T.tel) + (smsOk ? ' · via OVH' : ' · SMS serveur non configuré') : 'numéro du technicien non configuré'}</small></label>
+            <section class="mc-bloc"><label class="chk"><input type="checkbox" id="mcOkTech"${T.tel ? ' checked' : ' disabled'}> <b>SMS au technicien</b> <small>${T.tel ? esc(T.tel) + ' · via OVH' + (smsOk ? '' : ' — clés OVH absentes sur Render : l\'envoi échouera') : 'numéro du technicien non configuré'}</small></label>
                 <textarea class="in" id="mcTechTxt" rows="6">${esc(texteSMSTechnicien(d))}</textarea><p class="sub mc-cpt" id="mcCptTech"></p></section>
             <div class="cr-btns"><button type="button" class="btn" id="mcCopie">Copier le SMS client</button><button type="button" class="btn btn-g" id="mcTout">Envoyer</button></div>`;
         const fermer = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
