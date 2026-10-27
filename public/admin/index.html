@@ -298,6 +298,8 @@ details.plus > summary { margin-top: 14px; }
 .kv-ed::after { content: ''; position: absolute; right: 2px; top: 50%; width: 11px; height: 11px; margin-top: -6px; background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239AA3B2' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E"); opacity: .7; }
 .kv-ed:hover { color: var(--bleu, #2453A6); } .kv-ed.kv-vide { color: var(--ink-4); font-weight: 400; font-style: italic; }
 .rdv-fourch { flex-wrap: wrap; font-size: .86rem; } .rdv-fourch .in { flex: 0 1 90px; width: 90px; }
+.mc-modes { display: flex; gap: 6px; margin: 0 0 8px; } .mc-modes .seg { flex: 1; justify-content: center; }
+#mcCompte:empty { display: none; }
 .kv-form { display: flex; gap: 6px; align-items: center; } .kv-form .in { flex: 1 1 0; width: 0; min-width: 0; height: 34px; font-size: .88rem; }
 .ads-wrap { overflow-x: auto; }
 .ads { width: 100%; border-collapse: collapse; font-size: .86rem; }
@@ -3358,7 +3360,7 @@ body.modal-ouvert { overflow: hidden; }
         const ev = (s.historique || []).filter(h => h.type === 'appel' || h.type === 'note' || h.type === 'email').slice(0, 4);
         return `<section class="sec dit">
             <h3>Ce qui a été dit <small>${s.nb_appels ? `${s.nb_appels} appel${s.nb_appels > 1 ? 's' : ''}` : 'jamais appelé'}${rappel(d) ? ` · relance <b class="${rappel(d) < jourIso() ? 'neg' : ''}">${jj(rappel(d))}${s.rappel_heure ? ' vers ' + esc(s.rappel_heure) : ''}</b>` : ''}</small></h3>
-            ${ev.length ? `<ol class="dit-liste">${ev.map(h => `<li class="dit-${h.type}"><span>${date(h.date)} · ${h.type === 'appel' ? 'Appel' : h.type === 'email' ? 'E-mail' : 'Note'}</span><p>${h.type === 'appel' ? `<b>${esc(String(h.quoi || '').replace(/^Appel : /, ''))}</b>${h.texte ? '<br>' + esc(h.texte) : ''}` : esc(h.quoi)}</p></li>`).join('')}</ol>`
+            ${ev.length ? `<ol class="dit-liste">${ev.map(h => `<li class="dit-${h.type}"><span>${date(h.date)} · ${h.type === 'appel' ? 'Appel' : h.type === 'email' ? 'E-mail' : h.type === 'sms' ? 'SMS' : 'Note'}</span><p>${h.type === 'appel' ? `<b>${esc(String(h.quoi || '').replace(/^Appel : /, ''))}</b>${h.texte ? '<br>' + esc(h.texte) : ''}` : esc(h.quoi)}</p></li>`).join('')}</ol>`
                 : '<p class="vide">Rien pour l\'instant : appuyez sur « Appeler », le panneau d\'appel s\'ouvre pour noter ce qui est dit.</p>'}
             <form class="dit-note" id="ditNote"><input class="in" id="ditTxt" placeholder="Ajouter une note rapide…" autocomplete="off"><button class="btn btn-p">Ajouter</button></form>
             <div class="dit-act"><button class="btn btn-s" type="button" id="ditPanneau"><svg><use href="#i-tel"/></svg>Panneau d'appel</button><button class="flag${drapeau(d) ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${drapeau(d)}"><svg><use href="#i-flag"/></svg>${drapeau(d) ? 'À appeler · retirer' : 'Marquer « À appeler »'}</button><a href="#secSuivi" class="btn btn-s btn-ghost" id="ditTout">Tout l'historique</a></div>
@@ -3403,30 +3405,62 @@ body.modal-ouvert { overflow: hidden; }
             'Si vous avez une question avant le rendez-vous, n\'hésitez pas à me contacter.', '',
             'Cordialement,', `${signe ? signe + ' de ' : ''}LUNICAR`].join('\n');
     }
+    // Version courte pour le SMS (2 à 3 segments) : jour, créneau, lieu, fourchette, carte grise, numéro LUNICAR.
+    function texteConfirmationSMS(d) {
+        const x = d.data || {}, r = rdvPrevu(d) || {}, f = x.fiche_api || {};
+        const veh = (f.marque ? [f.marque, f.modele].filter(Boolean).join(' ') : (x.vehicule || 'véhicule').split(' ').slice(0, 3).join(' ')).trim();
+        const [h, m] = String(r.heure || '14:00').split(':').map(Number), fin = new Date(Date.UTC(2000, 0, 1, h, m + (r.duree || 45)));
+        const hh = t => t.replace(':', 'h').replace(/h00$/, 'h'), heureFin = String(fin.getUTCHours()).padStart(2, '0') + ':' + String(fin.getUTCMinutes()).padStart(2, '0');
+        const lieu = String(r.lieu || '').trim() || [x.code_postal, x.ville].filter(Boolean).join(' ');
+        const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0;
+        const prix = mn ? (mn === mx ? ` Proposition d'achat envisagée : environ ${mn.toLocaleString('fr-FR')} € selon l'état constaté.` : ` Proposition d'achat envisagée : entre ${mn.toLocaleString('fr-FR')} et ${mx.toLocaleString('fr-FR')} € selon l'état constaté.`) : '';
+        return (`Bonjour ${x.prenom || ''}`.trim() + `, LUNICAR confirme votre rendez-vous ${jourLong(r.date)} entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}${lieu ? ` à ${lieu}` : ''} pour votre ${veh}.${prix} Merci de préparer la carte grise.${etat.telephone ? ` Une question ? ${etat.telephone}.` : ''} Bonne journée, LUNICAR`).replace(/[\u202F\u00A0]/g, ' ');   // espaces insécables des nombres : hors alphabet SMS
+    }
     function messageConfirmation(d) {
         const x = d.data || {}, r = rdvPrevu(d) || {};
         const tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
         const objet = `Votre rendez-vous LUNICAR du ${jourLong(r.date)}`;
+        const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
+        const brouillons = { mail: texteConfirmation(d), sms: texteConfirmationSMS(d) };
+        let mode = x.email ? 'mail' : 'sms';
         $('#crIn').innerHTML = `<div class="cr-tete"><h3>Confirmation du rendez-vous</h3><button class="close" type="button" id="mcX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
-            <p class="sub">À relire et modifier avant envoi.</p>
-            <textarea class="in" id="mcTxt" rows="14">${esc(texteConfirmation(d))}</textarea>
-            <div class="mc-btns">
-                ${x.telephone ? `<a class="btn btn-g" id="mcSms" href="#">SMS</a><a class="btn" id="mcWa" href="#" target="_blank" rel="noopener">WhatsApp</a>` : ''}
-                ${x.email ? `<button type="button" class="btn" id="mcMail">E-mail à ${esc(x.email)}</button>` : ''}
-                <button type="button" class="btn" id="mcCopie">Copier</button>
-            </div>`;
+            <div class="mc-modes"><button type="button" class="seg" data-mode="mail">E-mail${x.email ? '' : ' · pas d\'adresse'}</button><button type="button" class="seg" data-mode="sms">SMS${x.telephone ? '' : ' · pas de numéro'}</button></div>
+            <p class="sub" id="mcInfo"></p>
+            <textarea class="in" id="mcTxt" rows="12"></textarea>
+            <p class="sub" id="mcCompte"></p>
+            <div class="mc-btns" id="mcBtns"></div>`;
         const fermer = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
         $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
         $('#mcX').onclick = fermer; $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermer(); };
         const txt = () => $('#mcTxt').value.trim();
-        if ($('#mcSms')) $('#mcSms').onclick = e => { e.preventDefault(); location.href = `sms:+${tel}${/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?'}body=${encodeURIComponent(txt())}`; };
-        if ($('#mcWa')) $('#mcWa').onclick = e => { e.preventDefault(); window.open(`https://wa.me/${tel}?text=${encodeURIComponent(txt())}`, '_blank'); };
-        $('#mcCopie').onclick = async () => { try { await navigator.clipboard.writeText(txt()); toast('Message copié'); } catch (e) { $('#mcTxt').select(); document.execCommand('copy'); toast('Message copié'); } };
-        if ($('#mcMail')) $('#mcMail').onclick = async () => {
-            if (await demander({ titre: 'Envoyer la confirmation par e-mail ?', texte: `À ${x.email} · objet « ${objet} »`, boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
-            try { const r2 = await api('/api/admin/demandes/' + d.ref + '/email', { method: 'POST', body: JSON.stringify({ objet, texte: txt() }) }); maj(r2); if (courant && courant.ref === d.ref) { courant = r2; fiche(); } fermer(); toast('Confirmation envoyée par e-mail'); }
-            catch (e) { toast(e.message); $('#crModal').hidden = false; }
+        const segments = t => { const gsm = /^[A-Za-z0-9@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./:;<=>?¡ÄÖÑÜ§¿äöñüà\n\r^{}\\[~\]|€]*$/.test(t); const n = t.length; return { n, seg: n <= (gsm ? 160 : 70) ? 1 : Math.ceil(n / (gsm ? 153 : 67)), gsm }; };
+        const compter = () => { if (mode !== 'sms') { $('#mcCompte').textContent = ''; return; } const c = segments(txt()); $('#mcCompte').textContent = `${c.n} caractères · ${c.seg} SMS${c.gsm ? '' : ' (accents spéciaux : SMS plus courts)'}`; };
+        $('#mcTxt').addEventListener('input', () => { brouillons[mode] = $('#mcTxt').value; compter(); });
+        const afficher = () => {
+            $('#crIn').querySelectorAll('[data-mode]').forEach(b => b.classList.toggle('on', b.dataset.mode === mode));
+            $('#mcTxt').value = brouillons[mode]; $('#mcTxt').rows = mode === 'sms' ? 7 : 12;
+            $('#mcInfo').textContent = mode === 'mail' ? `À relire avant envoi · expéditeur LUNICAR, objet « ${objet} »` : smsOk ? `Envoyé par LUNICAR via OVH${etat.sms.sender_valide ? '' : ' (expéditeur « LUNICAR » en attente de validation OVH : part d\'un numéro court)'}${etat.sms.credits != null ? ` · ${etat.sms.credits} crédits restants` : ''}` : 'SMS serveur non configuré : envoi depuis l\'iPhone.';
+            $('#mcBtns').innerHTML = mode === 'mail'
+                ? `${x.email ? `<button type="button" class="btn btn-g" id="mcMail">Envoyer à ${esc(x.email)}</button>` : ''}<button type="button" class="btn" id="mcCopie">Copier</button>`
+                : `${x.telephone && smsOk ? `<button type="button" class="btn btn-g" id="mcSmsOvh">Envoyer le SMS au ${esc(x.telephone)}</button>` : ''}${x.telephone ? `<a class="btn" id="mcSms" href="#">${smsOk ? 'Depuis l\'iPhone' : 'SMS depuis l\'iPhone'}</a><a class="btn" id="mcWa" href="#" target="_blank" rel="noopener">WhatsApp</a>` : ''}<button type="button" class="btn" id="mcCopie">Copier</button>`;
+            compter();
+            if ($('#mcSms')) $('#mcSms').onclick = e => { e.preventDefault(); location.href = `sms:+${tel}${/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?'}body=${encodeURIComponent(txt())}`; };
+            if ($('#mcWa')) $('#mcWa').onclick = e => { e.preventDefault(); window.open(`https://wa.me/${tel}?text=${encodeURIComponent(txt())}`, '_blank'); };
+            $('#mcCopie').onclick = async () => { try { await navigator.clipboard.writeText(txt()); toast('Message copié'); } catch (e) { $('#mcTxt').select(); document.execCommand('copy'); toast('Message copié'); } };
+            if ($('#mcMail')) $('#mcMail').onclick = async () => {
+                if (await demander({ titre: 'Envoyer la confirmation par e-mail ?', texte: `À ${x.email} · de LUNICAR · objet « ${objet} »`, boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
+                try { const r2 = await api('/api/admin/demandes/' + d.ref + '/email', { method: 'POST', body: JSON.stringify({ objet, texte: txt(), type: 'confirmation_rdv' }) }); maj(r2); if (courant && courant.ref === d.ref) { courant = r2; fiche(); } fermer(); toast('Confirmation envoyée par e-mail'); }
+                catch (e) { toast(e.message); $('#crModal').hidden = false; }
+            };
+            if ($('#mcSmsOvh')) $('#mcSmsOvh').onclick = async () => {
+                const c = segments(txt());
+                if (await demander({ titre: 'Envoyer le SMS ?', texte: `Au ${x.telephone} · ${c.seg} SMS (${c.n} caractères)`, boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
+                try { const r2 = await api('/api/admin/demandes/' + d.ref + '/sms', { method: 'POST', body: JSON.stringify({ texte: txt(), type: 'confirmation_rdv' }) }); maj(r2); if (courant && courant.ref === d.ref) { courant = r2; fiche(); } fermer(); toast('SMS envoyé'); }
+                catch (e) { toast(e.message); $('#crModal').hidden = false; }
+            };
         };
+        $('#crIn').querySelectorAll('[data-mode]').forEach(b => b.onclick = () => { mode = b.dataset.mode; afficher(); });
+        afficher();
     }
     // Certificat de cession dès le rendez-vous pris : on retrouve (ou crée) le véhicule de la demande.
     async function cessionDepuisDemande(ref) {

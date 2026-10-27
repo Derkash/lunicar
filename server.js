@@ -137,7 +137,7 @@ async function sendEmail(options) {
     }
 
     const mailOptions = {
-        from: `"${process.env.SMTP_FROM_NAME || 'LUNICAR'}" <${process.env.SMTP_USER}>`,
+        from: `"LUNICAR" <${process.env.SMTP_USER}>`,
         to: process.env.EMAIL_TO || 'contact@lunicar.fr',
         subject: options.subject,
         html: options.html
