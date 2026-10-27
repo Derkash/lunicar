@@ -3517,5 +3517,393 @@
       }
     ],
     "updated": "2026-10-27"
+  },
+  {
+    "slug": "vendre-voiture-critair-zfe",
+    "image": "accueil",
+    "nav": "Crit'Air et ZFE",
+    "title": "Vendre une voiture Crit'Air 3, 4 ou 5 en ZFE | LUNICAR",
+    "description": "Voiture Crit'Air 3, 4 ou 5 interdite dans votre ZFE ? Qui peut encore l'acheter, effet sur la valeur, état des règles : LUNICAR l'étudie partout en France.",
+    "h1": "Vendre une voiture Crit'Air 3, 4 ou 5 <em>interdite en ZFE</em>",
+    "lede": "Votre voiture ne peut plus circuler dans une zone à faibles émissions à cause de sa vignette Crit'Air ? Elle reste vendable : les règles des ZFE limitent la circulation, pas la vente. LUNICAR, qui revend principalement à des professionnels, l'étudie partout en France et vous rappelle avec une fourchette de prix indicative.",
+    "points": [
+      "Crit'Air 3, 4, 5 et non classées étudiées",
+      "Vente possible même si la circulation est restreinte",
+      "Prix définitif après vérification par un technicien",
+      "Virement instantané à la conclusion de la vente"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Peut-on encore vendre une voiture Crit'Air 3, 4 ou 5 interdite en ZFE ?",
+        "html": "<p>Oui. Les règles des zones à faibles émissions restreignent la circulation des véhicules les plus polluants dans un périmètre donné ; aucune d'elles n'interdit de vendre le véhicule. La fiche <a href=\"https://entreprendre.service-public.gouv.fr/vosdroits/F38025\" rel=\"noopener\" target=\"_blank\">circuler en zone à faibles émissions mobilité</a> de Service-public.gouv.fr définit la ZFE comme une zone où « la circulation des véhicules les plus polluants peut être restreinte » : le texte vise l'usage, pas la propriété.</p>\n<p>Vous pouvez donc céder votre voiture à un particulier qui vit et roule hors ZFE, ou à un professionnel de l'automobile. LUNICAR achète des voitures Crit'Air 3, 4, 5 et non classées partout en France. Comme nous revendons principalement à des professionnels, la restriction locale qui vous bloque ne bloque pas la voiture elle-même : elle repart là où elle peut circuler. Décrivez-la en ligne, un conseiller vous rappelle rapidement avec une fourchette de prix indicative.</p>"
+      },
+      {
+        "h2": "Quelle vignette Crit'Air a votre voiture et que signifie-t-elle ?",
+        "html": "<p>La classe Crit'Air dépend de la motorisation et de la date de première immatriculation, qui détermine la norme Euro. Le tableau ci-dessous reprend, pour les voitures particulières, la classification publiée dans la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F33371\" rel=\"noopener\" target=\"_blank\">vignette ou pastille Crit'Air</a> de Service-public.gouv.fr.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Classe</th><th>Voiture essence</th><th>Voiture diesel</th></tr></thead><tbody><tr><td>Crit'Air verte</td><td colspan=\"2\">Électrique ou hydrogène, quelle que soit la date</td></tr><tr><td>Crit'Air 1</td><td>Depuis 2011 (Euro 5 et 6), gaz et hybrides rechargeables</td><td>Aucune</td></tr><tr><td>Crit'Air 2</td><td>2006 à 2010 (Euro 4)</td><td>Depuis 2011 (Euro 5 et 6)</td></tr><tr><td>Crit'Air 3</td><td>1997 à 2005 (Euro 2 et 3)</td><td>2006 à 2010 (Euro 4)</td></tr><tr><td>Crit'Air 4</td><td>Aucune</td><td>2001 à 2005 (Euro 3)</td></tr><tr><td>Crit'Air 5</td><td>Aucune</td><td>1997 à 2000 (Euro 2)</td></tr><tr><td>Non classée</td><td colspan=\"2\">Immatriculée avant 1997 (Euro 1 et antérieures)</td></tr></tbody></table></div><p>Un diesel de 2009 est donc Crit'Air 3, comme une essence de 2003. La vignette coûte 3,85 € frais d'envoi compris et circuler sans vignette dans une ZFE expose à une amende forfaitaire de 68 €, selon la même fiche. Vous n'avez pas besoin de la commander pour vendre à LUNICAR.</p>"
+      },
+      {
+        "h2": "Où les Crit'Air 3, 4 et 5 sont-ils interdits aujourd'hui ?",
+        "html": "<p>Dans les ZFE de Paris et de Lyon, pour les voitures Crit'Air 3 et au-delà ; ailleurs, la restriction obligatoire minimale ne concerne que les véhicules non classés. Selon Service-public.gouv.fr (fiche vérifiée en octobre 2026), 25 ZFE existent en France métropolitaine, 38 territoires sont concernés par l'obligation d'en créer une et seules les agglomérations de Paris et de Lyon restent soumises au dispositif renforcé.</p>\n<ul class=\"ticks\">\n<li><strong>Paris et Lyon</strong> : restrictions sur les voitures diesel immatriculées avant le 1er janvier 2011 et essence immatriculées avant le 1er janvier 2006, c'est-à-dire Crit'Air 3, 4, 5 et non classées.</li>\n<li><strong>Autres ZFE</strong> : chaque collectivité fixe son propre calendrier ; le socle imposé vise les non classées.</li>\n<li><strong>Calendrier national</strong> : la loi Climat et résilience a imposé aux agglomérations en dépassement régulier des seuils l'exclusion des Crit'Air 4 au 1er janvier 2024, puis des Crit'Air 3 au 1er janvier 2025, d'après <a href=\"https://www.ecologie.gouv.fr/politiques-publiques/zones-faibles-emissions-zfe\" rel=\"noopener\" target=\"_blank\">ecologie.gouv.fr</a>.</li>\n<li><strong>Dérogations</strong> : les collectivités peuvent accorder des dérogations individuelles ou des pass journaliers.</li>\n</ul>"
+      },
+      {
+        "h2": "Le dispositif ZFE va-t-il être supprimé ?",
+        "html": "<p>Non à ce jour, mais le cadre évolue et mérite d'être vérifié au moment de votre vente. Le Parlement avait adopté, dans la loi de simplification de la vie économique, un article 37 supprimant les zones à faibles émissions mobilité. Par sa <a href=\"https://www.conseil-constitutionnel.fr/decision/2026/2026903DC.htm\" rel=\"noopener\" target=\"_blank\">décision n° 2026-903 DC du 21 mai 2026</a>, le Conseil constitutionnel a jugé que cet article avait été « adopté selon une procédure contraire à la Constitution », faute de lien avec le projet de loi initial. La loi a été promulguée sans lui et les règles des ZFE restent en vigueur.</p>\n<p>Le débat n'est pas clos pour autant : une nouvelle proposition pourrait reposer la question. Pour un vendeur, cette incertitude a un effet concret : les particuliers qui vivent dans une ZFE hésitent à acheter une Crit'Air 3, et un acheteur hors ZFE n'est pas concerné. Avant de décider, consultez les pages à jour de <a href=\"https://www.ecologie.gouv.fr/politiques-publiques/zones-faibles-emissions-zfe\" rel=\"noopener\" target=\"_blank\">ecologie.gouv.fr</a> et de Service-public.gouv.fr. LUNICAR achète dans tous les cas, quel que soit l'état du dispositif.</p>"
+      },
+      {
+        "h2": "Quel effet la vignette Crit'Air a-t-elle sur la valeur de votre voiture ?",
+        "html": "<p>Elle réduit le nombre d'acheteurs possibles là où la voiture est interdite, sans changer ce que vaut la voiture ailleurs. La valeur reste d'abord fonction de l'état, du kilométrage, de l'entretien et du modèle. La vignette agit sur le marché : dans Paris ou Lyon, une Crit'Air 3 trouve difficilement un particulier local ; dans une ville sans restriction, la demande continue d'exister.</p>\n<ul class=\"ticks\">\n<li><strong>Diesel Crit'Air 3, 4 ou 5</strong> : ce sont les plus concernées. Voir notre page <a href=\"/reprise-voiture-diesel\">reprise d'une voiture diesel</a>.</li>\n<li><strong>Essence Crit'Air 3</strong> : souvent des voitures de 1997 à 2005 à faible valeur unitaire, dont le prix tient surtout à l'état. Voir <a href=\"/vendre-vieille-voiture\">vendre une vieille voiture</a>.</li>\n<li><strong>Non classée</strong> : immatriculée avant 1997, elle intéresse plutôt un acheteur hors ZFE ou un professionnel.</li>\n<li><strong>Contrôle technique</strong> : une vignette défavorable n'oblige pas à le refaire pour vendre à un professionnel. Voir <a href=\"/rachat-voiture-sans-controle-technique\">vendre sans contrôle technique</a>.</li>\n</ul>\n<p>Un professionnel qui revend hors de votre ZFE n'applique pas la même décote qu'un acheteur local contraint.</p>"
+      },
+      {
+        "h2": "Comment LUNICAR achète-t-il une voiture Crit'Air 3, 4, 5 ou non classée ?",
+        "html": "<p>De la même façon qu'une autre voiture, partout en France : description en ligne, rappel rapide d'un conseiller avec une fourchette de prix indicative, puis vérification sur place par un technicien. Indiquez dès le départ la motorisation, l'année de première immatriculation et si la voiture circule encore ; si elle est immobilisée dans une ZFE, précisez-le, le technicien vient à votre adresse, sans frais.</p>\n<ul class=\"ticks\">\n<li><strong>Prix définitif</strong> : fixé après vérification, vous l'acceptez ou le refusez librement. Le détail est expliqué sur la page <a href=\"/fourchette-et-prix-definitif\">fourchette et prix définitif</a>.</li>\n<li><strong>Documents de cession</strong> : certificat de cession et déclaration à l'ANTS préparés ensemble, comme décrit dans la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a>.</li>\n<li><strong>Enlèvement offert</strong> : la voiture n'a pas besoin de sortir de la ZFE par ses propres moyens.</li>\n<li><strong>Virement instantané</strong> : à la conclusion de la vente, jamais d'espèces.</li>\n</ul>\n<p>Le parcours complet est décrit dans notre <a href=\"/vendre-sa-voiture-guide-complet\">guide pour vendre sa voiture</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la vente d'une voiture Crit'Air 3, 4 ou 5",
+    "faq": [
+      {
+        "question": "Est-il légal de vendre une voiture Crit'Air 3, 4 ou 5 interdite dans ma ZFE ?",
+        "answer": "Oui. Les textes sur les zones à faibles émissions restreignent la circulation dans un périmètre, pas la vente ni la propriété du véhicule. Vous pouvez la vendre à un particulier qui roule hors ZFE ou à un professionnel de l'automobile comme LUNICAR."
+      },
+      {
+        "question": "Ma voiture est-elle Crit'Air 3 ?",
+        "answer": "Pour une voiture particulière, Crit'Air 3 correspond à un diesel immatriculé de 2006 à 2010 (Euro 4) ou à une essence immatriculée de 1997 à 2005 (Euro 2 et 3), selon la fiche vignette Crit'Air de Service-public.gouv.fr. La date de première immatriculation figure sur la carte grise, rubrique B."
+      },
+      {
+        "question": "Les ZFE ont-elles été supprimées en 2026 ?",
+        "answer": "Non. L'article de la loi de simplification de la vie économique qui supprimait les ZFE a été censuré par le Conseil constitutionnel le 21 mai 2026 pour une raison de procédure. Les règles restent en vigueur, mais le cadre peut encore évoluer : vérifiez les pages officielles au moment de vendre."
+      },
+      {
+        "question": "Dans quelles villes les Crit'Air 3 sont-elles interdites ?",
+        "answer": "Selon Service-public.gouv.fr, seules les ZFE de Paris et de Lyon restent soumises au dispositif renforcé visant les Crit'Air 3 et au-delà. Les autres ZFE fixent leur propre calendrier, avec un socle minimal sur les véhicules non classés. Consultez les règles de votre agglomération."
+      },
+      {
+        "question": "Une voiture Crit'Air 4 ou 5 vaut-elle encore quelque chose ?",
+        "answer": "Oui. La vignette réduit le nombre d'acheteurs dans les zones où la voiture est interdite, mais la valeur dépend d'abord de l'état, du kilométrage et de l'entretien. Un professionnel qui revend hors ZFE ne subit pas la restriction locale."
+      },
+      {
+        "question": "Dois-je commander la vignette Crit'Air avant de vendre ?",
+        "answer": "Non pour une vente à LUNICAR. La vignette sert à circuler dans une ZFE ; elle n'est pas un document de cession. Si vous la commandez, elle coûte 3,85 € frais d'envoi compris sur le site officiel."
+      },
+      {
+        "question": "Ma voiture est bloquée dans une ZFE et ne peut plus rouler légalement : comment la vendre ?",
+        "answer": "Signalez-le dans votre demande. Un technicien vient à votre adresse, sans frais, pour la vérifier. Si la vente est conclue, l'enlèvement est offert et le paiement se fait par virement instantané."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Circuler en zone à faibles émissions mobilité (ZFE ou ZFE-m), service-public.gouv.fr",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F38025"
+      },
+      {
+        "label": "Vignette ou pastille Crit'Air (certificat qualité de l'air), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33371"
+      },
+      {
+        "label": "Zones à faibles émissions (ZFE), ecologie.gouv.fr",
+        "url": "https://www.ecologie.gouv.fr/politiques-publiques/zones-faibles-emissions-zfe"
+      },
+      {
+        "label": "Décision n° 2026-903 DC du 21 mai 2026, Conseil constitutionnel",
+        "url": "https://www.conseil-constitutionnel.fr/decision/2026/2026903DC.htm"
+      },
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "vendre-voiture-carte-grise-perdue",
+    "image": "accueil",
+    "nav": "Carte grise perdue",
+    "title": "Vendre une voiture avec la carte grise perdue | LUNICAR",
+    "description": "Carte grise perdue, volée ou abîmée : déclaration, duplicata ANTS, récépissé, certificat provisoire. Ce qu'il faut avoir en main pour vendre à LUNICAR.",
+    "h1": "Vendre sa voiture avec une carte grise <em>perdue, volée ou abîmée</em>",
+    "lede": "Sans carte grise, la cession ne peut pas être conclue : le certificat d'immatriculation barré doit être remis à l'acheteur. La solution est un duplicata demandé en ligne sur l'ANTS. LUNICAR étudie votre voiture pendant la démarche, vous rappelle avec une fourchette de prix indicative et conclut la vente dès que le document est là.",
+    "points": [
+      "Duplicata demandé en ligne, sans préfecture",
+      "Estimation possible pendant la démarche",
+      "Documents de cession préparés ensemble",
+      "Virement instantané à la conclusion de la vente"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Peut-on vendre une voiture dont la carte grise est perdue ?",
+        "html": "<p>Non, pas avant d'avoir obtenu un duplicata. Service-public.gouv.fr est explicite dans sa fiche sur les véhicules hérités : « si la carte grise a été perdue, vous devez d'abord la faire refaire, comme si vous conserviez le véhicule, avant de le vendre ». La règle vaut pour tout vendeur, car la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> impose de remettre à l'acheteur le certificat d'immatriculation barré, portant la mention « vendu le » avec la date, l'heure et votre signature.</p>\n<p>Cela ne vous empêche pas de préparer la vente. Vous pouvez décrire votre voiture à LUNICAR, recevoir rapidement une fourchette de prix indicative et fixer le passage du technicien pendant que la demande de duplicata est en cours. La cession est signée et le virement instantané est effectué quand le certificat d'immatriculation est entre vos mains. Pour une voiture héritée, voyez aussi notre page <a href=\"/reprise-voiture-succession\">reprise d'une voiture en succession</a>.</p>"
+      },
+      {
+        "h2": "Comment déclarer la perte ou le vol et obtenir un duplicata ?",
+        "html": "<p>En ligne, sur le site de l'ANTS ou auprès d'un professionnel habilité ; il n'est plus possible de passer par la préfecture. La fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1726\" rel=\"noopener\" target=\"_blank\">perte, vol ou détérioration de la carte grise</a> de Service-public.gouv.fr décrit la démarche, qui coûte 13,76 € (taxe fixe et redevance d'acheminement).</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Situation</th><th>Première étape</th><th>Puis</th></tr></thead><tbody><tr><td>Carte grise perdue</td><td>Déclaration de perte, formulaire Cerfa 13753</td><td>Demande de duplicata sur l'ANTS</td></tr><tr><td>Carte grise volée</td><td>Déclaration de vol auprès de la police ou de la gendarmerie</td><td>Demande de duplicata sur l'ANTS</td></tr><tr><td>Carte grise abîmée</td><td>Aucune déclaration préalable</td><td>Demande de duplicata sur l'ANTS, ancien titre à conserver</td></tr></tbody></table></div><p>Il faut fournir une copie numérique de la pièce d'identité du titulaire ou cotitulaire et le numéro d'immatriculation. À la fin de la demande, vous recevez un numéro de dossier, un accusé d'enregistrement et un certificat provisoire d'immatriculation à imprimer. Le certificat définitif arrive ensuite par courrier suivi à votre adresse. Le téléservice est accessible depuis la page <a href=\"https://immatriculation.ants.gouv.fr/demarches-en-ligne/refaire-votre-certificat-dimmatriculation\" rel=\"noopener\" target=\"_blank\">refaire votre certificat d'immatriculation</a> de l'ANTS.</p>"
+      },
+      {
+        "h2": "Peut-on vendre avec le récépissé de déclaration de perte ou le certificat provisoire ?",
+        "html": "<p>Ces documents servent à circuler, pas à céder le véhicule. D'après le formulaire officiel de <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R1417\" rel=\"noopener\" target=\"_blank\">déclaration de perte ou de vol</a>, la déclaration « permet la circulation du véhicule, en France, pendant un délai d'1 mois ». Le certificat provisoire d'immatriculation délivré avec la demande de duplicata autorise lui aussi à circuler pendant un mois, uniquement en France, selon la fiche F1726. Ni l'un ni l'autre n'est le certificat d'immatriculation que le vendeur doit barrer et remettre à l'acheteur.</p>\n<p>Service-public.gouv.fr ne décrit pas de cession conclue sur la seule base du certificat provisoire ; le site demande au contraire de faire refaire la carte grise avant de vendre. Le plus sûr est donc d'attendre le certificat définitif. Si un acheteur vous propose de signer avant, demandez-lui sur quel texte il s'appuie. Chez LUNICAR, la vérification du technicien peut avoir lieu pendant l'attente, et la signature du certificat de cession intervient une fois le duplicata reçu.</p>"
+      },
+      {
+        "h2": "Et si la carte grise est encore au nom de l'ancien propriétaire ?",
+        "html": "<p>Il faut d'abord la mettre à votre nom. La fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> est claire : le certificat d'immatriculation « doit être au nom de la personne qui vend le véhicule » et « seul le propriétaire du véhicule peut le vendre ». Or la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1050\" rel=\"noopener\" target=\"_blank\">immatriculer un véhicule d'occasion</a> donne un mois après l'achat pour demander la carte grise à son nom ; si cette démarche n'a jamais été faite, la carte grise que vous détenez n'est pas la vôtre.</p>\n<ul class=\"ticks\">\n<li><strong>Vous avez les documents de votre achat</strong> : carte grise barrée par l'ancien propriétaire, certificat de cession, contrôle technique. Demandez l'immatriculation à votre nom sur l'ANTS, puis vendez.</li>\n<li><strong>Il vous manque un document</strong> : la situation devrait être examinée avec l'ANTS, au cas par cas ; nous ne pouvons pas conclure sans titre à votre nom.</li>\n<li><strong>Cotitulaires</strong> : la signature de toutes les personnes mentionnées est obligatoire.</li>\n<li><strong>Adresse</strong> : si vous avez déménagé, le changement d'adresse doit être fait avant la vente.</li>\n</ul>"
+      },
+      {
+        "h2": "Que faut-il avoir en main le jour de la vente ?",
+        "html": "<p>Le certificat d'immatriculation à votre nom, une pièce d'identité et le certificat de situation administrative. La fiche vendre ou donner son véhicule de Service-public.gouv.fr précise que ce dernier doit dater de moins de 15 jours ; il indique si un gage ou une opposition bloque la vente, cas traité sur la page <a href=\"/vendre-voiture-gagee\">vendre une voiture gagée</a>. Le vendeur et l'acheteur remplissent ensemble le certificat de cession (Cerfa 15776), puis la cession doit être déclarée sur le site de l'ANTS dans les 15 jours suivant la signature.</p>\n<ul class=\"ticks\">\n<li><strong>Carte grise</strong> : duplicata reçu, barrée le jour même avec date, heure et signature.</li>\n<li><strong>Contrôle technique</strong> : non exigé pour une vente à un professionnel, voir <a href=\"/rachat-voiture-sans-controle-technique\">vendre sans contrôle technique</a>.</li>\n<li><strong>Double des clés, carnet, factures</strong> : utiles pour l'estimation, pas obligatoires.</li>\n<li><strong>RIB</strong> : pour recevoir le virement instantané.</li>\n</ul>\n<p>Avec LUNICAR, ces documents de cession sont préparés ensemble au moment de la vérification, puis la déclaration à l'ANTS est faite dans la foulée.</p>"
+      },
+      {
+        "h2": "Comment LUNICAR procède-t-il quand la carte grise manque ?",
+        "html": "<p>En deux temps : l'estimation d'abord, la cession quand le titre est là. Décrivez votre voiture en ligne en signalant que la carte grise est perdue, volée ou abîmée et où en est votre demande de duplicata. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, qui ne dépend pas du document manquant. Un technicien vient ensuite à votre adresse, sans frais, partout en France, vérifier la voiture et vous présenter le prix définitif, que vous acceptez ou refusez librement.</p>\n<p>Si vous acceptez, la vente se conclut dès réception du certificat d'immatriculation définitif : certificat de cession rempli ensemble, déclaration à l'ANTS, enlèvement offert et virement instantané. Le fonctionnement de la fourchette puis du prix définitif est détaillé sur la page <a href=\"/fourchette-et-prix-definitif\">fourchette et prix définitif</a>, et l'ensemble des étapes dans notre <a href=\"/vendre-sa-voiture-guide-complet\">guide pour vendre sa voiture</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la vente avec une carte grise perdue",
+    "faq": [
+      {
+        "question": "Puis-je vendre ma voiture sans carte grise ?",
+        "answer": "Non. Le certificat d'immatriculation barré doit être remis à l'acheteur, selon Service-public.gouv.fr, qui demande de faire refaire une carte grise perdue avant de vendre. Demandez un duplicata sur l'ANTS, puis concluez la vente."
+      },
+      {
+        "question": "Combien coûte un duplicata de carte grise ?",
+        "answer": "13,76 € selon la fiche perte, vol ou détérioration de la carte grise de Service-public.gouv.fr : une taxe fixe de 11 € et une redevance d'acheminement de 2,76 €. La démarche se fait en ligne sur l'ANTS ou chez un professionnel habilité."
+      },
+      {
+        "question": "Le récépissé de déclaration de perte permet-il de vendre ?",
+        "answer": "Il permet de circuler en France pendant un mois, d'après le formulaire officiel. Il ne remplace pas le certificat d'immatriculation à barrer et remettre à l'acheteur. Attendez le duplicata pour signer la cession."
+      },
+      {
+        "question": "Puis-je vendre avec le certificat provisoire d'immatriculation ?",
+        "answer": "Le certificat provisoire autorise la circulation pendant un mois en attendant le titre définitif. Service-public.gouv.fr ne prévoit pas de cession sur cette seule base et demande de refaire la carte grise avant de vendre. LUNICAR signe la cession une fois le certificat définitif reçu."
+      },
+      {
+        "question": "Ma carte grise est volée : par quoi commencer ?",
+        "answer": "Par une déclaration de vol auprès de la police ou de la gendarmerie, puis par la demande de duplicata en ligne sur l'ANTS avec votre pièce d'identité et le numéro d'immatriculation."
+      },
+      {
+        "question": "La carte grise est au nom de l'ancien propriétaire : puis-je vendre ?",
+        "answer": "Pas en l'état. Seul le propriétaire inscrit sur la carte grise peut vendre, selon Service-public.gouv.fr. Faites d'abord immatriculer le véhicule à votre nom avec les documents de votre achat, puis vendez."
+      },
+      {
+        "question": "LUNICAR peut-il estimer ma voiture avant que je reçoive le duplicata ?",
+        "answer": "Oui. La fourchette de prix indicative et la vérification par le technicien ne dépendent pas du document. Seule la signature du certificat de cession, le virement et l'enlèvement attendent le certificat d'immatriculation définitif."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Perte, vol ou détérioration de la carte grise, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1726"
+      },
+      {
+        "label": "Déclaration de perte ou de vol du certificat d'immatriculation (Cerfa 13753), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R1417"
+      },
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Carte grise : hériter d'un véhicule immatriculé en France, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1480"
+      },
+      {
+        "label": "Certificat d'immatriculation : immatriculer un véhicule d'occasion, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1050"
+      },
+      {
+        "label": "Refaire votre certificat d'immatriculation, ANTS",
+        "url": "https://immatriculation.ants.gouv.fr/demarches-en-ligne/refaire-votre-certificat-dimmatriculation"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "vendre-voiture-immobilisee-longtemps",
+    "image": "accueil",
+    "nav": "Voiture immobilisée",
+    "title": "Vendre une voiture immobilisée depuis longtemps | LUNICAR",
+    "description": "Voiture qui n'a pas roulé depuis des années : ce qui se dégrade, assurance et contrôle technique à l'arrêt, comment la décrire. LUNICAR la vérifie, l'enlève.",
+    "h1": "Vendre une voiture <em>qui n'a pas roulé depuis des années</em>",
+    "lede": "Une voiture restée au garage, sur un parking ou dans un jardin pendant un an ou plus se vend, même si elle ne démarre plus. À un particulier, la vente d'un véhicule non roulant est interdite ; à un professionnel comme LUNICAR, elle est possible, avec vérification à votre adresse et enlèvement offert si la vente est conclue.",
+    "points": [
+      "Voiture qui ne démarre plus acceptée",
+      "Vérification à votre adresse, sans frais",
+      "Enlèvement offert si la vente est conclue",
+      "Virement instantané à la conclusion de la vente"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Peut-on vendre une voiture qui n'a pas roulé depuis un ou plusieurs ans ?",
+        "html": "<p>Oui, et le choix de l'acheteur dépend surtout d'une question : la voiture roule-t-elle encore ? La fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> de Service-public.gouv.fr pose la règle : « un véhicule non roulant ne peut pas être proposé à la vente à un particulier », il ne peut être vendu qu'à un professionnel de l'automobile. Une voiture longtemps immobilisée a aussi, le plus souvent, un contrôle technique expiré, qui est exigé pour vendre à un particulier mais pas à un professionnel.</p>\n<p>LUNICAR achète partout en France des voitures qui dorment depuis des années, qu'elles démarrent ou non. Décrivez-la en ligne en indiquant depuis quand elle est arrêtée et où elle est stationnée ; un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Si elle ne démarre plus, voyez aussi notre page <a href=\"/rachat-voiture-en-panne\">rachat d'une voiture en panne</a> ; si elle est ancienne, la page <a href=\"/vendre-vieille-voiture\">vendre une vieille voiture</a>.</p>"
+      },
+      {
+        "h2": "Qu'est-ce qui se dégrade sur une voiture immobilisée ?",
+        "html": "<p>Surtout ce qui vieillit sans rouler : batterie, pneus, freins, carburant et joints, auxquels s'ajoute le risque des rongeurs. Rien n'est systématique et une voiture bien abritée peut repartir sans mal, mais ces points sont ceux que le technicien regarde en premier.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Élément</th><th>Ce qui peut se produire à l'arrêt</th><th>À signaler dans votre description</th></tr></thead><tbody><tr><td>Batterie</td><td>Décharge profonde, souvent irrécupérable après plusieurs mois</td><td>La voiture démarre-t-elle, même avec des câbles ?</td></tr><tr><td>Pneus</td><td>Pression perdue, méplats, craquelures des flancs</td><td>Aspect des pneus, voiture sur cales ou non</td></tr><tr><td>Freins</td><td>Disques oxydés, étriers ou frein à main qui peuvent rester bloqués</td><td>Frein à main serré pendant l'immobilisation ?</td></tr><tr><td>Carburant</td><td>Essence qui peut se dégrader, réservoir laissé vide ou plein</td><td>Niveau et âge du carburant</td></tr><tr><td>Joints et durites</td><td>Dessèchement, suintements possibles au redémarrage</td><td>Traces au sol sous la voiture</td></tr><tr><td>Rongeurs</td><td>Câbles ou isolants parfois rongés, nids dans le compartiment moteur</td><td>Stationnement en extérieur, jardin, grange</td></tr></tbody></table></div><p>Ces constats n'empêchent pas la vente à un professionnel : ils entrent dans l'offre.</p>"
+      },
+      {
+        "h2": "Faut-il garder l'assurance d'une voiture qui ne roule pas ?",
+        "html": "<p>Oui, tant qu'elle est en état de circuler, même si elle reste au garage. La fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2628\" rel=\"noopener\" target=\"_blank\">assurance auto obligatoire</a> de Service-public.gouv.fr est explicite : « Tout propriétaire d'un véhicule terrestre à moteur destiné à circuler en France doit l'assurer, même si le véhicule n'est pas utilisé pendant une longue période ou s'il est stationné dans un garage privé. » L'obligation découle de l'<a href=\"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048523650\" rel=\"noopener\" target=\"_blank\">article L211-1 du Code des assurances</a>.</p>\n<ul class=\"ticks\">\n<li><strong>Exception</strong> : les véhicules manifestement hors d'état de circuler, par exemple moteur retiré ou roues absentes. Le propriétaire doit pouvoir prouver cette impossibilité.</li>\n<li><strong>Sanction</strong> : amende pouvant atteindre 3 750 €, ou amende forfaitaire de 500 € en cas de constatation par procès-verbal électronique sans condamnation antérieure, avec des peines complémentaires possibles.</li>\n<li><strong>Après la vente</strong> : prévenez votre assureur avec le certificat de cession pour résilier le contrat.</li>\n</ul>\n<p>Une voiture simplement en panne ou à batterie vide n'est pas « hors d'état de circuler » au sens de cette exception : conservez au moins la responsabilité civile jusqu'à la cession.</p>"
+      },
+      {
+        "h2": "Le contrôle technique reste-t-il obligatoire pendant l'immobilisation ?",
+        "html": "<p>Le contrôle technique ne se suspend pas pendant l'arrêt : la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2878\" rel=\"noopener\" target=\"_blank\">contrôle technique d'une voiture</a> de Service-public.gouv.fr ne prévoit aucune exemption pour un véhicule qui ne circule pas. Le premier contrôle a lieu dans les six mois précédant le quatrième anniversaire de la mise en circulation, puis tous les deux ans. Le jour où la voiture ressort, elle doit avoir un contrôle valable ; circuler avec un contrôle expiré expose à une amende forfaitaire de 135 €.</p>\n<ul class=\"ticks\">\n<li><strong>Vente à un particulier</strong> : procès-verbal de moins de six mois obligatoire pour une voiture de plus de quatre ans, et véhicule roulant.</li>\n<li><strong>Vente à un professionnel</strong> : contrôle non exigé, voiture non roulante acceptée.</li>\n<li><strong>Contrôle passé il y a des années</strong> : joignez le dernier procès-verbal, il décrit l'état de la voiture avant l'arrêt.</li>\n</ul>\n<p>Faire remorquer la voiture jusqu'à un centre de contrôle pour la vendre à un particulier coûte souvent plus que ce que cela rapporte. La page <a href=\"/rachat-voiture-sans-controle-technique\">vendre sans contrôle technique</a> détaille les règles selon l'acheteur.</p>"
+      },
+      {
+        "h2": "Comment décrire une voiture immobilisée pour obtenir une estimation juste ?",
+        "html": "<p>En donnant les faits qui comptent pour un professionnel : la durée d'arrêt, le lieu, l'état avant l'arrêt et ce qui se passe quand on tourne la clé. Plus la description est précise, plus la fourchette indicative est proche du prix définitif présenté après vérification.</p>\n<ul class=\"ticks\">\n<li><strong>Durée et lieu</strong> : depuis quand, garage fermé, parking couvert, extérieur ou jardin.</li>\n<li><strong>Démarrage</strong> : démarre, démarre avec des câbles, tourne sans démarrer, ne réagit pas.</li>\n<li><strong>Raison de l'arrêt</strong> : panne, deuxième voiture inutilisée, décès ou départ du propriétaire, perte du permis.</li>\n<li><strong>Kilométrage et entretien</strong> : compteur, dernier entretien, carnet et factures si vous les avez.</li>\n<li><strong>Papiers</strong> : carte grise à votre nom, dernier contrôle technique, assurance en cours. Le rapport gratuit <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a> retrace l'historique administratif.</li>\n<li><strong>Photos</strong> : quatre côtés, intérieur, compteur, compartiment moteur, traces au sol.</li>\n</ul>\n<p>Pour une voiture d'un proche décédé, les documents à réunir sont décrits sur la page <a href=\"/reprise-voiture-succession\">reprise d'une voiture en succession</a>.</p>"
+      },
+      {
+        "h2": "Comment se passent la vérification et l'enlèvement si elle ne démarre plus ?",
+        "html": "<p>Le technicien vient à l'adresse où se trouve la voiture, sans frais, partout en France, et la vérifie sur place même si elle ne démarre pas. Il contrôle la carrosserie, l'habitacle, le compartiment moteur, tente un démarrage avec une batterie d'appoint et compare ce qu'il voit avec votre description. Il vous présente ensuite le prix définitif, que vous acceptez ou refusez librement ; si l'état correspond à ce que vous aviez décrit, ce prix reste dans la fourchette annoncée.</p>\n<p>Si vous acceptez, les documents de cession sont préparés ensemble : certificat de cession, déclaration à l'ANTS, puis virement instantané à la conclusion de la vente. L'enlèvement est offert, par plateau si la voiture ne roule pas, y compris dans un jardin ou une cour, à condition qu'un accès soit possible. Le fonctionnement de la fourchette puis du prix définitif est expliqué sur la page <a href=\"/fourchette-et-prix-definitif\">fourchette et prix définitif</a>, et le parcours complet dans notre <a href=\"/vendre-sa-voiture-guide-complet\">guide pour vendre sa voiture</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la vente d'une voiture immobilisée",
+    "faq": [
+      {
+        "question": "Ma voiture n'a pas roulé depuis trois ans et ne démarre plus : qui peut l'acheter ?",
+        "answer": "Un professionnel de l'automobile. Selon Service-public.gouv.fr, un véhicule non roulant ne peut pas être proposé à la vente à un particulier. LUNICAR vient la vérifier à votre adresse et, si la vente est conclue, l'enlève sans frais."
+      },
+      {
+        "question": "Dois-je assurer une voiture qui ne sort jamais du garage ?",
+        "answer": "Oui. Service-public.gouv.fr précise que l'obligation d'assurance s'applique même si le véhicule n'est pas utilisé pendant une longue période ou s'il est stationné dans un garage privé. Seuls les véhicules manifestement hors d'état de circuler en sont dispensés, à charge pour le propriétaire de le prouver."
+      },
+      {
+        "question": "Le contrôle technique est expiré depuis longtemps : est-ce un problème pour vendre ?",
+        "answer": "Pas pour vendre à un professionnel, qui n'exige pas de contrôle technique. Pour vendre à un particulier, il faudrait un procès-verbal de moins de six mois et une voiture roulante."
+      },
+      {
+        "question": "Faut-il remettre la voiture en état avant de la vendre ?",
+        "answer": "Non. Batterie, pneus ou freins à remplacer entrent dans l'offre d'un professionnel. Les frais engagés avant la vente sont rarement récupérés sur le prix."
+      },
+      {
+        "question": "Comment l'enlèvement se passe-t-il si la voiture est dans un jardin ou une cour ?",
+        "answer": "Par plateau, à condition qu'un accès soit possible pour le véhicule d'enlèvement. Précisez la configuration des lieux dans votre demande ; l'enlèvement est offert si la vente est conclue."
+      },
+      {
+        "question": "Une voiture immobilisée vaut-elle encore quelque chose ?",
+        "answer": "Souvent, oui. La valeur dépend du modèle, du kilométrage, de l'état avant l'arrêt et de ce qui s'est dégradé. Une voiture bien abritée, avec carnet d'entretien, garde une partie importante de sa valeur."
+      },
+      {
+        "question": "Que dois-je faire après la vente ?",
+        "answer": "Déclarer la cession sur le site de l'ANTS dans les 15 jours, ce que nous préparons ensemble, puis prévenir votre assureur avec le certificat de cession pour résilier le contrat."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Assurance auto obligatoire (responsabilité civile ou « au tiers »), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2628"
+      },
+      {
+        "label": "Article L211-1 du Code des assurances, legifrance.gouv.fr",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048523650"
+      },
+      {
+        "label": "Contrôle technique d'une voiture, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2878"
+      },
+      {
+        "label": "Histovec, historique d'un véhicule",
+        "url": "https://histovec.interieur.gouv.fr/"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "vendre-voiture-grosse-reparation",
+    "image": "accueil",
+    "nav": "Grosse réparation",
+    "title": "Vendre sa voiture plutôt que de la réparer | LUNICAR",
+    "description": "Embrayage, distribution, boîte, turbo, culasse ou FAP à refaire : comparer devis et valeur, quoi déclarer, et comment LUNICAR reprend la voiture en l'état.",
+    "h1": "Vendre sa voiture avec une <em>grosse réparation à faire</em>",
+    "lede": "Quand le devis du garage approche la valeur de la voiture, réparer avant de vendre n'est pas toujours le bon calcul. Un professionnel peut reprendre la voiture avec le défaut, à condition qu'il soit déclaré. LUNICAR étudie votre voiture avec le devis, vous rappelle avec une fourchette de prix indicative, puis fixe le prix définitif après vérification.",
+    "points": [
+      "Étude de la voiture avec votre devis",
+      "Défaut déclaré intégré dans l'offre",
+      "Prix définitif après vérification par un technicien",
+      "Enlèvement offert si la voiture ne roule plus"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Faut-il réparer sa voiture avant de la vendre ou la vendre en l'état ?",
+        "html": "<p>Pas forcément : une réparation lourde augmente rarement le prix de vente d'autant que ce qu'elle coûte. Un acheteur paie la voiture telle qu'elle est le jour de la vente, et une distribution ou un embrayage neufs sont pour lui un état normal, pas un supplément. Réparer a un sens si vous gardez la voiture plusieurs années ; vendre en l'état a un sens si vous vouliez de toute façon la remplacer.</p>\n<p>Deux situations se distinguent. Si la voiture roule encore, vous pouvez la vendre à un particulier en déclarant le défaut, ou à un professionnel. Si elle ne roule plus, la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> de Service-public.gouv.fr précise qu'« un véhicule non roulant ne peut pas être proposé à la vente à un particulier » : seul un professionnel peut l'acheter. LUNICAR étudie les deux cas partout en France, avec votre devis comme point de départ.</p>"
+      },
+      {
+        "h2": "Embrayage, distribution, boîte, turbo, joint de culasse, FAP : quelles pannes sont concernées ?",
+        "html": "<p>Celles dont la remise en état se compte en journées de main-d'œuvre, pas seulement en pièces. Le tableau résume leurs signes et ce qu'il est utile de joindre.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Réparation</th><th>Signes habituels</th><th>La voiture roule-t-elle encore ?</th><th>À joindre</th></tr></thead><tbody><tr><td>Embrayage</td><td>Patinage, pédale dure ou molle, odeur de brûlé</td><td>Souvent, avec précaution</td><td>Devis, kilométrage</td></tr><tr><td>Distribution</td><td>Échéance d'entretien dépassée, bruit de courroie</td><td>Oui, mais risque de casse moteur</td><td>Carnet, dernière date de remplacement</td></tr><tr><td>Boîte de vitesses</td><td>Vitesses qui craquent ou sautent, bruit, fuite</td><td>Variable</td><td>Devis, description du symptôme</td></tr><tr><td>Turbo</td><td>Perte de puissance, fumée, sifflement</td><td>Oui, à faible allure</td><td>Devis, photos</td></tr><tr><td>Joint de culasse</td><td>Surchauffe, liquide de refroidissement qui disparaît, fumée blanche</td><td>À éviter</td><td>Devis, relevé de température</td></tr><tr><td>Filtre à particules (FAP)</td><td>Voyant moteur, mode dégradé, contrôle pollution défavorable</td><td>Oui, en mode dégradé</td><td>Devis, procès-verbal du contrôle technique</td></tr></tbody></table></div><p>Ces signes sont des repères, pas un diagnostic : le garage puis le technicien confirment la panne. Si la voiture ne roule plus du tout, voyez la page <a href=\"/rachat-voiture-en-panne\">rachat d'une voiture en panne</a>.</p>"
+      },
+      {
+        "h2": "Comment comparer le devis de réparation et la valeur de la voiture ?",
+        "html": "<p>En mettant côte à côte trois montants : le devis, la valeur de la voiture une fois réparée, et l'offre pour la voiture en l'état. Réparer n'est intéressant que si la valeur réparée dépasse nettement la somme du devis et de l'offre en l'état, car vous avancez l'argent, vous attendez, et la voiture reste à vendre ensuite.</p>\n<ul class=\"ticks\">\n<li><strong>Le devis complet</strong> : demandez qu'il inclue pièces, main-d'œuvre et ce que le garage découvre souvent en ouvrant, par exemple pompe à eau avec la distribution.</li>\n<li><strong>La valeur réparée</strong> : regardez des annonces de même modèle, année et kilométrage, en tenant compte de ce qu'elles mettent de temps à partir.</li>\n<li><strong>L'offre en l'état</strong> : c'est la fourchette que LUNICAR vous communique sur la base du devis, puis le prix définitif après vérification.</li>\n<li><strong>Les à-côtés</strong> : immobilisation, véhicule de remplacement, contrôle technique à refaire, risque qu'un autre organe lâche ensuite.</li>\n</ul>\n<p>Sur une voiture ancienne ou très kilométrée, le devis dépasse souvent la valeur réparée : voir aussi <a href=\"/vendre-vieille-voiture\">vendre une vieille voiture</a>.</p>"
+      },
+      {
+        "h2": "Pourquoi un professionnel peut-il reprendre une voiture avec le défaut ?",
+        "html": "<p>Parce qu'il ne paie pas la réparation au même prix que vous et qu'il n'a pas besoin que la voiture roule pour l'acheter. Un professionnel du rachat dispose d'un atelier ou d'un réseau d'ateliers, achète ses pièces à des conditions professionnelles et sait à qui revendre une voiture selon son état. LUNICAR revend principalement à des professionnels : certains réparent, d'autres cherchent précisément un modèle donné pour ses organes en bon état.</p>\n<p>Le défaut est donc traité comme une donnée de l'offre, pas comme un obstacle. Le technicien vérifie que la panne correspond au devis et que le reste de la voiture est conforme à votre description, puis le prix définitif est établi. La loi facilite cette voie : Service-public.gouv.fr rappelle qu'une voiture non roulante ne peut être vendue qu'à un professionnel, et le contrôle technique n'est pas exigé pour une telle vente, comme expliqué sur la page <a href=\"/rachat-voiture-sans-controle-technique\">vendre sans contrôle technique</a>. Pour un diesel avec FAP ou turbo, la page <a href=\"/reprise-voiture-diesel\">reprise d'une voiture diesel</a> complète ce guide.</p>"
+      },
+      {
+        "h2": "Que devez-vous déclarer à l'acheteur ?",
+        "html": "<p>Tout défaut connu qui pèse sur la décision d'acheter, par écrit. L'<a href=\"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032007138\" rel=\"noopener\" target=\"_blank\">article 1112-1 du Code civil</a> impose à la partie qui « connaît une information dont l'importance est déterminante pour le consentement de l'autre » de l'en informer ; les parties ne peuvent ni limiter ni exclure ce devoir, et le manquement peut entraîner l'annulation du contrat. Une réparation lourde à faire en est une.</p>\n<p>S'y ajoute la garantie des vices cachés de l'<a href=\"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441924\" rel=\"noopener\" target=\"_blank\">article 1641 du Code civil</a> : le vendeur répond des défauts cachés qui rendent la chose « impropre à l'usage auquel on la destine » ou en diminuent tellement l'usage que l'acheteur « n'en aurait donné qu'un moindre prix ». Selon la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F11007\" rel=\"noopener\" target=\"_blank\">garantie légale des vices cachés</a> de Service-public.gouv.fr, elle s'applique au vendeur particulier, l'acheteur ayant deux ans à partir de la découverte du défaut pour demander une réduction du prix ou la restitution. Un défaut déclaré par écrit avant la vente n'est plus caché : la déclaration vous protège autant qu'elle informe.</p>"
+      },
+      {
+        "h2": "Comment LUNICAR étudie-t-il une voiture avec une grosse réparation à faire ?",
+        "html": "<p>À partir de votre devis et de votre description, puis sur place. Décrivez la voiture en ligne en joignant le devis ou le diagnostic du garage, le kilométrage et l'historique d'entretien ; indiquez si elle roule encore. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative qui tient compte de la réparation annoncée. Un technicien vient ensuite à votre adresse, sans frais, partout en France, pour vérifier la panne et l'état général.</p>\n<ul class=\"ticks\">\n<li><strong>Prix définitif</strong> : présenté après vérification, accepté ou refusé librement. Si l'état correspond à votre description, il reste dans la fourchette annoncée ; le détail est sur la page <a href=\"/fourchette-et-prix-definitif\">fourchette et prix définitif</a>.</li>\n<li><strong>Documents de cession</strong> : certificat de cession et déclaration à l'ANTS préparés ensemble, défaut mentionné.</li>\n<li><strong>Enlèvement offert</strong> : par plateau si la voiture ne doit plus rouler, par exemple joint de culasse ou distribution à risque.</li>\n<li><strong>Virement instantané</strong> : à la conclusion de la vente.</li>\n</ul>\n<p>Le parcours complet est décrit dans notre <a href=\"/vendre-sa-voiture-guide-complet\">guide pour vendre sa voiture</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la vente d'une voiture avec une grosse réparation",
+    "faq": [
+      {
+        "question": "Vaut-il mieux réparer ma voiture avant de la vendre ?",
+        "answer": "Rarement pour une réparation lourde : une distribution ou un embrayage neufs sont perçus par l'acheteur comme un état normal, pas comme un supplément. Comparez le devis, la valeur de la voiture réparée et l'offre en l'état avant de décider."
+      },
+      {
+        "question": "Puis-je vendre à un particulier une voiture avec le joint de culasse à refaire ?",
+        "answer": "Si elle roule encore, oui, à condition de déclarer le défaut par écrit. Si elle ne roule plus, non : Service-public.gouv.fr indique qu'un véhicule non roulant ne peut être vendu qu'à un professionnel de l'automobile."
+      },
+      {
+        "question": "Que se passe-t-il si je ne signale pas la panne ?",
+        "answer": "Vous vous exposez à la garantie des vices cachés des articles 1641 et suivants du Code civil, et au devoir d'information de l'article 1112-1 : l'acheteur peut demander une réduction du prix, la restitution ou l'annulation de la vente. Un défaut déclaré par écrit n'est plus un vice caché."
+      },
+      {
+        "question": "LUNICAR a-t-il besoin du devis du garage ?",
+        "answer": "Il est utile, pas obligatoire. Le devis ou le diagnostic permet d'établir une fourchette plus proche du prix définitif. Sans devis, décrivez précisément les symptômes et le technicien vérifiera sur place."
+      },
+      {
+        "question": "Le prix tient-il compte du coût de la réparation ?",
+        "answer": "Oui, mais pas au tarif que vous paieriez : un professionnel répare à des conditions professionnelles ou revend la voiture à un confrère qui la remet en état. C'est ce qui lui permet de reprendre la voiture avec le défaut."
+      },
+      {
+        "question": "Ma voiture a un FAP encrassé et un contrôle technique défavorable : est-ce un problème ?",
+        "answer": "Non pour une vente à un professionnel, qui n'exige pas de contrôle technique. Joignez le procès-verbal du contrôle : il précise le résultat du test de pollution et aide à l'estimation."
+      },
+      {
+        "question": "La voiture ne doit plus rouler : comment se passe l'enlèvement ?",
+        "answer": "Le technicien vient à votre adresse pour la vérification. Si la vente est conclue, l'enlèvement par plateau est offert, puis le paiement se fait par virement instantané."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Achat d'un produit : garantie légale des vices cachés, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11007"
+      },
+      {
+        "label": "Article 1641 du Code civil, legifrance.gouv.fr",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006441924"
+      },
+      {
+        "label": "Article 1112-1 du Code civil, legifrance.gouv.fr",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032007138"
+      },
+      {
+        "label": "Contrôle technique d'une voiture, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2878"
+      }
+    ],
+    "updated": "2026-10-27"
   }
 ]
