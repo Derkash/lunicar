@@ -294,6 +294,10 @@ details.plus > summary { margin-top: 14px; }
 .kv tr:last-child td { border-bottom: 0; }
 .kv td:first-child { color: var(--ink-5); width: 42%; padding-right: 12px; }
 .kv td:last-child { font-weight: 500; overflow-wrap: anywhere; }
+.kv-ed { border: 0; background: none; padding: 0 22px 0 0; margin: 0; font: inherit; font-weight: 500; color: inherit; text-align: left; cursor: pointer; position: relative; max-width: 100%; }
+.kv-ed::after { content: ''; position: absolute; right: 2px; top: 50%; width: 11px; height: 11px; margin-top: -6px; background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239AA3B2' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E"); opacity: .7; }
+.kv-ed:hover { color: var(--bleu, #2453A6); } .kv-ed.kv-vide { color: var(--ink-4); font-weight: 400; font-style: italic; }
+.kv-form { display: flex; gap: 6px; align-items: center; } .kv-form .in { flex: 1 1 0; width: 0; min-width: 0; height: 34px; font-size: .88rem; }
 .ads-wrap { overflow-x: auto; }
 .ads { width: 100%; border-collapse: collapse; font-size: .86rem; }
 .ads th { text-align: left; font-size: .7rem; color: var(--ink-5); text-transform: uppercase; letter-spacing: .05em; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); font-weight: 600; }
@@ -3478,7 +3482,30 @@ body.modal-ouvert { overflow: hidden; }
         return ''; };
     const md = t => esc(t).replace(/^### (.*)$/gm, '<h4>$1</h4>').replace(/^## (.*)$/gm, '<h4>$1</h4>').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
         .replace(/^(?:- |\* )(.*)$/gm, '<li>$1</li>').replace(/(<li>.*<\/li>\n?)+/g, m => `<ul class="plain">${m}</ul>`).replace(/\n{2,}/g, '<br><br>').replace(/\n/g, ' ');
-    const kv = rows => `<table class="kv">${rows.filter(r => r[1]).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join('')}</table>`;
+    const kv = rows => `<table class="kv">${rows.filter(r => r[1] || r[2]).map(([k, v, ed]) => `<tr><td>${esc(k)}</td><td>${ed ? `<button type="button" class="kv-ed${v ? '' : ' kv-vide'}" data-ed="${esc(ed)}" title="Modifier">${v || 'ajouter'}</button>` : v}</td></tr>`).join('')}</table>`;
+    // Édition en place d'une info saisie par le client : clic sur la valeur → champ, Entrée ou ↓ pour enregistrer, Échap pour annuler.
+    const ED_SELECT = { ...OPT, carburant: ['Essence', 'Diesel', 'Hybride', 'Électrique', 'GPL', 'Éthanol'], boite: ['Manuelle', 'Automatique'], projet_achat: ['Déjà acheté une autre voiture', 'Va en acheter une', 'Pas de remplacement'] };
+    const ED_NUM = ['kilometrage', 'annee', 'prix_souhaite', 'code_postal'];
+    function editerEnPlace(d, btn) {
+        const k = btn.dataset.ed, x = d.data || {}, act = String(x[k] == null ? '' : x[k]);
+        const cell = btn.parentElement, html = cell.innerHTML;
+        const opts = ED_SELECT[k];
+        cell.innerHTML = opts
+            ? `<form class="kv-form"><select class="in">${['', ...opts].map(o => `<option value="${esc(o)}"${o === act ? ' selected' : ''}>${o || '—'}</option>`).join('')}${act && !opts.includes(act) ? `<option selected>${esc(act)}</option>` : ''}</select></form>`
+            : `<form class="kv-form"><input class="in" value="${esc(act)}" ${ED_NUM.includes(k) ? 'inputmode="numeric"' : ''} ${k === 'telephone' ? 'inputmode="tel"' : k === 'email' ? 'inputmode="email"' : ''}><button class="btn btn-s btn-p">OK</button></form>`;
+        const f = cell.querySelector('form'), inp = f.querySelector('.in');
+        const annuler = () => { cell.innerHTML = html; cell.querySelector('.kv-ed').onclick = () => editerEnPlace(d, cell.querySelector('.kv-ed')); };
+        f.onsubmit = async e => {
+            e.preventDefault(); const v = inp.value.trim();
+            if (v === act) return annuler();
+            try { const r = await api('/api/admin/demandes/' + d.ref + '/infos', { method: 'PATCH', body: JSON.stringify({ [k]: v }) }); maj(r); if (courant && courant.ref === d.ref) { courant = r; fiche(); } toast('Enregistré'); }
+            catch (err) { toast(err.message); annuler(); }
+        };
+        inp.onkeydown = e => { if (e.key === 'Escape') annuler(); };
+        if (opts) inp.onchange = () => f.requestSubmit();   // une liste s'enregistre dès le choix
+        inp.onblur = () => setTimeout(() => { if (document.activeElement && f.contains(document.activeElement)) return; if (inp.value.trim() === act) annuler(); }, 150);
+        inp.focus(); if (inp.select) inp.select();
+    }
     const ESTIM_DUREE = 'environ une minute';
 
     // Attractivité à la revente : score, verdict, délai, raisons (issus de l'estimation).
@@ -3639,14 +3666,14 @@ body.modal-ouvert { overflow: hidden; }
                     })()}
                     ${(x.corrections || []).length ? `<p class="corr"><b>Corrigé au téléphone :</b> ${x.corrections.slice(-4).map(c => esc({ kilometrage: 'km', prix_souhaite: 'prix souhaité', mecanique: 'mécanique', controle_technique: 'CT', carrosserie: 'carrosserie', delai: 'délai', annee: 'année' }[c.champ] || c.champ) + ' ' + esc(c.avant || '—') + ' → <b>' + esc(c.apres) + '</b>').join(' · ')}</p>` : ''}
                     ${kv([
-                        ['Véhicule', esc(x.vehicule)], ['Finition', esc(x.finition)], ['Motorisation', esc(x.motorisation)], ['Année', esc(x.annee)], ['Kilométrage', x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''],
-                        ['Plaque', esc(x.plaque) + (x.plaque_datation ? `<br><span style="color:var(--ink-4);font-weight:400">${esc(x.plaque_datation)}</span>` : '')],
-                        ['VIN', x.vin || (siv && siv.vin) ? `<code>${esc(x.vin || siv.vin)}</code>` : ''], ['Fiche confirmée', esc(x.fiche_confirmee)],
-                        ['État mécanique', esc(x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : ''))], ['Organes en cause', esc(x.organes_defaillants)],
+                        ['Véhicule', esc(x.vehicule), 'vehicule'], ['Finition', esc(x.finition), 'finition'], ['Motorisation', esc(x.motorisation), 'motorisation'], ['Année', esc(x.annee), 'annee'], ['Kilométrage', x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : '', 'kilometrage'],
+                        ['Plaque', esc(x.plaque) + (x.plaque_datation ? `<br><span style="color:var(--ink-4);font-weight:400">${esc(x.plaque_datation)}</span>` : ''), 'plaque'],
+                        ['VIN', x.vin || (siv && siv.vin) ? `<code>${esc(x.vin || siv.vin)}</code>` : '', 'vin'], ['Fiche confirmée', esc(x.fiche_confirmee)],
+                        ['État mécanique', esc(x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : '')), 'mecanique'], ['Organes en cause', esc(x.organes_defaillants)],
                         ['Nature de la panne', esc(x.nature_panne)], ['Sans dépanneuse', esc(x.deplacable)], ['Voyant allumé', esc(x.voyant)],
-                        ['Carrosserie', esc(x.carrosserie)], ['Défauts carrosserie', esc(x.degats)],
-                        ['Contrôle technique', esc(x.controle_technique)], ['Clés', esc(x.cles)], ['Carnet / factures', esc(x.carnet)],
-                        ['Première main', esc(x.premiere_main)], ['Importée', esc(x.importee)], ['Crédit / LOA / LLD', esc(x.financement)], ['Carburant', esc(x.carburant)], ['Boîte', esc(x.boite)],
+                        ['Carrosserie', esc(x.carrosserie), 'carrosserie'], ['Défauts carrosserie', esc(x.degats)],
+                        ['Contrôle technique', esc(x.controle_technique), 'controle_technique'], ['Clés', esc(x.cles), 'cles'], ['Carnet / factures', esc(x.carnet), 'carnet'],
+                        ['Première main', esc(x.premiere_main), 'premiere_main'], ['Importée', esc(x.importee)], ['Crédit / LOA / LLD', esc(x.financement)], ['Carburant', esc(x.carburant), 'carburant'], ['Boîte', esc(x.boite), 'boite'],
                         ['Extérieur', esc(x.etat_exterieur)], ['Intérieur', esc(x.etat_interieur)]
                     ])}
                     ${siv ? `<details><summary>Fiche SIV complète</summary>${kv(Object.entries(siv).filter(([k, v]) => v !== null && v !== '' && typeof v !== 'object' && !['photo_modele', 'logo_marque'].includes(k)).map(([k, v]) => [k, esc(v)]))}</details>` : ''}
@@ -3655,10 +3682,10 @@ body.modal-ouvert { overflow: hidden; }
                 <section class="sec">
                     <h3>Vendeur et projet <button type="button" class="btn btn-s mi-btn" data-infos>Modifier</button><button type="button" class="btn btn-s mi-btn" data-cg>Scanner la carte grise</button></h3>
                     ${kv([
-                        ['Nom', esc([x.prenom, x.nom].filter(Boolean).join(' '))], ['Téléphone', esc(x.telephone)], ['E-mail', x.email ? `<a href="mailto:${esc(x.email)}">${esc(x.email)}</a>` : ''],
-                        ['Adresse', esc(x.adresse)], ['Ville', esc([x.code_postal, x.ville].filter(Boolean).join(' ')) + (idf(d) ? ' · Île-de-France' : '') + (geo(x.code_postal) && geo(x.code_postal).km ? ` · ${geo(x.code_postal).km} km de Paris` : '')],
-                        ['Prix souhaité', x.prix_souhaite ? eur(x.prix_souhaite) : ''], ['Vendre quand', esc(x.delai)], ['Autre voiture', esc(x.projet_achat)],
-                        ['Titulaire de la carte grise', x.titulaire ? (x.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : ''], ['Nom du titulaire', esc(x.nom_titulaire)], ['N° du certificat', esc(x.numero_formule)], ['Carte grise', x.carte_grise ? `scannée le ${date(x.carte_grise.lue_le, false)}` : ''],
+                        ['Prénom', esc(x.prenom), 'prenom'], ['Nom', esc(x.nom), 'nom'], ['Téléphone', esc(x.telephone), 'telephone'], ['E-mail', esc(x.email), 'email'],
+                        ['Adresse', esc(x.adresse), 'adresse'], ['Code postal', esc(x.code_postal) + (idf(d) ? ' · Île-de-France' : '') + (geo(x.code_postal) && geo(x.code_postal).km ? ` · ${geo(x.code_postal).km} km de Paris` : ''), 'code_postal'], ['Ville', esc(x.ville), 'ville'],
+                        ['Prix souhaité', x.prix_souhaite ? eur(x.prix_souhaite) : '', 'prix_souhaite'], ['Vendre quand', esc(x.delai), 'delai'], ['Autre voiture', esc(x.projet_achat), 'projet_achat'],
+                        ['Titulaire de la carte grise', x.titulaire ? (x.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : ''], ['Nom du titulaire', esc(x.nom_titulaire), 'nom_titulaire'], ['N° du certificat', esc(x.numero_formule), 'numero_formule'], ['Carte grise', x.carte_grise ? `scannée le ${date(x.carte_grise.lue_le, false)}` : ''],
                         ['Origine', esc(d.origine_txt || x.origine)]
                     ])}
                     <details><summary>Détail technique de la provenance</summary>${kv([['Page', esc(x.page)], ['Provenance', esc(x.provenance)], ['Clic Google Ads', x.clic_ads ? '<span class="pill st-achetee">oui</span>' : '']])}</details>
@@ -3718,6 +3745,7 @@ body.modal-ouvert { overflow: hidden; }
         $('#closeSheet').onclick = fermer;
         $('#sheetIn').querySelectorAll('[data-infos]').forEach(b => b.onclick = () => modifierInfos(d));
         $('#sheetIn').querySelectorAll('[data-cg]').forEach(b => b.onclick = () => scannerCarteGrise(d));
+        $('#sheetIn').querySelectorAll('.kv-ed').forEach(b => b.onclick = () => editerEnPlace(d, b));
         rendreMail();
         $('#sheetIn').querySelectorAll('[data-ap-photo]').forEach(im => im.onclick = () => { lbSource = null; lbOuvrir(+im.dataset.apPhoto); });
         $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#mailLayer').hidden = false; document.body.classList.add('modal-ouvert'); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 200); });
