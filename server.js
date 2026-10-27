@@ -1127,6 +1127,8 @@ app.get('/llms.txt', (req, res) => {
 
 Dernière mise à jour : ${indexablePages().reduce((m, u) => (u.lastmod > m ? u.lastmod : m), '')}
 
+Version texte de chaque page : ajoutez /md devant le chemin (ex. ${b}/md/comment-ca-marche) ou demandez-la avec l'en-tête Accept: text/markdown.
+
 ## Faits clés
 - Zone : partout en France ; un technicien LUNICAR intervient sur rendez-vous à l'adresse du vendeur, selon les disponibilités convenues, sans frais
 - Véhicules étudiés : toutes marques, récents (y compris sous garantie constructeur), d'occasion, SUV, premium, électriques et hybrides, utilitaires, anciens, fort kilométrage, sans contrôle technique
