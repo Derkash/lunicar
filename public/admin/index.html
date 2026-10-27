@@ -3407,29 +3407,55 @@ body.modal-ouvert { overflow: hidden; }
             'Cordialement,', 'L\'équipe LUNICAR'].join('\n');
     }
     // Version courte pour le SMS (2 à 3 segments) : jour, créneau, lieu, fourchette, carte grise, numéro LUNICAR.
+    // Segments facturés d'un SMS (alphabet GSM : 160 caractères, puis 153 ; caractères hors alphabet : 70 / 67).
+    const segmentsSMS = t => { const gsm = /^[A-Za-z0-9@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./:;<=>?¡ÄÖÑÜ§¿äöñüà\n\r^{}\\[~\]|€]*$/.test(t); const n = t.length + (gsm ? (t.match(/[\^{}\\[~\]|€]/g) || []).length : 0); return { n, seg: n <= (gsm ? 160 : 70) ? 1 : Math.ceil(n / (gsm ? 153 : 67)), gsm }; };
+    const propreSMS = t => t.replace(/[\u202F\u00A0]/g, ' ').replace(/\s+\n/g, '\n').trim();   // espaces insécables des nombres : hors alphabet SMS
+    // Premier texte qui tient en UN SMS, du plus complet au plus court.
+    const unSeulSMS = variantes => { for (const v of variantes) { const t = propreSMS(v); if (segmentsSMS(t).seg === 1) return t; } return propreSMS(variantes[variantes.length - 1]); };
+    // SMS client : politesse, date et créneau, estimation, numéro du technicien, formule de fin — en un seul SMS.
     function texteConfirmationSMS(d) {
         const x = d.data || {}, r = rdvPrevu(d) || {}, T = etat.technicien || {};
         const [h, m] = String(r.heure || '14:00').split(':').map(Number), fin = new Date(Date.UTC(2000, 0, 1, h, m + (r.duree || 45)));
         const hh = t => t.replace(':', 'h').replace(/h00$/, 'h'), heureFin = String(fin.getUTCHours()).padStart(2, '0') + ':' + String(fin.getUTCMinutes()).padStart(2, '0');
-        const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0;
-        const prix = mn ? (mn === mx ? ` Estimation : environ ${mn.toLocaleString('fr-FR')} € selon l'état constaté.` : ` Estimation : entre ${mn.toLocaleString('fr-FR')} et ${mx.toLocaleString('fr-FR')} € selon l'état constaté.`) : '';
-        return (`Bonjour ${x.prenom || ''}`.trim() + `, LUNICAR vous confirme le rendez-vous ${jourLong(r.date)} entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}.${prix}${T.tel ? ` Technicien : ${T.tel}.` : ''} Bonne journée, l'équipe LUNICAR`).replace(/[\u202F\u00A0]/g, ' ');   // pas d'espaces insécables ni de À/ô : hors alphabet SMS
+        const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0, E = v => v.toLocaleString('fr-FR');
+        const prix = mn ? (mn === mx ? `Estimation env. ${E(mn)} €` : `Estimation ${E(mn)}-${E(mx)} €`) : '';
+        const tech = T.tel ? `Technicien : ${T.tel}.` : '';
+        const quand = `${jourLong(r.date)} entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}`, quandCourt = `${jourCourt(r.date)} ${hh(r.heure || '14:00')}-${hh(heureFin)}`;
+        return unSeulSMS([
+            `Bonjour ${x.prenom || ''}, LUNICAR confirme votre rendez-vous ${quand}. ${prix ? prix + ' selon l\'état constaté. ' : ''}${tech} Bonne journée, l'équipe LUNICAR`,
+            `Bonjour ${x.prenom || ''}, LUNICAR confirme votre RDV ${quand}. ${prix ? prix + ' selon l\'état. ' : ''}${tech} L'équipe LUNICAR`,
+            `Bonjour ${x.prenom || ''}, LUNICAR confirme votre RDV ${quandCourt}. ${prix ? prix + ' selon l\'état. ' : ''}${tech} L'équipe LUNICAR`,
+            `Bonjour, LUNICAR confirme votre RDV ${quandCourt}. ${prix ? prix + ' selon l\'état. ' : ''}${tech} L'équipe LUNICAR`,
+            `LUNICAR confirme votre RDV ${quandCourt}. ${prix ? prix + '. ' : ''}${tech} L'équipe LUNICAR`
+        ]);
     }
     // SMS au technicien : tout ce qu'il lui faut pour la visite.
     function texteSMSTechnicien(d) {
-        const x = d.data || {}, r = rdvPrevu(d) || {}, f = x.fiche_api || {};
-        const veh = [f.marque ? [f.marque, f.modele].filter(Boolean).join(' ') : x.vehicule, x.annee, x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''].filter(Boolean).join(' ');
+        const x = d.data || {}, r = rdvPrevu(d) || {}, f = x.fiche_api || {}, E = v => v.toLocaleString('fr-FR');
+        const veh = [f.marque ? [f.marque, f.modele].filter(Boolean).join(' ') : x.vehicule, x.annee].filter(Boolean).join(' ');
         const lieu = String(r.lieu || '').trim() || [x.adresse, [x.code_postal, x.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
         const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0, e = etatMeca(x);
-        return [`RDV LUNICAR ${jourCourt(r.date)} ${String(r.heure || '').replace(':', 'h')} (${r.duree || 45} min)`, [x.prenom, x.nom].filter(Boolean).join(' ') + (x.telephone ? ' ' + x.telephone : ''), lieu, veh, mn ? `Fourchette ${mn === mx ? mn.toLocaleString('fr-FR') : mn.toLocaleString('fr-FR') + '-' + mx.toLocaleString('fr-FR')} €` : '', e ? e.l : '', r.note ? 'Note : ' + r.note : '', 'Ref ' + d.ref].filter(Boolean).join('\n').replace(/[\u202F\u00A0]/g, ' ');
+        const quand = `RDV ${jourCourt(r.date).replace(/\.$/, '')} ${String(r.heure || '').replace(':', 'h')}`;
+        const client = [x.prenom, x.nom].filter(Boolean).join(' ') + (x.telephone ? ' ' + x.telephone : '');
+        const fourch = mn ? `${mn === mx ? E(mn) : E(mn) + '-' + E(mx)} €` : '';
+        const km = x.kilometrage ? `${Math.round(Number(x.kilometrage) / 1000)} 000 km` : '';
+        const L = (...p) => p.filter(Boolean).join('\n');
+        return unSeulSMS([
+            L(quand, client, lieu, [veh, km].filter(Boolean).join(' '), fourch, e && e.l, r.note && 'Note : ' + r.note, 'Ref ' + d.ref),
+            L(quand, client, lieu, [veh, km].filter(Boolean).join(' '), fourch, e && e.l, 'Ref ' + d.ref),
+            L(quand, client, lieu, [veh, km].filter(Boolean).join(' '), fourch, e && e.l),
+            L(quand, client, lieu, veh, fourch),
+            L(quand, client, lieu.slice(0, 60), veh, fourch),
+            L(quand, client, lieu.slice(0, 45), veh.slice(0, 25), fourch)
+        ]);
     }
     function messageConfirmation(d) {
         const x = d.data || {}, r = rdvPrevu(d) || {}, T = etat.technicien || {};
         const tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
         const objet = `Votre rendez-vous LUNICAR du ${jourLong(r.date)}`;
         const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
-        const segments = t => { const gsm = /^[A-Za-z0-9@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./:;<=>?¡ÄÖÑÜ§¿äöñüà\n\r^{}\\[~\]|€]*$/.test(t); const n = t.length; return { n, seg: n <= (gsm ? 160 : 70) ? 1 : Math.ceil(n / (gsm ? 153 : 67)), gsm }; };
-        const cpt = t => { const c = segments(t); return `${c.n} caractères · ${c.seg} SMS${c.gsm ? '' : ' (caractères spéciaux : SMS plus courts)'}`; };
+        const segments = segmentsSMS;
+        const cpt = t => { const c = segments(t); return `${c.n} caractères · ${c.seg} SMS${c.seg > 1 ? ' — raccourcissez pour n\'en envoyer qu\'un' : ''}${c.gsm ? '' : ' (caractères spéciaux : SMS plus courts)'}`; };
         $('#crIn').innerHTML = `<div class="cr-tete"><h3>Confirmation du rendez-vous</h3><button class="close" type="button" id="mcX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
             <p class="sub">${r.confirme_le ? `Déjà confirmé le ${date(r.confirme_le)} · ` : ''}Un seul envoi : e-mail et SMS au client, SMS au technicien. Chaque texte est modifiable.</p>
             <section class="mc-bloc"><label class="chk"><input type="checkbox" id="mcOkMail"${x.email ? ' checked' : ' disabled'}> <b>E-mail au client</b> <small>${x.email ? esc(x.email) + ' · de LUNICAR · objet « ' + esc(objet) + ' »' : 'pas d\'adresse e-mail sur la fiche'}</small></label>
