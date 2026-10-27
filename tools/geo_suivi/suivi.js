@@ -87,8 +87,10 @@ function analyser(q, { texte, urls }) {
         sites_cites: domaines,
         concurrents_cites: [...new Set([...domaines.filter(d => !d.endsWith(DOMAINE)), ...concurrentsTexte])],
         // Promesses retirées du site que ChatGPT répète encore (index périmé) : à surveiller jusqu'à disparition.
-        erreurs_factuelles: [['24 h', /\b24 ?h\b/i], ['7 jours', /\b7 jours|sept jours/i], ['cash', /\bcash\b/i], ['Paris seulement', /uniquement (à|en|sur) (Paris|Île-de-France)|seulement en Île-de-France/i]].filter(([, re]) => MARQUE.test(texte) && re.test(texte)).map(([n]) => n),
-        extrait: texte.slice(0, 600)
+        // Seulement dans les 250 caractères autour d'une mention de LUNICAR (pas les promesses des concurrents cités dans la même réponse).
+        erreurs_factuelles: (() => { const fen = []; const re = /lunicar/gi; let m; while ((m = re.exec(texte))) fen.push(texte.slice(Math.max(0, m.index - 250), m.index + 250)); const z = fen.join('\n'); return [['24 h', /\b24 ?h\b/i], ['7 jours', /\b7 jours|sept jours/i], ['cash', /\bcash\b/i], ['Paris seulement', /uniquement (à|en|sur) (Paris|Île-de-France)|seulement en Île-de-France/i]].filter(([, r]) => r.test(z)).map(([n]) => n); })(),
+        extrait: texte.slice(0, 600),
+        extrait_complet: texte
     };
 }
 
@@ -126,6 +128,11 @@ Les réponses de ChatGPT varient d'un appel à l'autre : lire les tendances d'un
 }
 
 (async () => {
+    if (process.argv[2] === '--relire') {
+        const f = path.join(SORTIE, `${process.argv[3]}.json`); const rel = JSON.parse(fs.readFileSync(f, 'utf-8'));
+        rel.resultats = rel.resultats.map(x => ({ ...x, ...analyser({ id: x.id, type: x.type, question: x.question }, { texte: x.extrait_complet || x.extrait, urls: (x.sites_cites || []).map(d => 'https://' + d + '/') }), url_lunicar: x.url_lunicar, rang: x.rang, nb_sites_cites: x.nb_sites_cites, sites_cites: x.sites_cites, concurrents_cites: x.concurrents_cites, lunicar_cite: x.lunicar_cite, lunicar_lien: x.lunicar_lien }));
+        fs.writeFileSync(f, JSON.stringify(rel, null, 2)); fs.writeFileSync(path.join(SORTIE, `${process.argv[3]}.md`), resume(rel)); console.log('Relevé relu :', f); process.exit(0);
+    }
     const cle = lireCle();
     if (!cle) {
         console.log('Aucune clé OPENAI_API_KEY trouvée (environnement, .env, .env.local, tools/geo_suivi/.env).');
