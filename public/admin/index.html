@@ -3398,7 +3398,7 @@ body.modal-ouvert { overflow: hidden; }
         const lieu = String(r.lieu || '').trim(), adresseConnue = /\d/.test(lieu) && /[a-zé]{3,}/i.test(lieu.replace(/\d{5}.*/, '')) && lieu.replace(/\d{5}/, '').trim().split(/\s+/).length >= 3;
         const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0;
         const T = etat.technicien || {}, C = etat.conseiller || {};
-        return [`Bonjour ${nom || 'Madame, Monsieur'},`, '',
+        return ['Bonjour,', '',
             `Suite à votre demande concernant votre ${veh}${annee ? ' ' + annee : ''}, nous vous proposons un rendez-vous ${jourLong(r.date)}, entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}, ${adresseConnue ? `à l'adresse suivante : ${lieu}.` : `${x.ville ? 'à ' + x.ville : 'à votre adresse'}.`}`, '',
             mn ? `Notre technicien examinera le véhicule sur place et vous fera une proposition d'achat ${mn === mx ? `d'environ ${mn.toLocaleString('fr-FR')} €` : `entre ${mn.toLocaleString('fr-FR')} € et ${mx.toLocaleString('fr-FR')} €`}, selon l'état constaté.` : `Notre technicien examinera le véhicule sur place et vous fera une proposition d'achat selon l'état constaté.`,
             ...(adresseConnue ? [] : ['', 'Pouvez-vous me communiquer l\'adresse exacte du rendez-vous ?']), '',
@@ -3422,9 +3422,8 @@ body.modal-ouvert { overflow: hidden; }
         const tech = T.tel ? `Technicien : ${T.tel}.` : '';
         const quand = `${jourLong(r.date)} entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}`, quandCourt = `${jourCourt(r.date)} ${hh(r.heure || '14:00')}-${hh(heureFin)}`;
         return unSeulSMS([
-            `Bonjour ${x.prenom || ''}, LUNICAR confirme votre rendez-vous ${quand}. ${prix ? prix + ' selon l\'état constaté. ' : ''}${tech} Bonne journée, l'équipe LUNICAR`,
-            `Bonjour ${x.prenom || ''}, LUNICAR confirme votre RDV ${quand}. ${prix ? prix + ' selon l\'état. ' : ''}${tech} L'équipe LUNICAR`,
-            `Bonjour ${x.prenom || ''}, LUNICAR confirme votre RDV ${quandCourt}. ${prix ? prix + ' selon l\'état. ' : ''}${tech} L'équipe LUNICAR`,
+            `Bonjour, LUNICAR confirme votre rendez-vous ${quand}. ${prix ? prix + ' selon l\'état constaté. ' : ''}${tech} Bonne journée, l'équipe LUNICAR`,
+            `Bonjour, LUNICAR confirme votre RDV ${quand}. ${prix ? prix + ' selon l\'état. ' : ''}${tech} L'équipe LUNICAR`,
             `Bonjour, LUNICAR confirme votre RDV ${quandCourt}. ${prix ? prix + ' selon l\'état. ' : ''}${tech} L'équipe LUNICAR`,
             `LUNICAR confirme votre RDV ${quandCourt}. ${prix ? prix + '. ' : ''}${tech} L'équipe LUNICAR`
         ]);
