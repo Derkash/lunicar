@@ -298,7 +298,8 @@ details.plus > summary { margin-top: 14px; }
 .kv-ed::after { content: ''; position: absolute; right: 2px; top: 50%; width: 11px; height: 11px; margin-top: -6px; background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239AA3B2' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E"); opacity: .7; }
 .kv-ed:hover { color: var(--bleu, #2453A6); } .kv-ed.kv-vide { color: var(--ink-4); font-weight: 400; font-style: italic; }
 .rdv-fourch { flex-wrap: wrap; font-size: .86rem; } .rdv-fourch .in { flex: 0 1 90px; width: 90px; }
-.mc-modes { display: flex; gap: 6px; margin: 0 0 8px; } .mc-modes .seg { flex: 1; justify-content: center; }
+.mc-bloc { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--line-2); } .mc-bloc .chk { margin: 0 0 6px; flex-wrap: wrap; } .mc-bloc .chk small { color: var(--ink-5); font-weight: 400; flex-basis: 100%; margin-left: 26px; }
+.mc-bloc .in { width: 100%; } .mc-cpt { margin: 4px 0 0; font-size: .74rem; } .mc-bloc .mc-btns { margin-top: 6px; }
 #mcCompte:empty { display: none; }
 .kv-form { display: flex; gap: 6px; align-items: center; } .kv-form .in { flex: 1 1 0; width: 0; min-width: 0; height: 34px; font-size: .88rem; }
 .ads-wrap { overflow-x: auto; }
@@ -3396,71 +3397,72 @@ body.modal-ouvert { overflow: hidden; }
         const hh = t => t.replace(':', ' h ').replace(/ h 00$/, ' h');
         const lieu = String(r.lieu || '').trim(), adresseConnue = /\d/.test(lieu) && /[a-zé]{3,}/i.test(lieu.replace(/\d{5}.*/, '')) && lieu.replace(/\d{5}/, '').trim().split(/\s+/).length >= 3;
         const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0;
-        const signe = { abdoul: 'Abdoul-Khader', youssouf: 'Youssouf' }[r.avec] || '';
+        const T = etat.technicien || {}, signe = T.nom || '';
         return [`Bonjour ${nom || 'Madame, Monsieur'},`, '',
             `Suite à votre demande concernant votre ${veh}${annee ? ' ' + annee : ''}, nous vous proposons un rendez-vous ${jourLong(r.date)}, entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}, ${adresseConnue ? `à l'adresse suivante : ${lieu}.` : `${x.ville ? 'à ' + x.ville : 'à votre adresse'}.`}`, '',
-            mn ? `Notre technicien examinera le véhicule sur place et vous fera une proposition d'achat ${mn === mx ? `d'environ ${mn.toLocaleString('fr-FR')} €` : `entre ${mn.toLocaleString('fr-FR')} € et ${mx.toLocaleString('fr-FR')} €`}, selon l'état constaté.` : `Notre technicien examinera le véhicule sur place et vous fera une proposition d'achat selon l'état constaté.`,
+            mn ? `Notre technicien${T.nom ? ' ' + T.nom : ''} examinera le véhicule sur place et vous fera une proposition d'achat ${mn === mx ? `d'environ ${mn.toLocaleString('fr-FR')} €` : `entre ${mn.toLocaleString('fr-FR')} € et ${mx.toLocaleString('fr-FR')} €`}, selon l'état constaté.` : `Notre technicien${T.nom ? ' ' + T.nom : ''} examinera le véhicule sur place et vous fera une proposition d'achat selon l'état constaté.`,
             ...(adresseConnue ? [] : ['', 'Pouvez-vous me communiquer l\'adresse exacte du rendez-vous ?']), '',
             'Pour préparer les documents de cession, pourriez-vous nous envoyer une photo de votre carte grise ?', '',
-            'Si vous avez une question avant le rendez-vous, n\'hésitez pas à me contacter.', '',
+            `Si vous avez une question avant le rendez-vous, n\'hésitez pas à me contacter${T.tel ? ' au ' + T.tel : ''}.`, '',
             'Cordialement,', `${signe ? signe + ' de ' : ''}LUNICAR`].join('\n');
     }
     // Version courte pour le SMS (2 à 3 segments) : jour, créneau, lieu, fourchette, carte grise, numéro LUNICAR.
     function texteConfirmationSMS(d) {
-        const x = d.data || {}, r = rdvPrevu(d) || {}, f = x.fiche_api || {};
-        const veh = (f.marque ? [f.marque, f.modele].filter(Boolean).join(' ') : (x.vehicule || 'véhicule').split(' ').slice(0, 3).join(' ')).trim();
+        const x = d.data || {}, r = rdvPrevu(d) || {}, T = etat.technicien || {};
         const [h, m] = String(r.heure || '14:00').split(':').map(Number), fin = new Date(Date.UTC(2000, 0, 1, h, m + (r.duree || 45)));
         const hh = t => t.replace(':', 'h').replace(/h00$/, 'h'), heureFin = String(fin.getUTCHours()).padStart(2, '0') + ':' + String(fin.getUTCMinutes()).padStart(2, '0');
-        const lieu = String(r.lieu || '').trim() || [x.code_postal, x.ville].filter(Boolean).join(' ');
         const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0;
-        const prix = mn ? (mn === mx ? ` Proposition d'achat envisagée : environ ${mn.toLocaleString('fr-FR')} € selon l'état constaté.` : ` Proposition d'achat envisagée : entre ${mn.toLocaleString('fr-FR')} et ${mx.toLocaleString('fr-FR')} € selon l'état constaté.`) : '';
-        return (`Bonjour ${x.prenom || ''}`.trim() + `, LUNICAR confirme votre rendez-vous ${jourLong(r.date)} entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}${lieu ? ` à ${lieu}` : ''} pour votre ${veh}.${prix} Merci de préparer la carte grise.${etat.telephone ? ` Une question ? ${etat.telephone}.` : ''} Bonne journée, LUNICAR`).replace(/[\u202F\u00A0]/g, ' ');   // espaces insécables des nombres : hors alphabet SMS
+        const prix = mn ? (mn === mx ? ` Estimation : environ ${mn.toLocaleString('fr-FR')} € selon l'état constaté.` : ` Estimation : entre ${mn.toLocaleString('fr-FR')} et ${mx.toLocaleString('fr-FR')} € selon l'état constaté.`) : '';
+        return (`Bonjour ${x.prenom || ''}`.trim() + `, LUNICAR vous confirme le rendez-vous ${jourLong(r.date)} entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}.${prix}${T.nom ? ` Votre technicien ${T.nom}${T.tel ? ' : ' + T.tel : ''}.` : ''} Bonne journée, LUNICAR`).replace(/[\u202F\u00A0]/g, ' ');   // pas d'espaces insécables ni de À/ô : hors alphabet SMS
     }
+    // SMS au technicien : tout ce qu'il lui faut pour la visite.
+    function texteSMSTechnicien(d) {
+        const x = d.data || {}, r = rdvPrevu(d) || {}, f = x.fiche_api || {};
+        const veh = [f.marque ? [f.marque, f.modele].filter(Boolean).join(' ') : x.vehicule, x.annee, x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''].filter(Boolean).join(' ');
+        const lieu = String(r.lieu || '').trim() || [x.adresse, [x.code_postal, x.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
+        const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0;
+        return [`RDV LUNICAR ${jourCourt(r.date)} ${String(r.heure || '').replace(':', 'h')} (${r.duree || 45} min)`, [x.prenom, x.nom].filter(Boolean).join(' ') + (x.telephone ? ' ' + x.telephone : ''), lieu, veh, mn ? `Fourchette ${mn === mx ? mn.toLocaleString('fr-FR') : mn.toLocaleString('fr-FR') + '-' + mx.toLocaleString('fr-FR')} €` : '', badgeTexte(x), r.note ? 'Note : ' + r.note : '', 'Ref ' + d.ref].filter(Boolean).join('\n').replace(/[\u202F\u00A0]/g, ' ');
+    }
+    const badgeTexte = x => { const e = etatMeca(x); return e ? e.l : ''; };
     function messageConfirmation(d) {
-        const x = d.data || {}, r = rdvPrevu(d) || {};
+        const x = d.data || {}, r = rdvPrevu(d) || {}, T = etat.technicien || {};
         const tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
         const objet = `Votre rendez-vous LUNICAR du ${jourLong(r.date)}`;
         const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
-        const brouillons = { mail: texteConfirmation(d), sms: texteConfirmationSMS(d) };
-        let mode = x.email ? 'mail' : 'sms';
+        const segments = t => { const gsm = /^[A-Za-z0-9@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./:;<=>?¡ÄÖÑÜ§¿äöñüà\n\r^{}\\[~\]|€]*$/.test(t); const n = t.length; return { n, seg: n <= (gsm ? 160 : 70) ? 1 : Math.ceil(n / (gsm ? 153 : 67)), gsm }; };
+        const cpt = t => { const c = segments(t); return `${c.n} caractères · ${c.seg} SMS${c.gsm ? '' : ' (caractères spéciaux : SMS plus courts)'}`; };
         $('#crIn').innerHTML = `<div class="cr-tete"><h3>Confirmation du rendez-vous</h3><button class="close" type="button" id="mcX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
-            <div class="mc-modes"><button type="button" class="seg" data-mode="mail">E-mail${x.email ? '' : ' · pas d\'adresse'}</button><button type="button" class="seg" data-mode="sms">SMS${x.telephone ? '' : ' · pas de numéro'}</button></div>
-            <p class="sub" id="mcInfo"></p>
-            <textarea class="in" id="mcTxt" rows="12"></textarea>
-            <p class="sub" id="mcCompte"></p>
-            <div class="mc-btns" id="mcBtns"></div>`;
+            <p class="sub">${r.confirme_le ? `Déjà confirmé le ${date(r.confirme_le)} · ` : ''}Un seul envoi : e-mail et SMS au client, SMS à ${esc(T.nom || 'le technicien')}. Chaque texte est modifiable.</p>
+            <section class="mc-bloc"><label class="chk"><input type="checkbox" id="mcOkMail"${x.email ? ' checked' : ' disabled'}> <b>E-mail au client</b> <small>${x.email ? esc(x.email) + ' · de LUNICAR · objet « ' + esc(objet) + ' »' : 'pas d\'adresse e-mail sur la fiche'}</small></label>
+                <textarea class="in" id="mcMailTxt" rows="10">${esc(texteConfirmation(d))}</textarea></section>
+            <section class="mc-bloc"><label class="chk"><input type="checkbox" id="mcOkSms"${x.telephone && smsOk ? ' checked' : ' disabled'}> <b>SMS au client</b> <small>${x.telephone ? esc(x.telephone) + (smsOk ? ' · via OVH' + (etat.sms.sender_valide ? '' : ' (numéro court en attendant la validation de LUNICAR)') : ' · SMS serveur non configuré') : 'pas de numéro'}</small></label>
+                <textarea class="in" id="mcSmsTxt" rows="4">${esc(texteConfirmationSMS(d))}</textarea><p class="sub mc-cpt" id="mcCptSms"></p>
+                ${x.telephone && !smsOk ? `<div class="mc-btns"><a class="btn btn-s" id="mcSms" href="#">Envoyer depuis l'iPhone</a><a class="btn btn-s" id="mcWa" href="#" target="_blank" rel="noopener">WhatsApp</a></div>` : ''}</section>
+            <section class="mc-bloc"><label class="chk"><input type="checkbox" id="mcOkTech"${T.tel && smsOk ? ' checked' : ' disabled'}> <b>SMS à ${esc(T.nom || 'le technicien')}</b> <small>${T.tel ? esc(T.tel) + (smsOk ? '' : ' · SMS serveur non configuré') : 'numéro du technicien non configuré'}</small></label>
+                <textarea class="in" id="mcTechTxt" rows="5">${esc(texteSMSTechnicien(d))}</textarea><p class="sub mc-cpt" id="mcCptTech"></p></section>
+            <div class="cr-btns"><button type="button" class="btn" id="mcCopie">Copier le SMS client</button><button type="button" class="btn btn-g" id="mcTout">Envoyer</button></div>`;
         const fermer = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
         $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
         $('#mcX').onclick = fermer; $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermer(); };
-        const txt = () => $('#mcTxt').value.trim();
-        const segments = t => { const gsm = /^[A-Za-z0-9@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./:;<=>?¡ÄÖÑÜ§¿äöñüà\n\r^{}\\[~\]|€]*$/.test(t); const n = t.length; return { n, seg: n <= (gsm ? 160 : 70) ? 1 : Math.ceil(n / (gsm ? 153 : 67)), gsm }; };
-        const compter = () => { if (mode !== 'sms') { $('#mcCompte').textContent = ''; return; } const c = segments(txt()); $('#mcCompte').textContent = `${c.n} caractères · ${c.seg} SMS${c.gsm ? '' : ' (accents spéciaux : SMS plus courts)'}`; };
-        $('#mcTxt').addEventListener('input', () => { brouillons[mode] = $('#mcTxt').value; compter(); });
-        const afficher = () => {
-            $('#crIn').querySelectorAll('[data-mode]').forEach(b => b.classList.toggle('on', b.dataset.mode === mode));
-            $('#mcTxt').value = brouillons[mode]; $('#mcTxt').rows = mode === 'sms' ? 7 : 12;
-            $('#mcInfo').textContent = mode === 'mail' ? `À relire avant envoi · expéditeur LUNICAR, objet « ${objet} » · copie à yakautoservices@gmail.com et guirassy.youssouf@gmail.com` : smsOk ? `Envoyé par LUNICAR via OVH${etat.sms.sender_valide ? '' : ' (expéditeur « LUNICAR » en attente de validation OVH : part d\'un numéro court)'}${etat.sms.credits != null ? ` · ${etat.sms.credits} crédits restants` : ''}` : 'SMS serveur non configuré : envoi depuis l\'iPhone.';
-            $('#mcBtns').innerHTML = mode === 'mail'
-                ? `${x.email ? `<button type="button" class="btn btn-g" id="mcMail">Envoyer à ${esc(x.email)}</button>` : ''}<button type="button" class="btn" id="mcCopie">Copier</button>`
-                : `${x.telephone && smsOk ? `<button type="button" class="btn btn-g" id="mcSmsOvh">Envoyer le SMS au ${esc(x.telephone)}</button>` : ''}${x.telephone ? `<a class="btn" id="mcSms" href="#">${smsOk ? 'Depuis l\'iPhone' : 'SMS depuis l\'iPhone'}</a><a class="btn" id="mcWa" href="#" target="_blank" rel="noopener">WhatsApp</a>` : ''}<button type="button" class="btn" id="mcCopie">Copier</button>`;
-            compter();
-            if ($('#mcSms')) $('#mcSms').onclick = e => { e.preventDefault(); location.href = `sms:+${tel}${/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?'}body=${encodeURIComponent(txt())}`; };
-            if ($('#mcWa')) $('#mcWa').onclick = e => { e.preventDefault(); window.open(`https://wa.me/${tel}?text=${encodeURIComponent(txt())}`, '_blank'); };
-            $('#mcCopie').onclick = async () => { try { await navigator.clipboard.writeText(txt()); toast('Message copié'); } catch (e) { $('#mcTxt').select(); document.execCommand('copy'); toast('Message copié'); } };
-            if ($('#mcMail')) $('#mcMail').onclick = async () => {
-                if (await demander({ titre: 'Envoyer la confirmation par e-mail ?', texte: `À ${x.email} · copie à yakautoservices@gmail.com et guirassy.youssouf@gmail.com · de LUNICAR · objet « ${objet} »`, boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
-                try { const r2 = await api('/api/admin/demandes/' + d.ref + '/email', { method: 'POST', body: JSON.stringify({ objet, texte: txt(), type: 'confirmation_rdv' }) }); maj(r2); if (courant && courant.ref === d.ref) { courant = r2; fiche(); } fermer(); toast('Confirmation envoyée par e-mail'); }
-                catch (e) { toast(e.message); $('#crModal').hidden = false; }
-            };
-            if ($('#mcSmsOvh')) $('#mcSmsOvh').onclick = async () => {
-                const c = segments(txt());
-                if (await demander({ titre: 'Envoyer le SMS ?', texte: `Au ${x.telephone} · ${c.seg} SMS (${c.n} caractères)`, boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
-                try { const r2 = await api('/api/admin/demandes/' + d.ref + '/sms', { method: 'POST', body: JSON.stringify({ texte: txt(), type: 'confirmation_rdv' }) }); maj(r2); if (courant && courant.ref === d.ref) { courant = r2; fiche(); } fermer(); toast('SMS envoyé'); }
-                catch (e) { toast(e.message); $('#crModal').hidden = false; }
-            };
+        const compter = () => { $('#mcCptSms').textContent = cpt($('#mcSmsTxt').value.trim()); $('#mcCptTech').textContent = cpt($('#mcTechTxt').value.trim()); };
+        $('#mcSmsTxt').addEventListener('input', compter); $('#mcTechTxt').addEventListener('input', compter); compter();
+        if ($('#mcSms')) $('#mcSms').onclick = e => { e.preventDefault(); location.href = `sms:+${tel}${/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?'}body=${encodeURIComponent($('#mcSmsTxt').value.trim())}`; };
+        if ($('#mcWa')) $('#mcWa').onclick = e => { e.preventDefault(); window.open(`https://wa.me/${tel}?text=${encodeURIComponent($('#mcSmsTxt').value.trim())}`, '_blank'); };
+        $('#mcCopie').onclick = async () => { const t = $('#mcSmsTxt').value.trim(); try { await navigator.clipboard.writeText(t); toast('SMS copié'); } catch (e) { $('#mcSmsTxt').select(); document.execCommand('copy'); toast('SMS copié'); } };
+        $('#mcTout').onclick = async () => {
+            const corps = { objet, mail: $('#mcOkMail').checked ? $('#mcMailTxt').value.trim() : '', sms: $('#mcOkSms').checked ? $('#mcSmsTxt').value.trim() : '', sms_tech: $('#mcOkTech').checked ? $('#mcTechTxt').value.trim() : '' };
+            const quoi = [corps.mail && `e-mail à ${x.email}`, corps.sms && `SMS au ${x.telephone} (${segments(corps.sms).seg})`, corps.sms_tech && `SMS à ${T.nom} (${segments(corps.sms_tech).seg})`].filter(Boolean);
+            if (!quoi.length) { toast('Cochez au moins un envoi'); return; }
+            if (await demander({ titre: 'Envoyer la confirmation ?', texte: quoi.join(' · '), boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
+            $('#mcTout').disabled = true;
+            try {
+                const r2 = await api('/api/admin/demandes/' + d.ref + '/confirmation', { method: 'POST', body: JSON.stringify(corps) });
+                maj(r2.demande); if (courant && courant.ref === d.ref) { courant = r2.demande; fiche(); }
+                const R = r2.resultats, ok = [R.mail.ok && 'e-mail', R.sms.ok && 'SMS client', R.tech.ok && 'SMS ' + T.nom].filter(Boolean), ko = [['mail', 'e-mail'], ['sms', 'SMS client'], ['tech', 'SMS ' + T.nom]].filter(([k]) => !R[k].ok && R[k].erreur !== 'non demandé').map(([k, l]) => `${l} : ${R[k].erreur}`);
+                if (!ko.length) { fermer(); toast('Envoyé : ' + ok.join(' + ')); }
+                else { $('#mcTout').disabled = false; await demander({ titre: ok.length ? 'Envoi partiel' : 'Rien n\'est parti', texte: (ok.length ? 'Parti : ' + ok.join(', ') + '. ' : '') + 'Échec — ' + ko.join(' ; '), boutons: [['', 'OK']] }); if (ok.length) fermer(); else $('#crModal').hidden = false; }
+            } catch (e) { $('#mcTout').disabled = false; toast(e.message); $('#crModal').hidden = false; }
         };
-        $('#crIn').querySelectorAll('[data-mode]').forEach(b => b.onclick = () => { mode = b.dataset.mode; afficher(); });
-        afficher();
     }
     // Certificat de cession dès le rendez-vous pris : on retrouve (ou crée) le véhicule de la demande.
     async function cessionDepuisDemande(ref) {
