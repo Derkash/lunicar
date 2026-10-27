@@ -2585,5 +2585,913 @@
       }
     ],
     "updated": "2026-10-27"
+  },
+  {
+    "slug": "vendre-sa-voiture-guide-complet",
+    "image": "accueil",
+    "nav": "Guide complet",
+    "title": "Vendre sa voiture en France : le guide complet | LUNICAR",
+    "description": "Les étapes pour vendre sa voiture en France : documents, estimation, choix de l'acheteur, certificat de cession, déclaration sous 15 jours et assurance.",
+    "h1": "Vendre sa voiture en France : <em>le guide complet</em>",
+    "lede": "Vendre une voiture en France suit toujours le même parcours : réunir les documents, estimer le prix, choisir l'acheteur, conclure la vente, déclarer la cession dans les 15 jours et prévenir l'assureur. Ce guide rassemble les règles officielles et renvoie vers les pages détaillées pour chaque situation particulière.",
+    "points": [
+      "Six étapes, de la préparation à l'assurance",
+      "Documents exigés selon Service-public.gouv.fr",
+      "Quatre façons de vendre comparées",
+      "Liens vers chaque situation particulière"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Quelles sont les étapes pour vendre sa voiture en France ?",
+        "html": "<p>Vendre sa voiture se fait en six étapes : préparer les documents, estimer le prix, choisir l'acheteur, conclure la vente avec le certificat de cession, déclarer la cession dans les 15 jours, puis prévenir l'assureur. L'ordre compte : une vente conclue avant la vérification du paiement est la source de nombreux litiges.</p><ul class=\"ticks\"><li><strong>Étape 1 — Préparer les documents</strong> : carte grise, certificat de situation administrative, contrôle technique pour une vente à un particulier.</li><li><strong>Étape 2 — Estimer le prix</strong> : annonces comparables, état réel, historique Histovec, fourchette d'un professionnel.</li><li><strong>Étape 3 — Choisir l'acheteur</strong> : particulier, concession, professionnel du rachat ou plateforme.</li><li><strong>Étape 4 — Vendre</strong> : certificat de cession en deux exemplaires, carte grise barrée, paiement constaté.</li><li><strong>Étape 5 — Déclarer la cession</strong> : sur le site de l'ANTS, dans les 15 jours.</li><li><strong>Étape 6 — Prévenir l'assureur</strong> : résiliation ou adaptation du contrat.</li></ul><p>Chaque étape est détaillée ci-dessous avec les fiches de Service-public.gouv.fr. Le fonctionnement de LUNICAR est décrit sur la page <a href=\"/comment-ca-marche\">comment ça marche</a>.</p>"
+      },
+      {
+        "h2": "Quels documents faut-il préparer avant de vendre ?",
+        "html": "<p>Pour vendre à un particulier, le vendeur doit remettre la carte grise barrée avec la mention « vendu le » suivie de la date, de l'heure et de sa signature, un certificat de situation administrative de moins de 15 jours, l'exemplaire n° 2 du certificat de cession, le code de cession obtenu sur le site de l'ANTS, et un procès-verbal de contrôle technique de moins de six mois pour une voiture de plus de quatre ans.</p><ul class=\"ticks\"><li><strong>Carte grise</strong> : au nom du vendeur ; tous les co-titulaires signent la cession.</li><li><strong>Certificat de situation administrative</strong> : gratuit sur <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>, il atteste l'absence de gage et d'opposition.</li><li><strong>Certificat de cession</strong> : <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">Cerfa 15776</a>, deux exemplaires, un pour chaque partie.</li><li><strong>Contrôle technique</strong> : non exigé pour vendre à un professionnel, voir <a href=\"/rachat-voiture-sans-controle-technique\">vendre sans contrôle technique</a>.</li><li><strong>Entretien</strong> : carnet et factures, utiles pour l'estimation.</li></ul><p>La liste complète figure sur la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> de Service-public.gouv.fr.</p>"
+      },
+      {
+        "h2": "Comment estimer le prix de sa voiture ?",
+        "html": "<p>Le prix d'une voiture d'occasion dépend du modèle, de l'année, du kilométrage, de l'état réel et de l'historique ; il s'estime en croisant les annonces comparables, le rapport Histovec et au moins une proposition d'un professionnel. Aucune cote ne remplace l'état constaté : deux voitures identiques sur le papier peuvent valoir très différemment selon leur entretien.</p><ul class=\"ticks\"><li><strong>Annonces comparables</strong> : même modèle, même motorisation, kilométrage et année proches ; les prix affichés sont un plafond, pas un prix de vente.</li><li><strong>État réel</strong> : pneus, freins, carrosserie, voyants, contrôle technique ; chaque réparation à prévoir se déduit du prix.</li><li><strong>Historique</strong> : <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a> retrace les contrôles techniques, les kilométrages relevés et les sinistres.</li><li><strong>Fourchette d'un professionnel</strong> : LUNICAR communique rapidement une fourchette indicative, utile comme point de comparaison, sans promesse de rachat.</li></ul><p>Le passage de la fourchette au prix définitif est expliqué sur la page <a href=\"/fourchette-et-prix-definitif\">fourchette indicative et prix définitif</a>. Les ordres de grandeur du marché figurent dans nos <a href=\"/chiffres-cles-vente-voiture-occasion\">chiffres clés de la vente d'occasion</a>.</p>"
+      },
+      {
+        "h2": "À qui vendre : particulier, concession, professionnel ou plateforme ?",
+        "html": "<p>Il existe quatre façons de vendre : à un particulier, en reprise concession, à un professionnel du rachat qui vient à votre adresse, ou à une plateforme en ligne. Le choix dépend de votre priorité : prix, délai, démarches ou sécurité du paiement.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Façon de vendre</th><th>Pour qui</th><th>Démarches à votre charge</th><th>Paiement</th></tr></thead><tbody><tr><td>Particulier</td><td>Voiture en bon état, contrôle technique à jour, du temps</td><td>Annonce, visites, contrôle technique, cession</td><td>À vérifier vous-même</td></tr><tr><td>Reprise en concession</td><td>Achat d'un autre véhicule au même endroit</td><td>Prises en charge, liées à l'achat</td><td>Déduit du prix du véhicule acheté</td></tr><tr><td>Professionnel à domicile</td><td>Vente sans achat, voiture en l'état, même en panne</td><td>Vérification à votre adresse, cession préparée ensemble</td><td>Virement instantané si la vente est conclue (LUNICAR)</td></tr><tr><td>Plateforme de rachat en ligne</td><td>Estimation rapide, inspection en centre</td><td>Déplacement en centre d'inspection</td><td>Selon les conditions de la plateforme</td></tr></tbody></table></div><p>Avantages et limites de chaque voie dans le <a href=\"/comparatif-reprise-auto\">comparatif des façons de vendre</a> ; fonctionnement de LUNICAR sur la page <a href=\"/reprise\">reprise de votre voiture</a>.</p>"
+      },
+      {
+        "h2": "Comment se passent la vente et la déclaration de cession ?",
+        "html": "<p>La vente se conclut par la signature du certificat de cession en deux exemplaires, la remise de la carte grise barrée et la constatation du paiement sur votre compte ; la cession doit ensuite être déclarée sur le site de l'ANTS dans les 15 jours suivant la signature. La déclaration fournit un code de cession à remettre à l'acheteur pour qu'il immatricule la voiture à son nom.</p><ul class=\"ticks\"><li><strong>Signature</strong> : les deux parties signent le <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession</a>, y compris pour un don.</li><li><strong>Carte grise</strong> : barrée, mention « vendu le » avec date, heure et signature.</li><li><strong>Paiement</strong> : à constater sur votre propre compte ; voir <a href=\"/virement-instantane-vente-voiture\">le paiement par virement instantané</a>.</li><li><strong>Déclaration</strong> : sur le site de l'<a href=\"https://ants.gouv.fr/vendre-ou-donner-mon-vehicule\" rel=\"noopener\" target=\"_blank\">ANTS</a>, dans les 15 jours.</li><li><strong>Votre exemplaire</strong> : à conserver, il prouve la date et le prix de la vente.</li></ul><p>Source : fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a>. Avec LUNICAR, le certificat de cession est rempli ensemble et l'enlèvement est offert si la vente est conclue.</p>"
+      },
+      {
+        "h2": "Que faire pour l'assurance après la vente ?",
+        "html": "<p>Après la vente, le contrat d'assurance est suspendu dès le soir de la vente, à minuit, et vous devez informer votre assureur par lettre recommandée ou envoi recommandé électronique pour demander la résiliation, qui prend effet dix jours calendaires après réception. Ces règles figurent sur la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2664\" rel=\"noopener\" target=\"_blank\">comment résilier l’assurance après avoir vendu son véhicule</a> de Service-public.gouv.fr.</p><ul class=\"ticks\"><li><strong>Suspension automatique</strong> : le soir de la vente, à minuit ; la voiture n'est plus couverte à votre nom au-delà.</li><li><strong>Résiliation</strong> : demande écrite avec le numéro de contrat, la date de la vente et l'identification du véhicule.</li><li><strong>Nouveau véhicule</strong> : si vous en rachetez un, le contrat peut être adapté plutôt que résilié ; voyez avec votre assureur.</li><li><strong>Justificatif</strong> : une copie du certificat de cession permet de prouver la date de la vente.</li></ul><p>Conservez votre exemplaire du certificat de cession jusqu'à ce que la cession apparaisse comme enregistrée sur le site de l'ANTS : c'est lui qui atteste que la voiture n'est plus sous votre responsabilité.</p>"
+      },
+      {
+        "h2": "Quelles situations particulières changent la façon de vendre ?",
+        "html": "<p>Certaines situations changent les documents à fournir ou l'acheteur possible : une voiture sans contrôle technique ou en panne se vend difficilement à un particulier, une succession exige la signature de tous les héritiers sur le certificat de cession, un crédit ou un leasing en cours changent qui peut vendre et à quelles conditions.</p><ul class=\"ticks\"><li><strong>Sans contrôle technique</strong> : vente à un professionnel possible ; voir <a href=\"/rachat-voiture-sans-controle-technique\">vendre sans contrôle technique</a>.</li><li><strong>En panne ou non roulante</strong> : <a href=\"/rachat-voiture-en-panne\">rachat d'une voiture en panne</a>.</li><li><strong>Fort kilométrage</strong> : <a href=\"/reprise-voiture-haut-kilometrage\">reprise d'une voiture à fort kilométrage</a>.</li><li><strong>Voiture ancienne</strong> : <a href=\"/vendre-vieille-voiture\">vendre une vieille voiture</a>.</li><li><strong>Succession</strong> : <a href=\"/reprise-voiture-succession\">reprise d'une voiture en succession</a>.</li><li><strong>Crédit en cours</strong> : <a href=\"/vendre-voiture-credit\">vendre une voiture à crédit</a>.</li><li><strong>Leasing</strong> : <a href=\"/reprise-voiture-leasing\">reprise d'une voiture en leasing</a>.</li></ul><p>Dans toutes ces situations, LUNICAR étudie la voiture partout en France, sans promesse de rachat : une offre n'est pas toujours possible, mais l'étude et le rendez-vous sont sans frais. Voir <a href=\"/expertise-voiture-a-domicile\">que vérifie le technicien</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes pour vendre sa voiture en France",
+    "faq": [
+      {
+        "question": "Quels documents faut-il pour vendre sa voiture ?",
+        "answer": "Carte grise barrée et signée, certificat de cession Cerfa 15776 en deux exemplaires, certificat de situation administrative de moins de 15 jours, code de cession de l'ANTS et, pour une vente à un particulier d'une voiture de plus de quatre ans, un contrôle technique de moins de six mois."
+      },
+      {
+        "question": "Dans quel délai faut-il déclarer la vente ?",
+        "answer": "Dans les 15 jours suivant la signature du certificat de cession, sur le site de l'ANTS, selon Service-public.gouv.fr. Le code de cession obtenu est à remettre à l'acheteur."
+      },
+      {
+        "question": "Le contrôle technique est-il obligatoire pour vendre ?",
+        "answer": "Oui pour vendre à un particulier une voiture de plus de quatre ans : le procès-verbal doit dater de moins de six mois. Non pour vendre à un professionnel."
+      },
+      {
+        "question": "Comment être payé en toute sécurité ?",
+        "answer": "En constatant le crédit sur votre propre compte avant de remettre les clés et la carte grise. Avec LUNICAR, le paiement se fait par virement instantané si la vente est conclue, jamais en espèces ni par chèque."
+      },
+      {
+        "question": "Que devient l'assurance après la vente ?",
+        "answer": "Le contrat est suspendu le soir de la vente, à minuit. Vous devez informer l'assureur par envoi recommandé ; la résiliation prend effet dix jours calendaires après réception, selon Service-public.gouv.fr."
+      },
+      {
+        "question": "Peut-on vendre une voiture en panne ou sans contrôle technique ?",
+        "answer": "À un particulier, c'est difficile ou impossible. À un professionnel, oui : LUNICAR étudie ces voitures partout en France et, si la vente est conclue, prend l'enlèvement en charge."
+      },
+      {
+        "question": "Comment connaître l'historique de sa voiture ?",
+        "answer": "Avec Histovec, service gratuit du ministère de l'Intérieur, qui retrace les contrôles techniques, les kilométrages relevés, les sinistres et la situation administrative du véhicule."
+      },
+      {
+        "question": "Comment fonctionne la vente à LUNICAR ?",
+        "answer": "Vous décrivez la voiture en ligne, un conseiller vous rappelle avec une fourchette indicative, un technicien vient à votre adresse sans frais et le prix définitif est présenté après vérification. Si vous acceptez, les documents sont préparés ensemble, le virement est instantané et l'enlèvement est offert."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Certificat de cession d'un véhicule d'occasion (Cerfa 15776), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R20300"
+      },
+      {
+        "label": "Contrôle technique d'une voiture, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2878"
+      },
+      {
+        "label": "Résilier l'assurance après la vente de son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2664"
+      },
+      {
+        "label": "Vendre ou donner mon véhicule, ANTS",
+        "url": "https://ants.gouv.fr/vendre-ou-donner-mon-vehicule"
+      },
+      {
+        "label": "Histovec, historique officiel d'un véhicule",
+        "url": "https://histovec.interieur.gouv.fr/"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "expertise-voiture-a-domicile",
+    "image": "accueil",
+    "nav": "Vérification à domicile",
+    "title": "Que vérifie le technicien à votre adresse ? | LUNICAR",
+    "description": "Check-list de la vérification LUNICAR à votre adresse : zones contrôlées, durée, documents à préparer, ce qui change le prix définitif et ce qui ne joue pas.",
+    "h1": "Que vérifie le technicien LUNICAR <em>lors du rendez-vous</em> ?",
+    "lede": "Le rendez-vous de vérification transforme la fourchette indicative en prix définitif. Un technicien LUNICAR vient à votre adresse, sans frais, examine la voiture, ses documents et son historique, puis vous présente un prix que vous acceptez ou refusez librement. Voici ce qu'il regarde, zone par zone, et ce qui peut faire bouger le prix.",
+    "points": [
+      "Technicien à votre adresse, sans frais",
+      "Check-list complète, zone par zone",
+      "Prix définitif présenté après vérification",
+      "Refus possible sans frais, même le jour du rendez-vous"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Que vérifie le technicien lors du rendez-vous ?",
+        "html": "<p>Le technicien vérifie que la voiture correspond à la description qui a servi à établir la fourchette : identité, kilométrage, carrosserie, mécanique, pneus et freins, intérieur, documents et historique. Seuls les écarts non signalés peuvent faire bouger le prix.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Zone vérifiée</th><th>Ce qui est regardé</th><th>Ce qui peut faire bouger le prix</th></tr></thead><tbody><tr><td>Identité et documents</td><td>Numéro de série, carte grise au nom du vendeur, absence de gage</td><td>Carte grise non conforme, gage non signalé</td></tr><tr><td>Kilométrage</td><td>Compteur comparé au carnet et aux contrôles techniques</td><td>Écart avec le kilométrage déclaré</td></tr><tr><td>Carrosserie et vitrage</td><td>Rayures, bosses, traces de choc, corrosion, pare-brise</td><td>Dommage ou réparation non annoncés</td></tr><tr><td>Mécanique</td><td>Démarrage, bruits, voyants, fuites, boîte, essai routier</td><td>Défaut mécanique non signalé</td></tr><tr><td>Pneus et freins</td><td>Usure, témoins, disques et plaquettes</td><td>Pneus ou freins usés non mentionnés</td></tr><tr><td>Intérieur et équipements</td><td>Sièges, commandes, climatisation, électronique</td><td>Équipement en panne non signalé</td></tr><tr><td>Historique</td><td>Contrôle technique, rapport Histovec, carnet d'entretien</td><td>Sinistre ou contrôle défavorable non déclarés</td></tr></tbody></table></div><p>Les défaillances du contrôle technique sont décrites sur la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2878\" rel=\"noopener\" target=\"_blank\">contrôle technique d’une voiture</a>.</p>"
+      },
+      {
+        "h2": "Combien de temps dure la vérification à domicile ?",
+        "html": "<p>Comptez environ une heure sur place, parfois moins quand les documents sont prêts et que la voiture démarre sans difficulté. La durée dépend surtout de l'accès au véhicule, de la possibilité de faire un court essai routier et du nombre de points à éclaircir par rapport à votre description.</p><p>Le rendez-vous a lieu à l'adresse de votre choix, partout en France : domicile, lieu de travail ou parking. Prévoyez un endroit où la voiture peut être ouverte, démarrée et observée sous tous les angles. Si elle ne roule plus, signalez-le dès la demande : la vérification se fait à l'arrêt et l'enlèvement, si la vente est conclue, est pris en charge par LUNICAR.</p><ul class=\"ticks\"><li><strong>Voiture accessible</strong> : sortie d'un garage étroit ou d'un box si possible.</li><li><strong>Clés et documents</strong> : réunis à l'avance pour ne rien chercher pendant le rendez-vous.</li><li><strong>Titulaires présents</strong> : la ou les personnes dont le nom figure sur la carte grise, car chacune doit signer le certificat de cession.</li></ul>"
+      },
+      {
+        "h2": "Quels documents préparer pour le rendez-vous ?",
+        "html": "<p>Préparez la carte grise, une pièce d'identité, le dernier procès-verbal de contrôle technique s'il existe, le carnet d'entretien et les factures, les clés et un relevé d'identité bancaire. Ces documents permettent au technicien de confirmer l'identité du véhicule et de conclure la vente le jour même si vous acceptez le prix.</p><ul class=\"ticks\"><li><strong>Carte grise</strong> : au nom du vendeur ; elle sera barrée, datée et signée à la vente, avec la mention « vendu le ».</li><li><strong>Pièce d'identité</strong> : de chaque titulaire, car tous signent le certificat de cession.</li><li><strong>Certificat de situation administrative</strong> : gratuit sur <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>, de moins de 15 jours au moment de la vente.</li><li><strong>Contrôle technique</strong> : non exigé pour vendre à un professionnel ; voir <a href=\"/rachat-voiture-sans-controle-technique\">vendre sans contrôle technique</a>.</li><li><strong>Entretien</strong> : carnet et factures.</li><li><strong>RIB</strong> : pour recevoir le virement instantané si la vente est conclue.</li></ul><p>La liste officielle des documents figure sur la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> de Service-public.gouv.fr.</p>"
+      },
+      {
+        "h2": "Qu'est-ce qui ne change pas le prix ?",
+        "html": "<p>Tout ce que vous avez déjà signalé ne change pas le prix : l'âge de la voiture, son kilométrage déclaré, sa couleur, les rayures et les défauts annoncés, un contrôle technique expiré que vous avez mentionné. La fourchette a été calculée avec ces éléments ; les retrouver le jour du rendez-vous la confirme au lieu de la remettre en cause.</p><ul class=\"ticks\"><li><strong>Usure normale</strong> : sièges marqués, jantes frottées, petites rayures d'usage.</li><li><strong>Propreté</strong> : une voiture non lavée n'est pas dévalorisée ; un nettoyage n'ajoute rien non plus.</li><li><strong>Défauts annoncés</strong> : panne, voyant, bosse ou pneu usé décrits dans votre demande.</li><li><strong>Caractéristiques connues</strong> : motorisation, finition, année, couleur, nombre de propriétaires déjà indiqués.</li><li><strong>Options absentes</strong> : aucune pénalité pour une option que vous n'avez pas déclarée.</li></ul><p>Une description complète est donc votre meilleure protection : plus elle est précise, plus la fourchette est proche du prix définitif. Les motifs d'écart sont détaillés sur la page <a href=\"/fourchette-et-prix-definitif\">de la fourchette indicative au prix définitif</a>.</p>"
+      },
+      {
+        "h2": "Pourquoi le prix définitif peut-il différer de la fourchette ?",
+        "html": "<p>Le prix définitif diffère de la fourchette lorsque la vérification révèle un écart avec votre description : kilométrage plus élevé, défaut mécanique, dommage de carrosserie, pneus ou freins à remplacer, historique non déclaré, documents incomplets. La fourchette repose sur vos déclarations ; le technicien les confirme ou constate un écart, qu'il vous explique poste par poste.</p><p>À l'inverse, si l'état réel correspond à votre description, le prix définitif se situe dans la fourchette annoncée. Un écart n'est pas une sanction : il correspond au coût que LUNICAR devra engager pour remettre la voiture en état avant de la revendre, principalement à des professionnels. Chaque poste est chiffré et expliqué avant que vous ne décidiez.</p><p class=\"note\">Une fourchette n'est pas un prix ferme : c'est un intervalle fondé sur vos informations, affiné après vérification. L'étude se fait sans promesse de rachat : si aucune offre n'est possible après le rendez-vous, vous en êtes informé clairement, sans frais.</p>"
+      },
+      {
+        "h2": "Que se passe-t-il après la vérification ?",
+        "html": "<p>Après la vérification, le technicien vous présente le prix définitif et vous décidez librement : si vous acceptez, le certificat de cession est rempli ensemble, le paiement part par virement instantané et l'enlèvement est pris en charge ; si vous refusez, vous gardez votre voiture sans rien devoir.</p><ul class=\"ticks\"><li><strong>Prix définitif</strong> : expliqué poste par poste, à comparer avec la fourchette initiale.</li><li><strong>Documents de cession</strong> : <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> en deux exemplaires, carte grise barrée, puis déclaration sur le site de l'<a href=\"https://ants.gouv.fr/vendre-ou-donner-mon-vehicule\" rel=\"noopener\" target=\"_blank\">ANTS</a> dans les 15 jours.</li><li><strong>Paiement</strong> : virement instantané vers le compte du vendeur, détaillé sur la page <a href=\"/virement-instantane-vente-voiture\">paiement par virement instantané</a>.</li><li><strong>Enlèvement</strong> : offert si la vente est conclue, y compris pour un véhicule qui ne roule plus.</li><li><strong>Refus</strong> : possible le jour même, sans frais ni justification.</li></ul><p>Le parcours complet, de la demande au virement, est décrit sur la page <a href=\"/comment-ca-marche\">comment ça marche</a> ; les situations particulières sur le <a href=\"/vendre-sa-voiture-guide-complet\">guide complet pour vendre sa voiture</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la vérification à domicile",
+    "faq": [
+      {
+        "question": "Le technicien vient-il vraiment à mon adresse ?",
+        "answer": "Oui, partout en France, sans frais, à l'adresse de votre choix : domicile, lieu de travail ou parking. Le rendez-vous est fixé selon vos disponibilités après la communication de la fourchette indicative."
+      },
+      {
+        "question": "Dois-je nettoyer ou réparer la voiture avant le rendez-vous ?",
+        "answer": "Non. La propreté ne change pas le prix, et les réparations engagées juste avant la vente sont rarement rentables. Signalez les défauts plutôt que de les corriger : un défaut annoncé est déjà intégré dans la fourchette."
+      },
+      {
+        "question": "Le technicien fait-il un essai routier ?",
+        "answer": "Oui, un court essai lorsque la voiture roule et que les conditions le permettent, pour vérifier le moteur, la boîte, les freins et la direction. Une voiture qui ne roule plus est vérifiée à l'arrêt."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour le rendez-vous ?",
+        "answer": "Non. Le contrôle technique n'est pas exigé pour vendre à un professionnel, selon Service-public.gouv.fr. S'il existe, le procès-verbal aide à confirmer l'état déclaré."
+      },
+      {
+        "question": "Que se passe-t-il si la voiture ne correspond pas à ma description ?",
+        "answer": "Le technicien vous explique l'écart constaté et son effet sur le prix définitif, poste par poste. Vous restez libre d'accepter ou de refuser, sans frais."
+      },
+      {
+        "question": "Puis-je refuser le prix définitif le jour du rendez-vous ?",
+        "answer": "Oui, sans frais ni justification. Le rendez-vous et la vérification ne vous engagent à rien : si le prix ne vous convient pas, vous gardez votre voiture."
+      },
+      {
+        "question": "Combien de temps dure le rendez-vous ?",
+        "answer": "Environ une heure en général, selon l'accès à la voiture, la possibilité de faire un essai routier et le nombre de points à vérifier par rapport à votre description."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Contrôle technique d'une voiture, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2878"
+      },
+      {
+        "label": "Certificat de cession d'un véhicule d'occasion (Cerfa 15776), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R20300"
+      },
+      {
+        "label": "Vendre ou donner mon véhicule, ANTS",
+        "url": "https://ants.gouv.fr/vendre-ou-donner-mon-vehicule"
+      },
+      {
+        "label": "Histovec, historique officiel d'un véhicule",
+        "url": "https://histovec.interieur.gouv.fr/"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "fourchette-et-prix-definitif",
+    "image": "accueil",
+    "nav": "Fourchette et prix",
+    "title": "Fourchette indicative et prix définitif | LUNICAR",
+    "description": "Comment LUNICAR passe d'une fourchette indicative à un prix définitif : six motifs de baisse, ce qui ne joue pas, engagement si vos informations sont exactes.",
+    "h1": "De la fourchette indicative au prix définitif : <em>comment LUNICAR fixe son prix</em>",
+    "lede": "La fourchette indicative est calculée à partir de votre description ; le prix définitif est présenté après vérification par un technicien, à votre adresse. Entre les deux, seuls six motifs peuvent faire baisser le prix, tous liés à un écart avec ce que vous avez déclaré. Vous restez libre de refuser, sans frais.",
+    "points": [
+      "Fourchette fondée sur votre description",
+      "Six motifs de baisse, tous expliqués",
+      "Prix dans la fourchette si l'état est conforme",
+      "Refus possible sans frais"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Comment LUNICAR passe-t-il d'une fourchette indicative à un prix définitif ?",
+        "html": "<p>LUNICAR établit d'abord une fourchette indicative à partir de votre description, communiquée rapidement par un conseiller, puis fixe le prix définitif après vérification de la voiture par un technicien, à votre adresse. Si l'état réel correspond à votre description, le prix définitif se situe dans la fourchette ; s'il s'en écarte, chaque motif vous est expliqué.</p><p>La fourchette repose sur trois familles d'informations : le véhicule (marque, modèle, motorisation, année, finition), son usage (kilométrage, nombre de propriétaires, entretien) et son état déclaré (carrosserie, mécanique, contrôle technique, pneus). Elle tient aussi compte de ce que LUNICAR peut en obtenir à la revente, principalement auprès de professionnels, après remise en état éventuelle.</p><p>Une fourchette n'est pas une offre ferme : c'est un intervalle qui engage LUNICAR à condition que les informations soient exactes. Le détail du rendez-vous est décrit sur la page <a href=\"/expertise-voiture-a-domicile\">que vérifie le technicien</a>, et les huit étapes sur <a href=\"/comment-ca-marche\">comment ça marche</a>.</p>"
+      },
+      {
+        "h2": "Qu'est-ce qui peut faire baisser le prix définitif ?",
+        "html": "<p>Six motifs peuvent faire baisser le prix par rapport à la fourchette : écart de kilométrage, défaut mécanique non signalé, carrosserie non annoncée, contrôle technique ou documents différents de ce qui a été indiqué, pneus ou freins à remplacer, historique non déclaré. Tous traduisent un écart entre votre description et l'état constaté.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Motif</th><th>Exemple</th><th>Effet sur le prix</th></tr></thead><tbody><tr><td>Écart de kilométrage</td><td>148 000 km pour 120 000 km déclarés</td><td>Baisse proportionnée à l'écart</td></tr><tr><td>Défaut mécanique non signalé</td><td>Voyant moteur, embrayage qui patine, fuite d'huile</td><td>Coût de la réparation déduit</td></tr><tr><td>Carrosserie</td><td>Aile enfoncée ou portière repeinte non annoncées</td><td>Coût de remise en état déduit</td></tr><tr><td>Contrôle technique et documents</td><td>Contre-visite non signalée, carte grise pas au nom du vendeur</td><td>Réparations à prévoir ou vente reportée</td></tr><tr><td>Pneus et freins</td><td>Pneus sous le témoin d'usure, disques à remplacer</td><td>Coût du remplacement déduit</td></tr><tr><td>Historique</td><td>Sinistre ou défaillance critique visibles sur Histovec</td><td>Baisse, parfois absence d'offre</td></tr></tbody></table></div><p>Le technicien chiffre chaque poste et l'explique avant toute décision. Le rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a>, gratuit, permet de vérifier l'historique.</p>"
+      },
+      {
+        "h2": "Qu'est-ce qui ne fait pas bouger le prix ?",
+        "html": "<p>Ce que vous avez déclaré ne fait pas bouger le prix : les petits défauts annoncés, l'âge de la voiture, sa couleur, son kilométrage exact, un contrôle technique expiré que vous avez mentionné, une panne décrite dans votre demande. Ces éléments sont déjà intégrés dans la fourchette ; les retrouver lors de la vérification la confirme au lieu de la remettre en cause.</p><ul class=\"ticks\"><li><strong>Défauts annoncés</strong> : rayure, bosse, voyant ou bruit décrits dès la demande.</li><li><strong>Âge et kilométrage déclarés</strong> : voir <a href=\"/reprise-voiture-haut-kilometrage\">reprise d'une voiture à fort kilométrage</a>.</li><li><strong>Couleur, finition, motorisation</strong> : connues au moment de l'estimation.</li><li><strong>Propreté</strong> : ni bonus pour un lavage, ni décote pour une voiture sale.</li><li><strong>Usure normale</strong> : sièges marqués, jantes frottées, commandes patinées.</li><li><strong>Contrôle technique absent</strong> : non exigé pour vendre à un professionnel ; voir <a href=\"/rachat-voiture-sans-controle-technique\">vendre sans contrôle technique</a>.</li></ul><p>Décrire un défaut ne vous coûte rien de plus que ce qu'il coûte réellement ; le taire expose à un écart le jour du rendez-vous.</p>"
+      },
+      {
+        "h2": "Quel est l'engagement de LUNICAR si vos informations sont exactes ?",
+        "html": "<p>Si vos informations sont exactes, le prix définitif se situe dans la fourchette indicative qui vous a été communiquée. C'est l'engagement de LUNICAR : la fourchette n'est pas un argument pour obtenir le rendez-vous, mais un intervalle fondé sur votre description, que la vérification vient confirmer.</p><p>Cet engagement a une contrepartie : il suppose une description loyale. Le technicien compare point par point ce que vous avez déclaré et ce qu'il constate ; seuls les écarts font sortir de la fourchette. Pour une vente entre particuliers, le vendeur reste responsable des vices cachés selon les articles 1641 et suivants du <a href=\"https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006070721\" rel=\"noopener\" target=\"_blank\">Code civil</a>. Avec un professionnel qui vérifie lui-même la voiture, c'est la vérification qui joue ce rôle, avant la vente.</p><ul class=\"ticks\"><li><strong>Fourchette communiquée rapidement</strong> : après votre description en ligne et l'appel d'un conseiller.</li><li><strong>Prix définitif après vérification</strong> : expliqué poste par poste, à votre adresse.</li><li><strong>Aucune promesse de rachat</strong> : l'étude peut conclure qu'aucune offre n'est possible ; vous en êtes informé sans frais.</li></ul>"
+      },
+      {
+        "h2": "Pouvez-vous refuser le prix définitif ?",
+        "html": "<p>Oui, librement et sans frais, même le jour du rendez-vous. Le rendez-vous, la vérification et la présentation du prix définitif ne vous engagent à rien : si le prix ne vous convient pas, vous gardez votre voiture et la demande s'arrête là, sans frais de dossier.</p><p>Ce droit de refus est ce qui rend la fourchette utile : vous pouvez l'utiliser comme point de comparaison face à une reprise en concession, une annonce entre particuliers ou une plateforme de rachat. Le <a href=\"/comparatif-reprise-auto\">comparatif des façons de vendre</a> détaille les avantages et les limites de chaque voie.</p><p>Si vous acceptez, la vente est conclue le jour même : le <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession</a> est rempli ensemble, le paiement se fait par virement instantané et l'enlèvement est offert. Si vous hésitez, prenez le temps de la réflexion ; la fourchette et le prix définitif restent fondés sur l'état de la voiture au jour de la vérification.</p>"
+      },
+      {
+        "h2": "Comment obtenir une fourchette la plus proche possible du prix définitif ?",
+        "html": "<p>Décrivez la voiture comme le technicien la verra : kilométrage lu sur le compteur, défauts visibles, voyants allumés, bruits, état des pneus, date et résultat du dernier contrôle technique, entretien réalisé. Plus la description est précise, plus la fourchette est étroite et plus le prix définitif a de chances de s'y trouver.</p><ul class=\"ticks\"><li><strong>Kilométrage</strong> : relevez-le au moment de la demande, pas de mémoire.</li><li><strong>Procès-verbal de contrôle technique</strong> : il liste les défaillances mineures, majeures ou critiques, décrites sur la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2878\" rel=\"noopener\" target=\"_blank\">contrôle technique</a> de Service-public.gouv.fr.</li><li><strong>Histovec</strong> : le rapport gratuit retrace contrôles techniques, kilométrages relevés et sinistres.</li><li><strong>Photos</strong> : quatre angles de la carrosserie, le compteur allumé, l'intérieur, les défauts.</li><li><strong>Documents</strong> : carte grise, carnet d'entretien et factures prêts pour le rendez-vous, comme indiqué sur la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a>.</li></ul><p>Pour la vue d'ensemble, de la préparation à la déclaration de cession, consultez le <a href=\"/vendre-sa-voiture-guide-complet\">guide complet pour vendre sa voiture</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la fourchette et le prix définitif",
+    "faq": [
+      {
+        "question": "La fourchette indicative est-elle un prix ferme ?",
+        "answer": "Non. C'est un intervalle calculé à partir de votre description. Le prix définitif est présenté après vérification par un technicien, à votre adresse. Si l'état réel est conforme à votre description, il se situe dans la fourchette."
+      },
+      {
+        "question": "Qu'est-ce qui peut faire baisser le prix ?",
+        "answer": "Six motifs, tous liés à un écart avec votre description : kilométrage, défaut mécanique non signalé, carrosserie, contrôle technique ou documents, pneus et freins, historique non déclaré."
+      },
+      {
+        "question": "Un défaut que j'ai signalé peut-il faire baisser le prix ?",
+        "answer": "Non. Un défaut annoncé est déjà intégré dans la fourchette. Seuls les écarts entre votre description et l'état constaté font sortir de la fourchette."
+      },
+      {
+        "question": "Le prix définitif peut-il être en haut de la fourchette ?",
+        "answer": "Oui. Le haut de la fourchette correspond à une voiture conforme à sa description, entretenue, avec ses documents et son historique en ordre. Le technicien vous explique où se situe le prix et pourquoi."
+      },
+      {
+        "question": "Puis-je refuser le prix définitif sans frais ?",
+        "answer": "Oui, même le jour du rendez-vous, sans justification. Le rendez-vous et la vérification sont sans frais et sans engagement."
+      },
+      {
+        "question": "LUNICAR fait-il toujours une offre ?",
+        "answer": "Non. L'étude est faite sans promesse de rachat : si la voiture ne correspond pas aux critères ou si la vérification révèle un problème majeur, une offre n'est pas toujours possible. Vous en êtes informé clairement, sans frais."
+      },
+      {
+        "question": "Comment est calculée la fourchette ?",
+        "answer": "À partir du véhicule (modèle, motorisation, année), de son usage (kilométrage, entretien, propriétaires) et de son état déclaré, rapportés à ce que LUNICAR peut en obtenir à la revente, principalement auprès de professionnels."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Contrôle technique d'une voiture, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2878"
+      },
+      {
+        "label": "Certificat de cession d'un véhicule d'occasion (Cerfa 15776), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R20300"
+      },
+      {
+        "label": "Code civil, articles 1641 et suivants sur les vices cachés, Légifrance",
+        "url": "https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006070721"
+      },
+      {
+        "label": "Histovec, historique officiel d'un véhicule",
+        "url": "https://histovec.interieur.gouv.fr/"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "virement-instantane-vente-voiture",
+    "image": "accueil",
+    "nav": "Paiement par virement",
+    "title": "Vente de voiture : le virement instantané | LUNICAR",
+    "description": "Comment un professionnel paie une voiture : virement instantané, délais, plafonds fixés par la banque, preuve de paiement, et pourquoi ni espèces ni chèque.",
+    "h1": "Vendre sa voiture à un professionnel : <em>le paiement par virement instantané</em>",
+    "lede": "Si la vente est conclue, LUNICAR vous paie par virement instantané, jamais en espèces ni par chèque. Ce guide explique ce qu'est le virement instantané, ce que prévoit la réglementation européenne, les délais et les plafonds, la preuve à conserver et ce qu'il faut vérifier avant de remettre les clés et la carte grise.",
+    "points": [
+      "Virement instantané si la vente est conclue",
+      "Fonds visibles sur votre propre compte",
+      "Ni espèces ni chèque",
+      "Documents de cession préparés ensemble"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Comment est payée une voiture vendue à un professionnel ?",
+        "html": "<p>Une voiture vendue à LUNICAR est payée par virement bancaire instantané, émis le jour de la vente, une fois le prix définitif accepté et les documents de cession signés. Vous constatez le crédit sur votre propre compte avant de remettre les clés et la carte grise ; aucun autre moyen de paiement n'est proposé.</p><p>Le virement instantané présente trois avantages pour un vendeur : le montant est crédité en quelques secondes, l'opération est irrévocable une fois exécutée, et la trace figure sur votre relevé bancaire. Vous n'avez ni espèces à transporter ni chèque à faire encaisser. Pour un professionnel, c'est aussi le moyen de paiement le plus simple à justifier en comptabilité.</p><p>Le paiement intervient à la conclusion de la vente, le jour du rendez-vous, sous réserve des conditions de votre banque pour la réception des virements instantanés. Le déroulement du rendez-vous est détaillé sur la page <a href=\"/expertise-voiture-a-domicile\">que vérifie le technicien lors du rendez-vous</a>.</p>"
+      },
+      {
+        "h2": "Qu'est-ce que le virement instantané et que prévoit le règlement européen ?",
+        "html": "<p>Le virement instantané est un virement SEPA crédité sur le compte du bénéficiaire en moins de dix secondes, à toute heure et tous les jours de l'année, selon la Banque de France. Le règlement (UE) 2024/886 du 13 mars 2024 l'a généralisé dans la zone euro : depuis le 9 janvier 2025, les banques doivent permettre de recevoir des virements instantanés au même tarif que les virements classiques ; depuis le 9 octobre 2025, celles qui proposent des virements classiques doivent aussi permettre d'en émettre.</p><ul class=\"ticks\"><li><strong>Réception</strong> : obligatoire depuis le 9 janvier 2025 pour les banques de la zone euro.</li><li><strong>Émission</strong> : obligatoire depuis le 9 octobre 2025, y compris en agence.</li><li><strong>Tarif</strong> : identique à celui du virement classique, le plus souvent sans frais en ligne.</li><li><strong>Vérification du bénéficiaire</strong> : depuis le 9 octobre 2025, la concordance entre l'IBAN et le nom du titulaire est contrôlée avant l'envoi.</li></ul><p>Sources : <a href=\"https://www.banque-france.fr/fr/a-votre-service/particuliers/mieux-connaitre-moyens-paiement/le-virement-sepa-instantane\" rel=\"noopener\" target=\"_blank\">le virement SEPA instantané</a> (Banque de France) et <a href=\"https://finance.ec.europa.eu/publications/clarification-requirements-instant-payments-regulation_en\" rel=\"noopener\" target=\"_blank\">Instant Payments Regulation</a> (Commission européenne).</p>"
+      },
+      {
+        "h2": "Quels délais et quels plafonds pour un virement instantané ?",
+        "html": "<p>Le délai est de moins de dix secondes entre l'émission et le crédit sur votre compte, selon la Banque de France. Le plafond est fixé par la banque du payeur : depuis le 9 octobre 2025, chaque établissement définit un montant maximal d'émission adapté à son client, modifiable à sa demande. C'est donc l'acheteur professionnel qui s'assure que son plafond couvre le prix de la voiture.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Point</th><th>Ce que prévoit la réglementation</th><th>Ce que cela change pour vous</th></tr></thead><tbody><tr><td>Délai</td><td>Crédit en moins de dix secondes</td><td>Fonds visibles pendant le rendez-vous</td></tr><tr><td>Disponibilité</td><td>À toute heure, tous les jours</td><td>Pas de retard le soir ou le week-end</td></tr><tr><td>Plafond</td><td>Fixé par la banque du payeur, modifiable</td><td>Rien à faire côté vendeur</td></tr><tr><td>Frais</td><td>Pas plus élevés qu'un virement classique</td><td>Le plus souvent sans frais</td></tr><tr><td>Irrévocabilité</td><td>Ordre exécuté irrévocable</td><td>Le crédit reçu ne peut pas être annulé</td></tr></tbody></table></div><p>Côté vendeur, donnez le RIB d'un compte courant ; les comptes d'épargne ne sont pas concernés. Détails dans la <a href=\"https://www.banque-france.fr/fr/foire-aux-questions-le-virement-sepa-instantane\" rel=\"noopener\" target=\"_blank\">foire aux questions de la Banque de France</a>.</p>"
+      },
+      {
+        "h2": "Quelle preuve de paiement conserver ?",
+        "html": "<p>La seule preuve fiable est le crédit visible sur votre propre compte : relevé ou notification de votre banque, consulté depuis votre application ou votre espace en ligne, jamais depuis l'écran de l'acheteur. Une capture d'écran, un e-mail de confirmation ou un ordre de virement « en cours » n'est pas une preuve de paiement.</p><ul class=\"ticks\"><li><strong>Vérifiez sur votre appareil</strong> : ouvrez vous-même votre application bancaire ; n'acceptez pas une démonstration sur le téléphone de l'acheteur.</li><li><strong>Contrôlez le montant et le libellé</strong> : ils doivent correspondre au prix définitif accepté et au nom de LUNICAR.</li><li><strong>Conservez le certificat de cession</strong> : l'exemplaire du vendeur du <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">Cerfa 15776</a> mentionne le prix et la date de la vente.</li><li><strong>Gardez le relevé</strong> : utile si votre banque vous interroge sur l'origine des fonds.</li></ul><p>Avec un virement instantané, l'ordre exécuté est irrévocable : une fois le crédit constaté, le payeur ne peut pas le rappeler, à la différence d'un chèque qui peut revenir impayé après la remise des clés.</p>"
+      },
+      {
+        "h2": "Pourquoi ni espèces ni chèque pour une voiture vendue à un professionnel ?",
+        "html": "<p>Parce que la loi plafonne les espèces et que le chèque ne protège pas le vendeur. Selon l'article L112-6 du Code monétaire et financier et l'article D112-3, le paiement en espèces est limité à 1 000 € lorsque le débiteur a son domicile fiscal en France ou agit pour une activité professionnelle ; un professionnel ne peut donc pas régler une voiture en espèces au-delà de ce montant. Le chèque, lui, peut être sans provision ou contrefait.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Moyen de paiement</th><th>Cadre</th><th>Risque pour le vendeur</th></tr></thead><tbody><tr><td>Espèces</td><td>Plafond légal de 1 000 € ; amende jusqu'à 5 % des sommes, partagée entre les deux parties</td><td>Illégal au-delà du plafond</td></tr><tr><td>Chèque de banque</td><td>Aucun plafond</td><td>Contrefaçon possible, délai d'encaissement</td></tr><tr><td>Chèque classique</td><td>Aucun plafond</td><td>Sans provision, opposition, délai d'encaissement</td></tr><tr><td>Virement classique</td><td>Crédit différé</td><td>Attente avant de voir les fonds</td></tr><tr><td>Virement instantané</td><td>Crédit en moins de dix secondes, irrévocable</td><td>Faible, une fois le crédit vérifié</td></tr></tbody></table></div><p>Sources : <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F10999\" rel=\"noopener\" target=\"_blank\">paiement en espèces</a> (Service-public.gouv.fr), <a href=\"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051752373\" rel=\"noopener\" target=\"_blank\">article L112-6</a> et <a href=\"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036824549\" rel=\"noopener\" target=\"_blank\">article D112-3</a> du Code monétaire et financier (Légifrance).</p>"
+      },
+      {
+        "h2": "Que faire avant de remettre les clés et la carte grise ?",
+        "html": "<p>Avant de remettre les clés, vérifiez trois choses : le prix définitif accepté est bien celui du certificat de cession, le crédit du virement est visible sur votre propre compte, et les documents de cession sont signés en deux exemplaires. Alors seulement, la carte grise barrée et les clés changent de mains.</p><ul class=\"ticks\"><li><strong>Montant</strong> : identique sur le certificat de cession et sur le virement reçu.</li><li><strong>Crédit constaté</strong> : sur votre application bancaire, pas sur l'écran de l'acheteur.</li><li><strong>Carte grise</strong> : barrée, mention « vendu le » avec date, heure et signature.</li><li><strong>Certificat de cession</strong> : un exemplaire conservé, l'autre remis à l'acheteur.</li><li><strong>Déclaration de cession</strong> : sur le site de l'<a href=\"https://ants.gouv.fr/vendre-ou-donner-mon-vehicule\" rel=\"noopener\" target=\"_blank\">ANTS</a> dans les 15 jours suivant la signature.</li><li><strong>Assureur</strong> : à informer après la vente.</li></ul><p>Ces règles figurent sur la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> de Service-public.gouv.fr. Avec LUNICAR, le certificat de cession est rempli ensemble lors du rendez-vous et l'enlèvement est offert si la vente est conclue. Suite dans le <a href=\"/vendre-sa-voiture-guide-complet\">guide complet</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur le paiement par virement instantané",
+    "faq": [
+      {
+        "question": "Comment LUNICAR paie-t-il ma voiture ?",
+        "answer": "Par virement bancaire instantané, émis le jour de la vente une fois le prix définitif accepté et le certificat de cession signé. Vous vérifiez le crédit sur votre propre compte avant de remettre les clés et la carte grise."
+      },
+      {
+        "question": "Le virement instantané est-il disponible dans toutes les banques ?",
+        "answer": "Pour les comptes courants, oui. Selon la Banque de France, les banques de la zone euro doivent permettre de recevoir des virements instantanés depuis le 9 janvier 2025 et d'en émettre depuis le 9 octobre 2025, en application du règlement européen du 13 mars 2024. Les comptes d'épargne ne sont pas concernés."
+      },
+      {
+        "question": "Y a-t-il un plafond pour recevoir un virement instantané ?",
+        "answer": "Le plafond est fixé par la banque du payeur pour l'émission, et doit pouvoir être adapté à la demande de son client. C'est donc l'acheteur professionnel qui s'en assure. Pour votre propre compte, vérifiez les conditions de votre banque."
+      },
+      {
+        "question": "Un virement instantané peut-il être annulé ?",
+        "answer": "Non, selon la Banque de France : les ordres exécutés sont irrévocables et le crédit sur le compte du bénéficiaire est irréversible. C'est ce qui le distingue du chèque, qui peut revenir impayé."
+      },
+      {
+        "question": "Pourquoi LUNICAR ne paie-t-il pas en espèces ?",
+        "answer": "Parce que l'article L112-6 du Code monétaire et financier et l'article D112-3 limitent à 1 000 € le paiement en espèces lorsque le débiteur agit pour les besoins d'une activité professionnelle. Le prix d'une voiture dépasse presque toujours ce seuil."
+      },
+      {
+        "question": "Un chèque de banque est-il plus sûr qu'un virement ?",
+        "answer": "Non. Un chèque de banque peut être contrefait et son encaissement prend plusieurs jours, alors qu'un virement instantané est crédité en moins de dix secondes et ne peut pas être rappelé par le payeur."
+      },
+      {
+        "question": "Que faire si le virement n'apparaît pas tout de suite ?",
+        "answer": "Ne remettez ni les clés ni la carte grise tant que le crédit n'est pas visible sur votre compte. Vérifiez avec l'acheteur que l'ordre a bien été exécuté et, si besoin, contactez votre banque."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Le virement SEPA instantané, Banque de France",
+        "url": "https://www.banque-france.fr/fr/a-votre-service/particuliers/mieux-connaitre-moyens-paiement/le-virement-sepa-instantane"
+      },
+      {
+        "label": "Foire aux questions sur le virement SEPA instantané, Banque de France",
+        "url": "https://www.banque-france.fr/fr/foire-aux-questions-le-virement-sepa-instantane"
+      },
+      {
+        "label": "Clarification of requirements of the Instant Payments Regulation (UE) 2024/886, Commission européenne",
+        "url": "https://finance.ec.europa.eu/publications/clarification-requirements-instant-payments-regulation_en"
+      },
+      {
+        "label": "Paiement en espèces, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10999"
+      },
+      {
+        "label": "Article L112-6 du Code monétaire et financier, Légifrance",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051752373"
+      },
+      {
+        "label": "Article D112-3 du Code monétaire et financier, Légifrance",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036824549"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-voiture-sans-achat",
+    "image": "accueil",
+    "nav": "Reprise sans achat",
+    "title": "Faire reprendre sa voiture sans en acheter une | LUNICAR",
+    "description": "Reprise liée à un achat ou vente directe à un professionnel : vendre sa voiture sans en racheter une, ce que vaut une reprise sèche, comment LUNICAR procède.",
+    "h1": "Faire reprendre sa voiture sans en acheter une autre, <em>c'est possible</em>",
+    "lede": "On entend souvent qu'une reprise suppose l'achat d'une nouvelle voiture. C'est vrai en concession, où la reprise accompagne une vente, mais ce n'est pas une règle. Vendre sa voiture à un professionnel du rachat, sans rien acheter en retour, est une vente ordinaire. Voici la différence entre les deux, et comment LUNICAR procède.",
+    "points": [
+      "Aucun achat demandé en retour",
+      "Fourchette indicative communiquée rapidement",
+      "Technicien à votre adresse, sans frais",
+      "Enlèvement offert et virement instantané si la vente est conclue"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Peut-on faire reprendre sa voiture sans en acheter une autre ?",
+        "html": "<p>Oui. Vendre sa voiture à un professionnel de l'automobile est une vente comme une autre : rien n'oblige à acheter un autre véhicule en échange. Ce que l'on appelle « reprise » en concession est en réalité un geste commercial adossé à un achat ; en dehors de cet achat, le concessionnaire n'a aucune obligation de reprendre votre voiture, et vous n'avez aucune obligation de passer par lui.</p><p>Deux voies existent donc. La reprise liée à un achat : votre ancienne voiture est déduite du prix de la nouvelle. La vente directe à un professionnel du rachat, comme LUNICAR : vous vendez, vous êtes payé, et vous décidez ensuite librement de racheter, de louer ou de vous passer de voiture. Les documents listés par Service-public.gouv.fr sont les mêmes dans les deux cas ; seule change la contrepartie, remise sur un achat ou virement sur votre compte.</p>"
+      },
+      {
+        "h2": "Pourquoi la reprise en concession est-elle souvent conditionnée à un achat ?",
+        "html": "<p>Parce que, pour le concessionnaire, la reprise est un outil de vente, pas une activité en soi. Le montant proposé pour votre ancienne voiture est généralement présenté avec le prix de la nouvelle, et il arrive qu'une prime de reprise soit explicitement réservée à l'achat d'un modèle du réseau. Sans achat, le concessionnaire n'a pas de raison commerciale de reprendre votre voiture, surtout si elle est ancienne, a beaucoup roulé ou n'est pas de sa marque.</p><ul class=\"ticks\"><li><strong>Voiture récente et de la marque</strong> : une reprise sans achat reste parfois possible, car le concessionnaire peut la revendre lui-même.</li><li><strong>Voiture ancienne ou à fort kilométrage</strong> : souvent refusée ou proposée à un montant symbolique, car destinée au circuit des professionnels.</li><li><strong>Voiture sans contrôle technique ou en panne</strong> : rarement reprise en concession.</li></ul><p>Ces pratiques varient d'un point de vente à l'autre : demandez toujours une offre de reprise écrite, distincte du prix de la voiture neuve.</p>"
+      },
+      {
+        "h2": "Que vaut une reprise « sèche » ?",
+        "html": "<p>Ce qui vous reste réellement, une fois tout décompté. Dans une reprise liée à un achat, le montant annoncé mélange souvent la valeur de votre voiture et une remise commerciale sur la nouvelle : difficile de savoir ce que vaut vraiment votre véhicule. Dans une vente directe, le prix est net, versé sur votre compte, et comparable d'un acheteur à l'autre.</p><ul class=\"ticks\"><li><strong>Comparez à offre égale</strong> : le prix de la voiture neuve sans reprise, puis avec reprise, pour isoler la valeur réellement attribuée à votre voiture.</li><li><strong>Vérifiez les conditions</strong> : contrôle technique demandé ou non, réparations exigées, frais déduits.</li><li><strong>Regardez le moment du paiement</strong> : déduction sur une livraison future ou virement à la cession.</li><li><strong>Gardez votre liberté</strong> : une vente directe ne vous engage pas sur l'achat suivant.</li></ul><p>Pour une voiture ancienne ou à fort kilométrage, la vente directe à un professionnel du rachat est souvent la seule voie ouverte, et la plus lisible.</p>"
+      },
+      {
+        "h2": "Reprise liée à un achat ou vente directe : quelles différences ?",
+        "html": "<p>La contrepartie, les conditions d'acceptation et la liberté de choix. Le tableau ci-dessous résume ce qui distingue les deux voies, du point de vue du vendeur.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Critère</th><th>Reprise en concession liée à un achat</th><th>Vente directe à LUNICAR</th></tr></thead><tbody><tr><td>Condition</td><td>Achat d'un véhicule, souvent du réseau</td><td>Aucune</td></tr><tr><td>Montant</td><td>Mêlé à la remise sur la nouvelle voiture</td><td>Fourchette indicative, puis prix définitif après vérification</td></tr><tr><td>Contrôle technique</td><td>Selon la politique du point de vente</td><td>Non exigé pour une vente à un professionnel</td></tr><tr><td>Voiture ancienne, fort kilométrage, en panne</td><td>Souvent refusée ou faiblement valorisée</td><td>Étudiée, sans promesse de rachat</td></tr><tr><td>Lieu</td><td>En concession</td><td>Technicien à votre adresse, sans frais</td></tr><tr><td>Paiement</td><td>Déduit du prix de la nouvelle voiture</td><td>Virement instantané si la vente est conclue</td></tr><tr><td>Enlèvement</td><td>Au moment de la livraison</td><td>Offert si la vente est conclue</td></tr></tbody></table></div><p>Vous pouvez aussi combiner les deux : vendre à LUNICAR, puis négocier votre prochaine voiture sans reprise, en comparant les prix nets.</p>"
+      },
+      {
+        "h2": "Quels documents pour vendre à un professionnel sans achat ?",
+        "html": "<p>Les documents de toute cession, listés par Service-public.gouv.fr. La carte grise barrée avec la mention « vendu le », la date, l'heure et votre signature ; le certificat de cession Cerfa 15776 rempli et signé en deux exemplaires le jour de la vente ; le certificat de situation administrative de moins de 15 jours, généré gratuitement sur Histovec par le titulaire de la carte grise. Le coupon détachable de la carte grise n'est pas à remplir en cas de vente à un professionnel de l'automobile.</p><ul class=\"ticks\"><li><strong>Contrôle technique</strong> : non exigé pour une vente à un garage ou à un négociant, même pour une voiture de plus de 4 ans.</li><li><strong>Déclaration de cession</strong> : sur le site de l'ANTS dans les 15 jours suivant la signature.</li><li><strong>Assurance</strong> : le contrat est suspendu le soir de la vente à minuit ; déclarez la vente à l'assureur par lettre recommandée.</li><li><strong>Pièce d'identité et relevé d'identité bancaire</strong> : pour la signature et le virement.</li></ul>"
+      },
+      {
+        "h2": "Comment LUNICAR procède pour une vente sans achat ?",
+        "html": "<p>En trois étapes, sans engagement. Vous décrivez votre voiture en ligne, plaque facultative. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Un technicien vient ensuite vérifier la voiture à votre adresse, sans frais, partout en France, et vous présente le prix définitif ; vous l'acceptez ou le refusez librement, même le jour du rendez-vous.</p><p>Si vous acceptez, le certificat de cession et la déclaration sur l'ANTS sont préparés avec vous, l'enlèvement est offert et le paiement se fait par virement instantané. LUNICAR revend principalement à des professionnels, ce qui lui permet d'étudier des voitures anciennes, à fort kilométrage ou sans contrôle technique, que la concession ne reprend pas. Aucun achat n'est demandé en retour, ni maintenant ni plus tard.</p><p>Voir aussi : <a href=\"/rachat-voiture-sans-controle-technique\">vendre sans contrôle technique</a> et <a href=\"/reprise-voiture-haut-kilometrage\">reprise d'une voiture à fort kilométrage</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la reprise sans achat",
+    "faq": [
+      {
+        "question": "Un concessionnaire est-il obligé de reprendre ma voiture ?",
+        "answer": "Non. La reprise est un geste commercial, généralement lié à l'achat d'un véhicule. Aucune règle n'impose à un concessionnaire de reprendre une voiture, avec ou sans achat."
+      },
+      {
+        "question": "Puis-je vendre ma voiture à LUNICAR et acheter ailleurs ensuite ?",
+        "answer": "Oui. La vente à LUNICAR n'est liée à aucun achat. Vous êtes payé par virement instantané si la vente est conclue, puis vous achetez, louez ou vous passez de voiture, comme vous voulez."
+      },
+      {
+        "question": "Une reprise sèche rapporte-t-elle moins qu'une reprise avec achat ?",
+        "answer": "Pas nécessairement. Le montant d'une reprise avec achat mêle souvent la valeur de la voiture et une remise sur la nouvelle. Comparez le prix net de la voiture neuve sans reprise, puis avec reprise, pour isoler ce que vaut réellement votre véhicule."
+      },
+      {
+        "question": "Ma voiture a plus de 200 000 km : une reprise est-elle possible ?",
+        "answer": "En concession, c'est rarement proposé. LUNICAR étudie les voitures anciennes ou à fort kilométrage, sans promesse de rachat : un conseiller vous communique une fourchette indicative, puis un technicien fixe le prix définitif après vérification."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre sans achat ?",
+        "answer": "Non pour une vente à un professionnel de l'automobile, selon Service-public.gouv.fr. Il n'est exigé que pour vendre une voiture de plus de 4 ans à un particulier."
+      },
+      {
+        "question": "Quels documents préparer ?",
+        "answer": "Carte grise originale, certificat de situation administrative de moins de 15 jours (Histovec), pièce d'identité et relevé d'identité bancaire. Le certificat de cession Cerfa 15776 est rempli avec vous le jour de la vente."
+      },
+      {
+        "question": "Que se passe-t-il si je refuse le prix définitif ?",
+        "answer": "Rien. Vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais. L'étude n'engage ni vous ni LUNICAR."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Peut-on vendre un véhicule d'occasion sans contrôle technique ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16540"
+      },
+      {
+        "label": "Certificat de situation administrative (non-gage et non-opposition), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1360"
+      },
+      {
+        "label": "Comment résilier son assurance en cas de vente de sa voiture ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2664"
+      },
+      {
+        "label": "Histovec, historique et situation administrative d'un véhicule",
+        "url": "https://histovec.interieur.gouv.fr/"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "vendre-voiture-gagee",
+    "image": "accueil",
+    "nav": "Voiture gagée",
+    "title": "Vendre une voiture gagée ou avec opposition | LUNICAR",
+    "description": "Gage lié à un crédit, opposition du Trésor public, véhicule volé ou saisi : ce qui bloque la vente, comment lever le blocage et ce que LUNICAR peut faire.",
+    "h1": "Vendre une voiture gagée ou sous opposition, <em>sans rester bloqué</em>",
+    "lede": "Un gage ou une opposition apparaît sur le certificat de situation administrative et change tout pour la vente. Le gage, lié à un crédit, n'empêche pas de vendre ; l'opposition, elle, bloque le changement de titulaire. Voici comment vérifier la situation de votre voiture, lever le blocage, et ce que LUNICAR peut prendre en charge.",
+    "points": [
+      "Gage de crédit : solde versé au prêteur, différence pour vous",
+      "Opposition : vente possible une fois l'opposition levée",
+      "Technicien à votre adresse, sans frais",
+      "Virement instantané si la vente est conclue"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Comment savoir si ma voiture est gagée ou sous opposition ?",
+        "html": "<p>Le certificat de situation administrative (CSA) vous le dit, gratuitement et immédiatement, sur Histovec. Ce document officiel « fait état de l'existence ou non d'un gage sur le véhicule ou d'une opposition au transfert du certificat d'immatriculation ». Il est obligatoire pour toute vente et doit dater de moins de 15 jours au moment de la cession.</p><p>Seul le titulaire de la carte grise peut le générer : il se connecte sur <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a> avec le numéro d'immatriculation et des informations figurant sur le certificat d'immatriculation. Le site produit en même temps un rapport d'historique qui retrace la date de première mise en circulation, les changements de propriétaire, les sinistres enregistrés, les contrôles techniques et le kilométrage relevé à chaque contrôle.</p><ul class=\"ticks\"><li><strong>Mention « gage »</strong> : un organisme de crédit a inscrit une sûreté sur la voiture.</li><li><strong>Mention « opposition »</strong> : une administration, un commissaire de justice ou la police bloque le changement de titulaire.</li><li><strong>Aucune mention</strong> : la vente peut se faire normalement.</li></ul>"
+      },
+      {
+        "h2": "Quelle différence entre un gage et une opposition ?",
+        "html": "<p>Le gage n'empêche pas la vente ; l'opposition la bloque. Service-public.gouv.fr est explicite : « la présence d'un gage n'empêche pas la vente du véhicule », alors qu'une opposition empêche la vente tant qu'elle n'est pas levée. Le gage est une sûreté prise par l'organisme qui a financé la voiture ; l'opposition est une mesure posée par une administration, un commissaire de justice ou une autorité judiciaire.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Mention sur le CSA</th><th>Qui l'a posée</th><th>Vente possible ?</th><th>Comment la lever</th></tr></thead><tbody><tr><td>Gage</td><td>Organisme de crédit</td><td>Oui, prêteur à rembourser</td><td>Solder le crédit</td></tr><tr><td>Opposition du Trésor public</td><td>Centre amendes</td><td>Non</td><td>Payer toutes les amendes</td></tr><tr><td>Opposition d'un commissaire de justice</td><td>Commissaire de justice</td><td>Non</td><td>Régler la somme réclamée</td></tr><tr><td>Opposition après sinistre grave</td><td>Véhicule gravement endommagé ou économiquement irréparable</td><td>Non</td><td>Nouvelle procédure autorisant la circulation</td></tr><tr><td>Opposition judiciaire (vol)</td><td>Fichier des véhicules signalés</td><td>Non</td><td>Levée automatique à la restitution</td></tr><tr><td>Opposition de police judiciaire</td><td>Délit avec confiscation</td><td>Non</td><td>Classement sans suite, non-lieu, relaxe</td></tr></tbody></table></div><p>Le détail figure sur la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F34107\" rel=\"noopener\" target=\"_blank\">faire lever le gage ou l'opposition sur un véhicule</a>.</p>"
+      },
+      {
+        "h2": "Comment lever un gage lié à un crédit ?",
+        "html": "<p>En remboursant intégralement le crédit : « vous devez avoir remboursé intégralement le crédit pour que l'organisme financier puisse mettre fin au gage ». Une fois la mainlevée enregistrée, un certificat de situation administrative sans mention de gage peut vous être délivré. Demandez d'abord à votre prêteur un décompte de remboursement anticipé : il indique le capital restant dû et les éventuelles indemnités.</p><p>Service-public.gouv.fr signale aussi que la société de financement « peut parfois vous autoriser à vendre le véhicule si le nouveau propriétaire s'engage à prendre en charge le solde du crédit ». C'est une possibilité, jamais un droit : tout dépend de l'accord écrit du prêteur.</p><p class=\"note\">Ne confondez pas gage et location. En LOA ou LLD, vous n'êtes pas propriétaire : racheter la voiture avant la fin du contrat suppose « d'avoir l'accord de votre prêteur », puis une nouvelle carte grise à votre nom dans le mois. La vente à un tiers n'est possible qu'après ce rachat.</p>"
+      },
+      {
+        "h2": "Comment lever une opposition : amendes, commissaire de justice, sinistre, vol ?",
+        "html": "<p>Chaque opposition se lève auprès de celui qui l'a posée. Une opposition du Trésor public vient d'une amende forfaitaire majorée, souvent parce que l'adresse de la carte grise n'était plus à jour ou qu'une amende n'a pas été payée dans les 4 mois : « la levée de l'OTCI ne pourra être faite que si toutes les amendes ont été payées ».</p><ul class=\"ticks\"><li><strong>Commissaire de justice</strong> : obtenir une levée de l'opposition, « en général en réglant le montant qu'il vous réclame ».</li><li><strong>Véhicule gravement endommagé ou économiquement irréparable</strong> : tant que la procédure classe la voiture dans l'une de ces catégories, la levée est impossible ; il faut une nouvelle procédure concluant que le véhicule peut circuler.</li><li><strong>Vol</strong> : l'inscription au fichier des objets et véhicules signalés est levée automatiquement dès que la voiture vous est restituée.</li><li><strong>Police judiciaire</strong> : levée en cas de classement sans suite, de non-lieu ou de relaxe.</li></ul><p>Une fois la levée enregistrée, générez un nouveau certificat de situation administrative sur Histovec : il prouve que la vente peut se faire.</p>"
+      },
+      {
+        "h2": "Que peut faire LUNICAR pour une voiture gagée ?",
+        "html": "<p>LUNICAR peut étudier une voiture gagée pour un crédit et, si la vente est conclue, verser le solde du crédit directement au prêteur, puis la différence sur votre compte par virement instantané. Vous n'avez pas à avancer la somme ni à attendre la mainlevée avant de nous contacter. Il vous faut simplement le décompte de remboursement anticipé fourni par votre organisme de crédit.</p><p>Concrètement : vous décrivez la voiture en ligne, un conseiller vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier le véhicule à votre adresse, sans frais. Le prix définitif est fixé après cette vérification ; vous l'acceptez ou le refusez librement. Si vous acceptez, le règlement du prêteur et le vôtre sont organisés le jour de la cession, et les documents sont préparés avec vous.</p><p>Si le capital restant dû dépasse le prix définitif, la vente reste possible à condition que vous régliez la différence au prêteur : ce cas est étudié avec vous avant le rendez-vous.</p>"
+      },
+      {
+        "h2": "Que ne peut pas faire LUNICAR ?",
+        "html": "<p>LUNICAR ne peut pas acheter une voiture sous opposition, ni lever une opposition à votre place. L'opposition bloque le changement de titulaire : aucun professionnel ne peut immatriculer la voiture à son nom tant qu'elle n'est pas levée. Il faut donc régulariser d'abord, puis nous recontacter avec un certificat de situation administrative sans opposition.</p><ul class=\"ticks\"><li><strong>Amendes impayées</strong> : LUNICAR ne règle pas vos amendes ; la levée passe par le centre amendes.</li><li><strong>Véhicule volé ou saisi</strong> : aucune étude tant que l'inscription ou la saisie n'est pas levée.</li><li><strong>Voiture en LOA ou LLD</strong> : LUNICAR ne devient pas propriétaire à votre place ; le rachat auprès du loueur vous revient, avec son accord.</li><li><strong>Gage sans décompte</strong> : sans le décompte du prêteur, le règlement du solde ne peut pas être organisé.</li></ul><p>Une étude n'engage ni vous ni LUNICAR : il n'y a pas de promesse de rachat, et vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais.</p>"
+      },
+      {
+        "h2": "Comment se déroule la vente une fois la situation régularisée ?",
+        "html": "<p>Comme une vente classique à un professionnel. Le jour du rendez-vous, le certificat de cession (Cerfa 15776) est rempli avec vous en deux exemplaires et la carte grise est barrée avec la mention « vendu le », la date, l'heure et votre signature. Le contrôle technique n'est pas exigé pour une vente à un professionnel de l'automobile. La déclaration de cession se fait sur le site de l'ANTS dans les 15 jours qui suivent la signature.</p><ul class=\"ticks\"><li><strong>Documents</strong> : carte grise originale, pièce d'identité, certificat de situation administrative de moins de 15 jours, décompte du prêteur si gage.</li><li><strong>Paiement</strong> : virement instantané, jamais d'espèces, si la vente est conclue.</li><li><strong>Enlèvement</strong> : offert si la vente est conclue, même si la voiture ne roule plus.</li></ul><p>Pour une voiture dont la carte grise est au nom d'un proche décédé, consultez la page <a href=\"/reprise-voiture-succession\">vendre la voiture d'un proche décédé</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la vente d'une voiture gagée ou sous opposition",
+    "faq": [
+      {
+        "question": "Peut-on vendre une voiture gagée ?",
+        "answer": "Oui. Selon Service-public.gouv.fr, la présence d'un gage n'empêche pas la vente du véhicule. Le crédit doit toutefois être soldé pour que l'organisme financier mette fin au gage. LUNICAR peut, si la vente est conclue, régler le solde directement au prêteur et vous verser la différence."
+      },
+      {
+        "question": "Peut-on vendre une voiture sous opposition ?",
+        "answer": "Non. Tant que l'opposition n'est pas levée, le changement de titulaire est impossible et la vente ne peut pas avoir lieu. Il faut d'abord régulariser auprès de celui qui a posé l'opposition, puis générer un nouveau certificat de situation administrative."
+      },
+      {
+        "question": "Où obtenir le certificat de situation administrative ?",
+        "answer": "Gratuitement et immédiatement sur Histovec, le site du ministère de l'Intérieur. Seul le titulaire de la carte grise peut le générer. Il doit dater de moins de 15 jours au moment de la vente."
+      },
+      {
+        "question": "Mon crédit n'est pas fini : comment se passe le paiement ?",
+        "answer": "Vous demandez à votre prêteur un décompte de remboursement anticipé. Si la vente est conclue, LUNICAR verse le montant du décompte au prêteur et le reste sur votre compte, par virement instantané. Si le capital restant dû dépasse le prix, la différence est à votre charge."
+      },
+      {
+        "question": "Une opposition pour amendes impayées, comment la lever ?",
+        "answer": "En payant toutes les amendes auprès du centre amendes indiqué par Service-public.gouv.fr. La levée de l'opposition ne peut être faite que si toutes les amendes ont été payées. LUNICAR ne règle pas vos amendes."
+      },
+      {
+        "question": "Ma voiture est en LOA : LUNICAR peut-il la racheter ?",
+        "answer": "Pas directement. En LOA ou LLD, le loueur est propriétaire. Vous devez d'abord racheter la voiture avec son accord et obtenir une carte grise à votre nom. LUNICAR peut ensuite l'étudier comme toute voiture."
+      },
+      {
+        "question": "Le contrôle technique est-il nécessaire pour vendre une voiture gagée à LUNICAR ?",
+        "answer": "Non. Le contrôle technique n'est pas exigé pour une vente à un professionnel de l'automobile, que la voiture soit gagée ou non. Le gage et le contrôle technique sont deux sujets indépendants."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Certificat de situation administrative (non-gage et non-opposition), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1360"
+      },
+      {
+        "label": "Comment faire lever le gage ou l'opposition sur un véhicule ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F34107"
+      },
+      {
+        "label": "Demander le certificat de situation administrative d'un véhicule d'occasion (Histovec), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R52957"
+      },
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Carte grise : que faire si vous rachetez le véhicule avant la fin de la location ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F32233"
+      },
+      {
+        "label": "Histovec, historique et situation administrative d'un véhicule",
+        "url": "https://histovec.interieur.gouv.fr/"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "vendre-voiture-personne-agee-ehpad",
+    "image": "accueil",
+    "nav": "Voiture d'un parent âgé",
+    "title": "Vendre la voiture d'un parent âgé ou en EHPAD | LUNICAR",
+    "description": "Qui peut signer, procuration, tutelle, curatelle, habilitation familiale, documents, assurance : vendre la voiture d'un parent qui ne conduit plus.",
+    "h1": "Vendre la voiture d'un parent âgé ou entré en EHPAD, <em>dans les règles</em>",
+    "lede": "Un parent ne conduit plus, entre en maison de retraite, et sa voiture dort au garage. La vendre est possible, mais seul le titulaire de la carte grise, ou la personne autorisée à le représenter, peut signer. Voici les règles officielles, les documents à réunir et la façon dont LUNICAR intervient, même si votre parent ne peut plus sortir.",
+    "points": [
+      "Procuration, tutelle, curatelle : qui signe, expliqué",
+      "Technicien au domicile ou à l'établissement, sans frais",
+      "Prix définitif après vérification, refusable librement",
+      "Enlèvement offert et virement instantané si la vente est conclue"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Qui peut signer la vente de la voiture d'un parent âgé ?",
+        "html": "<p>Le titulaire de la carte grise, tant qu'il est en mesure de comprendre et de vouloir la vente. Qu'il ne conduise plus, vive en EHPAD ou ait 95 ans ne change rien : la voiture lui appartient, c'est lui qui signe le certificat de cession. Un enfant ne peut pas vendre à sa place sans un mandat écrit ou une décision de justice.</p><p>Trois situations se présentent. Votre parent décide encore : il signe lui-même, ou vous donne une procuration. Votre parent fait l'objet d'une mesure de protection (curatelle, tutelle, habilitation familiale) : le jugement fixe qui signe et avec quelle autorisation. Votre parent ne peut plus exprimer sa volonté et aucune mesure n'existe : aucun proche ne peut vendre à sa place ; il faut saisir le juge des tutelles du tribunal judiciaire pour obtenir une habilitation familiale ou une autre mesure adaptée.</p><ul class=\"ticks\"><li><strong>Parent lucide</strong> : signature directe ou procuration.</li><li><strong>Parent protégé</strong> : selon le jugement.</li><li><strong>Parent sans mesure et hors d'état de décider</strong> : passage par le juge.</li></ul>"
+      },
+      {
+        "h2": "Mon parent décide encore : comment vendre avec une procuration ?",
+        "html": "<p>Avec un mandat écrit et signé par votre parent, accompagné d'une copie de sa pièce d'identité. Service-public.gouv.fr le précise pour la déclaration de cession : « si vous demandez à quelqu'un d'autre de réaliser cette démarche sur le site internet de l'ANTS, vous devez lui fournir un mandat signé et votre pièce d'identité ». Pour les formalités d'immatriculation, le formulaire <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R1137\" rel=\"noopener\" target=\"_blank\">Cerfa 13757</a> permet de « donner mandat à un professionnel habilité de l'automobile ou à toute autre personne que vous avez mandatée ».</p><ul class=\"ticks\"><li><strong>Contenu du mandat</strong> : identité du parent et du mandataire, véhicule (immatriculation, marque, modèle), objet (vendre, signer le certificat de cession, recevoir le prix ou non), date et signature.</li><li><strong>Certificat de cession</strong> : signé par le titulaire s'il le peut, sinon par le mandataire, mandat joint.</li><li><strong>Paiement</strong> : LUNICAR verse le prix sur le compte du titulaire de la carte grise, ou sur celui que désigne expressément le mandat.</li></ul><p>Si votre parent peut encore signer, faites-le signer lui-même : c'est la solution la plus simple pour tout le monde.</p>"
+      },
+      {
+        "h2": "Tutelle, curatelle, habilitation familiale : qui signe et avec quelle autorisation ?",
+        "html": "<p>Cela dépend de la mesure prononcée par le juge. Sous tutelle, le tuteur représente la personne protégée et, pour vendre un bien, « doit solliciter l'autorisation du juge des tutelles ». Sous curatelle, la personne signe elle-même, assistée du curateur pour les actes importants. Sous habilitation familiale générale, la personne habilitée peut accomplir les actes de disposition, le juge restant compétent pour certains actes comme une donation ou la vente de la résidence principale.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Mesure</th><th>Qui signe le certificat de cession</th><th>Autorisation</th><th>Justificatif à joindre</th></tr></thead><tbody><tr><td>Tutelle</td><td>Le tuteur</td><td>Autorisation du juge des tutelles</td><td>Jugement et ordonnance</td></tr><tr><td>Curatelle</td><td>La personne protégée, avec le curateur</td><td>Assistance du curateur</td><td>Jugement de curatelle</td></tr><tr><td>Habilitation familiale générale</td><td>La personne habilitée</td><td>Selon le jugement</td><td>Jugement d'habilitation</td></tr><tr><td>Habilitation familiale spéciale</td><td>La personne habilitée, si l'acte est couvert</td><td>Selon le jugement</td><td>Jugement d'habilitation</td></tr><tr><td>Aucune mesure</td><td>Le titulaire ou son mandataire</td><td>Aucune</td><td>Mandat et pièce d'identité</td></tr></tbody></table></div><p>En cas de doute sur la portée du jugement, interrogez le juge : LUNICAR ne se substitue pas à cette vérification.</p>"
+      },
+      {
+        "h2": "Quels documents réunir pour vendre la voiture d'un parent ?",
+        "html": "<p>Les mêmes que pour toute vente, plus le document qui prouve votre pouvoir de signer. Service-public.gouv.fr liste pour toute cession : la carte grise barrée avec la mention « vendu le », la date, l'heure et la signature ; le certificat de cession Cerfa 15776 en deux exemplaires ; le certificat de situation administrative de moins de 15 jours, à générer gratuitement sur Histovec. Le contrôle technique n'est pas exigé pour une vente à un professionnel de l'automobile.</p><ul class=\"ticks\"><li><strong>Pièce d'identité</strong> : celle du titulaire de la carte grise et celle du signataire s'il est différent.</li><li><strong>Pouvoir de signer</strong> : mandat signé, ou jugement de protection avec, en tutelle, l'ordonnance du juge.</li><li><strong>Carte grise</strong> : l'original, même ancien format.</li><li><strong>Relevé d'identité bancaire</strong> : du compte qui recevra le virement.</li><li><strong>Clés et entretien</strong> : double des clés, carnet, factures si vous les retrouvez.</li></ul><p>Le certificat de situation administrative ne peut être généré que par le titulaire, avec les informations de sa carte grise : prévoyez de le faire avec lui, ou en tant que mandataire.</p>"
+      },
+      {
+        "h2": "Mon parent ne peut plus sortir : comment se passe la vente ?",
+        "html": "<p>Le technicien vient là où se trouve la voiture, sans frais, partout en France : au domicile de votre parent, chez vous ou sur le parking de l'EHPAD. Rien n'oblige à faire sortir une personne âgée pour vendre sa voiture. La signature se fait sur place, par le titulaire s'il le peut, par le mandataire ou par le représentant désigné par le juge.</p><ul class=\"ticks\"><li><strong>Voiture au garage depuis des mois</strong> : batterie à plat, pneus dégonflés ou contrôle technique dépassé n'empêchent pas l'étude ; signalez-le dans la description.</li><li><strong>Voiture stationnée à l'établissement</strong> : prévenez la direction du passage du technicien et de l'enlèvement.</li><li><strong>Parent qui ne signe plus</strong> : le rendez-vous est fixé une fois le mandat ou la décision du juge en main.</li></ul><p>Si la vente est conclue, l'enlèvement est offert, y compris pour une voiture qui ne démarre plus, et le paiement se fait par virement instantané. Une étude n'engage à rien : le prix définitif peut être refusé le jour même, sans frais.</p>"
+      },
+      {
+        "h2": "Que faire pour l'assurance et la carte grise après la vente ?",
+        "html": "<p>Déclarez la vente à l'assureur par lettre recommandée et la cession sur l'ANTS dans les 15 jours. Service-public.gouv.fr indique que « le contrat d'assurance sera suspendu dès le soir de la vente, à minuit » et que vous devez « obligatoirement déclarer la vente de votre véhicule à votre assureur par lettre recommandée ou par un envoi recommandé électronique ». La résiliation prend effet 10 jours calendaires après réception de la lettre, et la part de cotisation correspondant à la période non assurée est remboursée.</p><p>Joignez une copie du certificat de cession à ce courrier. Tant que la voiture n'est pas vendue, gardez-la assurée, même immobilisée : une couverture minimale la protège contre le vol, l'incendie ou un dommage dans le parking. Si le courrier doit émaner de votre parent, le mandat ou le jugement de protection vous permet de l'écrire à sa place, selon l'étendue des pouvoirs qu'il vous donne.</p>"
+      },
+      {
+        "h2": "La carte grise est au nom d'un conjoint décédé : que faire ?",
+        "html": "<p>La voiture fait alors partie de la succession, et ce sont les héritiers qui vendent, pas seulement le parent survivant. Service-public.gouv.fr distingue deux cas : si le décès date de moins de 3 mois, ou si la voiture n'a pas circulé depuis, les héritiers peuvent vendre sans modifier la carte grise ; au-delà de 3 mois, si la voiture a circulé, il faut d'abord l'immatriculer au nom d'un ou plusieurs héritiers.</p><p>Il faut aussi prouver la qualité d'héritier : attestation notariale, acte de notoriété, ou acte de décès accompagné d'une attestation signée par tous les héritiers. Le conjoint survivant est souvent l'un des héritiers, rarement le seul : les enfants signent aussi, ou donnent leur accord par écrit. Si un notaire est chargé de la succession, informez-le du projet de vente avant de signer.</p><p>Ce cas est traité en détail sur la page <a href=\"/reprise-voiture-succession\">vendre la voiture d'un proche décédé</a> : documents, rôle du notaire, assurance pendant la succession.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la vente de la voiture d'un parent âgé",
+    "faq": [
+      {
+        "question": "Puis-je vendre la voiture de ma mère sans qu'elle soit présente ?",
+        "answer": "Oui, avec un mandat écrit et signé par elle, accompagné d'une copie de sa pièce d'identité, comme le prévoit Service-public.gouv.fr pour la déclaration de cession. Elle doit être en mesure de comprendre et de vouloir la vente. Sinon, il faut une mesure de protection prononcée par le juge."
+      },
+      {
+        "question": "Mon père est sous tutelle : qui signe ?",
+        "answer": "Le tuteur, au nom de la personne protégée, après avoir sollicité l'autorisation du juge des tutelles pour vendre un bien. Joignez le jugement et l'ordonnance du juge aux documents de cession."
+      },
+      {
+        "question": "Et sous curatelle ou habilitation familiale ?",
+        "answer": "Sous curatelle, la personne protégée signe avec l'assistance de son curateur. Sous habilitation familiale, la personne habilitée agit dans les limites fixées par le jugement ; pour une habilitation générale, les actes de disposition sont possibles, le juge restant compétent pour certains actes. En cas de doute, demandez au juge."
+      },
+      {
+        "question": "Mon parent est en EHPAD et ne peut plus sortir : comment faire ?",
+        "answer": "Le technicien vient là où se trouve la voiture, sans frais, partout en France : domicile, parking de l'établissement ou chez vous. La signature se fait sur place par le titulaire, le mandataire ou le représentant désigné par le juge."
+      },
+      {
+        "question": "La voiture n'a pas roulé depuis un an : peut-on la vendre ?",
+        "answer": "Oui. Batterie à plat, pneus affaissés ou contrôle technique dépassé n'empêchent pas l'étude. Le contrôle technique n'est pas exigé pour une vente à un professionnel. Si la vente est conclue, l'enlèvement est offert même si elle ne démarre plus."
+      },
+      {
+        "question": "Faut-il un certificat de situation administrative ?",
+        "answer": "Oui, de moins de 15 jours, pour toute vente. Il se génère gratuitement sur Histovec par le titulaire de la carte grise, avec les informations figurant sur celle-ci. Faites-le avec votre parent ou en tant que mandataire."
+      },
+      {
+        "question": "Sur quel compte le prix est-il versé ?",
+        "answer": "Sur le compte du titulaire de la carte grise, par virement instantané si la vente est conclue. Un autre compte n'est possible que si le mandat ou la décision du juge le prévoit expressément."
+      },
+      {
+        "question": "La carte grise est au nom de mon père décédé : ma mère peut-elle vendre seule ?",
+        "answer": "Pas forcément. La voiture fait partie de la succession et tous les héritiers sont concernés. Les règles de délai et les justificatifs sont expliqués sur notre page consacrée à la voiture d'un proche décédé."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Tutelle d'un majeur, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2120"
+      },
+      {
+        "label": "Curatelle d'un majeur, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2094"
+      },
+      {
+        "label": "Habilitation familiale, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F33367"
+      },
+      {
+        "label": "Comment résilier son assurance en cas de vente de sa voiture ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2664"
+      },
+      {
+        "label": "Carte grise : hériter d'un véhicule immatriculé en France, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1480"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "vendre-voiture-importee",
+    "image": "accueil",
+    "nav": "Voiture importée",
+    "title": "Vendre une voiture importée en France | LUNICAR",
+    "description": "Carte grise française après import ou véhicule encore immatriculé à l'étranger : quitus fiscal, certificat de conformité, valeur et ce que LUNICAR étudie.",
+    "h1": "Vendre une voiture importée, <em>avec ou sans carte grise française</em>",
+    "lede": "Une voiture achetée à l'étranger se revend sans difficulté dès qu'elle a une carte grise française à votre nom. Si elle est encore immatriculée hors de France, c'est plus délicat. Voici les documents qui comptent, l'effet de l'import sur la valeur, et la façon dont LUNICAR étudie ces demandes, au cas par cas.",
+    "points": [
+      "Carte grise française : vente comme toute voiture",
+      "Immatriculée à l'étranger : étude au cas par cas",
+      "Technicien à votre adresse, sans frais",
+      "Virement instantané si la vente est conclue"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Peut-on vendre une voiture importée en France ?",
+        "html": "<p>Oui, dès lors qu'elle a une carte grise française à votre nom : elle se vend alors comme n'importe quelle voiture immatriculée en France, avec les mêmes documents. Les formalités d'import, quitus fiscal, justificatif de conformité, éventuel dédouanement, ont été accomplies au moment de l'immatriculation ; elles n'ont pas à être refaites par l'acheteur.</p><p>Si la voiture est encore immatriculée à l'étranger, la situation est différente : l'acheteur devrait lui-même accomplir les démarches d'immatriculation en France, avec les documents d'origine. Service-public.gouv.fr rappelle d'ailleurs qu'une personne qui s'installe en France doit faire immatriculer son véhicule dans le mois qui suit. Dans ce cas, LUNICAR étudie la demande au cas par cas, sans promesse de rachat.</p><ul class=\"ticks\"><li><strong>Carte grise française à votre nom</strong> : étude normale, partout en France.</li><li><strong>Carte grise étrangère</strong> : étude au cas par cas, documents d'origine indispensables.</li><li><strong>Carte grise française au nom d'un tiers</strong> : la vente attend la régularisation à votre nom.</li></ul>"
+      },
+      {
+        "h2": "Quels documents prouvent que l'import a été régularisé ?",
+        "html": "<p>La carte grise française, et les pièces qui ont servi à l'obtenir. Pour un véhicule venant de l'Union européenne, Service-public.gouv.fr cite le certificat de conformité européen (COC) délivré par le constructeur, ou une attestation d'identification au type communautaire, ou une attestation de la Dreal ; à défaut, un procès-verbal de réception à titre isolé. S'y ajoute le quitus fiscal. Pour un véhicule venant d'un pays hors UE, il faut en plus le certificat de dédouanement 846 A délivré par la douane.</p><ul class=\"ticks\"><li><strong>Carte grise française</strong> : à votre nom, c'est elle qui compte pour la revente.</li><li><strong>Certificat de conformité ou attestation</strong> : conservez-le, il rassure sur la régularité du type du véhicule.</li><li><strong>Quitus fiscal</strong> : preuve que la TVA a été traitée lors de l'entrée en France.</li><li><strong>Facture d'achat à l'étranger</strong> : elle documente le kilométrage et la date de l'import.</li></ul><p>Ces pièces ne sont pas exigées pour revendre en France, mais elles aident le technicien à vérifier l'historique et à affiner le prix.</p>"
+      },
+      {
+        "h2": "Qu'est-ce que le quitus fiscal et faut-il le refournir à la revente ?",
+        "html": "<p>Le quitus fiscal « indique que le véhicule est en situation régulière au regard de la TVA ». Il est délivré par l'administration fiscale pour un véhicule, neuf ou d'occasion, acheté dans un autre pays de l'Union européenne, et il est nécessaire pour obtenir la carte grise française. Il ne figure pas parmi les documents listés par Service-public.gouv.fr pour vendre une voiture déjà immatriculée en France : vous n'avez donc pas à en demander un nouveau pour la revente.</p><p>Si vous êtes encore en cours d'import, la demande se fait auprès du service des impôts de votre département avec le formulaire 1993-PART-D-SD ou, dans certains départements, par la téléprocédure de l'ANTS en même temps que l'immatriculation. Il faut joindre la facture d'achat ou le certificat de cession, la carte grise étrangère, une pièce d'identité et un justificatif de domicile en France. Une traduction certifiée peut être demandée si les documents ne sont pas en français. Les remorques, semi-remorques et véhicules agricoles ou forestiers en sont dispensés.</p>"
+      },
+      {
+        "h2": "Ma voiture est encore immatriculée à l'étranger : que se passe-t-il ?",
+        "html": "<p>Elle ne peut pas être vendue comme une voiture française, car son acheteur devra l'immatriculer en France avec les documents d'import. Si vous résidez en France, Service-public.gouv.fr indique que l'immatriculation française est obligatoire dans le mois qui suit l'installation. Vendre sans avoir régularisé reporte ces démarches sur l'acheteur : quitus fiscal, justificatif de conformité et, hors Union européenne, dédouanement.</p><p>LUNICAR étudie ces demandes au cas par cas, sans promesse de rachat. L'étude dépend du pays d'origine, des documents disponibles et de la possibilité d'obtenir un certificat de conformité. Préparez la carte grise étrangère originale, la facture ou le contrat d'achat, le certificat de conformité s'il existe, votre pièce d'identité et un justificatif de domicile.</p><p class=\"note\">Un véhicule pour lequel aucun justificatif de conformité ne peut être obtenu suppose une réception à titre isolé par la Dreal, démarche longue à l'issue incertaine : son étude aboutit rarement.</p>"
+      },
+      {
+        "h2": "Une voiture importée se revend-elle moins cher ?",
+        "html": "<p>Pas nécessairement, mais son historique est plus difficile à vérifier, et c'est ce qui pèse. Le rapport Histovec ne retrace que ce qui est enregistré dans le système d'immatriculation français : pour une voiture importée, les changements de propriétaire, les sinistres et les contrôles techniques antérieurs à l'import n'y figurent pas. Un acheteur professionnel compense cette incertitude par une vérification plus poussée, et parfois par une offre plus prudente.</p><ul class=\"ticks\"><li><strong>Carnet d'entretien étranger</strong> : factures et tampons, même dans une autre langue, comptent.</li><li><strong>Kilométrage</strong> : compteur en miles ou historique partiel, à documenter avec la facture d'import.</li><li><strong>Équipements</strong> : motorisation ou finition absentes du marché français, qui peuvent attirer ou freiner.</li><li><strong>Conformité</strong> : certificat de conformité ou attestation en main, aucun doute sur la régularité.</li></ul><p>Plus vos documents sont complets, plus la fourchette indicative puis le prix définitif peuvent refléter l'état réel de la voiture plutôt qu'une incertitude.</p>"
+      },
+      {
+        "h2": "Comment LUNICAR étudie une voiture importée ?",
+        "html": "<p>Comme toute voiture, avec une attention particulière aux documents d'origine. Vous décrivez le véhicule en ligne en précisant son pays de provenance et la date de l'immatriculation française. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Un technicien vient ensuite vérifier la voiture à votre adresse, sans frais : numéro de série, cohérence avec la carte grise, état général.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Situation</th><th>Ce que fait LUNICAR</th><th>Documents à préparer</th></tr></thead><tbody><tr><td>Carte grise française à votre nom</td><td>Étude normale : fourchette indicative puis prix définitif</td><td>Carte grise, pièce d'identité, certificat de situation administrative, certificat de conformité si vous l'avez</td></tr><tr><td>Encore immatriculée dans un pays de l'UE</td><td>Étude au cas par cas, sans promesse de rachat</td><td>Carte grise étrangère, facture d'achat, certificat de conformité</td></tr><tr><td>Encore immatriculée hors UE</td><td>Étude au cas par cas, sans promesse de rachat</td><td>Idem, plus le justificatif douanier s'il existe</td></tr></tbody></table></div><p>Si la vente est conclue, les documents sont préparés avec vous, l'enlèvement est offert et le paiement se fait par virement instantané.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la vente d'une voiture importée",
+    "faq": [
+      {
+        "question": "Ma voiture importée a une carte grise française : y a-t-il une différence pour la vendre ?",
+        "answer": "Non. Elle se vend avec les mêmes documents que toute voiture immatriculée en France : carte grise barrée, certificat de cession, certificat de situation administrative de moins de 15 jours. Les justificatifs d'import ne sont pas exigés, mais ils aident à vérifier l'historique."
+      },
+      {
+        "question": "Faut-il un nouveau quitus fiscal pour revendre ?",
+        "answer": "Non. Le quitus fiscal sert à obtenir la carte grise française après un achat dans l'Union européenne. Il ne figure pas parmi les documents listés par Service-public.gouv.fr pour vendre une voiture déjà immatriculée en France."
+      },
+      {
+        "question": "LUNICAR achète-t-il une voiture encore immatriculée à l'étranger ?",
+        "answer": "La demande est étudiée au cas par cas, sans promesse de rachat. Tout dépend du pays d'origine, des documents disponibles et de la possibilité d'obtenir un certificat de conformité. Préparez la carte grise étrangère, la facture et le certificat de conformité."
+      },
+      {
+        "question": "Qu'est-ce que le certificat de conformité ?",
+        "answer": "Un document du constructeur (COC) attestant que le véhicule correspond à un type réceptionné en Europe. À défaut, Service-public.gouv.fr cite une attestation d'identification au type communautaire, une attestation de la Dreal, ou une réception à titre isolé."
+      },
+      {
+        "question": "Le compteur est en miles : est-ce un problème ?",
+        "answer": "Non, mais signalez-le dans votre description. Le technicien convertit le kilométrage et vérifie sa cohérence avec la facture d'import et les contrôles techniques français."
+      },
+      {
+        "question": "Une voiture importée vaut-elle moins qu'une voiture française équivalente ?",
+        "answer": "Pas forcément. L'écart vient surtout de l'historique, moins complet avant l'import, et parfois d'équipements propres au marché d'origine. Des documents complets réduisent cette incertitude."
+      },
+      {
+        "question": "Le contrôle technique est-il nécessaire ?",
+        "answer": "Non pour une vente à un professionnel de l'automobile. Pour une voiture importée, le contrôle technique effectué lors de l'immatriculation française constitue toutefois une référence utile sur son état."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Quelles obligations pour immatriculer un véhicule acheté à l'étranger ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F20992"
+      },
+      {
+        "label": "Achat d'un véhicule à l'étranger : comment obtenir un quitus fiscal ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F179"
+      },
+      {
+        "label": "Un étranger qui s'installe en France doit-il y faire immatriculer son véhicule ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F10519"
+      },
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Demander le certificat de situation administrative d'un véhicule d'occasion (Histovec), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R52957"
+      }
+    ],
+    "updated": "2026-10-27"
+  },
+  {
+    "slug": "vendre-voiture-de-societe",
+    "image": "accueil",
+    "nav": "Voiture de société",
+    "title": "Vendre une voiture de société | LUNICAR",
+    "description": "SAS, SARL, auto-entrepreneur : qui signe, Kbis, TVA tourisme ou utilitaire, facture, sortie d'actif, rachat par le dirigeant. Partout en France.",
+    "h1": "Vendre une voiture au nom d'une société, <em>sans erreur de paperasse</em>",
+    "lede": "Une voiture immatriculée au nom d'une société se vend avec les mêmes documents qu'une voiture de particulier, plus le justificatif de la société et le pouvoir du signataire. La TVA et la plus-value dépendent de ce qui s'est passé à l'achat. Voici les règles officielles, point par point, et ce qui relève de votre comptable.",
+    "points": [
+      "Kbis ou attestation RNE de moins de 2 ans",
+      "TVA : tourisme et utilitaire ne suivent pas la même règle",
+      "Technicien au siège, au dépôt ou au domicile, sans frais",
+      "Virement instantané sur le compte de la société si la vente est conclue"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Qui peut signer la vente d'une voiture de société ?",
+        "html": "<p>Le représentant légal de la société, ou une personne qu'il a mandatée par écrit. Pour une SARL, c'est le gérant ; pour une SAS, le président ; pour une entreprise individuelle ou un auto-entrepreneur, l'entrepreneur lui-même, puisque le véhicule est à son nom. Un salarié ou un associé sans pouvoir ne peut pas signer seul le certificat de cession.</p><p>Le signataire prouve son pouvoir avec le justificatif d'existence de la société. Service-public.gouv.fr liste, pour une personne morale, une « attestation d'immatriculation au RNE de moins de 2 ans », un « extrait Kbis de moins de 2 ans » ou un « journal d'annonces légales datant de moins de 2 ans » ; pour une entreprise individuelle, l'attestation RNE ou l'extrait Kbis et un justificatif de l'adresse où s'exerce l'activité. Le Kbis mentionne le nom du dirigeant, ce qui suffit en général ; un mandataire joint en plus un pouvoir signé par le dirigeant et la pièce d'identité de celui-ci.</p>"
+      },
+      {
+        "h2": "Quels documents réunir selon la forme juridique ?",
+        "html": "<p>Les documents de toute cession, plus le justificatif de la société et la preuve du pouvoir du signataire. Le statut LMNP n'est pas une société : le véhicule est au nom de la personne physique, qui vend comme un particulier.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Situation</th><th>Qui signe</th><th>Justificatifs</th></tr></thead><tbody><tr><td>SARL, EURL</td><td>Le gérant ou son mandataire</td><td>Kbis ou attestation RNE de moins de 2 ans, pièce d'identité du gérant, pouvoir si mandataire</td></tr><tr><td>SAS, SASU</td><td>Le président, ou un dirigeant habilité par les statuts</td><td>Kbis ou attestation RNE de moins de 2 ans, pièce d'identité, pouvoir si mandataire</td></tr><tr><td>Entreprise individuelle, auto-entrepreneur</td><td>L'entrepreneur</td><td>Attestation RNE ou Kbis, justificatif de l'adresse d'activité, pièce d'identité</td></tr><tr><td>Loueur en meublé (LMNP)</td><td>Le propriétaire, personne physique</td><td>Pièce d'identité : vente comme un particulier</td></tr></tbody></table></div><p>Dans tous les cas : carte grise originale, certificat de situation administrative de moins de 15 jours (Histovec), certificat de cession Cerfa 15776 en deux exemplaires, déclaration sur l'ANTS dans les 15 jours. Contrôle technique non exigé pour une vente à un professionnel.</p>"
+      },
+      {
+        "h2": "TVA : véhicule de tourisme ou utilitaire, qu'est-ce qui change ?",
+        "html": "<p>La TVA à la revente dépend de ce qui s'est passé à l'achat. Le BOFiP rappelle que « sont exclus du droit à déduction de la TVA les véhicules [...] conçus pour transporter des personnes ou à usages mixtes » : une voiture particulière n'a en principe pas ouvert droit à déduction, sauf exceptions (taxis, auto-écoles, certains véhicules de neuf places et plus). Un utilitaire de catégorie N y ouvre droit en général.</p><ul class=\"ticks\"><li><strong>Voiture sans droit à déduction</strong> : la revente par l'entreprise est exonérée, au titre des « ventes de biens usagés faites par des personnes qui les ont utilisés pour les besoins de leurs exploitations ».</li><li><strong>Utilitaire ayant ouvert droit à déduction</strong> : la revente est soumise à la TVA sur le prix de vente total.</li><li><strong>Acheteur professionnel</strong> : il revend ensuite sous le régime de la marge ou sur le prix total, selon son mode d'achat.</li></ul><p>Ces règles comportent des exceptions : faites valider le traitement avec votre comptable avant de fixer un prix hors taxe ou toutes taxes comprises.</p>"
+      },
+      {
+        "h2": "Faut-il une facture de cession en plus du certificat de cession ?",
+        "html": "<p>Le certificat de cession est obligatoire pour l'immatriculation ; la facture, elle, est la pièce comptable de la société. Le Cerfa 15776 est rempli et signé le jour de la vente, en deux exemplaires, et sert à la déclaration sur l'ANTS. Il ne tient pas lieu de facture : c'est la facture qui matérialise la sortie du véhicule dans les comptes et qui porte, le cas échéant, la TVA.</p><p>Si votre société établit une facture de cession, Entreprendre.service-public.gouv.fr liste les mentions attendues : date d'émission et numéro unique, identité du vendeur (dénomination, Siren, adresse) et de l'acheteur, désignation du bien, prix unitaire hors taxe, taux de TVA, total hors taxe et toutes taxes comprises, date d'échéance et pénalités de retard. Ajoutez l'immatriculation, le numéro de série et le kilométrage.</p><p class=\"note\">LUNICAR est une société : ses coordonnées complètes vous sont communiquées avant le rendez-vous pour la facture. Votre comptable vous dira si elle doit mentionner la TVA ou une exonération.</p>"
+      },
+      {
+        "h2": "Comment sortir la voiture de l'actif et calculer la plus-value ?",
+        "html": "<p>La vente fait sortir le véhicule des immobilisations et dégage une plus-value ou une moins-value. Entreprendre.service-public.gouv.fr précise que « le régime des plus-values professionnelles est applicable lorsqu'une immobilisation est affectée par un événement entraînant sa sortie de l'entreprise », et que la plus-value « correspond à la différence entre le prix de cession et la valeur nette comptable de chaque élément cédé ».</p><ul class=\"ticks\"><li><strong>Valeur nette comptable</strong> : prix d'achat moins les amortissements pratiqués ; une voiture amortie depuis plusieurs années a souvent une valeur comptable faible, d'où une plus-value même pour un prix modeste.</li><li><strong>Société à l'impôt sur les sociétés</strong> : le résultat de cession entre dans le résultat imposable.</li><li><strong>Entreprise à l'impôt sur le revenu</strong> : régime des plus-values professionnelles, court terme ou long terme, avec des exonérations possibles pour les petites entreprises sous conditions de recettes.</li></ul><p>Transmettez à votre comptable le certificat de cession, la facture et la date de vente : il passe les écritures de sortie d'actif et calcule l'imposition. Ne fixez pas vous-même le traitement fiscal.</p>"
+      },
+      {
+        "h2": "Le dirigeant peut-il racheter la voiture à sa société ?",
+        "html": "<p>Oui, c'est une vente comme une autre, mais entre parties liées, donc encadrée. La société vend, le dirigeant achète : certificat de cession au nom de la société côté vendeur et du dirigeant côté acheteur, facture, puis carte grise au nom du dirigeant dans le mois. Le prix doit correspondre à la valeur de marché : un prix trop bas peut être regardé comme un avantage accordé au dirigeant, avec des conséquences fiscales et sociales.</p><p>Le Code de commerce soumet les conventions entre une SARL et son gérant ou un associé (article L223-19), ou entre une SAS et son président, un dirigeant ou un actionnaire disposant de plus de 10 % des droits de vote (article L227-10), à un rapport soumis aux associés. Lorsque la société n'a qu'un associé et que la convention est conclue avec lui, il en est seulement fait mention au registre des décisions.</p><p>Avant de racheter, demandez à votre comptable une estimation de la valeur de marché et, si besoin, à votre conseil juridique la formalité à respecter.</p>"
+      },
+      {
+        "h2": "Comment LUNICAR procède avec une société ?",
+        "html": "<p>Comme avec un particulier, avec les justificatifs de la société en plus. Vous décrivez la voiture en ligne, un conseiller vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier le véhicule à l'adresse de votre choix, siège, dépôt ou domicile du dirigeant, sans frais, partout en France. Le prix définitif est présenté après cette vérification ; vous l'acceptez ou le refusez librement, sans frais.</p><ul class=\"ticks\"><li><strong>Signature</strong> : le dirigeant ou un mandataire muni d'un pouvoir, avec Kbis ou attestation RNE de moins de 2 ans.</li><li><strong>Paiement</strong> : virement instantané sur le compte de la société, si la vente est conclue.</li><li><strong>Documents</strong> : certificat de cession préparé avec vous ; facture établie par votre société selon les indications de votre comptable.</li><li><strong>Enlèvement</strong> : offert si la vente est conclue, y compris pour un véhicule immobilisé.</li></ul><p>Plusieurs véhicules à vendre ? Indiquez-le dans la demande : chaque voiture fait l'objet d'une fourchette indicative puis d'un prix définitif distincts.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la vente d'une voiture de société",
+    "faq": [
+      {
+        "question": "Quel justificatif fournir pour vendre au nom de ma société ?",
+        "answer": "Selon Service-public.gouv.fr, une attestation d'immatriculation au RNE, un extrait Kbis ou un journal d'annonces légales de moins de 2 ans. Le signataire présente aussi sa pièce d'identité et, s'il n'est pas le dirigeant, un pouvoir signé."
+      },
+      {
+        "question": "Je suis auto-entrepreneur : la vente est-elle différente ?",
+        "answer": "Peu. Vous signez vous-même, avec votre pièce d'identité, votre attestation RNE ou extrait Kbis et un justificatif de l'adresse d'activité. Le traitement fiscal de la vente dépend de votre régime : demandez à votre comptable ou au service des impôts."
+      },
+      {
+        "question": "Faut-il facturer la TVA sur la vente ?",
+        "answer": "Cela dépend du droit à déduction à l'achat. Une voiture de tourisme n'ayant pas ouvert droit à déduction se revend exonérée ; un utilitaire ayant ouvert droit à déduction se revend avec TVA sur le prix total. Faites valider le cas par votre comptable."
+      },
+      {
+        "question": "Le certificat de cession suffit-il à la comptabilité ?",
+        "answer": "Non. Le certificat de cession sert à l'immatriculation. La facture de cession matérialise la sortie du véhicule de l'actif et, le cas échéant, la TVA. Votre comptable passe ensuite les écritures et calcule la plus-value."
+      },
+      {
+        "question": "Puis-je racheter la voiture à ma propre société ?",
+        "answer": "Oui, au prix du marché, avec certificat de cession, facture et nouvelle carte grise à votre nom. En SARL et en SAS, le Code de commerce prévoit un rapport sur ces conventions, ou une simple mention au registre des décisions en cas d'associé unique. Consultez votre comptable."
+      },
+      {
+        "question": "La voiture est en leasing au nom de la société : LUNICAR peut-il la reprendre ?",
+        "answer": "Pas directement. Le loueur est propriétaire. La société doit d'abord racheter le véhicule avec l'accord du loueur et obtenir la carte grise à son nom, puis LUNICAR peut l'étudier."
+      },
+      {
+        "question": "Comment la société est-elle payée ?",
+        "answer": "Par virement instantané sur le compte bancaire de la société, si la vente est conclue. Jamais d'espèces ni de chèque. Vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Carte grise : avec quels documents justifier son identité ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F31853"
+      },
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "TVA : exclusions du droit à déduction, véhicules de transport de personnes, BOFiP",
+        "url": "https://bofip.impots.gouv.fr/bofip/1192-PGP.html/identifiant=BOI-TVA-DED-30-30-20-20250702"
+      },
+      {
+        "label": "TVA : biens d'occasion livrés par des personnes qui les ont utilisés pour leur exploitation, BOFiP",
+        "url": "https://bofip.impots.gouv.fr/bofip/1280-PGP.html/identifiant=BOI-TVA-SECT-90-20-10-20210813"
+      },
+      {
+        "label": "Imposition des plus-values professionnelles, entreprendre.service-public.gouv.fr",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F33162"
+      },
+      {
+        "label": "Mentions obligatoires sur une facture, entreprendre.service-public.gouv.fr",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808"
+      }
+    ],
+    "updated": "2026-10-27"
   }
 ]
