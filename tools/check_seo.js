@@ -9,7 +9,7 @@
  */
 const base = (process.argv[2] || 'http://localhost:3123').replace(/\/$/, '');
 const SITE = 'https://lunicar.fr';
-const FORBIDDEN = /\b(expert[es]? (porsche|en|de la)|spécialiste|leader|n°\s?1\b|numéro un|meilleur prix (garanti|assuré)|prix garanti|(offre|décision|décidez)[^.]{0,40}sept jours|sept jours de validité|tient une semaine|garanti(e|s)? (le|au)\b|\+\s?\d+\s?%)/i;
+const FORBIDDEN = /\b(expert[es]? (porsche|en|de la)|spécialiste|leader|n°\s?1\b|numéro un\b|meilleur prix (garanti|assuré)|prix garanti|(offre|décision|décidez)[^.]{0,40}sept jours|sept jours de validité|tient une semaine|garanti(e|s)? (le|au)\b|\+\s?\d+\s?%)/i;
 
 const decode = s => s.replace(/&amp;/g, '&').replace(/&#39;|&apos;/g, '\'').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
