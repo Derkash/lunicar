@@ -191,7 +191,23 @@ const typoFr = doc => {
         return seg.replace(/ ([:;?!»])/g, '\u00a0$1').replace(/« /g, '«\u00a0').replace(/(\d) (%|€|km\b)/g, '$1\u00a0$2');
     }).join('');
 };
+const { markdown } = require('./lib/markdown');
+// Version Markdown de chaque page publique : /md/<chemin> ou en-tête Accept: text/markdown.
+// Les robots des assistants IA lisent le texte brut plus sûrement que le HTML.
+app.use((req, res, next) => {
+    if (req.method !== 'GET') return next();
+    if (req.path.startsWith('/md/') || req.path === '/md') { req.url = req.url.replace(/^\/md(?=\/|$)/, '') || '/'; req.markdown = true; }
+    else if (/text\/markdown/.test(String(req.headers.accept || '')) && !/text\/html/.test(String(req.headers.accept || '')) && !req.path.startsWith('/api/') && !req.path.startsWith('/admin')) req.markdown = true;
+    next();
+});
 const html = (res, doc, status = 200) => {
+    if (res.req && res.req.markdown && status === 200) {
+        const titre = (/<title>([^<]*)<\/title>/.exec(doc) || [])[1] || '';
+        const modif = (/article:modified_time" content="(\d{4}-\d{2}-\d{2})/.exec(doc) || [])[1] || '';
+        res.set('Cache-Control', 'public, max-age=300, stale-while-revalidate=86400').set('Vary', 'Accept');
+        if (modif) res.set('Last-Modified', new Date(modif + 'T06:00:00Z').toUTCString());
+        return res.status(200).type('text/markdown; charset=utf-8').send(markdown(typoFr(doc), { path: res.req.path, title: titre.replace(/&amp;/g, '&'), modified: modif }));
+    }
     res.set('Content-Security-Policy', CSP);
     res.set('Cache-Control', status === 200 ? 'public, max-age=300, stale-while-revalidate=86400' : 'no-store');
     // Date de modification réelle de la page (meta article:modified_time) : les moteurs et les assistants IA
