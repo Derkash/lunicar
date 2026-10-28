@@ -298,6 +298,11 @@ details.plus > summary { margin-top: 14px; }
 .kv-ed::after { content: ''; position: absolute; right: 2px; top: 50%; width: 11px; height: 11px; margin-top: -6px; background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239AA3B2' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E"); opacity: .7; }
 .kv-ed:hover { color: var(--bleu, #2453A6); } .kv-ed.kv-vide { color: var(--ink-4); font-weight: 400; font-style: italic; }
 .rdv-fourch { flex-wrap: wrap; font-size: .86rem; } .rdv-fourch .in { flex: 0 1 90px; width: 90px; }
+.mr-docs { display: grid; gap: 6px; margin: 0 0 8px; min-width: 0; }
+.mr-doc { display: flex; gap: 10px; align-items: flex-start; font-size: .88rem; min-width: 0; } .mr-doc input { width: 18px; height: 18px; flex: none; margin-top: 2px; }
+.mr-doc span { min-width: 0; } .mr-doc small { display: block; color: var(--ink-5); font-size: .72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#mrTxt { width: 100%; box-sizing: border-box; display: block; margin: 0 0 6px; }
+.mr-wrap { min-width: 0; display: block; } .mr-wrap > * + * { margin-top: 10px; } .mr-wrap .sub { margin: 0; overflow-wrap: anywhere; }
 .mc-bloc { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--line-2); } .mc-bloc .chk { margin: 0 0 6px; flex-wrap: wrap; } .mc-bloc .chk small { color: var(--ink-5); font-weight: 400; flex-basis: 100%; margin-left: 26px; }
 .mc-bloc .in { width: 100%; } .mc-cpt { margin: 4px 0 0; font-size: .74rem; } .mc-bloc .mc-btns { margin-top: 6px; }
 #mcCompte:empty { display: none; }
@@ -3211,13 +3216,68 @@ body.modal-ouvert { overflow: hidden; }
             <div class="doc-check">${[...DOCS_ACHAT, ...(v.statut === 'vendu' ? ['cession_vente'] : [])].map(t => `<span class="${docs.some(d => d.type === t) ? 'ok' : ''}">${docs.some(d => d.type === t) ? '✓' : '○'} ${esc(T[t] || t)}</span>`).join('')}</div>
             <div class="doc-act">
                 <button class="btn btn-g" id="vCession" type="button">Générer le certificat de cession</button>
+                <button class="btn btn-p" id="vMerci" type="button">${v.remerciement_le ? 'Mail remerciement · envoyé le ' + date(v.remerciement_le, false) : 'Mail remerciement'}</button>
                 <select class="in" id="vDocType">${Object.entries(T).map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select>
                 <label class="btn">Ajouter un document<input type="file" id="vDocFile" accept="image/*,application/pdf" hidden></label>
             </div>
             ${docs.length ? `<div class="doc-liste">${docs.slice().reverse().map(d => `<div class="doc"><a href="${photoUrl(d.path)}" target="_blank" rel="noopener"><b>${esc(d.libelle || T[d.type] || 'Document')}</b><span>${esc(d.name)}${d.genere ? ' · généré' : ''}</span></a><button class="btn btn-s btn-ghost" data-docdel="${esc(d.path)}" aria-label="Supprimer">✕</button></div>`).join('')}</div>` : ''}
         </section>`;
     }
+    // Mail de remerciement : documents de cession signés en pièces jointes, rappel assurance, avis Trustpilot.
+    const TRUSTPILOT_AVIS = 'https://fr.trustpilot.com/evaluate/lunicar.fr';
+    const DOCS_MERCI = { cession_achat: 'le certificat de cession signé', carte_grise: 'la carte grise barrée et signée', declaration_achat: 'le récépissé de la déclaration d\'achat' };
+    function texteRemerciement(v, docs) {
+        const d = demandes.find(x => x.ref === v.ref), x = (d && d.data) || {};
+        const veh = (v.libelle || x.vehicule || 'votre véhicule').replace(/\s+\d{4}$/, '');
+        const liste = docs.map(t => DOCS_MERCI[t.type] || (t.libelle || 'document').toLowerCase());
+        return ['Bonjour,', '',
+            `Toute l'équipe LUNICAR vous remercie chaleureusement pour votre confiance. La vente de votre ${veh}${v.plaque ? ' (' + v.plaque + ')' : ''} est désormais finalisée.`, '',
+            ...(liste.length ? ['Vous trouverez en pièces jointes les documents de la vente :', ...liste.map(l => '- ' + l), '',
+                'Pensez à transmettre le certificat de cession à votre assurance, si ce n\'est pas déjà fait, afin qu\'elle résilie votre contrat. Conservez précieusement ces documents : ils attestent que le véhicule n\'est plus sous votre responsabilité depuis la date de la vente.', ''] : []),
+            'Votre avis compte énormément pour nous. Si vous avez apprécié notre service, quelques mots sur Trustpilot nous aideraient beaucoup à nous faire connaître et à accompagner d\'autres vendeurs comme vous :', '',
+            `[[bouton:Laisser un avis sur Trustpilot|${TRUSTPILOT_AVIS}]]`, '',
+            'N\'hésitez pas à revenir vers nous en cas de besoin, nous restons à votre disposition. En espérant que vous ayez eu une excellente expérience avec nous.', '',
+            'Cordialement,', 'L\'équipe LUNICAR'].join('\n');
+    }
+    function mailRemerciement(v) {
+        const d = demandes.find(x => x.ref === v.ref), x = (d && d.data) || {};
+        if (!d) { toast('Pas de demande liée à ce véhicule : e-mail du client inconnu'); return; }
+        if (!x.email) { toast('Pas d\'adresse e-mail sur la fiche du client : ajoutez-la d\'abord'); return; }
+        const docs = v.documents || [], T = compta.types_document || {};
+        // Par défaut : le dernier document de chaque type attendu (cession signée, carte grise barrée, récépissé).
+        const defaut = new Set(Object.keys(DOCS_MERCI).map(t => (docs.filter(z => z.type === t).slice(-1)[0] || {}).path).filter(Boolean));
+        const manquants = Object.keys(DOCS_MERCI).filter(t => !docs.some(z => z.type === t));
+        const objet = 'Merci pour votre confiance · vos documents de cession';
+        const fermerM = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>Mail de remerciement</h3><button class="close" type="button" id="mrX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <div class="mr-wrap"><p class="sub">À ${esc(x.email)} · de LUNICAR · objet « ${esc(objet)} »${v.remerciement_le ? ` · déjà envoyé le ${date(v.remerciement_le)}` : ''}</p>
+            ${manquants.length ? `<p class="notice">Pas encore dans les documents : ${manquants.map(t => esc(T[t] || t)).join(', ')}. Ajoutez-les (« Ajouter un document ») ou envoyez sans.</p>` : ''}
+            <p class="cr-l">Pièces jointes</p>
+            <div class="mr-docs">${docs.length ? docs.map(z => `<label class="mr-doc"><input type="checkbox" data-mrdoc="${esc(z.path)}"${defaut.has(z.path) ? ' checked' : ''}><span>${esc(z.libelle || T[z.type] || 'Document')}<small>${esc(String(z.name || '').replace(/^\d{4}-\d{2}-\d{2}_[a-z_]+_\d+_/, ''))}</small></span></label>`).join('') : '<p class="vide">Aucun document importé pour ce véhicule.</p>'}</div>
+            <p class="cr-l">Message</p>
+            <textarea class="in" id="mrTxt" rows="16"></textarea>
+            <p class="sub">La ligne [[bouton:…]] devient un bouton doré « Laisser un avis sur Trustpilot ».</p>
+            <div class="cr-btns"><button type="button" class="btn" id="mrNon">Annuler</button><button type="button" class="btn btn-g" id="mrOk">Envoyer le mail</button></div></div>`;
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        $('#mrX').onclick = $('#mrNon').onclick = fermerM;
+        const choisis = () => [...$('#crIn').querySelectorAll('[data-mrdoc]:checked')].map(c => docs.find(z => z.path === c.dataset.mrdoc)).filter(Boolean);
+        let retouche = false;
+        const rafraichir = () => { if (!retouche) $('#mrTxt').value = texteRemerciement(v, choisis()); };
+        $('#mrTxt').addEventListener('input', () => { retouche = true; });
+        $('#crIn').querySelectorAll('[data-mrdoc]').forEach(c => c.onchange = rafraichir);
+        rafraichir();
+        $('#mrOk').onclick = async () => {
+            const ds = choisis();
+            if (await demander({ titre: 'Envoyer le mail de remerciement ?', texte: `À ${x.email} · ${ds.length} pièce${ds.length > 1 ? 's' : ''} jointe${ds.length > 1 ? 's' : ''}${ds.length ? ' : ' + ds.map(z => z.libelle).join(', ') : ''}`, boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
+            $('#mrOk').disabled = true;
+            try {
+                await api('/api/admin/compta/vehicules/' + v.id + '/remerciement', { method: 'POST', body: JSON.stringify({ objet, texte: $('#mrTxt').value.trim(), documents: ds.map(z => z.path) }) });
+                fermerM(); await chargerCompta(); afficherVehicule(v.id); charger().catch(() => {}); toast('Mail de remerciement envoyé');
+            } catch (e) { $('#mrOk').disabled = false; toast(e.message); $('#crModal').hidden = false; }
+        };
+    }
     function lierDocuments(v) {
+        if ($('#vMerci')) $('#vMerci').onclick = () => mailRemerciement(v);
         $('#vDocFile').onchange = async e => {
             const fi = e.target.files[0]; if (!fi) return;
             const fd = new FormData(); fd.append('justificatif', fi); fd.append('type', $('#vDocType').value);
