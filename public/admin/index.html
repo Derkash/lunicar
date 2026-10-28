@@ -3223,6 +3223,16 @@ body.modal-ouvert { overflow: hidden; }
             ${docs.length ? `<div class="doc-liste">${docs.slice().reverse().map(d => `<div class="doc"><a href="${photoUrl(d.path)}" target="_blank" rel="noopener"><b>${esc(d.libelle || T[d.type] || 'Document')}</b><span>${esc(d.name)}${d.genere ? ' · généré' : ''}</span></a><button class="btn btn-s btn-ghost" data-docdel="${esc(d.path)}" aria-label="Supprimer">✕</button></div>`).join('')}</div>` : ''}
         </section>`;
     }
+    // Civilité d'après le prénom (liste de prénoms courants + terminaisons nettement féminines). Inconnu : « Madame, Monsieur ».
+    const PRENOMS_F = new Set('marie anne sophie nathalie isabelle sylvie catherine christine sandrine valerie veronique stephanie celine caroline julie aurelie emilie laura sarah camille lea manon chloe emma ines jade louise alice lucie clara pauline marine audrey melanie elodie virginie laurence martine monique francoise brigitte nicole jacqueline danielle chantal patricia corinne karine sabrina nadia fatima fatou aminata aicha khadija mariam mariama samira leila yasmina amina salima nora hawa kadiatou fanta assia djamila malika zineb myriam jessica vanessa cindy amandine charlotte margaux mathilde juliette agathe zoe anais oceane morgane justine elise helene agnes beatrice claire florence genevieve josiane josette odile odette colette paulette ginette simone suzanne yvette yvonne denise annie evelyne mireille muriel nadine pascale regine solange therese viviane carole carine fabienne gaelle gwendoline ingrid jennifer johanna laetitia ludivine magali maud noemie oriane perrine raphaelle rebecca severine tiphaine sonia alexandra barbara cecile delphine estelle eve gisele huguette irene lydie marion michele nelly rose sabine yasmine naima houria ouarda rachida souad'.split(' '));
+    const PRENOMS_M = new Set('jean pierre michel philippe alain nicolas christophe patrick daniel bernard eric frederic laurent stephane david olivier thierry pascal sebastien julien thomas alexandre antoine maxime romain kevin mathieu matthieu guillaume vincent francois jerome cedric arnaud benoit damien fabrice franck gilles herve jacques joel lionel marc mickael pascal regis serge sylvain xavier yann yannick mohamed mohammed ahmed ali karim mamadou moussa ibrahima abdoul abdou youssouf oumar amadou boubacar sekou lamine samir rachid said mehdi yacine bilal hamza adam lucas louis hugo leo gabriel raphael arthur jules nathan ethan paul noah tom enzo theo clement quentin florian anthony jordan dylan loic gael yves claude andre rene roger robert henri georges marcel lucien luc jose manuel carlos mathias baptiste adrien bastien jeremy jonathan ludovic mathis valentin william'.split(' '));
+    function civilite(x) {
+        const norm = t => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+        const p = norm((String(x.prenom || '').split(/[\s-]+/)[0])), nom = String(x.nom || '').trim();
+        const nomPropre = nom ? nom.toLowerCase().replace(/(^|[\s'-])\S/g, c => c.toUpperCase()) : '';
+        let c = PRENOMS_F.has(p) ? 'Madame' : PRENOMS_M.has(p) ? 'Monsieur' : /(ette|elle|ine|ienne|ia)$/.test(p) ? 'Madame' : '';
+        return !c || !nomPropre ? (c && !nomPropre ? `Bonjour ${c},` : 'Bonjour Madame, Monsieur,') : `Bonjour ${c} ${nomPropre},`;
+    }
     // Mail de remerciement : documents de cession signés en pièces jointes, rappel assurance, avis Trustpilot.
     const TRUSTPILOT_AVIS = 'https://fr.trustpilot.com/evaluate/lunicar.fr';
     const DOCS_MERCI = { cession_achat: 'le certificat de cession signé', carte_grise: 'la carte grise barrée et signée', declaration_achat: 'le récépissé de la déclaration d\'achat' };
@@ -3230,7 +3240,7 @@ body.modal-ouvert { overflow: hidden; }
         const d = demandes.find(x => x.ref === v.ref), x = (d && d.data) || {};
         const veh = (v.libelle || x.vehicule || 'votre véhicule').replace(/\s+\d{4}$/, '');
         const liste = docs.map(t => DOCS_MERCI[t.type] || (t.libelle || 'document').toLowerCase());
-        return ['Bonjour,', '',
+        return [civilite(x), '',
             `Toute l'équipe LUNICAR vous remercie chaleureusement pour votre confiance. La vente de votre ${veh}${v.plaque ? ' (' + v.plaque + ')' : ''} est désormais finalisée.`, '',
             ...(liste.length ? ['Vous trouverez en pièces jointes les documents de la vente :', ...liste.map(l => '- ' + l), '',
                 'Pensez à transmettre le certificat de cession à votre assurance, si ce n\'est pas déjà fait, afin qu\'elle résilie votre contrat. Conservez précieusement ces documents : ils attestent que le véhicule n\'est plus sous votre responsabilité depuis la date de la vente.', ''] : []),
@@ -3257,7 +3267,7 @@ body.modal-ouvert { overflow: hidden; }
             <p class="cr-l">Message</p>
             <textarea class="in" id="mrTxt" rows="16"></textarea>
             <p class="sub">La ligne [[bouton:…]] devient un bouton doré « Laisser un avis sur Trustpilot ».</p>
-            <div class="cr-btns"><button type="button" class="btn" id="mrNon">Annuler</button><button type="button" class="btn btn-g" id="mrOk">Envoyer le mail</button></div></div>`;
+            <div class="cr-btns"><button type="button" class="btn" id="mrNon">Annuler</button><button type="button" class="btn" id="mrApercu">Aperçu à…</button><button type="button" class="btn btn-g" id="mrOk">Envoyer le mail</button></div></div>`;
         $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
         $('#mrX').onclick = $('#mrNon').onclick = fermerM;
         const choisis = () => [...$('#crIn').querySelectorAll('[data-mrdoc]:checked')].map(c => docs.find(z => z.path === c.dataset.mrdoc)).filter(Boolean);
@@ -3266,6 +3276,11 @@ body.modal-ouvert { overflow: hidden; }
         $('#mrTxt').addEventListener('input', () => { retouche = true; });
         $('#crIn').querySelectorAll('[data-mrdoc]').forEach(c => c.onchange = rafraichir);
         rafraichir();
+        $('#mrApercu').onclick = async () => {
+            const a = prompt('Envoyer un aperçu (mêmes pièces jointes) à :', 'abdoul.guirassy@gmail.com'); if (!a) return;
+            try { const r = await api('/api/admin/compta/vehicules/' + v.id + '/remerciement', { method: 'POST', body: JSON.stringify({ objet, texte: $('#mrTxt').value.trim(), documents: choisis().map(z => z.path), apercu: a }) }); toast('Aperçu envoyé à ' + r.envoye_a.join(', ')); }
+            catch (e) { toast(e.message); }
+        };
         $('#mrOk').onclick = async () => {
             const ds = choisis();
             if (await demander({ titre: 'Envoyer le mail de remerciement ?', texte: `À ${x.email} · ${ds.length} pièce${ds.length > 1 ? 's' : ''} jointe${ds.length > 1 ? 's' : ''}${ds.length ? ' : ' + ds.map(z => z.libelle).join(', ') : ''}`, boutons: [['ok', 'Envoyer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { $('#crModal').hidden = false; return; }
