@@ -1243,6 +1243,22 @@ async function pingIndexNow() {
         console.log(`IndexNow : ${urlList.length} URL soumises${complet ? ' (resoumission complète)' : ''} (HTTP ${r.status})`);
         if (r.ok) await store.ecrireReglage('indexnow', { quand: new Date(now).toISOString(), lastmod, complet: complet ? new Date(now).toISOString() : etat.complet });
     } catch (e) { console.log('IndexNow indisponible :', e.message); }
+    await soumettreBing(modifiees);
+}
+
+// API Bing Webmaster (quota : 100 URL par jour, 300 par mois) : les pages modifiées, hors villes d'abord,
+// pour que l'index lu par ChatGPT reprenne vite les titres et textes à jour.
+async function soumettreBing(modifiees) {
+    const cle = process.env.BING_API_KEY;
+    if (!cle || !modifiees.length) return;
+    const tri = [...modifiees].sort((a, b) => Number(isCityUrl(a)) - Number(isCityUrl(b)) || Number(b.priority) - Number(a.priority));
+    const urlList = tri.slice(0, 90).map(u => SITE.baseUrl + (u.loc === '/' ? '/' : u.loc));
+    try {
+        const r = await fetch(`https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey=${encodeURIComponent(cle)}`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body: JSON.stringify({ siteUrl: SITE.baseUrl, urlList })
+        });
+        console.log(`Bing Webmaster : ${urlList.length} URL soumises (HTTP ${r.status})`);
+    } catch (e) { console.log('Bing Webmaster indisponible :', e.message); }
 }
 if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_PING === '1')) {
     setTimeout(() => pingIndexNow().catch(e => console.log('IndexNow :', e.message)), 30000).unref();
