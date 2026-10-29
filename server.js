@@ -1223,18 +1223,30 @@ app.get('/llms-full.txt', (req, res) => {
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY || crypto.createHash('sha256').update('lunicar-indexnow-' + SITE.baseUrl).digest('hex').slice(0, 32);
 app.get(`/${INDEXNOW_KEY}.txt`, (req, res) => res.type('text/plain').send(INDEXNOW_KEY));
 
-function pingIndexNow() {
-    // Pages en ligne + anciennes adresses redirigées (Bing doit voir les 301 pour mettre à jour son index).
-    const urlList = [...indexablePages().map(u => SITE.baseUrl + (u.loc === '/' ? '/' : u.loc)), ...redirectedUrls()].slice(0, 10000);
+// Soumission IndexNow (Bing, et donc ChatGPT) : seulement les pages modifiées depuis la dernière soumission,
+// au plus une fois par jour, et une resoumission complète (anciennes adresses redirigées comprises) chaque semaine.
+// Renvoyer les 5 300 URL à chaque redémarrage faisait passer le site pour un spammeur d'IndexNow.
+const JOUR = 24 * 3600 * 1000;
+async function pingIndexNow() {
+    const etat = (await store.lireReglage('indexnow', null)) || {};
+    const now = Date.now();
+    if (etat.quand && now - Date.parse(etat.quand) < 20 * 3600 * 1000) return;
+    const complet = !etat.complet || now - Date.parse(etat.complet) > 7 * JOUR;
+    const pagesSite = indexablePages();
+    const modifiees = complet || !etat.lastmod ? pagesSite : pagesSite.filter(u => u.lastmod > etat.lastmod);
+    const urlList = [...modifiees.map(u => SITE.baseUrl + (u.loc === '/' ? '/' : u.loc)), ...(complet ? redirectedUrls() : [])].slice(0, 10000);
+    const lastmod = pagesSite.reduce((m, u) => (u.lastmod > m ? u.lastmod : m), '');
+    if (!urlList.length) { await store.ecrireReglage('indexnow', { ...etat, quand: new Date(now).toISOString(), lastmod }); return; }
     const body = JSON.stringify({ host: new URL(SITE.baseUrl).host, key: INDEXNOW_KEY, keyLocation: `${SITE.baseUrl}/${INDEXNOW_KEY}.txt`, urlList });
-    fetch('https://api.indexnow.org/indexnow', { method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body })
-        .then(r => console.log(`IndexNow : ${urlList.length} URL soumises (HTTP ${r.status})`))
-        .catch(e => console.log('IndexNow indisponible :', e.message));
+    try {
+        const r = await fetch('https://api.indexnow.org/indexnow', { method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body });
+        console.log(`IndexNow : ${urlList.length} URL soumises${complet ? ' (resoumission complète)' : ''} (HTTP ${r.status})`);
+        if (r.ok) await store.ecrireReglage('indexnow', { quand: new Date(now).toISOString(), lastmod, complet: complet ? new Date(now).toISOString() : etat.complet });
+    } catch (e) { console.log('IndexNow indisponible :', e.message); }
 }
 if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_PING === '1')) {
-    setTimeout(pingIndexNow, 30000).unref();
-    // Resoumission complète chaque semaine : Bing (et donc ChatGPT) revisite les pages même sans déploiement.
-    setInterval(pingIndexNow, 7 * 24 * 3600 * 1000).unref();
+    setTimeout(() => pingIndexNow().catch(e => console.log('IndexNow :', e.message)), 30000).unref();
+    setInterval(() => pingIndexNow().catch(e => console.log('IndexNow :', e.message)), JOUR).unref();
 }
 
 // Route admin cachée
