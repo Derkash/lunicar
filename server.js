@@ -608,6 +608,7 @@ const doublons = require('./lib/doublons');
 const fusionDoublons = () => doublons.fusionnerTout().catch(e => console.error('Doublons :', e.message));
 setTimeout(fusionDoublons, 60 * 1000).unref();
 setInterval(fusionDoublons, 15 * 60 * 1000).unref();
+setTimeout(() => require('./lib/compta').completerDepuisDemandes().catch(e => console.error('Compta, complétion :', e.message)), 20 * 1000).unref();
 
 // ---------- Brouillons : demandes commencées mais pas envoyées ----------
 // Dès que le téléphone est saisi, le formulaire envoie son état à chaque étape.

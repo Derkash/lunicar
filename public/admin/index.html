@@ -298,6 +298,13 @@ details.plus > summary { margin-top: 14px; }
 .kv-ed::after { content: ''; position: absolute; right: 2px; top: 50%; width: 11px; height: 11px; margin-top: -6px; background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239AA3B2' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E"); opacity: .7; }
 .kv-ed:hover { color: var(--bleu, #2453A6); } .kv-ed.kv-vide { color: var(--ink-4); font-weight: 400; font-style: italic; }
 .rdv-fourch { flex-wrap: wrap; font-size: .86rem; } .rdv-fourch .in { flex: 0 1 90px; width: 90px; }
+.tr-liste { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 8px; }
+.tr { border: 1px solid var(--line); border-radius: 12px; padding: 8px 10px; } .tr.fait { background: #F4FAF6; border-color: #CFE7D7; } .tr.fait .tr-txt { text-decoration: line-through; color: var(--ink-5); }
+.tr-tete { display: flex; align-items: center; gap: 8px; } .tr-txt { flex: 1 1 0; width: 0; min-width: 0; border-color: transparent; background: transparent; font-weight: 550; } .tr-txt:focus { border-color: var(--line); background: var(--surface); }
+.tr-fait { display: flex; align-items: center; gap: 5px; font-size: .74rem; color: var(--ink-5); flex: none; } .tr-fait input { width: 18px; height: 18px; } .tr.fait .tr-fait span { color: #1D6B3D; font-weight: 650; }
+.tr-tot { flex: none; font-size: .9rem; } .tr-couts { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 0 29px; align-items: center; }
+.tr-cout { display: flex; gap: 4px; align-items: center; } .tr-cout select.in { width: 128px; height: 32px; font-size: .82rem; } .tr-cout .in.num { width: 82px; height: 32px; font-size: .84rem; }
+.tr-ajout { display: flex; gap: 8px; } .tr-ajout .in { flex: 1 1 0; width: 0; min-width: 0; }
 .mr-docs { display: grid; gap: 6px; margin: 0 0 8px; min-width: 0; }
 .mr-doc { display: flex; gap: 10px; align-items: flex-start; font-size: .88rem; min-width: 0; } .mr-doc input { width: 18px; height: 18px; flex: none; margin-top: 2px; }
 .mr-doc span { min-width: 0; } .mr-doc small { display: block; color: var(--ink-5); font-size: .72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -2566,6 +2573,7 @@ body.modal-ouvert { overflow: hidden; }
                 ${pros && v.ref ? `<div class="rdv-act"><button class="btn btn-g" data-vrdv="achetee">Voiture achetée</button><button class="btn" data-vrdv="fait">Fait, pas d'achat</button><button class="btn btn-d" data-vrdv="annule">RDV annulé</button><button class="btn btn-d" id="vPasInt">Pas intéressé (e-mail de refus)</button></div>` : ''}
             </section>` : ''}
             <div class="prices vh-prix" id="vPrix">${chiffresVehicule(v)}</div>
+            ${ORDRE_ACHETE.includes(v.statut) ? blocTravaux(v) : ''}
             <section class="sec">
                 <h3>Dépenses du véhicule <small>${Object.entries(b.par_payeur).filter(([, m]) => m).map(([k, m]) => `${PAYCOURT[k]} ${euro(m)}`).join(' · ') || 'aucune'}</small></h3>
                 <div id="vNf"></div>
@@ -2640,6 +2648,7 @@ body.modal-ouvert { overflow: hidden; }
             $('#vNf').scrollIntoView({ block: 'center', behavior: 'smooth' });
         });
         if ($('#vDocs')) lierDocuments(v);
+        if ($('#vTravaux')) lierTravaux(v);
         lierDepenses($('#vpageIn'), () => afficherVehicule(v.id));
         if ($('#vAnnulAchat')) $('#vAnnulAchat').onclick = () => annulerAchatVehicule(v);
         if ($('#vDemande')) $('#vDemande').onclick = () => { quitterVehicule(); history.pushState({ ref: v.ref }, '', BASE + '/demande/' + v.ref); afficherFiche(v.ref); };
@@ -2675,7 +2684,7 @@ body.modal-ouvert { overflow: hidden; }
         const m = vendu ? b.marge : b.marge_prevue;
         return `<div class="pr"><span>${pros ? 'Fourchette annoncée' : 'Prix d\'achat'}</span><b class="num">${pros ? (fourchetteRdv(v.rdv) || euro(v.prix_convenu)) : euro(v.prix_achat)}</b><small>${pros ? 'au rendez-vous (haut de fourchette compté)' : v.prix_achat ? 'payé par ' + PAYCOURT[v.payeur_achat || 'societe'] : 'à renseigner ci-dessous'}</small></div>
             <div class="pr"><span>Dépenses</span><b class="num">${euro(b.frais)}</b><small>${b.nb_depenses} ligne${b.nb_depenses > 1 ? 's' : ''}</small></div>
-            <div class="pr main"><span>${pros ? 'Coût prévu' : 'Coût de revient'}</span><b class="num">${euro(b.cout)}</b><small>${pros ? 'prix convenu + frais' : 'achat + dépenses'}</small></div>
+            <div class="pr main"><span>${pros ? 'Coût prévu' : 'Coût de revient'}</span><b class="num">${euro(b.cout)}</b><small>${pros ? 'prix convenu + frais' : 'achat + dépenses' + ((b.travaux || {}).faits ? ' + travaux ' + euro(b.travaux.faits) : '')}</small></div>
             <div class="pr"><span>${vendu ? 'Marge réalisée' : 'Marge prévue'}</span><b class="num ${m < 0 ? 'neg' : 'pos'}">${signe(m)}</b><small>${vendu ? 'vendu ' + euro(v.prix_vente) : v.estimation_vente ? 'si vendu ' + euro(v.estimation_vente) : 'renseigner la vente estimée'}</small></div>`;
     }
     function quitterVehicule() { if ($('#vpage').hidden) return; $('#vpage').hidden = true; if ($('#sheet').hidden) document.body.classList.remove('page-fiche'); document.title = 'Admin · LUNICAR'; if (!document.querySelector('[data-view="vehicules"]').hidden) vueVehicules(); }
@@ -3205,6 +3214,39 @@ body.modal-ouvert { overflow: hidden; }
             } catch (e) { const z = cible.querySelector('#nfLecture'); z.className = 'nf-lecture'; z.textContent = 'Lecture impossible (' + e.message + ') : saisissez les montants.'; }
         }
         rendre();
+    }
+
+    // ---------------- Travaux à prévoir (saisis par le technicien) : fait / pas fait, plusieurs coûts par ligne
+    const POSTES_TRAVAUX = ['Pièces', 'Main-d\'œuvre', 'Autre'];
+    const coutTravaux = t => (t.couts || []).reduce((a, k) => a + (Number(k.montant) || 0), 0);
+    function blocTravaux(v) {
+        const tr = v.travaux || [], b = (v.bilan || {}).travaux || {};
+        return `<section class="sec" id="vTravaux">
+            <h3>Travaux à prévoir <small>${tr.length ? `${b.restant || 0} à faire · faits ${euro(b.faits || 0)}${b.a_prevoir ? ' · à prévoir ' + euro(b.a_prevoir) : ''}` : 'rien de noté'}</small></h3>
+            ${tr.length ? `<ol class="tr-liste">${tr.map(t => `<li class="tr${t.fait ? ' fait' : ''}" data-tr="${esc(t.id)}">
+                <div class="tr-tete"><label class="tr-fait"><input type="checkbox" data-trfait${t.fait ? ' checked' : ''}><span>${t.fait ? 'Fait' : 'À faire'}</span></label>
+                    <input class="in tr-txt" data-trtxt value="${esc(t.texte || '')}"><b class="num tr-tot">${coutTravaux(t) ? euro(coutTravaux(t)) : ''}</b><button type="button" class="btn btn-s btn-ghost" data-trdel aria-label="Supprimer la ligne">✕</button></div>
+                <div class="tr-couts">${(t.couts || []).map((k, i) => `<div class="tr-cout" data-k="${i}"><select class="in" data-klib>${[...new Set([...POSTES_TRAVAUX, k.libelle].filter(Boolean))].map(o => `<option${o === k.libelle ? ' selected' : ''}>${esc(o)}</option>`).join('')}</select><input class="in num" data-kmt inputmode="decimal" value="${esc(k.montant || '')}" placeholder="€"><button type="button" class="btn btn-s btn-ghost" data-kdel aria-label="Retirer ce coût">✕</button></div>`).join('')}
+                    <button type="button" class="btn btn-s" data-kadd>+ Ajouter un prix</button></div>
+            </li>`).join('')}</ol>` : '<p class="vide">Vidange, bruit à vérifier, pneus, carrosserie… : notez ici ce qu\'il y a à faire sur la voiture.</p>'}
+            <form class="tr-ajout" id="trAjout"><input class="in" id="trNouveau" placeholder="Ex. vidange à faire, bruit train avant à vérifier…" autocomplete="off"><button class="btn btn-p">Ajouter</button></form>
+        </section>`;
+    }
+    function lierTravaux(v) {
+        const url = '/api/admin/compta/vehicules/' + v.id + '/travaux';
+        const recharger = async () => { await chargerCompta(); const y = window.scrollY; afficherVehicule(v.id); window.scrollTo(0, y); };
+        $('#trAjout').onsubmit = async e => { e.preventDefault(); const t = $('#trNouveau').value.trim(); if (!t) return; try { await api(url, { method: 'POST', body: JSON.stringify({ texte: t }) }); await recharger(); setTimeout(() => $('#trNouveau') && $('#trNouveau').focus(), 50); } catch (er) { toast(er.message); } };
+        $('#vTravaux').querySelectorAll('[data-tr]').forEach(li => {
+            const tid = li.dataset.tr, t = (v.travaux || []).find(z => z.id === tid) || {};
+            const couts = () => [...li.querySelectorAll('.tr-cout')].map(c => ({ libelle: c.querySelector('[data-klib]').value, montant: c.querySelector('[data-kmt]').value.replace(',', '.') }));
+            const sauver = async (corps, rel = true) => { try { await api(url + '/' + tid, { method: 'PATCH', body: JSON.stringify(corps) }); if (rel) await recharger(); else await chargerCompta(); } catch (er) { toast(er.message); } };
+            li.querySelector('[data-trfait]').onchange = e => sauver({ fait: e.target.checked });
+            li.querySelector('[data-trtxt]').onchange = e => { const val = e.target.value.trim(); if (val && val !== t.texte) sauver({ texte: val }, false); };
+            li.querySelectorAll('[data-klib], [data-kmt]').forEach(i => i.onchange = () => sauver({ couts: couts().filter(k => k.montant !== '' || k.libelle) }));
+            li.querySelectorAll('[data-kdel]').forEach(bt => bt.onclick = () => { bt.closest('.tr-cout').remove(); sauver({ couts: couts() }); });
+            li.querySelector('[data-kadd]').onclick = () => sauver({ couts: [...couts(), { libelle: couts().some(k => k.libelle === 'Pièces') ? 'Main-d\'œuvre' : 'Pièces', montant: '' }] });
+            li.querySelector('[data-trdel]').onclick = async () => { if (await demander({ titre: 'Supprimer cette ligne ?', texte: t.texte, boutons: [['ok', 'Supprimer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return; try { await api(url + '/' + tid, { method: 'DELETE' }); await recharger(); } catch (er) { toast(er.message); } };
+        });
     }
 
     // ---------------- Documents du véhicule et certificat de cession (Cerfa 15776*01)
