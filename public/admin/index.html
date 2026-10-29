@@ -298,6 +298,10 @@ details.plus > summary { margin-top: 14px; }
 .kv-ed::after { content: ''; position: absolute; right: 2px; top: 50%; width: 11px; height: 11px; margin-top: -6px; background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239AA3B2' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E"); opacity: .7; }
 .kv-ed:hover { color: var(--bleu, #2453A6); } .kv-ed.kv-vide { color: var(--ink-4); font-weight: 400; font-style: italic; }
 .rdv-fourch { flex-wrap: wrap; font-size: .86rem; } .rdv-fourch .in { flex: 0 1 90px; width: 90px; }
+.lieu-carte { display: grid; gap: 8px; margin: 0 0 10px; } .lieu-pin { display: grid; grid-template-columns: auto 1fr; column-gap: 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: inherit; background: #FAF9F6; }
+.lieu-pin span { grid-row: span 2; font-size: 1.2rem; } .lieu-pin small { color: var(--ink-5); font-size: .8rem; }
+.lieu-act { display: flex; flex-wrap: wrap; gap: 6px; } .lieu-act .btn { flex: 1 1 auto; justify-content: center; }
+.lieu-saisie { display: grid; gap: 8px; }
 .tr-liste { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 8px; }
 .tr { border: 1px solid var(--line); border-radius: 12px; padding: 8px 10px; } .tr.fait { background: #F4FAF6; border-color: #CFE7D7; } .tr.fait .tr-txt { text-decoration: line-through; color: var(--ink-5); }
 .tr-tete { display: flex; align-items: center; gap: 8px; } .tr-txt { flex: 1 1 0; width: 0; min-width: 0; border-color: transparent; background: transparent; font-weight: 550; } .tr-txt:focus { border-color: var(--line); background: var(--surface); }
@@ -2573,6 +2577,7 @@ body.modal-ouvert { overflow: hidden; }
                 ${pros && v.ref ? `<div class="rdv-act"><button class="btn btn-g" data-vrdv="achetee">Voiture achetée</button><button class="btn" data-vrdv="fait">Fait, pas d'achat</button><button class="btn btn-d" data-vrdv="annule">RDV annulé</button><button class="btn btn-d" id="vPasInt">Pas intéressé (e-mail de refus)</button></div>` : ''}
             </section>` : ''}
             <div class="prices vh-prix" id="vPrix">${chiffresVehicule(v)}</div>
+            ${v.statut !== 'perdu' ? blocEmplacement(v) : ''}
             ${ORDRE_ACHETE.includes(v.statut) ? blocTravaux(v) : ''}
             <section class="sec">
                 <h3>Dépenses du véhicule <small>${Object.entries(b.par_payeur).filter(([, m]) => m).map(([k, m]) => `${PAYCOURT[k]} ${euro(m)}`).join(' · ') || 'aucune'}</small></h3>
@@ -2649,6 +2654,7 @@ body.modal-ouvert { overflow: hidden; }
         });
         if ($('#vDocs')) lierDocuments(v);
         if ($('#vTravaux')) lierTravaux(v);
+        if ($('#vLieu')) lierEmplacement(v);
         lierDepenses($('#vpageIn'), () => afficherVehicule(v.id));
         if ($('#vAnnulAchat')) $('#vAnnulAchat').onclick = () => annulerAchatVehicule(v);
         if ($('#vDemande')) $('#vDemande').onclick = () => { quitterVehicule(); history.pushState({ ref: v.ref }, '', BASE + '/demande/' + v.ref); afficherFiche(v.ref); };
@@ -3214,6 +3220,51 @@ body.modal-ouvert { overflow: hidden; }
             } catch (e) { const z = cible.querySelector('#nfLecture'); z.className = 'nf-lecture'; z.textContent = 'Lecture impossible (' + e.message + ') : saisissez les montants.'; }
         }
         rendre();
+    }
+
+    // ---------------- Où est garé le véhicule (laissé sur place) : position GPS, itinéraire, partage
+    const lienMaps = e => `https://www.google.com/maps/search/?api=1&query=${e.lat},${e.lon}`;
+    const lienWaze = e => `https://waze.com/ul?ll=${e.lat},${e.lon}&navigate=yes`;
+    const lienPlans = e => `https://maps.apple.com/?daddr=${e.lat},${e.lon}`;
+    function messageEmplacement(v) {
+        const e = v.emplacement;
+        return [`Bonjour, voici le lieu où est garé le véhicule ${[v.libelle, v.plaque].filter(Boolean).join(' · ')} :`, e.note ? e.note : '', e.adresse ? e.adresse : '', '', `Google Maps : ${lienMaps(e)}`, `Waze : ${lienWaze(e)}`].filter((l, i, a) => l || (i > 0 && a[i - 1])).join('\n').replace(/\n{3,}/g, '\n\n');
+    }
+    function blocEmplacement(v) {
+        const e = v.emplacement;
+        return `<section class="sec" id="vLieu">
+            <h3>Où est garé le véhicule <small>${e ? 'enregistré le ' + date(e.date) + (e.precision ? ` · précision ± ${e.precision} m` : '') : 'pas de lieu enregistré'}</small></h3>
+            ${e ? `<div class="lieu-carte"><a href="${lienMaps(e)}" target="_blank" rel="noopener" class="lieu-pin"><span>📍</span><b>${esc(e.adresse || `${e.lat.toFixed(5)}, ${e.lon.toFixed(5)}`)}</b>${e.note ? `<small>${esc(e.note)}</small>` : ''}</a>
+                <div class="lieu-act"><a class="btn btn-g" href="${lienMaps(e)}" target="_blank" rel="noopener">Google Maps</a><a class="btn" href="${lienWaze(e)}" target="_blank" rel="noopener">Waze</a><a class="btn" href="${lienPlans(e)}" target="_blank" rel="noopener">Plans</a></div>
+                <div class="lieu-act"><button type="button" class="btn btn-p" id="lieuPartager">Partager le lieu</button><a class="btn" id="lieuWa" href="https://wa.me/?text=${encodeURIComponent(messageEmplacement(v))}" target="_blank" rel="noopener">WhatsApp</a><button type="button" class="btn btn-ghost" id="lieuEffacer">Effacer</button></div></div>` : ''}
+            <div class="lieu-saisie">
+                <input class="in" id="lieuNote" value="${esc((e && e.note) || '')}" placeholder="Précisions : parking Carrefour, niveau -1, place 24, clés chez le gardien…">
+                <button type="button" class="btn ${e ? '' : 'btn-g'}" id="lieuIci">${e ? 'Remplacer par ma position actuelle' : 'Enregistrer ma position actuelle'}</button>
+                ${e ? '<button type="button" class="btn btn-s" id="lieuNoteOk">Enregistrer les précisions</button>' : ''}
+            </div>
+        </section>`;
+    }
+    function lierEmplacement(v) {
+        const url = '/api/admin/compta/vehicules/' + v.id;
+        const sauver = async emplacement => { await api(url, { method: 'PATCH', body: JSON.stringify({ emplacement }) }); await chargerCompta(); const y = window.scrollY; afficherVehicule(v.id); window.scrollTo(0, y); };
+        // Adresse lisible (rue, ville) à partir des coordonnées : base adresse nationale, sans clé.
+        const adresseDe = async (lat, lon) => { try { const j = await (await fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${lon}&lat=${lat}&limit=1`)).json(); const f = (j.features || [])[0]; return f ? f.properties.label : ''; } catch (e) { return ''; } };
+        $('#lieuIci').onclick = () => {
+            if (!navigator.geolocation) { toast('Localisation indisponible sur cet appareil'); return; }
+            const b = $('#lieuIci'); b.disabled = true; b.textContent = 'Localisation en cours…';
+            navigator.geolocation.getCurrentPosition(async pos => {
+                const { latitude: lat, longitude: lon, accuracy } = pos.coords;
+                try { await sauver({ lat, lon, precision: accuracy, note: $('#lieuNote').value.trim(), adresse: await adresseDe(lat, lon) }); toast('Lieu enregistré'); }
+                catch (er) { toast(er.message); b.disabled = false; }
+            }, err => { b.disabled = false; b.textContent = 'Enregistrer ma position actuelle'; toast(err.code === 1 ? 'Autorisez la localisation pour LUNICAR dans les réglages' : 'Position introuvable, réessayez à l\'extérieur'); }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 });
+        };
+        if ($('#lieuNoteOk')) $('#lieuNoteOk').onclick = async () => { try { await sauver({ ...v.emplacement, note: $('#lieuNote').value.trim() }); toast('Précisions enregistrées'); } catch (er) { toast(er.message); } };
+        if ($('#lieuEffacer')) $('#lieuEffacer').onclick = async () => { if (await demander({ titre: 'Effacer le lieu enregistré ?', boutons: [['ok', 'Effacer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return; try { await sauver(null); } catch (er) { toast(er.message); } };
+        if ($('#lieuPartager')) $('#lieuPartager').onclick = async () => {
+            const texte = messageEmplacement(v);
+            if (navigator.share) { try { await navigator.share({ text: texte }); return; } catch (e) { if (e.name === 'AbortError') return; } }
+            try { await navigator.clipboard.writeText(texte); toast('Message copié : collez-le dans WhatsApp, SMS…'); } catch (e) { window.open('https://wa.me/?text=' + encodeURIComponent(texte), '_blank'); }
+        };
     }
 
     // ---------------- Travaux à prévoir (saisis par le technicien) : fait / pas fait, plusieurs coûts par ligne

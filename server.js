@@ -89,7 +89,8 @@ app.use((req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'SAMEORIGIN');
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    // L'admin a besoin de la position (lieu où le véhicule est garé) et de l'appareil photo (carte grise, notes de frais).
+    res.setHeader('Permissions-Policy', /^\/admino/.test(req.path) ? 'camera=(self), microphone=(self), geolocation=(self)' : 'camera=(), microphone=(), geolocation=()');
     next();
 });
 
