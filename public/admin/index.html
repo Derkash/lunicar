@@ -301,7 +301,7 @@ details.plus > summary { margin-top: 14px; }
 .lieu-carte { display: grid; gap: 8px; margin: 0 0 10px; } .lieu-pin { display: grid; grid-template-columns: auto 1fr; column-gap: 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: inherit; background: #FAF9F6; }
 .lieu-pin span { grid-row: span 2; font-size: 1.2rem; } .lieu-pin small { color: var(--ink-5); font-size: .8rem; }
 .lieu-act { display: flex; flex-wrap: wrap; gap: 6px; } .lieu-act .btn { flex: 1 1 auto; justify-content: center; }
-.lieu-saisie { display: grid; gap: 8px; }
+.lieu-saisie { display: grid; gap: 8px; } .lieu-adr { display: flex; gap: 6px; } .lieu-adr .in { flex: 1 1 0; width: 0; min-width: 0; }
 .pp { display: inline-block; font-style: normal; font-size: .7rem; font-weight: 650; padding: 1px 8px; border-radius: 99px; margin: 2px 0; }
 .pp-tb { background: #1D6B3D; color: #fff; } .pp-b { background: #DDF1E4; color: #1D6B3D; } .pp-m { background: #EEF0F4; color: var(--ink-7, #3B3F4A); } .pp-h { background: #F6E3DF; color: #9A3A2B; }
 .tr-liste { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 8px; }
@@ -835,17 +835,15 @@ ul.plain li { margin: 3px 0; }
 .cal-rdv.combinable { background: #E3F3E8; border-left-color: #1D6B3D; } .cal-rdv.combinable em { background: #1D6B3D; color: #fff; }
 .cal-rdv.fini { background: #F1F1EE; border-left-color: #B8B4AA; color: var(--ink-5); } .cal-rdv.achete { background: #E3F3E8; border-left-color: #1D6B3D; }
 /* Carte */
-.carte-screen { position: fixed; inset: 0; z-index: 84; background: rgba(14,35,64,.45); display: grid; place-items: center; padding: 12px; }
-.carte-in { width: min(960px, 100%); max-height: 96vh; overflow-y: auto; background: var(--surface); border-radius: 16px; display: grid; grid-template-rows: auto auto 1fr; }
-.carte-tete { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--line-2); } .carte-tete b { font-size: 1rem; }
-.carte-map { height: 46vh; min-height: 280px; background: #E9EEF2; }
-.carte-corps { padding: 14px 16px 18px; } .carte-corps h3 { margin: 0 0 8px; font-size: .95rem; } .carte-corps h3 small { font-weight: 400; color: var(--ink-5); font-size: .8rem; margin-left: 6px; }
+.carte-sec h3 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; } .carte-sec h3 small { flex: 1; } .carte-sec h3 .btn { margin-left: auto; }
+.carte-map { height: 44vh; min-height: 300px; border-radius: 12px; background: #E9EEF2; margin: 0 0 12px; z-index: 0; }
+.carte-corps { padding: 0; }
 .rec-liste { display: grid; gap: 8px; } .rec { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; } .rec.rdv { cursor: pointer; border-color: #CFE0FF; }
 .rec-t { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 10px; font-size: .9rem; } .rec-t span { color: var(--ink-5); font-size: .78rem; }
 .rec-l { font-size: .84rem; margin-top: 3px; } .rec-l small { color: var(--ink-5); }
 .rec-b { margin: 8px 0 0; padding: 0 0 0 18px; font-size: .82rem; display: grid; gap: 4px; } .rec-b li.rdv::marker { color: #2453A6; } .rec-b li.voiture::marker { color: #9A3A2B; } p.rec-b { padding: 0; color: var(--ink-5); }
 .rec-a { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-@media (max-width: 760px) { .carte-screen { padding: 0; place-items: end stretch; } .carte-in { max-height: 100vh; border-radius: 0; } .carte-map { height: 40vh; } .cal-grille { grid-template-columns: 30px repeat(6, minmax(0, 1fr)); } .cal-rdv { font-size: .6rem; padding: 1px 3px; } }
+@media (max-width: 760px) { .carte-map { height: 38vh; } .cal-grille { grid-template-columns: 30px repeat(6, minmax(0, 1fr)); } .cal-rdv { font-size: .6rem; padding: 1px 3px; } }
 .pl-j.auj { border-color: #5A3E9E; }
 .pl-j.on { background: #5A3E9E; border-color: #5A3E9E; }
 .pl-j.on span, .pl-j.on b, .pl-j.on i { color: #fff; }
@@ -1359,8 +1357,8 @@ body.modal-ouvert { overflow: hidden; }
             <div class="page-h"><h1>Planning des rendez-vous</h1><span>fixés au téléphone depuis la fiche d'une demande</span></div>
             <div class="kpis" id="plKpis"></div>
             <div id="plBande"></div>
-            <div class="toolbar"><div class="segs" id="plVues" style="margin:0;flex:1"></div><button type="button" class="btn btn-g" id="plCarte">Carte · voitures à récupérer</button><a class="btn" id="plCal" href="#" hidden><svg><use href="#i-cal"/></svg>S'abonner dans Calendrier</a></div>
-            <div class="carte-screen" id="carteScreen" hidden><div class="carte-in"><div class="carte-tete"><b>Carte : rendez-vous et voitures à récupérer</b><button class="close" type="button" id="carteX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div><div class="carte-map" id="carteMap"></div><div class="carte-corps" id="carteCorps"></div></div></div>
+            <section class="sec carte-sec" id="plCarteSec"><h3>Carte : rendez-vous et voitures à récupérer <small id="carteInfo"></small><button type="button" class="btn btn-s" id="carteMaj">Actualiser</button></h3><div class="carte-map" id="carteMap"></div><div class="carte-corps" id="carteCorps"></div></section>
+            <div class="toolbar"><div class="segs" id="plVues" style="margin:0;flex:1"></div><a class="btn" id="plCal" href="#" hidden><svg><use href="#i-cal"/></svg>S'abonner dans Calendrier</a></div>
             <div id="plListe"></div>
         </section>
 
@@ -3130,6 +3128,7 @@ body.modal-ouvert { overflow: hidden; }
 
     // ---------------- Carte de France : rendez-vous prévus + voitures achetées à récupérer, binômes possibles
     let leafletPrete = null, carteMap = null;
+    setTimeout(() => chargerLeaflet().catch(() => {}), 1500);
     function chargerLeaflet() {
         if (leafletPrete) return leafletPrete;
         leafletPrete = new Promise((ok, ko) => {
@@ -3141,41 +3140,44 @@ body.modal-ouvert { overflow: hidden; }
     const phraseBinome = b => b.type === 'rdv'
         ? `Récupérable à deux lors du RDV du ${jourCourt(b.date)} ${String(b.heure).replace(':', 'h')} à ${esc(b.ville)} (${b.km} km) : un technicien fait le rendez-vous, l'autre ramène cette voiture.`
         : `Même tournée possible avec ${esc(b.libelle)} laissée à ${esc(b.lieu)} (${b.km} km) : deux techniciens, un seul aller en train.`;
-    async function ouvrirCarte() {
-        const sc = $('#carteScreen'); sc.hidden = false; document.body.classList.add('modal-ouvert');
-        $('#carteCorps').innerHTML = '<p class="sub"><span class="spin"></span> Chargement…</p>';
-        $('#carteX').onclick = () => { sc.hidden = true; document.body.classList.remove('modal-ouvert'); };
-        let C; try { [C] = await Promise.all([api('/api/admin/carte'), chargerLeaflet()]); } catch (e) { $('#carteCorps').innerHTML = `<p class="notice">${esc(e.message)}</p>`; return; }
-        // Liste : voitures à récupérer avec leurs binômes, puis rendez-vous prévus
-        $('#carteCorps').innerHTML = `
-            <h3>Voitures à récupérer <small>${C.recuperer.length} · achetées, pas encore ramenées</small></h3>
+    let carteData = null, carteDepuis = 0, carteRendue = '';
+    async function rendreCarte(force) {
+        const corps = $('#carteCorps'); if (!corps) return;
+        if (force || !carteData || Date.now() - carteDepuis > 2 * 60e3) {
+            if (!carteData) corps.innerHTML = '<p class="sub"><span class="spin"></span> Chargement de la carte…</p>';
+            try { [carteData] = await Promise.all([api('/api/admin/carte'), chargerLeaflet()]); carteDepuis = Date.now(); } catch (e) { corps.innerHTML = `<p class="notice">${esc(e.message)}</p>`; return; }
+        } else { try { await chargerLeaflet(); } catch (e) { corps.innerHTML = `<p class="notice">${esc(e.message)}</p>`; return; } }
+        const C = carteData, cle = C.calcule_le + '|' + C.rdvs.length + '|' + C.recuperer.length;
+        $('#carteInfo').textContent = `${C.recuperer.length} voiture${C.recuperer.length > 1 ? 's' : ''} à récupérer · ${C.rdvs.length} RDV à venir`;
+        corps.innerHTML = `
             ${C.recuperer.length ? `<div class="rec-liste">${C.recuperer.map(v => `<div class="rec" data-rec="${esc(v.id)}">
-                <div class="rec-t"><b>${esc(v.libelle)}${v.plaque ? ' · ' + esc(v.plaque) : ''}</b><span>${v.km_depart != null ? v.km_depart + ' km du départ' : ''}${v.depuis ? ' · achetée le ' + date(v.depuis, false) : ''}</span></div>
-                <div class="rec-l">📍 ${esc(v.lieu)}${v.source === 'gps' ? '' : ' <small>(commune du vendeur, position précise non enregistrée)</small>'}${v.note ? `<br><small>${esc(v.note)}</small>` : ''}</div>
+                <div class="rec-t"><b>${esc(v.libelle)}${v.plaque ? ' · ' + esc(v.plaque) : ''}</b><span>${v.km_depart != null ? v.km_depart + ' km du départ' : ''}${v.depuis ? ' · laissée le ' + date(v.depuis, false) : ''}</span></div>
+                <div class="rec-l">📍 ${esc(v.lieu)}${v.note ? `<br><small>${esc(v.note)}</small>` : ''}</div>
                 ${v.binomes.length ? `<ul class="rec-b">${v.binomes.slice(0, 3).map(b => `<li class="${b.type}">${phraseBinome(b)}</li>`).join('')}</ul>` : `<p class="rec-b vide">Aucun rendez-vous ni autre voiture à moins de ${C.binome_km} km pour l'instant : aller dédié à prévoir.</p>`}
                 <div class="rec-a"><a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&query=${v.lat},${v.lon}" target="_blank" rel="noopener">Itinéraire</a><button type="button" class="btn btn-s" data-rec-voir="${esc(v.id)}">Voir sur la carte</button><button type="button" class="btn btn-s" data-rec-fiche="${esc(v.id)}">Fiche</button><button type="button" class="btn btn-s btn-g" data-rec-ok="${esc(v.id)}">Récupérée</button></div>
-            </div>`).join('')}</div>` : '<p class="vide">Aucune voiture en attente de récupération.</p>'}
-            <h3 style="margin-top:16px">Rendez-vous prévus <small>${C.rdvs.length}</small></h3>
-            ${C.rdvs.length ? `<div class="rec-liste">${C.rdvs.map(m => `<div class="rec rdv" data-rdvpt="${esc(m.ref)}"><div class="rec-t"><b>${libJour(m.date)} ${esc(m.heure)} · ${esc(m.vehicule || 'Véhicule')}</b><span>${esc(m.client)} · ${AVEC[m.avec] || ''}${m.km_depart != null ? ' · ' + m.km_depart + ' km du départ' : ''}</span></div><div class="rec-l">📍 ${esc(m.lieu || m.ville)}</div></div>`).join('')}</div>` : '<p class="vide">Aucun rendez-vous à venir.</p>'}`;
-        // Carte
-        if (carteMap) { carteMap.remove(); carteMap = null; }
-        carteMap = L.map('carteMap', { zoomControl: true, attributionControl: true });
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(carteMap);
-        const pts = [], marqueurs = {};
-        if (C.depart) { L.circleMarker([C.depart.lat, C.depart.lon], { radius: 7, color: '#0D2541', fillColor: '#0D2541', fillOpacity: 1 }).addTo(carteMap).bindPopup(`<b>Départ</b><br>${esc(C.depart.nom)}`); pts.push([C.depart.lat, C.depart.lon]); }
-        C.rdvs.forEach(m => { const k = L.circleMarker([m.lat, m.lon], { radius: 8, color: '#2453A6', fillColor: '#5B8DEF', fillOpacity: .9, weight: 2 }).addTo(carteMap).bindPopup(`<b>RDV ${libJour(m.date)} ${esc(m.heure)}</b><br>${esc(m.vehicule)}<br>${esc(m.client)} · ${esc(m.ville)}`); marqueurs['r' + m.ref] = k; pts.push([m.lat, m.lon]); });
-        C.recuperer.forEach(v => { const k = L.circleMarker([v.lat, v.lon], { radius: 9, color: '#9A3A2B', fillColor: '#E25D4A', fillOpacity: .95, weight: 2 }).addTo(carteMap).bindPopup(`<b>À récupérer : ${esc(v.libelle)}</b><br>${esc(v.lieu)}${v.binomes.length ? `<br><small>${v.binomes.length} binôme${v.binomes.length > 1 ? 's' : ''} possible${v.binomes.length > 1 ? 's' : ''}</small>` : ''}`); marqueurs['v' + v.id] = k; pts.push([v.lat, v.lon]);
-            v.binomes.forEach(b => { const cible = b.type === 'rdv' ? C.rdvs.find(m => m.ref === b.ref) : C.recuperer.find(w => w.id === b.id); if (cible) L.polyline([[v.lat, v.lon], [cible.lat, cible.lon]], { color: b.type === 'rdv' ? '#2453A6' : '#9A3A2B', weight: 2, dashArray: '5 6', opacity: .55 }).addTo(carteMap); }); });
-        if (pts.length > 1) carteMap.fitBounds(pts, { padding: [24, 24], maxZoom: 11 }); else if (pts.length) carteMap.setView(pts[0], 10); else carteMap.setView([46.6, 2.4], 6);
-        setTimeout(() => carteMap.invalidateSize(), 200);
-        $('#carteCorps').querySelectorAll('[data-rec-voir]').forEach(b => b.onclick = () => { const k = marqueurs['v' + b.dataset.recVoir]; if (k) { carteMap.setView(k.getLatLng(), 12); k.openPopup(); $('#carteMap').scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
-        $('#carteCorps').querySelectorAll('[data-rdvpt]').forEach(c => c.onclick = () => { const k = marqueurs['r' + c.dataset.rdvpt]; if (k) { carteMap.setView(k.getLatLng(), 11); k.openPopup(); $('#carteMap').scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
-        $('#carteCorps').querySelectorAll('[data-rec-fiche]').forEach(b => b.onclick = () => { $('#carteX').click(); afficherVehicule(b.dataset.recFiche); });
-        $('#carteCorps').querySelectorAll('[data-rec-ok]').forEach(b => b.onclick = async () => {
-            if (await demander({ titre: 'Voiture récupérée ?', texte: 'Elle passe « En préparation » et quitte la liste des voitures à récupérer.', boutons: [['ok', 'Oui, récupérée', 'btn-p'], ['', 'Annuler']] }) !== 'ok') return;
-            try { await api('/api/admin/compta/vehicules/' + b.dataset.recOk, { method: 'PATCH', body: JSON.stringify({ statut: 'preparation' }) }); compta = null; toast('Voiture passée en préparation'); ouvrirCarte(); } catch (e) { toast(e.message); }
+            </div>`).join('')}</div>` : '<p class="vide">Aucune voiture laissée sur place. Quand le technicien laisse une voiture, il enregistre l\'emplacement dans la fiche du véhicule (position actuelle ou adresse) : elle apparaît ici et sur la carte.</p>'}`;
+        if (carteRendue !== cle || !carteMap) {
+            if (carteMap) { carteMap.remove(); carteMap = null; }
+            carteMap = L.map('carteMap', { zoomControl: true, attributionControl: true });
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(carteMap);
+            const pts = []; carteMarqueurs = {};
+            if (C.depart) { L.circleMarker([C.depart.lat, C.depart.lon], { radius: 7, color: '#0D2541', fillColor: '#0D2541', fillOpacity: 1 }).addTo(carteMap).bindPopup(`<b>Départ</b><br>${esc(C.depart.nom)}`); pts.push([C.depart.lat, C.depart.lon]); }
+            C.rdvs.forEach(m => { const k = L.circleMarker([m.lat, m.lon], { radius: 8, color: '#2453A6', fillColor: '#5B8DEF', fillOpacity: .9, weight: 2 }).addTo(carteMap).bindPopup(`<b>RDV ${libJour(m.date)} ${esc(m.heure)}</b><br>${esc(m.vehicule)}<br>${esc(m.client)} · ${esc(m.ville)}<br><a href="#" data-pop-ref="${esc(m.ref)}">Ouvrir la fiche</a>`); carteMarqueurs['r' + m.ref] = k; pts.push([m.lat, m.lon]); });
+            C.recuperer.forEach(v => { const k = L.circleMarker([v.lat, v.lon], { radius: 9, color: '#9A3A2B', fillColor: '#E25D4A', fillOpacity: .95, weight: 2 }).addTo(carteMap).bindPopup(`<b>À récupérer : ${esc(v.libelle)}</b><br>${esc(v.lieu)}${v.binomes.length ? `<br><small>${v.binomes.length} binôme${v.binomes.length > 1 ? 's' : ''} possible${v.binomes.length > 1 ? 's' : ''}</small>` : ''}`); carteMarqueurs['v' + v.id] = k; pts.push([v.lat, v.lon]);
+                v.binomes.forEach(b => { const cible = b.type === 'rdv' ? C.rdvs.find(m => m.ref === b.ref) : C.recuperer.find(w => w.id === b.id); if (cible) L.polyline([[v.lat, v.lon], [cible.lat, cible.lon]], { color: b.type === 'rdv' ? '#2453A6' : '#9A3A2B', weight: 2, dashArray: '5 6', opacity: .55 }).addTo(carteMap); }); });
+            if (pts.length > 1) carteMap.fitBounds(pts, { padding: [24, 24], maxZoom: 11 }); else if (pts.length) carteMap.setView(pts[0], 10); else carteMap.setView([46.6, 2.4], 6);
+            carteMap.on('popupopen', e => { const a = e.popup.getElement().querySelector('[data-pop-ref]'); if (a) a.onclick = ev => { ev.preventDefault(); ouvrir(a.dataset.popRef); }; });
+            carteRendue = cle;
+        }
+        setTimeout(() => carteMap && carteMap.invalidateSize(), 150);
+        corps.querySelectorAll('[data-rec-voir]').forEach(b => b.onclick = () => { const k = carteMarqueurs['v' + b.dataset.recVoir]; if (k) { carteMap.setView(k.getLatLng(), 12); k.openPopup(); $('#carteMap').scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
+        corps.querySelectorAll('[data-rec-fiche]').forEach(b => b.onclick = () => afficherVehicule(b.dataset.recFiche));
+        corps.querySelectorAll('[data-rec-ok]').forEach(b => b.onclick = async () => {
+            if (await demander({ titre: 'Voiture récupérée ?', texte: 'Elle quitte la liste des voitures à récupérer et la carte.', boutons: [['ok', 'Oui, récupérée', 'btn-p'], ['', 'Annuler']] }) !== 'ok') return;
+            try { await api('/api/admin/compta/vehicules/' + b.dataset.recOk, { method: 'PATCH', body: JSON.stringify({ emplacement_recuperee: true }) }); compta = null; toast('Voiture marquée récupérée'); rendreCarte(true); } catch (e) { toast(e.message); }
         });
     }
+    let carteMarqueurs = {};
 
     // Onglet Planning
     let plLundi = null;
@@ -3188,6 +3190,7 @@ body.modal-ouvert { overflow: hidden; }
         const enSemaine = tous.filter(d => rdvDe(d).date >= plLundi && rdvDe(d).date <= ajoutJours(plLundi, 6));
         $('#plBande').innerHTML = calSemaine({ lundi: plLundi, rdvs: enSemaine.map(d => { const r = rdvDe(d), x = d.data || {}; return { date: r.date, heure: r.heure, duree: r.duree, ref: d.ref, titre: (x.vehicule || 'Véhicule').split(' ').slice(0, 2).join(' '), sous: (r.lieu || x.ville || x.code_postal || '').replace(/^.*?(\d{5})\s*/, '$1 ').slice(0, 28) + (r.avec ? ' · ' + (AVEC[r.avec] || '').split(' ')[0] : ''), classe: r.statut !== 'prevu' ? 'fini' : d.statut === 'achetee' ? 'achete' : '' }; }) });
         lierCal($('#plBande'), { onSemaine: l => { plLundi = l; plJour = null; vuePlanning(); }, onRdv: ref => ouvrir(ref) });
+        rendreCarte(false);
         const semaine = prevus.filter(d => rdvDe(d).date >= auj && rdvDe(d).date <= ajoutJours(auj, 6));
         const retard = prevus.filter(d => rdvDe(d).date < auj);
         const valeur = prevus.filter(d => rdvDe(d).date >= auj).reduce((t, d) => t + (rdvDe(d).prix || 0), 0);
@@ -3220,7 +3223,7 @@ body.modal-ouvert { overflow: hidden; }
         if (calUrl.url) $('#plCal').href = calUrl.url;
     }
     $('#plBande').addEventListener('click', e => { const b = e.target.closest('[data-plj]'); if (b) { plJour = plJour === b.dataset.plj ? null : b.dataset.plj; vuePlanning(); } });
-    $('#plCarte').onclick = ouvrirCarte;
+    $('#carteMaj').onclick = () => rendreCarte(true);
     $('#plVues').addEventListener('click', e => { const b = e.target.closest('[data-plv]'); if (b) { plVue = b.dataset.plv; plJour = null; vuePlanning(); } });
     $('#plListe').addEventListener('click', e => { if (e.target.closest('a')) return; const c = e.target.closest('[data-plref]'); if (c) ouvrir(c.dataset.plref); });
 
@@ -3346,22 +3349,24 @@ body.modal-ouvert { overflow: hidden; }
         return [`Bonjour, voici le lieu où est garé le véhicule ${[v.libelle, v.plaque].filter(Boolean).join(' · ')} :`, e.note ? e.note : '', e.adresse ? e.adresse : '', '', `Google Maps : ${lienMaps(e)}`, `Waze : ${lienWaze(e)}`].filter((l, i, a) => l || (i > 0 && a[i - 1])).join('\n').replace(/\n{3,}/g, '\n\n');
     }
     function blocEmplacement(v) {
-        const e = v.emplacement;
+        const e = v.emplacement, rec = e && e.recuperee_le;
         return `<section class="sec" id="vLieu">
-            <h3>Où est garé le véhicule <small>${e ? 'enregistré le ' + date(e.date) + (e.precision ? ` · précision ± ${e.precision} m` : '') : 'pas de lieu enregistré'}</small></h3>
-            ${e ? `<div class="lieu-carte"><a href="${lienMaps(e)}" target="_blank" rel="noopener" class="lieu-pin"><span>📍</span><b>${esc(e.adresse || `${e.lat.toFixed(5)}, ${e.lon.toFixed(5)}`)}</b>${e.note ? `<small>${esc(e.note)}</small>` : ''}</a>
+            <h3>Où est garé le véhicule <small>${e ? (rec ? `récupérée le ${date(rec)}` : 'laissée sur place · enregistré le ' + date(e.date) + (e.precision ? ` · ± ${e.precision} m` : '')) : 'pas de lieu enregistré'}</small></h3>
+            ${e && !rec ? `<div class="lieu-carte"><a href="${lienMaps(e)}" target="_blank" rel="noopener" class="lieu-pin"><span>📍</span><b>${esc(e.adresse || `${e.lat.toFixed(5)}, ${e.lon.toFixed(5)}`)}</b>${e.note ? `<small>${esc(e.note)}</small>` : ''}</a>
                 <div class="lieu-act"><a class="btn btn-g" href="${lienMaps(e)}" target="_blank" rel="noopener">Google Maps</a><a class="btn" href="${lienWaze(e)}" target="_blank" rel="noopener">Waze</a><a class="btn" href="${lienPlans(e)}" target="_blank" rel="noopener">Plans</a></div>
-                <div class="lieu-act"><button type="button" class="btn btn-p" id="lieuPartager">Partager le lieu</button><a class="btn" id="lieuWa" href="https://wa.me/?text=${encodeURIComponent(messageEmplacement(v))}" target="_blank" rel="noopener">WhatsApp</a><button type="button" class="btn btn-ghost" id="lieuEffacer">Effacer</button></div></div>` : ''}
+                <div class="lieu-act"><button type="button" class="btn btn-p" id="lieuPartager">Partager le lieu</button><a class="btn" id="lieuWa" href="https://wa.me/?text=${encodeURIComponent(messageEmplacement(v))}" target="_blank" rel="noopener">WhatsApp</a><button type="button" class="btn btn-g" id="lieuRecup">Récupérée</button><button type="button" class="btn btn-ghost" id="lieuEffacer">Effacer</button></div></div>` : ''}
+            <p class="sub" style="margin:0 0 6px">${e && !rec ? 'Nouveau lieu : ' : 'Voiture laissée sur place ? Enregistrez où elle est garée : elle apparaît dans « Voitures à récupérer » et sur la carte.'}</p>
             <div class="lieu-saisie">
-                <input class="in" id="lieuNote" value="${esc((e && e.note) || '')}" placeholder="Précisions : parking Carrefour, niveau -1, place 24, clés chez le gardien…">
-                <button type="button" class="btn ${e ? '' : 'btn-g'}" id="lieuIci">${e ? 'Remplacer par ma position actuelle' : 'Enregistrer ma position actuelle'}</button>
-                ${e ? '<button type="button" class="btn btn-s" id="lieuNoteOk">Enregistrer les précisions</button>' : ''}
+                <input class="in" id="lieuNote" value="${esc((e && !rec && e.note) || '')}" placeholder="Précisions : parking Carrefour, niveau -1, place 24, clés chez le gardien…">
+                <button type="button" class="btn ${e && !rec ? '' : 'btn-g'}" id="lieuIci">${e && !rec ? 'Remplacer par ma position actuelle' : 'Enregistrer ma position actuelle'}</button>
+                <div class="lieu-adr"><input class="in" id="lieuAdr" placeholder="ou une adresse : 12 rue des Lilas, 45000 Orléans" autocomplete="street-address"><button type="button" class="btn" id="lieuAdrOk">Localiser</button></div>
+                ${e && !rec ? '<button type="button" class="btn btn-s" id="lieuNoteOk">Enregistrer les précisions</button>' : ''}
             </div>
         </section>`;
     }
     function lierEmplacement(v) {
         const url = '/api/admin/compta/vehicules/' + v.id;
-        const sauver = async emplacement => { await api(url, { method: 'PATCH', body: JSON.stringify({ emplacement }) }); await chargerCompta(); const y = window.scrollY; afficherVehicule(v.id); window.scrollTo(0, y); };
+        const sauver = async corps => { await api(url, { method: 'PATCH', body: JSON.stringify(corps) }); await chargerCompta(); carteData = null; const y = window.scrollY; afficherVehicule(v.id); window.scrollTo(0, y); };
         // Adresse lisible (rue, ville) à partir des coordonnées : base adresse nationale, sans clé.
         const adresseDe = async (lat, lon) => { try { const j = await (await fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${lon}&lat=${lat}&limit=1`)).json(); const f = (j.features || [])[0]; return f ? f.properties.label : ''; } catch (e) { return ''; } };
         $('#lieuIci').onclick = () => {
@@ -3369,12 +3374,26 @@ body.modal-ouvert { overflow: hidden; }
             const b = $('#lieuIci'); b.disabled = true; b.textContent = 'Localisation en cours…';
             navigator.geolocation.getCurrentPosition(async pos => {
                 const { latitude: lat, longitude: lon, accuracy } = pos.coords;
-                try { await sauver({ lat, lon, precision: accuracy, note: $('#lieuNote').value.trim(), adresse: await adresseDe(lat, lon) }); toast('Lieu enregistré'); }
+                try { await sauver({ emplacement: { lat, lon, precision: accuracy, note: $('#lieuNote').value.trim(), adresse: await adresseDe(lat, lon), source: 'gps' } }); toast('Lieu enregistré'); }
                 catch (er) { toast(er.message); b.disabled = false; }
             }, err => { b.disabled = false; b.textContent = 'Enregistrer ma position actuelle'; toast(err.code === 1 ? 'Autorisez la localisation pour LUNICAR dans les réglages' : 'Position introuvable, réessayez à l\'extérieur'); }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 });
         };
-        if ($('#lieuNoteOk')) $('#lieuNoteOk').onclick = async () => { try { await sauver({ ...v.emplacement, note: $('#lieuNote').value.trim() }); toast('Précisions enregistrées'); } catch (er) { toast(er.message); } };
-        if ($('#lieuEffacer')) $('#lieuEffacer').onclick = async () => { if (await demander({ titre: 'Effacer le lieu enregistré ?', boutons: [['ok', 'Effacer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return; try { await sauver(null); } catch (er) { toast(er.message); } };
+        // Adresse tapée → coordonnées (base adresse nationale)
+        $('#lieuAdrOk').onclick = async () => {
+            const q = $('#lieuAdr').value.trim(); if (q.length < 5) { toast('Indiquez une adresse ou une ville'); return; }
+            const b = $('#lieuAdrOk'); b.disabled = true;
+            try {
+                const j = await (await fetch('https://api-adresse.data.gouv.fr/search/?limit=1&q=' + encodeURIComponent(q))).json();
+                const f = (j.features || [])[0]; if (!f) { toast('Adresse introuvable : précisez la ville ou le code postal'); b.disabled = false; return; }
+                const [lon, lat] = f.geometry.coordinates;
+                if (await demander({ titre: 'Enregistrer ce lieu ?', texte: f.properties.label, boutons: [['ok', 'Enregistrer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { b.disabled = false; return; }
+                await sauver({ emplacement: { lat, lon, precision: 0, note: $('#lieuNote').value.trim(), adresse: f.properties.label, source: 'adresse' } }); toast('Lieu enregistré');
+            } catch (er) { toast(er.message); b.disabled = false; }
+        };
+        $('#lieuAdr').onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); $('#lieuAdrOk').click(); } };
+        if ($('#lieuNoteOk')) $('#lieuNoteOk').onclick = async () => { try { await sauver({ emplacement: { ...v.emplacement, note: $('#lieuNote').value.trim() } }); toast('Précisions enregistrées'); } catch (er) { toast(er.message); } };
+        if ($('#lieuRecup')) $('#lieuRecup').onclick = async () => { if (await demander({ titre: 'Voiture récupérée ?', texte: 'Elle quitte la liste des voitures à récupérer et la carte.', boutons: [['ok', 'Oui, récupérée', 'btn-p'], ['', 'Annuler']] }) !== 'ok') return; try { await sauver({ emplacement_recuperee: true }); toast('Voiture marquée récupérée'); } catch (er) { toast(er.message); } };
+        if ($('#lieuEffacer')) $('#lieuEffacer').onclick = async () => { if (await demander({ titre: 'Effacer le lieu enregistré ?', boutons: [['ok', 'Effacer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return; try { await sauver({ emplacement: null }); } catch (er) { toast(er.message); } };
         if ($('#lieuPartager')) $('#lieuPartager').onclick = async () => {
             const texte = messageEmplacement(v);
             if (navigator.share) { try { await navigator.share({ text: texte }); return; } catch (e) { if (e.name === 'AbortError') return; } }
