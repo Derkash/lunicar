@@ -799,6 +799,9 @@ ul.plain li { margin: 3px 0; }
 .analyse { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 7px; font-size: .86rem; line-height: 1.4; }
 .analyse li b { display: block; color: var(--ink-5); font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 1px; }
 .vvv { display: flex; align-items: flex-end; gap: 8px; margin-top: 12px; flex-wrap: wrap; } .vvv .f { flex: 1 1 220px; } .vvv small { color: var(--ink-5); font-size: .74rem; align-self: center; }
+.cr-modal.cr-page { padding: 0; place-items: stretch; } .cr-modal.cr-page .cr-in { max-width: none; max-height: none; height: 100vh; height: 100dvh; border-radius: 0; padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+.pl-bloc { margin: 0; } .pl-bloc .cr-l { margin: 0 0 6px; } .pl-map { height: 38vh; min-height: 240px; margin: 8px 0; }
+.pl-rdv { cursor: pointer; } .pl-rdv.ok { border-color: #BFE3CC; background: #F4FAF6; } .pl-km { font-weight: 700; color: #9A3A2B; } .pl-km.ok { color: #1D6B3D; }
 .pl-btn { margin-top: 10px; justify-self: start; }
 .sg-liste { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
 .sg-liste li { display: grid; grid-template-columns: 92px 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; }
@@ -3000,48 +3003,121 @@ body.modal-ouvert { overflow: hidden; }
             catch (err) { toast(err.message); }
         };
     }
-    // Assistant de planification : Youssouf se déplace ; on propose d'abord les jours où il passe déjà près (ou sur la route).
+    // Assistant de planification (page complète) : adresse du rendez-vous → point noir sur la carte, avec les autres
+    // rendez-vous (bleu) et les voitures à récupérer (rouge). Toucher un point = rendez-vous pré-rempli juste après,
+    // temps de route réel + 1 h de marge. Le formulaire reste sous la carte : on valide avec le client ou on déplace.
     async function planifierRdv(d, pre = {}) {
-        const fermerP = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
-        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        const x = d.data || {};
+        const fermerP = () => { $('#crModal').hidden = true; $('#crModal').classList.remove('cr-page'); document.body.classList.remove('modal-ouvert'); if (plMap) { plMap.remove(); plMap = null; } };
+        $('#crModal').hidden = false; $('#crModal').classList.add('cr-page'); document.body.classList.add('modal-ouvert');
+        $('#crModal').onclick = null;
         const tete = `<div class="cr-tete"><h3>Planifier le rendez-vous</h3><button class="close" type="button" id="plX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>`;
-        const lier = () => { $('#plX').onclick = fermerP; };
-        $('#crIn').innerHTML = tete + '<p class="sub"><span class="spin"></span> Recherche du meilleur jour pour Youssouf…</p>'; lier();
-        $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermerP(); };
-        let P;
-        try { P = await api('/api/admin/demandes/' + d.ref + '/planning'); } catch (e) { P = { erreur: e.message, suggestions: [] }; }
-        const TYPE = { route: ['Sur la route', 'sg-route'], proche: ['Groupé', 'sg-proche'], libre: ['Jour libre', 'sg-libre'], loin: ['Journée chargée', 'sg-loin'] };
-        const formulaire = (date, heure) => {
-            $('#crIn').innerHTML = tete + `<p class="sub">${esc([(d.data || {}).vehicule, (d.data || {}).ville].filter(Boolean).join(' · '))}${date ? ` · ${libJour(date)}${heure ? ' à ' + esc(heure) : ''}` : ''}</p><div id="plForm">${formRdv(d).replace('id="rdvF"', 'id="plF"')}</div>`; lier();
-            const f = $('#plF'); if (date) f.date.value = date; if (heure) f.heure.value = heure; f.avec.value = 'youssouf';
-            const s0 = d.suivi || {}, pmin = pre.prix_min || pre.prix_max || s0.offre_min || s0.offre, pmax = pre.prix_max || pre.prix_min || s0.offre;
-            if (pmin) f.prix_min.value = pmin; if (pmax) f.prix_max.value = pmax;
-            const ret = f.querySelector('#rdvAnnulForm'); if (ret) { ret.id = 'plRetour'; ret.textContent = '← Autres jours'; ret.onclick = liste; }
-            f.onsubmit = async e => {
-                e.preventDefault();
-                try { const r = await api('/api/admin/demandes/' + d.ref + '/rdv', { method: 'POST', body: JSON.stringify(Object.fromEntries(new FormData(f))) }); maj(r); compta = null; if (courant && courant.ref === d.ref) { courant = r; fiche(); } fermerP(); toast('Rendez-vous fixé le ' + jourLong(r.suivi.rdv.date) + ' à ' + r.suivi.rdv.heure); }
-                catch (err) { toast(err.message); }
-            };
+        const E = { filtre: 'semaine', lat: null, lon: null, adresse: '', P: null, K: null, apres: null, suggIdx: 0 };
+        let plMap = null, plMarq = {};
+        const lundi0 = lundiDe(jourIso());
+        const dansFiltre = date => E.filtre === 'tous' ? true : E.filtre === 'semaine' ? date <= ajoutJours(lundi0, 6) : date > ajoutJours(lundi0, 6) && date <= ajoutJours(lundi0, 13);
+        const hh = t => String(t || '').replace(':', ' h ').replace(/ h 00$/, ' h');
+        // Adresse de départ : celle de la fiche, sinon code postal + ville
+        E.adresse = [x.adresse, [x.code_postal, x.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
+        $('#crIn').innerHTML = tete + `<p class="sub">${esc([x.vehicule, x.annee].filter(Boolean).join(' '))} · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Vendeur')}</p>
+            <section class="pl-bloc"><p class="cr-l">1 · Adresse du rendez-vous</p>
+                <div class="lieu-adr"><div class="lieu-adr-wrap"><input class="in" id="plAdr" value="${esc(E.adresse)}" placeholder="N°, rue, code postal, ville" autocomplete="off" autocorrect="off" spellcheck="false"><div class="lieu-sugg" id="plSugg" hidden></div></div><button type="button" class="btn btn-p" id="plAdrOk">Valider</button></div>
+                <p class="sub" id="plAdrEtat">Choisissez l'adresse dans la liste : elle est enregistrée sur la fiche et placée sur la carte.</p></section>
+            <section class="pl-bloc"><p class="cr-l">2 · Autour de cette adresse</p>
+                <div class="segs" id="plFiltres">${[['semaine', 'Cette semaine'], ['suivante', 'Semaine prochaine'], ['tous', '3 semaines']].map(([k, l]) => `<button type="button" class="seg${E.filtre === k ? ' on' : ''}" data-plf="${k}">${l}</button>`).join('')}</div>
+                <div class="carte-map pl-map" id="plMap"></div>
+                <p class="cal-leg"><i class="pt" style="background:#0D2541"></i> ce rendez-vous · <i class="pt" style="background:#5B8DEF"></i> rendez-vous prévus · <i class="pt" style="background:#E25D4A"></i> voitures à récupérer. Touchez un point bleu ou rouge pour caler ce rendez-vous juste après (temps de route + 1 h).</p>
+                <div id="plAutour"></div></section>
+            <section class="pl-bloc"><p class="cr-l">3 · Rendez-vous</p><p class="sub" id="plExplic"></p><div id="plForm">${formRdv(d).replace('id="rdvF"', 'id="plF"')}</div></section>`;
+        $('#plX').onclick = fermerP;
+        const F = $('#plF'); F.avec.value = 'youssouf';
+        const s0 = d.suivi || {}, pmin = pre.prix_min || pre.prix_max || s0.offre_min || s0.offre, pmax = pre.prix_max || pre.prix_min || s0.offre;
+        if (pmin) F.prix_min.value = pmin; if (pmax) F.prix_max.value = pmax;
+        if (E.adresse) F.lieu.value = E.adresse;
+        const ret = F.querySelector('#rdvAnnulForm'); if (ret) ret.remove();
+        F.onsubmit = async e => {
+            e.preventDefault();
+            try { const r = await api('/api/admin/demandes/' + d.ref + '/rdv', { method: 'POST', body: JSON.stringify(Object.fromEntries(new FormData(F))) }); maj(r); compta = null; carteData = null; if (courant && courant.ref === d.ref) { courant = r; fiche(); } fermerP(); toast('Rendez-vous fixé le ' + jourLong(r.suivi.rdv.date) + ' à ' + r.suivi.rdv.heure); }
+            catch (err) { toast(err.message); }
         };
-        let plSemaine = null;
-        const liste = () => {
-            const S = P.suggestions || [], V = P.visites || [];
-            if (!plSemaine) plSemaine = lundiDe(S[0] ? S[0].date : jourIso());
-            const rdvs = V.map(v => ({ date: v.date, heure: v.heure, duree: v.duree, ref: v.ref, titre: (v.vehicule || 'Véhicule').split(' ').slice(0, 2).join(' '), sous: v.ville, km: v.km_cible, classe: v.combinable ? 'combinable' : 'loin' }));
-            $('#crIn').innerHTML = tete + (P.erreur ? `<p class="notice">${esc(P.erreur)}</p>` : `<p class="sub">Nouvelle voiture à ${esc(P.cible.ville)}, à ${P.cible.km_depart} km du départ (≈ ${Math.floor(P.cible.minutes_depart / 60)} h ${String(P.cible.minutes_depart % 60).padStart(2, '0')} de route). Sur chaque rendez-vous déjà pris : la distance jusqu'à cette voiture. <b>Vert</b> = enchaînable le même jour (le technicien prend la première voiture puis va chercher celle-ci) · ${P.max_par_jour || 2} voitures par technicien et par jour au plus.</p>`)
-                + calSemaine({ lundi: plSemaine, rdvs, legende: 'Touchez une case vide pour choisir ce créneau, ou un rendez-vous pour enchaîner juste après.' })
-                + (S.length ? `<p class="cr-l">Suggestions</p><ol class="sg-liste">${S.slice(0, 3).map((x, i) => `<li class="${TYPE[x.type][1]}">
-                    <div class="sg-j"><b>${esc(x.jour)} ${new Date(x.date + "T12:00:00Z").toLocaleDateString("fr-FR", { day: "numeric", month: "short", timeZone: "UTC" })}</b><span>vers ${esc(x.heure.replace(':', ' h '))}</span></div>
-                    <div class="sg-m"><span class="sg-t">${TYPE[x.type][0]}</span>${esc(x.motif)}</div>
-                    <button type="button" class="btn ${i === 0 ? 'btn-p' : ''}" data-pl="${i}">Choisir</button></li>`).join('')}</ol>` : '')
-                + `<div class="cr-btns"><button type="button" class="btn" id="plAutre">Autre date</button></div>`;
-            lier();
-            lierCal($('#crIn'), { onSemaine: l => { plSemaine = l; liste(); }, onSlot: (d0, h) => formulaire(d0, h),
-                onRdv: (ref, ds) => { const v = V.find(z => z.ref === ref); const fin = minutesDe(ds.heure) + Number(ds.duree || 45) + (v ? Math.round(v.km_cible / 70 * 60 / 15) * 15 : 30); formulaire(ds.date, heureDe(Math.min(19 * 60, Math.ceil(fin / 15) * 15))); } });
-            $('#crIn').querySelectorAll('[data-pl]').forEach(b => b.onclick = () => { const x = S[+b.dataset.pl]; formulaire(x.date, x.heure); });
-            $('#plAutre').onclick = () => formulaire();
+        // --- adresse avec propositions
+        const adr = $('#plAdr'), sugg = $('#plSugg'); let tmr = null, ctrl = null, props = [];
+        const pres = (() => { const cp = String(x.code_postal || '').trim(); if (!/^\d{5}$/.test(cp)) return ''; let dep = cp.slice(0, 2); if (dep === '20') dep = Number(cp.slice(0, 3)) < 202 ? '2A' : '2B'; const g = DEP[dep]; return g ? `&lat=${g[0]}&lon=${g[1]}` : ''; })();
+        const choisir = async f => {
+            const [lon, lat] = f.geometry.coordinates, pr = f.properties;
+            E.lat = lat; E.lon = lon; E.adresse = pr.label; adr.value = pr.label; F.lieu.value = pr.label; sugg.hidden = true;
+            $('#plAdrEtat').innerHTML = '<span class="spin"></span> Enregistrement de l\'adresse…';
+            try {
+                const corps = { code_postal: pr.postcode || '', ville: pr.city || '' }; if (pr.housenumber || pr.street || pr.name) corps.adresse = [pr.housenumber, pr.street || pr.name].filter(Boolean).join(' ');
+                const r = await api('/api/admin/demandes/' + d.ref + '/infos', { method: 'PATCH', body: JSON.stringify(corps) }); maj(r); if (courant && courant.ref === d.ref) courant = r;
+                $('#plAdrEtat').textContent = 'Adresse enregistrée sur la fiche : ' + pr.label;
+            } catch (e) { $('#plAdrEtat').textContent = 'Adresse placée sur la carte, mais non enregistrée : ' + e.message; }
+            await chargerAutour();
         };
-        liste();
+        const montrer = l => { props = l; sugg.innerHTML = l.map((f, i) => `<button type="button" data-sg="${i}"><b>${esc(f.properties.name || f.properties.label)}</b><span>${esc(f.properties.postcode || '')} ${esc(f.properties.city || '')}</span></button>`).join(''); sugg.hidden = !l.length;
+            sugg.querySelectorAll('[data-sg]').forEach(b => b.onmousedown = e => { e.preventDefault(); choisir(props[+b.dataset.sg]); }); };
+        adr.addEventListener('input', () => { const q = adr.value.trim(); clearTimeout(tmr); if (q.length < 3) { sugg.hidden = true; return; }
+            tmr = setTimeout(async () => { if (ctrl) ctrl.abort(); ctrl = new AbortController(); try { const j = await (await fetch('https://api-adresse.data.gouv.fr/search/?autocomplete=1&limit=6' + pres + '&q=' + encodeURIComponent(q), { signal: ctrl.signal })).json(); montrer(j.features || []); } catch (e) { if (e.name !== 'AbortError') sugg.hidden = true; } }, 220); });
+        adr.addEventListener('blur', () => setTimeout(() => { sugg.hidden = true; }, 150));
+        adr.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); if (!sugg.hidden && props[0]) choisir(props[0]); else $('#plAdrOk').click(); } };
+        $('#plAdrOk').onclick = async () => {
+            const q = adr.value.trim(); if (q.length < 4) { toast('Indiquez l\'adresse du rendez-vous'); return; }
+            try { const j = await (await fetch('https://api-adresse.data.gouv.fr/search/?limit=1' + pres + '&q=' + encodeURIComponent(q))).json(); const f = (j.features || [])[0]; if (!f) { toast('Adresse introuvable : précisez la ville ou le code postal'); return; } await choisir(f); }
+            catch (e) { toast(e.message); }
+        };
+        // --- carte + rendez-vous autour
+        async function chargerAutour() {
+            $('#plAutour').innerHTML = '<p class="sub"><span class="spin"></span> Rendez-vous et voitures à récupérer autour…</p>';
+            try {
+                const q = E.lat ? `?lat=${E.lat}&lon=${E.lon}` : '';
+                [E.P, E.K] = await Promise.all([api('/api/admin/demandes/' + d.ref + '/planning' + q), api('/api/admin/carte'), chargerLeaflet()]);
+                if (!E.lat && E.P.cible && E.P.cible.lat) { E.lat = E.P.cible.lat; E.lon = E.P.cible.lon; }
+            } catch (e) { $('#plAutour').innerHTML = `<p class="notice">${esc(e.message)}</p>`; return; }
+            // Première proposition du serveur dans le formulaire, si rien n'a encore été choisi
+            const S0 = (E.P.suggestions || [])[0]; if (S0 && !E.apres) { F.date.value = S0.date; F.heure.value = S0.heure; $('#plExplic').textContent = `Proposition : ${S0.jour} ${jourCourt(S0.date)} vers ${hh(S0.heure)} — ${S0.motif}. Touchez un point sur la carte pour caler autrement.`; }
+            dessiner();
+        }
+        function dessiner() {
+            const P = E.P, K = E.K, V = (P.visites || []).filter(v => dansFiltre(v.date));
+            const km = v => { const r = Math.PI / 180, dla = (v.lat - E.lat) * r, dlo = (v.lon - E.lon) * r; return Math.round(2 * 6371 * Math.asin(Math.sqrt(Math.sin(dla / 2) ** 2 + Math.cos(E.lat * r) * Math.cos(v.lat * r) * Math.sin(dlo / 2) ** 2)) * 1.3); };
+            const REC = (K.recuperer || []).map(v => ({ ...v, km: km(v) }));
+            $('#plAutour').innerHTML = `${V.length ? `<div class="rec-liste">${V.sort((a, b) => a.km_cible - b.km_cible).map(v => `<div class="rec rdv pl-rdv${v.combinable ? ' ok' : ''}" data-apres="r:${esc(v.ref)}"><div class="rec-t"><b>${libJour(v.date)} ${hh(v.heure)} · ${esc(v.vehicule || 'Véhicule')}</b><span class="pl-km${v.combinable ? ' ok' : ''}">${v.km_cible} km</span></div><div class="rec-l">📍 ${esc(v.ville)} · ${v.km_depart} km du départ${v.combinable ? ' · <b>enchaînable le même jour</b>' : ''}</div></div>`).join('')}</div>` : `<p class="vide">Aucun rendez-vous prévu ${E.filtre === 'semaine' ? 'cette semaine' : E.filtre === 'suivante' ? 'la semaine prochaine' : 'dans les 3 semaines'}.</p>`}
+                ${REC.length ? `<p class="cr-l" style="margin-top:10px">Voitures à récupérer</p><div class="rec-liste">${REC.sort((a, b) => a.km - b.km).map(v => `<div class="rec pl-rdv" data-apres="v:${esc(v.id)}"><div class="rec-t"><b>${esc(v.libelle)}</b><span class="pl-km${v.km <= 150 ? ' ok' : ''}">${v.km} km</span></div><div class="rec-l">📍 ${esc(v.lieu)}</div></div>`).join('')}</div>` : ''}`;
+            $('#plAutour').querySelectorAll('[data-apres]').forEach(c => c.onclick = () => caler(c.dataset.apres));
+            if (plMap) { plMap.remove(); plMap = null; }
+            plMap = L.map('plMap', { zoomControl: true }); L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(plMap);
+            const pts = []; plMarq = {};
+            if (E.lat) { L.circleMarker([E.lat, E.lon], { radius: 10, color: '#000', fillColor: '#0D2541', fillOpacity: 1, weight: 3 }).addTo(plMap).bindPopup(`<b>Ce rendez-vous</b><br>${esc(E.adresse || P.cible.ville)}`); pts.push([E.lat, E.lon]); }
+            V.forEach(v => { const k = L.circleMarker([v.lat, v.lon], { radius: 8, color: '#2453A6', fillColor: v.combinable ? '#5B8DEF' : '#B9CCF5', fillOpacity: .95, weight: 2 }).addTo(plMap).bindPopup(`<b>${libJour(v.date)} ${esc(hh(v.heure))}</b><br>${esc(v.vehicule)} · ${esc(v.ville)}<br>${v.km_cible} km d'ici · <a href="#" data-pop="r:${esc(v.ref)}">Caler juste après</a>`); plMarq['r:' + v.ref] = k; pts.push([v.lat, v.lon]); });
+            REC.forEach(v => { const k = L.circleMarker([v.lat, v.lon], { radius: 8, color: '#9A3A2B', fillColor: '#E25D4A', fillOpacity: .95, weight: 2 }).addTo(plMap).bindPopup(`<b>À récupérer : ${esc(v.libelle)}</b><br>${esc(v.lieu)}<br>${v.km} km d'ici · <a href="#" data-pop="v:${esc(v.id)}">Caler juste après</a>`); plMarq['v:' + v.id] = k; pts.push([v.lat, v.lon]); });
+            if (K.depart) { L.circleMarker([K.depart.lat, K.depart.lon], { radius: 5, color: '#6B7280', fillColor: '#6B7280', fillOpacity: 1 }).addTo(plMap).bindPopup('Départ · ' + esc(K.depart.nom)); }
+            if (pts.length > 1) plMap.fitBounds(pts, { padding: [24, 24], maxZoom: 11 }); else if (pts.length) plMap.setView(pts[0], 10); else plMap.setView([46.6, 2.4], 6);
+            plMap.on('popupopen', e => { const a = e.popup.getElement().querySelector('[data-pop]'); if (a) a.onclick = ev => { ev.preventDefault(); plMap.closePopup(); caler(a.dataset.pop); }; });
+            setTimeout(() => plMap && plMap.invalidateSize(), 150);
+        }
+        // Caler ce rendez-vous juste après un autre point : fin du précédent + route réelle + 1 h de marge, arrondi au quart d'heure.
+        async function caler(cle) {
+            const [type, id] = cle.split(':');
+            const src = type === 'r' ? (E.P.visites || []).find(v => v.ref === id) : (E.K.recuperer || []).find(v => v.id === id);
+            if (!src || !E.lat) return;
+            $('#plExplic').innerHTML = '<span class="spin"></span> Calcul du temps de route…';
+            let t; try { t = await api(`/api/admin/trajet?de=${src.lat},${src.lon}&a=${E.lat},${E.lon}`); } catch (e) { t = { km: Math.round(src.km_cible || src.km || 0), minutes: Math.round((src.km_cible || src.km || 0) / 70 * 60), source: 'estimation' }; }
+            const marge = 60;
+            let date, debut;
+            if (type === 'r') { date = src.date; debut = minutesDe(src.heure) + Number(src.duree || 45) + t.minutes + marge; }
+            else { date = F.date.value || ajoutJours(jourIso(), 1); debut = minutesDe(F.heure.value || '10:00'); }
+            debut = Math.ceil(debut / 15) * 15;
+            if (type === 'r' && debut > 19 * 60) { date = ajoutJours(date, 1); debut = 9 * 60; }
+            F.date.value = date; F.heure.value = heureDe(debut);
+            E.apres = cle;
+            const dur = m => m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`;
+            $('#plExplic').innerHTML = type === 'r'
+                ? `Enchaîné après le rendez-vous de <b>${esc(src.ville)}</b> (${hh(src.heure)}, ${src.duree || 45} min) : ${t.km} km, ${dur(t.minutes)} de route${t.source && /estimation/.test(t.source) ? ' (estimé)' : ''} + 1 h de marge → <b>${libJour(date)} à ${hh(heureDe(debut))}</b>. Validez avec le client ou déplacez.`
+                : `Même tournée que la voiture à récupérer <b>${esc(src.libelle)}</b> (${t.km} km, ${dur(t.minutes)} de route) : choisissez le jour, l'heure proposée est ${hh(heureDe(debut))}.`;
+            F.date.focus(); $('#plForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        $('#plFiltres').querySelectorAll('[data-plf]').forEach(b => b.onclick = () => { E.filtre = b.dataset.plf; $('#plFiltres').querySelectorAll('[data-plf]').forEach(o => o.classList.toggle('on', o === b)); if (E.P && E.K) dessiner(); });
+        await chargerAutour();
     }
     function lierRdv(d) {
         const bloc = $('#rdvBloc'); if (!bloc) return;
