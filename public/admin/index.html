@@ -301,7 +301,10 @@ details.plus > summary { margin-top: 14px; }
 .lieu-carte { display: grid; gap: 8px; margin: 0 0 10px; } .lieu-pin { display: grid; grid-template-columns: auto 1fr; column-gap: 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: inherit; background: #FAF9F6; }
 .lieu-pin span { grid-row: span 2; font-size: 1.2rem; } .lieu-pin small { color: var(--ink-5); font-size: .8rem; }
 .lieu-act { display: flex; flex-wrap: wrap; gap: 6px; } .lieu-act .btn { flex: 1 1 auto; justify-content: center; }
-.lieu-saisie { display: grid; gap: 8px; } .lieu-adr { display: flex; gap: 6px; } .lieu-adr .in { flex: 1 1 0; width: 0; min-width: 0; }
+.lieu-saisie { display: grid; gap: 8px; } .lieu-adr { display: flex; gap: 6px; } .lieu-adr-wrap { position: relative; flex: 1 1 0; width: 0; min-width: 0; } .lieu-adr-wrap .in { width: 100%; box-sizing: border-box; }
+.lieu-sugg { position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 30; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 12px 32px rgba(14,35,64,.18); overflow: hidden; }
+.lieu-sugg button { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 9px 12px; font: inherit; cursor: pointer; border-bottom: 1px solid var(--line-2); } .lieu-sugg button:last-child { border-bottom: 0; } .lieu-sugg button:hover { background: #F6F3EC; }
+.lieu-sugg b { display: block; font-size: .9rem; font-weight: 600; } .lieu-sugg span { font-size: .76rem; color: var(--ink-5); }
 .pp { display: inline-block; font-style: normal; font-size: .7rem; font-weight: 650; padding: 1px 8px; border-radius: 99px; margin: 2px 0; }
 .pp-tb { background: #1D6B3D; color: #fff; } .pp-b { background: #DDF1E4; color: #1D6B3D; } .pp-m { background: #EEF0F4; color: var(--ink-7, #3B3F4A); } .pp-h { background: #F6E3DF; color: #9A3A2B; }
 .tr-liste { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 8px; }
@@ -3363,7 +3366,7 @@ body.modal-ouvert { overflow: hidden; }
             <div class="lieu-saisie">
                 <input class="in" id="lieuNote" value="${esc((e && !rec && e.note) || '')}" placeholder="Précisions : parking Carrefour, niveau -1, place 24, clés chez le gardien…">
                 <button type="button" class="btn ${e && !rec ? '' : 'btn-g'}" id="lieuIci">${e && !rec ? 'Remplacer par ma position actuelle' : 'Enregistrer ma position actuelle'}</button>
-                <div class="lieu-adr"><input class="in" id="lieuAdr" placeholder="ou une adresse : 12 rue des Lilas, 45000 Orléans" autocomplete="street-address"><button type="button" class="btn" id="lieuAdrOk">Localiser</button></div>
+                <div class="lieu-adr"><div class="lieu-adr-wrap"><input class="in" id="lieuAdr" placeholder="ou une adresse : 12 rue des Lilas, 45000 Orléans" autocomplete="off" autocorrect="off" spellcheck="false"><div class="lieu-sugg" id="lieuSugg" hidden></div></div><button type="button" class="btn" id="lieuAdrOk">Localiser</button></div>
                 ${e && !rec ? '<button type="button" class="btn btn-s" id="lieuNoteOk">Enregistrer les précisions</button>' : ''}
             </div>
         </section>`;
@@ -3382,19 +3385,41 @@ body.modal-ouvert { overflow: hidden; }
                 catch (er) { toast(er.message); b.disabled = false; }
             }, err => { b.disabled = false; b.textContent = 'Enregistrer ma position actuelle'; toast(err.code === 1 ? 'Autorisez la localisation pour LUNICAR dans les réglages' : 'Position introuvable, réessayez à l\'extérieur'); }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 });
         };
-        // Adresse tapée → coordonnées (base adresse nationale)
+        // Adresse tapée : propositions au fil de la frappe (base adresse nationale), puis coordonnées de l'adresse choisie.
+        const adr = $('#lieuAdr'), sugg = $('#lieuSugg'); let choix = null, tmr = null, ctrl = null, props = [];
+        // Propositions classées autour du département du vendeur (sinon du point de départ) : « 6 rue des Églises » donne d'abord les résultats du coin.
+        const d0 = demandes.find(z => z.ref === v.ref), cp0 = String((((d0 || {}).suivi || {}).rdv || {}).lieu || '').match(/\b\d{5}\b/) || [((d0 || {}).data || {}).code_postal];
+        const pres = (() => { const cp = String(cp0[0] || '').trim(); if (!/^\d{5}$/.test(cp)) return ''; let dep = cp.slice(0, 2); if (dep === '20') dep = Number(cp.slice(0, 3)) < 202 ? '2A' : '2B'; const g = DEP[dep]; return g ? `&lat=${g[0]}&lon=${g[1]}` : ''; })();
+        const enregistrerAdresse = async f => {
+            const [lon, lat] = f.geometry.coordinates, b = $('#lieuAdrOk'); b.disabled = true;
+            try { await sauver({ emplacement: { lat, lon, precision: 0, note: $('#lieuNote').value.trim(), adresse: f.properties.label, source: 'adresse' } }); toast('Lieu enregistré'); }
+            catch (er) { toast(er.message); b.disabled = false; }
+        };
+        const montrer = l => { props = l; sugg.innerHTML = l.map((f, i) => `<button type="button" data-sg="${i}"><b>${esc(f.properties.name || f.properties.label)}</b><span>${esc(f.properties.postcode || '')} ${esc(f.properties.city || '')}</span></button>`).join(''); sugg.hidden = !l.length;
+            sugg.querySelectorAll('[data-sg]').forEach(b => b.onmousedown = e => { e.preventDefault(); choix = props[+b.dataset.sg]; adr.value = choix.properties.label; sugg.hidden = true; enregistrerAdresse(choix); }); };
+        adr.addEventListener('input', () => {
+            choix = null; const q = adr.value.trim(); clearTimeout(tmr);
+            if (q.length < 3) { sugg.hidden = true; return; }
+            tmr = setTimeout(async () => {
+                if (ctrl) ctrl.abort(); ctrl = new AbortController();
+                try { const j = await (await fetch('https://api-adresse.data.gouv.fr/search/?autocomplete=1&limit=6' + pres + '&q=' + encodeURIComponent(q), { signal: ctrl.signal })).json(); montrer(j.features || []); }
+                catch (e) { if (e.name !== 'AbortError') sugg.hidden = true; }
+            }, 220);
+        });
+        adr.addEventListener('blur', () => setTimeout(() => { sugg.hidden = true; }, 150));
+        adr.addEventListener('focus', () => { if (props.length && adr.value.trim().length >= 3 && !choix) sugg.hidden = false; });
+        adr.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); if (!sugg.hidden && props[0]) { choix = props[0]; adr.value = choix.properties.label; sugg.hidden = true; enregistrerAdresse(choix); } else $('#lieuAdrOk').click(); } if (e.key === 'Escape') sugg.hidden = true; };
         $('#lieuAdrOk').onclick = async () => {
-            const q = $('#lieuAdr').value.trim(); if (q.length < 5) { toast('Indiquez une adresse ou une ville'); return; }
+            if (choix) return enregistrerAdresse(choix);
+            const q = adr.value.trim(); if (q.length < 5) { toast('Indiquez une adresse ou une ville'); return; }
             const b = $('#lieuAdrOk'); b.disabled = true;
             try {
                 const j = await (await fetch('https://api-adresse.data.gouv.fr/search/?limit=1&q=' + encodeURIComponent(q))).json();
                 const f = (j.features || [])[0]; if (!f) { toast('Adresse introuvable : précisez la ville ou le code postal'); b.disabled = false; return; }
-                const [lon, lat] = f.geometry.coordinates;
                 if (await demander({ titre: 'Enregistrer ce lieu ?', texte: f.properties.label, boutons: [['ok', 'Enregistrer', 'btn-p'], ['', 'Annuler']] }) !== 'ok') { b.disabled = false; return; }
-                await sauver({ emplacement: { lat, lon, precision: 0, note: $('#lieuNote').value.trim(), adresse: f.properties.label, source: 'adresse' } }); toast('Lieu enregistré');
+                await enregistrerAdresse(f);
             } catch (er) { toast(er.message); b.disabled = false; }
         };
-        $('#lieuAdr').onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); $('#lieuAdrOk').click(); } };
         if ($('#lieuNoteOk')) $('#lieuNoteOk').onclick = async () => { try { await sauver({ emplacement: { ...v.emplacement, note: $('#lieuNote').value.trim() } }); toast('Précisions enregistrées'); } catch (er) { toast(er.message); } };
         if ($('#lieuRecup')) $('#lieuRecup').onclick = async () => { if (await demander({ titre: 'Voiture récupérée ?', texte: 'Elle quitte la liste des voitures à récupérer et la carte.', boutons: [['ok', 'Oui, récupérée', 'btn-p'], ['', 'Annuler']] }) !== 'ok') return; try { await sauver({ emplacement_recuperee: true }); toast('Voiture marquée récupérée'); } catch (er) { toast(er.message); } };
         if ($('#lieuEffacer')) $('#lieuEffacer').onclick = async () => { if (await demander({ titre: 'Effacer le lieu enregistré ?', boutons: [['ok', 'Effacer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return; try { await sauver({ emplacement: null }); } catch (er) { toast(er.message); } };
