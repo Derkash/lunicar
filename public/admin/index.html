@@ -3548,7 +3548,8 @@ body.modal-ouvert { overflow: hidden; }
             <div class="doc-check">${[...DOCS_ACHAT, ...(v.statut === 'vendu' ? ['cession_vente'] : [])].map(t => `<span class="${docs.some(d => d.type === t) ? 'ok' : ''}">${docs.some(d => d.type === t) ? '✓' : '○'} ${esc(T[t] || t)}</span>`).join('')}</div>
             <div class="doc-act">
                 <button class="btn btn-g" id="vCession" type="button">Générer le certificat de cession</button>
-                <button class="btn btn-p" id="vMerci" type="button">${v.remerciement_le ? 'Mail remerciement · envoyé le ' + date(v.remerciement_le, false) : 'Mail remerciement'}</button>
+                <button class="btn btn-p" id="vAvis" type="button">${v.remerciement_le ? 'Demander un avis · envoyé le ' + date(v.remerciement_le, false) : 'Demander un avis'}</button>
+                <button class="btn" id="vMerci" type="button">Mail avec les documents</button>
                 <select class="in" id="vDocType">${Object.entries(T).map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select>
                 <label class="btn">Ajouter un document<input type="file" id="vDocFile" accept="image/*,application/pdf" hidden></label>
             </div>
@@ -3581,19 +3582,21 @@ body.modal-ouvert { overflow: hidden; }
             'N\'hésitez pas à revenir vers nous en cas de besoin, nous restons à votre disposition. En espérant que vous ayez eu une excellente expérience avec nous.', '',
             'Cordialement,', 'L\'équipe LUNICAR'].join('\n');
     }
-    function mailRemerciement(v) {
+    // mode « avis » : mail court (merci + Trustpilot), sans pièce jointe par défaut ; mode « documents » : cession, carte grise, récépissé joints.
+    function mailRemerciement(v, mode = 'avis') {
         const d = demandes.find(x => x.ref === v.ref), x = (d && d.data) || {};
         if (!d) { toast('Pas de demande liée à ce véhicule : e-mail du client inconnu'); return; }
         if (!x.email) { toast('Pas d\'adresse e-mail sur la fiche du client : ajoutez-la d\'abord'); return; }
         const docs = v.documents || [], T = compta.types_document || {};
         // Par défaut : le dernier document de chaque type attendu (cession signée, carte grise barrée, récépissé).
-        const defaut = new Set(Object.keys(DOCS_MERCI).map(t => (docs.filter(z => z.type === t).slice(-1)[0] || {}).path).filter(Boolean));
-        const manquants = Object.keys(DOCS_MERCI).filter(t => !docs.some(z => z.type === t));
-        const objet = 'Merci pour votre confiance · vos documents de cession';
+        const defaut = new Set(mode === 'documents' ? Object.keys(DOCS_MERCI).map(t => (docs.filter(z => z.type === t).slice(-1)[0] || {}).path).filter(Boolean) : []);
+        const manquants = mode === 'documents' ? Object.keys(DOCS_MERCI).filter(t => !docs.some(z => z.type === t)) : [];
+        const objet = mode === 'documents' ? 'Merci pour votre confiance · vos documents de cession' : 'Merci pour votre confiance';
         const fermerM = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
-        $('#crIn').innerHTML = `<div class="cr-tete"><h3>Mail de remerciement</h3><button class="close" type="button" id="mrX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>${mode === 'documents' ? 'Mail avec les documents' : 'Demander un avis'}</h3><button class="close" type="button" id="mrX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
             <div class="mr-wrap"><p class="sub">À ${esc(x.email)} · de LUNICAR · objet « ${esc(objet)} »${v.remerciement_le ? ` · déjà envoyé le ${date(v.remerciement_le)}` : ''}</p>
             ${manquants.length ? `<p class="notice">Pas encore dans les documents : ${manquants.map(t => esc(T[t] || t)).join(', ')}. Ajoutez-les (« Ajouter un document ») ou envoyez sans.</p>` : ''}
+            ${mode === 'avis' ? '<p class="sub">Mail court : merci, bouton Trustpilot, invitation « avis vérifié » envoyée par Trustpilot 7 jours après. Cochez un document ci-dessous seulement si le client le redemande.</p>' : ''}
             <p class="cr-l">Pièces jointes</p>
             <div class="mr-docs">${docs.length ? docs.map(z => `<label class="mr-doc"><input type="checkbox" data-mrdoc="${esc(z.path)}"${defaut.has(z.path) ? ' checked' : ''}><span>${esc(z.libelle || T[z.type] || 'Document')}<small>${esc(String(z.name || '').replace(/^\d{4}-\d{2}-\d{2}_[a-z_]+_\d+_/, ''))}</small></span></label>`).join('') : '<p class="vide">Aucun document importé pour ce véhicule.</p>'}</div>
             <p class="cr-l">Message</p>
@@ -3624,7 +3627,8 @@ body.modal-ouvert { overflow: hidden; }
         };
     }
     function lierDocuments(v) {
-        if ($('#vMerci')) $('#vMerci').onclick = () => mailRemerciement(v);
+        if ($('#vMerci')) $('#vMerci').onclick = () => mailRemerciement(v, 'documents');
+        if ($('#vAvis')) $('#vAvis').onclick = () => mailRemerciement(v, 'avis');
         $('#vDocFile').onchange = async e => {
             const fi = e.target.files[0]; if (!fi) return;
             const fd = new FormData(); fd.append('justificatif', fi); fd.append('type', $('#vDocType').value);
