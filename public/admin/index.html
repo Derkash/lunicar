@@ -843,6 +843,7 @@ ul.plain li { margin: 3px 0; }
 .rec-l { font-size: .84rem; margin-top: 3px; } .rec-l small { color: var(--ink-5); }
 .rec-b { margin: 8px 0 0; padding: 0 0 0 18px; font-size: .82rem; display: grid; gap: 4px; } .rec-b li.rdv::marker { color: #2453A6; } .rec-b li.voiture::marker { color: #9A3A2B; } p.rec-b { padding: 0; color: var(--ink-5); }
 .rec-a { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.rec-sans { margin-top: 10px; } .rec-sans summary { cursor: pointer; font-size: .86rem; color: var(--ink-5); } .rec-sans .rec-liste { margin-top: 8px; } .rec.sans { border-style: dashed; }
 @media (max-width: 760px) { .carte-map { height: 38vh; } .cal-grille { grid-template-columns: 30px repeat(6, minmax(0, 1fr)); } .cal-rdv { font-size: .6rem; padding: 1px 3px; } }
 .pl-j.auj { border-color: #5A3E9E; }
 .pl-j.on { background: #5A3E9E; border-color: #5A3E9E; }
@@ -3155,7 +3156,10 @@ body.modal-ouvert { overflow: hidden; }
                 <div class="rec-l">📍 ${esc(v.lieu)}${v.note ? `<br><small>${esc(v.note)}</small>` : ''}</div>
                 ${v.binomes.length ? `<ul class="rec-b">${v.binomes.slice(0, 3).map(b => `<li class="${b.type}">${phraseBinome(b)}</li>`).join('')}</ul>` : `<p class="rec-b vide">Aucun rendez-vous ni autre voiture à moins de ${C.binome_km} km pour l'instant : aller dédié à prévoir.</p>`}
                 <div class="rec-a"><a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&query=${v.lat},${v.lon}" target="_blank" rel="noopener">Itinéraire</a><button type="button" class="btn btn-s" data-rec-voir="${esc(v.id)}">Voir sur la carte</button><button type="button" class="btn btn-s" data-rec-fiche="${esc(v.id)}">Fiche</button><button type="button" class="btn btn-s btn-g" data-rec-ok="${esc(v.id)}">Récupérée</button></div>
-            </div>`).join('')}</div>` : '<p class="vide">Aucune voiture laissée sur place. Quand le technicien laisse une voiture, il enregistre l\'emplacement dans la fiche du véhicule (position actuelle ou adresse) : elle apparaît ici et sur la carte.</p>'}`;
+            </div>`).join('')}</div>` : '<p class="vide">Aucune voiture laissée sur place avec un emplacement enregistré.</p>'}
+            ${(C.sans_emplacement || []).length ? `<details class="rec-sans"><summary>${C.sans_emplacement.length} voiture${C.sans_emplacement.length > 1 ? 's' : ''} achetée${C.sans_emplacement.length > 1 ? 's' : ''} sans emplacement enregistré</summary>
+                <p class="sub">Si l'une d'elles est restée sur place, ouvrez sa fiche et enregistrez où elle est garée (position actuelle ou adresse) : elle apparaîtra ici et sur la carte.</p>
+                <div class="rec-liste">${C.sans_emplacement.map(v => `<div class="rec sans"><div class="rec-t"><b>${esc(v.libelle)}${v.plaque ? ' · ' + esc(v.plaque) : ''}</b><span>${v.date_achat ? 'achetée le ' + date(v.date_achat, false) : ''}</span></div><div class="rec-a"><button type="button" class="btn btn-s" data-rec-fiche="${esc(v.id)}">Enregistrer où elle est garée</button></div></div>`).join('')}</div></details>` : ''}`;
         if (carteRendue !== cle || !carteMap) {
             if (carteMap) { carteMap.remove(); carteMap = null; }
             carteMap = L.map('carteMap', { zoomControl: true, attributionControl: true });
