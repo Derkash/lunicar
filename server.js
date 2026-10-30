@@ -1318,6 +1318,9 @@ app.listen(PORT, () => {
     console.log(`\n🚗 LUNICAR Server démarré sur http://localhost:${PORT}\n`);
 });
 
+// Archivage automatique des demandes jamais appelées après 7 jours (e-mail de refus au vendeur, sauf première passe).
+require('./lib/archivage').planifier({ notifier: p => push.notifier(p) });
+
 // Récapitulatif du matin (8 h, jours ouvrés) : relances du jour et en retard, nouvelles demandes pas encore appelées.
 const relances = require('./lib/relances');
 setInterval(async () => {
