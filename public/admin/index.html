@@ -817,12 +817,35 @@ ul.plain li { margin: 3px 0; }
 .mail-layer .mail-sec > h3 { padding-right: 52px; }
 @media (max-width: 760px) { .mail-layer { place-items: end stretch; padding: 0; } .mail-layer .ml-in { max-height: 92vh; border-radius: 16px 16px 0 0; padding-bottom: env(safe-area-inset-bottom); } }
 .rdv-form .rdv-act { grid-column: 1 / -1; }
-.pl-bande { display: grid; grid-template-columns: repeat(14, minmax(46px, 1fr)); gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 0 14px; padding: 1px; }
-.pl-bande::-webkit-scrollbar { display: none; }
-.pl-j { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 7px 0 5px; display: grid; justify-items: center; gap: 1px; }
-.pl-j span { font-size: .68rem; color: var(--ink-5); text-transform: capitalize; }
-.pl-j b { font-size: 1.05rem; font-weight: 650; }
-.pl-j i { font-style: normal; font-size: .5rem; letter-spacing: 1px; color: #5A3E9E; min-height: 9px; line-height: 9px; }
+/* Calendrier hebdomadaire */
+.cal { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); overflow: hidden; margin: 0 0 14px; }
+.cal-tete { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-bottom: 1px solid var(--line-2); } .cal-tete b { flex: 1; text-align: center; font-size: .92rem; text-transform: capitalize; }
+.cal-leg { margin: 0; padding: 6px 12px; font-size: .74rem; color: var(--ink-5); border-bottom: 1px solid var(--line-2); }
+.cal-grille { display: grid; grid-template-columns: 38px repeat(6, minmax(0, 1fr)); max-height: 60vh; overflow-y: auto; position: relative; }
+.cal-heures .cal-h { height: var(--h); font-size: .66rem; color: var(--ink-4); text-align: right; padding: 2px 4px 0 0; border-top: 1px solid var(--line-2); box-sizing: border-box; }
+.cal-ent { position: sticky; top: 0; z-index: 2; background: var(--surface); height: 44px; display: grid; justify-items: center; align-content: center; border-bottom: 1px solid var(--line); font-size: .68rem; color: var(--ink-5); text-transform: capitalize; cursor: pointer; }
+.cal-ent b { font-size: 1rem; color: var(--ink); line-height: 1.1; } .cal-ent i { position: absolute; right: 4px; top: 4px; font-style: normal; font-size: .62rem; background: #5A3E9E; color: #fff; border-radius: 99px; padding: 0 5px; }
+.cal-jour.cal-auj .cal-ent b { background: var(--marine); color: #fff; border-radius: 99px; width: 24px; height: 24px; display: grid; place-items: center; }
+.cal-jour.passe .cal-col { opacity: .55; }
+.cal-col { position: relative; border-left: 1px solid var(--line-2); }
+.cal-case { height: var(--h); border-top: 1px solid var(--line-2); box-sizing: border-box; cursor: pointer; } .cal-case:hover { background: #F6F3EC; }
+.cal-rdv { position: absolute; left: 2px; right: 2px; background: #EDE8F8; border-left: 3px solid #5A3E9E; border-radius: 6px; padding: 2px 4px; font-size: .66rem; line-height: 1.2; overflow: hidden; cursor: pointer; z-index: 1; }
+.cal-rdv b { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .cal-rdv span { display: block; color: var(--ink-5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal-rdv em { display: inline-block; font-style: normal; font-weight: 700; font-size: .64rem; margin-top: 1px; padding: 0 5px; border-radius: 99px; background: #F6E3DF; color: #9A3A2B; }
+.cal-rdv.combinable { background: #E3F3E8; border-left-color: #1D6B3D; } .cal-rdv.combinable em { background: #1D6B3D; color: #fff; }
+.cal-rdv.fini { background: #F1F1EE; border-left-color: #B8B4AA; color: var(--ink-5); } .cal-rdv.achete { background: #E3F3E8; border-left-color: #1D6B3D; }
+/* Carte */
+.carte-screen { position: fixed; inset: 0; z-index: 84; background: rgba(14,35,64,.45); display: grid; place-items: center; padding: 12px; }
+.carte-in { width: min(960px, 100%); max-height: 96vh; overflow-y: auto; background: var(--surface); border-radius: 16px; display: grid; grid-template-rows: auto auto 1fr; }
+.carte-tete { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--line-2); } .carte-tete b { font-size: 1rem; }
+.carte-map { height: 46vh; min-height: 280px; background: #E9EEF2; }
+.carte-corps { padding: 14px 16px 18px; } .carte-corps h3 { margin: 0 0 8px; font-size: .95rem; } .carte-corps h3 small { font-weight: 400; color: var(--ink-5); font-size: .8rem; margin-left: 6px; }
+.rec-liste { display: grid; gap: 8px; } .rec { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; } .rec.rdv { cursor: pointer; border-color: #CFE0FF; }
+.rec-t { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 10px; font-size: .9rem; } .rec-t span { color: var(--ink-5); font-size: .78rem; }
+.rec-l { font-size: .84rem; margin-top: 3px; } .rec-l small { color: var(--ink-5); }
+.rec-b { margin: 8px 0 0; padding: 0 0 0 18px; font-size: .82rem; display: grid; gap: 4px; } .rec-b li.rdv::marker { color: #2453A6; } .rec-b li.voiture::marker { color: #9A3A2B; } p.rec-b { padding: 0; color: var(--ink-5); }
+.rec-a { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+@media (max-width: 760px) { .carte-screen { padding: 0; place-items: end stretch; } .carte-in { max-height: 100vh; border-radius: 0; } .carte-map { height: 40vh; } .cal-grille { grid-template-columns: 30px repeat(6, minmax(0, 1fr)); } .cal-rdv { font-size: .6rem; padding: 1px 3px; } }
 .pl-j.auj { border-color: #5A3E9E; }
 .pl-j.on { background: #5A3E9E; border-color: #5A3E9E; }
 .pl-j.on span, .pl-j.on b, .pl-j.on i { color: #fff; }
@@ -1335,8 +1358,9 @@ body.modal-ouvert { overflow: hidden; }
         <section data-view="planning" hidden>
             <div class="page-h"><h1>Planning des rendez-vous</h1><span>fixés au téléphone depuis la fiche d'une demande</span></div>
             <div class="kpis" id="plKpis"></div>
-            <div class="pl-bande" id="plBande"></div>
-            <div class="toolbar"><div class="segs" id="plVues" style="margin:0;flex:1"></div><a class="btn" id="plCal" href="#" hidden><svg><use href="#i-cal"/></svg>S'abonner dans Calendrier</a></div>
+            <div id="plBande"></div>
+            <div class="toolbar"><div class="segs" id="plVues" style="margin:0;flex:1"></div><button type="button" class="btn btn-g" id="plCarte">Carte · voitures à récupérer</button><a class="btn" id="plCal" href="#" hidden><svg><use href="#i-cal"/></svg>S'abonner dans Calendrier</a></div>
+            <div class="carte-screen" id="carteScreen" hidden><div class="carte-in"><div class="carte-tete"><b>Carte : rendez-vous et voitures à récupérer</b><button class="close" type="button" id="carteX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div><div class="carte-map" id="carteMap"></div><div class="carte-corps" id="carteCorps"></div></div></div>
             <div id="plListe"></div>
         </section>
 
@@ -2986,7 +3010,7 @@ body.modal-ouvert { overflow: hidden; }
         try { P = await api('/api/admin/demandes/' + d.ref + '/planning'); } catch (e) { P = { erreur: e.message, suggestions: [] }; }
         const TYPE = { route: ['Sur la route', 'sg-route'], proche: ['Groupé', 'sg-proche'], libre: ['Jour libre', 'sg-libre'], loin: ['Journée chargée', 'sg-loin'] };
         const formulaire = (date, heure) => {
-            $('#crIn').innerHTML = tete + `<p class="sub">${esc([(d.data || {}).vehicule, (d.data || {}).ville].filter(Boolean).join(' · '))}</p><div id="plForm">${formRdv(d).replace('id="rdvF"', 'id="plF"')}</div>`; lier();
+            $('#crIn').innerHTML = tete + `<p class="sub">${esc([(d.data || {}).vehicule, (d.data || {}).ville].filter(Boolean).join(' · '))}${date ? ` · ${libJour(date)}${heure ? ' à ' + esc(heure) : ''}` : ''}</p><div id="plForm">${formRdv(d).replace('id="rdvF"', 'id="plF"')}</div>`; lier();
             const f = $('#plF'); if (date) f.date.value = date; if (heure) f.heure.value = heure; f.avec.value = 'youssouf';
             const s0 = d.suivi || {}, pmin = pre.prix_min || pre.prix_max || s0.offre_min || s0.offre, pmax = pre.prix_max || pre.prix_min || s0.offre;
             if (pmin) f.prix_min.value = pmin; if (pmax) f.prix_max.value = pmax;
@@ -2997,15 +3021,21 @@ body.modal-ouvert { overflow: hidden; }
                 catch (err) { toast(err.message); }
             };
         };
+        let plSemaine = null;
         const liste = () => {
-            const S = P.suggestions || [];
-            $('#crIn').innerHTML = tete + (P.erreur ? `<p class="notice">${esc(P.erreur)}</p>` : `<p class="sub">Youssouf part de ${esc(P.depart)} · ${esc(P.cible.ville)} à ${P.cible.km_depart} km (≈ ${Math.floor(P.cible.minutes_depart / 60)} h ${String(P.cible.minutes_depart % 60).padStart(2, '0')}). Les jours où il passe déjà près sont proposés en premier.</p>`)
-                + `<ol class="sg-liste">${S.map((x, i) => `<li class="${TYPE[x.type][1]}">
+            const S = P.suggestions || [], V = P.visites || [];
+            if (!plSemaine) plSemaine = lundiDe(S[0] ? S[0].date : jourIso());
+            const rdvs = V.map(v => ({ date: v.date, heure: v.heure, duree: v.duree, ref: v.ref, titre: (v.vehicule || 'Véhicule').split(' ').slice(0, 2).join(' '), sous: v.ville, km: v.km_cible, classe: v.combinable ? 'combinable' : 'loin' }));
+            $('#crIn').innerHTML = tete + (P.erreur ? `<p class="notice">${esc(P.erreur)}</p>` : `<p class="sub">Nouvelle voiture à ${esc(P.cible.ville)}, à ${P.cible.km_depart} km du départ (≈ ${Math.floor(P.cible.minutes_depart / 60)} h ${String(P.cible.minutes_depart % 60).padStart(2, '0')} de route). Sur chaque rendez-vous déjà pris : la distance jusqu'à cette voiture. <b>Vert</b> = enchaînable le même jour (le technicien prend la première voiture puis va chercher celle-ci) · ${P.max_par_jour || 2} voitures par technicien et par jour au plus.</p>`)
+                + calSemaine({ lundi: plSemaine, rdvs, legende: 'Touchez une case vide pour choisir ce créneau, ou un rendez-vous pour enchaîner juste après.' })
+                + (S.length ? `<p class="cr-l">Suggestions</p><ol class="sg-liste">${S.slice(0, 3).map((x, i) => `<li class="${TYPE[x.type][1]}">
                     <div class="sg-j"><b>${esc(x.jour)} ${new Date(x.date + "T12:00:00Z").toLocaleDateString("fr-FR", { day: "numeric", month: "short", timeZone: "UTC" })}</b><span>vers ${esc(x.heure.replace(':', ' h '))}</span></div>
-                    <div class="sg-m"><span class="sg-t">${TYPE[x.type][0]}</span>${esc(x.motif)}${x.visites.length ? `<small>Déjà prévu : ${x.visites.map(v => `${esc(v.heure.replace(':', ' h '))} ${esc(v.ville)}${v.vehicule ? ' (' + esc(v.vehicule) + ')' : ''}`).join(' · ')}</small>` : ''}${x.km_gagnes >= 30 ? `<small>≈ ${x.km_gagnes} km économisés par rapport à un jour à part</small>` : ''}</div>
-                    <button type="button" class="btn ${i === 0 ? 'btn-p' : ''}" data-pl="${i}">Choisir</button></li>`).join('')}</ol>
-                <div class="cr-btns"><button type="button" class="btn" id="plAutre">Autre date</button></div>`;
+                    <div class="sg-m"><span class="sg-t">${TYPE[x.type][0]}</span>${esc(x.motif)}</div>
+                    <button type="button" class="btn ${i === 0 ? 'btn-p' : ''}" data-pl="${i}">Choisir</button></li>`).join('')}</ol>` : '')
+                + `<div class="cr-btns"><button type="button" class="btn" id="plAutre">Autre date</button></div>`;
             lier();
+            lierCal($('#crIn'), { onSemaine: l => { plSemaine = l; liste(); }, onSlot: (d0, h) => formulaire(d0, h),
+                onRdv: (ref, ds) => { const v = V.find(z => z.ref === ref); const fin = minutesDe(ds.heure) + Number(ds.duree || 45) + (v ? Math.round(v.km_cible / 70 * 60 / 15) * 15 : 30); formulaire(ds.date, heureDe(Math.min(19 * 60, Math.ceil(fin / 15) * 15))); } });
             $('#crIn').querySelectorAll('[data-pl]').forEach(b => b.onclick = () => { const x = S[+b.dataset.pl]; formulaire(x.date, x.heure); });
             $('#plAutre').onclick = () => formulaire();
         };
@@ -3060,15 +3090,104 @@ body.modal-ouvert { overflow: hidden; }
         if (location.hash === '#rdv') { history.replaceState(history.state, '', location.pathname); if (!$('#rdvF')) ouvrirForm(); bloc.scrollIntoView({ block: 'start' }); $('#rdvF [name=date]').focus(); }
     }
 
+    // ---------------- Calendrier hebdomadaire (lundi → samedi, 8 h → 19 h) : flèches ou glisser pour changer de semaine
+    const CAL_H0 = 8, CAL_H1 = 19, CAL_PX = 46;
+    const lundiDe = iso => ajoutJours(iso, -((new Date(iso + 'T12:00:00Z').getUTCDay() + 6) % 7));
+    const minutesDe = h => { const [a, b] = String(h || '09:00').split(':').map(Number); return a * 60 + (b || 0); };
+    const heureDe = m => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+    // rdvs : [{ date, heure, duree, titre, sous, ref, km, classe }] · annot : badge affiché sur chaque RDV (ex. distance)
+    function calSemaine({ lundi, rdvs, titre, legende }) {
+        const auj = jourIso(), jours = Array.from({ length: 6 }, (_, i) => ajoutJours(lundi, i));
+        const dim = ajoutJours(lundi, 5), f = iso => new Date(iso + 'T12:00:00Z');
+        const libelle = `${f(lundi).getUTCDate()} ${f(lundi).toLocaleDateString('fr-FR', { month: 'short', timeZone: 'UTC' }) !== f(dim).toLocaleDateString('fr-FR', { month: 'short', timeZone: 'UTC' }) ? f(lundi).toLocaleDateString('fr-FR', { month: 'short', timeZone: 'UTC' }) + ' ' : ''}– ${f(dim).getUTCDate()} ${f(dim).toLocaleDateString('fr-FR', { month: 'short', timeZone: 'UTC' })}${f(dim).getUTCFullYear() !== new Date().getFullYear() ? ' ' + f(dim).getUTCFullYear() : ''}`;
+        const heures = Array.from({ length: CAL_H1 - CAL_H0 }, (_, i) => CAL_H0 + i);
+        return `<div class="cal" data-lundi="${lundi}">
+            <div class="cal-tete"><button type="button" class="btn btn-s" data-cal="-1" aria-label="Semaine précédente">‹</button><b>${titre ? esc(titre) + ' · ' : ''}Semaine du ${libelle}</b><button type="button" class="btn btn-s" data-cal="1" aria-label="Semaine suivante">›</button>${lundi !== lundiDe(auj) ? '<button type="button" class="btn btn-s btn-ghost" data-cal="0">Aujourd\'hui</button>' : ''}</div>
+            ${legende ? `<p class="cal-leg">${legende}</p>` : ''}
+            <div class="cal-grille" style="--h:${CAL_PX}px">
+                <div class="cal-heures"><div class="cal-ent"></div>${heures.map(h => `<div class="cal-h">${h} h</div>`).join('')}</div>
+                ${jours.map(j => { const L = rdvs.filter(r => r.date === j); const d = f(j);
+                    return `<div class="cal-jour${j === auj ? ' cal-auj' : ''}${j < auj ? ' passe' : ''}" data-cal-jour="${j}">
+                        <div class="cal-ent" data-plj="${j}"><span>${d.toLocaleDateString('fr-FR', { weekday: 'short', timeZone: 'UTC' }).replace('.', '')}</span><b>${d.getUTCDate()}</b>${L.length ? `<i>${L.length}</i>` : ''}</div>
+                        <div class="cal-col">${heures.map(h => `<div class="cal-case" data-cal-slot="${j}T${String(h).padStart(2, '0')}:00"></div>`).join('')}
+                        ${L.map(r => { const m0 = Math.max(CAL_H0 * 60, minutesDe(r.heure)), dur = Math.max(30, Number(r.duree) || 45); return `<div class="cal-rdv ${r.classe || ''}" data-cal-rdv="${esc(r.ref || '')}" data-date="${r.date}" data-heure="${esc(r.heure)}" data-duree="${dur}" style="top:${(m0 - CAL_H0 * 60) / 60 * CAL_PX}px;height:${Math.max(24, dur / 60 * CAL_PX - 2)}px"><b>${esc(r.heure)} ${esc(r.titre || '')}</b><span>${esc(r.sous || '')}</span>${r.km != null ? `<em>${r.km} km</em>` : ''}</div>`; }).join('')}
+                        </div></div>`; }).join('')}
+            </div></div>`;
+    }
+    // Branche flèches, glisser latéral, touche sur une case vide (créneau) ou sur un rendez-vous.
+    function lierCal(root, { onSemaine, onSlot, onRdv }) {
+        const cal = root.querySelector('.cal'); if (!cal) return;
+        const lundi = cal.dataset.lundi;
+        cal.querySelectorAll('[data-cal]').forEach(b => b.onclick = () => onSemaine(b.dataset.cal === '0' ? lundiDe(jourIso()) : ajoutJours(lundi, 7 * Number(b.dataset.cal))));
+        let x0 = null, y0 = null;
+        cal.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+        cal.addEventListener('touchend', e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null; if (Math.abs(dx) > 60 && Math.abs(dx) > 2 * Math.abs(dy)) onSemaine(ajoutJours(lundi, dx < 0 ? 7 : -7)); }, { passive: true });
+        if (onSlot) cal.querySelectorAll('[data-cal-slot]').forEach(c => c.onclick = () => { const [d, h] = c.dataset.calSlot.split('T'); onSlot(d, h); });
+        if (onRdv) cal.querySelectorAll('[data-cal-rdv]').forEach(c => c.onclick = e => { e.stopPropagation(); onRdv(c.dataset.calRdv, c.dataset); });
+        // Semaine en cours : on fait défiler jusqu'au premier rendez-vous (ou 9 h)
+        const prem = cal.querySelector('.cal-rdv'); const g = cal.querySelector('.cal-grille'); if (g && prem) g.scrollTop = Math.max(0, parseFloat(prem.style.top) - 20);
+    }
+
+    // ---------------- Carte de France : rendez-vous prévus + voitures achetées à récupérer, binômes possibles
+    let leafletPrete = null, carteMap = null;
+    function chargerLeaflet() {
+        if (leafletPrete) return leafletPrete;
+        leafletPrete = new Promise((ok, ko) => {
+            const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css'; document.head.appendChild(l);
+            const sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js'; sc.onload = ok; sc.onerror = () => { leafletPrete = null; ko(new Error('Carte indisponible (pas de réseau ?)')); }; document.head.appendChild(sc);
+        });
+        return leafletPrete;
+    }
+    const phraseBinome = b => b.type === 'rdv'
+        ? `Récupérable à deux lors du RDV du ${jourCourt(b.date)} ${String(b.heure).replace(':', 'h')} à ${esc(b.ville)} (${b.km} km) : un technicien fait le rendez-vous, l'autre ramène cette voiture.`
+        : `Même tournée possible avec ${esc(b.libelle)} laissée à ${esc(b.lieu)} (${b.km} km) : deux techniciens, un seul aller en train.`;
+    async function ouvrirCarte() {
+        const sc = $('#carteScreen'); sc.hidden = false; document.body.classList.add('modal-ouvert');
+        $('#carteCorps').innerHTML = '<p class="sub"><span class="spin"></span> Chargement…</p>';
+        $('#carteX').onclick = () => { sc.hidden = true; document.body.classList.remove('modal-ouvert'); };
+        let C; try { [C] = await Promise.all([api('/api/admin/carte'), chargerLeaflet()]); } catch (e) { $('#carteCorps').innerHTML = `<p class="notice">${esc(e.message)}</p>`; return; }
+        // Liste : voitures à récupérer avec leurs binômes, puis rendez-vous prévus
+        $('#carteCorps').innerHTML = `
+            <h3>Voitures à récupérer <small>${C.recuperer.length} · achetées, pas encore ramenées</small></h3>
+            ${C.recuperer.length ? `<div class="rec-liste">${C.recuperer.map(v => `<div class="rec" data-rec="${esc(v.id)}">
+                <div class="rec-t"><b>${esc(v.libelle)}${v.plaque ? ' · ' + esc(v.plaque) : ''}</b><span>${v.km_depart != null ? v.km_depart + ' km du départ' : ''}${v.depuis ? ' · achetée le ' + date(v.depuis, false) : ''}</span></div>
+                <div class="rec-l">📍 ${esc(v.lieu)}${v.source === 'gps' ? '' : ' <small>(commune du vendeur, position précise non enregistrée)</small>'}${v.note ? `<br><small>${esc(v.note)}</small>` : ''}</div>
+                ${v.binomes.length ? `<ul class="rec-b">${v.binomes.slice(0, 3).map(b => `<li class="${b.type}">${phraseBinome(b)}</li>`).join('')}</ul>` : `<p class="rec-b vide">Aucun rendez-vous ni autre voiture à moins de ${C.binome_km} km pour l'instant : aller dédié à prévoir.</p>`}
+                <div class="rec-a"><a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&query=${v.lat},${v.lon}" target="_blank" rel="noopener">Itinéraire</a><button type="button" class="btn btn-s" data-rec-voir="${esc(v.id)}">Voir sur la carte</button><button type="button" class="btn btn-s" data-rec-fiche="${esc(v.id)}">Fiche</button><button type="button" class="btn btn-s btn-g" data-rec-ok="${esc(v.id)}">Récupérée</button></div>
+            </div>`).join('')}</div>` : '<p class="vide">Aucune voiture en attente de récupération.</p>'}
+            <h3 style="margin-top:16px">Rendez-vous prévus <small>${C.rdvs.length}</small></h3>
+            ${C.rdvs.length ? `<div class="rec-liste">${C.rdvs.map(m => `<div class="rec rdv" data-rdvpt="${esc(m.ref)}"><div class="rec-t"><b>${libJour(m.date)} ${esc(m.heure)} · ${esc(m.vehicule || 'Véhicule')}</b><span>${esc(m.client)} · ${AVEC[m.avec] || ''}${m.km_depart != null ? ' · ' + m.km_depart + ' km du départ' : ''}</span></div><div class="rec-l">📍 ${esc(m.lieu || m.ville)}</div></div>`).join('')}</div>` : '<p class="vide">Aucun rendez-vous à venir.</p>'}`;
+        // Carte
+        if (carteMap) { carteMap.remove(); carteMap = null; }
+        carteMap = L.map('carteMap', { zoomControl: true, attributionControl: true });
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(carteMap);
+        const pts = [], marqueurs = {};
+        if (C.depart) { L.circleMarker([C.depart.lat, C.depart.lon], { radius: 7, color: '#0D2541', fillColor: '#0D2541', fillOpacity: 1 }).addTo(carteMap).bindPopup(`<b>Départ</b><br>${esc(C.depart.nom)}`); pts.push([C.depart.lat, C.depart.lon]); }
+        C.rdvs.forEach(m => { const k = L.circleMarker([m.lat, m.lon], { radius: 8, color: '#2453A6', fillColor: '#5B8DEF', fillOpacity: .9, weight: 2 }).addTo(carteMap).bindPopup(`<b>RDV ${libJour(m.date)} ${esc(m.heure)}</b><br>${esc(m.vehicule)}<br>${esc(m.client)} · ${esc(m.ville)}`); marqueurs['r' + m.ref] = k; pts.push([m.lat, m.lon]); });
+        C.recuperer.forEach(v => { const k = L.circleMarker([v.lat, v.lon], { radius: 9, color: '#9A3A2B', fillColor: '#E25D4A', fillOpacity: .95, weight: 2 }).addTo(carteMap).bindPopup(`<b>À récupérer : ${esc(v.libelle)}</b><br>${esc(v.lieu)}${v.binomes.length ? `<br><small>${v.binomes.length} binôme${v.binomes.length > 1 ? 's' : ''} possible${v.binomes.length > 1 ? 's' : ''}</small>` : ''}`); marqueurs['v' + v.id] = k; pts.push([v.lat, v.lon]);
+            v.binomes.forEach(b => { const cible = b.type === 'rdv' ? C.rdvs.find(m => m.ref === b.ref) : C.recuperer.find(w => w.id === b.id); if (cible) L.polyline([[v.lat, v.lon], [cible.lat, cible.lon]], { color: b.type === 'rdv' ? '#2453A6' : '#9A3A2B', weight: 2, dashArray: '5 6', opacity: .55 }).addTo(carteMap); }); });
+        if (pts.length > 1) carteMap.fitBounds(pts, { padding: [24, 24], maxZoom: 11 }); else if (pts.length) carteMap.setView(pts[0], 10); else carteMap.setView([46.6, 2.4], 6);
+        setTimeout(() => carteMap.invalidateSize(), 200);
+        $('#carteCorps').querySelectorAll('[data-rec-voir]').forEach(b => b.onclick = () => { const k = marqueurs['v' + b.dataset.recVoir]; if (k) { carteMap.setView(k.getLatLng(), 12); k.openPopup(); $('#carteMap').scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
+        $('#carteCorps').querySelectorAll('[data-rdvpt]').forEach(c => c.onclick = () => { const k = marqueurs['r' + c.dataset.rdvpt]; if (k) { carteMap.setView(k.getLatLng(), 11); k.openPopup(); $('#carteMap').scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
+        $('#carteCorps').querySelectorAll('[data-rec-fiche]').forEach(b => b.onclick = () => { $('#carteX').click(); afficherVehicule(b.dataset.recFiche); });
+        $('#carteCorps').querySelectorAll('[data-rec-ok]').forEach(b => b.onclick = async () => {
+            if (await demander({ titre: 'Voiture récupérée ?', texte: 'Elle passe « En préparation » et quitte la liste des voitures à récupérer.', boutons: [['ok', 'Oui, récupérée', 'btn-p'], ['', 'Annuler']] }) !== 'ok') return;
+            try { await api('/api/admin/compta/vehicules/' + b.dataset.recOk, { method: 'PATCH', body: JSON.stringify({ statut: 'preparation' }) }); compta = null; toast('Voiture passée en préparation'); ouvrirCarte(); } catch (e) { toast(e.message); }
+        });
+    }
+
     // Onglet Planning
+    let plLundi = null;
     async function vuePlanning() {
         const auj = jourIso();
         const tous = demandes.filter(d => rdvDe(d) && rdvDe(d).date);
         const prevus = tous.filter(d => rdvDe(d).statut === 'prevu');
-        // Bande des 14 prochains jours avec le nombre de rendez-vous
-        const jours = Array.from({ length: 14 }, (_, i) => ajoutJours(auj, i));
-        $('#plBande').innerHTML = jours.map(j => { const n = prevus.filter(d => rdvDe(d).date === j).length; const dt = new Date(j + 'T12:00:00Z');
-            return `<button class="pl-j${plJour === j ? ' on' : ''}${j === auj ? ' auj' : ''}" data-plj="${j}"><span>${dt.toLocaleDateString('fr-FR', { weekday: 'short', timeZone: 'UTC' }).replace('.', '')}</span><b>${dt.getUTCDate()}</b><i>${n ? '●'.repeat(Math.min(n, 3)) : ''}</i></button>`; }).join('');
+        // Calendrier de la semaine (façon agenda) : rendez-vous prévus et faits, glisser pour changer de semaine
+        if (!plLundi) plLundi = lundiDe(auj);
+        const enSemaine = tous.filter(d => rdvDe(d).date >= plLundi && rdvDe(d).date <= ajoutJours(plLundi, 6));
+        $('#plBande').innerHTML = calSemaine({ lundi: plLundi, rdvs: enSemaine.map(d => { const r = rdvDe(d), x = d.data || {}; return { date: r.date, heure: r.heure, duree: r.duree, ref: d.ref, titre: (x.vehicule || 'Véhicule').split(' ').slice(0, 2).join(' '), sous: (r.lieu || x.ville || x.code_postal || '').replace(/^.*?(\d{5})\s*/, '$1 ').slice(0, 28) + (r.avec ? ' · ' + (AVEC[r.avec] || '').split(' ')[0] : ''), classe: r.statut !== 'prevu' ? 'fini' : d.statut === 'achetee' ? 'achete' : '' }; }) });
+        lierCal($('#plBande'), { onSemaine: l => { plLundi = l; plJour = null; vuePlanning(); }, onRdv: ref => ouvrir(ref) });
         const semaine = prevus.filter(d => rdvDe(d).date >= auj && rdvDe(d).date <= ajoutJours(auj, 6));
         const retard = prevus.filter(d => rdvDe(d).date < auj);
         const valeur = prevus.filter(d => rdvDe(d).date >= auj).reduce((t, d) => t + (rdvDe(d).prix || 0), 0);
@@ -3101,6 +3220,7 @@ body.modal-ouvert { overflow: hidden; }
         if (calUrl.url) $('#plCal').href = calUrl.url;
     }
     $('#plBande').addEventListener('click', e => { const b = e.target.closest('[data-plj]'); if (b) { plJour = plJour === b.dataset.plj ? null : b.dataset.plj; vuePlanning(); } });
+    $('#plCarte').onclick = ouvrirCarte;
     $('#plVues').addEventListener('click', e => { const b = e.target.closest('[data-plv]'); if (b) { plVue = b.dataset.plv; plJour = null; vuePlanning(); } });
     $('#plListe').addEventListener('click', e => { if (e.target.closest('a')) return; const c = e.target.closest('[data-plref]'); if (c) ouvrir(c.dataset.plref); });
 
