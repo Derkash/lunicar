@@ -110,7 +110,7 @@ def principal():
     # Versions Markdown et fraîcheur
     md_pages = []
     for p in PAGES_TEST:
-        st, h, corps = telecharger(SITE + '/md' + (p if p != '/' else '/index'))
+        st, h, corps = telecharger(SITE + '/md' + p)
         st2, h2, _ = telecharger(SITE + p)
         md_pages.append([p, st, h.get('Content-Type', '')[:20], len(corps) // 1024, h2.get('Last-Modified', '')[:16], h2.get('ETag', '')[:12], h2.get('Cache-Control', '')[:30]])
 
