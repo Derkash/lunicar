@@ -3952,6 +3952,8 @@ body.modal-ouvert { overflow: hidden; }
         router();
     }
     function router() {
+        const am = location.pathname.match(/\/admino\/annonce\/([^/]+)/);
+        if (am) { history.replaceState({}, '', BASE); quitterFiche(); quitterVehicule(); return ouvrirAnnonce(decodeURIComponent(am[1])); }
         const vm = location.pathname.match(/\/admino\/vehicule\/([\w-]+)/);
         if (vm) { if (!$('#sheet').hidden) quitterFiche(); return afficherVehicule(vm[1]); }
         quitterVehicule();
@@ -4722,6 +4724,16 @@ body.modal-ouvert { overflow: hidden; }
         annoncesE = await api('/api/admin/annonces');
         compter('annonces', annoncesE.annonces.filter(a => a.statut === 'a_traiter' && a.score >= ((annoncesE.etat || {}).seuil || 70)).length);
     }
+    // Lien partagé /admino/annonce/ID : onglet Annonces, bon filtre, annonce dépliée et mise en vue.
+    async function ouvrirAnnonce(id) {
+        allerOnglet('annonces');
+        try { await chargerAnnonces(); } catch (e) { return toast(e.message); }
+        const a = an(id);
+        if (!a) { rendreAnnonces(); return toast('Annonce introuvable (supprimée ou déjà purgée)'); }
+        anFiltre = a.statut; anOuverte = a.id; rendreAnnonces(); suivreAnnonces();
+        const el = document.querySelector(`.an[data-id="${CSS.escape(a.id)}"]`);
+        if (el) setTimeout(() => el.scrollIntoView({ block: 'start', behavior: 'smooth' }), 50);
+    }
     async function vueAnnonces() {
         try { await chargerAnnonces(); } catch (e) { return toast(e.message); }
         rendreAnnonces(); suivreAnnonces();
@@ -4783,6 +4795,7 @@ body.modal-ouvert { overflow: hidden; }
                     ${fc && fc.prix ? `<div class="an-full"><b>Estimation complète</b> du ${date(fc.date)} : prix max <b>${eur(fc.prix.max_achat)}</b> · revente ${eur(fc.prix.vente_estime)} · marché ${eur(fc.prix.marche)}${fc.attractivite ? ` · revente ${fc.attractivite.score}/100` : ''}<br>${esc(fc.resume || '')}${(fc.questions_a_poser || []).length ? `<br><b>À demander :</b> ${fc.questions_a_poser.map(esc).join(' · ')}` : ''}</div>` : ''}
                     ${a.estimation_complete_statut === 'erreur' ? `<p class="vl-alerte">Estimation complète en échec : ${esc(a.estimation_complete_erreur || '')}</p>` : ''}
                     <div class="vl-b">
+                        <button class="btn" data-an-partager="${esc(a.id)}">Partager</button>
                         ${a.statut !== 'contactee' ? `<button class="btn" data-an-statut="contactee" data-id="${esc(a.id)}"><svg><use href="#i-tel"/></svg>Contacté</button>` : ''}
                         <button class="btn" data-an-estimer="${esc(a.id)}" ${enc ? 'disabled' : ''}>${enc ? '<span class="spin"></span> Estimation en cours (2 à 3 min)' : fc ? 'Refaire l\'estimation complète' : 'Estimation complète'}</button>
                         ${a.demande_ref ? `<a class="btn" href="${BASE}/demande/${esc(a.demande_ref)}">Voir la demande ${esc(a.demande_ref)}</a>` : `<button class="btn" data-an-demande="${esc(a.id)}"><svg><use href="#i-dem"/></svg>Créer une demande</button>`}
@@ -4797,6 +4810,16 @@ body.modal-ouvert { overflow: hidden; }
     $('#anListe').addEventListener('click', async e => {
         const o = e.target.closest('[data-an-ouvrir]');
         if (o) { anOuverte = anOuverte === o.dataset.anOuvrir ? null : o.dataset.anOuvrir; rendreAnnonces(); const el = document.querySelector(`.an[data-id="${CSS.escape(o.dataset.anOuvrir)}"]`); if (el && anOuverte) el.scrollIntoView({ block: 'nearest' }); return; }
+        const pa = e.target.closest('[data-an-partager]');
+        if (pa) {
+            // Lien direct vers l'annonce dans l'admin : s'ouvre déjà dépliée chez quiconque a accès à /admino.
+            const a = an(pa.dataset.anPartager); if (!a) return;
+            const url = location.origin + BASE + '/annonce/' + encodeURIComponent(a.id);
+            const texte = [a.titre || a.modele || 'Annonce', [a.annee, a.km && Number(a.km).toLocaleString('fr-FR') + ' km', a.prix && eur(a.prix)].filter(Boolean).join(' · ')].filter(Boolean).join(' — ');
+            if (navigator.share) { try { await navigator.share({ title: 'Annonce à regarder', text: texte, url }); return; } catch (er) { if (er.name === 'AbortError') return; } }
+            try { await navigator.clipboard.writeText(texte + '\n' + url); toast('Lien copié : collez-le dans WhatsApp, SMS…'); } catch (er) { window.open('https://wa.me/?text=' + encodeURIComponent(texte + '\n' + url), '_blank'); }
+            return;
+        }
         const s = e.target.closest('[data-an-statut]');
         if (s) {
             const a = an(s.dataset.id); if (!a) return;
