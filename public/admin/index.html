@@ -4051,9 +4051,18 @@ body.modal-ouvert { overflow: hidden; }
     function blocSonar(d) {
         const z = (d.suivi || {}).sonar;
         if (!z) return '';
-        const B = z.bandes || {}, prix = Number(z.prix_conseille) || 0;
+        let B = z.bandes || {};
+        const prix = Number(z.prix_conseille) || 0;
+        // Sonar sans indicateur (trop peu d'annonces de la version) : mêmes seuils que Leboncoin
+        // (0,70 / 0,85 / 0,95 / 1,05 / 1,20 / 1,26 × la moyenne), appliqués à notre référence tout marché.
+        const estimees = !Array.isArray(B.eq) && Number(z.reference) > 0;
+        if (estimees) {
+            const m = Number(z.reference), r = x => Math.round(m * x / 10) * 10, S = [0.70, 0.85, 0.95, 1.05, 1.20, 1.26];
+            B = { tba: [r(S[0]), r(S[1])], ba: [r(S[1]) + 1, r(S[2])], eq: [r(S[2]) + 1, r(S[3])], ls: [r(S[3]) + 1, r(S[4])], ad: [r(S[4]) + 1, r(S[5])] };
+        }
         const LIB = [['tba', 'Très bonne affaire'], ['ba', 'Bonne affaire'], ['eq', 'Prix équitable'], ['ls', 'Légèrement supérieur'], ['ad', 'Au-dessus du marché']];
-        const bandes = LIB.filter(([k]) => Array.isArray(B[k])).map(([k, l]) => `<div class="${k}${prix >= B[k][0] && prix <= B[k][1] ? ' ici' : ''}"><b>${esc(l)}</b>${eur(B[k][0])} – ${eur(B[k][1])}</div>`).join('');
+        const bandes = LIB.filter(([k]) => Array.isArray(B[k])).map(([k, l]) => `<div class="${k}${prix >= B[k][0] && prix <= B[k][1] ? ' ici' : ''}"><b>${esc(l)}</b>${eur(B[k][0])} – ${eur(B[k][1])}</div>`).join('')
+            + (estimees ? `<p class="sub" style="grid-column:1/-1;margin:4px 0 0">Bandes estimées : Sonar n'a pas d'indicateur pour cette version, seuils Leboncoin appliqués à la référence tout marché (${eur(z.reference)}).</p>` : '');
         const R = z.retenues || [], E = z.ecartees || [];
         return `<section class="sec sonar">
             <h3>Analyse Sonar Pricing <small>${date(z.date, false)}${z.version ? ' · ' + esc(z.version) : ''}${z.km ? ' · ' + Number(z.km).toLocaleString('fr-FR') + ' km' : ''}</small></h3>
