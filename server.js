@@ -1232,10 +1232,13 @@ const JOUR = 24 * 3600 * 1000;
 async function pingIndexNow() {
     const etat = (await store.lireReglage('indexnow', null)) || {};
     const now = Date.now();
-    if (etat.quand && now - Date.parse(etat.quand) < 20 * 3600 * 1000) return;
-    const complet = !etat.complet || now - Date.parse(etat.complet) > 7 * JOUR;
+    const recent = etat.quand && now - Date.parse(etat.quand) < 20 * 3600 * 1000;
+    const complet = !recent && (!etat.complet || now - Date.parse(etat.complet) > 7 * JOUR);
     const pagesSite = indexablePages();
     const modifiees = complet || !etat.lastmod ? pagesSite : pagesSite.filter(u => u.lastmod > etat.lastmod);
+    // Des pages modifiées depuis la dernière soumission partent tout de suite (après un déploiement de contenu),
+    // même si une soumission a déjà eu lieu dans la journée ; la garde de 20 h ne vaut que pour l'envoi complet.
+    if (recent && !modifiees.length) return;
     const urlList = [...modifiees.map(u => SITE.baseUrl + (u.loc === '/' ? '/' : u.loc)), ...(complet ? redirectedUrls() : [])].slice(0, 10000);
     const lastmod = pagesSite.reduce((m, u) => (u.lastmod > m ? u.lastmod : m), '');
     if (!urlList.length) { await store.ecrireReglage('indexnow', { ...etat, quand: new Date(now).toISOString(), lastmod }); return; }
