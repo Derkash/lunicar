@@ -2613,6 +2613,7 @@ body.modal-ouvert { overflow: hidden; }
                 ${pros && v.ref ? `<div class="rdv-act"><button class="btn btn-g" data-vrdv="achetee">Voiture achetée</button><button class="btn" data-vrdv="fait">Fait, pas d'achat</button><button class="btn btn-d" data-vrdv="annule">RDV annulé</button><button class="btn btn-d" id="vPasInt">Pas intéressé (e-mail de refus)</button></div>` : ''}
             </section>` : ''}
             <div class="prices vh-prix" id="vPrix">${chiffresVehicule(v)}</div>
+            <div id="vSonar"></div>
             ${v.statut !== 'perdu' ? blocEmplacement(v) : ''}
             ${ORDRE_ACHETE.includes(v.statut) ? blocTravaux(v) : ''}
             <section class="sec">
@@ -2642,6 +2643,13 @@ body.modal-ouvert { overflow: hidden; }
             </section>
             <div class="danger">${v.ref ? `<button class="btn" id="vDemande">Voir la demande ${esc(v.ref)}</button>` : ''}${ORDRE_ACHETE.includes(v.statut) ? `<button class="btn btn-d" id="vAnnulAchat">${v.statut === 'vendu' ? 'Annuler la vente (erreur)' : 'Annuler l\'achat (erreur)'}</button>` : ''}<button class="btn btn-d" id="vSuppr">Supprimer le véhicule</button></div>
         </div>`;
+        // Analyse Sonar de la demande d'origine, avec le coût engagé à jour (achat + dépenses saisies).
+        if (v.ref) api('/api/admin/demandes/' + v.ref).then(d => {
+            const z = d && d.suivi && d.suivi.sonar; if (!z || !$('#vSonar')) return;
+            const cout = Math.round((v.bilan || {}).cout || z.cout_engage || 0), reste = Number(z.frais_restants) || 0;
+            const zz = cout ? { ...z, cout_engage: cout, prix_achat: v.prix_achat || z.prix_achat, marge_conseille: z.prix_conseille - cout - reste, marge_plancher: z.plancher - cout - reste } : z;
+            $('#vSonar').innerHTML = blocSonar({ suivi: { sonar: zz } });
+        }).catch(() => {});
         $('#vRetour').onclick = () => { if (history.state && history.state.veh) history.back(); else { history.replaceState({}, '', BASE); quitterVehicule(); } };
         // Un champ modifié = enregistré tout de suite, sans redessiner la page (on ne perd jamais une saisie en cours).
         const autoV = async (champs, el) => {
