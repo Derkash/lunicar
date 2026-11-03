@@ -1653,7 +1653,12 @@ body.modal-ouvert { overflow: hidden; }
     $('#logout').addEventListener('click', deconnecter);
 
     async function demarrer() {
-        try { etat = await api('/api/admin/etat'); } catch (e) { return deconnecter(); }
+        // Seul un 401 (géré dans api) déconnecte : serveur en redémarrage (502) ou réseau coupé → on réessaie.
+        try { etat = await api('/api/admin/etat'); } catch (e) {
+            if (!token) return;
+            toast('Serveur indisponible, nouvelle tentative…');
+            return setTimeout(demarrer, 4000);
+        }
         $('#login').hidden = true; $('#app').hidden = false; $('#navbas').hidden = false;
         $('#lotStatut').innerHTML = '<option value="">Statut…</option>' + Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
         $('#fRegion').innerHTML = '<option value="">Toutes les régions</option><option value="hors-idf">Hors Île-de-France</option>' + Object.entries(REG).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
