@@ -42,3 +42,6 @@ temp/
 
 # Espace admin en local (production : Supabase)
 data/crm.json
+
+# Jetons locaux (jamais dans le dépôt public)
+secrets/
