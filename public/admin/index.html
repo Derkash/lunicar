@@ -2637,6 +2637,7 @@ body.modal-ouvert { overflow: hidden; }
             <select class="in" id="vStatut"${v.statut === 'vendu' ? ' disabled title="Véhicule vendu : statut définitif"' : ''}>${Object.entries(compta.statuts).filter(([k]) => statutPossible(v.statut, k)).map(([k, l]) => `<option value="${k}"${k === v.statut ? ' selected' : ''}>${esc(l)}</option>`).join('')}</select>
         </div>
         <div class="sh-body">
+            <div id="vSonar"></div>
             ${pros || (v.statut === 'perdu' && r.date) ? `<section class="sec rdv-bloc"><h3>${pros ? 'Rendez-vous pris' : 'Rendez-vous sans suite'}</h3>
                 <div class="rdv-quand"><b>${r.date ? libJour(r.date) : ''}</b><span>${r.heure || ''} · ${esc(AVEC[r.avec] || '')}</span></div>
                 <div class="rdv-info">${r.lieu ? `<a href="https://maps.apple.com/?daddr=${encodeURIComponent(r.lieu)}" target="_blank" rel="noopener">📍 ${esc(r.lieu)}</a>` : ''}${fourchetteRdv(v.rdv) ? `<span>Fourchette annoncée <b class="num">${fourchetteRdv(v.rdv)}</b></span>` : v.prix_convenu ? `<span>Fourchette annoncée <b class="num">${euro(v.prix_convenu)}</b></span>` : ''}</div>
@@ -2644,7 +2645,6 @@ body.modal-ouvert { overflow: hidden; }
                 ${pros && v.ref ? `<div class="rdv-act"><button class="btn btn-g" data-vrdv="achetee">Voiture achetée</button><button class="btn" data-vrdv="fait">Fait, pas d'achat</button><button class="btn btn-d" data-vrdv="annule">RDV annulé</button><button class="btn btn-d" id="vPasInt">Pas intéressé (e-mail de refus)</button></div>` : ''}
             </section>` : ''}
             <div class="prices vh-prix" id="vPrix">${chiffresVehicule(v)}</div>
-            <div id="vSonar"></div>
             ${v.statut !== 'perdu' ? blocEmplacement(v) : ''}
             ${ORDRE_ACHETE.includes(v.statut) ? blocTravaux(v) : ''}
             <section class="sec">
@@ -4159,6 +4159,7 @@ body.modal-ouvert { overflow: hidden; }
                 ${dernier ? `<p class="ap-appel"><b>Dernier appel</b> · ${date(dernier.date)} · ${esc(dernier.libelle || dernier.resultat)}${dernier.texte ? ` — ${esc(dernier.texte)}` : ''}</p>` : ''}
             </section>`;
             })()}
+            ${blocSonar(d)}
             ${blocRdv(d)}
             <section class="sec decision">
                 <div class="dec-tete">
@@ -4181,7 +4182,6 @@ body.modal-ouvert { overflow: hidden; }
                     ${s.estimation_statut === 'erreur' ? `<span style="color:var(--red)">Échec : ${esc(s.estimation_erreur)}</span>` : ''}
                 </div>
             </section>
-            ${blocSonar(d)}
             <button type="button" class="btn mail-ouvrir" data-vers-mail>Échanges par e-mail${(((d.suivi || {}).emails || []).length) ? ` <b>${d.suivi.emails.length}</b>` : ''}</button>
             <div class="mail-layer" id="mailLayer" hidden><div class="ml-in"><button class="close ml-x" type="button" id="mailLayerX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button><section class="sec mail-sec" id="secEmail"></section></div></div>
             <section class="sec" hidden>
