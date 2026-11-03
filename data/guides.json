@@ -307,9 +307,9 @@
     "image": "panne",
     "nav": "Fort kilométrage",
     "title": "Vendre une voiture à fort kilométrage | LUNICAR",
-    "description": "Voiture à 200 000 km ou plus, vieux diesel : fourchette indicative communiquée rapidement, étude au cas par cas, virement instantané à la vente.",
+    "description": "Une voiture à 250 000 km vaut en général 15 à 20 % de son prix neuf, parfois moins : repères SDES, UTAC et L’argus, frais à prévoir, ce qui soutient le prix.",
     "h1": "Vendre une voiture qui a beaucoup roulé, <em>sans brader ni attendre</em>",
-    "lede": "Une voiture à 200 000 km ou plus se vend moins facilement entre particuliers. Elle garde pourtant une valeur réelle. Voici ce qui compte pour l'estimer et comment LUNICAR l'étudie, au cas par cas, partout en France.",
+    "lede": "Au-delà de 200 000 km, une voiture vaut en général 15 à 20 % de son prix neuf, parfois moins : un modèle acheté 30 000 € vaut environ 3 000 à 4 000 € après 15 à 20 ans (Caradisiac, avril 2024). À 250 000 km, le prix dépend surtout de l’entretien prouvé, de la motorisation et des frais à prévoir. Ces voitures se vendent encore : les plus de 15 ans ont pesé 30,4 % du marché en 2025. LUNICAR les étudie partout en France.",
     "points": [
       "Fourchette de prix indicative communiquée rapidement",
       "Prix définitif après vérification par un technicien",
@@ -324,6 +324,14 @@
       {
         "h2": "Une voiture à plus de 200 000 km a-t-elle encore de la valeur ?",
         "html": "<p>Oui. Le kilométrage pèse sur le prix, mais il ne le résume pas. Une voiture à 200 000 km bien entretenue, avec un historique clair et une motorisation réputée robuste, intéresse encore des acheteurs. La valeur dépend surtout de l'état réel, des frais à prévoir et de la demande pour le modèle.</p><p>Un repère : une voiture particulière parcourt en moyenne 11 600 km par an en France, selon le <a href=\"https://www.statistiques.developpement-durable.gouv.fr/40-millions-de-voitures-en-circulation-en-france-au-1er-janvier-2026\" rel=\"noopener\" target=\"_blank\">SDES</a>. 200 000 km correspondent donc à environ 17 ans d'usage moyen, l'âge d'une bonne partie des voitures qui changent de main : en 2025, les voitures de plus de 15 ans représentent 30,5 % des ventes d'occasion.</p><p>Deux voitures au même compteur peuvent avoir des valeurs très différentes. L'une a eu ses vidanges à l'heure, sa distribution remplacée et un seul propriétaire. L'autre a changé souvent de mains, sans factures. L'acheteur, professionnel ou particulier, ne paie pas des kilomètres : il paie le risque qu'il prend et les frais qu'il anticipe.</p><p>Le kilométrage reste un signal fort parce qu'il annonce l'usure de pièces coûteuses : embrayage, amortisseurs, turbo, boîte de vitesses. Plus vous montrez que ces points ont été suivis, plus l'estimation se rapproche de la valeur réelle du véhicule.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Une voiture ayant atteint 200 000 km ne vaut plus qu’entre 15 et 20 % de sa valeur neuve, si ce n’est moins : un modèle acheté 30 000 € neuf vaut environ 3 000 à 4 000 € après 200 000 km et 15 à 20 ans (Caradisiac, avril 2024). <a href=\"https://www.caradisiac.com/achat-d-occasion-faut-il-avoir-peur-des-plus-de-200-000-km-208134.htm\" rel=\"noopener\" target=\"_blank\">(Caradisiac, « Achat d’occasion : faut-il avoir peur des “plus de 200 000 km” ? », 6 avril 2024)</a></li><li>Une voiture particulière parcourt en moyenne 11 600 km par an en France (2025) ; l’âge moyen du parc est de 11,8 ans au 1er janvier 2026 et une voiture est détruite en moyenne à 20 ans. <a href=\"https://www.statistiques.developpement-durable.gouv.fr/40-millions-de-voitures-en-circulation-en-france-au-1er-janvier-2026\" rel=\"noopener\" target=\"_blank\">(SDES, « 40 millions de voitures en circulation en France au 1er janvier 2026 », 10 juillet 2026)</a></li><li>21,82 % des voitures passées au contrôle technique en 2021 affichaient plus de 200 000 km, soit plus de 3,7 millions de véhicules ; le taux de contre-visite monte à 33,27 % au-delà de 200 000 km, contre 19,41 % en moyenne (données UTAC-OTC). <a href=\"https://www.largus.fr/actualite-automobile/voitures-a-plus-de-200-000-km-top-25-des-modeles-les-plus-endurants-10985393.html\" rel=\"noopener\" target=\"_blank\">(L’argus, « Voitures à plus de 200 000 km. Top 25 des modèles les plus endurants » (données UTAC-OTC 2021), 10 juillet 2022)</a></li><li>Les voitures d’occasion de plus de 15 ans ont représenté 30,4 % du marché en 2025, avec des ventes en hausse de 10,3 % ; l’âge moyen d’une occasion vendue est de 11,1 ans (SDES). <a href=\"https://www.largus.fr/pros/actualite-automobile/voitures-d-occasion-les-principaux-indicateurs-cles-du-marche-en-france-30045867.html\" rel=\"noopener\" target=\"_blank\">(L’argus, « Voitures d’occasion. Les principaux indicateurs du marché en France », 9 mars 2026)</a></li><li>Les postes qui arrivent autour de 200 000 km coûtent cher : kit d’embrayage 1 133,28 € et kit de distribution 814,49 € en moyenne au premier trimestre 2026 (baromètre idGarages). <a href=\"https://www.largus.fr/actualite-automobile/entretien-auto-la-hausse-des-prix-atteint-jusqua-72-sur-dix-ans-2216964.html\" rel=\"noopener\" target=\"_blank\">(L’argus, « Entretien auto. La hausse des prix atteint jusqu’à 72 % sur dix ans » (baromètre idGarages, 1er trimestre 2026), 24 juillet 2026)</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Estimer une voiture à 250 000 km : les repères chiffrés",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Repère</th><th>Valeur</th><th>Source et date</th></tr></thead><tbody><tr><td>Valeur résiduelle au-delà de 200 000 km</td><td>15 à 20 % du prix neuf, parfois moins (30 000 € neuf → environ 3 000 à 4 000 €)</td><td>Caradisiac, avril 2024</td></tr><tr><td>Kilométrage annuel moyen d’une voiture en France</td><td>11 600 km en 2025 ; 250 000 km équivalent à plus de 20 ans d’usage moyen</td><td>SDES, juillet 2026</td></tr><tr><td>Âge moyen des voitures en circulation</td><td>11,8 ans au 1er janvier 2026 ; destruction en moyenne à 20 ans</td><td>SDES, juillet 2026</td></tr><tr><td>Part des voitures de plus de 200 000 km au contrôle technique</td><td>21,82 % des véhicules contrôlés en 2021, soit plus de 3,7 millions</td><td>L’argus, données UTAC-OTC, juillet 2022</td></tr><tr><td>Taux de contre-visite au-delà de 200 000 km</td><td>33,27 %, contre 19,41 % en moyenne</td><td>L’argus, données UTAC-OTC, juillet 2022</td></tr><tr><td>Frais typiques à ce kilométrage</td><td>Kit d’embrayage 1 133 €, kit de distribution 814 € en moyenne</td><td>L’argus, baromètre idGarages, juillet 2026</td></tr><tr><td>Poids des voitures de plus de 15 ans dans l’occasion</td><td>30,4 % des ventes en 2025, en hausse de 10,3 %</td><td>L’argus, données SDES, mars 2026</td></tr></tbody></table></div>"
       },
       {
         "h2": "Qu'est-ce qui garde de la valeur sur une voiture qui a beaucoup roulé ?",
@@ -383,6 +391,22 @@
       {
         "question": "Comment suis-je payé ?",
         "answer": "Par virement bancaire instantané, à la conclusion de la vente. LUNICAR ne paie jamais en espèces ni par chèque. Aucun frais de dossier n'est prélevé sur le montant convenu."
+      },
+      {
+        "question": "Combien vaut une voiture avec 250 000 km ?",
+        "answer": "En général 15 à 20 % de son prix neuf, parfois moins : environ 3 000 à 4 000 € pour un modèle acheté 30 000 € neuf, selon Caradisiac (avril 2024). Le prix réel dépend du modèle, de l’entretien prouvé et des frais à prévoir, embrayage et distribution en tête. Décrire la voiture en ligne donne une fourchette indicative."
+      },
+      {
+        "question": "Une voiture à 250 000 km est-elle encore vendable ?",
+        "answer": "Oui. En 2021, 21,82 % des voitures passées au contrôle technique dépassaient 200 000 km, soit plus de 3,7 millions de véhicules, et les occasions de plus de 15 ans ont pesé 30,4 % des ventes en 2025. Entre particuliers, la demande est étroite ; un professionnel l’étudie en l’état, sans contrôle technique."
+      },
+      {
+        "question": "Un moteur peut-il dépasser 300 000 km ?",
+        "answer": "Oui, c’est courant sur une voiture bien entretenue qui roule surtout sur autoroute : Caradisiac note que les exemplaires à 300 000 km sont légion, les 400 000 km plus rares. Ce qui compte à 250 000 km, c’est l’historique des pièces d’usure : distribution, embrayage, amortisseurs, turbo et injecteurs, dimensionnés pour environ 200 000 km."
+      },
+      {
+        "question": "Pourquoi la cote chute-t-elle autour de 200 000 km ?",
+        "answer": "Parce que c’est le kilométrage où les gros organes arrivent en fin de vie : embrayage, distribution, alternateur, amortisseurs, turbo, injecteurs. Le taux de contre-visite au contrôle technique passe de 19,41 % en moyenne à 33,27 % au-delà de 200 000 km. L’acheteur déduit ces frais ; des factures récentes limitent la décote."
       }
     ],
     "sources": [
@@ -397,9 +421,37 @@
       {
         "label": "SDES : 40 millions de voitures en circulation au 1er janvier 2026",
         "url": "https://www.statistiques.developpement-durable.gouv.fr/40-millions-de-voitures-en-circulation-en-france-au-1er-janvier-2026"
+      },
+      {
+        "label": "Caradisiac, « Achat d’occasion : faut-il avoir peur des “plus de 200 000 km” ? », 6 avril 2024",
+        "url": "https://www.caradisiac.com/achat-d-occasion-faut-il-avoir-peur-des-plus-de-200-000-km-208134.htm"
+      },
+      {
+        "label": "Caradisiac, « Achat d’occasion : à partir de quel kilométrage cela devient-il risqué ? », 14 juin 2022",
+        "url": "https://www.caradisiac.com/achat-d-occasion-a-partir-de-quel-kilometrage-cela-devient-il-risque-196613.htm"
+      },
+      {
+        "label": "Caradisiac, « Quelles sont ces occasions qui peuvent faire 500 000 km ? », 28 janvier 2021",
+        "url": "https://www.caradisiac.com/quelles-sont-ces-occasions-qui-peuvent-faire-500-000-km-187694.htm"
+      },
+      {
+        "label": "L’argus, « Voitures à plus de 200 000 km. Top 25 des modèles les plus endurants » (données UTAC-OTC 2021), 10 juillet 2022",
+        "url": "https://www.largus.fr/actualite-automobile/voitures-a-plus-de-200-000-km-top-25-des-modeles-les-plus-endurants-10985393.html"
+      },
+      {
+        "label": "L’argus, « Voitures d’occasion. Les principaux indicateurs du marché en France », 9 mars 2026",
+        "url": "https://www.largus.fr/pros/actualite-automobile/voitures-d-occasion-les-principaux-indicateurs-cles-du-marche-en-france-30045867.html"
+      },
+      {
+        "label": "L’argus, « Entretien auto. La hausse des prix atteint jusqu’à 72 % sur dix ans » (baromètre idGarages, 1er trimestre 2026), 24 juillet 2026",
+        "url": "https://www.largus.fr/actualite-automobile/entretien-auto-la-hausse-des-prix-atteint-jusqua-72-sur-dix-ans-2216964.html"
+      },
+      {
+        "label": "SDES, infographie « Les voitures en circulation en France au 1er janvier 2026 »",
+        "url": "https://www.statistiques.developpement-durable.gouv.fr/infographies/9565"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "reprise-voiture-diesel",
@@ -578,9 +630,9 @@
     "image": "signature",
     "nav": "LOA et LLD",
     "title": "Vendre une voiture en LOA ou LLD | LUNICAR",
-    "description": "LOA ou LLD : la voiture appartient au loueur jusqu'à la levée d'option. Recevez une estimation à l'avance pour décider, puis vendez une fois propriétaire.",
+    "description": "Vendre une voiture en fin de LOA : impossible avant la levée d'option, prix fixé au contrat, achat anticipé selon le contrat, LLD sans option d'achat. Étapes.",
     "h1": "Voiture en LOA ou LLD : <em>vendre au bon moment</em>",
-    "lede": "En LOA comme en LLD, la voiture appartient à l'organisme financier. Vous ne pouvez donc pas la vendre directement. Voici les options possibles et comment une estimation de LUNICAR vous aide à choisir.",
+    "lede": "Non, pas directement : pendant une LOA, la voiture appartient au loueur et seule la société de financement peut la vendre (service-public.gouv.fr). Pour la revendre, vous levez l'option d'achat au prix fixé à la signature, à l'échéance (en général 24 à 60 mois) ou par anticipation si le contrat le permet, puis mettez la carte grise à votre nom. En LLD, il n'existe pas d'option d'achat : le véhicule est restitué. LUNICAR communique une fourchette de prix indicative avant la levée d'option, à comparer à la valeur de rachat.",
     "points": [
       "Fourchette indicative à l'avance pour décider",
       "Prix définitif après vérification par un technicien",
@@ -592,6 +644,14 @@
       {
         "h2": "Peut-on vendre une voiture en LOA ou en LLD ?",
         "html": "<p>Non, pas directement. Pendant toute la durée du contrat, la voiture reste la propriété du loueur ou de l'établissement financier. Vous en avez l'usage, pas la propriété. En LOA, vous pouvez la vendre une fois l'option d'achat levée. En LLD, il n'existe en général pas d'option d'achat : la voiture est restituée.</p><p>Ce point est rappelé par <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2437\" rel=\"noopener\" target=\"_blank\">la fiche Service-Public sur la LOA et la LLD</a>. La LOA, aussi appelée leasing, est une forme de crédit à la consommation. La LLD est une location pure. Avant toute démarche, relisez votre contrat : il précise la date de fin, le prix de l'option en LOA et les conditions d'une sortie anticipée.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Un véhicule en location avec option d&#x27;achat ne peut pas être vendu par le locataire : seule la société de leasing peut le vendre (fiche vérifiée le 13 octobre 2026). <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">(service-public.gouv.fr, vendre ou donner son véhicule)</a></li><li>Une LOA dure généralement de 24 à 60 mois ; à la fin, vous pouvez acheter le véhicule au prix fixé dès la signature, sans y être obligé, et le dépôt de garantie est déduit de ce prix. En LLD, il n&#x27;y a aucune option d&#x27;achat : vous devez rendre le véhicule (fiche vérifiée le 12 juin 2026). <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2437\" rel=\"noopener\" target=\"_blank\">(service-public.gouv.fr, location de voiture : LOA ou LLD)</a></li><li>Les plafonds légaux d&#x27;indemnité de remboursement anticipé (1 % ou 0,5 %) ne s&#x27;appliquent pas à la location avec option d&#x27;achat : l&#x27;article L312-35 du Code de la consommation écarte l&#x27;article L312-34 pour ces opérations. Le coût d&#x27;un rachat anticipé est donc celui prévu au contrat. <a href=\"https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032226122\" rel=\"noopener\" target=\"_blank\">(Légifrance, Code de la consommation, articles L312-34 et L312-35)</a></li><li>En 2025, les établissements spécialisés membres de l&#x27;ASF ont financé 390 918 voitures neuves en LOA contre 53 891 par crédit affecté, et le nombre de LOA sur voitures d&#x27;occasion a progressé de 23,9 % (144 004 contrats). <a href=\"https://asf-france.com/wp-content/uploads/2026/03/Eqpmt-Part-An25.pdf\" rel=\"noopener\" target=\"_blank\">(ASF, le financement de l&#x27;équipement des particuliers par les établissements spécialisés en 2025)</a></li><li>Les valeurs de rachat sont fixées à la signature du contrat ; Caradisiac relevait en janvier 2024 une hausse des prix de l&#x27;occasion de plus de 40 % depuis la crise sanitaire et, sur ses exemples, un écart de 8,3 % à 50,4 % entre valeur de revente estimée au contrat et valeur constatée. <a href=\"https://www.caradisiac.com/est-il-judicieux-de-racheter-sa-loa-pour-la-revendre-205988.htm\" rel=\"noopener\" target=\"_blank\">(Caradisiac, est-il judicieux de racheter sa LOA pour la revendre ? (5 janvier 2024))</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Les issues possibles d'un contrat de location",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Situation</th><th>Propriétaire à l&#x27;issue</th><th>Ce que vous payez</th><th>Revente possible ensuite ?</th></tr></thead><tbody><tr><td>Fin de LOA, option levée</td><td>Vous</td><td>Prix de l&#x27;option fixé au contrat, dépôt de garantie déduit</td><td>Oui, après mise de la carte grise à votre nom</td></tr><tr><td>Fin de LOA, restitution</td><td>Le loueur</td><td>Frais éventuels : kilométrage dépassé, dégradations au-delà de l&#x27;usure normale, retard</td><td>Non</td></tr><tr><td>LOA, achat anticipé</td><td>Vous</td><td>Montant communiqué par le loueur sur décompte écrit, selon les conditions du contrat</td><td>Oui, après mise de la carte grise à votre nom</td></tr><tr><td>LOA, résiliation anticipée sans achat</td><td>Le loueur</td><td>Indemnités prévues au contrat</td><td>Non</td></tr><tr><td>LLD, fin de contrat</td><td>Le loueur</td><td>Frais éventuels de kilométrage ou de dégradations, selon le mode de calcul inscrit au contrat</td><td>Non : il n&#x27;y a pas d&#x27;option d&#x27;achat</td></tr><tr><td>LLD, sortie anticipée</td><td>Le loueur</td><td>En général les loyers jusqu&#x27;au terme, avec pénalités ou indemnités selon le contrat</td><td>Non</td></tr></tbody></table></div>"
       },
       {
         "h2": "Quelles sont les options en fin de contrat LOA ?",
@@ -639,6 +699,22 @@
       {
         "question": "Comment se passe le paiement ?",
         "answer": "Par virement bancaire instantané, à la conclusion de la vente, une fois le certificat de cession signé. LUNICAR ne paie jamais en espèces ni par chèque, et ne facture aucun frais de dossier."
+      },
+      {
+        "question": "Peut-on transférer un contrat de LOA à une autre personne ?",
+        "answer": "Ce n'est pas un droit prévu par la réglementation : la voiture appartient au loueur, et seul lui peut accepter qu'un tiers reprenne le contrat. Demandez-lui un accord écrit avant toute démarche. Sans cet accord, la seule voie pour céder la voiture est de lever l'option d'achat, puis de la revendre."
+      },
+      {
+        "question": "Combien coûte le rachat anticipé d'une LOA ?",
+        "answer": "Le montant dépend uniquement de votre contrat : les plafonds légaux d'indemnité de remboursement anticipé ne s'appliquent pas à la LOA (article L312-35 du Code de la consommation). Demandez au loueur un décompte écrit, valable à une date donnée, puis comparez-le à une estimation de la voiture avant de décider."
+      },
+      {
+        "question": "Lever l'option d'achat pour revendre est-il rentable ?",
+        "answer": "Oui si la valeur de marché dépasse la valeur de rachat inscrite au contrat, frais de carte grise compris. Caradisiac notait en janvier 2024 des écarts de 8,3 % à 50,4 % sur ses exemples, mais le marché de l'occasion varie : vérifiez votre contrat et une estimation datée avant de lever l'option."
+      },
+      {
+        "question": "Que change la réforme du crédit à la consommation du 20 novembre 2026 pour la LOA ?",
+        "answer": "Les contrats de location avec option d'achat entrent dans le champ de la réforme du crédit à la consommation applicable aux offres émises à partir du 20 novembre 2026 (ordonnance du 3 septembre 2025). Les contrats en cours à cette date restent soumis aux règles antérieures. Le principe reste inchangé : le loueur est propriétaire jusqu'à la levée d'option."
       }
     ],
     "sources": [
@@ -653,18 +729,38 @@
       {
         "label": "Histovec, certificat de situation administrative",
         "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "service-public.gouv.fr, vendre ou donner son véhicule (véhicule en LOA)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Légifrance, Code de la consommation, articles L312-34 et L312-35",
+        "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032226122"
+      },
+      {
+        "label": "ASF, le financement de l'équipement des particuliers par les établissements spécialisés en 2025 (PDF)",
+        "url": "https://asf-france.com/wp-content/uploads/2026/03/Eqpmt-Part-An25.pdf"
+      },
+      {
+        "label": "Caradisiac, est-il judicieux de racheter sa LOA pour la revendre ? (5 janvier 2024)",
+        "url": "https://www.caradisiac.com/est-il-judicieux-de-racheter-sa-loa-pour-la-revendre-205988.htm"
+      },
+      {
+        "label": "service-public.gouv.fr, crédit à la consommation : les règles évoluent au 20 novembre 2026",
+        "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18451"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-04"
   },
   {
     "slug": "vendre-voiture-credit",
     "image": "signature",
     "nav": "Avec un crédit en cours",
     "title": "Vendre une voiture avec un crédit en cours | LUNICAR",
-    "description": "Crédit en cours ou voiture gagée : nous vérifions le décompte avec vous, le solde est réglé au prêteur dans la plupart des cas et la différence vous revient.",
+    "description": "Vendre une voiture avec un crédit non soldé : prêt personnel ou crédit affecté, gage à lever, indemnité plafonnée à 1 % et nulle sous 10 000 €, décompte.",
     "h1": "Vendre sa voiture avec un crédit en cours, <em>étape par étape</em>",
-    "lede": "Un crédit en cours n'empêche pas toujours de vendre sa voiture. Tout dépend du type de prêt et de la présence d'un gage. Voici comment vérifier votre situation et comment la vente peut s'organiser avec LUNICAR.",
+    "lede": "Oui, mais si la voiture est gagée, le crédit doit être soldé d'abord : l'organisme ne lève le gage qu'une fois le prêt intégralement remboursé (service-public.gouv.fr). Avec un prêt personnel sans gage, vous êtes propriétaire et vendez librement. Rembourser par anticipation est un droit : l'indemnité ne dépasse pas 1 % du capital remboursé et elle est nulle sous 10 000 € remboursés sur douze mois (Code de la consommation). Le prix de vente peut servir à solder le prêt sur présentation du décompte, vérifié avec LUNICAR avant le rendez-vous.",
     "points": [
       "Décompte vérifié avec vous",
       "Fourchette de prix indicative communiquée rapidement",
@@ -676,6 +772,14 @@
       {
         "h2": "Peut-on vendre une voiture qui n'est pas encore payée ?",
         "html": "<p>Cela dépend du crédit. Avec un prêt personnel sans gage, vous êtes propriétaire et pouvez vendre en continuant à rembourser. Avec un crédit affecté assorti d'un gage ou d'une clause de réserve de propriété, la vente suppose en général de solder le crédit d'abord. Le contrat et le certificat de situation administrative le confirment.</p><p>Commencez par deux vérifications. Relisez votre offre de crédit pour connaître son type et ses clauses. Téléchargez ensuite le certificat de situation administrative de votre voiture sur <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a> : il indique si un gage est inscrit. Ces deux documents suffisent pour savoir quelle voie suivre.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>L&#x27;indemnité de remboursement anticipé d&#x27;un crédit à la consommation ne peut pas dépasser 1 % du montant remboursé si plus d&#x27;un an reste à courir, 0,5 % si le délai restant est inférieur ou égal à un an, et jamais plus que les intérêts que vous auriez payés jusqu&#x27;au terme (Code de la consommation, article L312-34). <a href=\"https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032226122\" rel=\"noopener\" target=\"_blank\">(Légifrance, Code de la consommation, articles L312-34 et L312-35)</a></li><li>Aucune indemnité n&#x27;est due si le montant remboursé par anticipation ne dépasse pas 10 000 € au cours d&#x27;une période de douze mois (Code de la consommation, article D312-15). <a href=\"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032807440/\" rel=\"noopener\" target=\"_blank\">(Légifrance, Code de la consommation, article D312-15)</a></li><li>Pour faire lever un gage, vous devez avoir remboursé intégralement le crédit ; l&#x27;organisme financier met alors fin au gage et un certificat de situation administrative sans gage peut être délivré (fiche vérifiée le 19 août 2026). <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F34107\" rel=\"noopener\" target=\"_blank\">(service-public.gouv.fr, faire lever le gage ou l&#x27;opposition sur un véhicule)</a></li><li>Le certificat de situation administrative est disponible immédiatement sur HistoVec, doit dater de moins de 15 jours et doit obligatoirement être remis par le vendeur à l&#x27;acheteur avant la cession (fiche vérifiée le 16 octobre 2026). <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1360\" rel=\"noopener\" target=\"_blank\">(service-public.gouv.fr, certificat de situation administrative)</a></li><li>La cession doit être déclarée à l&#x27;ANTS dans les 15 jours suivant la signature du certificat de cession (fiche vérifiée le 13 octobre 2026). <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">(service-public.gouv.fr, vendre ou donner son véhicule)</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Vendre selon le type de financement",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Financement</th><th>Propriétaire pendant le remboursement</th><th>Vente possible avant la fin du crédit ?</th><th>À faire avant de vendre</th></tr></thead><tbody><tr><td>Prêt personnel</td><td>Vous</td><td>Oui, le crédit continue à votre nom</td><td>Vérifier l&#x27;absence de gage sur le certificat de situation administrative</td></tr><tr><td>Crédit affecté sans gage</td><td>Vous</td><td>Oui, sauf clause contraire du contrat</td><td>Demander par écrit le décompte de remboursement anticipé</td></tr><tr><td>Crédit affecté avec gage</td><td>Vous, mais le certificat d&#x27;immatriculation est bloqué</td><td>En pratique non : le gage doit être levé</td><td>Solder le crédit (décompte), puis obtenir un certificat de situation administrative sans gage</td></tr><tr><td>Véhicule frappé d&#x27;une opposition</td><td>Vous</td><td>Non, tant que l&#x27;opposition n&#x27;est pas levée</td><td>Mettre fin à l&#x27;opposition auprès de l&#x27;autorité qui l&#x27;a inscrite</td></tr><tr><td>LOA (leasing)</td><td>Le loueur</td><td>Non : seule la société de financement peut vendre</td><td>Lever l&#x27;option d&#x27;achat, puis mettre la carte grise à votre nom</td></tr></tbody></table></div>"
       },
       {
         "h2": "Crédit affecté ou prêt personnel : quelle différence pour la vente ?",
@@ -723,6 +827,22 @@
       {
         "question": "Combien de temps faut-il pour lever un gage ?",
         "answer": "Le délai dépend de l'organisme prêteur. Demandez-lui la date prévue après le remboursement et conservez sa confirmation. Prévenez votre conseiller : le rendez-vous se cale sur cette étape."
+      },
+      {
+        "question": "Combien coûte le remboursement anticipé d'un crédit auto ?",
+        "answer": "Au maximum 1 % du capital remboursé si plus d'un an reste à courir, 0,5 % sinon, sans jamais dépasser les intérêts restant dus (article L312-34 du Code de la consommation). Rien n'est dû sous 10 000 € remboursés sur douze mois, ni pendant une période à taux variable. Le décompte écrit du prêteur fait foi."
+      },
+      {
+        "question": "Peut-on vendre une voiture gagée ?",
+        "answer": "Le gage ne rend pas la vente illégale, mais il bloque le certificat d'immatriculation : l'acheteur ne pourra pas mettre la carte grise à son nom. Service-public.gouv.fr indique qu'il faut avoir remboursé intégralement le crédit pour que l'organisme lève le gage. Soldez d'abord, puis téléchargez un certificat de situation administrative sans gage."
+      },
+      {
+        "question": "Comment obtenir le décompte de remboursement anticipé ?",
+        "answer": "Envoyez une demande écrite au prêteur, en recommandé avec accusé de réception, en précisant la date de remboursement envisagée. Il vous confirme le capital restant dû, les intérêts arrêtés à cette date et l'indemnité éventuelle. Ce document fixe le montant à régler pour lever le gage et sert de base à la vente."
+      },
+      {
+        "question": "Que change la réforme du crédit à la consommation du 20 novembre 2026 ?",
+        "answer": "Pour les contrats signés à partir du 20 novembre 2026, l'article L312-34 est réécrit par l'ordonnance du 3 septembre 2025, mais les plafonds de 1 % et 0,5 % et le plafond des intérêts restants sont conservés. Les crédits en cours à cette date restent régis par l'ancienne rédaction."
       }
     ],
     "sources": [
@@ -737,18 +857,38 @@
       {
         "label": "Histovec, certificat de situation administrative",
         "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "Légifrance, Code de la consommation, articles L312-34 et L312-35 (remboursement anticipé)",
+        "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000032226122"
+      },
+      {
+        "label": "Légifrance, Code de la consommation, article D312-15 (seuil de 10 000 €)",
+        "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069565/LEGISCTA000032807440/"
+      },
+      {
+        "label": "Légifrance, article L312-34 dans sa version applicable au 20 novembre 2026",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000052191637/2026-11-20"
+      },
+      {
+        "label": "service-public.gouv.fr, crédit à la consommation : crédit affecté",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2434"
+      },
+      {
+        "label": "service-public.gouv.fr, vendre ou donner son véhicule",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-04"
   },
   {
     "slug": "reprise-voiture-succession",
     "image": "signature",
     "nav": "Voiture d'un proche décédé",
     "title": "Vendre la voiture d'un proche décédé | LUNICAR",
-    "description": "Vendre la voiture d'un proche disparu : héritiers, justificatifs, carte grise. Nous venons sur place partout en France et préparons la cession avec vous.",
+    "description": "Les héritiers peuvent vendre la voiture d’un défunt sans refaire la carte grise si le décès a moins de 3 mois ou si elle n’a pas roulé. Documents et délais.",
     "h1": "Vendre la voiture d'un proche décédé, <em>simplement et sans précipitation</em>",
-    "lede": "Après un décès, la voiture fait partie des démarches à régler. Les héritiers peuvent la vendre, sous certaines conditions. Voici les règles officielles, les documents à réunir et la façon dont LUNICAR vous accompagne.",
+    "lede": "La voiture d’un parent décédé entre dans la succession : les héritiers décident de la garder, de la vendre ou de la donner. Si le décès date de moins de 3 mois, ou si la voiture n’a pas circulé depuis, ils peuvent la vendre sans refaire la carte grise, selon service-public.gouv.fr ; sinon, elle passe d’abord au nom d’un héritier. Chaque cohéritier signe le certificat de cession, déclarée à l’ANTS dans les 15 jours. LUNICAR étudie la voiture partout en France : un technicien vient à votre adresse, sans frais.",
     "points": [
       "Rendez-vous à l'adresse de votre choix",
       "Démarches de cession préparées avec vous",
@@ -760,6 +900,14 @@
       {
         "h2": "Qui peut vendre la voiture d'une personne décédée ?",
         "html": "<p>La voiture fait partie de la succession. Ce sont donc les héritiers qui peuvent la vendre. S'ils sont plusieurs, la vente se fait avec l'accord de tous, ou par l'un d'eux muni d'une attestation signée par les autres. Le certificat de cession est établi au nom du ou des héritiers, avec leurs adresses.</p><p>Prenez le temps qu'il faut. Rien n'oblige à vendre dans l'urgence, et il est souvent préférable que les héritiers se mettent d'accord sur le principe et sur le prix avant tout rendez-vous. Si un notaire est chargé de la succession, il peut vous indiquer la marche à suivre et délivrer les documents qui prouvent la qualité d'héritier.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Si le titulaire de la carte grise est décédé depuis moins de 3 mois, ou si le véhicule n’a pas circulé depuis le décès, les héritiers n’ont pas à faire modifier la carte grise avant de vendre ou de donner le véhicule. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1480\" rel=\"noopener\" target=\"_blank\">(Carte grise : hériter d’un véhicule immatriculé en France, service-public.gouv.fr)</a></li><li>Les héritiers remettent à l’acheteur l’exemplaire n°2 du certificat de cession Cerfa 15776 établi à leur nom, un certificat de situation administrative daté de moins de 15 jours et un justificatif de leur qualité d’héritier : attestation notariale, acte de notoriété, ou certificat de décès avec attestation signée par tous les héritiers. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1480\" rel=\"noopener\" target=\"_blank\">(Carte grise : hériter d’un véhicule immatriculé en France, service-public.gouv.fr)</a></li><li>S’il y a plusieurs cotitulaires ou cohéritiers, chacun doit signer le certificat de cession Cerfa 15776. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">(Certificat de cession d’un véhicule d’occasion (Cerfa 15776), service-public.gouv.fr)</a></li><li>La déclaration de cession se fait en ligne dans les 15 jours qui suivent la remise des documents au nouveau propriétaire. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1480\" rel=\"noopener\" target=\"_blank\">(Carte grise : hériter d’un véhicule immatriculé en France, service-public.gouv.fr)</a></li><li>La déclaration de succession doit être déposée dans les 6 mois à compter du jour du décès en France métropolitaine ; en cas de retard, un intérêt de 0,20 % par mois s’applique, puis une majoration de 10 % à partir du 13e mois. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F80\" rel=\"noopener\" target=\"_blank\">(Déclaration de succession, service-public.gouv.fr)</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Voiture d’un défunt : quelle démarche selon la situation",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Situation</th><th>Faut-il refaire la carte grise avant de vendre ?</th><th>Justificatifs à prévoir</th></tr></thead><tbody><tr><td>Décès depuis moins de 3 mois</td><td>Non, les héritiers vendent directement</td><td>Certificat de cession au nom des héritiers, justificatif de qualité d’héritier, certificat de situation administrative de moins de 15 jours</td></tr><tr><td>Décès depuis plus de 3 mois, voiture restée immobilisée</td><td>Non, même règle que ci-dessus</td><td>Mêmes documents</td></tr><tr><td>Décès depuis plus de 3 mois, voiture utilisée depuis</td><td>Oui, immatriculation préalable au nom d’un ou plusieurs héritiers</td><td>Cerfa 13750, carte grise originale, justificatif de qualité d’héritier, pièce d’identité, justificatif de domicile de moins de 6 mois</td></tr><tr><td>Un seul héritier garde ou reprend la voiture</td><td>Oui, carte grise à son nom</td><td>Lettre de désistement des autres héritiers ou certificat du notaire constatant leur accord</td></tr><tr><td>Plusieurs cohéritiers vendent ensemble</td><td>Non si le décès date de moins de 3 mois ou si la voiture n’a pas circulé</td><td>Chaque cohéritier signe le certificat de cession Cerfa 15776</td></tr><tr><td>Carte grise du défunt introuvable</td><td>Il faut d’abord la faire refaire</td><td>Demande de duplicata avant toute vente</td></tr><tr><td>Vente à un particulier d’une voiture de plus de 4 ans</td><td>Selon les cas ci-dessus</td><td>Contrôle technique de moins de 6 mois (2 mois si contre-visite prescrite) ; non exigé pour une vente à un professionnel</td></tr></tbody></table></div>"
       },
       {
         "h2": "Faut-il mettre la carte grise au nom des héritiers avant de vendre ?",
@@ -811,6 +959,22 @@
       {
         "question": "Comment le prix est-il versé ?",
         "answer": "Par virement bancaire instantané, à la conclusion de la vente. Si un notaire gère la succession, demandez-lui sur quel compte le prix doit être versé avant de fixer le rendez-vous."
+      },
+      {
+        "question": "Que faire de la voiture d’un parent décédé ?",
+        "answer": "La garder, la vendre ou la donner : la voiture fait partie de la succession et la décision revient aux héritiers. Si le décès date de moins de 3 mois, ou si la voiture n’a pas roulé depuis, elle peut être vendue sans refaire la carte grise, selon service-public.gouv.fr. Sinon, il faut d’abord l’immatriculer au nom d’un ou plusieurs héritiers."
+      },
+      {
+        "question": "Combien de temps a-t-on pour vendre la voiture d’une personne décédée ?",
+        "answer": "Aucun délai n’impose de vendre. Le seuil de 3 mois après le décès change seulement la démarche : au-delà, si la voiture a circulé, la carte grise doit d’abord passer au nom d’un héritier. La déclaration de succession, elle, doit être déposée dans les 6 mois en France métropolitaine, selon service-public.gouv.fr."
+      },
+      {
+        "question": "Un seul héritier peut-il vendre la voiture d’un défunt ?",
+        "answer": "Pas seul par principe : service-public.gouv.fr indique que chaque cohéritier doit signer le certificat de cession Cerfa 15776, établi au nom du ou des héritiers. Si les autres héritiers se désistent au profit de l’un d’eux, leur lettre de désistement ou un certificat du notaire permet de mettre la carte grise à son seul nom avant la vente."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre la voiture d’un défunt ?",
+        "answer": "Seulement pour une vente à un particulier, si la voiture a plus de 4 ans : le contrôle doit dater de moins de 6 mois, ou de moins de 2 mois si une contre-visite a été prescrite, selon service-public.gouv.fr. Pour une vente à un professionnel de l’automobile, aucun contrôle n’est exigé, même après une longue immobilisation."
       }
     ],
     "sources": [
@@ -825,9 +989,25 @@
       {
         "label": "Histovec, certificat de situation administrative",
         "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "Certificat de cession d’un véhicule d’occasion (Cerfa 15776), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R20300"
+      },
+      {
+        "label": "Déclaration de succession : délais et dispenses, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F80"
+      },
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Résilier son assurance en cas de vente de sa voiture, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2664"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-04"
   },
   {
     "slug": "reprise-renault",
@@ -1826,9 +2006,9 @@
     "image": "panne",
     "nav": "Voiture en panne",
     "title": "Rachat de voiture en panne partout en France | LUNICAR",
-    "description": "Moteur HS, boîte cassée, voiture qui ne démarre plus : décrivez la panne, LUNICAR étudie votre voiture partout en France. Estimation rapide.",
+    "description": "Une voiture en panne qui ne roule plus ne se vend pas à un particulier : vente en l’état à un professionnel ou centre VHU gratuit. Coûts de réparation 2026.",
     "h1": "Rachat de voiture en panne, <em>étudiée partout en France dans l'état où elle est</em>",
-    "lede": "Votre voiture ne roule plus et le devis du garage dépasse ce qu'elle vaut ? Inutile d'avancer les réparations. Décrivez la panne en ligne, où que vous soyez en France, et recevez une fourchette de prix indicative communiquée rapidement.",
+    "lede": "Une voiture en panne qui ne roule plus ne peut pas être vendue à un particulier : selon Service-public.gouv.fr, un véhicule non roulant ne peut être cédé qu’à un professionnel de l’automobile. Deux voies restent ouvertes : la vente en l’état à un professionnel, ou la remise gratuite à un centre VHU si la voiture est complète. Avant de réparer, comparez le devis à la valeur du véhicule : un kit d’embrayage coûte en moyenne 1 133 € en 2026. LUNICAR étudie les voitures en panne partout en France.",
     "points": [
       "Véhicule non roulant étudié",
       "Aucune réparation à avancer",
@@ -1842,6 +2022,10 @@
       {
         "h2": "Peut-on vendre une voiture en panne, où que l'on soit en France ?",
         "html": "<p>Souvent, oui. Toute voiture en panne peut être étudiée par LUNICAR, partout en France, dans l'état où elle se trouve. Selon la nature de la panne et l'état du reste du véhicule, une offre n'est pas toujours possible : c'est l'étude de votre demande qui le dit. Vous décrivez le véhicule et les symptômes en ligne, un conseiller vous rappelle rapidement avec une fourchette de prix indicative, puis, si elle vous convient, un technicien vient vérifier la voiture à votre adresse, sans frais, et vous présente le prix définitif. Aucune réparation n'est à prévoir.</p>\n<p>Une voiture en panne garde une valeur. Elle correspond au prix du véhicule une fois remis en état, moins le coût de la réparation, ou à la valeur de ses éléments quand la réparation n'est pas raisonnable. Entre particuliers, cette valeur se négocie mal : peu d'acheteurs acceptent une voiture qu'ils ne peuvent pas essayer. Vendre à un professionnel du rachat évite cette impasse.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Un kit d’embrayage coûte en moyenne 1 133,28 € et un kit de distribution 814,49 € au premier trimestre 2026, selon le baromètre idGarages établi sur près d’un million de devis. <a href=\"https://www.largus.fr/actualite-automobile/entretien-auto-la-hausse-des-prix-atteint-jusqua-72-sur-dix-ans-2216964.html\" rel=\"noopener\" target=\"_blank\">(L’argus, « Entretien auto. La hausse des prix atteint jusqu’à 72 % sur dix ans » (baromètre idGarages, 1er trimestre 2026), 24 juillet 2026)</a></li><li>Le coût moyen d’une réparation automobile atteint 428,73 € au premier trimestre 2026, en hausse de 8,7 % sur un an ; le kit d’embrayage a renchéri de 66 % en dix ans. <a href=\"https://www.largus.fr/actualite-automobile/entretien-auto-la-hausse-des-prix-atteint-jusqua-72-sur-dix-ans-2216964.html\" rel=\"noopener\" target=\"_blank\">(L’argus, « Entretien auto. La hausse des prix atteint jusqu’à 72 % sur dix ans » (baromètre idGarages, 1er trimestre 2026), 24 juillet 2026)</a></li><li>Environ 1,2 million de véhicules hors d’usage sont traités chaque année en France, dans 1 700 centres VHU et 60 broyeurs ; leur âge moyen est d’environ 19 ans. <a href=\"https://www.ecologie.gouv.fr/vehicules-hors-dusage-vhu\" rel=\"noopener\" target=\"_blank\">(Ministère de la Transition écologique, « Véhicules hors d’usage (VHU) », mis à jour le 6 octobre 2026)</a></li><li>Un centre VHU doit reprendre le véhicule sans frais s’il est complet (carrosserie, moteur, pot catalytique et batterie) et remet au propriétaire un certificat de destruction. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F36516/0_0?idFicheParent=F1468\" rel=\"noopener\" target=\"_blank\">(Service-public.gouv.fr, « Véhicule à détruire et certificat d’immatriculation » (fiche F36516))</a></li><li>Un véhicule non roulant ne peut pas être proposé à la vente à un particulier ; il ne peut être vendu qu’à un professionnel de l’automobile, et le contrôle technique n’est alors pas exigé. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">(Service-public.gouv.fr, « Vendre ou donner son véhicule » (fiche F1707))</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
       },
       {
         "h2": "Dans quelles situations vendre une voiture en panne ?",
@@ -1905,6 +2089,14 @@
       {
         "question": "Le prix peut-il changer après la visite du technicien ?",
         "answer": "Si l'état constaté correspond à votre description, la fourchette annoncée est respectée, sans renégociation injustifiée. Une panne supplémentaire ou un dommage non signalé peut modifier le prix ; vous restez alors libre de refuser, sans frais."
+      },
+      {
+        "question": "Peut-on vendre une voiture en panne qui ne roule plus à un particulier ?",
+        "answer": "Non. Service-public.gouv.fr indique qu’un véhicule non roulant ne peut pas être proposé à la vente à un particulier : seul un professionnel de l’automobile peut l’acheter. Vous pouvez donc la vendre en l’état à un professionnel, sans contrôle technique, ou la remettre gratuitement à un centre VHU si elle est complète."
+      },
+      {
+        "question": "Faut-il réparer une voiture en panne avant de la vendre ?",
+        "answer": "Rarement, si le devis approche la valeur de la voiture. En 2026, un kit d’embrayage coûte en moyenne 1 133 € et un kit de distribution 814 € selon le baromètre idGarages relayé par L’argus. Comparez le devis à la valeur réparée et à une offre en l’état avant d’engager des frais que la vente ne couvrira pas toujours."
       }
     ],
     "sources": [
@@ -1919,18 +2111,34 @@
       {
         "label": "Histovec, historique d'un véhicule",
         "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "L’argus, « Entretien auto. La hausse des prix atteint jusqu’à 72 % sur dix ans » (baromètre idGarages, 1er trimestre 2026), 24 juillet 2026",
+        "url": "https://www.largus.fr/actualite-automobile/entretien-auto-la-hausse-des-prix-atteint-jusqua-72-sur-dix-ans-2216964.html"
+      },
+      {
+        "label": "Ministère de la Transition écologique, « Véhicules hors d’usage (VHU) », mis à jour le 6 octobre 2026",
+        "url": "https://www.ecologie.gouv.fr/vehicules-hors-dusage-vhu"
+      },
+      {
+        "label": "Service-public.gouv.fr, « Véhicule à détruire et certificat d’immatriculation » (fiche F36516)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F36516/0_0?idFicheParent=F1468"
+      },
+      {
+        "label": "Service-public.gouv.fr, « Vendre ou donner son véhicule » (fiche F1707)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "rachat-voiture-accidentee",
     "image": "accidentee",
     "nav": "Voiture accidentée",
     "title": "Rachat de voiture accidentée partout en France | LUNICAR",
-    "description": "Choc avant, carrosserie enfoncée, airbags déclenchés : LUNICAR étudie votre voiture accidentée partout en France. Estimation indicative rapide.",
+    "description": "Vendre une voiture accidentée non réparée : possible en l’état sauf opposition VE. Délais de l’assureur (15 et 30 jours), expert, acheteur professionnel.",
     "h1": "Rachat de voiture accidentée, <em>sans réparer ni attendre</em>",
-    "lede": "Après un accrochage ou un accident, réparer n'est pas toujours la bonne décision. Où que vous soyez en France, décrivez les dégâts en ligne et recevez une fourchette de prix indicative communiquée rapidement pour votre voiture en l'état.",
+    "lede": "Oui, une voiture accidentée non réparée se vend en l’état, sauf procédure de véhicule endommagé en cours : l’opposition inscrite sur la carte grise bloque toute cession tant qu’une seconde expertise ne l’a pas levée. Si les réparations dépassent la valeur du véhicule, l’assureur doit proposer une indemnisation en perte totale dans les quinze jours suivant le rapport d’expertise ; vous avez trente jours pour répondre (article L327-1 du Code de la route). Une voiture qui ne roule plus ne se cède qu’à un professionnel. LUNICAR l’étudie partout en France.",
     "points": [
       "Voiture accidentée étudiée en l'état",
       "Fourchette de prix indicative communiquée rapidement",
@@ -1944,6 +2152,14 @@
       {
         "h2": "Peut-on vendre une voiture accidentée sans la réparer ?",
         "html": "<p>Souvent, oui. LUNICAR étudie les voitures accidentées partout en France, sans réparation préalable. Chaque dossier fait l'objet d'un examen individuel : selon la gravité des dommages, une offre n'est pas toujours possible. Vous décrivez les dommages en ligne, photos à l'appui si possible, et un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Si elle vous convient, un technicien vient vérifier la voiture à votre adresse, sans frais, puis vous présente le prix définitif ; si vous l'acceptez, le paiement se fait par virement instantané.</p>\n<p>Réparer avant de vendre n'est pas toujours rentable. Une réparation de carrosserie et de structure peut coûter cher, immobiliser la voiture longtemps, et un acheteur particulier reste méfiant devant un véhicule réparé. La vente en l'état transfère ce travail et ce risque au repreneur.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Lorsque le coût des réparations dépasse la valeur du véhicule au moment du sinistre, l’assureur doit proposer une indemnisation en perte totale avec cession du véhicule dans les quinze jours suivant la remise du rapport d’expertise ; le propriétaire dispose de trente jours pour répondre (article L327-1 du Code de la route). <a href=\"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074228/LEGISCTA000006159537/\" rel=\"noopener\" target=\"_blank\">(Légifrance, Code de la route, articles L327-1 à L327-6 (véhicules endommagés))</a></li><li>En cas de refus ou d’absence de réponse à l’offre de l’assureur, une opposition au transfert du certificat d’immatriculation est inscrite ; sa levée exige un second rapport d’expertise (article L327-3 du Code de la route). <a href=\"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074228/LEGISCTA000006159537/\" rel=\"noopener\" target=\"_blank\">(Légifrance, Code de la route, articles L327-1 à L327-6 (véhicules endommagés))</a></li><li>Un véhicule gravement endommagé immobilisé par les forces de l’ordre ne peut plus circuler ni être vendu ou donné tant que la situation n’est pas régularisée ; le certificat d’immatriculation est retiré et restitué après un rapport d’expert attestant que le véhicule peut circuler dans des conditions normales de sécurité. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2682\" rel=\"noopener\" target=\"_blank\">(Service-public.gouv.fr, « Véhicule gravement endommagé ou économiquement irréparable » (fiche F2682))</a></li><li>Le professionnel qui achète un véhicule endommagé doit adresser une déclaration d’achat au ministère de l’Intérieur dans les quinze jours ; l’expert qui atteste les réparations transmet son rapport dans un délai de six mois (articles R327-1 à R327-6 du Code de la route). <a href=\"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074228/LEGISCTA000006159618/\" rel=\"noopener\" target=\"_blank\">(Légifrance, Code de la route, articles R327-1 à R327-6 (véhicules endommagés))</a></li><li>Le certificat de situation administrative remis à l’acheteur doit dater de moins de 15 jours : un gage n’empêche pas la vente, une opposition l’empêche tant qu’elle n’est pas levée. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1360\" rel=\"noopener\" target=\"_blank\">(Service-public.gouv.fr, « Certificat de situation administrative (non-gage et non-opposition) » (fiche F1360))</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Voiture accidentée non réparée : à qui peut-on la vendre selon la situation ?",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Situation après l’accident</th><th>Vente possible ?</th><th>À qui</th><th>Ce qu’il faut avoir en main</th></tr></thead><tbody><tr><td>Carrosserie abîmée, la voiture roule, aucune procédure</td><td>Oui, en l’état</td><td>Particulier (contrôle technique de moins de 6 mois) ou professionnel (sans contrôle technique)</td><td>Carte grise, certificat de situation administrative de moins de 15 jours, photos</td></tr><tr><td>La voiture ne roule plus (train roulant, direction, moteur touchés)</td><td>Oui, en l’état</td><td>Professionnel de l’automobile uniquement</td><td>Carte grise, certificat de situation administrative, rapport d’expert s’il existe</td></tr><tr><td>Véhicule économiquement irréparable, offre de l’assureur acceptée</td><td>Oui</td><td>L’assureur reprend le véhicule et le revend à un professionnel ou le remet à un centre VHU</td><td>Réponse écrite dans les 30 jours suivant l’offre</td></tr><tr><td>Véhicule économiquement irréparable, offre refusée</td><td>Non, tant que l’opposition n’est pas levée</td><td>Personne, sauf réparation puis second rapport d’expertise</td><td>Rapport d’expertise, factures de réparation, second rapport d’expert</td></tr><tr><td>Véhicule gravement endommagé (carte grise retirée, interdiction de circuler)</td><td>Non, tant que la situation n’est pas régularisée</td><td>Personne, ni vente ni don</td><td>Avis de retrait, rapport d’expert favorable après réparation</td></tr><tr><td>Procédure levée, carte grise restituée</td><td>Oui</td><td>Particulier ou professionnel</td><td>Carte grise restituée, rapport du second expert, certificat de situation administrative</td></tr></tbody></table></div>"
       },
       {
         "h2": "Quels types de dommages pouvez-vous étudier ?",
@@ -2007,6 +2223,22 @@
       {
         "question": "LUNICAR peut-il ne pas faire d'offre pour ma voiture accidentée ?",
         "answer": "Oui. Chaque voiture accidentée est examinée individuellement. Lorsque les dommages sont trop importants au regard de la valeur du véhicule, une offre n'est pas toujours possible. Le conseiller vous le dit lors du rappel, sans frais."
+      },
+      {
+        "question": "Comment vendre une voiture accidentée non réparée ?",
+        "answer": "En l’état, à un professionnel si elle ne roule plus, à un particulier ou un professionnel si elle roule et qu’aucune procédure de véhicule endommagé n’est inscrite. Vérifiez d’abord le certificat de situation administrative sur HistoVec : une opposition bloque la vente. Rassemblez photos, devis et rapport d’expert, puis demandez une estimation en l’état."
+      },
+      {
+        "question": "Mon assureur a déclaré ma voiture économiquement irréparable : puis-je la vendre à quelqu’un d’autre ?",
+        "answer": "Pas librement. Si vous refusez l’offre de l’assureur, une opposition au transfert de la carte grise est inscrite et la cession est bloquée jusqu’à sa levée, qui exige des réparations puis un second rapport d’expertise. Si vous acceptez l’offre, l’assureur reprend le véhicule et le remet à un professionnel ou à un centre VHU."
+      },
+      {
+        "question": "Combien de temps l’assureur a-t-il pour faire une offre après l’expertise ?",
+        "answer": "Quinze jours après la remise du rapport d’expertise, lorsque les réparations dépassent la valeur du véhicule au jour du sinistre, selon l’article L327-1 du Code de la route. L’assureur propose alors une indemnisation en perte totale avec cession du véhicule, et vous disposez de trente jours pour accepter ou refuser."
+      },
+      {
+        "question": "Comment savoir si ma voiture accidentée fait l’objet d’une opposition ?",
+        "answer": "Demandez gratuitement le certificat de situation administrative sur HistoVec : il indique si le véhicule est gagé ou frappé d’une opposition au transfert de la carte grise. Un gage n’empêche pas la vente ; une opposition l’interdit tant qu’elle n’est pas levée. Le document remis à l’acheteur doit dater de moins de 15 jours."
       }
     ],
     "sources": [
@@ -2025,18 +2257,38 @@
       {
         "label": "Histovec, historique d'un véhicule",
         "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "Service-public.gouv.fr, « Véhicule gravement endommagé ou économiquement irréparable » (fiche F2682)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2682"
+      },
+      {
+        "label": "Légifrance, Code de la route, articles L327-1 à L327-6 (véhicules endommagés)",
+        "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074228/LEGISCTA000006159537/"
+      },
+      {
+        "label": "Légifrance, Code de la route, articles R327-1 à R327-6 (véhicules endommagés)",
+        "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074228/LEGISCTA000006159618/"
+      },
+      {
+        "label": "Service-public.gouv.fr, « Certificat de situation administrative (non-gage et non-opposition) » (fiche F1360)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1360"
+      },
+      {
+        "label": "Service-public.gouv.fr, « Vendre ou donner son véhicule » (fiche F1707)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "rachat-voiture-sans-controle-technique",
     "image": "sans-ct",
     "nav": "Sans contrôle technique",
     "title": "Vendre sa voiture sans contrôle technique | LUNICAR",
-    "description": "Contrôle technique expiré, contre-visite ou défaillance critique : la vente à un professionnel reste possible. LUNICAR étudie votre voiture partout en France.",
+    "description": "Sans contrôle technique, une voiture de plus de 4 ans ne se vend pas à un particulier, mais peut être vendue à un professionnel. Règles, délais, chiffres 2025.",
     "h1": "Vendre sa voiture sans contrôle technique, <em>partout en France</em>",
-    "lede": "Le contrôle technique est obligatoire pour vendre à un particulier, pas pour vendre à un professionnel. Où que vous soyez, décrivez votre voiture en ligne et recevez une fourchette de prix indicative communiquée rapidement, sans passer par le centre de contrôle.",
+    "lede": "Oui, vous pouvez vendre une voiture sans contrôle technique, mais seulement à un professionnel. Pour vendre à un particulier une voiture de plus de 4 ans, le procès-verbal doit dater de moins de 6 mois ; après une contre-visite, la vente en l’état reste possible pendant 2 mois. En 2025, 18,24 % des voitures particulières contrôlées ont été recalées (bilan UTAC-OTC relayé par L’argus). LUNICAR étudie les voitures sans contrôle valable partout en France : fourchette de prix indicative, puis prix définitif après vérification par un technicien, sans frais.",
     "points": [
       "Contrôle technique non exigé",
       "Contre-visite non faite acceptée",
@@ -2050,6 +2302,14 @@
       {
         "h2": "Peut-on vendre une voiture sans contrôle technique ?",
         "html": "<p>Oui, à un professionnel. Le contrôle technique de moins de six mois est obligatoire pour vendre une voiture de plus de quatre ans à un particulier. Il ne l'est pas pour une vente à un professionnel de l'automobile. LUNICAR peut donc étudier, partout en France, des voitures au contrôle expiré, défavorable ou jamais présenté.</p>\n<p>Cette règle explique pourquoi tant de voitures sans contrôle valable restent au garage : leur propriétaire ne peut pas les vendre facilement entre particuliers sans engager des frais de réparation. La vente à un professionnel du rachat lève ce blocage. Ces règles figurent sur la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> de Service-public.gouv.fr.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Pour vendre à un particulier une voiture de plus de 4 ans, le contrôle technique doit dater de moins de 6 mois à la date de dépôt de la demande de carte grise ; un véhicule peut être vendu sans contrôle technique à un professionnel de l’automobile. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F16540\" rel=\"noopener\" target=\"_blank\">(Peut-on vendre un véhicule d’occasion sans contrôle technique ?, service-public.gouv.fr)</a></li><li>Après un contrôle défavorable pour défaillance majeure, le procès-verbal reste valable 2 mois ; après une défaillance critique, sa validité est limitée au jour du contrôle. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2878\" rel=\"noopener\" target=\"_blank\">(Contrôle technique d’une voiture, service-public.gouv.fr)</a></li><li>En 2025, 23 127 004 contrôles techniques périodiques ont été réalisés en France ; 19,3 % ont débouché sur une contre-visite, 18,24 % pour les seules voitures particulières, dont l’âge moyen atteint 13,2 ans. <a href=\"https://www.largus.fr/actualite-automobile/bilan-controle-technique-2025-un-taux-de-contre-visites-stable-malgre-un-parc-auto-vieillisant-30046031.html\" rel=\"noopener\" target=\"_blank\">(Bilan contrôle technique 2025 (données UTAC-OTC), L’argus, 20 mars 2026)</a></li><li>Rouler sans contrôle technique valable expose à une amende forfaitaire de 135 €, pouvant aller jusqu’à 750 €. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2878\" rel=\"noopener\" target=\"_blank\">(Contrôle technique d’une voiture, service-public.gouv.fr)</a></li><li>Le prix du contrôle technique est libre : 79,52 € en moyenne en 2023 selon l’étude Simplauto relayée par Caradisiac, de 45 € à 120 € selon les centres, et 14,78 € en moyenne pour une contre-visite simple. <a href=\"https://www.caradisiac.com/controle-technique-a-79-52-eur-en-moyenne-il-est-epargne-par-l-inflation-prix-par-dept-206031.htm\" rel=\"noopener\" target=\"_blank\">(Contrôle technique : 79,52 € en moyenne, Caradisiac, 11 décembre 2023)</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Contrôle technique avant une vente : délais, coûts et chiffres de référence",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Repère</th><th>Valeur</th><th>Source</th></tr></thead><tbody><tr><td>Validité du procès-verbal pour vendre à un particulier (voiture de plus de 4 ans)</td><td>Moins de 6 mois à la date de la demande de carte grise</td><td>service-public.gouv.fr, fiche F16540</td></tr><tr><td>Vente à un professionnel de l’automobile</td><td>Aucun contrôle technique exigé</td><td>service-public.gouv.fr, fiche F16540</td></tr><tr><td>Validité d’un contrôle défavorable pour défaillance majeure</td><td>2 mois pour faire la contre-visite ou vendre en l’état à un particulier</td><td>service-public.gouv.fr, fiche F2878</td></tr><tr><td>Validité d’un contrôle défavorable pour défaillance critique</td><td>Le jour du contrôle seulement</td><td>service-public.gouv.fr, fiche F2878</td></tr><tr><td>Amende pour circulation sans contrôle technique valable</td><td>135 € (jusqu’à 750 €)</td><td>service-public.gouv.fr, fiche F2878</td></tr><tr><td>Prix moyen d’un contrôle technique</td><td>79,52 € en 2023, de 45 € à 120 € selon les centres</td><td>Étude Simplauto relayée par Caradisiac</td></tr><tr><td>Prix moyen d’une contre-visite simple</td><td>14,78 € en 2023 (32,88 € avec passage sur banc)</td><td>Étude Simplauto relayée par Caradisiac</td></tr><tr><td>Taux de contre-visite des voitures particulières en 2025</td><td>18,24 % (19,3 % tous véhicules légers)</td><td>Bilan UTAC-OTC 2025 relayé par L’argus</td></tr></tbody></table></div>"
       },
       {
         "h2": "Contrôle expiré, contre-visite ou défaillance critique : qu'est-ce qui change ?",
@@ -2113,6 +2373,18 @@
       {
         "question": "Pouvez-vous étudier une voiture qui n'a jamais passé le contrôle technique ?",
         "answer": "Oui. Une voiture jamais présentée au contrôle, par exemple longtemps immobilisée ou héritée, peut être étudiée en l'état. Décrivez son état, son kilométrage et depuis quand elle n'a pas roulé pour obtenir une estimation précise."
+      },
+      {
+        "question": "Comment vendre une voiture sans contrôle technique ?",
+        "answer": "En la vendant à un professionnel : service-public.gouv.fr précise qu’un véhicule peut lui être vendu sans contrôle technique. Vous remettez la carte grise barrée, le certificat de cession Cerfa 15776 et un certificat de situation administrative de moins de 15 jours. À un particulier, une voiture de plus de 4 ans exige un contrôle de moins de 6 mois."
+      },
+      {
+        "question": "Le contrôle technique a plus de 6 mois : faut-il le refaire pour vendre ?",
+        "answer": "Oui pour une vente à un particulier, si la voiture a plus de 4 ans : le procès-verbal doit dater de moins de 6 mois au moment où l’acheteur dépose sa demande de carte grise, et le nouveau contrôle est aux frais du vendeur. Non pour une vente à un professionnel de l’automobile, qui n’exige aucun contrôle."
+      },
+      {
+        "question": "Combien coûte un contrôle technique avant une vente ?",
+        "answer": "Le tarif est libre et affiché à l’entrée de chaque centre. L’étude Simplauto relayée par Caradisiac situait la moyenne à 79,52 € en 2023, de 45 € à 120 € selon les centres, et 14,78 € pour une contre-visite simple. Le comparateur officiel de la DGCCRF, prix.conso.gouv.fr, affiche les prix réels centre par centre."
       }
     ],
     "sources": [
@@ -2139,9 +2411,25 @@
       {
         "label": "Histovec, historique d'un véhicule",
         "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "Peut-on vendre un véhicule d’occasion sans contrôle technique ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16540"
+      },
+      {
+        "label": "Bilan contrôle technique 2025 : un taux de contre-visites stable malgré un parc vieillissant, L’argus",
+        "url": "https://www.largus.fr/actualite-automobile/bilan-controle-technique-2025-un-taux-de-contre-visites-stable-malgre-un-parc-auto-vieillisant-30046031.html"
+      },
+      {
+        "label": "Contrôle technique : à 79,52 € en moyenne, prix par département, Caradisiac",
+        "url": "https://www.caradisiac.com/controle-technique-a-79-52-eur-en-moyenne-il-est-epargne-par-l-inflation-prix-par-dept-206031.htm"
+      },
+      {
+        "label": "Prix des contrôles techniques, comparateur officiel de la DGCCRF",
+        "url": "https://prix.conso.gouv.fr/controle-technique"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "rachat-voiture-rapide",
@@ -3111,9 +3399,9 @@
     "image": "accueil",
     "nav": "Voiture gagée",
     "title": "Vendre une voiture gagée ou avec opposition | LUNICAR",
-    "description": "Gage lié à un crédit, opposition du Trésor public, véhicule volé ou saisi : ce qui bloque la vente, comment lever le blocage et ce que LUNICAR peut faire.",
+    "description": "Une voiture gagée peut être vendue, mais le gage n’est levé qu’une fois le crédit soldé. Une opposition bloque la vente. Vérification immédiate sur Histovec.",
     "h1": "Vendre une voiture gagée ou sous opposition, <em>sans rester bloqué</em>",
-    "lede": "Un gage ou une opposition apparaît sur le certificat de situation administrative et change tout pour la vente. Le gage, lié à un crédit, n'empêche pas de vendre ; l'opposition, elle, bloque le changement de titulaire. Voici comment vérifier la situation de votre voiture, lever le blocage, et ce que LUNICAR peut prendre en charge.",
+    "lede": "Oui, une voiture gagée peut être vendue : selon service-public.gouv.fr, le gage n’empêche pas la vente, mais l’organisme de crédit ne lève le gage qu’une fois le crédit intégralement remboursé. Une opposition, elle, bloque le changement de titulaire jusqu’à sa levée. Le certificat de situation administrative, obligatoire et daté de moins de 15 jours, mentionne l’un comme l’autre ; il s’obtient immédiatement sur Histovec. LUNICAR peut étudier une voiture gagée et, si la vente est conclue, régler le solde du prêteur et vous verser la différence par virement instantané.",
     "points": [
       "Gage de crédit : solde versé au prêteur, différence pour vous",
       "Opposition : vente possible une fois l'opposition levée",
@@ -3125,6 +3413,14 @@
       {
         "h2": "Comment savoir si ma voiture est gagée ou sous opposition ?",
         "html": "<p>Le certificat de situation administrative (CSA) vous le dit, gratuitement et immédiatement, sur Histovec. Ce document officiel « fait état de l'existence ou non d'un gage sur le véhicule ou d'une opposition au transfert du certificat d'immatriculation ». Il est obligatoire pour toute vente et doit dater de moins de 15 jours au moment de la cession.</p><p>Seul le titulaire de la carte grise peut le générer : il se connecte sur <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a> avec le numéro d'immatriculation et des informations figurant sur le certificat d'immatriculation. Le site produit en même temps un rapport d'historique qui retrace la date de première mise en circulation, les changements de propriétaire, les sinistres enregistrés, les contrôles techniques et le kilométrage relevé à chaque contrôle.</p><ul class=\"ticks\"><li><strong>Mention « gage »</strong> : un organisme de crédit a inscrit une sûreté sur la voiture.</li><li><strong>Mention « opposition »</strong> : une administration, un commissaire de justice ou la police bloque le changement de titulaire.</li><li><strong>Aucune mention</strong> : la vente peut se faire normalement.</li></ul>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>La présence d’un gage n’empêche pas la vente du véhicule ; en cas d’opposition, la vente ne peut pas avoir lieu tant qu’il n’est pas mis fin à l’opposition. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1360\" rel=\"noopener\" target=\"_blank\">(Certificat de situation administrative (non-gage et non-opposition), service-public.gouv.fr)</a></li><li>Vous devez avoir remboursé intégralement le crédit pour que l’organisme financier puisse mettre fin au gage ; un certificat de situation administrative sans mention de gage peut ensuite être délivré. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F34107\" rel=\"noopener\" target=\"_blank\">(Comment faire lever le gage ou l’opposition sur un véhicule ?, service-public.gouv.fr)</a></li><li>Le vendeur d’un véhicule d’occasion doit remettre à l’acheteur un certificat établi depuis moins de 15 jours attestant qu’aucune opposition au transfert du certificat d’immatriculation n’a été faite (Code de la route, article L322-2). <a href=\"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074228/LEGISCTA000006159532\" rel=\"noopener\" target=\"_blank\">(Code de la route, articles L322-1 à L322-3, legifrance.gouv.fr)</a></li><li>Une opposition du Trésor public suit une amende forfaitaire majorée, émise lorsque l’adresse de la carte grise n’est plus à jour ou qu’une amende n’a pas été payée dans les 4 mois ; la levée n’est faite que si toutes les amendes ont été payées. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F34107\" rel=\"noopener\" target=\"_blank\">(Comment faire lever le gage ou l’opposition sur un véhicule ?, service-public.gouv.fr)</a></li><li>Pour une contravention de 4e classe, l’amende forfaitaire de 135 € est majorée à 375 € si elle n’est pas payée dans les 45 jours (60 jours en télépaiement). <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F18509\" rel=\"noopener\" target=\"_blank\">(Amende forfaitaire en cas de contravention au code de la route, service-public.gouv.fr)</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Vendre une voiture gagée avec un crédit en cours : les étapes",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Étape</th><th>Qui</th><th>Délai ou pièce</th><th>Source</th></tr></thead><tbody><tr><td>1. Générer le certificat de situation administrative</td><td>Le titulaire de la carte grise, sur Histovec</td><td>Immédiat ; valable moins de 15 jours</td><td>service-public.gouv.fr, F1360</td></tr><tr><td>2. Demander le décompte de remboursement anticipé</td><td>Le vendeur, auprès de l’organisme de crédit</td><td>Capital restant dû et indemnités éventuelles</td><td>Pratique courante, à demander par écrit au prêteur</td></tr><tr><td>3. Comparer prix de vente et capital restant dû</td><td>Le vendeur</td><td>Si le prix est inférieur, la différence reste à sa charge</td><td>Logique du remboursement intégral, F34107</td></tr><tr><td>4. Rembourser intégralement le crédit</td><td>Le vendeur, ou l’acheteur avec l’accord écrit du prêteur</td><td>Le prêteur met fin au gage une fois le crédit soldé</td><td>service-public.gouv.fr, F34107</td></tr><tr><td>5. Générer un nouveau certificat sans mention de gage</td><td>Le titulaire, sur Histovec</td><td>Moins de 15 jours avant la cession</td><td>service-public.gouv.fr, F34107 et F1360</td></tr><tr><td>6. Signer le certificat de cession et barrer la carte grise</td><td>Vendeur et acheteur</td><td>Cerfa 15776 en 2 exemplaires, mention « vendu le » avec date, heure et signature</td><td>service-public.gouv.fr, F1707</td></tr><tr><td>7. Déclarer la cession</td><td>Le vendeur, sur le site de l’ANTS</td><td>Dans les 15 jours suivant la signature</td><td>service-public.gouv.fr, F1707</td></tr></tbody></table></div>"
       },
       {
         "h2": "Quelle différence entre un gage et une opposition ?",
@@ -3180,6 +3476,22 @@
       {
         "question": "Le contrôle technique est-il nécessaire pour vendre une voiture gagée à LUNICAR ?",
         "answer": "Non. Le contrôle technique n'est pas exigé pour une vente à un professionnel de l'automobile, que la voiture soit gagée ou non. Le gage et le contrôle technique sont deux sujets indépendants."
+      },
+      {
+        "question": "Comment vendre une voiture gagée avec un crédit en cours ?",
+        "answer": "En soldant le crédit : service-public.gouv.fr précise que le gage n’empêche pas la vente, mais que l’organisme financier n’y met fin qu’après remboursement intégral. Demandez un décompte de remboursement anticipé, remboursez, puis générez sur Histovec un certificat de situation administrative sans mention de gage, daté de moins de 15 jours, à remettre à l’acheteur."
+      },
+      {
+        "question": "Peut-on vendre une voiture gagée à un particulier ?",
+        "answer": "Oui en droit, puisque le gage n’empêche pas la vente selon service-public.gouv.fr, mais la mention apparaît sur le certificat de situation administrative remis à l’acheteur, qui refusera souvent. Tant que le crédit n’est pas remboursé intégralement, le gage subsiste. Le plus simple est de solder le crédit avant la cession, ou de vendre à un professionnel qui règle le prêteur."
+      },
+      {
+        "question": "Quelle différence entre un gage et une opposition sur une voiture ?",
+        "answer": "Le gage est une sûreté prise par l’organisme qui a financé la voiture : il n’empêche pas la vente, mais se lève par le remboursement du crédit. L’opposition est posée par le Trésor public, un commissaire de justice ou la justice : elle bloque tout changement de titulaire jusqu’à sa levée, selon service-public.gouv.fr."
+      },
+      {
+        "question": "Que se passe-t-il si le prix de vente ne couvre pas le capital restant dû ?",
+        "answer": "La différence reste à la charge du vendeur : le prêteur ne lève le gage qu’après remboursement intégral du crédit, selon service-public.gouv.fr. Le décompte de remboursement anticipé indique le montant exact à solder. Si la vente est conclue avec LUNICAR, le solde du prêteur est réglé le jour de la cession et le complément est à régler par vous."
       }
     ],
     "sources": [
@@ -3206,18 +3518,30 @@
       {
         "label": "Histovec, historique et situation administrative d'un véhicule",
         "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "Code de la route, articles L322-1 à L322-3 (opposition au transfert, certificat de moins de 15 jours), legifrance.gouv.fr",
+        "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074228/LEGISCTA000006159532"
+      },
+      {
+        "label": "Amende forfaitaire en cas de contravention au code de la route, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F18509"
+      },
+      {
+        "label": "Certificat de cession d’un véhicule d’occasion (Cerfa 15776), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R20300"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "vendre-voiture-personne-agee-ehpad",
     "image": "accueil",
     "nav": "Voiture d'un parent âgé",
     "title": "Vendre la voiture d'un parent âgé ou en EHPAD | LUNICAR",
-    "description": "Qui peut signer, procuration, tutelle, curatelle, habilitation familiale, documents, assurance : vendre la voiture d'un parent qui ne conduit plus.",
+    "description": "Le titulaire de la carte grise signe la vente, ou son mandataire avec un mandat écrit et sa pièce d’identité. Sous tutelle, le tuteur vend avec l’aval du juge.",
     "h1": "Vendre la voiture d'un parent âgé ou entré en EHPAD, <em>dans les règles</em>",
-    "lede": "Un parent ne conduit plus, entre en maison de retraite, et sa voiture dort au garage. La vendre est possible, mais seul le titulaire de la carte grise, ou la personne autorisée à le représenter, peut signer. Voici les règles officielles, les documents à réunir et la façon dont LUNICAR intervient, même si votre parent ne peut plus sortir.",
+    "lede": "Vous pouvez vendre la voiture d’un parent en EHPAD ou qui ne conduit plus, à condition qu’il signe lui-même ou qu’il vous donne mandat : un écrit signé, avec sa pièce d’identité, suffit pour la déclaration de cession selon service-public.gouv.fr. S’il ne peut plus décider, seule une mesure de protection permet d’agir à sa place : le tuteur vend avec l’autorisation du juge (Code civil, article 505), la personne en curatelle signe avec son curateur (article 467). LUNICAR vient au domicile ou à l’établissement, partout en France, sans frais.",
     "points": [
       "Procuration, tutelle, curatelle : qui signe, expliqué",
       "Technicien au domicile ou à l'établissement, sans frais",
@@ -3229,6 +3553,14 @@
       {
         "h2": "Qui peut signer la vente de la voiture d'un parent âgé ?",
         "html": "<p>Le titulaire de la carte grise, tant qu'il est en mesure de comprendre et de vouloir la vente. Qu'il ne conduise plus, vive en EHPAD ou ait 95 ans ne change rien : la voiture lui appartient, c'est lui qui signe le certificat de cession. Un enfant ne peut pas vendre à sa place sans un mandat écrit ou une décision de justice.</p><p>Trois situations se présentent. Votre parent décide encore : il signe lui-même, ou vous donne une procuration. Votre parent fait l'objet d'une mesure de protection (curatelle, tutelle, habilitation familiale) : le jugement fixe qui signe et avec quelle autorisation. Votre parent ne peut plus exprimer sa volonté et aucune mesure n'existe : aucun proche ne peut vendre à sa place ; il faut saisir le juge des tutelles du tribunal judiciaire pour obtenir une habilitation familiale ou une autre mesure adaptée.</p><ul class=\"ticks\"><li><strong>Parent lucide</strong> : signature directe ou procuration.</li><li><strong>Parent protégé</strong> : selon le jugement.</li><li><strong>Parent sans mesure et hors d'état de décider</strong> : passage par le juge.</li></ul>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Pour faire réaliser la déclaration de cession par quelqu’un d’autre sur le site de l’ANTS, vous devez lui fournir un mandat signé et votre pièce d’identité. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">(Vendre ou donner son véhicule, service-public.gouv.fr)</a></li><li>Le mandat ou procuration est l’acte par lequel une personne donne à une autre le pouvoir de faire quelque chose pour elle et en son nom ; il peut être donné par acte sous seing privé, même par lettre (Code civil, articles 1984 et 1985). <a href=\"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136404\" rel=\"noopener\" target=\"_blank\">(Code civil, articles 1984 et 1985, legifrance.gouv.fr)</a></li><li>Le tuteur ne peut, sans y être autorisé par le conseil de famille ou, à défaut, le juge, faire des actes de disposition au nom de la personne protégée ; l’autorisation détermine les stipulations et, le cas échéant, le prix de l’acte (Code civil, article 505, en vigueur depuis le 2 mars 2022). <a href=\"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428299\" rel=\"noopener\" target=\"_blank\">(Code civil, article 505, legifrance.gouv.fr)</a></li><li>Sous curatelle, la personne protégée ne peut pas, sans l’assistance de son curateur, faire un acte qui exigerait une autorisation du juge en tutelle ; cette assistance se traduit par la signature du curateur à côté de la sienne (Code civil, article 467). <a href=\"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006427797\" rel=\"noopener\" target=\"_blank\">(Code civil, article 467, legifrance.gouv.fr)</a></li><li>L’habilitation familiale générale est prononcée pour 10 ans au maximum, renouvelable ; la personne habilitée agit sans autorisation du juge, sauf pour les actes à titre gratuit et la vente de la résidence principale ou secondaire. Le certificat médical circonstancié exigé pour la demande coûte 192 €. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F33367\" rel=\"noopener\" target=\"_blank\">(Habilitation familiale, service-public.gouv.fr)</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Vendre la voiture d’un parent : qui signe quoi, avec quelle pièce",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Étape</th><th>Qui signe ou agit</th><th>Pièce à joindre</th><th>Source</th></tr></thead><tbody><tr><td>Certificat de cession Cerfa 15776, en 2 exemplaires</td><td>Le titulaire de la carte grise, ou son mandataire</td><td>Mandat signé et pièce d’identité du titulaire ; jugement de protection si tutelle, curatelle ou habilitation</td><td>service-public.gouv.fr, R20300 et F1707</td></tr><tr><td>Carte grise barrée « vendu le », date, heure, signature</td><td>Le même signataire</td><td>Carte grise originale</td><td>service-public.gouv.fr, F1707</td></tr><tr><td>Certificat de situation administrative</td><td>Généré avec les informations de la carte grise du titulaire</td><td>Daté de moins de 15 jours, disponible immédiatement sur Histovec</td><td>service-public.gouv.fr, F1360</td></tr><tr><td>Déclaration de cession sur le site de l’ANTS</td><td>Le titulaire, ou un tiers muni d’un mandat</td><td>Mandat signé et pièce d’identité du titulaire, dans les 15 jours</td><td>service-public.gouv.fr, F1707</td></tr><tr><td>Formalités d’immatriculation confiées à un tiers</td><td>Un professionnel habilité ou toute personne mandatée</td><td>Cerfa 13757 « mandat pour effectuer les formalités d’immatriculation »</td><td>service-public.gouv.fr, R1137</td></tr><tr><td>Vente par un tuteur</td><td>Le tuteur, au nom de la personne protégée</td><td>Autorisation du conseil de famille ou, à défaut, du juge</td><td>Code civil, article 505</td></tr><tr><td>Vente par une personne en curatelle</td><td>La personne protégée, avec son curateur</td><td>Double signature sur le certificat de cession</td><td>Code civil, article 467</td></tr><tr><td>Résiliation de l’assurance</td><td>Le titulaire ou son représentant</td><td>Lettre recommandée ; contrat suspendu le soir de la vente à minuit, résiliation 10 jours après réception</td><td>service-public.gouv.fr, F2664</td></tr></tbody></table></div>"
       },
       {
         "h2": "Mon parent décide encore : comment vendre avec une procuration ?",
@@ -3288,6 +3620,22 @@
       {
         "question": "La carte grise est au nom de mon père décédé : ma mère peut-elle vendre seule ?",
         "answer": "Pas forcément. La voiture fait partie de la succession et tous les héritiers sont concernés. Les règles de délai et les justificatifs sont expliqués sur notre page consacrée à la voiture d'un proche décédé."
+      },
+      {
+        "question": "Comment vendre la voiture de mon père qui est en EHPAD ?",
+        "answer": "S’il comprend et veut la vente, il signe lui-même le certificat de cession, ou vous donne un mandat écrit accompagné de sa pièce d’identité, comme le prévoit service-public.gouv.fr pour la déclaration de cession. Rien n’oblige à le faire sortir : la signature peut se faire à l’établissement. S’il ne peut plus décider, une mesure de protection est nécessaire."
+      },
+      {
+        "question": "Ma mère ne conduit plus : comment vendre sa voiture avec une procuration ?",
+        "answer": "Elle rédige et signe un mandat indiquant son identité, la vôtre, la voiture (immatriculation, marque, modèle) et l’objet : vendre, signer le certificat de cession, percevoir ou non le prix. Un acte sous seing privé, même une lettre, suffit selon l’article 1985 du Code civil. Joignez une copie de sa pièce d’identité à la cession et à la déclaration ANTS."
+      },
+      {
+        "question": "Peut-on vendre la voiture d’un parent atteint d’Alzheimer sans mesure de protection ?",
+        "answer": "Non, si le parent ne peut plus comprendre ni vouloir la vente : un mandat signé dans cet état serait contestable. Il faut demander au juge une habilitation familiale, une curatelle ou une tutelle. Sous tutelle, le tuteur vend avec l’autorisation du conseil de famille ou, à défaut, du juge, selon l’article 505 du Code civil."
+      },
+      {
+        "question": "Faut-il passer chez le notaire pour une procuration de vente de voiture ?",
+        "answer": "Non. L’article 1985 du Code civil admet le mandat par acte sous seing privé, même par lettre. Pour la déclaration de cession, service-public.gouv.fr demande seulement un mandat signé et la pièce d’identité du titulaire. Le Cerfa 13757 sert de mandat pour les formalités d’immatriculation confiées à un professionnel ou à toute personne mandatée."
       }
     ],
     "sources": [
@@ -3314,18 +3662,46 @@
       {
         "label": "Carte grise : hériter d'un véhicule immatriculé en France, service-public.gouv.fr",
         "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1480"
+      },
+      {
+        "label": "Code civil, articles 1984 et 1985 (mandat ou procuration), legifrance.gouv.fr",
+        "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136404"
+      },
+      {
+        "label": "Code civil, article 505 (actes de disposition du tuteur), legifrance.gouv.fr",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006428299"
+      },
+      {
+        "label": "Code civil, article 467 (assistance du curateur), legifrance.gouv.fr",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006427797"
+      },
+      {
+        "label": "Code civil, articles 494-1 à 494-12 (habilitation familiale), legifrance.gouv.fr",
+        "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000031345518"
+      },
+      {
+        "label": "Mandat pour effectuer les formalités d’immatriculation (Cerfa 13757), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R1137"
+      },
+      {
+        "label": "Certificat de cession d’un véhicule d’occasion (Cerfa 15776), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R20300"
+      },
+      {
+        "label": "Certificat de situation administrative, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1360"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "vendre-voiture-importee",
     "image": "accueil",
     "nav": "Voiture importée",
     "title": "Vendre une voiture importée en France | LUNICAR",
-    "description": "Carte grise française après import ou véhicule encore immatriculé à l'étranger : quitus fiscal, certificat de conformité, valeur et ce que LUNICAR étudie.",
+    "description": "Voiture importée d'Allemagne : carte grise française à votre nom d'abord (quitus, conformité, contrôle technique, ANTS sous 1 mois), puis vente classique.",
     "h1": "Vendre une voiture importée, <em>avec ou sans carte grise française</em>",
-    "lede": "Une voiture achetée à l'étranger se revend sans difficulté dès qu'elle a une carte grise française à votre nom. Si elle est encore immatriculée hors de France, c'est plus délicat. Voici les documents qui comptent, l'effet de l'import sur la valeur, et la façon dont LUNICAR étudie ces demandes, au cas par cas.",
+    "lede": "Oui, si la carte grise française est à votre nom : seul son titulaire peut vendre, et aucun certificat de situation administrative n'est délivré pour un véhicule immatriculé à l'étranger (service-public.gouv.fr). Sinon, il faut d'abord l'immatriculer : quitus fiscal, certificat de conformité, contrôle technique de moins de 6 mois au-delà de 4 ans, demande à l'ANTS dans le mois suivant la livraison. Immatriculée en France, la voiture se vend comme une autre ; LUNICAR l'étudie partout en France, et au cas par cas si elle est encore immatriculée à l'étranger.",
     "points": [
       "Carte grise française : vente comme toute voiture",
       "Immatriculée à l'étranger : étude au cas par cas",
@@ -3337,6 +3713,14 @@
       {
         "h2": "Peut-on vendre une voiture importée en France ?",
         "html": "<p>Oui, dès lors qu'elle a une carte grise française à votre nom : elle se vend alors comme n'importe quelle voiture immatriculée en France, avec les mêmes documents. Les formalités d'import, quitus fiscal, justificatif de conformité, éventuel dédouanement, ont été accomplies au moment de l'immatriculation ; elles n'ont pas à être refaites par l'acheteur.</p><p>Si la voiture est encore immatriculée à l'étranger, la situation est différente : l'acheteur devrait lui-même accomplir les démarches d'immatriculation en France, avec les documents d'origine. Service-public.gouv.fr rappelle d'ailleurs qu'une personne qui s'installe en France doit faire immatriculer son véhicule dans le mois qui suit. Dans ce cas, LUNICAR étudie la demande au cas par cas, sans promesse de rachat.</p><ul class=\"ticks\"><li><strong>Carte grise française à votre nom</strong> : étude normale, partout en France.</li><li><strong>Carte grise étrangère</strong> : étude au cas par cas, documents d'origine indispensables.</li><li><strong>Carte grise française au nom d'un tiers</strong> : la vente attend la régularisation à votre nom.</li></ul>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Vous avez 1 mois pour demander le certificat d&#x27;immatriculation d&#x27;un véhicule d&#x27;occasion acheté à l&#x27;étranger ; pour une voiture de plus de 4 ans, le contrôle technique doit dater de moins de 6 mois et avoir été réalisé en France ou dans l&#x27;Union européenne (fiche vérifiée le 6 février 2026). <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1050\" rel=\"noopener\" target=\"_blank\">(service-public.gouv.fr, certificat d&#x27;immatriculation : immatriculer un véhicule d&#x27;occasion)</a></li><li>Le quitus fiscal, délivré par la DGFiP, atteste que le véhicule acheté dans un autre pays de l&#x27;Union européenne est en règle vis-à-vis de la TVA ; la téléprocédure est gratuite, la TVA éventuellement due reste à régler, et la demande d&#x27;immatriculation doit être faite dans le mois qui suit la livraison. <a href=\"https://www.impots.gouv.fr/sites/default/files/media/1_metier/1_particulier/EV/1_declarer/200_quitus_fiscal/nid_26538_faq_quitus_fiscal.pdf\" rel=\"noopener\" target=\"_blank\">(impots.gouv.fr, foire aux questions sur la demande de quitus fiscal (PDF))</a></li><li>Seul le propriétaire dont le nom figure sur le certificat d&#x27;immatriculation peut vendre le véhicule ; la vente à un professionnel se fait sans contrôle technique et la cession doit être déclarée à l&#x27;ANTS dans les 15 jours (fiche vérifiée le 13 octobre 2026). <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">(service-public.gouv.fr, vendre ou donner son véhicule)</a></li><li>Le certificat de situation administrative, obligatoire avant la cession et daté de moins de 15 jours, n&#x27;est pas délivré pour un véhicule immatriculé à l&#x27;étranger (fiche vérifiée le 16 octobre 2026). <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1360\" rel=\"noopener\" target=\"_blank\">(service-public.gouv.fr, certificat de situation administrative)</a></li><li>Selon une étude Carvertical relayée par L&#x27;argus le 29 avril 2026, 30,2 % des véhicules d&#x27;occasion vendus et vérifiés en France en 2025 étaient importés, dont 10,9 % d&#x27;Allemagne ; 2,4 % des voitures venues d&#x27;Allemagne présentaient un kilométrage manipulé. <a href=\"https://www.largus.fr/pros/actualite-automobile/un-tiers-des-vehicules-d-occasion-vendus-en-france-sont-importes-mais-a-quels-risques-30046514.html\" rel=\"noopener\" target=\"_blank\">(L&#x27;argus, un tiers des véhicules d&#x27;occasion vendus en France sont importés (29 avril 2026))</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Régulariser une voiture importée avant de la vendre",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Étape</th><th>Où</th><th>Délai ou validité</th><th>Document obtenu</th></tr></thead><tbody><tr><td>Quitus fiscal (achat dans l&#x27;Union européenne)</td><td>Service des impôts du département, ou téléprocédure ANTS si vous habitez le 06, 44, 57, 59, 62, 67, 69 ou 75</td><td>Après la livraison ; téléprocédure gratuite, TVA éventuellement due</td><td>Quitus fiscal</td></tr><tr><td>Dédouanement (achat hors Union européenne)</td><td>Bureau de douane</td><td>Avant la demande de carte grise</td><td>Certificat de dédouanement 846 A</td></tr><tr><td>Justificatif de conformité</td><td>Constructeur (COC) ou Dreal / Drieat (réception à titre isolé)</td><td>COC pour les véhicules de moins de 3,5 t immatriculés pour la première fois après 1996</td><td>Certificat de conformité, attestation d&#x27;identification ou procès-verbal de RTI</td></tr><tr><td>Contrôle technique</td><td>Centre agréé en France ou dans l&#x27;Union européenne</td><td>Moins de 6 mois à la demande de carte grise, voiture de plus de 4 ans</td><td>Procès-verbal de contrôle technique</td></tr><tr><td>Carte grise française</td><td>ANTS en ligne, ou professionnel habilité</td><td>Dans le mois qui suit la livraison ; certificat provisoire valable 1 mois en France</td><td>Certificat d&#x27;immatriculation à votre nom</td></tr><tr><td>Certificat de situation administrative</td><td>HistoVec</td><td>Moins de 15 jours le jour de la vente</td><td>Certificat à remettre à l&#x27;acheteur</td></tr><tr><td>Déclaration de cession</td><td>ANTS</td><td>Dans les 15 jours suivant la signature du certificat de cession</td><td>Code de cession et accusé d&#x27;enregistrement</td></tr></tbody></table></div>"
       },
       {
         "h2": "Quels documents prouvent que l'import a été régularisé ?",
@@ -3388,6 +3772,22 @@
       {
         "question": "Le contrôle technique est-il nécessaire ?",
         "answer": "Non pour une vente à un professionnel de l'automobile. Pour une voiture importée, le contrôle technique effectué lors de l'immatriculation française constitue toutefois une référence utile sur son état."
+      },
+      {
+        "question": "Peut-on vendre en France une voiture encore immatriculée en Allemagne ?",
+        "answer": "Pas comme une voiture française : seul le titulaire de la carte grise française peut vendre, et HistoVec ne délivre pas de certificat de situation administrative pour un véhicule immatriculé à l'étranger. L'acheteur devrait refaire toute l'immatriculation. Régularisez d'abord à votre nom ; LUNICAR étudie les autres cas sans promesse de rachat."
+      },
+      {
+        "question": "Combien de temps a-t-on pour immatriculer une voiture importée ?",
+        "answer": "Un mois à compter de la livraison du véhicule, selon service-public.gouv.fr et la FAQ de l'administration fiscale sur le quitus. La demande se fait en ligne sur l'ANTS ou chez un professionnel habilité. Un certificat provisoire d'immatriculation permet ensuite de circuler 1 mois, uniquement en France, en attendant la carte grise définitive."
+      },
+      {
+        "question": "Un contrôle technique allemand est-il accepté pour immatriculer la voiture en France ?",
+        "answer": "Oui, à deux conditions indiquées par service-public.gouv.fr : il a été réalisé dans un pays de l'Union européenne où le véhicule était immatriculé, et il date de moins de 6 mois le jour de la demande de carte grise. Passé ce délai, un nouveau contrôle est nécessaire. Il ne concerne que les voitures de plus de 4 ans."
+      },
+      {
+        "question": "Le quitus fiscal est-il payant ?",
+        "answer": "Non, la téléprocédure de demande de quitus est gratuite, selon la FAQ de l'administration fiscale. Seule la TVA éventuellement due sur le véhicule reste à régler. La demande se fait auprès du service des impôts de votre département, ou en ligne sur l'ANTS si vous habitez l'un des huit départements en téléprocédure."
       }
     ],
     "sources": [
@@ -3410,18 +3810,38 @@
       {
         "label": "Demander le certificat de situation administrative d'un véhicule d'occasion (Histovec), service-public.gouv.fr",
         "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R52957"
+      },
+      {
+        "label": "service-public.gouv.fr, certificat d'immatriculation : immatriculer un véhicule d'occasion (achat à l'étranger)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1050"
+      },
+      {
+        "label": "impots.gouv.fr, foire aux questions sur la demande de quitus fiscal (PDF)",
+        "url": "https://www.impots.gouv.fr/sites/default/files/media/1_metier/1_particulier/EV/1_declarer/200_quitus_fiscal/nid_26538_faq_quitus_fiscal.pdf"
+      },
+      {
+        "label": "impots.gouv.fr, formulaire 1993-PART-D-SD, demande de quitus fiscal",
+        "url": "https://www.impots.gouv.fr/formulaire/1993-part-d/demande-de-quitus-fiscal-1993-part-d-sd"
+      },
+      {
+        "label": "service-public.gouv.fr, certificat de situation administrative",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1360"
+      },
+      {
+        "label": "L'argus, un tiers des véhicules d'occasion vendus en France sont importés, mais à quels risques ? (29 avril 2026)",
+        "url": "https://www.largus.fr/pros/actualite-automobile/un-tiers-des-vehicules-d-occasion-vendus-en-france-sont-importes-mais-a-quels-risques-30046514.html"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "vendre-voiture-de-societe",
     "image": "accueil",
     "nav": "Voiture de société",
     "title": "Vendre une voiture de société | LUNICAR",
-    "description": "SAS, SARL, auto-entrepreneur : qui signe, Kbis, TVA tourisme ou utilitaire, facture, sortie d'actif, rachat par le dirigeant. Partout en France.",
+    "description": "Vendre une voiture au nom d'une SARL : le gérant signe, Kbis de moins de 2 ans, TVA selon la déduction à l'achat, plus-value = prix moins valeur comptable.",
     "h1": "Vendre une voiture au nom d'une société, <em>sans erreur de paperasse</em>",
-    "lede": "Une voiture immatriculée au nom d'une société se vend avec les mêmes documents qu'une voiture de particulier, plus le justificatif de la société et le pouvoir du signataire. La TVA et la plus-value dépendent de ce qui s'est passé à l'achat. Voici les règles officielles, point par point, et ce qui relève de votre comptable.",
+    "lede": "Oui : le gérant de la SARL signe le certificat de cession avec un extrait Kbis ou une attestation RNE de moins de 2 ans (service-public.gouv.fr), ou mandate quelqu'un par écrit. La vente sort le véhicule de l'actif : prix de cession moins valeur nette comptable, résultat imposable. Une voiture particulière sans TVA déduite à l'achat se revend exonérée ; un utilitaire à TVA déduite se revend avec TVA sur le prix total. Votre société facture ; LUNICAR règle par virement instantané si la vente est conclue.",
     "points": [
       "Kbis ou attestation RNE de moins de 2 ans",
       "TVA : tourisme et utilitaire ne suivent pas la même règle",
@@ -3433,6 +3853,14 @@
       {
         "h2": "Qui peut signer la vente d'une voiture de société ?",
         "html": "<p>Le représentant légal de la société, ou une personne qu'il a mandatée par écrit. Pour une SARL, c'est le gérant ; pour une SAS, le président ; pour une entreprise individuelle ou un auto-entrepreneur, l'entrepreneur lui-même, puisque le véhicule est à son nom. Un salarié ou un associé sans pouvoir ne peut pas signer seul le certificat de cession.</p><p>Le signataire prouve son pouvoir avec le justificatif d'existence de la société. Service-public.gouv.fr liste, pour une personne morale, une « attestation d'immatriculation au RNE de moins de 2 ans », un « extrait Kbis de moins de 2 ans » ou un « journal d'annonces légales datant de moins de 2 ans » ; pour une entreprise individuelle, l'attestation RNE ou l'extrait Kbis et un justificatif de l'adresse où s'exerce l'activité. Le Kbis mentionne le nom du dirigeant, ce qui suffit en général ; un mandataire joint en plus un pouvoir signé par le dirigeant et la pièce d'identité de celui-ci.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Pour une personne morale, le justificatif d&#x27;identité accepté pour la carte grise est une attestation d&#x27;immatriculation au RNE, un extrait Kbis ou un journal d&#x27;annonces légales de moins de 2 ans (fiche vérifiée le 20 octobre 2025). <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F31853\" rel=\"noopener\" target=\"_blank\">(service-public.gouv.fr, certificat d&#x27;immatriculation : avec quels documents prouver son identité ?)</a></li><li>Les véhicules conçus pour transporter des personnes ou à usages mixtes sont exclus du droit à déduction de la TVA (CGI, annexe II, article 206, IV-2-6°), sauf exceptions : plus de huit places assises pour le personnel, transports publics de voyageurs dont taxis et VTC, auto-écoles. <a href=\"https://bofip.impots.gouv.fr/bofip/1192-PGP.html/identifiant=BOI-TVA-DED-30-30-20-20250702\" rel=\"noopener\" target=\"_blank\">(BOFiP, TVA : exclusions du droit à déduction, véhicules de transport de personnes (BOI-TVA-DED-30-30-20))</a></li><li>Les ventes de biens usagés faites par des personnes qui les ont utilisés pour les besoins de leur exploitation sont exonérées de TVA (CGI, article 261-3-1°-a), sauf si le bien a ouvert droit à déduction : la base d&#x27;imposition est alors le prix de vente total. <a href=\"https://bofip.impots.gouv.fr/bofip/1280-PGP.html/identifiant=BOI-TVA-SECT-90-20-10-20210813\" rel=\"noopener\" target=\"_blank\">(BOFiP, TVA : biens d&#x27;occasion livrés par des personnes qui les ont utilisés pour leur exploitation (BOI-TVA-SECT-90-20-10))</a></li><li>La plus-value professionnelle est la différence entre le prix de cession et la valeur nette comptable ; dans une société à l&#x27;impôt sur les sociétés, elle entre dans le résultat imposé à 25 %, ou 15 % pour les PME dans la limite prévue (fiche vérifiée le 6 février 2026). <a href=\"https://entreprendre.service-public.gouv.fr/vosdroits/F33162\" rel=\"noopener\" target=\"_blank\">(entreprendre.service-public.gouv.fr, imposition des plus-values professionnelles)</a></li><li>L&#x27;amortissement d&#x27;un véhicule de tourisme acquis depuis 2021 n&#x27;est déductible que dans la limite de 30 000 € (émissions de 0 à 19 g de CO2/km), 20 300 € (20 à 59 g), 18 300 € (60 à 130 g) ou 9 900 € (131 g et plus) : la valeur nette comptable, elle, se calcule sur le prix d&#x27;achat réel. <a href=\"https://bofip.impots.gouv.fr/bofip/4582-PGP.html/identifiant=BOI-BIC-AMT-20-40-50-20191218\" rel=\"noopener\" target=\"_blank\">(BOFiP, BIC : amortissements des véhicules de tourisme (BOI-BIC-AMT-20-40-50))</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "TVA à la revente selon le véhicule",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Véhicule</th><th>TVA déduite à l&#x27;achat ?</th><th>TVA sur la revente</th><th>Référence</th></tr></thead><tbody><tr><td>Voiture particulière (transport de personnes ou usage mixte)</td><td>Non, en principe</td><td>Exonérée : vente d&#x27;un bien usagé utilisé pour l&#x27;exploitation</td><td>CGI art. 261-3-1°-a ; BOI-TVA-SECT-90-20-10</td></tr><tr><td>Utilitaire (catégorie N1)</td><td>Oui, en général</td><td>TVA sur le prix de vente total</td><td>BOI-TVA-SECT-90-20-10</td></tr><tr><td>Taxi, VTC, véhicule d&#x27;auto-école à usage exclusif</td><td>Oui (exception admise)</td><td>TVA sur le prix de vente total</td><td>BOI-TVA-DED-30-30-20</td></tr><tr><td>Véhicule de plus de huit places affecté au transport du personnel</td><td>Oui (exception admise)</td><td>TVA sur le prix de vente total</td><td>BOI-TVA-DED-30-30-20</td></tr><tr><td>Voiture achetée d&#x27;occasion à un particulier, sans TVA facturée</td><td>Non</td><td>Exonérée</td><td>CGI art. 261-3-1°-a ; BOI-TVA-SECT-90-20-10</td></tr></tbody></table></div>"
       },
       {
         "h2": "Quels documents réunir selon la forme juridique ?",
@@ -3488,6 +3916,22 @@
       {
         "question": "Comment la société est-elle payée ?",
         "answer": "Par virement instantané sur le compte bancaire de la société, si la vente est conclue. Jamais d'espèces ni de chèque. Vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais."
+      },
+      {
+        "question": "Qui signe le certificat de cession d'une voiture au nom d'une SARL ?",
+        "answer": "Le gérant, représentant légal de la SARL, ou une personne munie d'un pouvoir écrit signé par lui. Il présente un extrait Kbis ou une attestation d'immatriculation au RNE de moins de 2 ans, sa pièce d'identité et la carte grise au nom de la société. Un associé sans mandat ne peut pas signer seul."
+      },
+      {
+        "question": "Comment calculer la plus-value sur la vente d'une voiture de société ?",
+        "answer": "Prix de cession moins valeur nette comptable, c'est-à-dire le prix d'achat diminué des amortissements déjà déduits. Une voiture amortie depuis plusieurs années dégage souvent une plus-value, même vendue à un prix modeste. Dans une société à l'impôt sur les sociétés, ce résultat est imposé à 25 %, ou 15 % pour les PME dans la limite prévue."
+      },
+      {
+        "question": "Quel plafond d'amortissement s'applique à une voiture de société ?",
+        "answer": "Pour un véhicule de tourisme acquis depuis 2021, l'amortissement déductible est plafonné à 30 000 € (0 à 19 g de CO2/km), 20 300 € (20 à 59 g), 18 300 € (60 à 130 g) ou 9 900 € (131 g et plus). Les utilitaires ne sont pas concernés. Ce plafond fiscal ne change pas le prix de vente."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre une voiture de société à un professionnel ?",
+        "answer": "Non. Service-public.gouv.fr précise qu'un véhicule peut être vendu à un professionnel sans contrôle technique, quel que soit son âge. Le contrôle de moins de 6 mois n'est exigé que pour une vente à un particulier, pour une voiture de plus de 4 ans. LUNICAR n'exige aucun contrôle technique."
       }
     ],
     "sources": [
@@ -3514,18 +3958,34 @@
       {
         "label": "Mentions obligatoires sur une facture, entreprendre.service-public.gouv.fr",
         "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808"
+      },
+      {
+        "label": "Légifrance, Code de commerce, article L223-19 (conventions entre une SARL et son gérant ou un associé)",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223120"
+      },
+      {
+        "label": "Légifrance, Code de commerce, article L227-10 (conventions dans une SAS)",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000034584108"
+      },
+      {
+        "label": "BOFiP, BIC : amortissements des véhicules de tourisme (BOI-BIC-AMT-20-40-50)",
+        "url": "https://bofip.impots.gouv.fr/bofip/4582-PGP.html/identifiant=BOI-BIC-AMT-20-40-50-20191218"
+      },
+      {
+        "label": "service-public.gouv.fr, certificat d'immatriculation : immatriculer un véhicule d'occasion (délai d'1 mois)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1050"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "vendre-voiture-critair-zfe",
     "image": "accueil",
     "nav": "Crit'Air et ZFE",
     "title": "Vendre une voiture Crit'Air 3, 4 ou 5 en ZFE | LUNICAR",
-    "description": "Voiture Crit'Air 3, 4 ou 5 interdite dans votre ZFE ? Qui peut encore l'acheter, effet sur la valeur, état des règles : LUNICAR l'étudie partout en France.",
+    "description": "Une voiture Crit’Air 3, 4 ou 5 interdite en ZFE se vend : à un particulier hors ZFE ou à un professionnel, sans contrôle technique. Villes, amende de 68 €.",
     "h1": "Vendre une voiture Crit'Air 3, 4 ou 5 <em>interdite en ZFE</em>",
-    "lede": "Votre voiture ne peut plus circuler dans une zone à faibles émissions à cause de sa vignette Crit'Air ? Elle reste vendable : les règles des ZFE limitent la circulation, pas la vente. LUNICAR, qui revend principalement à des professionnels, l'étudie partout en France et vous rappelle avec une fourchette de prix indicative.",
+    "lede": "Oui, une voiture diesel Crit’Air 4 interdite dans votre ZFE se vend : les zones à faibles émissions restreignent la circulation, pas la cession. Vous pouvez la céder à un particulier qui roule hors ZFE, ou à un professionnel, sans contrôle technique. Au 1er janvier 2026, 4,6 % des 40 millions de voitures en circulation étaient Crit’Air 4, selon le ministère de la Transition écologique. LUNICAR les étudie partout en France : fourchette de prix indicative, puis prix définitif après vérification par un technicien, à votre adresse, sans frais.",
     "points": [
       "Crit'Air 3, 4, 5 et non classées étudiées",
       "Vente possible même si la circulation est restreinte",
@@ -3537,6 +3997,14 @@
       {
         "h2": "Peut-on encore vendre une voiture Crit'Air 3, 4 ou 5 interdite en ZFE ?",
         "html": "<p>Oui. Les règles des zones à faibles émissions restreignent la circulation des véhicules les plus polluants dans un périmètre donné ; aucune d'elles n'interdit de vendre le véhicule. La fiche <a href=\"https://entreprendre.service-public.gouv.fr/vosdroits/F38025\" rel=\"noopener\" target=\"_blank\">circuler en zone à faibles émissions mobilité</a> de Service-public.gouv.fr définit la ZFE comme une zone où « la circulation des véhicules les plus polluants peut être restreinte » : le texte vise l'usage, pas la propriété.</p>\n<p>Vous pouvez donc céder votre voiture à un particulier qui vit et roule hors ZFE, ou à un professionnel de l'automobile. LUNICAR achète des voitures Crit'Air 3, 4, 5 et non classées partout en France. Comme nous revendons principalement à des professionnels, la restriction locale qui vous bloque ne bloque pas la voiture elle-même : elle repart là où elle peut circuler. Décrivez-la en ligne, un conseiller vous rappelle rapidement avec une fourchette de prix indicative.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Au 1er janvier 2026, la France comptait 40,0 millions de voitures en circulation, dont 16,6 % de Crit’Air 3, 4,6 % de Crit’Air 4 et 3,0 % de Crit’Air 5 ou non classées ; l’âge moyen du parc est de 11,8 ans. <a href=\"https://www.statistiques.developpement-durable.gouv.fr/infographies/9565\" rel=\"noopener\" target=\"_blank\">(Les voitures en circulation en France au 1er janvier 2026, SDES, ministère de la Transition écologique)</a></li><li>Pour une voiture particulière, Crit’Air 4 correspond à un diesel immatriculé de 2001 à 2005 (Euro 3), Crit’Air 3 à un diesel de 2006 à 2010 ou à une essence de 1997 à 2005 ; la vignette coûte 3,85 € et circuler dans une ZFE avec un véhicule non autorisé expose à une amende forfaitaire de 68 €, jusqu’à 450 €. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F33371\" rel=\"noopener\" target=\"_blank\">(Vignette ou pastille Crit’Air, service-public.gouv.fr (vérifié le 1er janvier 2026))</a></li><li>Il existe 25 ZFE en France métropolitaine ; seules les agglomérations de Paris et de Lyon restent soumises au dispositif renforcé, qui vise les voitures Crit’Air 3 et plus, c’est-à-dire les diesel immatriculés avant le 1er janvier 2011 et les essence immatriculées avant le 1er janvier 2006. <a href=\"https://entreprendre.service-public.gouv.fr/vosdroits/F38025\" rel=\"noopener\" target=\"_blank\">(Circuler en zone à faibles émissions mobilité, service-public.gouv.fr (vérifié le 5 octobre 2026))</a></li><li>Par sa décision n° 2026-903 DC du 21 mai 2026, le Conseil constitutionnel a jugé que l’article 37 de la loi de simplification de la vie économique, qui supprimait les zones à faibles émissions, avait été « adopté selon une procédure contraire à la Constitution » ; les ZFE restent donc en vigueur. <a href=\"https://www.conseil-constitutionnel.fr/decision/2026/2026903DC.htm\" rel=\"noopener\" target=\"_blank\">(Décision n° 2026-903 DC du 21 mai 2026, Conseil constitutionnel)</a></li><li>Dans la Métropole du Grand Paris, aucune sanction n’est appliquée du 1er janvier au 31 décembre 2026 (période pédagogique reconduite le 22 décembre 2025), et un Pass ZFE autorise 24 jours de circulation par an sur simple inscription. <a href=\"https://metropolegrandparis.fr/fr/actualites/la-metropole-du-grand-paris-prolonge-pour-2026-les-conditions-de-mise-en-oeuvre-de-sa\" rel=\"noopener\" target=\"_blank\">(La Métropole du Grand Paris prolonge pour 2026 les conditions de mise en œuvre de sa ZFE (22 décembre 2025))</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Où en sont les ZFE pour une voiture particulière (novembre 2026)",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>ZFE</th><th>Voitures interdites</th><th>Sanctions et dérogations</th></tr></thead><tbody><tr><td>Grand Paris (intérieur de l’A86)</td><td>Crit’Air 3, 4, 5 et non classées, du lundi au vendredi de 8 h à 20 h</td><td>Aucune sanction du 1er janvier au 31 décembre 2026 (période pédagogique) ; Pass ZFE 24 jours par an</td></tr><tr><td>Lyon (Lyon, Villeurbanne, Caluire-et-Cuire, Bron et Vénissieux intra-périphérique)</td><td>Crit’Air 3, 4, 5 et non classées depuis le 1er janvier 2025</td><td>Amende de 68 € (contravention de 3e classe) ; dérogation petit rouleur 52 jours par an</td></tr><tr><td>Grenoble</td><td>Crit’Air 3 et plus, du lundi au vendredi de 7 h à 19 h</td><td>Contraventions appliquées (L’argus, décembre 2025) ; petits rouleurs 12 jours par an</td></tr><tr><td>Montpellier</td><td>Crit’Air 3 et plus</td><td>Période pédagogique (ecologie.gouv.fr, août 2025) ; 52 jours par an pour les petits rouleurs</td></tr><tr><td>Strasbourg</td><td>Crit’Air 3 prévue au 1er janvier 2027</td><td>Report d’un an annoncé par l’Eurométropole le 8 octobre 2026</td></tr><tr><td>Aix-Marseille, Reims, Rouen, Toulouse</td><td>Crit’Air 4 et plus</td><td>Calendrier fixé par chaque métropole (ecologie.gouv.fr, août 2025)</td></tr><tr><td>Autres ZFE (Bordeaux, Lille, Nantes, Rennes, Angers…)</td><td>Non classées seulement</td><td>Socle minimal imposé par la loi</td></tr></tbody></table></div>"
       },
       {
         "h2": "Quelle vignette Crit'Air a votre voiture et que signifie-t-elle ?",
@@ -3588,6 +4056,22 @@
       {
         "question": "Ma voiture est bloquée dans une ZFE et ne peut plus rouler légalement : comment la vendre ?",
         "answer": "Signalez-le dans votre demande. Un technicien vient à votre adresse, sans frais, pour la vérifier. Si la vente est conclue, l'enlèvement est offert et le paiement se fait par virement instantané."
+      },
+      {
+        "question": "Comment vendre une voiture diesel Crit’Air 4 interdite en ZFE ?",
+        "answer": "Comme n’importe quelle voiture : la ZFE limite la circulation, pas la vente. Deux acheteurs restent possibles : un particulier qui vit et roule hors ZFE, à qui il faut remettre un contrôle technique de moins de 6 mois, ou un professionnel de l’automobile, sans contrôle technique. Carte grise barrée, certificat de cession et certificat de situation administrative suffisent."
+      },
+      {
+        "question": "Où en est la suppression des ZFE après la censure du Conseil constitutionnel ?",
+        "answer": "Les ZFE restent en vigueur. L’article 37 de la loi de simplification, qui les supprimait, a été censuré le 21 mai 2026 pour un vice de procédure. Une proposition de loi d’abrogation a été rejetée en commission le 30 septembre 2026, par 21 voix contre 19, et n’a pas pu être votée en séance le 8 octobre, faute de temps."
+      },
+      {
+        "question": "Ma Crit’Air 3 est-elle verbalisée à Paris en 2026 ?",
+        "answer": "Non. La Métropole du Grand Paris a reconduit pour 2026 une période pédagogique, du 1er janvier au 31 décembre, pendant laquelle aucune sanction n’est appliquée aux Crit’Air 3, 4, 5 et non classées, interdites en semaine de 8 h à 20 h à l’intérieur de l’A86. L’amende forfaitaire prévue est de 68 €."
+      },
+      {
+        "question": "Puis-je vendre ma voiture Crit’Air 4 à quelqu’un qui habite dans la ZFE ?",
+        "answer": "Oui, la vente est légale, mais l’acheteur ne pourra pas y circuler librement : il devra demander une dérogation, comme le Pass ZFE de 24 jours dans le Grand Paris ou le dispositif petit rouleur de 52 jours à Lyon. Un particulier vivant en ZFE achète rarement une Crit’Air 4 : visez plutôt un professionnel ou un acheteur hors ZFE."
       }
     ],
     "sources": [
@@ -3610,18 +4094,58 @@
       {
         "label": "Vendre ou donner son véhicule, service-public.gouv.fr",
         "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Les voitures en circulation en France au 1er janvier 2026, SDES (ministère de la Transition écologique)",
+        "url": "https://www.statistiques.developpement-durable.gouv.fr/infographies/9565"
+      },
+      {
+        "label": "39,7 millions de voitures en circulation en France au 1er janvier 2025, SDES",
+        "url": "https://www.statistiques.developpement-durable.gouv.fr/397-millions-de-voitures-en-circulation-en-france-au-1er-janvier-2025"
+      },
+      {
+        "label": "La Métropole du Grand Paris prolonge pour 2026 les conditions de mise en œuvre de sa ZFE (22 décembre 2025)",
+        "url": "https://metropolegrandparis.fr/fr/actualites/la-metropole-du-grand-paris-prolonge-pour-2026-les-conditions-de-mise-en-oeuvre-de-sa"
+      },
+      {
+        "label": "Tout savoir sur la ZFE, Métropole de Lyon",
+        "url": "https://zfe.grandlyon.com/zfe-grand-lyon/"
+      },
+      {
+        "label": "FAQ ZFE, Métropole de Lyon (dérogations, amendes)",
+        "url": "https://zfe.grandlyon.com/faq/"
+      },
+      {
+        "label": "ZFE : vers un report de l’interdiction des Crit’Air 3, Eurométropole de Strasbourg (8 octobre 2026)",
+        "url": "https://www.strasbourg.eu/-/zfe-vers-un-report-de-l-interdiction-des-crit-air-3"
+      },
+      {
+        "label": "Examen puis rejet de la proposition de loi visant à abroger les ZFE-m, commission du développement durable, Assemblée nationale (30 septembre 2026)",
+        "url": "https://www.assemblee-nationale.fr/dyn/17/organes/commissions-permanentes/developpement-durable/actualites/examen-de-la-proposition-de-loi-visant-a-abroger-les-zones-a-faibles-emissions-mobilites"
+      },
+      {
+        "label": "ZFE : le RN ne parvient pas à faire voter leur suppression lors de sa niche parlementaire, LCP (9 octobre 2026)",
+        "url": "https://lcp.fr/actualites/zfe-le-rn-ne-parvient-pas-a-faire-voter-leur-suppression-lors-de-sa-niche-parlementaire"
+      },
+      {
+        "label": "ZFE à Paris : toujours pas de verbalisation en 2026, L’argus (24 décembre 2025)",
+        "url": "https://www.largus.fr/actualite-automobile/zfe-a-paris-toujours-pas-de-verbalisation-en-2026-30044944.html"
+      },
+      {
+        "label": "Verbalisation, dérogations : tout savoir sur les véhicules Crit’Air 3 bannis dans les ZFE, L’argus (3 janvier 2025)",
+        "url": "https://www.largus.fr/actualite-automobile/verbalisation-derogations-tout-savoir-sur-les-vehicules-crit-air-3-bannis-dans-les-zfe-30038068.html"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "vendre-voiture-carte-grise-perdue",
     "image": "accueil",
     "nav": "Carte grise perdue",
     "title": "Vendre une voiture avec la carte grise perdue | LUNICAR",
-    "description": "Carte grise perdue, volée ou abîmée : déclaration, duplicata ANTS, récépissé, certificat provisoire. Ce qu'il faut avoir en main pour vendre à LUNICAR.",
+    "description": "Carte grise perdue ou volée : pas de vente sans elle. Déclarez la perte ou le vol, demandez un duplicata ANTS (13,76 €) ; le provisoire ne permet pas de céder.",
     "h1": "Vendre sa voiture avec une carte grise <em>perdue, volée ou abîmée</em>",
-    "lede": "Sans carte grise, la cession ne peut pas être conclue : le certificat d'immatriculation barré doit être remis à l'acheteur. La solution est un duplicata demandé en ligne sur l'ANTS. LUNICAR étudie votre voiture pendant la démarche, vous rappelle avec une fourchette de prix indicative et conclut la vente dès que le document est là.",
+    "lede": "Non, pas en l’état : le vendeur doit remettre à l’acheteur la carte grise barrée, et service-public.gouv.fr demande de la faire refaire avant de vendre. Déclarez la perte (Cerfa 13753) ou le vol (plainte en commissariat ou gendarmerie), puis demandez un duplicata sur le site de l’ANTS : il coûte 13,76 € et arrive par lettre suivie, en quelques jours à plusieurs semaines. Le certificat provisoire délivré aussitôt permet de circuler un mois, pas de céder. LUNICAR peut étudier la voiture pendant l’attente et conclure dès réception du duplicata.",
     "points": [
       "Duplicata demandé en ligne, sans préfecture",
       "Estimation possible pendant la démarche",
@@ -3633,6 +4157,14 @@
       {
         "h2": "Peut-on vendre une voiture dont la carte grise est perdue ?",
         "html": "<p>Non, pas avant d'avoir obtenu un duplicata. Service-public.gouv.fr est explicite dans sa fiche sur les véhicules hérités : « si la carte grise a été perdue, vous devez d'abord la faire refaire, comme si vous conserviez le véhicule, avant de le vendre ». La règle vaut pour tout vendeur, car la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> impose de remettre à l'acheteur le certificat d'immatriculation barré, portant la mention « vendu le » avec la date, l'heure et votre signature.</p>\n<p>Cela ne vous empêche pas de préparer la vente. Vous pouvez décrire votre voiture à LUNICAR, recevoir rapidement une fourchette de prix indicative et fixer le passage du technicien pendant que la demande de duplicata est en cours. La cession est signée et le virement instantané est effectué quand le certificat d'immatriculation est entre vos mains. Pour une voiture héritée, voyez aussi notre page <a href=\"/reprise-voiture-succession\">reprise d'une voiture en succession</a>.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Le duplicata de carte grise coûte 13,76 €, soit une taxe fixe de 11 € et une redevance d’acheminement de 2,76 € ; un professionnel habilité peut ajouter des frais qu’il fixe librement. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1726\" rel=\"noopener\" target=\"_blank\">(Perte, vol ou détérioration de la carte grise, service-public.gouv.fr (vérifié le 19 juin 2026))</a></li><li>Le certificat provisoire d’immatriculation délivré en fin de démarche permet de circuler pendant 1 mois, en France uniquement ; le certificat définitif est envoyé par La Poste en lettre suivie, dans un délai qui « peut varier » : quelques jours, voire plusieurs semaines pour les cas les plus complexes. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1726\" rel=\"noopener\" target=\"_blank\">(Perte, vol ou détérioration de la carte grise, service-public.gouv.fr (vérifié le 19 juin 2026))</a></li><li>Pour demander le duplicata, il faut un justificatif de domicile de moins de 6 mois, une pièce d’identité, les formulaires Cerfa 13750 et 13753 (ou le titre détérioré) et la preuve du contrôle technique, sauf si le véhicule en est dispensé ; seuls le titulaire ou le cotitulaire peuvent faire la demande, ou une personne munie d’un mandat signé. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1726\" rel=\"noopener\" target=\"_blank\">(Perte, vol ou détérioration de la carte grise, service-public.gouv.fr (vérifié le 19 juin 2026))</a></li><li>La déclaration de perte ou de vol du certificat d’immatriculation (Cerfa 13753) « permet la circulation du véhicule, en France, pendant un délai d’1 mois » ; en cas de vol, une déclaration auprès de la gendarmerie ou du commissariat est nécessaire avant de demander le duplicata. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R1417\" rel=\"noopener\" target=\"_blank\">(Déclaration de perte ou vol d’un certificat d’immatriculation (Cerfa 13753), service-public.gouv.fr)</a></li><li>Service-public.gouv.fr est explicite : « si la carte grise a été perdue, vous devez d’abord la faire refaire, comme si vous conserviez le véhicule, avant de le vendre ». <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1480\" rel=\"noopener\" target=\"_blank\">(Carte grise : hériter d’un véhicule immatriculé en France, service-public.gouv.fr (vérifié le 13 janvier 2025))</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Carte grise perdue ou volée : ce que chaque document permet",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Document</th><th>Ce qu’il permet</th><th>Pour la vente</th></tr></thead><tbody><tr><td>Récépissé de déclaration de perte ou de vol (Cerfa 13753)</td><td>Circuler en France pendant 1 mois</td><td>Ne permet pas de céder le véhicule</td></tr><tr><td>Certificat provisoire d’immatriculation (CPI)</td><td>Circuler en France pendant 1 mois, délivré en fin de démarche en ligne</td><td>Ne permet pas de céder le véhicule</td></tr><tr><td>Accusé d’enregistrement joint à la déclaration de perte ou de vol</td><td>Justificatif pendant 1 mois à défaut de CPI</td><td>Ne permet pas de céder le véhicule</td></tr><tr><td>Duplicata (certificat d’immatriculation définitif)</td><td>Reçu par lettre suivie, en quelques jours à plusieurs semaines</td><td>C’est la carte grise à barrer, dater, signer et remettre à l’acheteur</td></tr><tr><td>Certificat de situation administrative</td><td>Délivré immédiatement sur HistoVec</td><td>Obligatoire, daté de moins de 15 jours</td></tr><tr><td>Certificat de cession Cerfa 15776</td><td>Rempli en deux exemplaires avec l’acheteur</td><td>Obligatoire ; déclaration sur le site de l’ANTS dans les 15 jours</td></tr></tbody></table></div>"
       },
       {
         "h2": "Comment déclarer la perte ou le vol et obtenir un duplicata ?",
@@ -3684,6 +4216,22 @@
       {
         "question": "LUNICAR peut-il estimer ma voiture avant que je reçoive le duplicata ?",
         "answer": "Oui. La fourchette de prix indicative et la vérification par le technicien ne dépendent pas du document. Seule la signature du certificat de cession, le virement et l'enlèvement attendent le certificat d'immatriculation définitif."
+      },
+      {
+        "question": "Combien de temps faut-il pour recevoir un duplicata de carte grise ?",
+        "answer": "Service-public.gouv.fr indique que le délai « peut varier » : quelques jours, voire plusieurs semaines pour les cas les plus complexes. Le certificat définitif est envoyé par La Poste en lettre suivie. En attendant, le certificat provisoire d’immatriculation obtenu en fin de démarche permet de circuler en France pendant 1 mois, mais pas de vendre."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour demander un duplicata de carte grise ?",
+        "answer": "Oui pour une voiture de plus de 4 ans : service-public.gouv.fr liste parmi les pièces à fournir « la preuve de contrôle technique, sauf si le véhicule en est dispensé ». Un contrôle périmé devra donc être refait avant la demande de duplicata, même si vous vendez ensuite à un professionnel, qui n’exige pas de contrôle technique."
+      },
+      {
+        "question": "Mon parent ne peut pas faire la démarche lui-même : qui peut demander le duplicata ?",
+        "answer": "Seuls le titulaire ou le cotitulaire de la carte grise peuvent demander le duplicata, mais ils peuvent mandater quelqu’un : service-public.gouv.fr prévoit que la personne qui fait la démarche fournit un mandat signé et la pièce d’identité du titulaire. La demande se fait en ligne sur le site de l’ANTS ou auprès d’un professionnel habilité."
+      },
+      {
+        "question": "Ma carte grise perdue était à l’ancien format 1234 AB 01 : que se passe-t-il ?",
+        "answer": "Le duplicata porte un nouveau numéro au format AA-123-AA, indique service-public.gouv.fr, et vous devez changer les plaques du véhicule. Faites-le avant la vente, pour que les plaques correspondent à la carte grise remise à l’acheteur. Signalez ce point dans votre demande à LUNICAR : le technicien en tient compte lors de la vérification."
       }
     ],
     "sources": [
@@ -3710,18 +4258,26 @@
       {
         "label": "Refaire votre certificat d'immatriculation, ANTS",
         "url": "https://immatriculation.ants.gouv.fr/demarches-en-ligne/refaire-votre-certificat-dimmatriculation"
+      },
+      {
+        "label": "Peut-on vendre un véhicule d’occasion sans contrôle technique ?, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16540"
+      },
+      {
+        "label": "Certificat de situation administrative, service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1360"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "vendre-voiture-immobilisee-longtemps",
     "image": "accueil",
     "nav": "Voiture immobilisée",
     "title": "Vendre une voiture immobilisée depuis longtemps | LUNICAR",
-    "description": "Voiture qui n'a pas roulé depuis des années : ce qui se dégrade, assurance et contrôle technique à l'arrêt, comment la décrire. LUNICAR la vérifie, l'enlève.",
+    "description": "Voiture qui n’a pas roulé depuis deux ans : remise en route, vente en l’état à un professionnel ou centre VHU gratuit. Assurance et contrôle technique dus.",
     "h1": "Vendre une voiture <em>qui n'a pas roulé depuis des années</em>",
-    "lede": "Une voiture restée au garage, sur un parking ou dans un jardin pendant un an ou plus se vend, même si elle ne démarre plus. À un particulier, la vente d'un véhicule non roulant est interdite ; à un professionnel comme LUNICAR, elle est possible, avec vérification à votre adresse et enlèvement offert si la vente est conclue.",
+    "lede": "Trois options : la remettre en route, la vendre en l’état à un professionnel, ou la remettre gratuitement à un centre VHU si elle est complète. Si elle ne démarre plus, la vente à un particulier est exclue : Service-public.gouv.fr précise qu’un véhicule non roulant ne peut être cédé qu’à un professionnel. Tant qu’elle peut circuler, elle doit rester assurée, même au garage, et rouler sans contrôle technique valable coûte 135 € d’amende forfaitaire. LUNICAR la vérifie à votre adresse, partout en France.",
     "points": [
       "Voiture qui ne démarre plus acceptée",
       "Vérification à votre adresse, sans frais",
@@ -3733,6 +4289,14 @@
       {
         "h2": "Peut-on vendre une voiture qui n'a pas roulé depuis un ou plusieurs ans ?",
         "html": "<p>Oui, et le choix de l'acheteur dépend surtout d'une question : la voiture roule-t-elle encore ? La fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> de Service-public.gouv.fr pose la règle : « un véhicule non roulant ne peut pas être proposé à la vente à un particulier », il ne peut être vendu qu'à un professionnel de l'automobile. Une voiture longtemps immobilisée a aussi, le plus souvent, un contrôle technique expiré, qui est exigé pour vendre à un particulier mais pas à un professionnel.</p>\n<p>LUNICAR achète partout en France des voitures qui dorment depuis des années, qu'elles démarrent ou non. Décrivez-la en ligne en indiquant depuis quand elle est arrêtée et où elle est stationnée ; un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Si elle ne démarre plus, voyez aussi notre page <a href=\"/rachat-voiture-en-panne\">rachat d'une voiture en panne</a> ; si elle est ancienne, la page <a href=\"/vendre-vieille-voiture\">vendre une vieille voiture</a>.</p>"
+      },
+      {
+        "h2": "Les chiffres à connaître",
+        "html": "<ul class=\"ticks\"><li>Un véhicule doit être assuré même s’il n’est pas utilisé pendant une longue période ou s’il est stationné dans un garage privé ; le défaut d’assurance est puni d’une amende de 3 750 €, ou d’une amende forfaitaire de 500 € en cas de première constatation par procès-verbal électronique. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2628\" rel=\"noopener\" target=\"_blank\">(Service-public.gouv.fr, « Assurance auto obligatoire ou “au tiers” » (fiche F2628))</a></li><li>Un contrôle technique favorable est valable 2 ans ; circuler sans contrôle valable expose à une amende pouvant atteindre 750 €, en général une amende forfaitaire de 135 €, avec immobilisation possible du véhicule. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2878\" rel=\"noopener\" target=\"_blank\">(Service-public.gouv.fr, « Contrôle technique d’une voiture » (fiche F2878))</a></li><li>Un véhicule non roulant ne peut pas être proposé à la vente à un particulier ; pour une vente à un particulier, le procès-verbal de contrôle technique doit dater de moins de 6 mois, et la cession doit être déclarée dans les 15 jours. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">(Service-public.gouv.fr, « Vendre ou donner son véhicule » (fiche F1707))</a></li><li>Pour une immobilisation de plus d’un mois, Caradisiac conseille de gonfler les pneus à 3 ou 4 bars pour éviter les méplats, de ne pas serrer le frein à main qui risque de se gripper, et de réajuster la pression avant de reprendre la route. <a href=\"https://www.caradisiac.com/confinement-absence-prolongee-les-precautions-a-prendre-pour-immobiliser-sa-voiture-en-toute-quietude-182356.htm\" rel=\"noopener\" target=\"_blank\">(Caradisiac, « Confinement, absence prolongée : les précautions à prendre pour immobiliser sa voiture », 2 avril 2020)</a></li><li>Un centre VHU reprend sans frais une voiture complète (carrosserie, moteur, pot catalytique, batterie) et remet un certificat de destruction ; environ 1,2 million de véhicules hors d’usage sont traités chaque année en France. <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F36516/0_0?idFicheParent=F1468\" rel=\"noopener\" target=\"_blank\">(Service-public.gouv.fr, « Véhicule à détruire et certificat d’immatriculation » (fiche F36516))</a></li></ul><p class=\"note\">Chiffres vérifiés le 3 novembre 2026 sur les sources indiquées.</p>"
+      },
+      {
+        "h2": "Voiture arrêtée depuis deux ans : les options comparées",
+        "html": "<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Option</th><th>Conditions</th><th>Ce que cela coûte</th><th>Démarches</th></tr></thead><tbody><tr><td>Remettre en route et la garder</td><td>Batterie, pneus, freins et fluides à contrôler ; contrôle technique valable avant de rouler</td><td>Batterie, pneus, vidange, contrôle technique ; assurance maintenue pendant l’arrêt</td><td>Contrôle technique si le dernier a plus de 2 ans</td></tr><tr><td>Vendre à un particulier</td><td>Voiture roulante uniquement, contrôle technique de moins de 6 mois</td><td>Remise en état pour passer le contrôle, remorquage éventuel jusqu’au centre</td><td>Certificat de cession, certificat de situation administrative de moins de 15 jours, déclaration sous 15 jours</td></tr><tr><td>Vendre en l’état à un professionnel</td><td>Possible même si elle ne démarre plus ; contrôle technique non exigé</td><td>Rien à avancer ; l’état entre dans l’offre</td><td>Certificat de cession, déclaration de cession, résiliation de l’assurance</td></tr><tr><td>Remettre à un centre VHU</td><td>Véhicule complet : carrosserie, moteur, pot catalytique, batterie</td><td>Gratuit si le véhicule est complet</td><td>Carte grise barrée « cédé pour destruction », certificat de destruction remis par le centre</td></tr><tr><td>La laisser au garage sans rouler</td><td>Reste un véhicule en état de circuler au sens de la loi</td><td>Assurance obligatoire ; 3 750 € d’amende en cas de défaut</td><td>Aucune, mais la valeur continue de baisser</td></tr></tbody></table></div>"
       },
       {
         "h2": "Qu'est-ce qui se dégrade sur une voiture immobilisée ?",
@@ -3784,6 +4348,22 @@
       {
         "question": "Que dois-je faire après la vente ?",
         "answer": "Déclarer la cession sur le site de l'ANTS dans les 15 jours, ce que nous préparons ensemble, puis prévenir votre assureur avec le certificat de cession pour résilier le contrat."
+      },
+      {
+        "question": "Que faire d’une voiture qui n’a pas roulé depuis deux ans ?",
+        "answer": "La remettre en route, la vendre en l’état ou la remettre à un centre VHU. Si elle ne démarre plus, seule la vente à un professionnel est possible, sans contrôle technique. Si elle roule, un particulier peut l’acheter avec un contrôle technique de moins de 6 mois. Un centre VHU la reprend gratuitement si elle est complète."
+      },
+      {
+        "question": "Une voiture immobilisée deux ans redémarre-t-elle ?",
+        "answer": "Souvent avec une batterie d’appoint, mais pas toujours. La batterie est généralement à remplacer, les pneus ont perdu de la pression et peuvent présenter des méplats, et un frein à main resté serré peut être grippé. Faites tourner le moteur au moins un quart d’heure après le redémarrage et regonflez les pneus avant de rouler."
+      },
+      {
+        "question": "Puis-je arrêter d’assurer une voiture qui ne sort plus du garage ?",
+        "answer": "Non, tant qu’elle est en état de circuler. Service-public.gouv.fr rappelle que l’obligation d’assurance s’applique même si le véhicule est stationné dans un garage privé ; seule une voiture manifestement hors d’état de rouler, par exemple sans moteur ou sans roues, en est dispensée. Le défaut d’assurance est puni de 3 750 € d’amende."
+      },
+      {
+        "question": "Faut-il refaire le contrôle technique pour vendre une voiture immobilisée ?",
+        "answer": "Seulement pour la vendre à un particulier : il faut alors un procès-verbal de moins de 6 mois et une voiture qui roule. Pour la vendre à un professionnel, le contrôle technique n’est pas exigé, même s’il est périmé depuis des années. Remorquer la voiture jusqu’à un centre de contrôle coûte souvent plus que ce que cela rapporte."
       }
     ],
     "sources": [
@@ -3806,9 +4386,29 @@
       {
         "label": "Histovec, historique d'un véhicule",
         "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "Service-public.gouv.fr, « Véhicule à détruire et certificat d’immatriculation » (fiche F36516)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F36516/0_0?idFicheParent=F1468"
+      },
+      {
+        "label": "Service-public.gouv.fr, « Certificat de situation administrative (non-gage et non-opposition) » (fiche F1360)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1360"
+      },
+      {
+        "label": "Caradisiac, « Confinement, absence prolongée : les précautions à prendre pour immobiliser sa voiture », 2 avril 2020",
+        "url": "https://www.caradisiac.com/confinement-absence-prolongee-les-precautions-a-prendre-pour-immobiliser-sa-voiture-en-toute-quietude-182356.htm"
+      },
+      {
+        "label": "L’argus, « Reconfinement. Comment éviter que votre voiture ne tombe en panne ? », 2 novembre 2020",
+        "url": "https://www.largus.fr/actualite-automobile/reconfinement-comment-eviter-que-votre-voiture-ne-tombe-en-panne-10454403.html"
+      },
+      {
+        "label": "Ministère de la Transition écologique, « Véhicules hors d’usage (VHU) », mis à jour le 6 octobre 2026",
+        "url": "https://www.ecologie.gouv.fr/vehicules-hors-dusage-vhu"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-04"
   },
   {
     "slug": "vendre-voiture-grosse-reparation",
