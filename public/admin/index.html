@@ -827,7 +827,7 @@ ul.plain li { margin: 3px 0; }
 .cal { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); overflow: hidden; margin: 0 0 14px; }
 .cal-tete { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-bottom: 1px solid var(--line-2); } .cal-tete b { flex: 1; text-align: center; font-size: .92rem; text-transform: capitalize; }
 .cal-leg { margin: 0; padding: 6px 12px; font-size: .74rem; color: var(--ink-5); border-bottom: 1px solid var(--line-2); }
-.cal-grille { display: grid; grid-template-columns: 38px repeat(6, minmax(0, 1fr)); max-height: 60vh; overflow-y: auto; position: relative; }
+.cal-grille { display: grid; grid-template-columns: 38px repeat(7, minmax(0, 1fr)); position: relative; }
 .cal-heures .cal-h { height: var(--h); font-size: .66rem; color: var(--ink-4); text-align: right; padding: 2px 4px 0 0; border-top: 1px solid var(--line-2); box-sizing: border-box; }
 .cal-ent { position: sticky; top: 0; z-index: 2; background: var(--surface); height: 44px; display: grid; justify-items: center; align-content: center; border-bottom: 1px solid var(--line); font-size: .68rem; color: var(--ink-5); text-transform: capitalize; cursor: pointer; }
 .cal-ent b { font-size: 1rem; color: var(--ink); line-height: 1.1; } .cal-ent i { position: absolute; right: 4px; top: 4px; font-style: normal; font-size: .62rem; background: #5A3E9E; color: #fff; border-radius: 99px; padding: 0 5px; }
@@ -850,7 +850,7 @@ ul.plain li { margin: 3px 0; }
 .rec-b { margin: 8px 0 0; padding: 0 0 0 18px; font-size: .82rem; display: grid; gap: 4px; } .rec-b li.rdv::marker { color: #2453A6; } .rec-b li.voiture::marker { color: #9A3A2B; } p.rec-b { padding: 0; color: var(--ink-5); }
 .rec-a { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .rec-sans { margin-top: 10px; } .rec-sans summary { cursor: pointer; font-size: .86rem; color: var(--ink-5); } .rec-sans .rec-liste { margin-top: 8px; } .rec.sans { border-style: dashed; }
-@media (max-width: 760px) { .carte-map { height: 38vh; } .cal-grille { grid-template-columns: 30px repeat(6, minmax(0, 1fr)); } .cal-rdv { font-size: .6rem; padding: 1px 3px; } }
+@media (max-width: 760px) { .carte-map { height: 38vh; } .cal-grille { grid-template-columns: 30px repeat(7, minmax(0, 1fr)); } .cal-rdv { font-size: .6rem; padding: 1px 3px; } }
 .pl-j.auj { border-color: #5A3E9E; }
 .pl-j.on { background: #5A3E9E; border-color: #5A3E9E; }
 .pl-j.on span, .pl-j.on b, .pl-j.on i { color: #fff; }
@@ -3220,14 +3220,33 @@ body.modal-ouvert { overflow: hidden; }
     }
 
     // ---------------- Calendrier hebdomadaire (lundi → samedi, 8 h → 19 h) : flèches ou glisser pour changer de semaine
-    const CAL_H0 = 8, CAL_H1 = 19, CAL_PX = 46;
+    const CAL_H0 = 10, CAL_H1 = 19, CAL_PX = 46; // lignes 10 h → 18 h ; avant/après : posé sur la première/dernière ligne, heure réelle affichée
     const lundiDe = iso => ajoutJours(iso, -((new Date(iso + 'T12:00:00Z').getUTCDay() + 6) % 7));
     const minutesDe = h => { const [a, b] = String(h || '09:00').split(':').map(Number); return a * 60 + (b || 0); };
     const heureDe = m => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
     // rdvs : [{ date, heure, duree, titre, sous, ref, km, classe }] · annot : badge affiché sur chaque RDV (ex. distance)
+    // Position des rendez-vous d'un jour : bornés à 10 h – 18 h (heure réelle gardée dans le libellé),
+    // côte à côte quand ils se chevauchent (ex. 19 h et 20 h tous deux posés sur la ligne de 18 h).
+    function placerCal(L) {
+        const P = L.map(r => {
+            const dur = Math.max(30, Number(r.duree) || 45);
+            const m0 = Math.min(Math.max(CAL_H0 * 60, minutesDe(r.heure)), (CAL_H1 - 1) * 60);
+            return { r, m0, dur: Math.min(dur, CAL_H1 * 60 - m0), voie: 0, voies: 1 };
+        }).sort((a, b) => a.m0 - b.m0 || minutesDe(a.r.heure) - minutesDe(b.r.heure));
+        let groupe = [], fin = -1;
+        const clore = () => { const n = Math.max(1, ...groupe.map(g => g.voie + 1)); groupe.forEach(g => g.voies = n); groupe = []; };
+        for (const p of P) {
+            if (p.m0 >= fin) { clore(); fin = -1; }
+            const prises = new Set(groupe.filter(g => g.m0 + Math.max(g.dur, 24 / CAL_PX * 60) > p.m0).map(g => g.voie));
+            while (prises.has(p.voie)) p.voie++;
+            groupe.push(p); fin = Math.max(fin, p.m0 + Math.max(p.dur, 24 / CAL_PX * 60));
+        }
+        clore();
+        return P;
+    }
     function calSemaine({ lundi, rdvs, titre, legende }) {
-        const auj = jourIso(), jours = Array.from({ length: 6 }, (_, i) => ajoutJours(lundi, i));
-        const dim = ajoutJours(lundi, 5), f = iso => new Date(iso + 'T12:00:00Z');
+        const auj = jourIso(), jours = Array.from({ length: 7 }, (_, i) => ajoutJours(lundi, i));
+        const dim = ajoutJours(lundi, 6), f = iso => new Date(iso + 'T12:00:00Z');
         const libelle = `${f(lundi).getUTCDate()} ${f(lundi).toLocaleDateString('fr-FR', { month: 'short', timeZone: 'UTC' }) !== f(dim).toLocaleDateString('fr-FR', { month: 'short', timeZone: 'UTC' }) ? f(lundi).toLocaleDateString('fr-FR', { month: 'short', timeZone: 'UTC' }) + ' ' : ''}– ${f(dim).getUTCDate()} ${f(dim).toLocaleDateString('fr-FR', { month: 'short', timeZone: 'UTC' })}${f(dim).getUTCFullYear() !== new Date().getFullYear() ? ' ' + f(dim).getUTCFullYear() : ''}`;
         const heures = Array.from({ length: CAL_H1 - CAL_H0 }, (_, i) => CAL_H0 + i);
         return `<div class="cal" data-lundi="${lundi}">
@@ -3239,7 +3258,7 @@ body.modal-ouvert { overflow: hidden; }
                     return `<div class="cal-jour${j === auj ? ' cal-auj' : ''}${j < auj ? ' passe' : ''}" data-cal-jour="${j}">
                         <div class="cal-ent" data-plj="${j}"><span>${d.toLocaleDateString('fr-FR', { weekday: 'short', timeZone: 'UTC' }).replace('.', '')}</span><b>${d.getUTCDate()}</b>${L.length ? `<i>${L.length}</i>` : ''}</div>
                         <div class="cal-col">${heures.map(h => `<div class="cal-case" data-cal-slot="${j}T${String(h).padStart(2, '0')}:00"></div>`).join('')}
-                        ${L.map(r => { const m0 = Math.max(CAL_H0 * 60, minutesDe(r.heure)), dur = Math.max(30, Number(r.duree) || 45); return `<div class="cal-rdv ${r.classe || ''}" data-cal-rdv="${esc(r.ref || '')}" data-date="${r.date}" data-heure="${esc(r.heure)}" data-duree="${dur}" style="top:${(m0 - CAL_H0 * 60) / 60 * CAL_PX}px;height:${Math.max(24, dur / 60 * CAL_PX - 2)}px"><b>${esc(r.heure)} ${esc(r.titre || '')}</b><span>${esc(r.sous || '')}</span>${r.km != null ? `<em>${r.km} km</em>` : ''}</div>`; }).join('')}
+                        ${placerCal(L).map(({ r, m0, dur, voie, voies }) => { return `<div class="cal-rdv ${r.classe || ''}" data-cal-rdv="${esc(r.ref || '')}" data-date="${r.date}" data-heure="${esc(r.heure)}" data-duree="${dur}" style="top:${(m0 - CAL_H0 * 60) / 60 * CAL_PX}px;height:${Math.max(24, dur / 60 * CAL_PX - 2)}px;left:calc(${voie / voies * 100}% + 2px);right:auto;width:calc(${100 / voies}% - 4px)"><b>${esc(r.heure)} ${esc(r.titre || '')}</b><span>${esc(r.sous || '')}</span>${r.km != null ? `<em>${r.km} km</em>` : ''}</div>`; }).join('')}
                         </div></div>`; }).join('')}
             </div></div>`;
     }
