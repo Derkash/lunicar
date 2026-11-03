@@ -558,7 +558,7 @@ async function envoyerDemande(d, opts = {}) {
     if (d.plaque) { try { apiBrut = await fichePlaque.ficheComplete(d.plaque); } catch (e) { apiBrut = null; } }
     const ref = d.id.substring(0, 8).toUpperCase();
     try {
-        await store.enregistrerDemande(store.ligneDepuisDemande({ ...d, ...(apiBrut ? { fiche_api: apiBrut, vin: apiBrut.vin || '' } : {}) }, { origine: opts.abandon ? 'abandon' : 'site' }));
+        await store.enregistrerDemande(store.ligneDepuisDemande({ ...fichePlaque.enrichirNom(d, apiBrut), ...(apiBrut ? { fiche_api: apiBrut, vin: apiBrut.vin || '' } : {}) }, { origine: opts.abandon ? 'abandon' : 'site' }));
     } catch (e) {
         console.error(`🚨 Demande ${ref} non enregistrée en base :`, e.message);
     }

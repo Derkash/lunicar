@@ -2049,7 +2049,7 @@ body.modal-ouvert { overflow: hidden; }
             return `${entete}<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}${clos ? ' clos' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
-                <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b><span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
+                <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b>${saisieDiff(x)}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${badgeInteret(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
@@ -2222,6 +2222,12 @@ body.modal-ouvert { overflow: hidden; }
             const p = $('#cfB .btn:last-child'); if (p) p.focus();
         });
     }
+    // Nom tiré de la plaque : on signale la saisie du vendeur quand la marque ne correspond pas (« Opel » saisi, plaque Citroën).
+    const saisieDiff = x => {
+        const dec = String(x.vehicule_declare || '').trim(), m = dec.split(/\s+/)[0] || '';
+        const norm = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        return dec && m && !/^\d{4}$/.test(m) && !norm(x.vehicule || '').includes(norm(m)) ? `<span class="motifs" style="color:var(--rouge, #B3261E)">Saisi par le vendeur : ${esc(dec)} (plaque différente)</span>` : '';
+    };
     const nomDemande = d => { const x = d.data || {}; return [[x.vehicule, x.annee].filter(Boolean).join(' '), [x.prenom, x.nom].filter(Boolean).join(' ')].filter(Boolean).join(' · ') || d.ref; };
 
     // ---------------- Glisser une demande : à droite = archiver (annulable), à gauche = supprimer (avec confirmation)
@@ -4081,7 +4087,7 @@ body.modal-ouvert { overflow: hidden; }
         $('#sheetIn').innerHTML = `
         <div class="sh-top">
             <button class="retour" id="closeSheet" aria-label="Retour aux demandes"><svg><use href="#i-retour"/></svg><span>Demandes</span></button>
-            <div class="sh-titre"><h2>${esc(x.vehicule || 'Véhicule non précisé')} ${esc(x.annee || '')}${badgeMeca(x)}</h2>
+            <div class="sh-titre"><h2>${esc(x.vehicule || 'Véhicule non précisé')} ${esc(x.annee || '')}${badgeMeca(x)}</h2>${saisieDiff(x)}
                 <small><button type="button" class="mi-lien" data-infos>Modifier</button> · <button type="button" class="mi-lien" data-cg>Carte grise</button> · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
