@@ -839,6 +839,8 @@ ul.plain li { margin: 3px 0; }
 .cal-rdv b { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .cal-rdv span { display: block; color: var(--ink-5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cal-rdv em { display: inline-block; font-style: normal; font-weight: 700; font-size: .64rem; margin-top: 1px; padding: 0 5px; border-radius: 99px; background: #F6E3DF; color: #9A3A2B; }
 .cal-rdv.combinable { background: #E3F3E8; border-left-color: #1D6B3D; } .cal-rdv.combinable em { background: #1D6B3D; color: #fff; }
+.cal-rdv.cal-choix { background: #FBF3E2; border: 2px dashed #A88B3D; border-left-width: 3px; color: var(--ink); z-index: 1; pointer-events: none; }
+.rdv-cal { margin: 14px 0 0; } .rdv-cal .cal { border: 1px solid var(--line-2); border-radius: 12px; overflow: hidden; }
 .cal-rdv.fini { background: #F1F1EE; border-left-color: #B8B4AA; color: var(--ink-5); } .cal-rdv.achete { background: #E3F3E8; border-left-color: #1D6B3D; }
 /* Carte */
 .carte-sec h3 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; } .carte-sec h3 small { flex: 1; } .carte-sec h3 .btn { margin-left: auto; }
@@ -2940,7 +2942,8 @@ body.modal-ouvert { overflow: hidden; }
             <label class="f">Durée<select class="in" name="duree">${[30, 45, 60, 90, 120].map(m => `<option value="${m}"${(r.duree || 45) === m ? ' selected' : ''}>${m < 60 ? m + ' min' : m / 60 + ' h' + (m % 60 ? ' 30' : '')}</option>`).join('')}</select></label>
             <label class="f rdv-lieu">Note<input class="in" name="note" value="${esc(r.note || '')}" placeholder="Code portail, documents à préparer, double des clés…"></label>
             <div class="rdv-act"><button class="btn btn-p">${r.date ? 'Enregistrer le nouvel horaire' : 'Fixer le rendez-vous'}</button>${inline ? '' : '<button type="button" class="btn" id="rdvAnnulForm">Fermer</button>'}</div>
-        </form>`;
+        </form>
+        <div id="rdvCal" class="rdv-cal"><p class="sub"><span class="spin"></span> Chargement de l'agenda…</p></div>`;
     }
     // Carte grise : photo → lecture IA → écran de vérification → les champs cochés sont reportés dans la fiche.
     function scannerCarteGrise(d) {
@@ -3170,10 +3173,38 @@ body.modal-ouvert { overflow: hidden; }
         $('#plFiltres').querySelectorAll('[data-plf]').forEach(b => b.onclick = () => { E.filtre = b.dataset.plf; $('#plFiltres').querySelectorAll('[data-plf]').forEach(o => o.classList.toggle('on', o === b)); if (E.P && E.K) dessiner(); });
         await chargerAutour();
     }
+    // Agenda façon Outlook sous le formulaire : rendez-vous de la semaine avec leur distance à cette demande ;
+    // un clic sur un créneau libre remplit la date et l'heure, le créneau choisi apparaît en pointillés.
+    let agLundi = null, agCache = {};
+    async function agendaRdv(d, lundi) {
+        const z = $('#rdvCal'), F = $('#rdvF'); if (!z || !F) return;
+        const choixDate = F.date.value, choixHeure = F.heure.value;
+        lundi = lundi || (choixDate ? lundiDe(choixDate) : lundiDe(jourIso()));
+        agLundi = lundi;
+        const cle = d.ref + '|' + lundi;
+        if (!agCache[cle] || Date.now() - agCache[cle].t > 60000) {
+            try { agCache[cle] = { t: Date.now(), j: await api('/api/admin/demandes/' + d.ref + '/agenda?lundi=' + lundi) }; }
+            catch (e) { z.innerHTML = `<p class="notice">${esc(e.message)}</p>`; return; }
+        }
+        if (agLundi !== lundi || !$('#rdvCal')) return;
+        const A = agCache[cle].j;
+        const rdvs = A.rdvs.filter(r => !r.moi).map(r => ({ date: r.date, heure: r.heure, duree: r.duree, ref: r.ref,
+            titre: (r.vehicule || 'Véhicule').split(' ').slice(0, 2).join(' '), sous: [r.ville, AVEC[r.avec]].filter(Boolean).join(' · '),
+            km: r.km, classe: r.statut !== 'prevu' ? 'fini' : r.km != null && r.km <= 150 ? 'combinable' : '' }));
+        if (choixDate >= lundi && choixDate <= ajoutJours(lundi, 6)) rdvs.push({ date: choixDate, heure: choixHeure, duree: Number(F.duree.value) || 45, titre: 'Ce rendez-vous', sous: A.ville || '', classe: 'cal-choix' });
+        z.innerHTML = calSemaine({ lundi, rdvs, titre: 'Agenda', legende: `Touchez un créneau libre pour le choisir. Distances estimées par la route depuis ${esc(A.ville || 'le vendeur')} ; en vert, rendez-vous à moins de 150 km (tournée combinable).` });
+        lierCal(z, {
+            onSemaine: l => agendaRdv(d, l),
+            onSlot: (jour, h) => { if (jour < jourIso()) return toast('Jour passé'); F.date.value = jour; F.heure.value = h; agendaRdv(d, lundi); },
+            onRdv: (ref, ds) => { if (ref) toast(`${ds.heure} · déjà pris (${ref}) : choisissez un autre créneau`); }
+        });
+    }
     function lierRdv(d) {
         const bloc = $('#rdvBloc'); if (!bloc) return;
         const lierForm = () => {
             if (!$('#rdvF')) return;
+            agendaRdv(d);
+            ['date', 'heure', 'duree', 'avec'].forEach(n => { const i = $('#rdvF [name=' + n + ']'); if (i) i.addEventListener('change', () => agendaRdv(d)); });
             $('#rdvF').onsubmit = async e => {
                 e.preventDefault();
                 try { courant = await api('/api/admin/demandes/' + d.ref + '/rdv', { method: 'POST', body: JSON.stringify(Object.fromEntries(new FormData(e.target))) }); maj(courant); compta = null; fiche(); toast('Rendez-vous enregistré : le véhicule est dans « Nos véhicules »'); $('#rdvBloc').scrollIntoView({ block: 'center' }); }
