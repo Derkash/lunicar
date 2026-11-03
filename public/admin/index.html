@@ -913,6 +913,18 @@ ul.plain li { margin: 3px 0; }
 .dec-grille span { display: block; font-size: .72rem; color: var(--ink-5); font-weight: 550; }
 .dec-grille b { display: block; font-size: 1.1rem; font-weight: 650; margin: 2px 0 1px; }
 .dec-grille small { display: block; font-size: .72rem; color: var(--ink-4); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sonar h3 small { font-weight: 500; color: var(--ink-4); font-size: .78rem; }
+.sonar .dec-grille { margin: 10px 0 0; }
+.sonar-bandes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px; margin: 12px 0 0; }
+.sonar-bandes div { padding: 6px 6px 5px; border-radius: 6px; font-size: .7rem; line-height: 1.25; }
+.sonar-bandes div b { display: block; font-size: .78rem; font-weight: 650; }
+.sonar-bandes .tba { background: #DCEFE3; } .sonar-bandes .ba { background: #E8F4EC; } .sonar-bandes .eq { background: #EEF1F5; }
+.sonar-bandes .ls { background: #FBF0DD; } .sonar-bandes .ad { background: #F8E1DE; }
+.sonar-bandes .ici { outline: 2px solid var(--marine); }
+.sonar .lecture { margin: 12px 0 0; padding-left: 18px; font-size: .88rem; }
+.sonar .lecture li { margin: 3px 0; }
+.sonar details { margin-top: 10px; font-size: .86rem; }
+@media (max-width: 720px) { .sonar-bandes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .dec-faits { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; }
 .dec-faits span { font-size: .78rem; background: #F1EFEA; color: var(--ink-7); padding: 3px 9px; border-radius: 99px; }
 .decision .resume { margin: 12px 0 0; }
@@ -3999,6 +4011,31 @@ body.modal-ouvert { overflow: hidden; }
     const ESTIM_DUREE = 'environ une minute';
 
     // Attractivité à la revente : score, verdict, délai, raisons (issus de l'estimation).
+    // Analyse Sonar Pricing + annonces filtrées à la main (suivi.sonar), sous l'analyse de prix existante.
+    function blocSonar(d) {
+        const z = (d.suivi || {}).sonar;
+        if (!z) return '';
+        const B = z.bandes || {}, prix = Number(z.prix_conseille) || 0;
+        const LIB = [['tba', 'Très bonne affaire'], ['ba', 'Bonne affaire'], ['eq', 'Prix équitable'], ['ls', 'Légèrement supérieur'], ['ad', 'Au-dessus du marché']];
+        const bandes = LIB.filter(([k]) => Array.isArray(B[k])).map(([k, l]) => `<div class="${k}${prix >= B[k][0] && prix <= B[k][1] ? ' ici' : ''}"><b>${esc(l)}</b>${eur(B[k][0])} – ${eur(B[k][1])}</div>`).join('');
+        const R = z.retenues || [], E = z.ecartees || [];
+        return `<section class="sec sonar">
+            <h3>Analyse Sonar Pricing <small>${date(z.date, false)}${z.version ? ' · ' + esc(z.version) : ''}${z.km ? ' · ' + Number(z.km).toLocaleString('fr-FR') + ' km' : ''}</small></h3>
+            <div class="dec-grille">
+                <div><span>Revente conseillée (pro IDF)</span><b class="num">${eur(z.prix_conseille)}</b><small>${esc(z.indicateur || '')}</small></div>
+                <div><span>Plancher de négociation</span><b class="num">${eur(z.plancher)}</b><small>${z.prix_repli ? 'repli ' + eur(z.prix_repli) : '&nbsp;'}</small></div>
+                <div><span>Achat max</span><b class="num">${eur(z.achat_max)}</b><small>${z.frais ? 'frais ≈ ' + eur(z.frais) + ' · marge ≈ ' + eur(z.marge || 800) : '&nbsp;'}</small></div>
+                <div><span>Moyenne Sonar</span><b class="num">${eur(z.moyenne)}</b><small>${z.fiabilite ? 'fiabilité ' + esc(z.fiabilite) + '/5 · ' : ''}${z.nb_annonces ? z.nb_annonces + ' annonces' : ''}${z.nb_retenues != null ? ', ' + z.nb_retenues + ' retenues' : ''}</small></div>
+            </div>
+            ${bandes ? `<div class="sonar-bandes">${bandes}</div>` : ''}
+            ${(z.lecture || []).length ? `<ul class="lecture">${z.lecture.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+            ${R.length ? `<details><summary>${R.length} annonces retenues</summary><div class="ads-wrap"><table class="ads"><tr><th>Annonce</th><th>Vendeur</th><th style="text-align:right">Année</th><th style="text-align:right">Km</th><th style="text-align:right">Prix</th><th>En ligne depuis</th></tr>
+                ${R.map(a => `<tr><td>${/^https:\/\/www\.leboncoin\.fr\//.test(a.url || '') ? `<a href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(a.titre || a.ville || 'Annonce')}</a>` : esc(a.titre || a.ville || 'Annonce')}${a.remarque ? ` <span style="color:var(--ink-4)">· ${esc(a.remarque)}</span>` : ''}</td><td>${esc(a.vendeur || '')}</td><td class="n">${esc(a.annee || '')}</td><td class="n">${a.km ? Number(a.km).toLocaleString('fr-FR') : ''}</td><td class="n"><b>${eur(a.prix)}</b></td><td>${esc(a.depuis || '')}</td></tr>`).join('')}</table></div></details>` : ''}
+            ${E.length ? `<details><summary>${E.length} annonces écartées</summary><ul class="plain">${E.map(t => `<li>${esc(t)}</li>`).join('')}</ul></details>` : ''}
+            ${z.url ? `<p class="sub" style="margin:10px 0 0"><a href="${esc(z.url)}" target="_blank" rel="noopener noreferrer">Ouvrir le Sonar Pricing</a></p>` : ''}
+        </section>`;
+    }
+
     function attractivite(a) {
         if (!a || a.score == null) return '';
         const V = { acheter: ['Acheter', 'ok'], prix_serre: ['Acheter à prix serré', 'moyen'], eviter: ['Éviter', 'bas'] }[a.verdict] || ['—', 'moyen'];
@@ -4092,6 +4129,7 @@ body.modal-ouvert { overflow: hidden; }
                     ${s.estimation_statut === 'erreur' ? `<span style="color:var(--red)">Échec : ${esc(s.estimation_erreur)}</span>` : ''}
                 </div>
             </section>
+            ${blocSonar(d)}
             <button type="button" class="btn mail-ouvrir" data-vers-mail>Échanges par e-mail${(((d.suivi || {}).emails || []).length) ? ` <b>${d.suivi.emails.length}</b>` : ''}</button>
             <div class="mail-layer" id="mailLayer" hidden><div class="ml-in"><button class="close ml-x" type="button" id="mailLayerX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button><section class="sec mail-sec" id="secEmail"></section></div></div>
             <section class="sec" hidden>
