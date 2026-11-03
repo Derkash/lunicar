@@ -4022,11 +4022,12 @@ body.modal-ouvert { overflow: hidden; }
         return `<section class="sec sonar">
             <h3>Analyse Sonar Pricing <small>${date(z.date, false)}${z.version ? ' · ' + esc(z.version) : ''}${z.km ? ' · ' + Number(z.km).toLocaleString('fr-FR') + ' km' : ''}</small></h3>
             <div class="dec-grille">
-                <div><span>Revente conseillée (pro IDF)</span><b class="num">${eur(z.prix_conseille)}</b><small>${esc(z.indicateur || '')}</small></div>
+                <div><span>Revente conseillée</span><b class="num">${eur(z.prix_conseille)}</b><small>${esc(z.indicateur || '')}</small></div>
                 <div><span>Plancher de négociation</span><b class="num">${eur(z.plancher)}</b><small>${z.prix_repli ? 'repli ' + eur(z.prix_repli) : '&nbsp;'}</small></div>
                 <div><span>Achat max</span><b class="num">${eur(z.achat_max)}</b><small>${z.frais ? 'frais ≈ ' + eur(z.frais) + ' · marge ≈ ' + eur(z.marge || 800) : '&nbsp;'}</small></div>
                 <div><span>Moyenne Sonar</span><b class="num">${eur(z.moyenne)}</b><small>${z.fiabilite ? 'fiabilité ' + esc(z.fiabilite) + '/5 · ' : ''}${z.nb_annonces ? z.nb_annonces + ' annonces' : ''}${z.nb_retenues != null ? ', ' + z.nb_retenues + ' retenues' : ''}</small></div>
             </div>
+            ${z.mediane_part || z.mediane_pro ? `<p class="sub" style="margin:10px 0 0"><b>Particuliers</b> : prix du milieu ${eur(z.mediane_part)}${z.nb_part ? ` (${z.nb_part} annonces)` : ''} · <b>Pros</b> : ${eur(z.mediane_pro)}${z.nb_pro ? ` (${z.nb_pro} annonces)` : ''}${z.reference ? ` · <b>Référence tout marché</b> : ${eur(z.reference)}` : ''}</p>` : ''}
             ${bandes ? `<div class="sonar-bandes">${bandes}</div>` : ''}
             ${(z.lecture || []).length ? `<ul class="lecture">${z.lecture.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
             ${R.length ? `<details><summary>${R.length} annonces retenues</summary><div class="ads-wrap"><table class="ads"><tr><th>Annonce</th><th>Vendeur</th><th style="text-align:right">Année</th><th style="text-align:right">Km</th><th style="text-align:right">Prix</th><th>En ligne depuis</th></tr>
