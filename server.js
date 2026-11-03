@@ -1257,7 +1257,8 @@ function fileBing(etat) {
     const soumis = etat.soumis || {};
     const grandes = new Set(zones.FRANCE_CITIES.slice(0, 80).map(s => `/reprise-auto-${s}`));
     const idf = new Set(zones.IDF_CITIES.map(s => `/reprise-auto-${s}`));
-    const rang = u => (!isCityUrl(u) ? 0 : grandes.has(u.loc) ? 1 : idf.has(u.loc) ? 2 : 3);
+    const estDept = u => /-(\d{2,3}|2a|2b)$/.test(u.loc) && !isCityUrl(u);
+    const rang = u => (!isCityUrl(u) ? (estDept(u) ? 2 : 0) : grandes.has(u.loc) ? 1 : idf.has(u.loc) ? 3 : 4);
     const pagesSite = indexablePages().filter(u => Number(u.priority) >= 0.3);
     const modifiees = pagesSite.filter(u => soumis[u.loc] && u.lastmod > soumis[u.loc]);
     const jamais = pagesSite.filter(u => !soumis[u.loc]);
