@@ -1245,26 +1245,68 @@ async function pingIndexNow() {
         console.log(`IndexNow : ${urlList.length} URL soumises${complet ? ' (resoumission complète)' : ''} (HTTP ${r.status})`);
         if (r.ok) await store.ecrireReglage('indexnow', { quand: new Date(now).toISOString(), lastmod, complet: complet ? new Date(now).toISOString() : etat.complet });
     } catch (e) { console.log('IndexNow indisponible :', e.message); }
-    await soumettreBing(modifiees);
 }
 
-// API Bing Webmaster (quota : 100 URL par jour, 300 par mois) : les pages modifiées, hors villes d'abord,
-// pour que l'index lu par ChatGPT reprenne vite les titres et textes à jour.
-async function soumettreBing(modifiees) {
-    const cle = process.env.BING_API_KEY;
-    if (!cle || !modifiees.length) return;
-    const tri = [...modifiees].sort((a, b) => Number(isCityUrl(a)) - Number(isCityUrl(b)) || Number(b.priority) - Number(a.priority));
-    const urlList = tri.slice(0, 90).map(u => SITE.baseUrl + (u.loc === '/' ? '/' : u.loc));
+// API Bing Webmaster (quota : 100 URL par jour, 2 800 par mois). Bing est l'index que lit ChatGPT et il ne
+// connaissait que 476 pages sur 5 333 le 3/11/2026 : on parcourt donc TOUT le site, 100 URL par jour, dans
+// l'ordre d'intérêt pour ChatGPT — pages modifiées depuis leur dernière soumission, puis jamais soumises
+// (piliers, grandes villes de France, villes d'Île-de-France, autres communes), puis les plus anciennes
+// soumissions (> 30 jours). État mémorisé dans le réglage « bing » (loc → date), donc insensible aux redémarrages.
+const BING_API = 'https://ssl.bing.com/webmaster/api.svc/json';
+function fileBing(etat) {
+    const soumis = etat.soumis || {};
+    const grandes = new Set(zones.FRANCE_CITIES.slice(0, 80).map(s => `/reprise-auto-${s}`));
+    const idf = new Set(zones.IDF_CITIES.map(s => `/reprise-auto-${s}`));
+    const rang = u => (!isCityUrl(u) ? 0 : grandes.has(u.loc) ? 1 : idf.has(u.loc) ? 2 : 3);
+    const pagesSite = indexablePages().filter(u => Number(u.priority) >= 0.3);
+    const modifiees = pagesSite.filter(u => soumis[u.loc] && u.lastmod > soumis[u.loc]);
+    const jamais = pagesSite.filter(u => !soumis[u.loc]);
+    const limite = new Date(Date.now() - 30 * JOUR).toISOString().slice(0, 10);
+    const anciennes = pagesSite.filter(u => soumis[u.loc] && u.lastmod <= soumis[u.loc] && soumis[u.loc] < limite)
+        .sort((a, b) => soumis[a.loc].localeCompare(soumis[b.loc]));
+    const parRang = l => [...l].sort((a, b) => rang(a) - rang(b) || Number(b.priority) - Number(a.priority));
+    return [...parRang(modifiees), ...parRang(jamais), ...anciennes];
+}
+async function quotaBing(cle) {
     try {
-        const r = await fetch(`https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey=${encodeURIComponent(cle)}`, {
+        const r = await fetch(`${BING_API}/GetUrlSubmissionQuota?siteUrl=${encodeURIComponent(SITE.baseUrl + '/')}&apikey=${encodeURIComponent(cle)}`);
+        const d = (await r.json()).d || {};
+        return Math.max(0, Math.min(Number(d.DailyQuota) || 0, Number(d.MonthlyQuota) || 0));
+    } catch (e) { return 100; }
+}
+async function soumettreBing() {
+    const cle = process.env.BING_API_KEY;
+    if (!cle) return;
+    const etat = (await store.lireReglage('bing', null)) || {};
+    const now = Date.now();
+    if (etat.quand && now - Date.parse(etat.quand) < 20 * 3600 * 1000) return;
+    const quota = process.env.BING_ESSAI === '1' ? 100 : await quotaBing(cle);
+    const lot = fileBing(etat).slice(0, Math.min(100, quota));
+    if (!lot.length) { console.log(`Bing Webmaster : rien à soumettre (quota restant ${quota})`); return; }
+    const urlList = lot.map(u => SITE.baseUrl + (u.loc === '/' ? '/' : u.loc));
+    if (process.env.BING_ESSAI === '1') { console.log('Bing Webmaster (essai) :', urlList.join('\n')); return; }
+    try {
+        const r = await fetch(`${BING_API}/SubmitUrlBatch?apikey=${encodeURIComponent(cle)}`, {
             method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body: JSON.stringify({ siteUrl: SITE.baseUrl, urlList })
         });
-        console.log(`Bing Webmaster : ${urlList.length} URL soumises (HTTP ${r.status})`);
+        const corps = await r.text();
+        console.log(`Bing Webmaster : ${urlList.length} URL soumises (HTTP ${r.status})${r.ok ? '' : ' ' + corps.slice(0, 200)}`);
+        if (!r.ok) return;
+        const jour = new Date(now).toISOString().slice(0, 10);
+        const soumis = { ...(etat.soumis || {}) };
+        lot.forEach(u => { soumis[u.loc] = jour; });
+        const total = indexablePages().length;
+        await store.ecrireReglage('bing', { quand: new Date(now).toISOString(), soumis, couverts: Object.keys(soumis).length, total });
     } catch (e) { console.log('Bing Webmaster indisponible :', e.message); }
 }
 if (typeof fetch === 'function' && (process.env.RENDER || process.env.INDEXNOW_PING === '1')) {
     setTimeout(() => pingIndexNow().catch(e => console.log('IndexNow :', e.message)), 30000).unref();
     setInterval(() => pingIndexNow().catch(e => console.log('IndexNow :', e.message)), JOUR).unref();
+}
+if (typeof fetch === 'function' && (process.env.RENDER || process.env.BING_ESSAI === '1')) {
+    // Toutes les 6 h (la fonction ne soumet qu'une fois par 24 h) : un déploiement ou une panne Bing ne fait pas sauter la journée.
+    setTimeout(() => soumettreBing().catch(e => console.log('Bing Webmaster :', e.message)), 45000).unref();
+    setInterval(() => soumettreBing().catch(e => console.log('Bing Webmaster :', e.message)), 6 * 3600 * 1000).unref();
 }
 
 // Route admin cachée
