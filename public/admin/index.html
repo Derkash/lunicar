@@ -2323,10 +2323,19 @@ body.modal-ouvert { overflow: hidden; }
         });
     })();
     // Retour dans l'app (ou sur l'onglet) : on recharge si la liste date de plus de 30 s.
-    let vuLe = Date.now();
+    let vuLe = Date.now(), versionAdmin = '';
+    fetch('/admino/version', { cache: 'no-store' }).then(r => r.json()).then(j => { versionAdmin = j.v; }).catch(() => {});
     document.addEventListener('visibilitychange', () => {
         if (document.hidden || !token || $('#app').hidden || Date.now() - vuLe < 30000) return;
-        vuLe = Date.now(); charger().catch(() => {}); chargerMessages().catch(() => {}); chargerBoite().then(() => { if (!$('[data-view="boite"]').hidden && !bxOuvert) rendreBoite(); }).catch(() => {});
+        vuLe = Date.now();
+        const saisieEnCours = document.activeElement && /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
+        // Nouvelle version déployée : on recharge la page entière (sauf saisie en cours).
+        fetch('/admino/version', { cache: 'no-store' }).then(r => r.json()).then(j => {
+            if (!versionAdmin) versionAdmin = j.v; else if (j.v !== versionAdmin && !saisieEnCours) location.reload();
+        }).catch(() => {});
+        // Fiche ouverte : on relit la demande (analyses ajoutées entre-temps, statut changé ailleurs).
+        if (courant && !$('#sheet').hidden && !saisieEnCours) api('/api/admin/demandes/' + courant.ref).then(d => { if (courant && d.ref === courant.ref && $('#sheet').hidden === false) { courant = d; fiche(); } }).catch(() => {});
+        charger().catch(() => {}); chargerMessages().catch(() => {}); chargerBoite().then(() => { if (!$('[data-view="boite"]').hidden && !bxOuvert) rendreBoite(); }).catch(() => {});
     });
 
     // ---------------- Analyses du site (mesure interne : visites, formulaire, vitesse)
@@ -3980,8 +3989,8 @@ body.modal-ouvert { overflow: hidden; }
         afficherFiche(ref);
     }
     async function afficherFiche(ref) {
-        if (!courant || courant.ref !== ref) {
-            try { courant = await api('/api/admin/demandes/' + ref); } catch (e) { toast(e.message); history.replaceState({}, '', BASE); return quitterFiche(); }
+        if (!courant || courant.ref !== ref || Date.now() - (courant._lu || 0) > 30000) {
+            try { courant = await api('/api/admin/demandes/' + ref); courant._lu = Date.now(); } catch (e) { toast(e.message); history.replaceState({}, '', BASE); return quitterFiche(); }
         }
         document.body.classList.add('page-fiche'); $('#sheet').hidden = false;
         document.title = `${(courant.data || {}).vehicule || 'Demande'} · Lunicar`;

@@ -1286,6 +1286,9 @@ app.get(['/conversions/google-ads.csv', '/conversions/leads.csv'], async (req, r
     } catch (e) { res.status(500).send('Erreur'); }
 });
 
+// Version de l'admin : l'app iOS (WebView restée ouverte) se recharge quand elle change.
+const ADMIN_VERSION = process.env.RENDER_GIT_COMMIT || String(Date.now());
+app.get('/admino/version', (req, res) => { res.set('Cache-Control', 'no-store'); res.json({ v: ADMIN_VERSION }); });
 app.get(['/admino', '/admino/demande/:ref', '/admino/vehicule/:id', '/admino/annonce/:id'], (req, res) => {
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     res.set('Cache-Control', 'no-store');
