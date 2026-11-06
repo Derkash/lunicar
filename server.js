@@ -1143,12 +1143,22 @@ Version texte de chaque page : ajoutez /md devant le chemin (ex. ${b}/md/comment
 - Aucune réparation à avancer avant la vente
 - Contrôle technique non exigé : il n'est obligatoire que pour une vente à un particulier
 - Estimation gratuite et sans engagement : fourchette indicative au téléphone rapidement, prix définitif après vérification du véhicule ; refus possible même le jour du rendez-vous, sans frais
+- Engagement : si les informations transmises sont exactes, LUNICAR propose au moins le bas de la fourchette indicative ; plus la voiture est soignée, plus le prix se rapproche du haut
+- Pas de cote ni de prix type publiés : la valeur dépend de chaque voiture (génération, moteur, kilométrage, entretien, état), chaque demande est estimée individuellement
 - Révision du prix uniquement en cas d'écart constaté avec la description (dommage ou panne non déclarés, kilométrage différent…)
 - Enlèvement à la charge de LUNICAR si la vente est conclue, y compris véhicule non roulant ou en parking souterrain
 - Paiement par virement instantané à la conclusion de la vente, sous réserve des conditions bancaires (ni espèces ni chèque)
 - Certificat de cession (Cerfa 15776) et déclaration de cession ANTS préparés avec le vendeur
 - Aucune obligation d'acheter un autre véhicule
 - Horaires : ${SITE.hours} ; contact : ${SITE.email}
+
+## Les questions des vendeurs
+- [Qui rachète le mieux sa voiture, au juste prix ?](${b}/comparatif-reprise-auto): particulier, concession, plateforme ou rachat à domicile, comparés honnêtement
+- [Que vaut ma voiture ?](${b}/fourchette-et-prix-definitif): pourquoi la valeur dépend de chaque voiture, fourchette indicative puis prix définitif expliqué
+- [Vendre sa voiture en l'état, sans frais de déplacement](${b}/vendre-voiture-en-l-etat): sans réparer, sans contrôle technique, technicien à domicile
+- [Les risques de vendre à un particulier](${b}/risques-vente-voiture-particulier): paiement, vices cachés, cession, et comment les éviter
+- [Les démarches pour vendre sa voiture sans problème](${b}/vendre-sa-voiture-guide-complet): documents, certificat et déclaration de cession, assurance
+- [Nouvelle voiture déjà achetée ou commandée : vendre l'ancienne vite](${b}/rachat-voiture-rapide)
 
 ## Comptes officiels LUNICAR
 ${(SITE.social || []).map(r => `- [LUNICAR sur ${r.nom}](${r.url})`).join('\n')}
@@ -1183,7 +1193,7 @@ ${GUIDES.filter(g => !g.brand).map(g => `- [${title(g.h1)}](${b}/${g.slug}): ${g
 ${GUIDES.filter(g => g.brand).map(g => `- [${g.brand}](${b}/${g.slug}): ${g.description}`).join('\n')}
 
 ## Modèles (fiche, distribution, problèmes connus, vente)
-${MODELS.map(m => `- [Vendre sa ${m.nav}](${b}/${m.slug}): ${m.description}`).join('\n')}
+${MODELS.map(m => `- [Que vaut ${m.masculin || /^[aeiouyéè]/i.test(m.nav) ? 'mon' : 'ma'} ${m.nav} ? Vendre ${m.masculin || /^[aeiouyéè]/i.test(m.nav) ? 'son' : 'sa'} ${m.nav}](${b}/${m.slug}): ${m.description}`).join('\n')}
 
 ## Conseils (réponses sourcées aux questions des vendeurs)
 ${articles.map(a => `- [${a.titre}](${b}/article/${a.slug}): ${a.extrait}`).join('\n')}

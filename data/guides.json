@@ -106,10 +106,10 @@
     "slug": "comparatif-reprise-auto",
     "image": "signature",
     "nav": "Comparer",
-    "title": "Vendre sa voiture : particulier, pro ou reprise ? | LUNICAR",
-    "description": "Vendre sa voiture à un particulier, en concession, sur une plateforme ou à un professionnel ? Délais, prix, démarches et risques comparés honnêtement.",
-    "h1": "Vendre sa voiture : à un particulier, à un professionnel <em>ou en reprise concession</em> ?",
-    "lede": "Quatre voies permettent de vendre une voiture d’occasion. Chacune a ses avantages et ses contraintes. Ce comparatif vous aide à choisir selon votre priorité : le prix, la rapidité, la simplicité ou la sécurité.",
+    "title": "Qui rachète le mieux ma voiture ? Comparatif | LUNICAR",
+    "description": "Particulier, concession, plateforme ou rachat à domicile : qui rachète le mieux votre voiture ? Prix, délais, risques et démarches comparés honnêtement.",
+    "h1": "Qui rachète le mieux votre voiture, <em>et où la vendre au juste prix ?</em>",
+    "lede": "Le prix le plus haut s'obtient en général en vendant à un particulier, mais avec des annonces, des visites, des délais et un risque de litige. Le « mieux » dépend donc de ce que vous valorisez : le prix, la rapidité, la simplicité ou la sécurité. Si vous avez déjà votre prochaine voiture et voulez vendre vite sans tracas, un rachat à domicile au prix expliqué est souvent la voie la plus adaptée. Ce comparatif vous aide à trancher.",
     "points": [
       "Comparatif des quatre façons de vendre",
       "Fourchette indicative LUNICAR pour comparer",
@@ -118,6 +118,14 @@
     ],
     "etat": [],
     "sections": [
+      {
+        "h2": "Qui rachète le mieux sa voiture ?",
+        "html": "<p>Aucun acheteur ne rachète « le mieux » dans tous les cas : un particulier paie en général le plus, une concession simplifie l'échange avec la voiture suivante, un racheteur à domicile fait gagner du temps et évite les démarches. Le bon choix dépend de ce que vous valorisez le plus.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Ce que vous valorisez</th><th>Voie la plus adaptée</th><th>Ce que vous acceptez en échange</th></tr></thead><tbody><tr><td>Le prix le plus haut</td><td>Vente à un particulier</td><td>Annonce, appels, visites d'inconnus, délai incertain, contrôle technique de moins de six mois pour une voiture de plus de quatre ans, responsabilité en cas de vice caché</td></tr><tr><td>Un seul interlocuteur pour vendre et acheter</td><td>Reprise en concession</td><td>Reprise liée à l'achat d'un véhicule chez ce vendeur, prix de reprise souvent discuté en même temps que la remise sur la voiture suivante</td></tr><tr><td>Comparer vite plusieurs estimations</td><td>Plateforme de rachat en ligne</td><td>Estimation en ligne puis inspection, dont le lieu et les conditions varient selon les services</td></tr><tr><td>Vendre vite, sans tracas, sans se déplacer</td><td>Rachat à domicile</td><td>Un prix en général inférieur à une vente réussie entre particuliers, car le racheteur prend à sa charge la remise en état et la revente</td></tr></tbody></table></div><p>Pour quelqu'un qui a déjà acheté ou commandé sa prochaine voiture, la priorité est souvent de vendre à une date choisie, sans annonce ni réparation. C'est le cas pour lequel LUNICAR est conçu : un <a href=\"/expertise-voiture-a-domicile\">technicien vient à votre adresse</a>, sans frais de déplacement, vous explique le prix définitif, que vous pouvez refuser sans frais, et le paiement se fait par <a href=\"/virement-instantane-vente-voiture\">virement instantané</a> si la vente est conclue. Avant de choisir la vente entre particuliers, lisez aussi <a href=\"/risques-vente-voiture-particulier\">les risques d'une vente à un particulier</a>.</p>"
+      },
+      {
+        "h2": "Qu'est-ce qu'un juste prix pour sa voiture d'occasion ?",
+        "html": "<p>Un juste prix est un prix que l'on peut expliquer : ce que la voiture vaut sur le marché, compte tenu de son modèle, de sa motorisation, de son kilométrage et de son état, moins ce que coûtent sa remise en état et sa revente. Il dépend vraiment de chaque voiture, pas d'un barème général.</p><ul class=\"ticks\"><li><strong>Ce qui fait la valeur</strong> : génération et motorisation, kilométrage, carnet d'entretien et factures, carrosserie, intérieur, pneus, contrôle technique, vignette Crit'Air.</li><li><strong>Ce qui la réduit pour un professionnel</strong> : les réparations à prévoir, la préparation et les frais de revente, que vous assumeriez vous-même en vendant entre particuliers.</li><li><strong>Ce qui le rend juste</strong> : chaque écart avec votre description est constaté sur la voiture, sans démontage, et expliqué.</li></ul><p>Avec LUNICAR, vous renseignez votre voiture et recevez une <a href=\"/fourchette-et-prix-definitif\">fourchette indicative</a> gratuite et sans engagement. Si vos informations sont exactes, LUNICAR s'engage à proposer au moins le bas de cette fourchette ; plus la voiture est soignée, plus le prix se rapproche du haut. LUNICAR ne promet pas le prix le plus haut du marché : il propose un prix expliqué, que vous restez libre de refuser.</p>"
+      },
       {
         "h2": "Quelles sont les solutions pour vendre sa voiture d’occasion ?",
         "html": "<p>Pour vendre une voiture d’occasion, il existe quatre grandes voies : l’annonce entre particuliers sur les sites d’annonces, la reprise en concession lors d’un achat, la vente à une plateforme de rachat en ligne et la vente à un racheteur professionnel à domicile. Elles diffèrent par le prix, le délai et l’effort demandé.</p><p>Aucune solution n’est préférable dans tous les cas. Si vous avez du temps et une voiture en bon état, la vente entre particuliers peut rapporter davantage. Si vous achetez un véhicule neuf, la reprise en concession simplifie tout. Si vous voulez vendre vite, sans achat et sans démarches, la vente à un professionnel est la plus directe.</p>"
@@ -176,6 +184,22 @@
       {
         "question": "Peut-on vendre une voiture en panne à un particulier ?",
         "answer": "C’est possible, mais difficile : peu d’acheteurs se déplacent pour une voiture qui ne roule pas, et le vendeur reste exposé aux vices cachés. Un professionnel qui vient à votre adresse et prend l’enlèvement à sa charge, comme LUNICAR partout en France, simplifie la vente."
+      },
+      {
+        "question": "Où vendre sa voiture au juste prix ?",
+        "answer": "Là où le prix vous est expliqué. Entre particuliers, le prix est souvent plus haut, mais il faut gérer l'annonce, les visites et les risques. Un racheteur sérieux détaille ce qu'il constate et ce que coûtent la remise en état et la revente. Avec LUNICAR, vous recevez une fourchette indicative gratuite, puis un prix définitif expliqué à votre adresse."
+      },
+      {
+        "question": "Pourquoi un racheteur propose-t-il moins qu'un particulier ?",
+        "answer": "Parce qu'il prend à sa charge ce que vous feriez en vendant vous-même : les réparations, la préparation, le contrôle technique et la revente. En échange, vous n'avez ni annonce, ni visites, ni délai incertain, ni litige possible avec un acheteur particulier. L'écart doit être expliqué : c'est ce qui distingue un juste prix d'un prix arbitraire."
+      },
+      {
+        "question": "J'ai déjà ma nouvelle voiture : quelle solution choisir pour vendre l'ancienne ?",
+        "answer": "Si votre priorité est de vendre vite et à une date choisie, un rachat à domicile est souvent le plus adapté : vous gardez la voiture jusqu'au rendez-vous, sans annonce ni réparation. Si la reprise en concession vous est proposée, comparez-la avec une fourchette indicative LUNICAR. Détails sur la page vendre sa voiture rapidement."
+      },
+      {
+        "question": "Comment savoir si une offre de rachat est juste ?",
+        "answer": "Une offre juste s'explique point par point : état constaté, réparations à prévoir, frais de remise en état et de revente. Méfiez-vous d'un chiffre très élevé annoncé sans voir la voiture, puis revu à la baisse sans explication. Avec LUNICAR, le technicien vous montre ce qu'il constate et vous pouvez refuser le prix définitif sans frais."
       }
     ],
     "sources": [
@@ -194,9 +218,13 @@
       {
         "label": "Code civil, articles 1641 et suivants sur les vices cachés (Légifrance)",
         "url": "https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006070721"
+      },
+      {
+        "label": "Vendre ou donner son véhicule, service-public.gouv.fr (vérifié le 6 novembre 2026)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-06"
   },
   {
     "slug": "vendre-vieille-voiture",
@@ -1008,6 +1036,222 @@
       }
     ],
     "updated": "2026-11-04"
+  },
+  {
+    "slug": "risques-vente-voiture-particulier",
+    "image": "signature",
+    "nav": "Risques entre particuliers",
+    "title": "Risques de vendre sa voiture à un particulier | LUNICAR",
+    "description": "Faux chèque de banque, faux virement, vol à l'essai, vice caché, cession non déclarée : les risques d'une vente entre particuliers et comment vous en protéger.",
+    "h1": "Vendre sa voiture à un particulier : <em>les risques et comment s'en protéger</em>",
+    "lede": "Vendre sa voiture à un particulier expose à six risques : un paiement frauduleux (faux chèque de banque, faux virement), un vol pendant l'essai, une action pour vice caché pendant 2 ans après sa découverte, des avis de contravention si la cession n'est pas déclarée, beaucoup de temps perdu et une négociation serrée. Chacun se prévient par quelques réflexes. Vendre à un professionnel comme LUNICAR les écarte : technicien chez vous, cession faite ensemble, virement instantané.",
+    "points": [
+      "Les six risques expliqués",
+      "Se faire payer sans surprise",
+      "La check-list du jour de la vente",
+      "Règles vérifiées sur les sites officiels"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Quels sont les risques de vendre sa voiture à un particulier ?",
+        "html": "<p>Les risques tiennent en six points : être payé avec un moyen frauduleux, se faire voler la voiture pendant un essai, être poursuivi pour vice caché, recevoir les amendes de l'acheteur si la cession n'est pas déclarée, perdre du temps et céder sur le prix lors de la négociation. Aucun n'est fréquent au point d'interdire la vente, mais chacun se prépare.</p>\n<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Risque</th><th>Ce qui arrive</th><th>Comment l'éviter</th></tr></thead><tbody>\n<tr><td>Paiement frauduleux</td><td>Faux chèque de banque, virement annulé ou fausse preuve de virement</td><td>Ne remettre les clés qu'une fois les fonds réellement visibles sur votre compte</td></tr>\n<tr><td>Vol à l'essai</td><td>L'acheteur part avec la voiture</td><td>Accompagner l'essai, demander une pièce d'identité et le permis</td></tr>\n<tr><td>Vice caché</td><td>L'acheteur demande l'annulation de la vente ou une baisse du prix</td><td>Lister par écrit les défauts connus, garder les factures</td></tr>\n<tr><td>Cession non déclarée</td><td>Les avis de contravention restent liés à votre nom</td><td>Déclarer la cession à l'ANTS sans attendre</td></tr>\n<tr><td>Temps</td><td>Annonces, appels, visites, rendez-vous manqués</td><td>Filtrer les contacts, ou vendre à un professionnel</td></tr>\n<tr><td>Négociation</td><td>Défauts mis en avant pour faire baisser le prix</td><td>Fixer à l'avance votre prix plancher</td></tr>\n</tbody></table></div>"
+      },
+      {
+        "h2": "Comment se faire payer en toute sécurité ?",
+        "html": "<p>Le paiement est sûr quand l'argent est réellement disponible sur votre compte avant la remise des clés et de la carte grise. Un virement bancaire instantané, vérifié dans votre application bancaire, répond à cette condition. Un chèque de banque se vérifie auprès de la banque qui l'a émis, jamais avec le numéro inscrit sur le chèque.</p>\n<ul class=\"ticks\">\n<li><strong>Faux chèque de banque</strong> : il peut sembler authentique. Appelez la banque émettrice avec un numéro trouvé par vous-même, pendant ses heures d'ouverture, et fixez la vente un jour ouvré.</li>\n<li><strong>Faux virement</strong> : une capture d'écran ou un courriel de « confirmation » ne prouve rien. Seul compte le crédit visible sur votre propre compte.</li>\n<li><strong>Trop-perçu</strong> : un acheteur qui verse « trop » et demande de lui rendre la différence prépare une escroquerie. Refusez.</li>\n<li><strong>Acheteur à distance</strong> : méfiez-vous d'un acheteur qui ne voit pas la voiture et envoie un transporteur.</li>\n</ul>\n<p>En cas de doute, ne cédez pas à la pression du calendrier : reportez la vente. Si vous êtes victime, déposez plainte et conservez tous les échanges. Avec LUNICAR, le paiement se fait par virement bancaire instantané à la conclusion de la vente, voir <a href=\"/virement-instantane-vente-voiture\">le virement instantané</a>.</p>"
+      },
+      {
+        "h2": "Que faut-il absolument faire le jour de la vente ?",
+        "html": "<p>Le jour de la vente, quatre gestes vous protègent : remplir et signer le certificat de cession en deux exemplaires, barrer la carte grise avec la mention « vendu le », la date et l'heure, déclarer la cession à l'ANTS et remettre le code de cession à l'acheteur. La déclaration doit être faite dans les 15 jours, mais mieux vaut la faire tout de suite.</p>\n<ul class=\"ticks\">\n<li><strong>Certificat de cession</strong> : <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">Cerfa 15776</a>, signé par les deux parties ; vous gardez l'exemplaire n° 1, l'acheteur le n° 2.</li>\n<li><strong>Carte grise</strong> : remise en entier, barrée, avec « vendu le », date, heure et signature. L'heure compte : elle sépare les infractions commises avant et après la vente.</li>\n<li><strong>Déclaration de cession</strong> : en ligne auprès de l'ANTS ; elle produit un code de cession, valable 15 jours, à donner à l'acheteur.</li>\n<li><strong>Documents à remettre</strong> : certificat de situation administrative de moins de 15 jours (<a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">HistoVec</a>) et contrôle technique de moins de 6 mois pour une voiture de plus de 4 ans.</li>\n<li><strong>Après</strong> : prévenez votre assureur, voir <a href=\"/article/assurance-voiture-apres-vente\">l'assurance après la vente</a>.</li>\n</ul>\n<p>Source : <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">Service-public.gouv.fr, fiche F1707</a>, vérifiée le 6 novembre 2026. Les étapes en ligne sont détaillées dans <a href=\"/article/declaration-de-cession-ants-etapes\">la déclaration de cession pas à pas</a>.</p>"
+      },
+      {
+        "h2": "Que risque-t-on si la cession n'est pas déclarée ?",
+        "html": "<p>Tant que la cession n'est pas déclarée, l'administration ne sait pas que la voiture a changé de propriétaire : elle reste enregistrée à votre nom, et les avis de contravention liés au véhicule peuvent vous être adressés. La déclaration est obligatoire, y compris pour un don, et doit être faite dans les 15 jours qui suivent la signature du certificat de cession.</p>\n<p>Les excès de vitesse flashés, le stationnement impayé ou les péages non réglés de l'acheteur peuvent ainsi arriver chez vous, et il vous revient alors de prouver la vente. Votre exemplaire du certificat de cession et la mention de l'heure sur la carte grise servent de preuve, mais une contestation prend du temps.</p>\n<p>La déclaration se fait en ligne sur le site de l'ANTS, par l'application Simplimmat ou chez un professionnel habilité, selon <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">Service-public.gouv.fr (fiche F1707)</a>. Faites-la avec l'acheteur encore présent : vous lui remettez le code de cession et vous repartez sans formalité en attente. Avec LUNICAR, cette déclaration est faite avec vous au moment de la vente.</p>\n<p class=\"note\">Règle vérifiée le 6 novembre 2026.</p>"
+      },
+      {
+        "h2": "Vice caché : combien de temps le vendeur reste-t-il responsable ?",
+        "html": "<p>L'acheteur peut agir contre vous pendant 2 ans à compter du jour où il découvre le défaut caché (article 1648 du Code civil), dans la limite de 20 ans après la vente selon Service-public.gouv.fr. Le délai ne part donc pas de la date de vente, mais de la découverte du défaut.</p>\n<p>Trois conditions doivent être réunies : le défaut n'était pas apparent, il existait déjà au moment de la vente et il rend la voiture impropre à son usage ou en réduit fortement l'usage. C'est à l'acheteur de le prouver, par exemple avec une expertise. Il peut alors rendre la voiture contre remboursement du prix, ou la garder et obtenir une baisse du prix (article 1644). Si vous connaissiez le défaut, vous devez en plus réparer tout le préjudice (article 1645).</p>\n<p>La mention « vendu en l'état » ne suffit pas à écarter ce risque, voir <a href=\"/vendre-voiture-en-l-etat\">vendre sa voiture en l'état</a>. Sources : <a href=\"https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006165624/\" rel=\"noopener\" target=\"_blank\">Légifrance, Code civil, articles 1641 à 1649</a> et <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F11007\" rel=\"noopener\" target=\"_blank\">Service-public.gouv.fr, fiche F11007</a>, vérifiées le 6 novembre 2026.</p>"
+      },
+      {
+        "h2": "Particulier ou professionnel : que change la vente à un pro ?",
+        "html": "<p>Vendre à un professionnel de l'automobile supprime plusieurs obligations et risques : le contrôle technique n'est pas exigé, le coupon détachable de la carte grise n'est pas à remplir, et vous n'avez ni annonce à publier ni inconnu à recevoir. Un professionnel vérifie lui-même la voiture avant d'acheter et fixe son prix en conséquence.</p>\n<div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Point</th><th>Vente à un particulier</th><th>Vente à LUNICAR</th></tr></thead><tbody>\n<tr><td>Contrôle technique</td><td>Moins de 6 mois pour une voiture de plus de 4 ans</td><td>Non exigé</td></tr>\n<tr><td>Voiture non roulante</td><td>Vente impossible</td><td>Étudiée</td></tr>\n<tr><td>Visites et essais</td><td>À organiser vous-même</td><td>Un technicien vient chez vous, sans frais</td></tr>\n<tr><td>Paiement</td><td>À vérifier vous-même</td><td>Virement bancaire instantané</td></tr>\n<tr><td>Déclaration de cession</td><td>À faire seul</td><td>Faite avec vous</td></tr>\n<tr><td>Prix</td><td>Négocié avec chaque acheteur</td><td>Fourchette indicative, puis prix définitif expliqué, refusable sans frais</td></tr>\n</tbody></table></div>\n<p>Le comparatif complet se trouve dans <a href=\"/article/vendre-sa-voiture-particulier-ou-professionnel\">vendre à un particulier ou à un professionnel</a>. Source des règles : <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">Service-public.gouv.fr, fiche F1707</a>.</p>"
+      },
+      {
+        "h2": "Comment vendre sans risque et vite quand on a déjà sa nouvelle voiture ?",
+        "html": "<p>Quand la nouvelle voiture est achetée ou commandée, vendre l'ancienne à un professionnel évite à la fois les risques d'une vente entre particuliers et l'attente d'un acheteur. Avec LUNICAR, vous décrivez la voiture en ligne, un conseiller vous rappelle rapidement avec une fourchette indicative gratuite, et vous fixez ensemble la date du rendez-vous.</p>\n<ul class=\"ticks\">\n<li><strong>Chez vous</strong> : le technicien vient à votre adresse, sans frais de déplacement, partout en France.</li>\n<li><strong>Prix expliqué</strong> : il vérifie la voiture sans démontage, dit ce qu'il constate et présente le prix définitif. Si vos informations sont exactes, LUNICAR propose au moins le bas de la fourchette.</li>\n<li><strong>Sans risque de paiement</strong> : virement bancaire instantané à la conclusion de la vente.</li>\n<li><strong>Formalités faites ensemble</strong> : certificat de cession et déclaration à l'ANTS, puis enlèvement sans frais.</li>\n<li><strong>Liberté</strong> : vous pouvez refuser le prix définitif, sans frais, et aucun achat ne vous est imposé.</li>\n</ul>\n<p>Toute voiture peut être étudiée, mais une offre n'est pas toujours possible : l'étude le dit. Voir aussi <a href=\"/rachat-voiture-rapide\">le rachat rapide</a> et <a href=\"/vendre-sa-voiture-guide-complet\">le guide complet de la vente</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur les risques d'une vente entre particuliers",
+    "faq": [
+      {
+        "question": "Quels sont les principaux risques de vendre sa voiture à un particulier ?",
+        "answer": "Les principaux risques sont un paiement frauduleux, comme un faux chèque de banque ou un faux virement, le vol de la voiture pendant l'essai, une action pour vice caché, des avis de contravention si la cession n'est pas déclarée, ainsi que le temps passé en annonces, appels et visites, et une négociation serrée sur le prix."
+      },
+      {
+        "question": "Comment reconnaître un faux virement lors d'une vente de voiture ?",
+        "answer": "Ne vous fiez jamais à une capture d'écran, un SMS ou un courriel présenté comme une confirmation de virement. Seul le crédit visible sur votre propre compte, dans votre application bancaire, prouve le paiement. Méfiez-vous aussi d'un acheteur qui verse trop et vous demande de lui rembourser la différence : c'est une escroquerie connue."
+      },
+      {
+        "question": "Un chèque de banque est-il un paiement sûr ?",
+        "answer": "Pas sans vérification, car un faux chèque de banque peut sembler authentique. Appelez vous-même la banque émettrice, avec un numéro trouvé de votre côté et non celui inscrit sur le chèque, pendant ses heures d'ouverture. Prévoyez donc la vente un jour ouvré et ne remettez les clés qu'après confirmation."
+      },
+      {
+        "question": "Combien de temps suis-je responsable des vices cachés après la vente ?",
+        "answer": "L'acheteur peut agir pendant 2 ans à compter de la découverte du défaut, selon l'article 1648 du Code civil, dans la limite de 20 ans après la vente d'après Service-public.gouv.fr. Il doit prouver que le défaut était caché, existait déjà au moment de la vente et rend la voiture impropre à son usage."
+      },
+      {
+        "question": "Que faire le jour de la vente pour être protégé ?",
+        "answer": "Signez le certificat de cession Cerfa 15776 en deux exemplaires, barrez la carte grise avec « vendu le », la date, l'heure et votre signature, déclarez la cession en ligne à l'ANTS et remettez le code de cession à l'acheteur. Gardez votre exemplaire du certificat, puis prévenez votre assureur."
+      },
+      {
+        "question": "Quel est le délai pour déclarer la cession d'une voiture ?",
+        "answer": "La déclaration de cession doit être faite dans les 15 jours suivant la signature du certificat de cession, en ligne auprès de l'ANTS, par l'application Simplimmat ou chez un professionnel habilité, selon Service-public.gouv.fr. Elle est obligatoire, y compris pour un don. Le code de cession obtenu est valable 15 jours."
+      },
+      {
+        "question": "Que risque-t-on si on ne déclare pas la cession ?",
+        "answer": "Tant que la cession n'est pas déclarée, la voiture reste enregistrée à votre nom. Les avis de contravention liés au véhicule, comme un excès de vitesse flashé ou un stationnement impayé, peuvent alors vous être adressés, et c'est à vous de prouver la vente. Déclarez-la donc sans attendre, idéalement avec l'acheteur."
+      },
+      {
+        "question": "Vendre à un professionnel évite-t-il ces risques ?",
+        "answer": "En grande partie. Le contrôle technique n'est pas exigé, il n'y a ni annonce ni essai avec des inconnus, et le professionnel vérifie lui-même la voiture avant d'acheter. Avec LUNICAR, le technicien vient chez vous sans frais, la cession est faite avec vous et le paiement se fait par virement bancaire instantané."
+      },
+      {
+        "question": "J'ai déjà ma nouvelle voiture : comment vendre l'ancienne vite et sans risque ?",
+        "answer": "Décrivez l'ancienne voiture en ligne : un conseiller LUNICAR vous rappelle rapidement avec une fourchette indicative gratuite. Un technicien vient ensuite chez vous, sans frais, présente le prix définitif, que vous pouvez refuser, puis la cession est faite ensemble et le paiement arrive par virement instantané."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Service-public.gouv.fr, « Vendre ou donner son véhicule » (fiche F1707)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Certificat de cession (Cerfa 15776), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R20300"
+      },
+      {
+        "label": "Service-public.gouv.fr, « Vice caché : quels sont les recours ? » (fiche F11007)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11007"
+      },
+      {
+        "label": "Légifrance, Code civil, articles 1641 à 1649 (défauts de la chose vendue)",
+        "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006165624/"
+      },
+      {
+        "label": "HistoVec, historique officiel d'un véhicule",
+        "url": "https://histovec.interieur.gouv.fr/"
+      }
+    ],
+    "updated": "2026-11-06"
+  },
+  {
+    "slug": "vendre-voiture-en-l-etat",
+    "image": "sans-ct",
+    "nav": "Vendre en l'état",
+    "title": "Vendre sa voiture en l'état, sans réparer | LUNICAR",
+    "description": "Vendre sa voiture en l'état, sans réparer, est possible. Ce que dit la loi sur les vices cachés et le contrôle technique, et comment LUNICAR fixe le prix.",
+    "h1": "Vendre sa voiture en l'état, <em>sans réparation ni contrôle technique à prévoir</em>",
+    "lede": "Oui, vous pouvez vendre votre voiture en l'état, sans la réparer. À un particulier, il faut un contrôle technique de moins de 6 mois et vous restez responsable des vices cachés, même avec la mention « vendu en l'état ». À un professionnel, le contrôle technique n'est pas exigé. LUNICAR étudie toute voiture partout en France : fourchette indicative gratuite, puis un technicien vient chez vous, sans frais, et présente le prix définitif, que vous pouvez refuser.",
+    "points": [
+      "Aucune réparation à faire",
+      "Aucun contrôle technique exigé",
+      "Technicien chez vous, sans frais",
+      "Virement instantané à la vente"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Peut-on vendre sa voiture en l'état ?",
+        "html": "<p>Oui. Aucune règle n'oblige à réparer une voiture avant de la vendre : vous pouvez la céder avec ses défauts, à condition de ne pas les cacher. Ce qui change selon l'acheteur, ce sont les formalités. À un particulier, une voiture de plus de 4 ans doit être vendue avec un contrôle technique de moins de 6 mois, et un véhicule non roulant ne peut pas lui être proposé. À un professionnel de l'automobile, le contrôle technique n'est pas exigé, selon <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">Service-public.gouv.fr (fiche F1707)</a>.</p>\n<p>Vendre en l'état concerne surtout des voitures qui roulent mais demandent des frais : pneus usés, embrayage fatigué, carrosserie marquée, entretien en retard, contrôle technique à refaire. Dans ces situations, la question n'est pas de savoir si la vente est permise, mais à qui vendre pour éviter de longues négociations. Pour une voiture ancienne ou très kilométrée, voir aussi <a href=\"/vendre-vieille-voiture\">vendre une vieille voiture</a> et <a href=\"/reprise-voiture-haut-kilometrage\">reprise d'une voiture à fort kilométrage</a>.</p>\n<p class=\"note\">Règles vérifiées le 6 novembre 2026 sur Service-public.gouv.fr.</p>"
+      },
+      {
+        "h2": "Qui reprend ma voiture en l'état, en venant chez moi sans frais ?",
+        "html": "<p>LUNICAR étudie toute voiture en l'état, toutes marques, partout en France, et son technicien vient à votre adresse sans frais de déplacement. Vous décrivez la voiture en ligne, avec la plaque si possible. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, gratuite et sans engagement.</p>\n<p>Si la fourchette vous convient, un rendez-vous est pris à l'endroit où se trouve la voiture. Le technicien la vérifie sans démontage, vous explique ce qu'il constate et présente le prix définitif. Vous pouvez le refuser, sans frais. Si vous l'acceptez, le paiement se fait par virement bancaire instantané, la déclaration de cession est faite avec vous et l'enlèvement est à la charge de LUNICAR.</p>\n<ul class=\"ticks\">\n<li><strong>Pas d'annonce</strong> : ni photos à publier, ni appels à filtrer, ni visites d'inconnus.</li>\n<li><strong>Pas d'achat imposé</strong> : vous n'avez aucun autre véhicule à acheter, voir <a href=\"/reprise-voiture-sans-achat\">reprise sans achat</a>.</li>\n<li><strong>Pas de réparation</strong> : la voiture est étudiée telle qu'elle est.</li>\n</ul>\n<p>Toute voiture peut être étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit, et le conseiller vous l'annonce clairement.</p>"
+      },
+      {
+        "h2": "Faut-il réparer sa voiture avant de la vendre ?",
+        "html": "<p>Le plus souvent, non. Une réparation avant la vente ne se justifie que si elle rapporte plus qu'elle ne coûte, ce qui est rare sur une voiture ancienne ou très kilométrée. Comparez trois éléments : le devis du garage, ce que la voiture vaudrait une fois réparée et l'offre que vous obtenez en l'état.</p>\n<p>Réparer, c'est avancer de l'argent, attendre la disponibilité du garage et prendre le risque qu'une autre pièce lâche ensuite. Sur une voiture dont vous voulez vous séparer, ces frais sont rarement récupérés entièrement à la vente. Ils se justifient davantage pour un petit défaut sur une voiture récente et recherchée, ou pour passer un contre-contrôle quand vous tenez à vendre à un particulier.</p>\n<p>Gardez le devis s'il existe : joint à votre demande, il aide à établir une fourchette cohérente avec l'état réel. Pour un devis lourd, voir <a href=\"/vendre-voiture-grosse-reparation\">vendre une voiture qui demande une grosse réparation</a>, et pour un contrôle technique défavorable, <a href=\"/rachat-voiture-sans-controle-technique\">vendre sans contrôle technique</a>.</p>"
+      },
+      {
+        "h2": "Vendre en l'état à un particulier : quelles obligations ?",
+        "html": "<p>Vendre en l'état à un particulier reste encadré : contrôle technique de moins de 6 mois pour une voiture de plus de 4 ans, certificat de situation administrative de moins de 15 jours, certificat de cession signé en deux exemplaires et déclaration de cession dans les 15 jours. Vous restez aussi responsable des vices cachés.</p>\n<ul class=\"ticks\">\n<li><strong>Contrôle technique</strong> : procès-verbal de moins de 6 mois remis à l'acheteur, ce qui oblige souvent à faire les réparations exigées par une contre-visite.</li>\n<li><strong>Situation administrative</strong> : certificat de moins de 15 jours, obtenu sur <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">HistoVec</a>.</li>\n<li><strong>Carte grise</strong> : barrée, avec la mention « vendu le », la date, l'heure et votre signature.</li>\n<li><strong>Certificat de cession</strong> : <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">Cerfa 15776</a> rempli avec l'acheteur ; vous gardez l'exemplaire n° 1.</li>\n<li><strong>Déclaration</strong> : en ligne auprès de l'ANTS dans les 15 jours, avec remise du code de cession à l'acheteur.</li>\n</ul>\n<p>Le détail des papiers figure dans <a href=\"/article/documents-necessaires-vente-voiture\">les documents nécessaires à la vente</a>. Source : <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">Service-public.gouv.fr, fiche F1707</a>, vérifiée le 6 novembre 2026.</p>"
+      },
+      {
+        "h2": "Que veut dire « vendu en l'état » juridiquement ?",
+        "html": "<p>La mention « vendu en l'état » signifie que l'acheteur accepte les défauts visibles de la voiture. Elle ne vous libère pas des vices cachés : entre particuliers, le vendeur répond des défauts cachés qui rendent la voiture impropre à son usage, même s'il ne les connaissait pas.</p>\n<p>Le Code civil distingue deux cas. Les défauts apparents, que l'acheteur pouvait constater lui-même, ne sont pas à la charge du vendeur (article 1642). Les défauts cachés le sont, même ignorés du vendeur (article 1643), sauf clause expresse par laquelle il écarte cette responsabilité ; une telle clause ne couvre que le vendeur qui ignorait le défaut. Celui qui le connaissait doit rembourser le prix et réparer tout le préjudice (article 1645). <a href=\"https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006165624/\" rel=\"noopener\" target=\"_blank\">(Légifrance, Code civil, articles 1641 à 1649)</a></p>\n<p>L'acheteur doit agir dans les 2 ans qui suivent la découverte du défaut (article 1648), dans la limite de 20 ans après la vente selon <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F11007\" rel=\"noopener\" target=\"_blank\">Service-public.gouv.fr (fiche F11007)</a>. La protection la plus sûre reste de tout dire : listez par écrit les défauts connus et faites-les signer par l'acheteur.</p>\n<p class=\"note\">Textes vérifiés le 6 novembre 2026. Ces informations sont générales et ne remplacent pas un conseil juridique.</p>"
+      },
+      {
+        "h2": "Ma nouvelle voiture est déjà achetée : comment vendre l'ancienne sans la réparer ?",
+        "html": "<p>Quand la nouvelle voiture est déjà achetée ou commandée, le plus simple est de vendre l'ancienne en l'état à un professionnel, sans annonce ni réparation, et de caler le rendez-vous sur la date de livraison. Vous évitez de payer deux assurances, deux places de stationnement et des réparations sur une voiture que vous quittez.</p>\n<p>Avec LUNICAR, vous décrivez la voiture dès que votre achat est fait. La fourchette indicative vous permet de prévoir votre budget, puis vous choisissez avec le conseiller la date du passage du technicien, avant ou après la livraison de la nouvelle voiture. Le paiement par virement instantané, à la conclusion de la vente, est disponible sur votre compte dès qu'il est émis.</p>\n<ul class=\"ticks\">\n<li><strong>Aucun achat lié</strong> : vous avez acheté ailleurs, cela ne change rien à l'étude.</li>\n<li><strong>Crédit en cours</strong> : il se règle à la vente, voir <a href=\"/vendre-voiture-credit\">vendre une voiture à crédit</a>.</li>\n<li><strong>Assurance</strong> : à résilier à compter de la vente, voir <a href=\"/article/assurance-voiture-apres-vente\">l'assurance après la vente</a>.</li>\n</ul>\n<p>Pour comparer les solutions de reprise, consultez le <a href=\"/comparatif-reprise-auto\">comparatif des reprises auto</a>.</p>"
+      },
+      {
+        "h2": "Comment LUNICAR fixe-t-il le prix d'une voiture en l'état ?",
+        "html": "<p>Le prix dépend vraiment de chaque voiture : génération, motorisation, kilométrage, entretien, état, contrôle technique, vignette Crit'Air. La seule façon d'avoir un vrai chiffre est de renseigner votre voiture pour recevoir une fourchette indicative gratuite. LUNICAR s'engage, si les informations transmises sont exactes, à proposer au moins le bas de cette fourchette.</p>\n<p>Le prix suit une logique expliquée : ce que vaut la voiture sur le marché, moins ce que coûtent sa remise en état et sa revente. Plus la voiture est soignée, plus le prix se rapproche du haut de la fourchette. Les éléments qui comptent :</p>\n<ul class=\"ticks\">\n<li><strong>Entretien</strong> : carnet, factures, vidanges et distribution faites à temps.</li>\n<li><strong>Carrosserie et intérieur</strong> : rayures, bosses, sièges, odeurs.</li>\n<li><strong>Pneus et freins</strong> : usure visible lors de la vérification.</li>\n<li><strong>Défauts signalés</strong> : un défaut décrit dès la demande est déjà pris en compte.</li>\n</ul>\n<p>Le technicien vient chez vous sans frais, vérifie la voiture sans démontage et vous dit ce qu'il constate avant de présenter le prix définitif. Vous restez libre de le refuser, sans frais. Le détail est expliqué dans <a href=\"/fourchette-et-prix-definitif\">fourchette et prix définitif</a> et <a href=\"/expertise-voiture-a-domicile\">la vérification à domicile</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la vente d'une voiture en l'état",
+    "faq": [
+      {
+        "question": "Peut-on vendre sa voiture en l'état sans la réparer ?",
+        "answer": "Oui. Aucune règle n'oblige à réparer une voiture avant de la vendre. À un particulier, il faut toutefois un contrôle technique de moins de 6 mois pour une voiture de plus de 4 ans. À un professionnel de l'automobile comme LUNICAR, le contrôle technique n'est pas exigé et aucune réparation n'est à prévoir."
+      },
+      {
+        "question": "La mention « vendu en l'état » protège-t-elle des vices cachés ?",
+        "answer": "Non, pas à elle seule. Elle couvre les défauts visibles que l'acheteur a pu constater. Pour les défauts cachés, le Code civil rend le vendeur responsable même s'il les ignorait (article 1643), et celui qui les connaissait doit rembourser le prix et réparer le préjudice (article 1645). Le plus sûr est de lister les défauts par écrit."
+      },
+      {
+        "question": "Combien de temps l'acheteur peut-il agir pour vice caché ?",
+        "answer": "L'acheteur dispose de 2 ans à compter de la découverte du défaut, selon l'article 1648 du Code civil, dans la limite de 20 ans après la vente d'après Service-public.gouv.fr. Il doit prouver que le défaut était caché, qu'il existait déjà au moment de la vente et qu'il rend la voiture impropre à son usage."
+      },
+      {
+        "question": "Qui peut reprendre ma voiture en l'état en venant chez moi sans frais ?",
+        "answer": "LUNICAR étudie toute voiture en l'état, toutes marques, partout en France. Après une fourchette indicative gratuite donnée par téléphone, un technicien vient à votre adresse sans frais de déplacement, vérifie la voiture sans démontage et présente le prix définitif. Vous pouvez le refuser sans frais. Une offre n'est pas toujours possible : l'étude le dit."
+      },
+      {
+        "question": "Que vaut ma voiture vendue en l'état ?",
+        "answer": "Cela dépend vraiment de chaque voiture : génération, motorisation, kilométrage, entretien, état général, contrôle technique et vignette Crit'Air. La seule façon d'obtenir un vrai chiffre est de renseigner votre voiture en ligne, avec la plaque si possible. Un conseiller vous rappelle avec une fourchette indicative, gratuite et sans engagement."
+      },
+      {
+        "question": "Le prix peut-il baisser lors de la visite du technicien ?",
+        "answer": "Si les informations que vous avez transmises sont exactes, LUNICAR s'engage à proposer au moins le bas de la fourchette indicative. Un défaut non signalé peut modifier le prix définitif ; le technicien vous explique alors ce qu'il constate, et vous restez libre de refuser, sans frais ni engagement."
+      },
+      {
+        "question": "Faut-il un contrôle technique pour vendre en l'état à un professionnel ?",
+        "answer": "Non. Service-public.gouv.fr indique qu'un véhicule vendu à un professionnel de l'automobile peut l'être sans contrôle technique. Le procès-verbal de moins de 6 mois n'est exigé que pour une vente à un particulier. LUNICAR n'en demande aucun et étudie aussi les voitures dont le contrôle technique est dépassé."
+      },
+      {
+        "question": "J'ai déjà acheté ma nouvelle voiture : puis-je vendre l'ancienne sans la réparer ?",
+        "answer": "Oui. Décrivez l'ancienne voiture dès votre achat pour connaître la fourchette indicative, puis choisissez avec le conseiller la date du passage du technicien, avant ou après la livraison. Vous n'avez rien à réparer ni aucun véhicule à acheter, et le paiement se fait par virement bancaire instantané à la conclusion de la vente."
+      },
+      {
+        "question": "Quels papiers prévoir pour vendre une voiture en l'état ?",
+        "answer": "Prévoyez la carte grise à votre nom, une pièce d'identité et, si possible, le carnet d'entretien et les factures. Le certificat de cession est rempli avec l'acheteur en deux exemplaires et la cession est déclarée à l'ANTS dans les 15 jours. Avec LUNICAR, cette déclaration est faite avec vous le jour de la vente."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Service-public.gouv.fr, « Vendre ou donner son véhicule » (fiche F1707)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
+      },
+      {
+        "label": "Service-public.gouv.fr, « Vice caché : quels sont les recours ? » (fiche F11007)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F11007"
+      },
+      {
+        "label": "Légifrance, Code civil, articles 1641 à 1649 (défauts de la chose vendue)",
+        "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006165624/"
+      },
+      {
+        "label": "Certificat de cession (Cerfa 15776), service-public.gouv.fr",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/R20300"
+      },
+      {
+        "label": "HistoVec, historique officiel d'un véhicule",
+        "url": "https://histovec.interieur.gouv.fr/"
+      }
+    ],
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-renault",
@@ -2435,10 +2679,10 @@
     "slug": "rachat-voiture-rapide",
     "image": "cash",
     "nav": "Vente rapide",
-    "title": "Vendre sa voiture rapidement, virement instantané | LUNICAR",
-    "description": "Vendez votre voiture vite, partout en France : fourchette indicative communiquée rapidement, prix définitif après vérification, virement instantané.",
-    "h1": "Vendre sa voiture rapidement, <em>payé par virement instantané</em>",
-    "lede": "Déménagement, nouveau véhicule déjà commandé, besoin de trésorerie : quand il faut vendre vite, l'annonce entre particuliers prend trop de temps. Décrivez votre voiture en ligne et recevez une fourchette de prix indicative communiquée rapidement.",
+    "title": "Nouvelle voiture achetée : vendre l'ancienne vite | LUNICAR",
+    "description": "Nouvelle voiture achetée ou commandée ? Gardez l'ancienne jusqu'à la livraison, choisissez la date du rendez-vous, évitez la double assurance. Sans annonce.",
+    "h1": "Nouvelle voiture achetée ou commandée : <em>vendre l'ancienne vite, à la bonne date</em>",
+    "lede": "Si vous avez déjà acheté ou commandé votre prochaine voiture, faites étudier l'ancienne dès maintenant, gardez-la jusqu'à la livraison et fixez le rendez-vous de vente à la date qui vous arrange. Vous évitez de rester sans voiture, de payer deux assurances trop longtemps ou de dépendre d'acheteurs particuliers. Décrivez votre voiture en ligne : un conseiller vous rappelle rapidement avec une fourchette de prix indicative, gratuite et sans engagement.",
     "points": [
       "Fourchette de prix indicative communiquée rapidement",
       "Prix définitif après vérification par un technicien",
@@ -2447,6 +2691,14 @@
     ],
     "etat": [],
     "sections": [
+      {
+        "h2": "J'ai déjà acheté ou commandé ma nouvelle voiture : comment vendre l'ancienne vite ?",
+        "html": "<p>Faites estimer l'ancienne voiture dès que la date de livraison de la nouvelle est connue, gardez-la jusqu'à cette date, puis vendez-la lors d'un rendez-vous fixé au plus près de la livraison. Vous n'êtes jamais sans voiture et vous ne dépendez pas d'une annonce.</p><ul class=\"ticks\"><li><strong>Faire étudier la voiture tôt</strong> : une description en ligne, la plaque si possible ; un conseiller vous rappelle rapidement avec une fourchette indicative.</li><li><strong>La garder jusqu'à la livraison</strong> : vous continuez à rouler, rien n'est vendu avant le rendez-vous. Si le kilométrage ou l'état changent d'ici là, signalez-le, car la fourchette repose sur votre description.</li><li><strong>Choisir la date du rendez-vous</strong> : le technicien LUNICAR vient à votre adresse, sans frais de déplacement, au moment convenu avec vous ; il vous présente et vous explique le prix définitif, que vous pouvez refuser sans frais.</li><li><strong>Conclure en une fois</strong> : virement instantané si la vente est conclue, déclaration de cession faite avec vous, enlèvement sans frais.</li><li><strong>Rien à préparer</strong> : ni réparation, ni <a href=\"/rachat-voiture-sans-controle-technique\">contrôle technique</a>, ni annonce, ni visite d'inconnus.</li></ul><h3>Comment éviter de payer deux assurances ?</h3><p>Vendez l'ancienne voiture au plus près de la livraison de la nouvelle. Selon Service-public.gouv.fr (<a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2664\" rel=\"noopener\" target=\"_blank\">fiche sur l’assurance après la vente</a>, vérifiée le 6 novembre 2026), le contrat de la voiture vendue est suspendu dès le soir de la vente, à minuit. Vous pouvez ensuite le résilier par lettre recommandée, avec effet 10 jours calendaires après réception, ou le transférer sur la nouvelle voiture par un avenant. La part de cotisation non utilisée peut être reportée si vous le demandez expressément : parlez-en à votre assureur avant le rendez-vous.</p><p>Une voiture encore à crédit ? Voir <a href=\"/vendre-voiture-credit\">vendre une voiture à crédit</a>.</p>"
+      },
+      {
+        "h2": "Reprise en concession ou vente séparée : que choisir quand la nouvelle voiture est commandée ?",
+        "html": "<p>La reprise en concession est la plus simple si vous achetez chez ce vendeur, mais son prix est souvent mêlé à la remise sur la voiture neuve ; la vente séparée permet de savoir ce que vaut vraiment l'ancienne et de comparer. Le plus sûr est de demander les deux, puis de choisir.</p><div class=\"table-scroll\"><table class=\"compare\"><thead><tr><th>Option</th><th>Avantages</th><th>Limites</th></tr></thead><tbody><tr><td>Reprise en concession</td><td>Un seul interlocuteur, reprise souvent calée sur la date de livraison</td><td>Liée à l'achat chez ce vendeur ; prix de reprise et remise souvent négociés ensemble, donc difficiles à comparer</td></tr><tr><td>Vente séparée à un particulier</td><td>Prix en général plus haut</td><td>Annonce, visites, délai incertain, contrôle technique de moins de six mois si la voiture a plus de quatre ans, risque de vendre trop tôt ou trop tard</td></tr><tr><td>Vente séparée à domicile avec LUNICAR</td><td>Date choisie, prix définitif expliqué, aucun achat de véhicule imposé</td><td>Prix en général inférieur à une vente réussie entre particuliers ; une offre n'est pas toujours possible</td></tr></tbody></table></div><p>Demandez à la concession le prix de reprise séparément de la remise sur la nouvelle voiture, puis comparez-le avec une fourchette indicative LUNICAR. Vous restez libre de retenir l'option qui vous convient. Plus de détails sur <a href=\"/reprise-voiture-sans-achat\">la reprise sans achat de véhicule</a> et dans <a href=\"/comparatif-reprise-auto\">le comparatif des façons de vendre</a>.</p>"
+      },
       {
         "h2": "Comment vendre sa voiture rapidement ?",
         "html": "<p>Le plus rapide est de vendre directement à un professionnel du rachat. Avec LUNICAR, vous décrivez la voiture en ligne en deux minutes, un conseiller vous rappelle rapidement avec une fourchette de prix indicative; si elle vous convient, un technicien vérifie la voiture à votre adresse et vous présente le prix définitif, payé par virement instantané si vous l'acceptez. Ce parcours fonctionne partout en France.</p>\n<p>Une vente entre particuliers impose de nombreuses étapes : photos, annonce, réponses aux messages, visites, essais, négociation, contrôle technique de moins de six mois, puis vérification du paiement. Chacune peut prendre du temps, et l'issue reste incertaine. Le rachat direct remplace ces étapes par un interlocuteur unique, une fourchette indicative dès le rappel et un prix définitif après vérification.</p>"
@@ -2513,6 +2765,22 @@
       {
         "question": "Que dois-je faire après la vente ?",
         "answer": "Conservez votre exemplaire du certificat de cession et le code de cession, puis résiliez votre assurance à compter de la date de la vente. La déclaration de cession sur le site de l'ANTS est faite avec vous lors du rendez-vous."
+      },
+      {
+        "question": "Puis-je faire estimer ma voiture plusieurs semaines avant la livraison de la nouvelle ?",
+        "answer": "Oui. La fourchette indicative est gratuite et sans engagement : elle vous permet de savoir où vous vous situez et de comparer avec une offre de reprise. Vous fixez ensuite le rendez-vous à la date qui vous arrange. Si le kilométrage ou l'état évoluent entre-temps, signalez-le au conseiller, car la fourchette repose sur votre description."
+      },
+      {
+        "question": "La livraison de ma nouvelle voiture est retardée : que faire ?",
+        "answer": "Prévenez votre conseiller LUNICAR : le rendez-vous est déplacé à une nouvelle date. Rien n'est vendu tant que vous n'avez pas accepté le prix définitif et signé le certificat de cession, vous gardez donc votre voiture et continuez à rouler en attendant la livraison. Pensez à garder votre assurance active jusqu'à la vente."
+      },
+      {
+        "question": "Dois-je assurer deux voitures en même temps ?",
+        "answer": "Seulement entre la livraison de la nouvelle et la vente de l'ancienne. Pour réduire cette période, fixez le rendez-vous de vente au plus près de la livraison. Le contrat de la voiture vendue est suspendu le soir de la vente, à minuit, puis résilié ou transféré sur la nouvelle voiture, selon Service-public.gouv.fr. Votre assureur vous indique la solution la plus simple."
+      },
+      {
+        "question": "Faut-il passer par la concession où j'achète ma nouvelle voiture ?",
+        "answer": "Non, la reprise en concession n'est pas obligatoire. Vous pouvez acheter votre nouvelle voiture et vendre l'ancienne séparément. Demandez le prix de reprise à part de la remise sur la voiture neuve, puis comparez-le avec une fourchette indicative LUNICAR, gratuite et sans engagement. LUNICAR n'impose aucun achat de véhicule."
       }
     ],
     "sources": [
@@ -2527,9 +2795,13 @@
       {
         "label": "Histovec, historique d'un véhicule",
         "url": "https://histovec.interieur.gouv.fr/"
+      },
+      {
+        "label": "Résilier ou transférer l'assurance après la vente de son véhicule, service-public.gouv.fr (vérifié le 6 novembre 2026)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2664"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06"
   },
   {
     "slug": "rachat-vehicule-utilitaire",
@@ -2902,10 +3174,10 @@
     "slug": "vendre-sa-voiture-guide-complet",
     "image": "accueil",
     "nav": "Guide complet",
-    "title": "Vendre sa voiture en France : le guide complet | LUNICAR",
-    "description": "Les étapes pour vendre sa voiture en France : documents, estimation, choix de l'acheteur, certificat de cession, déclaration sous 15 jours et assurance.",
-    "h1": "Vendre sa voiture en France : <em>le guide complet</em>",
-    "lede": "Vendre une voiture en France suit toujours le même parcours : réunir les documents, estimer le prix, choisir l'acheteur, conclure la vente, déclarer la cession dans les 15 jours et prévenir l'assureur. Ce guide rassemble les règles officielles et renvoie vers les pages détaillées pour chaque situation particulière.",
+    "title": "Vendre sa voiture sans problème : les démarches | LUNICAR",
+    "description": "Quelles démarches pour vendre sa voiture sans problème ? Check-list : carte grise, certificat de cession, CT, déclaration ANTS sous 15 jours, assurance.",
+    "h1": "Vendre sa voiture sans problème : <em>les démarches, étape par étape</em>",
+    "lede": "Pour vendre sa voiture sans problème, il faut remettre à l'acheteur la carte grise barrée et signée, le certificat de cession, un certificat de situation administrative de moins de 15 jours et, pour une vente à un particulier d'une voiture de plus de quatre ans, un contrôle technique de moins de six mois. Il faut ensuite déclarer la cession à l'ANTS dans les 15 jours et prévenir son assureur. Chaque démarche est détaillée ci-dessous, d'après Service-public.gouv.fr.",
     "points": [
       "Six étapes, de la préparation à l'assurance",
       "Documents exigés selon Service-public.gouv.fr",
@@ -2914,6 +3186,10 @@
     ],
     "etat": [],
     "sections": [
+      {
+        "h2": "Quelles démarches pour vendre sa voiture sans problème ?",
+        "html": "<p>Vendre sa voiture sans problème demande trois séries de démarches : réunir les documents avant la vente, remplir correctement le certificat de cession et la carte grise le jour de la vente, puis déclarer la cession à l'ANTS dans les 15 jours et prévenir son assureur. Voici la check-list complète, vérifiée le 6 novembre 2026 sur Service-public.gouv.fr.</p><h3>Avant la vente</h3><ul class=\"ticks\"><li><strong>Certificat de situation administrative</strong> : de moins de 15 jours, à obtenir sur <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a> ; il atteste l'absence de gage et d'opposition.</li><li><strong>Contrôle technique, selon le cas</strong> : exigé pour vendre à un particulier une voiture de plus de quatre ans, avec un procès-verbal de moins de six mois ; non exigé pour vendre à un professionnel de l'automobile. Voir <a href=\"/article/controle-technique-vente-voiture\">le contrôle technique et la vente</a>.</li><li><strong>Voiture qui ne roule plus</strong> : elle ne peut pas être proposée à la vente à un particulier, seulement à un professionnel disposant d'un numéro SIRET.</li><li><strong>Carte grise à votre nom</strong> : tous les co-titulaires signent la cession ; une voiture en location avec option d'achat ne peut pas être vendue par le locataire.</li><li><strong>Crédit ou gage</strong> : à traiter avant la vente, voir <a href=\"/vendre-voiture-credit\">vendre une voiture à crédit</a> et <a href=\"/vendre-voiture-gagee\">vendre une voiture gagée</a>.</li></ul><h3>Le jour de la vente</h3><ul class=\"ticks\"><li><strong>Certificat de cession</strong> : <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">Cerfa 15776</a>, rempli et signé avec l'acheteur en deux exemplaires ; vous gardez l'exemplaire n° 1, l'acheteur reçoit l'exemplaire n° 2. Mentionnez l'état général, les défauts connus et tout accident.</li><li><strong>Carte grise barrée</strong> : mention « vendu le » suivie de la date et de l'heure, puis votre signature ; elle est remise en entier. Le coupon détachable est rempli pour un acheteur particulier, pas pour un professionnel.</li><li><strong>Paiement</strong> : à constater sur votre propre compte avant de remettre les clés, voir <a href=\"/virement-instantane-vente-voiture\">le paiement par virement instantané</a>.</li></ul><h3>Après la vente</h3><ul class=\"ticks\"><li><strong>Déclaration de cession</strong> : obligatoire, même pour un don, dans les 15 jours suivant la signature du certificat de cession, sur le site de l'ANTS, voir <a href=\"/article/declaration-de-cession-ants-etapes\">les étapes de la déclaration</a>.</li><li><strong>Code de cession</strong> : affiché à la fin de la déclaration en ligne, valable 15 jours, à remettre à l'acheteur pour qu'il immatricule la voiture à son nom.</li><li><strong>Assurance</strong> : le contrat est suspendu dès le soir de la vente, à minuit ; vous le résiliez par lettre recommandée avec une copie du certificat de cession, avec effet 10 jours calendaires après réception, ou vous le transférez sur votre nouvelle voiture (<a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F2664\" rel=\"noopener\" target=\"_blank\">fiche Service-public.gouv.fr</a>).</li></ul><p>Source principale : fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> de Service-public.gouv.fr. Avec LUNICAR, aucun contrôle technique n'est exigé, le certificat de cession est rempli avec vous, la déclaration de cession est faite avec vous et l'enlèvement est sans frais si la vente est conclue.</p>"
+      },
       {
         "h2": "Quelles sont les étapes pour vendre sa voiture en France ?",
         "html": "<p>Vendre sa voiture se fait en six étapes : préparer les documents, estimer le prix, choisir l'acheteur, conclure la vente avec le certificat de cession, déclarer la cession dans les 15 jours, puis prévenir l'assureur. L'ordre compte : une vente conclue avant la vérification du paiement est la source de nombreux litiges.</p><ul class=\"ticks\"><li><strong>Étape 1 — Préparer les documents</strong> : carte grise, certificat de situation administrative, contrôle technique pour une vente à un particulier.</li><li><strong>Étape 2 — Estimer le prix</strong> : annonces comparables, état réel, historique Histovec, fourchette d'un professionnel.</li><li><strong>Étape 3 — Choisir l'acheteur</strong> : particulier, concession, professionnel du rachat ou plateforme.</li><li><strong>Étape 4 — Vendre</strong> : certificat de cession en deux exemplaires, carte grise barrée, paiement constaté.</li><li><strong>Étape 5 — Déclarer la cession</strong> : sur le site de l'ANTS, dans les 15 jours.</li><li><strong>Étape 6 — Prévenir l'assureur</strong> : résiliation ou adaptation du contrat.</li></ul><p>Chaque étape est détaillée ci-dessous avec les fiches de Service-public.gouv.fr. Le fonctionnement de LUNICAR est décrit sur la page <a href=\"/comment-ca-marche\">comment ça marche</a>.</p>"
@@ -2976,6 +3252,22 @@
       {
         "question": "Comment fonctionne la vente à LUNICAR ?",
         "answer": "Vous décrivez la voiture en ligne, un conseiller vous rappelle avec une fourchette indicative, un technicien vient à votre adresse sans frais et le prix définitif est présenté après vérification. Si vous acceptez, les documents sont préparés ensemble, le virement est instantané et l'enlèvement est offert."
+      },
+      {
+        "question": "Qui peut faire la déclaration de cession ?",
+        "answer": "Le vendeur, sur le site de l'ANTS, ou un mandataire muni d'un mandat signé et de sa pièce d'identité. Vendeur et acheteur peuvent aussi la faire ensemble avec l'application Simplimmat. Un professionnel habilité peut s'en charger avec le Cerfa 13757 et votre code confidentiel ; il facture alors sa prestation, selon Service-public.gouv.fr."
+      },
+      {
+        "question": "Combien de temps le code de cession est-il valable ?",
+        "answer": "Le code de cession est valable 15 jours, selon Service-public.gouv.fr. Il s'affiche à la fin de la déclaration de cession en ligne : notez-le et remettez-le à l'acheteur, qui en a besoin pour demander une carte grise à son nom. Si vous passez par un professionnel habilité, c'est lui qui obtient ce code."
+      },
+      {
+        "question": "Faut-il remplir le coupon détachable de la carte grise ?",
+        "answer": "Oui pour une vente à un particulier : vous inscrivez le nom de l'acheteur au verso et vous signez, sans découper le coupon, qui lui permet de circuler un mois en France. Pour une vente à un professionnel de l'automobile, le coupon n'est pas à remplir. Dans les deux cas, la carte grise est barrée et remise en entier."
+      },
+      {
+        "question": "Peut-on vendre à un particulier une voiture qui ne roule plus ?",
+        "answer": "Non. Selon Service-public.gouv.fr, un véhicule non roulant ne peut pas être proposé à la vente à un particulier ; il ne peut être vendu qu'à un professionnel disposant d'un numéro SIRET. LUNICAR peut étudier une voiture non roulante, l'enlèvement est sans frais si la vente est conclue, mais une offre n'est pas toujours possible."
       }
     ],
     "sources": [
@@ -3004,7 +3296,7 @@
         "url": "https://histovec.interieur.gouv.fr/"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06"
   },
   {
     "slug": "expertise-voiture-a-domicile",
@@ -3106,10 +3398,10 @@
     "slug": "fourchette-et-prix-definitif",
     "image": "accueil",
     "nav": "Fourchette et prix",
-    "title": "Fourchette indicative et prix définitif | LUNICAR",
-    "description": "Comment LUNICAR passe d'une fourchette indicative à un prix définitif : six motifs de baisse, ce qui ne joue pas, engagement si vos informations sont exactes.",
-    "h1": "De la fourchette indicative au prix définitif : <em>comment LUNICAR fixe son prix</em>",
-    "lede": "La fourchette indicative est calculée à partir de votre description ; le prix définitif est présenté après vérification par un technicien, à votre adresse. Entre les deux, seuls six motifs peuvent faire baisser le prix, tous liés à un écart avec ce que vous avez déclaré. Vous restez libre de refuser, sans frais.",
+    "title": "Que vaut vraiment ma voiture ? Fourchette et prix | LUNICAR",
+    "description": "Que vaut vraiment votre voiture ? Pourquoi une estimation en ligne ne suffit pas et comment LUNICAR passe d'une fourchette indicative à un prix expliqué.",
+    "h1": "Que vaut vraiment ma voiture ? <em>De la fourchette indicative au prix définitif</em>",
+    "lede": "Ce que vaut vraiment votre voiture dépend de cette voiture-là : sa génération, sa motorisation, son kilométrage, son entretien, son état, son contrôle technique et sa vignette Crit'Air. Aucune estimation en ligne ne voit tout cela. LUNICAR vous donne d'abord une fourchette indicative gratuite à partir de votre description, puis un technicien vient à votre adresse, sans frais de déplacement, vérifie la voiture et vous explique le prix définitif. Vous restez libre de refuser.",
     "points": [
       "Fourchette fondée sur votre description",
       "Six motifs de baisse, tous expliqués",
@@ -3118,6 +3410,14 @@
     ],
     "etat": [],
     "sections": [
+      {
+        "h2": "Comment savoir ce que vaut vraiment ma voiture ?",
+        "html": "<p>On ne le sait vraiment qu'en partant de la voiture elle-même : deux voitures du même modèle et de la même année peuvent valoir des prix très différents selon leur motorisation, leur kilométrage, leur entretien et leur état. La seule façon d'avoir un vrai chiffre est de renseigner votre voiture pour recevoir une fourchette indicative, puis de la faire vérifier.</p><ul class=\"ticks\"><li><strong>Génération et motorisation</strong> : une même appellation recouvre souvent plusieurs générations et moteurs, qui ne se valent pas.</li><li><strong>Kilométrage et entretien</strong> : carnet, factures, gros entretiens faits ou à prévoir.</li><li><strong>État</strong> : carrosserie, intérieur, pneus, voyants, bruits, petits soucis connus.</li><li><strong>Contrôle technique</strong> : à jour ou non, défaillances relevées.</li><li><strong>Vignette Crit'Air</strong> : elle pèse selon les zones à faibles émissions, voir <a href=\"/vendre-voiture-critair-zfe\">vendre une voiture et les ZFE</a>.</li></ul><p>Renseignez votre voiture, la plaque si possible : un conseiller vous rappelle rapidement avec une fourchette indicative, gratuite et sans engagement. Pour une voiture ancienne, voir aussi <a href=\"/article/combien-vaut-une-voiture-ancienne\">combien vaut une voiture ancienne</a>.</p>"
+      },
+      {
+        "h2": "Pourquoi une estimation en ligne ne suffit pas ?",
+        "html": "<p>Une estimation en ligne calcule une moyenne à partir de quelques critères : elle ne voit ni l'entretien réel, ni l'usure, ni les petits défauts, qui font pourtant l'essentiel de l'écart entre deux voitures. C'est un point de départ, pas un prix.</p><ul class=\"ticks\"><li><strong>Une fourchette indicative</strong> : fondée sur votre description, pour savoir où vous vous situez.</li><li><strong>Un engagement sur le bas de la fourchette</strong> : si les informations transmises sont exactes, LUNICAR s'engage à proposer au moins le bas de la fourchette ; plus la voiture est soignée, plus le prix se rapproche du haut.</li><li><strong>Un technicien à domicile, sans frais</strong> : il vient à votre adresse, sans frais de déplacement, partout en France, et vérifie la voiture sans démontage.</li><li><strong>Un prix définitif expliqué</strong> : ce que vaut la voiture sur le marché, moins ce que coûtent sa remise en état et sa revente ; le technicien vous montre ce qu'il constate.</li><li><strong>Un refus possible</strong> : vous pouvez refuser le prix définitif, sans frais.</li></ul><p>Toute voiture peut être étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit. Le déroulé de la visite est décrit sur la page <a href=\"/expertise-voiture-a-domicile\">expertise de la voiture à domicile</a>.</p>"
+      },
       {
         "h2": "Comment LUNICAR passe-t-il d'une fourchette indicative à un prix définitif ?",
         "html": "<p>LUNICAR établit d'abord une fourchette indicative à partir de votre description, communiquée rapidement par un conseiller, puis fixe le prix définitif après vérification de la voiture par un technicien, à votre adresse. Si l'état réel correspond à votre description, le prix définitif se situe dans la fourchette ; s'il s'en écarte, chaque motif vous est expliqué.</p><p>La fourchette repose sur trois familles d'informations : le véhicule (marque, modèle, motorisation, année, finition), son usage (kilométrage, nombre de propriétaires, entretien) et son état déclaré (carrosserie, mécanique, contrôle technique, pneus). Elle tient aussi compte de ce que LUNICAR peut en obtenir à la revente, principalement auprès de professionnels, après remise en état éventuelle.</p><p>Une fourchette n'est pas une offre ferme : c'est un intervalle qui engage LUNICAR à condition que les informations soient exactes. Le détail du rendez-vous est décrit sur la page <a href=\"/expertise-voiture-a-domicile\">que vérifie le technicien</a>, et les huit étapes sur <a href=\"/comment-ca-marche\">comment ça marche</a>.</p>"
@@ -3172,6 +3472,22 @@
       {
         "question": "Comment est calculée la fourchette ?",
         "answer": "À partir du véhicule (modèle, motorisation, année), de son usage (kilométrage, entretien, propriétaires) et de son état déclaré, rapportés à ce que LUNICAR peut en obtenir à la revente, principalement auprès de professionnels."
+      },
+      {
+        "question": "Que vaut ma voiture ?",
+        "answer": "Cela dépend vraiment de votre voiture : génération, motorisation, kilométrage, entretien, état, contrôle technique, vignette Crit'Air. Aucun chiffre général ne vaut pour toutes. Pour avoir un vrai chiffre, renseignez votre voiture, la plaque si possible : un conseiller LUNICAR vous rappelle rapidement avec une fourchette indicative, gratuite et sans engagement."
+      },
+      {
+        "question": "Pourquoi deux estimations en ligne donnent-elles des chiffres différents ?",
+        "answer": "Parce que chaque outil s'appuie sur ses propres critères et ses propres données, et qu'aucun ne voit la voiture. L'entretien réel, l'usure et les petits défauts n'y figurent pas. Une estimation en ligne reste un point de départ : seule la vérification de la voiture permet de fixer un prix que l'on peut expliquer."
+      },
+      {
+        "question": "Le technicien facture-t-il son déplacement ?",
+        "answer": "Non. Le technicien LUNICAR vient à votre adresse sans frais de déplacement, partout en France. Il vérifie la voiture sans démontage, vous explique ce qu'il constate et vous présente le prix définitif. Si vous le refusez, vous ne payez rien et vous gardez votre voiture."
+      },
+      {
+        "question": "Pourquoi LUNICAR ne publie-t-il pas de prix par modèle ?",
+        "answer": "Parce qu'un prix par modèle serait trompeur : deux voitures du même modèle peuvent valoir très différemment selon leur motorisation, leur kilométrage, leur entretien et leur état. LUNICAR préfère partir de votre voiture : une fourchette indicative à partir de votre description, puis un prix définitif expliqué après vérification à votre adresse."
       }
     ],
     "sources": [
@@ -3196,7 +3512,7 @@
         "url": "https://histovec.interieur.gouv.fr/"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06"
   },
   {
     "slug": "virement-instantane-vente-voiture",

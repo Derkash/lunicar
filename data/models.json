@@ -5,8 +5,8 @@
     "brandSlug": "reprise-peugeot",
     "model": "206",
     "nav": "Peugeot 206",
-    "title": "Vendre sa Peugeot 206 : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Peugeot 206 sans obligation d'achat : estimation gratuite, fourchette indicative communiquée, vérification chez vous, virement instantané.",
+    "title": "Que vaut ma Peugeot 206 ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre 206 ? La réponse dépend de la phase, du moteur, du kilométrage et de l'état de la voiture. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Peugeot 206 <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Peugeot 206, souvent achetée neuve ou gardée de longues années. Un conseiller LUNICAR vous rappelle rapidement avec une fourchette de prix indicative. Un technicien vient ensuite vérifier la voiture chez vous, puis le prix définitif vous est présenté ; si vous l'acceptez, le paiement se fait par virement instantané.",
     "annees": "1998-2012",
@@ -152,6 +152,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma 206 phase 1 ?",
+        "answer": "Cela dépend vraiment de chaque voiture. La phase 1, de 1998 à 2003, est la plus ancienne : témoins et jauges capricieux y étaient fréquents jusqu'en 2003, et le débitmètre des premiers 2.0 HDi s'encrasse. L'état du train arrière et une courroie faite avec facture comptent beaucoup. Renseignez votre 206 pour recevoir une vraie estimation, gratuite."
+      },
+      {
+        "question": "Que vaut ma 206 phase 2 ?",
+        "answer": "Il n'y a pas de réponse unique : tout dépend de la voiture. La phase 2, de 2003 à 2009, existe en 3 et 5 portes, SW et CC. Sur le 2.0 HDi, la poulie damper est surveillée ; sur le 1.6 HDi 110, le turbo et les injecteurs. Carnet et état de la carrosserie pèsent aussi. Décrivez votre 206 pour une estimation gratuite."
+      },
+      {
+        "question": "Que vaut une 206+ ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. La 206+, vendue de 2009 à 2012 à côté de la 207, reprend une face avant inspirée de celle-ci avec une gamme de moteurs réduite. Plus récente que les autres 206, elle se juge sur son kilométrage, sa courroie, son train arrière et son état général. Renseignez la vôtre pour obtenir une estimation gratuite."
+      },
+      {
+        "question": "Que vaut une 206 à plus de 200 000 km ?",
+        "answer": "Une 206 à plus de 200 000 km peut encore avoir une valeur, selon son état et son entretien. Les moteurs 1.1, 1.4 et HDi ont une réputation d'endurance quand ils sont suivis. On regarde la courroie, le train arrière, les témoins et les fuites éventuelles. Indiquez le kilométrage exact et les factures disponibles pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une 206 sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans réparer et sans contrôle technique récent. Train arrière usé, témoin d'airbag, bobine qui fait trembler le moteur : décrivez le problème, le technicien le constate chez vous et vous explique son effet sur le prix définitif. Toute voiture est étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Ma 206 de 2005 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle roule bien et qu'elle a été entretenue. Une 206 de 2005 peu kilométrée, avec un carnet suivi et une courroie récente, garde un intérêt réel. Nous l'estimons gratuitement à partir de son état, de son kilométrage et de ses factures. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -185,7 +205,20 @@
         "label": "Caradisiac : fiabilité de la Peugeot 206",
         "url": "https://www.caradisiac.com/Peugeot-40413.htm"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Il n'existe pas de prix unique pour une 206 : sa valeur dépend vraiment de chaque voiture. Produite de 1998 à 2012, elle a souvent beaucoup roulé. Tous ses moteurs ont une courroie de distribution : une facture récente pèse plus lourd que l'année. Le train arrière, les témoins allumés (airbag, moteur) et, sur une 206 CC, le toit sont aussi regardés. Pour connaître la valeur de la vôtre, donnez sa plaque, son kilométrage et son état : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais avec le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Courroie de distribution récente avec facture, quel que soit le moteur.",
+        "Train arrière sain : roues arrière droites et usure normale des pneus.",
+        "Témoin d'airbag éteint, connectique sous les sièges en bon état.",
+        "Pas de fuite de liquide de refroidissement sur le 1.6 16v.",
+        "Poulie damper contrôlée sur le 2.0 HDi 90.",
+        "Toit de 206 CC qui se replie correctement.",
+        "Kilométrage justifié par le carnet ou les contrôles techniques."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-peugeot-207",
@@ -193,8 +226,8 @@
     "brandSlug": "reprise-peugeot",
     "model": "207",
     "nav": "Peugeot 207",
-    "title": "Vendre sa Peugeot 207 : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Peugeot 207 sans obligation d'achat : estimation gratuite, fourchette indicative communiquée, vérification chez vous, virement instantané.",
+    "title": "Que vaut ma Peugeot 207 ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Peugeot 207 ? Cela dépend de la génération, du moteur, du kilométrage et de l'état. Décrivez-la pour une estimation gratuite, sans engagement.",
     "h1": "Vendre sa Peugeot 207 <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Peugeot 207, berline, SW ou CC, qui veulent vendre sans se déplacer. Un conseiller LUNICAR vous rappelle rapidement avec une fourchette de prix indicative. Un technicien vient ensuite vérifier la voiture chez vous, puis le prix définitif vous est présenté ; si vous l'acceptez, le paiement se fait par virement instantané.",
     "annees": "2006-2014",
@@ -335,6 +368,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma 207 phase 1 ?",
+        "answer": "Elle dépend de chaque voiture. Sur une 207 phase 1 (2006-2009), plusieurs défauts de jeunesse sont vérifiés : pertes de puissance du 1.6 THP jusqu'en mai 2008, corrigées par une mise à jour, voyant moteur lié au catalyseur sur des essence jusqu'en juin 2007, bobines du 1.6 VTi jusqu'en octobre 2008. Renseignez votre 207 pour recevoir une vraie estimation."
+      },
+      {
+        "question": "Que vaut ma 207 phase 2 ?",
+        "answer": "Cela dépend de chaque exemplaire. La 207 phase 2 (2009-2012) se reconnaît à son nouveau bouclier avant et à ses feux arrière à LED. Sa valeur se joue surtout sur le moteur : état de la chaîne et consommation d'huile sur un VTi ou un THP, joints d'injecteurs et turbo sur un 1.6 HDi. Décrivez votre voiture pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut une 207+ ?",
+        "answer": "Elle dépend de chaque voiture. La 207+ (2012-2014) est une version simplifiée vendue après l'arrivée de la 208, avec une gamme de moteurs réduite : c'est donc la motorisation exacte, son entretien et le kilométrage qui orientent l'estimation, plus que la finition. Renseignez votre 207+ avec sa plaque pour recevoir une vraie estimation, gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut une 207 à plus de 200 000 km ?",
+        "answer": "Une 207 à plus de 200 000 km peut être étudiée, surtout avec un moteur à courroie entretenu comme le 1.4 ou le 1.4 HDi. Sur un 1.6 HDi, le turbo et la crépine d'huile sont regardés de près ; sur un VTi ou un THP, la chaîne et la consommation d'huile. Indiquez le kilométrage exact et vos factures pour une estimation réaliste."
+      },
+      {
+        "question": "Que vaut une 207 sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état : aucun contrôle technique exigé, aucune réparation à faire avant. Un voyant antipollution allumé, de la fumée sur un 1.6 HDi ou une consommation d'huile importante sont constatés par le technicien et intégrés à un prix qu'il vous explique. Une offre n'est pas toujours possible : c'est l'étude de votre 207 qui le dit."
+      },
+      {
         "question": "Ma 207 de 2008 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle a été entretenue et qu'elle roule bien. Une 207 de 2008 peu kilométrée, avec des factures claires et sans bruit moteur, garde un intérêt réel. Nous l'estimons gratuitement et un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation d'acheter un autre véhicule."
       },
@@ -368,7 +421,20 @@
         "label": "Carverif : fiabilité de la Peugeot 207 RC THP",
         "url": "https://carverif.fr/blogs/fiabilite-voitures/peugeot-207-rc-thp-fiabilite"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Peugeot 207, sa valeur dépend vraiment de chaque voiture. Le moteur sépare nettement les exemplaires : les 1.4 VTi, 1.6 VTi et 1.6 THP ont une chaîne qui peut s'allonger (claquement au démarrage à froid), alors que le 1.4 et les HDi ont une courroie. Une chaîne déjà remplacée avec facture, une consommation d'huile maîtrisée et, sur une 207 CC, un toit qui fonctionne font la différence. Décrivez la vôtre (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Moteur : 1.4 à courroie réputé fiable, VTi et THP à chaîne plus sensibles, le 1.6 THP en tête.",
+        "Aucun claquement de chaîne au démarrage à froid, ou chaîne déjà remplacée avec facture.",
+        "Niveau d'huile stable entre deux vidanges sur les VTi et THP.",
+        "Sur un 1.6 HDi : ni fuite aux joints d'injecteurs, ni turbo fatigué.",
+        "Toit de 207 CC en parfait état de marche.",
+        "Aucun voyant moteur ou antipollution allumé.",
+        "Carnet complet et peu de propriétaires."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-peugeot-1007",
@@ -376,8 +442,8 @@
     "brandSlug": "reprise-peugeot",
     "model": "1007",
     "nav": "Peugeot 1007",
-    "title": "Vendre sa Peugeot 1007 : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Peugeot 1007 sans obligation d'achat : estimation gratuite, fourchette indicative communiquée, vérification chez vous, virement instantané.",
+    "title": "Que vaut ma Peugeot 1007 ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Peugeot 1007 ? Tout dépend de la génération, du moteur, de la boîte, du kilométrage et de l'état. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Peugeot 1007 <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Peugeot 1007, la petite Peugeot aux portes coulissantes électriques. Un conseiller LUNICAR vous rappelle rapidement avec une fourchette de prix indicative. Un technicien vient ensuite vérifier la voiture chez vous, puis le prix définitif vous est présenté ; si vous l'acceptez, le paiement se fait par virement instantané.",
     "annees": "2004-2009",
@@ -500,6 +566,18 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Peugeot 1007 ?",
+        "answer": "Elle dépend de chaque voiture : la 1007 n'a connu qu'une génération (2004-2009), sans vrai restylage, donc l'état compte plus que l'année. Le fonctionnement des portes coulissantes et de la boîte, manuelle ou 2-Tronic, pèse le plus. Un moteur 1.4 ou 1.4 16v, réputé fiable, et des rappels effectués aident. Renseignez votre 1007 pour recevoir une vraie estimation."
+      },
+      {
+        "question": "Que vaut une 1007 à plus de 200 000 km ?",
+        "answer": "Une 1007 à plus de 200 000 km peut être étudiée. Le 1.4 HDi est réputé robuste, mais un embrayage usé, signalé tôt sur les diesels, et une courroie sans facture pèsent. Sur le 1.6 HDi, l'injection et la vanne EGR sont vérifiées. Les portes coulissantes, elles, se jugent quel que soit le kilométrage. Indiquez le kilométrage exact pour une estimation réaliste."
+      },
+      {
+        "question": "Que vaut une 1007 sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans contrôle technique exigé et sans réparation à faire avant. Une boîte 2-Tronic qui se bloque sur un rapport, un embrayage en fin de vie ou des témoins allumés sont constatés par le technicien et pris en compte dans un prix expliqué. Une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Ma 1007 de 2006 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état de marche. Une 1007 de 2006 dont les portes et la boîte fonctionnent bien, avec un carnet suivi, reste une voiture utile en ville. Nous l'estimons gratuitement et un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation d'achat."
       },
@@ -537,7 +615,20 @@
         "label": "L'argus : la liste noire des modèles à problèmes",
         "url": "https://www.largus.fr/actualite-automobile/voitures-francaises-la-liste-noire-des-modeles-a-problemes-167621_p_3.html"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Peugeot 1007 : la valeur dépend vraiment de chaque voiture. Sur ce modèle à génération unique, l'année compte moins que les deux portes coulissantes électriques : une porte qui se bloque ou refuse de se verrouiller met d'autres fonctions en défaut. La boîte vient ensuite, manuelle ou robotisée 2-Tronic, dont les à-coups pèsent. Une 1007 d'après avril 2008, aux contacteurs de portes améliorés, et des rappels effectués rassurent. Pour connaître la valeur de la vôtre, décrivez-la (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Deux portes coulissantes qui s'ouvrent, se ferment et se verrouillent sans défaut.",
+        "Factures de réparation des portes (rails, capteurs, contacteurs) déjà faites.",
+        "Boîte manuelle, ou 2-Tronic sans à-coups ni hésitation au démarrage.",
+        "Production d'après avril 2008, avec des contacteurs de portes améliorés.",
+        "Rappels faits : capteur de liquide de refroidissement du 1.6 16v de 2006, triangle de suspension sur des modèles 2008.",
+        "Courroie récente avec facture, toutes les motorisations en ayant une.",
+        "Embrayage en bon état, surtout sur un diesel ou une 2-Tronic."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-renault-clio",
@@ -545,8 +636,8 @@
     "brandSlug": "reprise-renault",
     "model": "Clio",
     "nav": "Renault Clio",
-    "title": "Vendre sa Renault Clio : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Renault Clio 2, 3 ou 4 : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Renault Clio ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Renault Clio ? Tout dépend de sa génération, de son moteur, de son kilométrage et de son état. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Renault Clio <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Clio 2 ou d'une Clio 3, parfois d'une Clio 4, qui veulent la vendre sans se déplacer. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "1998-2019 pour les Clio 2 à 4 (Clio 2 : 1998-2012, Clio 3 : 2005-2014, Clio 4 : 2012-2019) ; la Clio 5 est produite depuis 2019",
@@ -706,6 +797,26 @@
     ],
     "faq": [
       {
+        "question": "Combien vaut une Clio 2 ?",
+        "answer": "Une Clio 2, produite de 1998 à 2012 jusqu'à la version Campus, n'a pas de prix type : tout dépend de l'exemplaire. Sur une voiture de cet âge, on regarde la courroie faite avec facture, les lève-vitres et l'électricité, les roulements et les freins arrière. Le 1.9 dTi est réputé très endurant. Renseignez votre Clio pour une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut ma Clio 3 ?",
+        "answer": "Cela dépend vraiment de chaque Clio 3 (2005-2014). Sur cette génération, le témoin d'airbag allumé est fréquent, le 1.5 dCi demande une injection et un turbo sains, et le 1.2 TCe 100 est la version conseillée par la presse spécialisée. Une phase 2 ou une Estate bien suivie se distingue. Décrivez la vôtre pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut une Clio 4 ?",
+        "answer": "Une Clio 4 (2012-2019) est plus récente et s'estime au cas par cas : motorisation 1.2 16V 75, 0.9 TCe 90, 1.2 TCe 120 ou 1.5 dCi, kilométrage, carnet d'entretien et état. Berline 5 portes ou Estate, les deux s'étudient. Renseignez votre Clio : un conseiller vous rappelle avec une fourchette indicative gratuite, sans engagement."
+      },
+      {
+        "question": "Que vaut une Clio à plus de 200 000 km ?",
+        "answer": "Une Clio à plus de 200 000 km reste étudiée, notamment en 1.5 dCi ou en 1.9 dTi. Ce qui compte : la courroie faite à temps avec facture, l'absence de voyant, des trains roulants et des roulements en bon état. À kilométrage égal, deux Clio peuvent valoir des sommes très différentes. Décrivez la vôtre avec son kilométrage réel pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une Clio sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle s'étudie en l'état : aucune réparation, aucun contrôle technique exigé. Un témoin d'airbag allumé, une bobine qui fait tourner le moteur sur trois cylindres ou un 1.5 dCi qui démarre mal sont pris en compte, et le technicien vous explique ce qu'il constate. Une offre n'est pas toujours possible : c'est l'étude de votre Clio qui le dit."
+      },
+      {
         "question": "Ma Clio 2 de 2004 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Une Clio 2 de 2004 peu roulée, avec un carnet suivi et une courroie faite à temps, intéresse toujours. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -747,7 +858,20 @@
         "label": "Caradisiac : Clio 3 d'occasion, meilleures et pires versions",
         "url": "https://www.caradisiac.com/la-renault-clio-3-en-occasion-les-meilleures-et-pires-versions-169082.htm"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Une Renault Clio n'a pas de prix unique : sa valeur dépend vraiment de chaque voiture. Trois générations circulent encore, de la Clio 2 de 1998 à la Clio 4 de 2019. Sur les Clio 2 et 3, la courroie de distribution est un point central : faite à temps avec facture, elle rassure ; dépassée, elle expose à une casse moteur. Sur les premiers 1.5 dCi, l'injection Delphi compte ; un témoin d'airbag allumé pèse aussi. Pour connaître la valeur de la vôtre, décrivez-la (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération : Clio 2 (1998-2012, Clio Campus comprise), Clio 3 (2005-2014) ou Clio 4 (2012-2019).",
+        "Courroie de distribution remplacée avec facture, point central sur les Clio 2 et 3.",
+        "1.5 dCi des premières versions sans symptôme d'injection Delphi : démarrage difficile, mode dégradé, claquements.",
+        "Témoin d'airbag éteint, défaut fréquent sur Clio 3 souvent lié à un connecteur sous un siège.",
+        "Essence 1.4 16V, 1.6 16V ou 1.2 TCe 100 en bon état, sans bobine d'allumage qui faiblit.",
+        "Lève-vitres et électricité fonctionnels sur une Clio 2.",
+        "Roulements arrière, rotules et freins contrôlés au-delà de 150 000 km."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-renault-twingo",
@@ -755,8 +879,8 @@
     "brandSlug": "reprise-renault",
     "model": "Twingo",
     "nav": "Renault Twingo",
-    "title": "Vendre sa Renault Twingo : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Renault Twingo 1 ou 2 : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Renault Twingo ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Twingo ? Tout dépend de sa génération, de son moteur, de son kilométrage et de son état. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Renault Twingo <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Twingo 1 ou d'une Twingo 2 qui veulent la vendre simplement. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, et un technicien vient vérifier la voiture chez vous. Pas de contrôle technique exigé, pas d'autre véhicule à acheter.",
     "annees": "1993-2014 (Twingo 1 : 1993-2007, Twingo 2 : 2007-2014)",
@@ -905,6 +1029,34 @@
     ],
     "faq": [
       {
+        "question": "Que vaut une Twingo 1 phase 1 (1993-1998) ?",
+        "answer": "Cela dépend vraiment de chaque voiture. Ces premières Twingo ont le 1.2 Cléon à chaîne jusqu'en 1996, puis le D7F à courroie. On regarde la consommation d'huile, les freins dont les plaquettes pouvaient frotter, et la boîte Easy si elle est montée. L'état général compte plus que l'année. Renseignez votre Twingo pour recevoir une vraie estimation, gratuite."
+      },
+      {
+        "question": "Que vaut ma Twingo 1 phase 2 ?",
+        "answer": "Il n'y a pas de réponse unique : tout dépend de la voiture. La phase 2, de 1998 à 2000, reçoit de nouveaux phares et une planche de bord avec airbag passager. Elle roule en 1.2 D7F à courroie : une facture de courroie, une boîte saine et l'absence de fuite d'huile pèsent dans l'analyse. Décrivez votre Twingo pour une estimation gratuite."
+      },
+      {
+        "question": "Combien vaut une Twingo 1 phase 3 ou 4 ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. De 2000 à 2007, ces Twingo reçoivent le 1.2 16V 75 et la boîte robotisée Quickshift, dont le fonctionnement est vérifié. Courroie faite à temps, peinture et intérieur conservés comptent aussi. Renseignez votre Twingo avec sa plaque et son kilométrage pour obtenir une estimation gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut ma Twingo 2 ?",
+        "answer": "Cela dépend vraiment de chaque voiture. La Twingo 2 de 2007 à 2012 existe en 1.2 60, 1.2 16V 75, 1.2 TCe 100, 1.5 dCi et 1.6 RS. On regarde le ralenti du 16V, la consommation d'huile du 1.2 60, les fuites au turbo du TCe et le vernis qui se ternit. Décrivez votre Twingo pour une estimation gratuite."
+      },
+      {
+        "question": "Que vaut une Twingo 2 phase 2 (2012-2014) ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. Cette dernière Twingo 2, restylée en 2012, est la plus récente de la gamme étudiée ici : kilométrage, courroie selon le carnet, état de la peinture et des finitions intérieures font la différence. Une Twingo RS se juge aussi sur son embrayage et sa boîte. Renseignez la vôtre pour une estimation gratuite."
+      },
+      {
+        "question": "Que vaut une Twingo à plus de 200 000 km ?",
+        "answer": "Une Twingo à plus de 200 000 km peut encore être étudiée, mais sa valeur dépend de son état. Sur une citadine aussi roulée, on regarde la courroie, la consommation d'huile, la boîte et la corrosion. Une voiture qui démarre bien et roule sans voyant se présente nettement mieux. Indiquez le kilométrage exact pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une Twingo sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans réparer ni passer le contrôle technique. Boîte Easy qui patine, fuite d'huile, ralenti instable : décrivez le problème, le technicien le vérifie chez vous et vous explique comment il pèse sur le prix définitif. Toute voiture est étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Ma Twingo 1 de 2003 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est saine. Une Twingo 1 de 2003 peu roulée, avec un carnet suivi et une courroie faite à temps, garde une valeur réelle. Nous l'estimons sur son état, son kilométrage et ses factures. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation de la vendre."
       },
@@ -942,7 +1094,20 @@
         "label": "Caradisiac : fiabilité Renault Twingo",
         "url": "https://www.caradisiac.com/Fiabilite-45622.htm"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Twingo : vendue de 1993 à 2014, chaque voiture a sa propre valeur. La boîte compte beaucoup : une boîte manuelle en bon état n'a pas le même poids qu'une Easy ou une Quickshift qui patine. La consommation d'huile et les fuites, connues sur plusieurs moteurs, sont aussi regardées. Renseignez la plaque, le kilométrage et l'état de votre Twingo : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais pour le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Boîte manuelle en bon état, plutôt qu'une Easy ou Quickshift qui patine.",
+        "Courroie remplacée avec facture sur les moteurs D7F, D4F et dCi.",
+        "Pas de consommation d'huile marquée ni de fuite au couvre-culasse.",
+        "Ralenti stable, sans vibration ni calage, sur une Twingo 2.",
+        "Peinture qui n'est pas trop ternie et intérieur bien conservé.",
+        "Rappel de 2009 sur les glissières de sièges fait sur une Twingo 2 concernée.",
+        "Usage urbain doux et kilométrage modéré."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-citroen-c3",
@@ -950,8 +1115,8 @@
     "brandSlug": "reprise-citroen",
     "model": "C3",
     "nav": "Citroën C3",
-    "title": "Vendre sa Citroën C3 : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Citroën C3 de 1re ou 2e génération : estimation gratuite rapide, sans obligation d'achat, on vient chez vous.",
+    "title": "Que vaut ma Citroën C3 ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Citroën C3 ? Tout dépend de la génération, du moteur, du kilométrage et de l'état. Décrivez-la pour une estimation gratuite, sans engagement.",
     "h1": "Vendre sa Citroën C3 <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Citroën C3 de première (2002-2010) ou de deuxième génération (2009-2016). LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, et un technicien vient vérifier la voiture chez vous. Pas de contrôle technique exigé, aucun autre véhicule à acheter.",
     "annees": "2002-2016 (C3 I : 2002-2010, C3 II : 2009-2016)",
@@ -1093,6 +1258,22 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma C3 1 ?",
+        "answer": "Elle dépend de chaque voiture, et beaucoup de C3 1 (2002-2010) ont aujourd'hui plus de quinze ans. Deux points pèsent nettement : la boîte, manuelle ou SensoDrive robotisée connue pour ses à-coups et ses blocages, et l'état des ressorts avant, souvent cassés sur cette génération. Renseignez votre voiture pour recevoir une vraie estimation, gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut ma C3 2 ?",
+        "answer": "Cela dépend de chaque exemplaire. Sur une C3 2 (2009-2016), le rappel des airbags Takata passe en premier : une voiture concernée ne doit plus rouler tant que l'airbag n'est pas remplacé, gratuitement. Le moteur compte aussi, en particulier les 1.0 et 1.2 à courroie humide, dont l'historique de vidanges est déterminant. Décrivez votre C3 pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut une C3 à plus de 200 000 km ?",
+        "answer": "Une C3 à plus de 200 000 km peut encore être étudiée : tout dépend du moteur et de son suivi. Les 1.4 et 1.6 HDi sont endurants quand la courroie et l'entretien ont été faits à temps ; l'embrayage, la vanne EGR et le filtre à particules sont alors regardés de près. Renseignez le kilométrage exact et vos factures pour une estimation réaliste."
+      },
+      {
+        "question": "Que vaut une C3 sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans réparer avant la vente et sans contrôle technique exigé. Signalez le défaut dès la demande, par exemple une boîte SensoDrive qui bloque ou un voyant de pression d'huile sur un 1.2 : le technicien le constate chez vous et l'intègre au prix de façon expliquée. Une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Ma C3 de 2006 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Une C3 de 2006 peu roulée, avec un carnet suivi, une courroie faite à temps et une boîte manuelle saine intéresse toujours. Nous l'estimons sur son état, son kilométrage et ses factures. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -1134,7 +1315,20 @@
         "label": "Stellantis : extension du stop drive C3 et DS3 (2009-2019)",
         "url": "https://www.media.stellantis.com/em-en/corporate-communications/press/stellantis-extends-stop-drive-action-in-europe-for-citroen-c3-and-ds3-vehicles-manufactured-between-2009-and-2019"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Citroën C3 : sa valeur dépend vraiment de chaque voiture. Sur une C3 2, le premier point regardé est le rappel des airbags Takata, qui doit avoir été fait. Le moteur compte ensuite : un 1.1 ou 1.4 essence simple, un HDi suivi, ou un 1.0 et 1.2 à courroie humide dont l'historique de vidanges est décisif. Sur une C3 1, la boîte SensoDrive et les ressorts avant sont vérifiés. Pour connaître sa valeur, décrivez-la (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Rappel airbag Takata effectué sur une C3 2, avec la preuve de l'intervention.",
+        "Type de moteur : 1.1 et 1.4 essence TU simples, HDi endurants s'ils sont suivis, 1.0 et 1.2 à courroie humide plus exigeants.",
+        "Facture du dernier remplacement de courroie sur les TU et les HDi.",
+        "Sur un 1.0 ou 1.2 VTi ou PureTech : vidanges à temps, huile préconisée et rappel de 2020 si concerné.",
+        "Boîte manuelle saine plutôt qu'une SensoDrive à à-coups sur une C3 1.",
+        "Ressorts et train avant sans bruit sur une C3 1.",
+        "Pare-brise Zénith intact, ni fumée ni odeur de gazole sur un HDi."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-dacia-sandero",
@@ -1142,8 +1336,8 @@
     "brandSlug": "reprise-dacia",
     "model": "Sandero",
     "nav": "Dacia Sandero",
-    "title": "Vendre sa Dacia Sandero : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Dacia Sandero 1 ou 2 : estimation gratuite rapide, sans obligation d'achat. On vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Dacia Sandero ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Dacia Sandero ? Tout dépend de sa génération, de son moteur, de son kilométrage et de son état. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Dacia Sandero <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Dacia Sandero de première ou de deuxième génération, Stepway compris. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous. Le paiement se fait par virement instantané à la conclusion de la vente, sans contrôle technique exigé.",
     "annees": "2008-2021",
@@ -1278,6 +1472,22 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Sandero 1 ?",
+        "answer": "Une Sandero 1 (2008-2012) n'a pas de prix type : tout dépend de la voiture. Ses mécaniques Renault sont éprouvées, si bien que l'entretien pèse plus que l'âge : courroie faite avec facture et, sur un 1.5 dCi, injecteurs et pompe haute pression sans symptôme. Une version GPL du 1.4 bien suivie s'étudie aussi. Renseignez la vôtre pour une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut une Sandero 2 ?",
+        "answer": "Cela dépend de chaque Sandero 2 (2012-2021). La phase 2 restylée, un 1.0 SCe ou un 0.9 TCe sans bruit de chaîne, une boîte Easy-R qui passe bien les rapports : autant de points regardés. Sur diesel, une vanne EGR ou un filtre à particules encrassés par les petits trajets comptent. Décrivez votre voiture pour recevoir une vraie estimation."
+      },
+      {
+        "question": "Que vaut une Sandero à plus de 200 000 km ?",
+        "answer": "Une Sandero à plus de 200 000 km s'étudie comme les autres : ce qui compte, c'est l'entretien qui accompagne ces kilomètres. Courroie remplacée avec facture, 1.5 dCi sans bruit de bas moteur, pneus et freins en état. Le kilométrage ne fixe pas le prix à lui seul. Indiquez le kilométrage réel en décrivant la voiture : vous recevez une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une Sandero sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle s'étudie en l'état : pas de réparation à faire, pas de contrôle technique exigé. Un voyant de dépollution, une Easy-R qui patine ou des freins à refaire sont intégrés à l'estimation, et le technicien vous explique ce qu'il constate. Une offre n'est pas toujours possible : c'est l'étude de votre Sandero qui le dit."
+      },
+      {
         "question": "Ma Sandero de 2010 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle roule bien et que son entretien est suivi. Une Sandero 1 reste demandée comme voiture du quotidien ou premier véhicule, grâce à sa mécanique simple. Le kilométrage, la distribution faite à temps et l'état de la carrosserie font la différence. Nous évaluons votre voiture telle qu'elle est, sans exiger de contrôle technique."
       },
@@ -1319,7 +1529,20 @@
         "label": "iDGARAGES : distribution Dacia Sandero",
         "url": "https://www.idgarages.com/fr-fr/vehicules/dacia/dacia-sandero-courroie-kit-de-distribution"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Une Dacia Sandero n'a pas de prix unique : chaque voiture vaut selon son histoire. Première question : la distribution. Les 1.2 16V, 1.4 MPI et 1.5 dCi ont une courroie, à justifier par une facture ; le 0.9 TCe et le 1.0 SCe ont une chaîne, où un bruit au démarrage compte. Sur un 1.5 dCi, l'injection et les coussinets de bielle pèsent lourd. Une boîte Easy-R sans à-coups compte aussi. Pour savoir ce que vaut la vôtre, indiquez sa plaque, son kilométrage et son état : une fourchette indicative gratuite vous est donnée, puis un technicien LUNICAR vient chez vous sans frais présenter le prix définitif, que vous restez libre de refuser.",
+      "facteurs": [
+        "Génération : Sandero 1 (2008-2012) ou Sandero 2 (2012-2021), avec une phase 2 restylée à partir de 2016.",
+        "Facture de courroie sur un 1.2 16V, un 1.4 MPI ou un 1.5 dCi.",
+        "0.9 TCe 90 sans bruit de chaîne ni fuite au boîtier de thermostat.",
+        "1.5 dCi sans claquement d'injecteurs, sans bruit sourd moteur chaud ni voyant de pression d'huile.",
+        "Boîte Easy-R sans à-coups ni panne d'actionneur.",
+        "Finition Stepway ou version GPL en bon état.",
+        "Vanne EGR et filtre à particules sains sur une Sandero 2 diesel."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-dacia-logan",
@@ -1327,8 +1550,8 @@
     "brandSlug": "reprise-dacia",
     "model": "Logan",
     "nav": "Dacia Logan",
-    "title": "Vendre sa Dacia Logan : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Dacia Logan ou Logan MCV : estimation gratuite rapide, sans obligation d'achat. On vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Dacia Logan ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Dacia Logan ? Cela dépend de la génération, du moteur, du kilométrage et de l'état. Décrivez-la pour une estimation gratuite, sans engagement.",
     "h1": "Vendre sa Dacia Logan <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Dacia Logan berline ou d'un break Logan MCV, de première ou de deuxième génération. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous. Le paiement se fait par virement instantané à la conclusion de la vente.",
     "annees": "2005-2021",
@@ -1463,6 +1686,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Logan 1 ?",
+        "answer": "Sa valeur dépend de chaque voiture. Sur une Logan 1 berline (2005-2012), le moteur oriente surtout l'estimation : 1.4 ou 1.6 MPI à courroie simples, avec des suintements côté distribution parfois signalés sur le 1.4, ou 1.5 dCi dont les injecteurs et les coussinets de bielle des années 2009 à 2013 sont à surveiller. Renseignez votre Logan pour recevoir une vraie estimation."
+      },
+      {
+        "question": "Combien vaut une Logan MCV 1 ?",
+        "answer": "Cela dépend de chaque exemplaire. Le MCV de première génération (2007-2013) existait en 5 ou 7 places : une version 7 places complète, avec ses sièges de troisième rangée bien fixés et en bon état, a son public. Les trains roulants, l'embrayage et les cardans sont vérifiés, car ce break est souvent chargé. Décrivez votre MCV pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut ma Logan 2 ?",
+        "answer": "Elle dépend de chaque voiture. Sur une Logan 2 ou un MCV 2 (2012-2021), le moteur fait une différence : 0.9 TCe à chaîne, avec une fuite de thermostat connue sur les premiers moteurs, ou 1.5 dCi, dont la vanne EGR et le filtre à particules souffrent des petits trajets. Un MCV 2 à hayon offre un coffre de 573 litres. Renseignez votre voiture pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut une Logan à plus de 200 000 km ?",
+        "answer": "Une Logan à plus de 200 000 km reste étudiée, et sa valeur dépend surtout de son entretien. Sur un 1.5 dCi, le technicien vérifie le bruit moteur à chaud, la pression d'huile, l'injection et la date de la dernière courroie. Sur un essence MPI, ce sont plutôt les fuites et la distribution. Indiquez le kilométrage exact et vos factures pour une estimation réaliste."
+      },
+      {
+        "question": "Que vaut une Logan sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée telle quelle : pas de contrôle technique exigé, aucune réparation à faire avant. Un embrayage qui patine, des cardans qui claquent ou un voyant moteur allumé sont constatés par le technicien et pris en compte dans un prix expliqué. Une offre n'est pas toujours possible : c'est l'étude de votre Logan qui le dit."
+      },
+      {
         "question": "Ma Logan de 2008 a-t-elle encore une valeur ?",
         "answer": "Oui, dès lors qu'elle roule correctement et que l'entretien est suivi. La Logan 1, surtout en break MCV, garde un public grâce à sa robustesse et à son grand coffre. Le kilométrage, la distribution et l'état général pèsent plus que l'année. Nous l'estimons telle qu'elle est, sans contrôle technique exigé."
       },
@@ -1504,7 +1747,20 @@
         "label": "Fiches-Auto : fiabilité et pannes de la Dacia Sandero 2 (mécaniques communes)",
         "url": "https://www.fiches-auto.fr/fiabilite-dacia/fiabilite-366-pannes-dacia-sandero-2.php"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Dacia Logan : chaque voiture a sa propre valeur. La carrosserie compte d'abord : un break MCV, surtout en 7 places avec sa troisième rangée, a son propre public. Vient ensuite la mécanique : tous les moteurs sauf le 0.9 TCe ont une courroie, dont la facture rassure, et un 1.5 dCi qui démarre et tourne bien compense un fort kilométrage. Pour savoir ce que vaut la vôtre, décrivez-la (plaque, kilométrage, état) : un conseiller vous rappelle avec une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Carrosserie : break MCV, et plus encore MCV 1 en 7 places avec la troisième rangée présente.",
+        "Facture de distribution sur les 1.2 16V, 1.4 et 1.6 MPI et 1.5 dCi.",
+        "Santé du 1.5 dCi : démarrage, absence de bruit à chaud, injection, vanne EGR et filtre à particules.",
+        "Circuit GPL fonctionnel et justificatifs d'entretien sur une version GPL ou Bi-Fuel.",
+        "Embrayage, cardans et amortisseurs, souvent sollicités sur un MCV chargé.",
+        "Boîte manuelle plutôt qu'Easy-R, moins fiable.",
+        "Carrosserie peu marquée par un usage utilitaire et intérieur propre."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-toyota-yaris",
@@ -1512,8 +1768,8 @@
     "brandSlug": "reprise-toyota",
     "model": "Yaris",
     "nav": "Toyota Yaris",
-    "title": "Vendre sa Toyota Yaris : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Toyota Yaris 1, 2 ou 3, hybride comprise : estimation gratuite rapide, sans obligation d'achat. On vient chez vous.",
+    "title": "Que vaut ma Toyota Yaris ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Toyota Yaris ? Sa valeur dépend de la génération, du moteur (essence, diesel ou hybride), du kilométrage et de l'état. Estimation gratuite.",
     "h1": "Vendre sa Toyota Yaris <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Toyota Yaris de première, deuxième ou troisième génération, essence, diesel ou hybride. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous. Le paiement se fait par virement instantané à la conclusion de la vente.",
     "annees": "1999-2020",
@@ -1648,6 +1904,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Yaris 1 ?",
+        "answer": "Une Yaris 1 (1999-2005) s'estime voiture par voiture. Ses moteurs essence 1.0 et 1.3 VVT-i à chaîne sont réputés fiables, avec un débitmètre parfois défaillant sur le 1.3. Le 1.4 D-4D demande plus d'attention, notamment la pompe à eau et le joint de culasse. Le carnet et l'état comptent plus que l'année. Renseignez la vôtre pour une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut une Yaris 2 ?",
+        "answer": "Cela dépend vraiment de chaque Yaris 2 (2005-2011). Les points regardés : la boîte robotisée MMT et son actionneur, la pompe à eau du 1.0 jusqu'en 2009, les roulements arrière et les capteurs ABS, et le rappel de la pédale d'accélérateur sur les exemplaires de 2005 à 2009. Décrivez votre Yaris pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut ma Yaris 3 ?",
+        "answer": "Une Yaris 3 (2011-2020) s'estime au cas par cas. La version hybride 1.5, réputée fiable, s'apprécie sur l'état du système hybride et les rappels effectués ; le 1.33 des premières années, jusqu'à début 2013, peut consommer de l'huile. Le rappel des airbags Takata sur les exemplaires de 2011 à 2014 compte aussi. Renseignez la vôtre pour une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une Yaris à plus de 200 000 km ?",
+        "answer": "Une Yaris à plus de 200 000 km s'étudie sur son état réel. Sur une essence ou une hybride, l'absence de voyant, une consommation d'huile normale et un carnet suivi comptent plus que le chiffre au compteur ; sur un 1.4 D-4D, turbo, injecteurs et FAP sont regardés de près. Décrivez-la avec son kilométrage exact pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une Yaris sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle s'étudie en l'état : pas de réparation à faire, pas de contrôle technique exigé. Une boîte MMT dont le N clignote, un voyant ABS ou hybride, un diesel qui fume sont pris en compte dans l'estimation, et le technicien vous explique ce qu'il constate. Une offre n'est pas toujours possible : c'est l'étude de votre Yaris qui le dit."
+      },
+      {
         "question": "Ma Yaris de 2006 a-t-elle encore une valeur ?",
         "answer": "Oui. Une Yaris 2 essence qui roule bien, avec un entretien suivi, reste recherchée pour sa fiabilité. Le kilométrage, l'état de la carrosserie et l'historique comptent davantage que l'année. Nous estimons votre voiture telle qu'elle est, sans contrôle technique exigé, et nous venons chez vous pour la voir."
       },
@@ -1689,7 +1965,20 @@
         "label": "Wikipedia EN : Toyota NZ engine (distribution par chaîne)",
         "url": "https://en.wikipedia.org/wiki/Toyota_NZ_engine"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Une Toyota Yaris ne se vend pas à un prix unique : chaque voiture a sa propre valeur. Particularité : tous ses moteurs ont une chaîne de distribution, l'attention se porte donc ailleurs. D'abord sur le moteur lui-même, car une Yaris hybride sans voyant ou un 1.0 essence sain n'ont rien à voir avec un 1.4 D-4D qui consomme de l'huile. Puis sur la boîte : une MMT dont l'actionneur se bloque pèse. Les rappels effectués, airbags Takata compris, comptent aussi. Décrivez votre Yaris (plaque, kilométrage, état) pour obtenir une fourchette indicative gratuite ; un technicien LUNICAR passe ensuite chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération : Yaris 1 (1999-2005), Yaris 2 (2005-2011) ou Yaris 3 (2011-2020), hybride depuis 2012.",
+        "Version hybride 1.5 sans voyant, système hybride et batterie en bon état.",
+        "1.4 D-4D sans consommation d'huile ni fumée, signes possibles d'un turbo fatigué.",
+        "Boîte manuelle ou hybride plutôt qu'une MMT qui refuse d'engager un rapport.",
+        "Rappels effectués : pédale d'accélérateur (Yaris 2 de 2005 à 2009), airbags Takata (Yaris 3 de 2011 à 2014).",
+        "1.0 VVT-i de Yaris 2 sans fuite de pompe à eau, 1.33 sans bruit de chaîne à froid.",
+        "Carrosserie sans gravillons ni chocs urbains marqués."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-volkswagen-polo",
@@ -1697,8 +1986,8 @@
     "brandSlug": "reprise-volkswagen",
     "model": "Polo",
     "nav": "Volkswagen Polo",
-    "title": "Vendre sa Volkswagen Polo : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Volkswagen Polo, même ancienne : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Volkswagen Polo ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Volkswagen Polo ? Tout dépend de la génération, du moteur, de la boîte, du kilométrage et de l'état. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Volkswagen Polo <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Polo 4 (9N) ou d'une Polo 5 (6R), souvent gardée de longues années et bien entretenue. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous. Le paiement se fait par virement instantané à la conclusion de la vente.",
     "annees": "2001-2017",
@@ -1849,6 +2138,22 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Polo 4 ?",
+        "answer": "Elle dépend de chaque voiture. Sur une Polo 4 (2001-2009), plusieurs points sont vérifiés : chaîne des 1.2, boîte manuelle dont les rapports peuvent accrocher, lève-vitres, défauts électriques et train avant. Le 1.4 16V à courroie est plutôt robuste ; les TDI sont regardés pour le turbo, l'embrayage et la vanne EGR. Renseignez votre Polo pour recevoir une vraie estimation."
+      },
+      {
+        "question": "Combien vaut une Polo 5 ?",
+        "answer": "Cela dépend de chaque exemplaire. La Polo 5 (2009-2017) a obtenu cinq étoiles à l'Euro NCAP. Sa valeur se joue sur le moteur, avec la chaîne du 1.2 TSI jusqu'en 2014 puis une courroie sur la phase 2 et les injecteurs des premiers 1.6 TDI, et sur la boîte DSG7 si elle en est équipée. Décrivez votre Polo pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut une Polo à plus de 200 000 km ?",
+        "answer": "Une Polo à plus de 200 000 km peut être étudiée, souvent avec un moteur TDI. Sa valeur dépend alors de la courroie, du turbo, de l'embrayage, du volant moteur et de l'état de la vanne EGR et du filtre à particules. Un carnet suivi pèse plus que le compteur seul. Indiquez le kilométrage exact et vos factures pour une estimation réaliste."
+      },
+      {
+        "question": "Que vaut une Polo sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans contrôle technique exigé et sans réparation préalable. Une boîte qui accroche, une DSG7 qui claque ou des voyants allumés sont signalés dès votre demande, puis constatés par le technicien et intégrés à un prix expliqué. Une offre n'est pas toujours possible : c'est l'étude de votre Polo qui le dit."
+      },
+      {
         "question": "Ma Polo de 2005 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Une Polo 4 de 2005 reste recherchée comme petite voiture fiable et économique. La valeur dépend du kilométrage, de l'entretien prouvé, de l'état de la boîte et de l'électricité. Envoyez-nous ses informations et quelques photos : un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans engagement."
       },
@@ -1890,7 +2195,20 @@
         "label": "Carverif : Polo V (6R/6C) en occasion",
         "url": "https://carverif.fr/pages/modele-occasion/volkswagen-polo-v-6r-6c-2009-2017"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Volkswagen Polo : sa valeur dépend vraiment de chaque voiture. Premier test : un cliquetis au démarrage à froid trahit une chaîne détendue sur les 1.2 trois cylindres et les 1.2 TSI de 2010 à 2014, alors qu'une facture de chaîne remplacée rassure. Sur une Polo 4, une boîte qui accroche et des défauts électriques pèsent ; sur une Polo 5, la DSG7 et les injecteurs des premiers 1.6 TDI. Décrivez la vôtre (plaque, kilométrage, état) : vous obtenez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Aucun cliquetis de chaîne à froid sur un 1.2 ou un 1.2 TSI, ou chaîne remplacée avec facture.",
+        "Facture de courroie sur le 1.4 16V et les TDI.",
+        "Sur une Polo 4 : boîte qui passe sans accrocher, lève-vitres et électricité sans défaut.",
+        "Sur une Polo 5 : DSG7 sans à-coups, injecteurs remplacés sur un 1.6 TDI 75 ou 90 de 2009 à 2011.",
+        "Diesel sans vanne EGR ni filtre à particules encrassés.",
+        "Cinq portes et climatisation qui fonctionne.",
+        "Finition GTI, CrossPolo ou BlueMotion en bon état."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-fiat-500",
@@ -1898,8 +2216,8 @@
     "brandSlug": "reprise-fiat",
     "model": "500",
     "nav": "Fiat 500",
-    "title": "Vendre sa Fiat 500 : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Fiat 500, berline ou 500C : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Fiat 500 ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Fiat 500 ? Cela dépend de sa phase, de son moteur, de son kilométrage et de son état. Décrivez-la pour recevoir une estimation gratuite.",
     "h1": "Vendre sa Fiat 500 <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Fiat 500 lancée en 2007, en berline ou en cabriolet 500C, en boîte manuelle ou Dualogic. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, et un technicien vient vérifier la voiture chez vous. Le paiement se fait par virement instantané à la conclusion de la vente.",
     "annees": "2007-2024",
@@ -2031,6 +2349,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Fiat 500 de 2007 à 2015 ?",
+        "answer": "Cela dépend vraiment de chaque voiture. Cette première phase existe en 1.2 69 ch, 1.4 100 ch, 1.3 Multijet et, à partir de 2010, en 0.9 TwinAir. Une boîte saine, un refroidissement sans fuite et une courroie faite avec facture sur le 1.2 ou le 1.4 pèsent dans l'analyse. Renseignez votre 500 pour recevoir une vraie estimation, gratuite."
+      },
+      {
+        "question": "Que vaut une Fiat 500C ?",
+        "answer": "Sa valeur dépend de chaque voiture, et de sa capote en particulier. Sur la 500C, la toile coulisse entre des montants conservés : une toile usée ou décolorée, des joints qui laissent passer l'eau ou un moteur de capote lent sont vérifiés, surtout si la voiture a dormi dehors. Décrivez votre 500C pour obtenir une estimation gratuite et sans engagement."
+      },
+      {
+        "question": "Combien vaut une Fiat 500 restylée (2015-2024) ?",
+        "answer": "Il n'y a pas de réponse unique : tout dépend de la voiture. La phase 2, reconnaissable à ses feux à LED, a perdu le 1.3 Multijet en 2018 et reçu une version hybride légère 1.0 en 2020. Kilométrage, entretien suivi, boîte et direction assistée en bon état font la différence. Renseignez votre 500 pour une estimation gratuite."
+      },
+      {
+        "question": "Que vaut une Fiat 500 à plus de 200 000 km ?",
+        "answer": "Une Fiat 500 à plus de 200 000 km peut encore être étudiée, mais sa valeur dépend surtout de sa mécanique. Sur une citadine aussi roulée, on regarde la boîte (grondement, Dualogic), la direction assistée, le refroidissement et le niveau d'huile. Un carnet suivi rassure. Indiquez le kilométrage réel et l'entretien connu pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une Fiat 500 sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans réparer et sans contrôle technique à jour. Dualogic en défaut, direction qui durcit, fuite de liquide de refroidissement : décrivez le problème, le technicien le vérifie chez vous et explique comment il compte dans le prix définitif. Toute voiture est étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Ma 500 de 2009 a-t-elle encore une valeur ?",
         "answer": "Oui. Une Fiat 500 de 2009 en bon état reste recherchée pour son style et sa facilité en ville. Sa valeur dépend du kilométrage, de l'état de la boîte, de la direction assistée et de l'entretien prouvé. Envoyez-nous ses informations : un conseiller vous rappelle rapidement avec une fourchette de prix indicative."
       },
@@ -2068,7 +2406,20 @@
         "label": "Al Volante : Fiat 500 usata, pregi e difetti",
         "url": "https://www.alvolante.it/da_sapere/auto-usate/fiat-500-usata-pregi-e-difetti-406863"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Une Fiat 500 n'a pas de prix unique : sa valeur dépend vraiment de chaque voiture. Son style a peu changé de 2007 à 2024, mais la mécanique fait la différence. D'abord la boîte : une Dualogic qui refuse des rapports ou une boîte qui gronde pèse sur l'offre. Puis la direction assistée et le refroidissement, deux points connus. Sur une 500C, la capote doit être étanche. Pour savoir ce que vaut la vôtre, renseignez sa plaque, son kilométrage et son état : fourchette indicative gratuite, puis un technicien LUNICAR passe chez vous sans frais et présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Boîte manuelle silencieuse, sans grondement en roulant.",
+        "Dualogic qui passe bien les rapports, ou révisée avec factures.",
+        "Direction assistée qui fonctionne, sans voyant ni durcissement.",
+        "Circuit de refroidissement sans fuite au thermostat ni surchauffe passée.",
+        "Facture de courroie récente sur un 1.2 ou un 1.4.",
+        "TwinAir aux vidanges régulières, essentielles pour le module UniAir.",
+        "500C avec une capote propre et étanche, finitions Lounge ou Abarth soignées."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-ford-fiesta",
@@ -2076,8 +2427,8 @@
     "brandSlug": "reprise-ford",
     "model": "Fiesta",
     "nav": "Ford Fiesta",
-    "title": "Vendre sa Ford Fiesta : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Ford Fiesta, même ancienne : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Ford Fiesta ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Ford Fiesta ? Tout dépend de la génération, du moteur, de la boîte, du kilométrage et de l'état. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Ford Fiesta <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Ford Fiesta de 2002 à 2017, essence ou diesel, en boîte manuelle ou automatique. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, et un technicien vient vérifier la voiture chez vous. Le paiement se fait par virement instantané à la conclusion de la vente.",
     "annees": "2002-2017",
@@ -2217,6 +2568,22 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Fiesta 5 ?",
+        "answer": "Elle dépend de chaque voiture. Sur la Fiesta de 2002 à 2008, les moteurs Duratec 1.25 et 1.4 sont réputés fiables, et le 1.4 TDCi globalement robuste malgré des fuites d'injecteurs signalées. Sur certaines versions essence de phase 2, la boîte robotisée Durashift est vérifiée à l'essai. Renseignez votre Fiesta pour obtenir une vraie estimation, gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut ma Fiesta 6 ?",
+        "answer": "Cela dépend de chaque exemplaire. Sur la Fiesta de 2008 à 2017, appelée Fiesta 6 ou 7 selon les sources, deux points pèsent : la boîte Powershift des versions automatiques, surtout de 2011 à 2016, et le 1.0 EcoBoost de la phase 2, dont la courroie humide et le refroidissement demandent un entretien suivi. Décrivez votre voiture pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut une Fiesta à plus de 200 000 km ?",
+        "answer": "Une Fiesta à plus de 200 000 km peut être étudiée ; sa valeur dépend du moteur et de la façon dont il a été suivi. Un 1.4 TDCi ou un Duratec entretenu, avec une courroie faite à temps, se présente mieux qu'un 1.6 TDCi au filtre à particules encrassé ou au turbo fatigué. Indiquez le kilométrage exact et vos factures pour une estimation réaliste."
+      },
+      {
+        "question": "Que vaut une Fiesta avec un souci mécanique ou sans contrôle technique ?",
+        "answer": "Elle peut être étudiée en l'état, sans réparation préalable ni contrôle technique exigé. Une Powershift qui affiche un message d'erreur, un voyant de pression d'huile sur un 1.0 EcoBoost ou de l'eau dans le coffre sont signalés dès la demande, puis constatés par le technicien et intégrés au prix avec une explication. Une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Ma Fiesta de 2007 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Une Fiesta de 2007 avec un moteur essence atmosphérique ou un 1.4 TDCi bien entretenu reste une citadine recherchée. Sa valeur dépend du kilométrage, de l'entretien prouvé et de l'état de la carrosserie. Envoyez-nous ses informations : un conseiller vous rappelle rapidement avec une fourchette de prix indicative."
       },
@@ -2258,7 +2625,19 @@
         "label": "The Autopian : la boîte Powershift expliquée",
         "url": "https://www.theautopian.com/ford-focus-and-fiesta-powershift-automatic-transmission-explained/"
       }
-    ]
+    ],
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Ford Fiesta : chaque exemplaire se juge sur son propre état. Sur une Fiesta 6, la première question est souvent la boîte : une manuelle saine ne pèse pas comme une Powershift à double embrayage qui donne des à-coups. Le moteur suit : le 1.0 EcoBoost a une courroie qui baigne dans l'huile et un refroidissement sensible, quand les 1.25 et 1.4 Duratec sont réputés fiables. L'étanchéité du coffre compte aussi. Décrivez votre Fiesta (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, libre à vous de le refuser.",
+      "facteurs": [
+        "Boîte manuelle en bon état, ou Powershift sans à-coups et révisée avec factures.",
+        "Sur un 1.0 EcoBoost : vidanges régulières à l'huile préconisée et aucune surchauffe passée.",
+        "Facture de courroie récente, toutes les motorisations de la Fiesta en ayant une.",
+        "Diesel TDCi sans fuite d'injecteurs ni filtre à particules encrassé.",
+        "Coffre sec, joints de portes et serrure de coffre en bon état.",
+        "Cinq portes ou finition bien équipée comme Titanium."
+      ]
+    },
+    "updated": "2026-11-06"
   },
   {
     "slug": "reprise-mercedes-classe-a",
@@ -2266,8 +2645,8 @@
     "brandSlug": "reprise-mercedes",
     "model": "Classe A",
     "nav": "Mercedes Classe A",
-    "title": "Vendre sa Mercedes Classe A : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Mercedes Classe A W168, W169 ou W176 : estimation gratuite rapide, sans obligation d'achat, un technicien vient chez vous, virement instantané.",
+    "title": "Que vaut ma Mercedes Classe A ? Estimation | LUNICAR",
+    "description": "Que vaut votre Mercedes Classe A ? Cela dépend de la génération, du moteur, de la boîte, du kilométrage et de l'état. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Mercedes Classe A <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Classe A première génération (W168) ou deuxième génération (W169), parfois d'une W176, qui veulent la vendre sans y passer leurs week-ends. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "1997-2018 pour les Classe A W168, W169 et W176 (W168 : 1997-2004, W169 : 2004-2012, W176 : 2012-2018) ; la W177 est produite depuis 2018",
@@ -2434,6 +2813,30 @@
     ],
     "faq": [
       {
+        "question": "Combien vaut une Classe A W168 en essence ou en CDI ?",
+        "answer": "Elle dépend de chaque voiture. Sur la W168 (1997-2004), les essence A140 à A210 sont réputés moins problématiques que les diesels A160 CDI et A170 CDI, sur lesquels l'injection, le turbo et la vanne EGR sont vérifiés. La boîte, premier poste de pannes relevé sur cette génération, et les suspensions arrière bruyantes sont aussi regardées. Renseignez votre voiture pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut ma Classe A W169 ?",
+        "answer": "Cela dépend de chaque exemplaire. Sur la W169 (2004-2012), l'Autotronic à variation continue est testée en priorité : patinage ou mode dégradé pèsent sur la valeur. Les diesels, surtout l'A180 CDI, sont regardés pour leur vanne EGR, leurs injecteurs et leur volant moteur bimasse. Des témoins ESP ou SRS allumés viennent souvent de masses corrodées. Décrivez votre Classe A pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut ma Classe A W176 ?",
+        "answer": "Elle dépend de chaque voiture. La W176 (2012-2018) est une compacte classique ; sa boîte automatique 7G-DCT est vérifiée pour les à-coups et messages de défaut liés à la mécatronique, tout comme l'étanchéité du coffre. Les rappels sur la détection d'occupant du siège passager et le collage du toit panoramique doivent avoir été faits. Renseignez votre voiture pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut ma Classe A W177 ?",
+        "answer": "Elle dépend de chaque voiture, même sur une génération récente comme la W177, produite depuis 2018. La motorisation, essence, diesel ou hybride rechargeable A250 e, la boîte 7G-DCT ou 8G-DCT, la phase avant ou après le restylage d'octobre 2022 et un carnet d'entretien complet font la différence. Renseignez votre voiture pour recevoir une vraie estimation."
+      },
+      {
+        "question": "Que vaut une Classe A à plus de 200 000 km ?",
+        "answer": "Une Classe A à plus de 200 000 km peut être étudiée ; tout dépend de son moteur et de son suivi. Sur les CDI, le technicien regarde l'injection, le turbo, la vanne EGR, l'embrayage et le volant moteur bimasse, qui prend souvent du jeu dès 100 000 km sur la W169. Un carnet complet et une boîte qui passe bien rassurent. Indiquez le kilométrage exact pour une estimation réaliste."
+      },
+      {
+        "question": "Que vaut une Classe A sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans contrôle technique exigé ni réparation préalable. Une Autotronic qui patine, un témoin ESP allumé ou un diesel qui fume sont constatés par le technicien et intégrés au prix, qu'il vous explique. Signalez le défaut dès votre demande. Une offre n'est pas toujours possible : c'est l'étude de la voiture qui le dit."
+      },
+      {
         "question": "Ma Classe A W168 de 2003 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Une Classe A de 2003 peu roulée, avec un carnet suivi et une boîte qui fonctionne bien, intéresse toujours, en particulier les versions essence A140 et A160. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -2476,7 +2879,19 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48867/interne"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Mercedes Classe A : sa valeur dépend vraiment de chaque voiture. La génération change déjà beaucoup, entre les petits monospaces W168 et W169 et la compacte W176. La boîte est ensuite un point clé : une Autotronic ou une automatique qui patine pèse lourd, tout comme des témoins ESP ou SRS allumés. Sur un diesel CDI, l'historique d'entretien et l'état de l'injection comptent beaucoup. Pour connaître la valeur de la vôtre, renseignez-la (plaque, kilométrage, état) : vous obtenez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous, sans frais, et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération : W168, W169, W176 ou W177, avec la version longue V168 sur la première.",
+        "Boîte manuelle saine, ou automatique, Autotronic et 7G-DCT sans à-coups, vidange de boîte facturée.",
+        "Moteur essence en bon état, généralement moins exposé que les diesels CDI sur la W168 et la W169.",
+        "Sur un 170 CDI ou un 180 CDI : historique d'entretien, injection, turbo et vanne EGR.",
+        "Témoins ESP, SRS et moteur éteints.",
+        "Campagnes de rappel effectuées, dont celle des airbags Takata sur les Classe A de 2004 à 2016.",
+        "Embrayage, volant moteur bimasse et cardans sans jeu ni claquement."
+      ]
+    }
   },
   {
     "slug": "reprise-dacia-duster",
@@ -2484,8 +2899,8 @@
     "brandSlug": "reprise-dacia",
     "model": "Duster",
     "nav": "Dacia Duster",
-    "title": "Vendre son Dacia Duster : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Dacia Duster 1, 2 ou 3, même à fort kilométrage : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané.",
+    "title": "Que vaut mon Dacia Duster ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Duster ? La réponse dépend de la génération, du moteur, du kilométrage et de l'état. Décrivez-le et recevez une estimation gratuite.",
     "h1": "Vendre son Dacia Duster <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'un Duster 1 ou d'un Duster 2, parfois d'un Duster 3, souvent en diesel 1.5 dCi et à fort kilométrage, qui veulent le vendre sans bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification, le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2010-2024 pour les Duster 1 et 2 (Duster 1 : 2010-2017 en Europe, restylé en 2013 ; Duster 2 : 2018-2024, restylé en 2021 puis 2022) ; le Duster 3 est commercialisé depuis mars 2024",
@@ -2652,6 +3067,34 @@
     ],
     "faq": [
       {
+        "question": "Que vaut mon Duster 1 phase 1 ?",
+        "answer": "Cela dépend vraiment de chaque voiture. Le Duster 1 de 2010 à 2013 existe en 1.6 16V essence ou en 1.5 dCi 85, 90 ou 110, en deux ou quatre roues motrices. La courroie faite à temps, un embrayage qui ne patine pas et l'absence d'à-coups vers 1 800 tr/min comptent beaucoup. Renseignez votre Duster pour obtenir une estimation gratuite."
+      },
+      {
+        "question": "Que vaut un Duster 1 restylé (2013-2017) ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. Ce restylage introduit le 1.2 TCe 125 à chaîne, dont la consommation d'huile est un point surveillé, puis le 1.6 SCe 115 et la boîte EDC sur le dCi 110. Un carnet avec niveaux suivis et une transmission saine font la différence. Décrivez votre voiture pour recevoir une vraie estimation, gratuite."
+      },
+      {
+        "question": "Combien vaut un Duster 2 de 2018 à 2021 ?",
+        "answer": "Il n'y a pas de réponse unique : tout dépend de la voiture. Sur ce Duster 2, le moteur pèse beaucoup : 1.3 TCe 130 ou 150, 1.0 TCe 100, ou Blue dCi dont les exemplaires produits jusqu'en mars 2020 ont pu consommer de l'huile. Voyant AdBlue, rappels faits et historique sont regardés. Renseignez votre Duster pour une estimation gratuite."
+      },
+      {
+        "question": "Que vaut un Duster 2 restylé (2021-2024) ?",
+        "answer": "Cela dépend vraiment de chaque voiture. Ces Duster 2 récents sont souvent en 1.0 TCe ECO-G 100 au GPL : le bon fonctionnement du mode GPL et le contrôle du réservoir aux échéances du carnet comptent, comme le kilométrage et l'état général. Décrivez votre Duster avec sa plaque pour recevoir une fourchette indicative gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut mon Duster 3 ?",
+        "answer": "Sa valeur dépend de chaque voiture. Le Duster 3, vendu depuis mars 2024, n'existe plus en diesel en France : 1.2 TCe mild hybrid, 1.6 Hybrid 140 ou 1.0 ECO-G 120. Sur une voiture aussi récente, le kilométrage, l'entretien suivi en réseau et l'état de la carrosserie font l'essentiel. Renseignez la vôtre pour obtenir une estimation gratuite."
+      },
+      {
+        "question": "Que vaut un Duster à plus de 200 000 km ?",
+        "answer": "Un Duster à plus de 200 000 km garde souvent une valeur, mais elle dépend de son suivi. C'est une voiture d'usage, et ce kilométrage n'a rien de rare. Un 1.5 dCi aux vidanges régulières, courroie faite à temps et embrayage sain, se présente bien. Indiquez le kilométrage exact et les factures dont vous disposez pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut un Duster sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Il peut être étudié en l'état, sans réparation préalable ni contrôle technique à jour. Consommation d'huile, voyant AdBlue, embrayage fatigué : signalez le problème, le technicien le constate chez vous et l'intègre au prix définitif en vous l'expliquant. Toute voiture est étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Mon Duster 1.5 dCi a plus de 200 000 km, l'estimez-vous quand même ?",
         "answer": "Oui. Le 1.5 dCi 110 du Duster est un moteur de gros rouleurs et un fort kilométrage ne nous arrête pas, à condition que l'entretien suive. Envoyez-nous les factures de vidanges, de courroie et d'embrayage. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans promesse de rachat, puis un technicien vient vérifier la voiture à votre adresse, sans frais."
       },
@@ -2694,7 +3137,20 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48010/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Aucun prix unique ne s'applique à un Duster : chaque exemplaire a sa propre valeur. Trois questions font souvent la différence. Est-ce un 4x4 dont la transmission fonctionne sans bruit ni voyant ? Si c'est un 1.2 TCe, le niveau d'huile a-t-il été suivi entre les vidanges ? Et sur un Blue dCi, le voyant AdBlue est-il éteint ? Le plus simple : décrivez votre Duster avec sa plaque, son kilométrage et son état. La fourchette indicative est gratuite, le technicien LUNICAR se rend chez vous sans frais pour fixer le prix définitif, et vous restez libre de refuser.",
+      "facteurs": [
+        "Transmission 4x4 qui fonctionne sans bruit, sur Duster 1 comme sur Duster 2.",
+        "1.5 dCi avec courroie et embrayage remplacés, factures à l'appui.",
+        "1.2 TCe dont le niveau d'huile a été suivi : sa surconsommation est connue.",
+        "Blue dCi sans voyant AdBlue ni défaut de sonde NOx.",
+        "Campagnes de rappel effectuées (clé de démarrage, airbag rideau selon les années).",
+        "Pare-brise sans fêlure et peinture sans vernis qui cloque.",
+        "Embrayage qui ne patine pas, surtout sur un 4x4 qui a tracté."
+      ]
+    },
+    "masculin": true
   },
   {
     "slug": "reprise-ford-kuga",
@@ -2702,8 +3158,8 @@
     "brandSlug": "reprise-ford",
     "model": "Kuga",
     "nav": "Ford Kuga",
-    "title": "Vendre son Ford Kuga : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Ford Kuga 1, 2 ou 3, diesel, essence ou hybride : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané.",
+    "title": "Que vaut mon Ford Kuga ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Kuga ? Tout dépend de la génération, du moteur, du kilométrage et de l'état du véhicule. Décrivez-le pour une estimation gratuite.",
     "h1": "Vendre son Ford Kuga <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'un Kuga 1 ou d'un Kuga 2, souvent diesel et bien kilométrés, parfois d'un Kuga 3, qui veulent le vendre sans avoir à bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2008-2020 pour les Kuga 1 et 2 (Kuga 1 : 2008-2012/2013, Kuga 2 : 2013-2019/2020, restylage 2016) ; le Kuga 3 est produit depuis fin 2019, en version hybride rechargeable notamment",
@@ -2870,6 +3326,30 @@
     ],
     "faq": [
       {
+        "question": "Que vaut mon Kuga 1 ?",
+        "answer": "Cela dépend vraiment de chaque véhicule. Le Kuga 1, produit de 2008 à 2012-2013, roule presque toujours en 2.0 TDCi 136, 140 ou 163. Sur le 140, les fuites d'injecteurs signalées sont vérifiées, comme l'état du FAP et de l'EGR. Une facture d'injecteurs ou de courroie rassure. Renseignez votre Kuga pour recevoir une vraie estimation, gratuite et sans engagement."
+      },
+      {
+        "question": "Combien vaut un Kuga 2 de 2013 à 2016 ?",
+        "answer": "Il n'y a pas de réponse unique : tout dépend du véhicule. Ce Kuga 2 de première phase existe en 1.6 EcoBoost 150 ou 182 et en 2.0 TDCi 140 ou 163, en boîte manuelle ou automatique, en 4x2 ou 4x4. Le comportement de l'embrayage et l'absence de voyant sont regardés. Décrivez le vôtre pour obtenir une estimation gratuite."
+      },
+      {
+        "question": "Que vaut un Kuga 2 restylé (2016-2019) ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. Sur ce restylage, les 2.0 TDCi 150 et 180 sont les diesels les plus appréciés ; le 1.5 EcoBoost peut être concerné par le rappel de 2019 sur la plaque de pression d'embrayage. Finition ST-Line ou Vignale, écran SYNC 3 fonctionnel et carnet complet comptent. Renseignez votre Kuga pour une estimation gratuite."
+      },
+      {
+        "question": "Que vaut mon Kuga 3 ?",
+        "answer": "Cela dépend vraiment de chaque véhicule. Le Kuga 3, produit depuis fin 2019, existe en essence, en diesel EcoBlue, en hybride et en hybride rechargeable. Sur ce dernier, il faut savoir si les rappels de 2021 sur la batterie et de 2024 sur l'injecteur ont été faits. Kilométrage et entretien en réseau pèsent aussi. Décrivez votre Kuga pour une estimation gratuite."
+      },
+      {
+        "question": "Que vaut un Kuga à plus de 200 000 km ?",
+        "answer": "Un Kuga à plus de 200 000 km peut encore avoir une valeur, à condition que son suivi tienne la route. À ce kilométrage, la courroie des TDCi, l'injection, le FAP et l'embrayage sont les points regardés en premier. Un carnet complet et des factures récentes changent l'analyse. Indiquez le kilométrage exact et l'entretien connu pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut un Kuga sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Il peut être étudié en l'état, sans faire de réparation ni de contrôle technique avant. Message d'anomalie moteur, à-coups, embrayage qui claque : décrivez le souci, le technicien LUNICAR le constate chez vous et vous explique son effet sur le prix définitif. Toute voiture est étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Mon Ford Kuga 1 de 2010 avec 200 000 km a-t-il encore une valeur ?",
         "answer": "Oui, s'il est en bon état. Un Kuga 1 diesel bien kilométré mais suivi, sans voyant et avec une courroie faite à temps, intéresse toujours, surtout en 4x4. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -2912,7 +3392,20 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/49130/interne"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Pas de prix unique pour un Kuga : la valeur dépend vraiment de chaque véhicule. Kuga 1 ou Kuga 2, diesel TDCi ou essence EcoBoost, deux ou quatre roues motrices : ces choix changent déjà beaucoup la donne. Sur les diesels, l'absence d'à-coups, de message d'anomalie moteur et de signe d'encrassement du FAP ou de la vanne EGR compte autant que le kilométrage. Pour connaître la valeur du vôtre, indiquez sa plaque, son kilométrage et son état : la fourchette indicative est gratuite, et un technicien LUNICAR vient ensuite chez vous, sans frais, présenter le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "2.0 TDCi sans à-coups ni fuite d'injecteur, notamment sur le 140 du Kuga 1.",
+        "FAP et vanne EGR sans encrassement ni message d'anomalie moteur.",
+        "Courroie remplacée avec facture, ou échéance du carnet respectée.",
+        "Rappel de 2019 sur la plaque de pression d'embrayage effectué si le Kuga est concerné.",
+        "Transmission intégrale et finitions Titanium, ST-Line ou Vignale.",
+        "Hayon motorisé et électronique de bord qui fonctionnent.",
+        "Entretien suivi sans réparations repoussées."
+      ]
+    },
+    "masculin": true
   },
   {
     "slug": "reprise-renault-megane",
@@ -2920,8 +3413,8 @@
     "brandSlug": "reprise-renault",
     "model": "Mégane",
     "nav": "Renault Mégane",
-    "title": "Vendre sa Renault Mégane : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Renault Mégane 2, 3 ou 4 : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Renault Mégane ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Renault Mégane ? Tout dépend de la génération, du moteur, du kilométrage et de l'état. Décrivez-la pour une estimation gratuite, sans engagement.",
     "h1": "Vendre sa Renault Mégane <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Mégane 2 ou d'une Mégane 3, souvent à fort kilométrage, parfois d'une Mégane 4, qui veulent la vendre sans bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "1995-2024 pour les Mégane 1 à 4 (Mégane 1 : 1995-2002, Mégane 2 : 2002-2009, Mégane 3 : 2008-2016, Mégane 4 : 2016-2024) ; la Mégane E-Tech électrique est produite depuis 2022",
@@ -3093,6 +3586,30 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Mégane 1 ?",
+        "answer": "Elle dépend de chaque voiture. La Mégane 1 (1995-2002) existait en berline, Classic, coupé, cabriolet et break, avec des essence de 1.4 à 2.0 et des diesels 1.9 jusqu'au dCi. À cet âge, l'état réel, l'entretien prouvé et le bon fonctionnement de la mécanique orientent l'estimation bien plus que l'année. Renseignez votre Mégane pour recevoir une vraie estimation."
+      },
+      {
+        "question": "Que vaut ma Mégane 2 ?",
+        "answer": "Cela dépend de chaque exemplaire. Une phase 2 d'après janvier 2006 profite d'une fiabilité en progrès. Points vérifiés : bobines et poulie de variateur sur les 1.4 et 1.6 16V, coussinets de bielle et pompe d'injection du 1.5 dCi, turbo du 1.9 dCi 120 jusqu'à fin 2003, électricité et carte mains libres. Décrivez votre Mégane 2 pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut ma Mégane 3 ?",
+        "answer": "Elle dépend de chaque voiture. Sur une Mégane 3 (2008-2016), les millésimes restylés de 2012 à 2016 sont plutôt conseillés. Le 1.2 TCe est vérifié pour sa consommation d'huile, le 1.5 dCi pour ses injecteurs et sa pompe à huile, l'habitacle pour les infiltrations dans les bacs de porte. Le 2.0 dCi passe pour le diesel le plus fiable. Renseignez votre voiture pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut ma Mégane 4 ?",
+        "answer": "Elle dépend de chaque voiture, même sur cette génération plus récente (2016-2024). La carrosserie, berline, Estate ou 4 portes, la phase avant ou après le restylage de 2020, le moteur et le suivi d'entretien orientent l'estimation. Sur des exemplaires produits entre septembre 2018 et juin 2019, le rappel sur la conduite de carburant doit avoir été fait. Renseignez votre Mégane pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut une Mégane à plus de 200 000 km ?",
+        "answer": "Une Mégane à plus de 200 000 km peut être étudiée ; c'est fréquent sur la Mégane 2. Sa valeur dépend du moteur et de ses factures : courroie à jour, vidanges régulières sur un 1.5 dCi, état du turbo et du filtre à particules. Le 2.0 dCi, apprécié des gros rouleurs, est réputé sans défaut récurrent notable. Indiquez le kilométrage exact pour une estimation réaliste."
+      },
+      {
+        "question": "Que vaut une Mégane sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans contrôle technique exigé ni réparation préalable. Un voyant d'airbag allumé, une carte mains libres capricieuse ou un 1.5 dCi bruyant sont signalés dès la demande, puis constatés par le technicien et pris en compte dans un prix expliqué. Une offre n'est pas toujours possible : c'est l'étude de votre Mégane qui le dit."
+      },
+      {
         "question": "Ma Mégane 2 de 2004 avec 220 000 km a-t-elle encore une valeur ?",
         "answer": "Oui, si elle roule bien. Un fort kilométrage sur une Mégane 2 n'est pas rédhibitoire quand le carnet est suivi, que la courroie a été faite et que l'électricité fonctionne. Nous l'estimons sur son état réel, pas seulement sur son année ou son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -3135,7 +3652,19 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48882/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Renault Mégane : sa valeur dépend vraiment de chaque voiture, et quatre générations se sont succédé de 1995 à 2024. Le millésime compte : la fiabilité progresse après le restylage de 2006 sur la Mégane 2, et la presse conseille plutôt les Mégane 3 de 2012 à 2016. Le moteur pèse aussi : 1.5 dCi dont l'historique de vidanges est essentiel, 1.2 TCe à surveiller pour l'huile, 2.0 dCi réputé solide. Renseignez la vôtre (plaque, kilométrage, état) pour recevoir une fourchette indicative gratuite ; un technicien LUNICAR vient ensuite chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération et phase : Mégane 2 phase 2 et Mégane 3 restylée plutôt valorisées.",
+        "Facture de courroie récente sur les essence 16V, les 1.5 dCi et les 1.9 dCi.",
+        "Sur un 1.5 dCi : vidanges régulières, aucun bruit de bas moteur ni défaut d'injection.",
+        "Sur un 1.2 TCe : niveau d'huile stable et rappel de reprogrammation effectué.",
+        "Moteurs mieux notés : 1.4 TCe, 1.6 dCi ou 2.0 dCi.",
+        "Habitacle sec, sans infiltration dans les bacs de porte d'une Mégane 3.",
+        "Carte mains libres fiable et aucun témoin d'airbag, ABS ou ESP allumé."
+      ]
+    }
   },
   {
     "slug": "reprise-peugeot-308",
@@ -3143,8 +3672,8 @@
     "brandSlug": "reprise-peugeot",
     "model": "308",
     "nav": "Peugeot 308",
-    "title": "Vendre sa Peugeot 308 : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Peugeot 308 I, II ou III : estimation gratuite rapide, sans obligation d'achat, un technicien vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Peugeot 308 ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre 308 ? Tout dépend de la génération, du moteur, du kilométrage et de l'état de la voiture. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Peugeot 308 <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une 308 I ou d'une 308 II, parfois d'une 308 III, qui veulent la vendre sans bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2007-2021 pour les 308 I et II (308 I : 2007-2014, restylée en 2011 ; 308 II : 2013-2021, restylée en 2017) ; la 308 III est produite depuis 2021",
@@ -3311,6 +3840,38 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma 308 phase 1 (2007-2011) ?",
+        "answer": "Cela dépend vraiment de chaque voiture. La première 308 existe en 1.4 VTi, 1.6 VTi, 1.6 THP, 1.6 HDi et 2.0 HDi. Sur les essence à chaîne, on écoute le moteur à froid ; sur les diesels, on regarde l'embrayage, le volant moteur et l'injection. Renseignez votre 308 pour recevoir une vraie estimation, gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut une 308 SW ou une 308 CC de première génération ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. Le break SW, souvent en 5 ou 7 places avec grand toit vitré, et le coupé-cabriolet CC à toit rigide reprennent les moteurs de la berline. On vérifie en plus l'étanchéité du toit vitré ou le fonctionnement du toit escamotable. Décrivez votre 308 pour obtenir une estimation gratuite."
+      },
+      {
+        "question": "Que vaut une 308 phase 2 (2011-2014) ?",
+        "answer": "Il n'y a pas de réponse unique : tout dépend de la voiture. Ce restylage apporte l'e-HDi 112 avec Stop and Start, une boîte robotisée 6 rapports et un 2.0 HDi de 150 puis 163 ch. L'état de la boîte, de l'embrayage et du FAP fait la différence, comme un carnet complet. Renseignez votre 308 pour une estimation gratuite."
+      },
+      {
+        "question": "Combien vaut une 308 II de 2013 à 2017 ?",
+        "answer": "Cela dépend vraiment de chaque voiture. Sur cette 308 II de première phase, le 1.2 PureTech très répandu se juge sur sa courroie dans l'huile et sur les rappels de 2020 et 2021 ; les BlueHDi, sur leur circuit AdBlue. L'écran tactile des premiers exemplaires est aussi vérifié. Décrivez votre 308 pour recevoir une estimation gratuite."
+      },
+      {
+        "question": "Que vaut une 308 II restylée (2017-2021) ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. Ce restylage apporte la boîte automatique EAT8 et le 1.5 BlueHDi, dont la chaîne entre arbres à cames est un point signalé. Sur les 2.0 diesel produits de 2017 à 2020, le rappel sur le filtre à particules doit avoir été fait. Renseignez votre 308 pour obtenir une estimation gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut ma 308 III ?",
+        "answer": "Cela dépend vraiment de chaque voiture. La 308 III, produite depuis 2021, existe en 1.2 PureTech, 1.5 BlueHDi, hybride rechargeable et e-308 électrique depuis 2023. Sur une voiture aussi récente, le kilométrage, l'entretien suivi et l'état de la carrosserie comptent le plus. Décrivez la vôtre pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une 308 à plus de 200 000 km ?",
+        "answer": "Une 308 à plus de 200 000 km peut encore avoir une valeur, surtout en diesel bien suivi. À ce kilométrage, on regarde la courroie, l'embrayage et le volant moteur, l'injection et le FAP ; sur une essence, la chaîne et la consommation d'huile. Indiquez le kilométrage exact et les factures dont vous disposez pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une 308 sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans réparer ni repasser le contrôle technique. Claquement à froid, voyant FAP ou AdBlue, embrayage qui patine : décrivez le souci, le technicien le vérifie chez vous et vous explique son effet sur le prix définitif. Toute voiture est étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Ma Peugeot 308 de 2010 avec 200 000 km a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Une 308 I 1.6 HDi de 2010 bien entretenue, avec une courroie faite et un carnet suivi, intéresse toujours. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -3353,7 +3914,19 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48589/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Une 308 n'a pas de valeur toute faite : chaque voiture se juge sur ce qu'elle est. Le moteur pèse beaucoup : trois familles, trois points sensibles. Les essence 1.6 VTi et THP ont une chaîne dont le tendeur peut faiblir (claquements à froid). Le 1.2 PureTech a une courroie qui baigne dans l'huile, et ses rappels doivent avoir été faits. Les diesels se jugent sur l'injection, le FAP et l'AdBlue. Décrivez votre 308 avec sa plaque, son kilométrage et son état : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient sans frais à votre adresse et vous présente le prix définitif, libre à vous de le refuser.",
+      "facteurs": [
+        "1.6 VTi ou THP sans claquement à froid ni consommation d'huile marquée.",
+        "1.2 PureTech avec courroie remplacée et rappels de 2020 et 2021 effectués.",
+        "Diesel sans voyant FAP ou AdBlue, injecteurs sains.",
+        "Embrayage et volant moteur qui ne patinent pas sur les HDi.",
+        "Rappel de 2023 sur le filtre à particules fait sur un 2.0 diesel de 308 II concerné.",
+        "Écran tactile qui fonctionne et toit vitré sans fuite.",
+        "Version SW 7 places ou CC au toit rigide en bon état."
+      ]
+    }
   },
   {
     "slug": "reprise-citroen-c4",
@@ -3361,8 +3934,8 @@
     "brandSlug": "reprise-citroen",
     "model": "C4",
     "nav": "Citroën C4",
-    "title": "Vendre sa Citroën C4 : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Citroën C4 I, II ou III : estimation gratuite rapide, sans obligation d'achat, un technicien vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Citroën C4 ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Citroën C4 ? Cela dépend de sa génération, de son moteur, de son kilométrage et de son état. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Citroën C4 <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une C4 première génération (2004-2010) ou d'une C4 II (2010-2018), souvent à fort kilométrage, et aussi d'une C4 III ou ë-C4 plus récente. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2004-2018 pour les C4 I et II (C4 I : 2004-2010, C4 II : 2010-2018) ; la C4 III, dont la ë-C4 électrique, est produite depuis fin 2020. Les C4 Picasso, SpaceTourer et C4 Cactus ne sont pas traités ici.",
@@ -3529,6 +4102,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Citroën C4 I ?",
+        "answer": "Il n'y a pas de prix type pour une C4 I (2004-2010) : chaque voiture est différente. Sur cette génération, une courroie faite à temps avec facture sur les 1.4 et 1.6 16V ou les HDi compte beaucoup, tout comme une électronique sans caprice (autoradio, régulateur, feux directionnels). Renseignez votre C4 pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut une C4 II ?",
+        "answer": "Cela dépend vraiment de chaque C4 II (2010-2018). On regarde surtout le moteur : chaîne des 1.6 VTi et THP, courroie du 1.2 PureTech sur la phase 2, système AdBlue des BlueHDi. Le rappel des airbags Takata effectué rassure aussi. Décrivez votre voiture en ligne : un conseiller vous rappelle avec une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une C4 III ou une ë-C4 ?",
+        "answer": "Une C4 III ou une ë-C4, commercialisée depuis décembre 2020, s'estime voiture par voiture. Comptent la motorisation (PureTech, BlueHDi, micro-hybride ou électrique), le kilométrage, l'entretien et, sur le 1.5 BlueHDi produit de mai 2020 à janvier 2023, le rappel de la chaîne d'arbre à cames. Renseignez la vôtre pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut une C4 à plus de 200 000 km ?",
+        "answer": "Une C4 à plus de 200 000 km peut encore être reprise, mais sa valeur dépend surtout de son suivi : courroie faite à temps avec facture, turbo et injecteurs sains sur les HDi, aucun voyant allumé. Le kilométrage seul ne fixe pas le prix. Décrivez-la avec son kilométrage réel : vous recevez une fourchette indicative gratuite, puis le technicien vérifie chez vous."
+      },
+      {
+        "question": "Que vaut une C4 sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle s'étudie en l'état, sans rien réparer et sans contrôle technique à fournir. Un voyant AdBlue, une boîte pilotée qui broute ou un contrôle technique échu sont pris en compte dans l'estimation, et le technicien vous explique ce qu'il constate. Une offre n'est pas toujours possible : c'est l'étude de votre C4 qui le dit."
+      },
+      {
         "question": "Ma Citroën C4 de 2007 avec 200 000 km a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Une C4 I bien suivie, avec une courroie faite à temps et un carnet complet, intéresse toujours, même à fort kilométrage. Nous l'estimons sur son état réel, ses factures et son moteur, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -3571,7 +4164,19 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48617/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Citroën C4 : sa valeur dépend vraiment de chaque voiture. Le premier écart vient de la génération : C4 I (2004-2010), C4 II (2010-2018) ou C4 III récente. Vient ensuite le moteur : courroie du 1.2 PureTech faite ou non, chaîne des 1.6 VTi et THP silencieuse ou bruyante, AdBlue sain sur les BlueHDi. Une boîte pilotée BMP6 ou ETG6 qui broute pèse aussi. Pour connaître la valeur de la vôtre, décrivez-la (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération : C4 I (2004-2010), C4 II (2010-2018) ou C4 III et ë-C4 (depuis fin 2020).",
+        "Courroie du 1.2 PureTech remplacée avec facture, et rappel de la pompe à vide effectué sur les moteurs de mars 2013 à avril 2017.",
+        "Chaîne des 1.6 VTi et THP silencieuse au démarrage à froid, consommation d'huile normale.",
+        "Rappel des airbags Takata réalisé sur une C4 II produite entre septembre 2010 et février 2017.",
+        "Boîte manuelle franche plutôt qu'une BMP6 ou ETG6 qui broute.",
+        "HDi et BlueHDi sans voyant antipollution ni message AdBlue.",
+        "Électronique sans défaut : autoradio, écran tactile, régulateur, capteurs."
+      ]
+    }
   },
   {
     "slug": "reprise-renault-scenic",
@@ -3579,8 +4184,8 @@
     "brandSlug": "reprise-renault",
     "model": "Scénic",
     "nav": "Renault Scénic",
-    "title": "Vendre sa Renault Scénic : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Renault Scénic 2, 3 ou 4, Grand Scénic compris : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané.",
+    "title": "Que vaut mon Renault Scénic ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Renault Scénic ? Cela dépend de sa génération et de sa phase, du moteur, du kilométrage et de l'état. Décrivez-le pour une estimation gratuite.",
     "h1": "Vendre sa Renault Scénic <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'un Scénic 2 ou d'un Scénic 3, souvent à fort kilométrage, parfois d'un Scénic 4, qui veulent le vendre sans se compliquer la vie. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier le monospace chez vous, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "1996-2022 pour les Scénic 1 à 4 (Mégane Scénic et Scénic 1 : 1996-2003, Scénic 2 : 2003-2009, Scénic 3 : 2009-2016, Scénic 4 : 2016-2022) ; le Scénic E-Tech 100 % électrique est produit depuis 2024",
@@ -3747,6 +4352,30 @@
     ],
     "faq": [
       {
+        "question": "Que vaut mon Scénic 1 ?",
+        "answer": "Un Scénic 1 (1996-2003) s'estime voiture par voiture. À cet âge, l'entretien et l'état comptent plus que l'année : carnet, absence de voyant, carrosserie sans corrosion. Mégane Scénic de 1996 ou phase 2 de 1999, avec un 1.6 16V ou un 1.9 dCi : chaque version s'étudie, la RX4 à quatre roues motrices aussi. Renseignez le vôtre pour une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut un Scénic 2 ?",
+        "answer": "Cela dépend vraiment de chaque Scénic 2 (2003-2009). La phase 1 d'avant 2006 est la plus exposée : coussinets de bielle et injection du 1.5 dCi, turbo du 1.9 dCi jusqu'en 2005, afficheur et frein de parking capricieux. La phase 2 restylée en 2006 est jugée nettement plus fiable. Décrivez le vôtre pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut mon Scénic 3 ?",
+        "answer": "Un Scénic 3 (2009-2016), Grand Scénic ou Xmod, s'estime au cas par cas. La consommation d'huile du 1.2 TCe est le point noir de la génération ; le 1.6 dCi bien suivi est la version diesel à privilégier. La boîte EDC, les plaquettes arrière et le R-Link sont aussi regardés. Renseignez le vôtre pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut un Scénic 4 ?",
+        "answer": "Un Scénic 4 (2016-2022) est plus récent : sa valeur dépend du moteur, 1.3 TCe ou diesel 1.5, 1.6 ou 1.7 Blue dCi, du kilométrage, de l'entretien et de l'état. Les pneus de 20 pouces et les deux rappels de 2019 et 2020 sur des diesels comptent. Décrivez votre Scénic : un conseiller vous rappelle avec une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut un Scénic à plus de 200 000 km ?",
+        "answer": "Un Scénic à plus de 200 000 km, cas fréquent sur les Scénic 2 phase 2, s'étudie sur son état réel. Ce qui pèse : courroie du 1.5 ou du 1.9 dCi faite avec facture, volant moteur et embrayage sains, vidanges régulières. Le kilométrage ne fixe pas le prix à lui seul. Décrivez-le avec son kilométrage exact : vous recevez une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut un Scénic sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Il s'étudie en l'état, sans réparation et sans contrôle technique à fournir. Un frein de parking qui se serre seul, une carte mains libres capricieuse ou un 1.2 TCe qui consomme de l'huile sont intégrés à l'estimation, et le technicien vous explique ce qu'il constate. Une offre n'est pas toujours possible : c'est l'étude de votre Scénic qui le dit."
+      },
+      {
         "question": "Mon Scénic 2 de 2006 a 230 000 km, a-t-il encore une valeur ?",
         "answer": "Oui, s'il est en bon état. Un Scénic 2 phase 2 avec un carnet suivi, une courroie faite à temps et un frein de parking qui fonctionne intéresse toujours des familles. Nous l'estimons sur son état réel et ses factures, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -3789,7 +4418,20 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48882/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Un Renault Scénic n'a pas de prix unique : sa valeur dépend vraiment de chaque voiture. Sur ce monospace, la phase compte autant que l'année : un Scénic 2 d'avant 2006 est plus exposé aux pannes que la phase 2 restylée en septembre 2006. Le moteur suit : coussinets de bielle et injection du 1.5 dCi, consommation d'huile du 1.2 TCe sur le Scénic 3. Sur un Grand Scénic, avoir les 7 sièges compte. Vous voulez connaître la valeur du vôtre ? Décrivez-le (plaque, kilométrage, état) : une fourchette indicative gratuite vous est proposée, puis un technicien LUNICAR vient chez vous sans frais présenter le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération : Scénic 1 (1996-2003), Scénic 2 (2003-2009), Scénic 3 (2009-2016) ou Scénic 4 (2016-2022).",
+        "Scénic 2 phase 2 (à partir de septembre 2006), nettement plus fiable que la phase 1.",
+        "1.5 dCi sans claquement sourd au ralenti ni voyant de pression d'huile.",
+        "1.2 TCe du Scénic 3 sans forte consommation d'huile ni bruit de chaîne.",
+        "Frein de parking électrique, cartes mains libres et afficheur qui fonctionnent.",
+        "Grand Scénic 7 places avec tous ses sièges.",
+        "Scénic 4 avec pneus de 20 pouces en bon état et rappels diesel traités."
+      ]
+    },
+    "masculin": true
   },
   {
     "slug": "reprise-peugeot-3008",
@@ -3797,8 +4439,8 @@
     "brandSlug": "reprise-peugeot",
     "model": "3008",
     "nav": "Peugeot 3008",
-    "title": "Vendre sa Peugeot 3008 : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Peugeot 3008 I, II ou III : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Peugeot 3008 ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Peugeot 3008 ? Sa valeur dépend de la génération, du moteur, du kilométrage et de l'état. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Peugeot 3008 <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une 3008 de première génération (2009-2016) ou de deuxième génération (2016-2023), souvent à fort kilométrage, parfois d'une 3008 III, qui veulent la vendre sans se compliquer la vie. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2009-2023 pour les 3008 I et II (3008 I : 2009-2016, restylée en 2013 ; 3008 II : 2016-2023, restylée en 2020) ; la 3008 III et l'E-3008 sont commercialisées depuis 2024",
@@ -3965,6 +4607,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma 3008 1 ?",
+        "answer": "Une 3008 I (2009-2016) s'estime voiture par voiture. Sur cette génération, la motorisation pèse lourd : le 2.0 HDi est le diesel préféré de la presse, alors que le 1.6 HDi 110 à 16 soupapes et le 1.6 THP demandent un historique solide. Une boîte BMP6 qui hésite compte aussi. Renseignez la vôtre pour une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut une 3008 2 ?",
+        "answer": "Cela dépend vraiment de chaque 3008 II (2016-2023). Les points regardés : la courroie du 1.2 PureTech, le rappel de chaîne du 1.5 BlueHDi, le système AdBlue, l'état de la boîte EAT6 ou EAT8. Une phase 2 de 2020, ou une hybride rechargeable dont les rappels batterie sont faits, se distingue. Décrivez votre 3008 pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut une 3008 III ou une E-3008 ?",
+        "answer": "Une 3008 III ou une E-3008, commercialisée depuis février 2024, est récente : sa valeur dépend de la version (hybride 48 V, hybride rechargeable ou électrique), du kilométrage, de l'entretien et de l'état. Un carnet complet et deux clés comptent. Renseignez la vôtre : un conseiller vous rappelle avec une fourchette indicative gratuite, sans engagement."
+      },
+      {
+        "question": "Que vaut une 3008 à plus de 200 000 km ?",
+        "answer": "Une 3008 à plus de 200 000 km, souvent une 3008 I diesel, peut encore être reprise : tout dépend de son suivi. Courroie faite avec facture, campagne de pompe à huile réalisée sur un 2.0 HDi des premiers exemplaires, turbo et injecteurs sains sur un 1.6 HDi. Le kilométrage seul ne fixe pas le prix. Décrivez-la : vous recevez une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une 3008 sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle s'étudie en l'état : pas de réparation à faire, pas de contrôle technique demandé. Un rappel de chaîne non effectué, un voyant de pression d'huile ou une BMP6 qui accroche sont intégrés à l'estimation, et le technicien vous explique ce qu'il constate. Une offre n'est pas toujours possible : c'est l'étude de votre 3008 qui le dit."
+      },
+      {
         "question": "Ma Peugeot 3008 de 2011 avec 200 000 km a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Une 3008 I 1.6 HDi ou 2.0 HDi à fort kilométrage, avec un carnet suivi et une courroie faite à temps, intéresse toujours. Nous l'estimons sur son état réel, ses factures et son comportement à l'essai, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -4007,7 +4669,19 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/47781/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Il n'existe pas de prix unique pour une Peugeot 3008, et deux exemplaires de la même année peuvent valoir des sommes très différentes. La première ligne de partage sépare la 3008 I, crossover de 2009-2016, de la 3008 II, vrai SUV à i-Cockpit lancé en 2016. La seconde tient aux rappels de distribution : courroie dans l'huile du 1.2 PureTech, chaîne d'arbre à cames du 1.5 BlueHDi. Avoir le justificatif de la concession change la donne. Décrivez votre 3008 (plaque, kilométrage, état) pour recevoir une fourchette indicative gratuite. Un technicien LUNICAR vient ensuite chez vous, sans frais, et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération : 3008 I (2009-2016), 3008 II (2016-2023) ou 3008 III et E-3008 (depuis 2024).",
+        "1.5 BlueHDi produit d'octobre 2017 à janvier 2023 avec le rappel de la chaîne d'arbre à cames effectué, justificatif à l'appui.",
+        "1.2 PureTech 130 avec courroie remplacée et rappels traités.",
+        "1.6 THP de 3008 I sans bruit de chaîne ni voyant moteur.",
+        "Boîte manuelle, EAT6 ou EAT8 saine plutôt qu'une BMP6 à-coups.",
+        "2.0 HDi ou 2.0 BlueHDi bien suivi, motorisations jugées plus robustes que les petits diesels.",
+        "Système AdBlue sans compte à rebours d'immobilisation, écran et i-Cockpit fonctionnels."
+      ]
+    }
   },
   {
     "slug": "reprise-volkswagen-golf",
@@ -4015,8 +4689,8 @@
     "brandSlug": "reprise-volkswagen",
     "model": "Golf",
     "nav": "Volkswagen Golf",
-    "title": "Vendre sa Volkswagen Golf : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Volkswagen Golf IV, V, VI ou plus récente : fourchette de prix rapide, sans obligation d'achat, technicien chez vous, virement instantané.",
+    "title": "Que vaut ma Volkswagen Golf ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Golf ? Cela dépend de la génération, du moteur, du kilométrage et de l'état de la voiture. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Volkswagen Golf <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Golf IV, d'une Golf V ou d'une Golf VI, souvent à fort kilométrage, parfois d'une Golf VII ou VIII, qui veulent la vendre sans se compliquer la vie. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous, sans frais. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "1997-2012 pour les Golf IV à VI (Golf IV : 1997-2003, Golf V : 2003-2008, Golf VI : 2008-2012) ; la Golf VII (2012-2019) et la Golf VIII (depuis 2019) sont reprises aussi",
@@ -4188,6 +4862,38 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Golf 4 ?",
+        "answer": "Cela dépend vraiment de chaque voiture. La Golf IV, de 1997 à 2003, se juge beaucoup sur son moteur : un 1.9 TDI 90 ou 100 bien entretenu reste réputé endurant, alors que le 115 ch est pointé pour des avaries lourdes. Lève-vitres et électricité sont aussi vérifiés. Renseignez votre Golf pour recevoir une vraie estimation, gratuite."
+      },
+      {
+        "question": "Que vaut une Golf 5 ?",
+        "answer": "Il n'y a pas de réponse unique : tout dépend de la voiture. Sur la Golf V, de 2003 à 2008, le 2.0 TDI est souvent signalé pour ses injecteurs et son volant moteur, tandis que le 1.6 FSI compte peu de pannes. Le 1.4 TSI se juge sur son tendeur de chaîne. Décrivez votre Golf pour obtenir une estimation gratuite."
+      },
+      {
+        "question": "Combien vaut une Golf 6 ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. La Golf VI, de 2008 à 2012, reprend en grande partie la mécanique de la Golf V. Le 1.4 16V est jugé le plus fiable ; le 1.6 TDI est le plus signalé (EGR, injecteurs, FAP) et la DSG 7 peut hésiter. La mise à jour EA189 est aussi regardée. Renseignez votre Golf pour une estimation gratuite."
+      },
+      {
+        "question": "Que vaut une Golf 6 cabriolet ?",
+        "answer": "Cela dépend vraiment de chaque voiture. Dérivée de la Golf VI et vendue de 2011 à 2016, elle reprend les mêmes moteurs TSI et TDI : chaîne du 1.4 TSI, injection et volant moteur des TDI, boîte DSG sont vérifiés, ainsi que l'état de la capote. Décrivez votre cabriolet avec sa plaque pour recevoir une estimation gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut ma Golf 7 ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. La Golf VII, de 2012 à 2019, passe à des essences TSI à courroie et reçoit le 2.0 TDI 150, version appréciée ; le turbo du 1.6 TDI et la DSG 7 sont des points surveillés. Berline, SW, Sportsvan ou Alltrack : la version compte aussi. Renseignez votre Golf pour recevoir une estimation gratuite."
+      },
+      {
+        "question": "Que vaut ma Golf 8 ?",
+        "answer": "Cela dépend vraiment de chaque voiture. La Golf VIII, lancée en 2020 et restylée en 2024, existe en TSI, eTSI, eHybrid rechargeable et 2.0 TDI. Sur une voiture aussi récente, le kilométrage, l'entretien en réseau et la situation de financement comptent beaucoup. Décrivez la vôtre avec sa plaque pour recevoir une fourchette indicative gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut une Golf à plus de 200 000 km ?",
+        "answer": "Une Golf à plus de 200 000 km peut encore avoir une valeur, surtout en 1.9 TDI bien suivi, où ces kilométrages sont courants. On regarde la courroie, le volant moteur et l'embrayage, l'injection et le turbo, puis l'électricité. Un kilométrage cohérent avec le carnet rassure. Indiquez le kilométrage exact pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une Golf sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans réparation ni contrôle technique préalable. DSG qui broute, bruit de chaîne, filtre à particules saturé : décrivez le problème, le technicien le constate chez vous et vous explique son effet sur le prix définitif. Toute voiture est étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Ma Golf IV de 2001 avec 250 000 km a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Fiches-Auto relève que les Golf IV bien entretenues dépassent régulièrement 250 000 km, surtout en 1.9 TDI 90 ou 100. Nous l'estimons sur son état réel, ses factures et son kilométrage, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -4230,7 +4936,19 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48948/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Une Golf n'a pas de prix unique : sa valeur dépend vraiment de chaque voiture. De la Golf IV à la Golf VIII, certains points pèsent plus que l'âge. Une Golf V ou VI en 1.4 TSI à chaîne se juge sur son tendeur et sa consommation d'huile. Une boîte DSG 7 doit passer les rapports sans à-coups. Sur un TDI EA189 de 2009 à 2015, la mise à jour logicielle compte. Pour savoir ce que vaut la vôtre, renseignez sa plaque, son kilométrage et son état : fourchette indicative gratuite, puis visite d'un technicien LUNICAR chez vous, sans frais, qui présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "1.9 TDI 90 ou 100 bien suivi, même à kilométrage élevé.",
+        "1.4 TSI EA111 sans bruit de chaîne au démarrage ni consommation d'huile anormale.",
+        "DSG 7 qui passe les rapports sans hésiter, ou boîte manuelle saine.",
+        "Volant moteur bi-masse et embrayage sans claquement sur les TDI.",
+        "Mise à jour logicielle faite sur un TDI EA189 de 2009 à 2015.",
+        "Courroie remplacée avec facture, à l'échéance propre au moteur.",
+        "Lève-vitres, centralisation et instruments de bord qui fonctionnent."
+      ]
+    }
   },
   {
     "slug": "reprise-renault-captur",
@@ -4238,8 +4956,8 @@
     "brandSlug": "reprise-renault",
     "model": "Captur",
     "nav": "Renault Captur",
-    "title": "Vendre son Renault Captur : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Renault Captur 1 ou 2, même à fort kilométrage : estimation gratuite rapide, sans obligation d'achat, on vient chez vous, virement instantané.",
+    "title": "Que vaut mon Renault Captur ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Renault Captur ? Cela dépend de la génération, du moteur, de la boîte, du kilométrage et de l'état. Décrivez-le pour une estimation gratuite.",
     "h1": "Vendre son Renault Captur <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'un Captur de première génération (2013-2019), souvent à fort kilométrage, et aussi à ceux d'un Captur 2 plus récent. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture chez vous, sans frais. Le prix définitif est fixé après cette vérification, le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2013-2019 pour le Captur 1 (restylé en 2017) ; le Captur 2 est produit depuis fin 2019 (commercialisé en janvier 2020, restylé en 2024)",
@@ -4396,6 +5114,22 @@
     ],
     "faq": [
       {
+        "question": "Que vaut mon Captur 1 ?",
+        "answer": "Il dépend de chaque véhicule. Sur un Captur 1 (2013-2019), souvent au-delà de 150 000 km aujourd'hui, le moteur fait l'essentiel : 1.2 TCe à surveiller pour la consommation d'huile, 0.9 TCe concerné par le rappel de borne de batterie, 1.5 dCi endurant si la courroie est faite. Une phase 2 restylée en 2017 et soignée est plutôt valorisée. Renseignez votre Captur pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut mon Captur 2 ?",
+        "answer": "Il dépend de chaque véhicule, même récent. Sur un Captur 2 (depuis fin 2019), la motorisation compte : 1.0 TCe, dont la version GPL a fait l'objet de rappels sur le réservoir, 1.3 TCe en boîte EDC, 1.5 Blue dCi et ses capteurs AdBlue, ou hybride E-Tech. Les rappels effectués et un multimédia sans bug rassurent. Décrivez votre Captur pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut un Captur à plus de 200 000 km ?",
+        "answer": "Un Captur à plus de 200 000 km peut être étudié, le plus souvent un 1.5 dCi. Sa valeur dépend alors de la courroie, de la vanne EGR, du filtre à particules, du turbo et de la pompe à carburant. Un carnet suivi et un moteur qui démarre bien comptent davantage que le chiffre au compteur. Indiquez le kilométrage exact et vos factures pour une estimation réaliste."
+      },
+      {
+        "question": "Que vaut un Captur sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Il peut être étudié en l'état, sans contrôle technique exigé et sans réparer avant. Un 1.2 TCe qui consomme de l'huile, une boîte EDC qui affiche un défaut ou un voyant AdBlue allumé sont constatés par le technicien chez vous et intégrés à un prix expliqué. Une offre n'est pas toujours possible : c'est l'étude de votre Captur qui le dit."
+      },
+      {
         "question": "Mon Captur de 2014 affiche 180 000 km, a-t-il encore une valeur ?",
         "answer": "Oui, s'il est en état de rouler et entretenu. Un Captur 1 à fort kilométrage avec un carnet suivi, sans voyant et sans vibration, intéresse toujours. Nous l'estimons sur son état réel, son moteur et ses factures, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation d'achat."
       },
@@ -4438,7 +5172,20 @@
         "url": "https://rappel.conso.gouv.fr/affichettepdf/49020/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour un Renault Captur : la valeur dépend vraiment de chaque véhicule. Sur un Captur 1, la motorisation pèse plus que tout : un 1.2 TCe 120 produit entre 2012 et 2015-2016 peut consommer de l'huile, alors qu'un 1.5 dCi à courroie suivie ou un 0.9 TCe sain rassurent davantage. La boîte EDC, sujette aux à-coups, est testée, et un Captur 1 phase 2 soigné est plutôt valorisé. Pour connaître la valeur du vôtre, décrivez-le (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Sur un 1.2 TCe : niveau d'huile stable et factures de suivi (reprogrammation, remise à niveau).",
+        "Courroie remplacée à temps sur un 1.5 dCi, facture à l'appui.",
+        "Boîte EDC sans craquement, patinage ni message de défaut.",
+        "Rappels faits : borne de batterie du 0.9 TCe (2020), catalyseur des Captur construits début 2018, frein de stationnement sur des Captur 2 récents.",
+        "Captur 1 phase 2 ou Captur 2, plutôt valorisés quand ils sont soignés.",
+        "Deux cartes mains libres et écran multimédia qui ne se fige pas.",
+        "Pas de vibrations du train avant sur un 1.5 dCi d'avant 2015."
+      ]
+    },
+    "masculin": true
   },
   {
     "slug": "reprise-peugeot-2008",
@@ -4446,8 +5193,8 @@
     "brandSlug": "reprise-peugeot",
     "model": "2008",
     "nav": "Peugeot 2008",
-    "title": "Vendre son Peugeot 2008 : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Peugeot 2008 de première génération (2013-2019), PureTech ou HDi : estimation gratuite, vérification chez vous, virement instantané à la vente.",
+    "title": "Que vaut mon Peugeot 2008 ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Peugeot 2008 ? Cela dépend de sa génération, de son moteur, de son kilométrage et de son état. Décrivez-le pour une estimation gratuite.",
     "h1": "Vendre son Peugeot 2008 <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'un Peugeot 2008 de première génération (2013-2019), en 1.2 PureTech, 1.6 VTi ou 1.6 HDi/BlueHDi, qui veulent le vendre sans bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2013-2019 pour le 2008 I (phase 1 : 2013-2016, phase 2 : 2016-2019, fin de production en France en janvier 2020) ; le 2008 II est produit depuis fin 2019",
@@ -4603,6 +5350,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut mon 2008 phase 1 ?",
+        "answer": "Un 2008 phase 1 (2013-2016) s'estime au cas par cas. Cette phase mêle les premiers moteurs (1.2 VTi, 1.6 VTi 120, HDi et e-HDi) et les premiers PureTech et BlueHDi. Les 1.6 HDi et e-HDi 92 sont réputés sobres ; sur le 1.6 VTi, le circuit de refroidissement compte. Renseignez votre 2008 pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut un 2008 phase 2 ?",
+        "answer": "Cela dépend vraiment de chaque 2008 phase 2 (2016-2019). La gamme est centrée sur les 1.2 PureTech et 1.6 BlueHDi : la courroie dans l'huile et les rappels de 2020 et 2021 pour les uns, le système AdBlue pour les autres. L'équipement, comme l'écran tactile avec Apple CarPlay, et la finition sont regardés aussi. Décrivez votre voiture pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut un Peugeot 2008 II ?",
+        "answer": "Un 2008 II, produit depuis fin 2019 sur plateforme CMP, est plus récent : sa valeur dépend de la motorisation, e-2008 électrique compris, du kilométrage, de l'entretien et de l'état. Un carnet complet et deux clés comptent beaucoup. Renseignez le vôtre : un conseiller vous rappelle avec une fourchette indicative gratuite, sans engagement."
+      },
+      {
+        "question": "Que vaut un Peugeot 2008 à plus de 200 000 km ?",
+        "answer": "Un 2008 à plus de 200 000 km, souvent un diesel HDi ou BlueHDi, s'étudie sur son état réel : courroie faite avec facture, injecteurs et filtre à particules sains, aucun voyant AdBlue, embrayage qui ne patine pas. Le chiffre au compteur ne fixe pas le prix à lui seul. Décrivez-le avec son kilométrage exact pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut un Peugeot 2008 sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Il s'étudie en l'état, sans réparation et sans contrôle technique à fournir. Un PureTech sans preuve de courroie, un voyant AdBlue ou des amortisseurs fatigués sont pris en compte dans l'estimation, et le technicien vous explique ce qu'il constate. Une offre n'est pas toujours possible : c'est l'étude de votre 2008 qui le dit."
+      },
+      {
         "question": "Mon 2008 PureTech n'a jamais eu sa courroie de distribution changée, l'étudiez-vous ?",
         "answer": "Oui. Un PureTech sans remplacement de courroie reste étudié, mais ce point pèse dans l'offre car l'intervention est connue et coûteuse. Indiquez-le dès la demande, et précisez si la campagne constructeur a été faite : le conseiller vous donne une fourchette indicative tenant compte de cet élément, puis le technicien vérifie sur place."
       },
@@ -4645,7 +5412,20 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48836/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Un Peugeot 2008 ne se vend pas à un prix unique : sa valeur dépend vraiment de chaque voiture. Sur le 2008 I (2013-2019), le moteur fait l'essentiel de l'écart : un 1.2 PureTech dont la courroie dans l'huile a été remplacée, preuve à l'appui, n'a pas l'intérêt d'un exemplaire sans historique. Sur un BlueHDi, un voyant AdBlue pèse. Les amortisseurs avant fatigués, défaut le plus cité sur ce modèle, comptent aussi. Pour connaître la valeur du vôtre, renseignez sa plaque, son kilométrage et son état : vous obtenez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération : 2008 I phase 1 (2013-2016), phase 2 (2016-2019) ou 2008 II (depuis fin 2019).",
+        "1.2 PureTech avec courroie remplacée, facture ou campagne constructeur à l'appui.",
+        "Consommation d'huile normale sur les PureTech 82, 110 et 130.",
+        "BlueHDi sans voyant AdBlue, SCR ou FAP.",
+        "1.5 BlueHDi 100 avec le rappel de la chaîne d'arbre à cames traité.",
+        "Amortisseurs avant en bon état et pneus usés de façon régulière.",
+        "Phase 2 bien équipée en boîte manuelle ou EAT6 plutôt qu'une boîte pilotée ETG5 jugée lente."
+      ]
+    },
+    "masculin": true
   },
   {
     "slug": "reprise-citroen-berlingo",
@@ -4653,8 +5433,8 @@
     "brandSlug": "reprise-citroen",
     "model": "Berlingo",
     "nav": "Citroën Berlingo",
-    "title": "Vendre son Citroën Berlingo : estimation, rachat | LUNICAR",
-    "description": "Vendez votre Citroën Berlingo Multispace ou utilitaire, même à fort kilométrage : estimation gratuite, vérification chez vous, virement instantané.",
+    "title": "Que vaut mon Citroën Berlingo ? Estimation | LUNICAR",
+    "description": "Que vaut votre Berlingo ? Tout dépend de sa génération, de son moteur, de son kilométrage et de son état. Décrivez-le pour une estimation gratuite.",
     "h1": "Vendre son Citroën Berlingo <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'un Berlingo de première génération (1996-2008) ou d'un Berlingo II (2008-2018), en Multispace comme en fourgonnette, souvent à fort kilométrage, et aussi à ceux d'un Berlingo III plus récent. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier le véhicule à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "1996-2018 pour les Berlingo I et II (Berlingo I : 1996-2008, puis Berlingo First jusqu'en 2011 ; Berlingo II : 2008-2018) ; le Berlingo III est produit depuis 2018",
@@ -4809,6 +5589,30 @@
     ],
     "faq": [
       {
+        "question": "Que vaut mon Berlingo 1 ?",
+        "answer": "Cela dépend vraiment de chaque véhicule. Le Berlingo I, produit de 1996 à 2008 puis prolongé en Berlingo First jusqu'en 2011, a souvent beaucoup roulé : un 1.9 D ou un 2.0 HDi entretenu, à la courroie faite avec facture, se présente bien mieux qu'un exemplaire à l'historique flou. Renseignez votre Berlingo pour recevoir une vraie estimation, gratuite et sans engagement."
+      },
+      {
+        "question": "Combien vaut un Berlingo 2 de 2008 à 2012 ?",
+        "answer": "Il n'y a pas de réponse unique : tout dépend du véhicule. Sur cette première phase du Berlingo II, la version (Multispace 5 ou 7 places, fourgon, XL) et le moteur comptent beaucoup. Sur les 1.6 HDi 90 et 110, on regarde de près le turbo, les joints d'injecteurs et l'embrayage. Décrivez le vôtre pour obtenir une estimation gratuite."
+      },
+      {
+        "question": "Que vaut un Berlingo 2 restylé (2012-2018) ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. Ces phases 2 et 3 apportent les BlueHDi Euro 6 à partir de 2015, dont le circuit AdBlue (réservoir, injecteur SCR, sonde NOx) doit fonctionner sans voyant. Sur un 1.2 PureTech 110, la preuve de la campagne de courroie pèse dans l'analyse. Renseignez votre Berlingo pour une estimation réelle, gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut mon Berlingo 3 ?",
+        "answer": "Cela dépend vraiment de chaque véhicule. Le Berlingo III, produit depuis 2018 et partagé avec le Partner, le Rifter et le Combo, est plus récent : kilométrage, carnet et motorisation (1.2 PureTech, 1.5 BlueHDi ou ë-Berlingo électrique) font la différence. Sur l'électrique, l'état de la batterie est regardé de près. Décrivez votre véhicule pour recevoir une estimation gratuite."
+      },
+      {
+        "question": "Que vaut un Berlingo à plus de 200 000 km ?",
+        "answer": "Un Berlingo à plus de 200 000 km peut encore avoir une valeur, mais elle dépend de son état et de son suivi. C'est un kilométrage courant pour ce véhicule de travail. Ce qui compte : une courroie faite à temps, un embrayage franc, ni fumée ni voyant moteur ou FAP. Indiquez le kilométrage exact et l'entretien connu pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut un Berlingo sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Il peut être étudié en l'état, sans réparer ni repasser le contrôle technique. Turbo qui siffle, embrayage qui patine, direction dure : décrivez le souci tel qu'il est, le technicien le vérifie chez vous et en tient compte dans le prix définitif. Toute voiture est étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Mon Berlingo utilitaire a 250 000 km, a-t-il encore une valeur ?",
         "answer": "Oui, si la mécanique suit. Les Berlingo fourgonnette à fort kilométrage restent demandés quand le carnet est tenu et la courroie faite. Nous l'estimons sur son état réel, son historique et son équipement, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette indicative, sans obligation."
       },
@@ -4851,7 +5655,20 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48591/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour un Berlingo : sa valeur dépend vraiment de chaque véhicule. Un Multispace 7 places ou une version XL n'intéresse pas les mêmes acheteurs qu'une fourgonnette de première génération. Côté moteur, sur les 1.6 HDi, l'état du turbo et de l'embrayage pèse lourd, et sur un PureTech 110 de phase 3, la preuve que la campagne de courroie a été faite change l'analyse. Pour connaître la valeur du vôtre, décrivez-le (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Multispace 7 places ou version XL : des configurations recherchées.",
+        "Courroie du 1.6 HDi ou du 1.6 16V remplacée, facture à l'appui.",
+        "Turbo silencieux et sans fumée sur les 1.6 HDi, le 110 étant le plus exposé.",
+        "Embrayage et volant moteur sains sur les HDi 92 et 110, souvent usés tôt en usage chargé.",
+        "Sur un PureTech 110, la preuve que le rappel de courroie a été réalisé.",
+        "Portes coulissantes qui fonctionnent bien et rails sans peinture écaillée.",
+        "Trains roulants sans claquement et pneus arrière usés de façon régulière."
+      ]
+    },
+    "masculin": true
   },
   {
     "slug": "reprise-renault-kangoo",
@@ -4859,8 +5676,8 @@
     "brandSlug": "reprise-renault",
     "model": "Kangoo",
     "nav": "Renault Kangoo",
-    "title": "Vendre son Renault Kangoo : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Renault Kangoo 1 ou 2, ludospace ou Express, même à fort kilométrage : estimation gratuite, vérification chez vous, virement instantané.",
+    "title": "Que vaut mon Renault Kangoo ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Kangoo ? Cela dépend de la génération, du moteur, du kilométrage et de l'état du véhicule. Décrivez-le pour une estimation gratuite.",
     "h1": "Vendre son Renault Kangoo <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'un Kangoo de première génération (1997-2007) ou d'un Kangoo II (2007-2021), en ludospace comme en Kangoo Express, souvent à fort kilométrage, et aussi à ceux d'un Kangoo III plus récent. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier le véhicule à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "1997-2021 pour les Kangoo I et II (Kangoo I : 1997-2007, restylé en 2003 ; Kangoo II : 2007-2021, restylé en 2013) ; le Kangoo III est produit depuis 2021",
@@ -5015,6 +5832,30 @@
     ],
     "faq": [
       {
+        "question": "Que vaut mon Kangoo 1 ?",
+        "answer": "Cela dépend vraiment de chaque véhicule. Le Kangoo I, produit de 1997 à 2007, roule souvent en 1.9 D, 1.9 dTi ou 1.5 dCi, des diesels réputés endurants quand ils sont suivis ; la vanne EGR et l'injection sont surveillées avec l'âge. Une courroie faite avec facture compte beaucoup. Renseignez votre Kangoo pour recevoir une vraie estimation, gratuite."
+      },
+      {
+        "question": "Combien vaut un Kangoo 2 de 2007 à 2013 ?",
+        "answer": "Il n'y a pas de réponse unique : tout dépend du véhicule. Sur ce Kangoo II de première phase, la version (ludospace, Express, Maxi, Grand Kangoo) pèse, puis le moteur : 1.6 essence ou 1.5 dCi, dont les injecteurs et l'émetteur d'embrayage sont des points connus. Les rappels de direction de 2008 et 2010 sont vérifiés. Décrivez le vôtre pour une estimation gratuite."
+      },
+      {
+        "question": "Que vaut un Kangoo 2 restylé (2013-2021) ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. Ce restylage apporte le 1.2 TCe 115, à juger sur le suivi de son niveau d'huile, et les 1.5 dCi Energy avec Stop & Start. Le Kangoo Z.E. passe à 33 kWh en 2017 : l'état et le statut de sa batterie comptent. Renseignez votre Kangoo pour obtenir une estimation gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut mon Kangoo 3 ?",
+        "answer": "Cela dépend vraiment de chaque véhicule. Le Kangoo III, produit depuis 2021, existe en essence, en diesel et en électrique E-Tech. Sur un véhicule aussi récent, le kilométrage, l'entretien suivi et l'état de la carrosserie comptent le plus, surtout s'il a servi d'utilitaire. Décrivez votre Kangoo avec sa plaque pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut un Kangoo à plus de 200 000 km ?",
+        "answer": "Un Kangoo à plus de 200 000 km peut encore avoir une valeur, selon son état et son suivi. Ce kilométrage est courant sur ce véhicule de travail, en particulier en 1.5 dCi. Courroie faite à temps, injecteurs silencieux, embrayage franc et absence de bruit de bas moteur sont regardés. Indiquez le kilométrage exact pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut un Kangoo sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Il peut être étudié en l'état, sans réparation ni contrôle technique préalable. Injecteurs qui claquent, pédale d'embrayage molle, voyant moteur : décrivez le souci, le technicien LUNICAR le constate chez vous et vous explique comment il compte dans le prix définitif. Toute voiture est étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Mon Kangoo Express a 280 000 km, a-t-il encore une valeur ?",
         "answer": "Oui, si la mécanique suit. Les Kangoo utilitaires à fort kilométrage restent demandés quand le carnet est tenu et la courroie faite. Nous l'estimons sur son état réel, son historique et son équipement, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette indicative, sans obligation."
       },
@@ -5057,7 +5898,20 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/49046/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Un Kangoo n'a pas de prix unique : sa valeur dépend vraiment de chaque véhicule. Ludospace, Express, Maxi ou Grand Kangoo 7 places : la version compte déjà. Sur le 1.5 dCi, cœur de la gamme, on regarde les injecteurs, l'embrayage et son émetteur, et le suivi des vidanges. Un 1.2 TCe se juge sur la surveillance de son niveau d'huile. Pour un Kangoo Z.E., tout part de la batterie, achetée ou louée. Pour connaître la valeur du vôtre, décrivez-le (plaque, kilométrage, état) : la fourchette indicative est gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Grand Kangoo 7 places ou Express Maxi, des versions recherchées.",
+        "1.5 dCi aux injecteurs silencieux et aux vidanges régulières.",
+        "Embrayage franc et émetteur d'embrayage en bon état.",
+        "1.2 TCe dont le niveau d'huile a été suivi.",
+        "Kangoo Z.E. : état et statut de la batterie, achetée ou louée.",
+        "Courroie remplacée avec facture, à l'échéance du carnet.",
+        "Portes coulissantes qui fonctionnent bien et caisse sans corrosion."
+      ]
+    },
+    "masculin": true
   },
   {
     "slug": "reprise-opel-corsa",
@@ -5065,8 +5919,8 @@
     "brandSlug": "reprise-opel",
     "model": "Corsa",
     "nav": "Opel Corsa",
-    "title": "Vendre son Opel Corsa : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Opel Corsa C, D ou E, essence ou CDTI, même ancienne : estimation gratuite rapide, vérification chez vous, virement instantané à la vente.",
+    "title": "Que vaut mon Opel Corsa ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Corsa ? Cela dépend de la génération, du moteur, du kilométrage et de l'état de la voiture. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre son Opel Corsa <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Corsa C (2000-2006), d'une Corsa D (2006-2014) ou d'une Corsa E (2014-2019), parfois d'une Corsa F, qui veulent la vendre sans bouger de chez eux. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2000-2019 pour les Corsa C à E (Corsa C : 2000-2006, Corsa D : 2006-2014, Corsa E : 2014-2019) ; la Corsa F est produite depuis 2019",
@@ -5221,6 +6075,30 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Corsa C ?",
+        "answer": "Cela dépend vraiment de chaque voiture. La Corsa C, produite de 2000 à 2006, a souvent beaucoup d'années derrière elle : l'état de la chaîne sur les 1.0 et 1.2, le comportement de la boîte Easytronic si elle en est équipée et la corrosion sont regardés. Un carnet suivi aide. Renseignez votre Corsa pour recevoir une vraie estimation, gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut une Corsa D ?",
+        "answer": "Il n'y a pas de réponse unique : tout dépend de la voiture. Sur la Corsa D de 2006 à 2014, le 1.3 CDTI 90 est apprécié, mais ses injecteurs sont un point connu ; sur les essences, on écoute la chaîne à froid. Le chauffage, dont une pièce du bloc pouvait casser, est aussi vérifié. Décrivez votre Corsa pour une estimation gratuite."
+      },
+      {
+        "question": "Combien vaut une Corsa E ?",
+        "answer": "Sa valeur dépend de chaque exemplaire. La Corsa E, de 2014 à 2019, a reçu les 1.0 turbo et 1.4 turbo, plus vifs que les atmosphériques ; sur le 1.0 turbo, la courroie suit l'échéance du carnet. Kilométrage, entretien et état de la boîte font l'essentiel de la différence. Renseignez votre Corsa pour obtenir une estimation gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut ma Corsa F ?",
+        "answer": "Cela dépend vraiment de chaque voiture. La Corsa F, produite depuis 2019 sur base PSA, existe en 1.2 PureTech, en 1.5 diesel et en Corsa-e électrique. Sur une voiture aussi récente, le kilométrage, le carnet suivi et l'état de la carrosserie comptent le plus ; sur la Corsa-e, l'état de la batterie. Décrivez la vôtre pour une estimation gratuite."
+      },
+      {
+        "question": "Que vaut une Corsa à plus de 200 000 km ?",
+        "answer": "Une Corsa à plus de 200 000 km peut encore être étudiée, mais sa valeur dépend de son état mécanique. À ce stade, on regarde la chaîne des essences, l'injection et l'embrayage des CDTI, la boîte et la direction assistée. Un historique d'entretien, même partiel, est utile. Indiquez le kilométrage exact pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une Corsa sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans réparation ni contrôle technique préalable. Cliquetis au démarrage, voyant moteur sur un CDTI, vitesse qui saute : signalez-le, le technicien le vérifie chez vous et vous explique comment il pèse sur le prix définitif. Toute voiture est étudiée, mais une offre n'est pas toujours possible : c'est l'étude qui le dit."
+      },
+      {
         "question": "Ma Corsa D de 2008 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Une Corsa D de 2008 peu roulée, avec un carnet suivi et un moteur qui tourne rond, intéresse toujours. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -5263,7 +6141,20 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48975/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "La valeur d'une Corsa ne se résume pas à un prix unique : elle dépend vraiment de chaque voiture. Entre une Corsa C et une Corsa E, l'écart est déjà large, et le moteur compte ensuite. Sur les 1.0 et 1.2 essence à chaîne, un cliquetis au démarrage signale une chaîne détendue. Sur les 1.3 CDTI, ce sont les injecteurs, l'EGR et la boîte qui sont surveillés. Décrivez votre Corsa (plaque, kilométrage, état) pour recevoir une fourchette indicative gratuite ; un technicien LUNICAR se déplace ensuite chez vous sans frais pour vous présenter le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Essence 1.0 ou 1.2 sans cliquetis de chaîne au démarrage.",
+        "1.3 CDTI aux injecteurs silencieux, ou injecteurs remplacés avec facture.",
+        "Boîte mécanique sans roulement bruyant ni vitesse qui accroche.",
+        "Easytronic qui passe les rapports sans à-coups.",
+        "Direction assistée sans perte d'assistance ni bruit.",
+        "Chauffage et dégivrage arrière qui fonctionnent sur une Corsa D.",
+        "Version 5 portes, deux clés et carnet complet."
+      ]
+    },
+    "masculin": true
   },
   {
     "slug": "reprise-nissan-qashqai",
@@ -5271,8 +6162,8 @@
     "brandSlug": "reprise-nissan",
     "model": "Qashqai",
     "nav": "Nissan Qashqai",
-    "title": "Vendre son Nissan Qashqai : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Nissan Qashqai 1 ou 2, dCi ou DIG-T, même à fort kilométrage : estimation gratuite, vérification chez vous, virement instantané à la vente.",
+    "title": "Que vaut mon Nissan Qashqai ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Qashqai ? Tout dépend de sa génération, de son moteur et de sa boîte, de son kilométrage et de son état. Décrivez-le : estimation gratuite.",
     "h1": "Vendre son Nissan Qashqai <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'un Qashqai de première génération (2007-2013), y compris Qashqai+2, ou d'un Qashqai II (2014-2021), souvent à fort kilométrage, et aussi à ceux d'un Qashqai III plus récent. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2007-2021 pour les Qashqai I et II (Qashqai I/J10 : 2007-2013, restylé en 2010 ; Qashqai II/J11 : 2014-2021, restylé en 2017) ; le Qashqai III est produit depuis 2021",
@@ -5434,6 +6325,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut mon Qashqai 1 ?",
+        "answer": "Un Qashqai I (2007-2013) s'estime voiture par voiture. Sur cette génération, les diesels demandent une attention particulière : coussinets de bielle du 1.5 dCi 106, pompe à huile du 2.0 dCi 150. Sur le 1.6 essence, l'embrayage et le volant moteur comptent. Un carnet de vidanges complet rassure. Renseignez le vôtre pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut un Qashqai 2 ?",
+        "answer": "Cela dépend vraiment de chaque Qashqai II (2014-2021). Les points regardés : la boîte Xtronic et sa reprogrammation, la consommation d'huile du 1.2 DIG-T, le turbo et les durites d'air des 1.5 et 1.6 dCi. La phase 2 restylée en 2017 et une finition bien équipée sont prises en compte. Décrivez votre Qashqai pour une vraie estimation."
+      },
+      {
+        "question": "Que vaut un Qashqai 3 ?",
+        "answer": "Un Qashqai III, produit depuis 2021, est récent et sa valeur dépend de chaque exemplaire : 1.3 DIG-T micro-hybride ou e-Power, kilométrage, entretien, état. Les rappels récents recensés sur Qashqai, pour une conduite de carburant ou un logiciel de batterie, méritent d'être vérifiés. Renseignez le vôtre : un conseiller vous rappelle avec une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut un Qashqai à plus de 200 000 km ?",
+        "answer": "Un Qashqai à plus de 200 000 km, souvent un 1.5 dCi, s'étudie sur son état réel. Ce qui compte : courroie faite avec facture, aucun bruit de bas moteur, turbo et FAP sains, boîte franche. Le kilométrage ne suffit pas à fixer un prix. Décrivez-le avec son kilométrage exact : vous recevez une fourchette indicative gratuite, puis un technicien vient le vérifier chez vous."
+      },
+      {
+        "question": "Que vaut un Qashqai sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Il s'étudie en l'état : pas de réparation à faire, pas de contrôle technique exigé. Une Xtronic qui broute, un turbo qui siffle ou un voyant moteur sont intégrés à l'estimation, et le technicien vous explique ce qu'il constate. Une offre n'est pas toujours possible : c'est l'étude de votre Qashqai qui le dit."
+      },
+      {
         "question": "Mon Qashqai 1.5 dCi de 2010 a plus de 200 000 km, a-t-il encore une valeur ?",
         "answer": "Oui, si la mécanique suit. Un Qashqai dCi à fort kilométrage, avec un carnet tenu et une courroie faite, intéresse toujours. Nous l'estimons sur son état réel, son historique et ses factures, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -5476,7 +6387,20 @@
         "url": "https://www.fiches-auto.fr/fiabilite-nissan/fiabilite-457-pannes-nissan-qashqai-2.php"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Un Nissan Qashqai n'a pas de valeur unique : tout dépend de l'exemplaire. Trois points font l'écart. La génération d'abord : Qashqai I (2007-2013) ou Qashqai II (2014-2021). La boîte ensuite : une Xtronic qui broute ou se met en sécurité compte. Le moteur enfin, avec la courroie et les coussinets de bielle du 1.5 dCi ou la consommation d'huile du 1.2 DIG-T. Si vous voulez connaître la valeur du vôtre, décrivez-le (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR se rend chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération : Qashqai I (2007-2013), Qashqai II (2014-2021) ou Qashqai III (depuis 2021).",
+        "Boîte Xtronic sans broutement ni mise en sécurité, reprogrammation faite.",
+        "1.5 dCi avec courroie remplacée et facture, sans bruit de bas moteur.",
+        "1.2 DIG-T à la consommation d'huile normale, factures de vidange conservées.",
+        "Version 4x4, 1.6 dCi 130 ou 1.6 DIG-T 163 en bon état.",
+        "Qashqai+2 à 7 places complet et soigné.",
+        "Diesels avec turbo sans sifflement, FAP non colmaté et durites d'air saines."
+      ]
+    },
+    "masculin": true
   },
   {
     "slug": "reprise-toyota-aygo",
@@ -5484,8 +6408,8 @@
     "brandSlug": "reprise-toyota",
     "model": "Aygo",
     "nav": "Toyota Aygo",
-    "title": "Vendre sa Toyota Aygo : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Toyota Aygo 1 ou 2, même ancienne ou peu roulée : estimation gratuite, sans obligation d'achat, vérification chez vous, virement instantané.",
+    "title": "Que vaut ma Toyota Aygo ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Toyota Aygo ? Cela dépend de la génération, du moteur, de la boîte, du kilométrage et de l'état. Décrivez-la pour une estimation gratuite.",
     "h1": "Vendre sa Toyota Aygo <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Aygo de première génération (2005-2014) ou d'une Aygo II (2014-2022), souvent peu roulées et gardées longtemps, et aussi à ceux d'une Aygo X plus récente. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2005-2022 pour les Aygo I et II (Aygo I : 2005-2014, restylée en 2009 et 2012 ; Aygo II : 2014-2022, restylée en 2018) ; l'Aygo X est produite depuis 2022",
@@ -5626,6 +6550,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut mon Aygo 1 ?",
+        "answer": "Elle dépend de chaque voiture. Sur une Aygo 1 (2005-2014), jumelle des C1 et 107, le technicien vérifie l'embrayage, défaut le plus signalé, la pompe à eau des 1.0 produits jusqu'à mi-2009 et un éventuel cliquetis de chaîne à froid. Le diesel 1.4 D, rare, est déconseillé pour un usage urbain. Renseignez votre Aygo pour recevoir une vraie estimation, gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut mon Aygo 2 ?",
+        "answer": "Cela dépend de chaque exemplaire. L'Aygo 2 (2014-2022) garde un 1.0 VVT-i sobre et éprouvé, avec peu de défauts moteur relevés. Les points regardés : la boîte x-shift, sujette à des patinages jusqu'en mars 2017, l'étanchéité, la direction assistée, et la phase, la version restylée de 2018 passant à 72 ch. Décrivez votre Aygo pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut mon Aygo X ?",
+        "answer": "Elle dépend de chaque voiture, même récente. L'Aygo X, produite depuis 2022, adopte un format de petit crossover sur plateforme GA-B. Son kilométrage, son entretien, son état et le rappel de 2024 sur la borne de batterie auxiliaire, qui peut désactiver l'assistance de direction, sont vérifiés. Renseignez votre Aygo X pour recevoir une vraie estimation, gratuite et sans engagement."
+      },
+      {
+        "question": "Que vaut une Aygo à plus de 200 000 km ?",
+        "answer": "Une Aygo à plus de 200 000 km peut être étudiée. Son 1.0 VVT-i à chaîne est simple et sobre, mais un kilométrage élevé met en avant l'embrayage, la pompe à eau, la consommation d'huile et le bruit de chaîne à froid. Un carnet complet et des factures rassurent. Indiquez le kilométrage exact pour une estimation réaliste."
+      },
+      {
+        "question": "Que vaut une Aygo sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle peut être étudiée en l'état, sans contrôle technique exigé et sans réparation préalable. Une direction assistée qui coupe, une fuite de liquide de refroidissement ou de l'eau sous les tapis sont constatés par le technicien et intégrés à un prix qu'il vous explique. Une offre n'est pas toujours possible : c'est l'étude de votre Aygo qui le dit."
+      },
+      {
         "question": "Mon Aygo de 2008 a-t-elle encore une valeur ?",
         "answer": "Oui, si elle est en bon état. Une Aygo de 2008 peu roulée, avec un carnet suivi et un embrayage sain, intéresse toujours. Nous l'estimons sur son état réel, son kilométrage et ses factures, pas seulement sur son année. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -5668,7 +6612,19 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48266/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Il n'y a pas de prix unique pour une Toyota Aygo : chaque voiture a sa valeur propre. Sur une Aygo 1, la date de fabrication est un vrai repère, car l'embrayage a été renforcé au restylage de 2009 et les fuites de pompe à eau concernent les 1.0 produits jusqu'à mi-2009. La boîte compte aussi : une manuelle franche rassure davantage qu'une MMT ou une x-shift à à-coups. Un habitacle sec compte aussi. Pour connaître la valeur de la vôtre, décrivez-la (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Aygo fabriquée après 2009, ou embrayage et pompe à eau déjà remplacés avec facture.",
+        "Embrayage qui ne patine pas en montée.",
+        "Boîte manuelle franche, ou MMT et x-shift sans à-coups.",
+        "Habitacle sec : pas d'eau dans le coffre ni sous les tapis, feux arrière sans buée.",
+        "Direction assistée sans coupure et rappel de 2024 sur la borne de batterie auxiliaire effectué.",
+        "Cinq portes et climatisation.",
+        "Peinture et phares préservés."
+      ]
+    }
   },
   {
     "slug": "reprise-volkswagen-tiguan",
@@ -5676,8 +6632,8 @@
     "brandSlug": "reprise-volkswagen",
     "model": "Tiguan",
     "nav": "Volkswagen Tiguan",
-    "title": "Vendre son Volkswagen Tiguan : estimation, rachat | LUNICAR",
-    "description": "Vendez votre Volkswagen Tiguan 1 ou 2, TDI ou TSI, DSG ou manuel, même à fort kilométrage : estimation gratuite, vérification chez vous, virement instantané.",
+    "title": "Que vaut mon Volkswagen Tiguan ? Estimation | LUNICAR",
+    "description": "Que vaut votre Volkswagen Tiguan ? Tout dépend de la génération, du moteur et de la boîte, du kilométrage et de l'état. Décrivez-le : estimation gratuite.",
     "h1": "Vendre son Volkswagen Tiguan <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'un Tiguan de première génération (2007-2016), souvent à fort kilométrage, ou d'un Tiguan II (2016-2024) y compris Allspace, et aussi à ceux d'un Tiguan III plus récent. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "2007-2024 pour les Tiguan I et II (Tiguan I : 2007-2016, restylé en 2011 ; Tiguan II : 2016-2024, Allspace à partir de 2017, restylé en 2020) ; le Tiguan III est produit depuis 2024",
@@ -5832,6 +6788,26 @@
     ],
     "faq": [
       {
+        "question": "Que vaut mon Tiguan 1 ?",
+        "answer": "Un Tiguan I (2007-2016) s'estime voiture par voiture. Les millésimes 2007-2011 ont connu le plus de pannes ; la phase 2 restylée en 2011 passe aux 2.0 TDI à rampe commune. On regarde la chaîne du 1.4 TSI, le volant moteur des 2.0 TDI 110 et 140, la boîte DSG et le 4Motion. Renseignez le vôtre pour une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut un Tiguan 2 ?",
+        "answer": "Cela dépend vraiment de chaque Tiguan II (2016-2024). Les points regardés : la DSG7 et ses claquements, la pompe à huile du 1.4 TSI 150, la consommation d'huile de certains 2.0 TDI, et les nombreuses campagnes de rappel. Un Allspace 7 places, une phase 2 ou un eHybrid se distinguent. Décrivez votre Tiguan pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut un Tiguan 3 ?",
+        "answer": "Un Tiguan III, produit depuis 2024 sur plateforme MQB Evo, est récent : sa valeur dépend de la version eTSI, TDI ou eHybrid, du kilométrage, de l'entretien et de l'état. Un carnet complet et deux clés comptent. Renseignez le vôtre : un conseiller vous rappelle avec une fourchette indicative gratuite, sans engagement."
+      },
+      {
+        "question": "Que vaut un Tiguan à plus de 200 000 km ?",
+        "answer": "Un Tiguan à plus de 200 000 km, souvent un 2.0 TDI, s'étudie sur son état réel. Ce qui compte : courroie faite avec facture, volant moteur et embrayage sains, DSG et 4Motion entretenus, aucun voyant FAP ou EGR. Le kilométrage ne fixe pas le prix à lui seul. Décrivez-le avec son kilométrage exact : vous recevez une fourchette indicative gratuite, puis le technicien vérifie chez vous."
+      },
+      {
+        "question": "Que vaut un Tiguan sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Il s'étudie en l'état : aucune réparation, aucun contrôle technique à fournir. Une DSG en mode dégradé, un embrayage qui patine ou un voyant FAP sont pris en compte dans l'estimation, et le technicien vous explique ce qu'il constate. Une offre n'est pas toujours possible : c'est l'étude de votre Tiguan qui le dit."
+      },
+      {
         "question": "Mon Tiguan TDI de 2010 a 220 000 km, a-t-il encore une valeur ?",
         "answer": "Oui, si la mécanique suit. Un Tiguan à fort kilométrage, avec un carnet tenu et une courroie faite, intéresse toujours. Nous l'estimons sur son état réel, son historique et ses factures, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -5874,7 +6850,20 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/48519/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Un Volkswagen Tiguan n'a pas de prix unique : sa valeur dépend vraiment de chaque voiture. Sur ce SUV, la transmission pèse autant que le moteur. Une DSG en mode dégradé ou un 4Motion qui vibre changent l'estimation, comme un volant moteur bimasse fatigué sur un 2.0 TDI. Quant au millésime, les Tiguan I de 2007 à 2011 ont connu le plus de pannes, et la chaîne du 1.4 TSI s'écoute à froid. Pour savoir ce que vaut le vôtre, décrivez-le (plaque, kilométrage, état) : vous recevez une fourchette indicative gratuite, puis un technicien LUNICAR vient chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération : Tiguan I (2007-2016), Tiguan II (2016-2024, Allspace dès 2017) ou Tiguan III (depuis 2024).",
+        "Boîte DSG sans mode dégradé ni à-coups, vidanges de boîte justifiées.",
+        "4Motion sans vibrations ni claquements, huile Haldex entretenue.",
+        "2.0 TDI avec volant moteur et embrayage sains, vanne EGR et FAP non encrassés.",
+        "1.4 TSI du Tiguan I sans cliquetis de chaîne au démarrage.",
+        "Tiguan I phase 2 (à partir de 2011) plutôt que les premiers millésimes, plus exposés aux pannes.",
+        "Allspace 7 places ou phase 2 bien équipée, en bon état."
+      ]
+    },
+    "masculin": true
   },
   {
     "slug": "reprise-ford-focus",
@@ -5882,8 +6871,8 @@
     "brandSlug": "reprise-ford",
     "model": "Focus",
     "nav": "Ford Focus",
-    "title": "Vendre sa Ford Focus : estimation et rachat | LUNICAR",
-    "description": "Vendez votre Ford Focus 1, 2 ou 3, TDCi ou essence, berline ou SW : estimation gratuite, vérification chez vous, virement instantané à la vente.",
+    "title": "Que vaut ma Ford Focus ? Estimation et rachat | LUNICAR",
+    "description": "Que vaut votre Ford Focus ? Sa valeur dépend de la génération, du moteur, du kilométrage et de l'état. Décrivez-la pour recevoir une estimation gratuite.",
     "h1": "Vendre sa Ford Focus <em>sans obligation d'achat</em>",
     "lede": "Cette page s'adresse aux propriétaires d'une Focus de première génération (1998-2005), d'une Focus II (2004-2011) ou d'une Focus III (2011-2018), en 5 portes comme en SW, souvent à fort kilométrage, et aussi à ceux d'une Focus IV plus récente. LUNICAR vous rappelle rapidement avec une fourchette de prix indicative, puis un technicien vient vérifier la voiture à votre adresse, sans frais. Le prix définitif est fixé après cette vérification. Le contrôle technique n'est pas exigé et vous n'avez aucun autre véhicule à acheter.",
     "annees": "1998-2018 pour les Focus I à III (Focus I : 1998-2005, Focus II : 2004-2011, restylée en 2008 ; Focus III : 2011-2018, restylée en 2014) ; la Focus IV est produite de 2018 à 2025",
@@ -6057,6 +7046,30 @@
     ],
     "faq": [
       {
+        "question": "Que vaut ma Focus 1 ?",
+        "answer": "Une Focus I (1998-2005) n'a pas de prix type : chacune est jugée sur son état. Sur une voiture de cet âge, le carnet d'entretien, l'absence de voyant et une carrosserie saine pèsent plus que l'année. Trois ou cinq portes, berline ou break Clipper, chaque version s'étudie. Renseignez votre Focus pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut une Focus 2 ?",
+        "answer": "Cela dépend vraiment de chaque Focus II (2004-2011). Les points qui comptent : sur les 1.6 et 1.8 TDCi, durites de turbo, vanne EGR et volant moteur ; sur toutes, l'alternateur et les infiltrations d'eau au plancher ou au coffre. Une SW ou un 2.0 TDCi bien suivi se regarde avec intérêt. Décrivez la vôtre pour obtenir une vraie estimation."
+      },
+      {
+        "question": "Que vaut ma Focus 3 ?",
+        "answer": "Une Focus III (2011-2018) s'estime au cas par cas. L'embrayage hydraulique est son défaut majeur sur le 1.6 115 essence et les diesels hors 2.0 TDCi. Sur le 1.0 EcoBoost, le circuit de refroidissement et la courroie comptent ; sur une Powershift, le rappel de la plaque de pression. Renseignez votre Focus pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "Combien vaut une Focus 4 ?",
+        "answer": "Une Focus IV (2018-2025) est récente, et sa valeur dépend de chaque exemplaire : motorisation EcoBoost, micro-hybride ou EcoBlue, kilométrage, entretien et état. Sur les EcoBlue, le rappel publié en 2026 pour un filtre à particules fissuré mérite d'être vérifié. Décrivez votre voiture : un conseiller vous rappelle avec une fourchette indicative gratuite."
+      },
+      {
+        "question": "Que vaut une Focus à plus de 200 000 km ?",
+        "answer": "Une Focus à plus de 200 000 km, souvent un diesel TDCi, s'étudie sur son état réel. Ce qui pèse : courroie faite avec facture, volant moteur et embrayage sans bruit, turbo sans sifflement, habitacle sec. Deux Focus au même kilométrage peuvent valoir des sommes très différentes. Indiquez le kilométrage exact : vous recevez une fourchette indicative gratuite, puis le technicien vérifie chez vous."
+      },
+      {
+        "question": "Que vaut une Focus sans contrôle technique ou avec un souci mécanique ?",
+        "answer": "Elle s'étudie en l'état : aucune réparation à faire, aucun contrôle technique à fournir. Une pédale d'embrayage au plancher, une surchauffe passée sur EcoBoost ou un voyant FAP sont pris en compte, et le technicien vous explique ce qu'il constate. Une offre n'est pas toujours possible : c'est l'étude de votre Focus qui le dit."
+      },
+      {
         "question": "Ma Focus II TDCi de 2008 a 230 000 km, a-t-elle encore une valeur ?",
         "answer": "Oui, si la mécanique suit. Une Focus diesel à fort kilométrage, avec un carnet tenu et une courroie faite, intéresse toujours. Nous l'estimons sur son état réel, son historique et ses factures, pas seulement sur son compteur. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, sans obligation."
       },
@@ -6099,6 +7112,18 @@
         "url": "https://rappel.conso.gouv.fr/fiche-rappel/49130/rapex"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-06",
+    "valeur": {
+      "intro": "Une Ford Focus ne se vend pas à un prix unique : sa valeur dépend vraiment de chaque voiture. Entre une Focus II TDCi et une Focus III EcoBoost, l'écart tient d'abord à la génération et au moteur. Sur la Focus III, l'embrayage hydraulique dont la pédale reste au plancher est le défaut majeur. Sur le 1.0 EcoBoost, une fuite de refroidissement passée compte. Sur les TDCi, volant moteur, vanne EGR et durites de turbo font la différence. Décrivez votre Focus (plaque, kilométrage, état) et recevez une fourchette indicative gratuite ; un technicien LUNICAR vient ensuite chez vous sans frais et vous présente le prix définitif, que vous pouvez refuser.",
+      "facteurs": [
+        "Génération : Focus I (1998-2005), Focus II (2004-2011), Focus III (2011-2018) ou Focus IV (2018-2025).",
+        "Embrayage de la Focus III sain, sans pédale qui reste au plancher.",
+        "1.0 EcoBoost sans fuite de durites ou de vase d'expansion, ni surchauffe passée.",
+        "Boîte Powershift au fonctionnement régulier, rappel de la plaque de pression d'embrayage effectué.",
+        "TDCi sans claquement de volant moteur, sans vanne EGR encrassée ni durite de turbo fendue.",
+        "Habitacle sec : pas d'eau au plancher, dans le coffre ou par le feu arrière.",
+        "Pas de voyant batterie sur une Focus II, dont l'alternateur est l'organe électrique le plus cité."
+      ]
+    }
   }
 ]
