@@ -218,7 +218,7 @@ body.page-fiche main { display: none; }
 .retour svg { width: 18px; height: 18px; }
 .retour:hover { border-color: #CFCAC0; }
 .sh-titre { flex: 1; min-width: 0; }
-.sh-titre h2 { margin: 0; font-size: 1.25rem; font-weight: 650; letter-spacing: -.02em; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sh-titre h2 { margin: 0; font-size: 1.25rem; font-weight: 650; letter-spacing: -.02em; line-height: 1.25; color: var(--ink); overflow-wrap: anywhere; }
 .sh-titre small { display: block; font-size: .82rem; color: var(--ink-5); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sh-top #stSel { width: auto; min-width: 150px; font-weight: 550; }
 .close { flex: none; border: 1px solid var(--line); background: var(--surface); width: 38px; height: 38px; border-radius: var(--r-s); display: grid; place-items: center; color: var(--ink-7); padding: 0; }
@@ -682,6 +682,12 @@ ul.plain li { margin: 3px 0; }
 .grp span { font-weight: 600; }
 .grp-0 b { color: var(--marine); }
 .grp-2 { color: var(--ink-4); }
+.grp-jour { color: var(--ink-3); text-transform: none; letter-spacing: -.01em; font-size: .9rem; padding-top: 18px; }
+.grp-jour.auj b { color: var(--marine); }
+.row .car span.plaque-mini { display: inline-block; margin: 2px 0 0; padding: 0 5px; border: 1px solid var(--line); border-radius: 4px; font-size: .74rem; color: var(--ink-4); background: #fff; }
+.plaque-fr { display: inline-flex; align-items: stretch; margin: 0 0 6px; padding: 0; border: 2px solid #1d1d1f; border-radius: 6px; background: #fff; overflow: hidden; cursor: pointer; font: inherit; }
+.plaque-fr i { display: flex; align-items: flex-end; padding: 0 5px 3px; background: #003399; color: #fff; font-style: normal; font-weight: 700; font-size: .7rem; }
+.plaque-fr span { padding: 3px 12px; font-family: var(--mono); font-weight: 700; font-size: 1.35rem; letter-spacing: .06em; color: #1d1d1f; }
 .row.clos { opacity: .62; }
 
 /* ---------- Intérêt : motifs et tri rapide ---------- */
@@ -1160,6 +1166,7 @@ body.modal-ouvert { overflow: hidden; }
 
     /* Groupes de la liste en cartes */
     .grp { background: transparent; border: 0; padding: 12px 2px 2px; }
+    .grp-jour { padding-top: 18px; border-bottom: 1px solid var(--line-2); }
     .row .price { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
     .row .price .score { margin: 0; }
 
@@ -1628,7 +1635,7 @@ body.modal-ouvert { overflow: hidden; }
     try { token = localStorage.getItem('lunicarAdmin'); } catch (e) {}
     const choisies = new Set();
     let affichees = [];
-    let etat = { statuts: {} }, demandes = [], messages = [], courant = null, poll = null;
+    let etat = { statuts: {} }, demandes = [], messages = [], courant = null, poll = null, catalogue = null;
 
     const toast = t => { document.querySelectorAll('.toast:not([data-garde])').forEach(x => x.remove()); const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
     async function api(url, opts = {}) {
@@ -1806,9 +1813,74 @@ body.modal-ouvert { overflow: hidden; }
         if (['msg', 'boite', 'veille', 'annonces'].includes(k)) document.querySelectorAll('[data-count="plus"]').forEach(c => c.textContent = ((nbs.msg || 0) + (nbs.boite || 0) + (nbs.veille || 0) + (nbs.annonces || 0)) || '');
     };
 
+
+    // ---------------- Nom du véhicule : « Marque Modèle (Break) Année Finition Motorisation »
+    // Sources, de la plus sûre à la moins sûre : champs corrigés dans l'admin, titre lu avec le catalogue, fiche de l'API plaque.
+    const BREAK_RE = /\b(?:break|sw|estate|touring|tourer|sports?\s?tourer|sports?\s?wagon|wagon|variant|grand\s?tour(?:er)?|combi|kombi|shooting\s?brake|allroad)\b/gi;
+    const MOTS = { hdi: 'HDi', bluehdi: 'BlueHDi', ehdi: 'e-HDi', dci: 'dCi', tdi: 'TDI', tdci: 'TDCi', tce: 'TCe', puretech: 'PureTech', vti: 'VTi', thp: 'THP', tsi: 'TSI', tfsi: 'TFSI', crdi: 'CRDi', jtd: 'JTD', jtdm: 'JTDm', multijet: 'MultiJet', ecoboost: 'EcoBoost', gti: 'GTI', gt: 'GT', rs: 'RS', amg: 'AMG', cdi: 'CDI', vvt: 'VVT', dsg: 'DSG', bva: 'BVA', bvm: 'BVM', eat6: 'EAT6', eat8: 'EAT8', fap: 'FAP', ch: 'ch', cv: 'cv', hybride: 'Hybride', essence: 'Essence', diesel: 'Diesel' };
+    const sansAccent = t => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const casseMot = w => MOTS[w.toLowerCase()] || (/^[a-z]{1,2}\d+[a-z]?$/.test(w) ? w.toUpperCase() : /^[a-zà-ÿ]{3,}$/.test(w) ? w.charAt(0).toUpperCase() + w.slice(1) : /^[A-ZÀ-Ý]{4,}$/.test(w) && !/^[IVX]+$/.test(w) ? w.charAt(0) + w.slice(1).toLowerCase() : w);
+    // Retire de t le premier passage de « mot » (insensible à la casse et aux accents), entre limites de mots.
+    function retirer(t, mot) {
+        if (!mot) return t;
+        const m = new RegExp('(^|\\s)' + sansAccent(mot).replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/[-\s]+/g, '[-\\s]?') + '(?=\\s|$)').exec(sansAccent(t));
+        return m ? (t.slice(0, m.index + m[1].length) + t.slice(m.index + m[0].length)).replace(/\s+/g, ' ').trim() : t;
+    }
+    function nomVeh(x) {
+        x = x || {};
+        const f = x.fiche_api || {}, cat = catalogue || {}, marques = Object.keys(cat);
+        let txt = String(x.vehicule || '').replace(/\s+/g, ' ').trim();
+        const annee = String(x.annee || '').trim() || ((/(\d{4})/.exec(f.date1erCir_fr || f.date1erCir_us || '') || [])[1] || '') || ((/\b((?:19|20)\d\d)\b/.exec(txt) || [])[1] || '');
+        if (annee) txt = retirer(txt, annee);
+        // Marque : champ corrigé, sinon début du titre (alias compris), sinon API plaque, sinon déduite du modèle (« clio 4 »).
+        const ALIAS = [['Mercedes', 'Mercedes-Benz'], ['Mercedes Benz', 'Mercedes-Benz'], ['VW', 'Volkswagen'], ['Range Rover', 'Land Rover'], ['Alfa', 'Alfa Romeo']];
+        const enTete = (m, t) => new RegExp('^' + sansAccent(m).replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/[-\s]/g, '[-\\s]?') + '(?=\\s|$)').test(sansAccent(t));
+        const lu = [...marques.map(m => [m, m]), ...ALIAS].sort((a, b) => b[0].length - a[0].length).find(([m]) => enTete(m, txt));
+        let marque = x.marque || (lu && lu[1]) || '';
+        if (lu && lu[0] !== 'Range Rover') txt = retirer(txt, lu[0]);
+        if (x.marque) txt = retirer(txt, x.marque);
+        if (!marque && f.marque) { const fm = sansAccent(f.marque); marque = marques.find(m => sansAccent(m) === fm || fm.startsWith(sansAccent(m).split('-')[0] + ' ') || sansAccent(m).startsWith(fm + '-')) || casseMot(String(f.marque)); }
+        if (!marque) marque = marques.find(m => (cat[m] || []).some(o => enTete(o, txt))) || '';
+        if (!marque) return [txt || 'Véhicule non précisé', annee].filter(Boolean).join(' ');
+        // Modèle : champ corrigé, sinon le plus long modèle du catalogue en tête du reste, sinon API plaque, sinon premier mot.
+        const modeles = (cat[marque] || []).slice().sort((a, b) => b.length - a.length);
+        let modele = x.modele || modeles.find(m => new RegExp('^' + sansAccent(m).replace(/[-\s]/g, '[-\\s]?') + '(?=\\s|$)').test(sansAccent(txt))) || '';
+        if (!modele && f.modele) { const fm = sansAccent(f.modele); modele = modeles.find(m => fm.startsWith(sansAccent(m))) || ''; }
+        if (!modele && txt) modele = txt.split(' ')[0];
+        txt = retirer(txt, modele);
+        if (!/\b[IVX]+$/.test(modele) && f.modele) { const g = new RegExp('^' + sansAccent(modele).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s+([ivx]+)(?=\\s|$)').exec(sansAccent(f.modele)); if (g && !/^(I{1,3}|IV|V|VI)(?=\s|$)/.test(txt)) txt = g[1].toUpperCase() + ' ' + txt; }
+        // Génération collée au modèle (« C4 II », « Mégane III »).
+        const gen = /^(I{1,3}|IV|V|VI|[2-6])(?=\s|$)/.exec(txt);
+        if (gen && !/\b[IVX]+$/.test(modele) && (/\D$/.test(modele) || !/^\d/.test(gen[1]))) { modele += ' ' + gen[1]; txt = txt.slice(gen[0].length).trim(); }
+        // Break : carrosserie corrigée, API plaque, ou mot du titre (SW, Touring, Avant chez Audi…).
+        const carr = [x.carrosserie_type, f.carrosserie, f.carrosserieCG].join(' ');
+        let estBreak = /break|estate|wagon|combi/i.test(carr) || new RegExp(BREAK_RE.source, 'i').test(modele + ' ' + txt) || (sansAccent(marque) === 'audi' && /\bavant\b/i.test(txt));
+        modele = modele.replace(BREAK_RE, '').replace(/\s+/g, ' ').trim();
+        txt = txt.replace(BREAK_RE, '').replace(sansAccent(marque) === 'audi' ? /\bavant\b/gi : /$^/, '').replace(/\s+/g, ' ').trim();
+        // Finition puis motorisation : champs corrigés en premier, le reste du titre ensuite, la version de l'API plaque en dernier recours.
+        let fin = String(x.finition || '').trim(), mot = String(x.motorisation || '').trim();
+        txt = retirer(retirer(retirer(txt, fin), mot), x.carrosserie_type);
+        if (!fin && !mot && !txt) {
+            let v = String(f.version || f.sra_commercial || '').replace(/\s+/g, ' ').trim();
+            [marque, f.marque, ...String(f.modele || '').split(/[\s/]+/), modele].forEach(w => { v = retirer(v, w); });
+            txt = v.replace(BREAK_RE, '').replace(/\s+/g, ' ').trim();
+        }
+        const bout = [fin, txt, mot].filter(Boolean).join(' ').split(' ').filter(Boolean).map(casseMot);
+        const vus = new Set();
+        const reste = bout.filter(w => { const k = sansAccent(w); if (vus.has(k)) return false; vus.add(k); return true; }).join(' ');
+        return [marque, modele.split(' ').map(casseMot).join(' '), estBreak ? 'Break' : '', annee, reste].filter(Boolean).join(' ');
+    }
+    // Jour de réception (heure de Paris) et son libellé « Aujourd'hui · jeudi 6 novembre ».
+    const jourDe = s => new Date(s).toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
+    function libJourRecu(j) {
+        const auj = jourIso(), hier = new Date(new Date(auj + 'T12:00:00Z').getTime() - 864e5).toISOString().slice(0, 10);
+        const d = new Date(j + 'T12:00:00Z');
+        const l = d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', ...(j.slice(0, 4) !== auj.slice(0, 4) ? { year: 'numeric' } : {}), timeZone: 'UTC' }).replace(/ 1 /, ' 1er ');
+        return j === auj ? 'Aujourd\'hui · ' + l : j === hier ? 'Hier · ' + l : l.charAt(0).toUpperCase() + l.slice(1);
+    }
     // ---------------- Demandes
     async function charger() {
-        demandes = await api('/api/admin/demandes');
+        [demandes] = await Promise.all([api('/api/admin/demandes'), catalogue ? null : api('/api/admin/catalogue/marques').then(c => { catalogue = c; }).catch(() => {})]);
         // Même téléphone déjà reçu plus tôt : le vendeur revient (ou s'est trompé de formulaire).
         const vus = new Map();
         [...demandes].sort((p, q) => p.created_at.localeCompare(q.created_at)).forEach(d => {
@@ -2048,13 +2120,20 @@ body.modal-ouvert { overflow: hidden; }
             + (nbFusion() ? `<button type="button" class="seg" id="btFusion" title="Même vendeur, même voiture : on garde la demande la plus renseignée, complétée par les autres">Fusionner ${nbFusion()} doublon${nbFusion() > 1 ? 's' : ''}</button>` : '');
         const titres = ['À traiter · jamais appelées', 'Déjà contactées', 'Sans suite'];
         const nbGroupe = [0, 1, 2].map(g => a.filter(d => groupe(d) === g).length);
-        let gPrec = -1;
+        let gPrec = -1, jPrec = '';
+        // Tri par intérêt ou par date : un bloc par jour de réception (le plus récent en haut, « Les plus anciennes » à l'inverse),
+        // et dans chaque jour, à traiter → contactées → sans suite, puis le tri choisi.
+        const parJour = ['interet', 'recent', 'ancien'].includes(tri);
+        if (parJour) a.sort((p, q) => { const jp = jourDe(p.created_at), jq = jourDe(q.created_at); return (jp === jq ? 0 : (jp < jq ? 1 : -1) * (tri === 'ancien' ? -1 : 1)) || groupe(p) - groupe(q) || parTri(p, q); });
+        const nbJour = {}; if (parJour) a.forEach(d => { const j = jourDe(d.created_at); nbJour[j] = (nbJour[j] || 0) + 1; });
         const head = '<div class="row head"><div class="sel"><input type="checkbox" id="toutCocher" title="Tout sélectionner (liste filtrée)"></div><div>Reçue</div><div>Vendeur</div><div>Véhicule</div><div class="ville">Ville</div><div style="text-align:right">Prix max</div><div>Statut</div><div class="ph" style="text-align:right">Photos</div></div>';
         segments();
         $('#list').innerHTML = head + (a.length ? a.map(d => {
             const x = d.data || {}, g0 = groupe(d);
-            const entete = g0 !== gPrec && nbGroupe.filter(Boolean).length > 1 ? `<div class="grp grp-${g0}"><b>${titres[g0]}</b><span>${nbGroupe[g0]}</span></div>` : '';
-            gPrec = g0;
+            const j0 = jourDe(d.created_at);
+            const entete = parJour ? (j0 !== jPrec ? `<div class="grp grp-jour${j0 === jourIso() ? ' auj' : ''}"><b>${esc(libJourRecu(j0))}</b><span>${nbJour[j0]} demande${nbJour[j0] > 1 ? 's' : ''}</span></div>` : '')
+                : g0 !== gPrec && nbGroupe.filter(Boolean).length > 1 ? `<div class="grp grp-${g0}"><b>${titres[g0]}</b><span>${nbGroupe[g0]}</span></div>` : '';
+            gPrec = g0; jPrec = j0;
             const est = (d.suivi || {}).estimation_statut === 'en_cours' ? '<span class="spin"></span>' : (prixMax(d) ? eur(prixMax(d)) : '—');
             const pub = (d.canal === 'pub' ? ' <span class="tag rappel">Pub</span>' : d.canal === 'ia' ? ' <span class="tag rappel">IA</span>' : '')
                 + (d.doublon ? ` <span class="tag" title="Même téléphone que ${esc(d.doublon)}">Déjà reçu</span>` : '');
@@ -2066,7 +2145,7 @@ body.modal-ouvert { overflow: hidden; }
             return `${entete}<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}${clos ? ' clos' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
-                <div class="car"><b>${esc(x.vehicule || '—')} ${esc(x.annee || '')}</b>${saisieDiff(x)}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
+                <div class="car"><b>${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}${saisieDiff(x)}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${badgeInteret(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
@@ -2245,7 +2324,7 @@ body.modal-ouvert { overflow: hidden; }
         const norm = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         return dec && m && !/^\d{4}$/.test(m) && !norm(x.vehicule || '').includes(norm(m)) ? `<span class="motifs" style="color:var(--rouge, #B3261E)">Saisi par le vendeur : ${esc(dec)} (plaque différente)</span>` : '';
     };
-    const nomDemande = d => { const x = d.data || {}; return [[x.vehicule, x.annee].filter(Boolean).join(' '), [x.prenom, x.nom].filter(Boolean).join(' ')].filter(Boolean).join(' · ') || d.ref; };
+    const nomDemande = d => { const x = d.data || {}; return [nomVeh(x), [x.prenom, x.nom].filter(Boolean).join(' ')].filter(Boolean).join(' · ') || d.ref; };
 
     // ---------------- Glisser une demande : à droite = archiver (annulable), à gauche = supprimer (avec confirmation)
     async function archiverRef(ref, annulable = true) {
@@ -2985,7 +3064,6 @@ body.modal-ouvert { overflow: hidden; }
         inp.click();
     }
     // Modifier les informations saisies par le client : véhicule (marque, modèle, finition, motorisation, titre), vendeur, adresse.
-    let catalogue = null;
     async function modifierInfos(d) {
         const x = d.data || {}, f = x.fiche_api || {};
         if (!catalogue) catalogue = await api('/api/admin/catalogue/marques').catch(() => ({}));
@@ -3414,7 +3492,6 @@ body.modal-ouvert { overflow: hidden; }
     // ---------------- Note de frais : photo ou PDF → lecture automatique (TTC, HT, TVA, date, fournisseur) → rattachement
     // à un frais général ou à un véhicule (recherche par plaque, modèle ou nom du vendeur).
     const TAUX = ['20', '10', '5.5', '2.1', '0'];
-    const sansAccent = t => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
     function vendeurDe(v) { const d = v.ref && demandes.find(x => x.ref === v.ref); const x = d ? d.data || {} : {}; return [x.prenom, x.nom].filter(Boolean).join(' '); }
     function chercherVehicules(q) {
         const n = sansAccent(q).replace(/[\s-]/g, '');
@@ -4173,12 +4250,12 @@ body.modal-ouvert { overflow: hidden; }
         $('#sheetIn').innerHTML = `
         <div class="sh-top">
             <button class="retour" id="closeSheet" aria-label="Retour aux demandes"><svg><use href="#i-retour"/></svg><span>Demandes</span></button>
-            <div class="sh-titre"><h2>${esc(x.vehicule || 'Véhicule non précisé')} ${esc(x.annee || '')}${badgeMeca(x)}</h2>${saisieDiff(x)}
+            <div class="sh-titre">${x.plaque ? `<button type="button" class="plaque-fr" data-cg title="Carte grise"><i>F</i><span>${esc(x.plaque)}</span></button>` : ''}<h2>${esc(nomVeh(x))}${badgeMeca(x)}</h2>${saisieDiff(x)}
                 <small><button type="button" class="mi-lien" data-infos>Modifier</button> · <button type="button" class="mi-lien" data-cg>Carte grise</button> · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
                 <button class="btn" type="button" data-vers-mail>E-mail</button>
-                <button class="btn" type="button" data-partager="${esc(BASE + '/demande/' + d.ref)}" data-partager-texte="${esc([[x.vehicule, x.annee].filter(Boolean).join(' '), x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.ville].filter(Boolean).join(' · '))}">Partager</button>
+                <button class="btn" type="button" data-partager="${esc(BASE + '/demande/' + d.ref)}" data-partager-texte="${esc([nomVeh(x), x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.ville].filter(Boolean).join(' · '))}">Partager</button>
             </div>
             <select class="in" id="stSel"${d.statut === 'achetee' ? ' disabled title="Véhicule acheté : le suivi continue dans Nos véhicules"' : ''}>${Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}"${k === d.statut ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>
         </div>
