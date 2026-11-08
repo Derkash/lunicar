@@ -1380,6 +1380,9 @@ app.listen(PORT, () => {
 // Archivage automatique des demandes jamais appelées après 7 jours (e-mail de refus au vendeur, sauf première passe).
 require('./lib/archivage').planifier({ notifier: p => push.notifier(p) });
 
+// Passerelle vers la place de marché pro : brouillon créé pour chaque véhicule acheté (lib/remarkauto.js).
+require('./lib/remarkauto').demarrer();
+
 // Récapitulatif du matin (8 h, jours ouvrés) : relances du jour et en retard, nouvelles demandes pas encore appelées.
 const relances = require('./lib/relances');
 setInterval(async () => {
