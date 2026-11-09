@@ -1255,6 +1255,52 @@ body.modal-ouvert { overflow: hidden; }
     .folder .lab span { display: none; }
     .lightbox .nav { width: 40px; height: 56px; }
 }
+/* Dossier de vente (fiche remarkauto) */
+.ds h4 { margin: 22px 0 10px; font-size: .9rem; font-weight: 650; color: var(--ink); display: flex; flex-direction: column; gap: 2px; }
+.ds h4 small { font-weight: 400; color: var(--ink-4); font-size: .78rem; }
+.ds .form-grid .in.ok, .ds textarea.in.ok, .ds select.in.ok { border-color: var(--green); }
+.ds textarea.in { width: 100%; display: block; }
+.ds-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.ds-ph { margin: 0; position: relative; border: 1px solid var(--line-2); border-radius: var(--r-s); padding: 6px; display: grid; gap: 6px; background: var(--surface); }
+.ds-ph.nf { border-color: var(--red); box-shadow: 0 0 0 2px var(--red-1); }
+.ds-ph a { display: block; aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden; background: #F1EFEA; }
+.ds-ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ds-pdf { display: grid; place-items: center; height: 100%; font-weight: 700; color: var(--ink-4); letter-spacing: .08em; }
+.ds-badge { position: absolute; top: 10px; left: 10px; font-size: .66rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; background: var(--green); color: #fff; }
+.ds-ph.nf .ds-badge { background: var(--red); }
+.ds-ph .in { height: 34px; font-size: .84rem; width: 100%; }
+.ds-ph-act { display: flex; flex-wrap: wrap; gap: 4px; }
+.ds-ph-act .btn-s { height: 30px; padding: 0 9px; font-size: .78rem; }
+.ds-video { display: grid; gap: 8px; justify-items: start; }
+.ds-video video { width: 100%; max-width: 480px; border-radius: var(--r-s); background: #000; }
+.ds-coche { display: inline-flex; align-items: center; gap: 8px; font-size: .9rem; font-weight: 550; margin-bottom: 10px; }
+.ds-essai { display: grid; gap: 6px; margin-bottom: 10px; }
+.ds-pt { display: grid; grid-template-columns: minmax(120px, 1fr) 110px; gap: 6px; align-items: center; padding: 6px 8px; border: 1px solid var(--line-2); border-radius: var(--r-s); }
+.ds-pt b { font-size: .88rem; font-weight: 550; }
+.ds-pt.ko { grid-template-columns: minmax(120px, 1fr) 110px minmax(130px, 1fr) minmax(160px, 2fr); border-color: var(--orange); background: var(--orange-1); }
+.ds-pt .in { height: 34px; font-size: .84rem; }
+.ds-pt [hidden] { display: none; }
+.ds-dom { display: grid; gap: 6px; margin-bottom: 8px; }
+.ds-dom-l { display: grid; grid-template-columns: 140px minmax(0, 2fr) 130px auto auto; gap: 6px; align-items: center; }
+.ds-dom-l .in { height: 34px; font-size: .84rem; }
+.ds-dom-ph { width: 44px; height: 34px; border-radius: 6px; overflow: hidden; display: block; }
+.ds-dom-ph img { width: 100%; height: 100%; object-fit: cover; }
+.ds-envoi { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line-2); display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.ds-envoi .vide { flex-basis: 100%; padding: 0; }
+.ds-flou { position: fixed; inset: 0; z-index: 95; background: rgba(14,35,64,.9); display: grid; place-items: center; padding: 10px; }
+.ds-flou-in { width: 100%; max-width: 980px; max-height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 10px; }
+.ds-flou-top { color: #fff; display: flex; flex-direction: column; gap: 2px; }
+.ds-flou-top span { font-size: .84rem; opacity: .8; }
+.ds-flou-zone { min-height: 0; display: grid; place-items: center; }
+.ds-flou-zone canvas { max-width: 100%; max-height: calc(100vh - 150px); touch-action: none; cursor: crosshair; border-radius: 6px; background: #000; }
+.ds-flou-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+@media (max-width: 640px) {
+    .ds-pt, .ds-pt.ko { grid-template-columns: 1fr 1fr; }
+    .ds-pt.ko [data-resultat] { grid-column: 1 / -1; }
+    .ds-dom-l { grid-template-columns: 1fr 1fr; }
+    .ds-dom-l [data-element] { grid-column: 1 / -1; }
+    .ds-flou-btns .btn { flex: 1; justify-content: center; }
+}
 </style>
 </head>
 <body>
@@ -2735,6 +2781,7 @@ body.modal-ouvert { overflow: hidden; }
                 ${Object.keys(b.par_categorie).length > 1 ? `<div class="hbars" style="margin-top:14px">${hbars(Object.entries(b.par_categorie).sort((x, y) => y[1] - x[1]).map(([c, m]) => [c, Math.round(m)]), Math.max(...Object.values(b.par_categorie)))}</div>` : ''}
             </section>
             ${v.statut === 'perdu' ? '' : blocDocuments(v)}
+            ${ORDRE_ACHETE.includes(v.statut) && v.statut !== 'vendu' ? blocDossier(v) : ''}
             <section class="sec">
                 <h3>Achat et vente <small id="vEtat">chaque champ s'enregistre dès que vous le quittez</small></h3>
                 <form id="vForm" class="form-grid" autocomplete="off">
@@ -2809,6 +2856,7 @@ body.modal-ouvert { overflow: hidden; }
             $('#vNf').scrollIntoView({ block: 'center', behavior: 'smooth' });
         });
         if ($('#vDocs')) lierDocuments(v);
+        if ($('#vDossier')) lierDossier(v);
         if ($('#vTravaux')) lierTravaux(v);
         if ($('#vLieu')) lierEmplacement(v);
         lierDepenses($('#vpageIn'), () => afficherVehicule(v.id));
@@ -3818,6 +3866,275 @@ body.modal-ouvert { overflow: hidden; }
             try { await api('/api/admin/compta/vehicules/' + v.id + '/documents?path=' + encodeURIComponent(b.dataset.docdel), { method: 'DELETE' }); await chargerCompta(); afficherVehicule(v.id); } catch (err) { toast(err.message); }
         });
         $('#vCession').onclick = () => ecranCession(v);
+    }
+
+    // ---------------- Dossier de vente (fiche remarkauto) : photos floutées, vidéo moteur, documents, essai, dommages…
+    // Tout est enregistré côté serveur au fil de la saisie ; l'envoi vers remarkauto se fait d'un bloc à la fin.
+    function blocDossier(v) {
+        return `<section class="sec ds" id="vDossier"><h3>Dossier de vente <small id="dsEtat">chargement…</small></h3><div id="dsIn"><p class="vide">Chargement du dossier…</p></div></section>`;
+    }
+    function lierDossier(v) {
+        const url = '/api/admin/compta/vehicules/' + v.id + '/dossier';
+        let d = null;
+        const opt = (liste, val, vide = '—') => `<option value=""${!val ? ' selected' : ''}>${vide}</option>` + liste.map(x => Array.isArray(x) ? `<option value="${esc(x[0])}"${x[0] === val ? ' selected' : ''}>${esc(x[1])}</option>` : `<option value="${esc(x)}"${x === val ? ' selected' : ''}>${esc(x)}</option>`).join('');
+        const ouiNon = (nom, val, defaut) => { const b = val === undefined || val === '' ? defaut : (val === true || val === 'true'); return `<select class="in" data-fiche="${nom}"><option value="true"${b ? ' selected' : ''}>Oui</option><option value="false"${!b ? ' selected' : ''}>Non</option></select>`; };
+        const estPdf = p => /\.pdf$/i.test(p);
+        const vignette = p => estPdf(p) ? `<span class="ds-pdf">PDF</span>` : `<img src="${photoUrl(p)}" alt="" loading="lazy">`;
+
+        const etat = () => {
+            if (!d) return;
+            const aFlouter = d.photos.filter(p => !p.floutee).length;
+            const champs = Object.values(d.fiche || {}).filter(x => x !== '' && x !== undefined).length;
+            $('#dsEtat').innerHTML = d.pousse_le ? `envoyé sur remarkauto le ${date(d.pousse_le, true)}` : `${d.photos.length} photo${d.photos.length > 1 ? 's' : ''}${aFlouter ? ` · <span class="neg">${aFlouter} à flouter</span>` : ''} · ${champs} champ${champs > 1 ? 's' : ''} de fiche`;
+        };
+        const sauver = async (patch, el) => {
+            try { d = await api(url, { method: 'PUT', body: JSON.stringify(patch) }); etat(); if (el) { el.classList.add('ok'); setTimeout(() => el.classList.remove('ok'), 1200); } }
+            catch (e) { toast('Non enregistré : ' + e.message); }
+        };
+        const envoyer = async (type, fichier, extra = {}) => {
+            const fd = new FormData(); fd.append('type', type); Object.entries(extra).forEach(([k, x]) => fd.append(k, x)); fd.append('fichier', fichier);
+            d = await api(url + '/medias', { method: 'POST', body: fd });
+        };
+        const envoyerPlusieurs = async (type, fichiers, extra) => {
+            const liste = [...fichiers]; if (!liste.length) return;
+            for (const [i, f] of liste.entries()) { toast(`Envoi ${i + 1}/${liste.length}…`); try { await envoyer(type, f, extra); } catch (e) { toast(e.message); break; } }
+            rendre(); toast(liste.length > 1 ? `${liste.length} fichiers ajoutés` : 'Ajouté');
+        };
+
+        function rendre() {
+            if (!d) return;
+            const L = d.listes, f = d.fiche || {}, e = d.essai || {};
+            const manques = [];
+            if (!d.photos.length) manques.push('au moins une photo');
+            const aFlouter = d.photos.filter(p => !p.floutee).length; if (aFlouter) manques.push(`${aFlouter} photo${aFlouter > 1 ? 's' : ''} à flouter`);
+            $('#dsIn').innerHTML = `
+            <div class="doc-check">
+                <span class="${d.photos.length && !aFlouter ? 'ok' : ''}">${d.photos.length && !aFlouter ? '✓' : '○'} Photos ${d.photos.length ? `${d.photos.length - aFlouter}/${d.photos.length} floutées` : ''}</span>
+                <span class="${d.video ? 'ok' : ''}">${d.video ? '✓' : '○'} Vidéo moteur</span>
+                <span class="${d.documents.length ? 'ok' : ''}">${d.documents.length ? '✓' : '○'} Documents ${d.documents.length || ''}</span>
+                <span class="${e.fait ? 'ok' : ''}">${e.fait ? '✓' : '○'} Essai routier</span>
+                <span class="${f.carburant && f.boite ? 'ok' : ''}">${f.carburant && f.boite ? '✓' : '○'} Fiche technique</span>
+                <span class="${d.description ? 'ok' : ''}">${d.description ? '✓' : '○'} Description</span>
+            </div>
+
+            <h4>Photos <small>tour de la voiture, intérieur, compteur, moteur · chaque plaque doit être floutée avant l'envoi</small></h4>
+            <div class="doc-act">
+                <label class="btn btn-p">Prendre une photo<input type="file" accept="image/*" capture="environment" data-ds="photo" hidden></label>
+                <label class="btn">Ajouter des photos<input type="file" accept="image/*" multiple data-ds="photo" hidden></label>
+            </div>
+            ${d.photos.length ? `<div class="ds-photos">${d.photos.map((p, i) => `<figure class="ds-ph${p.floutee ? '' : ' nf'}" data-i="${i}">
+                <a href="${photoUrl(p.path)}" target="_blank" rel="noopener">${vignette(p.path)}</a>
+                <span class="ds-badge">${p.floutee ? 'Floutée' : 'À flouter'}</span>
+                <select class="in" data-legende="${i}">${opt(L.legendes, p.legende, 'Légende…')}</select>
+                <div class="ds-ph-act">
+                    <button class="btn btn-s btn-p" type="button" data-flouter="${i}">Flouter</button>
+                    <button class="btn btn-s" type="button" data-sansplaque="${i}">${p.floutee ? 'À reflouter' : 'Sans plaque'}</button>
+                    <button class="btn btn-s btn-ghost" type="button" data-move="${i}:-1" aria-label="Avancer">◀</button>
+                    <button class="btn btn-s btn-ghost" type="button" data-move="${i}:1" aria-label="Reculer">▶</button>
+                    <button class="btn btn-s btn-ghost btn-d" type="button" data-del="${esc(p.path)}" aria-label="Supprimer">✕</button>
+                </div></figure>`).join('')}</div>` : '<p class="vide">Aucune photo pour l\'instant.</p>'}
+
+            <h4>Vidéo du moteur tournant <small>30 secondes suffisent : démarrage à froid, ralenti, un coup d'accélérateur</small></h4>
+            ${d.video ? `<div class="ds-video"><video controls playsinline preload="metadata" src="${photoUrl(d.video)}"></video><button class="btn btn-s btn-ghost btn-d" type="button" data-del="${esc(d.video)}">Supprimer la vidéo</button></div>`
+                : `<div class="doc-act"><label class="btn btn-p">Filmer le moteur<input type="file" accept="video/*" capture="environment" data-ds="video" hidden></label><label class="btn">Choisir une vidéo<input type="file" accept="video/*" data-ds="video" hidden></label></div>`}
+
+            <h4>Documents <small>carte grise, contrôle technique, carnet, factures · les noms du précédent propriétaire doivent être masqués</small></h4>
+            <div class="doc-act">
+                <select class="in" id="dsDocType">${L.types_document.map(t => `<option value="${esc(t)}">${esc(t)}</option>`).join('')}</select>
+                <label class="btn btn-p">Photographier<input type="file" accept="image/*" capture="environment" data-ds="document" hidden></label>
+                <label class="btn">Ajouter<input type="file" accept="image/*,application/pdf" multiple data-ds="document" hidden></label>
+            </div>
+            ${d.documents.length ? `<div class="ds-photos ds-docs">${d.documents.map((x, i) => `<figure class="ds-ph"><a href="${photoUrl(x.path)}" target="_blank" rel="noopener">${vignette(x.path)}</a>
+                <select class="in" data-doctype="${i}">${L.types_document.map(t => `<option value="${esc(t)}"${t === x.type ? ' selected' : ''}>${esc(t)}</option>`).join('')}</select>
+                <div class="ds-ph-act"><button class="btn btn-s btn-ghost btn-d" type="button" data-del="${esc(x.path)}" aria-label="Supprimer">✕</button></div></figure>`).join('')}</div>` : ''}
+
+            <h4>Points forts <small>un détail qui fait vendre, en photo : jantes, sellerie cuir, écran, pneus neufs…</small></h4>
+            <div class="doc-act"><label class="btn">Ajouter un point fort<input type="file" accept="image/*" data-ds="point" hidden></label></div>
+            ${d.points_forts.length ? `<div class="ds-photos">${d.points_forts.map((x, i) => `<figure class="ds-ph"><a href="${photoUrl(x.path)}" target="_blank" rel="noopener">${vignette(x.path)}</a>
+                <input class="in" data-pointleg="${i}" value="${esc(x.legende || '')}" placeholder="Ex. Jantes alliage 17 pouces">
+                <div class="ds-ph-act"><button class="btn btn-s btn-ghost btn-d" type="button" data-del="${esc(x.path)}" aria-label="Supprimer">✕</button></div></figure>`).join('')}</div>` : ''}
+
+            <h4>Fiche technique <small>ce qui n'est pas dans la demande d'origine</small></h4>
+            <div class="form-grid">
+                <label class="f">Marque<input class="in" data-fiche="marque" value="${esc(f.marque || '')}" placeholder="${esc((remarkDecoupe(v.libelle) || {}).marque || '')}"></label>
+                <label class="f">Modèle<input class="in" data-fiche="modele" value="${esc(f.modele || '')}" placeholder="${esc((remarkDecoupe(v.libelle) || {}).modele || '')}"></label>
+                <label class="f">Version / finition<input class="in" data-fiche="version" value="${esc(f.version || '')}" placeholder="1.0 EcoBoost 100 Titanium"></label>
+                <label class="f">Mise en circulation<input class="in" data-fiche="mise_circulation" value="${esc(f.mise_circulation || '')}" placeholder="${esc(v.annee || 'AAAA-MM')}"></label>
+                <label class="f">Kilométrage<input class="in num" data-fiche="km" value="${esc(f.km || '')}" placeholder="${esc(v.kilometrage || '')}" inputmode="numeric"></label>
+                <label class="f">VIN<input class="in" data-fiche="vin" value="${esc(f.vin || v.vin || '')}" autocapitalize="characters" maxlength="17"></label>
+                <label class="f">Carburant<select class="in" data-fiche="carburant">${opt(L.carburants, f.carburant)}</select></label>
+                <label class="f">Boîte<select class="in" data-fiche="boite">${opt(L.boites, f.boite)}</select></label>
+                <label class="f">Carrosserie<select class="in" data-fiche="carrosserie">${opt(L.carrosseries, f.carrosserie)}</select></label>
+                <label class="f">Puissance (ch)<input class="in num" data-fiche="puissance_ch" value="${esc(f.puissance_ch || '')}" inputmode="numeric"></label>
+                <label class="f">Cylindrée (cm³)<input class="in num" data-fiche="cylindree" value="${esc(f.cylindree || '')}" inputmode="numeric"></label>
+                <label class="f">Portes<input class="in num" data-fiche="portes" value="${esc(f.portes || '')}" inputmode="numeric"></label>
+                <label class="f">Places<input class="in num" data-fiche="places" value="${esc(f.places || '')}" inputmode="numeric"></label>
+                <label class="f">Couleur<input class="in" data-fiche="couleur" value="${esc(f.couleur || '')}"></label>
+                <label class="f">Sellerie<input class="in" data-fiche="sellerie" value="${esc(f.sellerie || '')}" placeholder="Tissu noir"></label>
+                <label class="f">CO₂ (g/km)<input class="in num" data-fiche="co2" value="${esc(f.co2 || '')}" inputmode="numeric"></label>
+                <label class="f">Norme Euro<select class="in" data-fiche="norme_euro">${opt(L.normes, f.norme_euro)}</select></label>
+                <label class="f">Propriétaires<input class="in num" data-fiche="proprietaires" value="${esc(f.proprietaires || '')}" inputmode="numeric"></label>
+                <label class="f">Clés<input class="in num" data-fiche="cles" value="${esc(f.cles || '')}" inputmode="numeric"></label>
+                <label class="f">CT valable jusqu'au<input class="in" type="date" data-fiche="ct_expire" value="${esc(f.ct_expire || '')}"></label>
+                <label class="f">Entretien<select class="in" data-fiche="entretien">${opt(L.entretien, f.entretien)}</select></label>
+                <label class="f">Usage précédent<select class="in" data-fiche="usage_precedent">${opt(L.usages, f.usage_precedent)}</select></label>
+                <label class="f">Roulant${ouiNon('roulant', f.roulant, true)}</label>
+                <label class="f">Accidenté${ouiNon('accidente', f.accidente, false)}</label>
+                <label class="f">TVA récupérable${ouiNon('tva_deductible', f.tva_deductible, false)}</label>
+                <label class="f">COC disponible${ouiNon('coc', f.coc, false)}</label>
+                <label class="f">Couleur d'origine${ouiNon('couleur_origine', f.couleur_origine, true)}</label>
+                <label class="f">Sellerie d'origine${ouiNon('sellerie_origine', f.sellerie_origine, true)}</label>
+            </div>
+
+            <h4>Essai routier <small>${esc(e.conditions || '')}</small></h4>
+            <label class="ds-coche"><input type="checkbox" id="dsEssaiFait"${e.fait ? ' checked' : ''}> Essai effectué</label>
+            <div class="ds-essai">${L.points_essai.map(p => { const x = (e.points || {})[p] || { etat: 'ok' }; return `<div class="ds-pt${x.etat === 'defaut' ? ' ko' : ''}" data-pt="${esc(p)}">
+                <b>${esc(p)}</b>
+                <select class="in" data-etat>${['ok', 'defaut'].map(z => `<option value="${z}"${x.etat === z ? ' selected' : ''}>${z === 'ok' ? 'RAS' : 'Défaut'}</option>`).join('')}</select>
+                <select class="in" data-quand${x.etat === 'defaut' ? '' : ' hidden'}>${opt(L.quand, x.quand, 'Quand ?')}</select>
+                <input class="in" data-resultat${x.etat === 'defaut' ? '' : ' hidden'} value="${esc(x.resultat || '')}" placeholder="Ce qu'on constate">
+            </div>`; }).join('')}</div>
+            <textarea class="in" id="dsEssaiNotes" rows="2" placeholder="Remarques d'essai : tenue de route, bruits, confort…">${esc(e.notes || '')}</textarea>
+
+            <h4>Dommages <small>un par ligne, photo conseillée</small></h4>
+            ${d.dommages.length ? `<div class="ds-dom">${d.dommages.map((x, i) => `<div class="ds-dom-l" data-dom="${i}">
+                <select class="in" data-zone>${opt(L.zones, x.zone, 'Zone')}</select>
+                <input class="in" data-element value="${esc(x.element || '')}" placeholder="Élément : pare-chocs, aile, jante…">
+                <select class="in" data-type>${opt(L.types_dommage, x.type, 'Type')}</select>
+                ${x.photo ? `<a class="ds-dom-ph" href="${photoUrl(x.photo)}" target="_blank" rel="noopener"><img src="${photoUrl(x.photo)}" alt=""></a>` : `<label class="btn btn-s">Photo<input type="file" accept="image/*" capture="environment" data-ds="dommage" data-index="${i}" hidden></label>`}
+                <button class="btn btn-s btn-ghost btn-d" type="button" data-domdel="${i}" aria-label="Supprimer">✕</button>
+            </div>`).join('')}</div>` : ''}
+            <div class="doc-act"><button class="btn" type="button" id="dsDomAjout">Ajouter un dommage</button></div>
+
+            <h4>Équipements <small>un par ligne, « Catégorie : détail » pour les regrouper (${L.categories.slice(0, 4).join(', ')}…)</small></h4>
+            <textarea class="in" id="dsEquip" rows="4" placeholder="Climatisation : automatique bizone&#10;Navigation / multimédia : écran tactile 8 pouces, CarPlay&#10;Aide à la conduite : radar de recul">${esc(d.equipements.join('\n'))}</textarea>
+
+            <h4>Description <small>ce qu'un acheteur pro doit savoir, sans le prix</small></h4>
+            <textarea class="in" id="dsDesc" rows="4" placeholder="Historique, entretien, état général, points à prévoir…">${esc(d.description || '')}</textarea>
+
+            <div class="ds-envoi">
+                ${manques.length ? `<p class="vide">Avant d'envoyer : ${esc(manques.join(' ; '))}.</p>` : d.pousse_le ? `<p class="vide">Envoyé le ${date(d.pousse_le, true)}. Un nouvel envoi remplace la fiche sur remarkauto (le prix et la vente y restent).</p>` : '<p class="vide">La fiche partira sans prix : il se fixe sur remarkauto au moment de la mise en vente.</p>'}
+                <button class="btn btn-g" type="button" id="dsPousser"${manques.length ? ' disabled' : ''}>${d.pousse_le ? 'Renvoyer vers remarkauto' : 'Envoyer vers remarkauto'}</button>
+                ${d.remarkauto_id && remarkUrl ? `<a class="btn" href="${esc(remarkUrl)}/admin/vehicules/${d.remarkauto_id}" target="_blank" rel="noopener">Ouvrir sur remarkauto</a>` : ''}
+            </div>`;
+            lier();
+        }
+
+        function lier() {
+            const racine = $('#dsIn');
+            racine.querySelectorAll('input[type=file][data-ds]').forEach(inp => inp.onchange = e => {
+                const type = inp.dataset.ds, extra = {};
+                if (type === 'document') extra.type = $('#dsDocType').value;
+                if (type === 'dommage') extra.index = inp.dataset.index;
+                if (type === 'video') { toast('Envoi de la vidéo… (peut prendre une minute)'); return envoyer('video', e.target.files[0]).then(() => { rendre(); toast('Vidéo ajoutée'); }).catch(err => toast(err.message)); }
+                envoyerPlusieurs(type, e.target.files, extra);
+            });
+            racine.querySelectorAll('[data-del]').forEach(b => b.onclick = async () => {
+                if (await demander({ titre: 'Supprimer ce fichier ?', boutons: [['ok', 'Supprimer', 'btn-rouge'], ['', 'Annuler']] }) !== 'ok') return;
+                try { d = await api(url + '/medias?path=' + encodeURIComponent(b.dataset.del), { method: 'DELETE' }); rendre(); } catch (e) { toast(e.message); }
+            });
+            racine.querySelectorAll('[data-legende]').forEach(s => s.onchange = () => { d.photos[+s.dataset.legende].legende = s.value; sauver({ photos: d.photos }, s); });
+            racine.querySelectorAll('[data-sansplaque]').forEach(b => b.onclick = async () => {
+                const p = d.photos[+b.dataset.sansplaque];
+                if (!p.floutee && await demander({ titre: 'Aucune plaque lisible sur cette photo ?', texte: 'À confirmer seulement si la plaque n\'apparaît pas du tout (intérieur, moteur, détail).', boutons: [['ok', 'Oui, aucune plaque visible'], ['', 'Annuler']] }) !== 'ok') return;
+                p.floutee = !p.floutee; await sauver({ photos: d.photos }); rendre();
+            });
+            racine.querySelectorAll('[data-move]').forEach(b => b.onclick = async () => {
+                const [i, s] = b.dataset.move.split(':').map(Number), j = i + s; if (j < 0 || j >= d.photos.length) return;
+                [d.photos[i], d.photos[j]] = [d.photos[j], d.photos[i]]; await sauver({ photos: d.photos }); rendre();
+            });
+            racine.querySelectorAll('[data-flouter]').forEach(b => b.onclick = () => flouterPhoto(d.photos[+b.dataset.flouter], async blob => {
+                toast('Enregistrement de la photo floutée…');
+                try { await envoyer('photo', new File([blob], 'floutee.jpg', { type: 'image/jpeg' }), { remplace: d.photos[+b.dataset.flouter].path }); rendre(); toast('Photo floutée'); } catch (e) { toast(e.message); }
+            }));
+            racine.querySelectorAll('[data-doctype]').forEach(s => s.onchange = () => { d.documents[+s.dataset.doctype].type = s.value; sauver({ documents: d.documents }, s); });
+            racine.querySelectorAll('[data-pointleg]').forEach(i => i.onchange = () => { d.points_forts[+i.dataset.pointleg].legende = i.value; sauver({ points_forts: d.points_forts }, i); });
+            racine.querySelectorAll('[data-fiche]').forEach(i => i.onchange = () => sauver({ fiche: { [i.dataset.fiche]: i.value } }, i));
+            const essai = () => {
+                const points = {};
+                racine.querySelectorAll('.ds-pt').forEach(l => { const etat = l.querySelector('[data-etat]').value; points[l.dataset.pt] = { etat, quand: etat === 'defaut' ? l.querySelector('[data-quand]').value : '', resultat: etat === 'defaut' ? l.querySelector('[data-resultat]').value : '' }; });
+                return { fait: $('#dsEssaiFait').checked, conditions: (d.essai || {}).conditions, notes: $('#dsEssaiNotes').value, points };
+            };
+            $('#dsEssaiFait').onchange = () => sauver({ essai: essai() });
+            $('#dsEssaiNotes').onchange = e => sauver({ essai: essai() }, e.target);
+            racine.querySelectorAll('.ds-pt').forEach(l => {
+                l.querySelector('[data-etat]').onchange = e => { const ko = e.target.value === 'defaut'; l.classList.toggle('ko', ko); l.querySelector('[data-quand]').hidden = !ko; l.querySelector('[data-resultat]').hidden = !ko; sauver({ essai: essai() }, e.target); };
+                l.querySelector('[data-quand]').onchange = e => sauver({ essai: essai() }, e.target);
+                l.querySelector('[data-resultat]').onchange = e => sauver({ essai: essai() }, e.target);
+            });
+            const dommages = () => [...racine.querySelectorAll('.ds-dom-l')].map((l, i) => ({ zone: l.querySelector('[data-zone]').value, element: l.querySelector('[data-element]').value, type: l.querySelector('[data-type]').value, photo: (d.dommages[i] || {}).photo }));
+            racine.querySelectorAll('.ds-dom-l .in').forEach(i => i.onchange = () => { d.dommages = dommages(); sauver({ dommages: d.dommages }, i); });
+            racine.querySelectorAll('[data-domdel]').forEach(b => b.onclick = async () => {
+                const x = d.dommages[+b.dataset.domdel];
+                if (x && x.photo) { try { d = await api(url + '/medias?path=' + encodeURIComponent(x.photo), { method: 'DELETE' }); } catch (e) { return toast(e.message); } }
+                d.dommages.splice(+b.dataset.domdel, 1); await sauver({ dommages: d.dommages }); rendre();
+            });
+            $('#dsDomAjout').onclick = async () => { d.dommages = [...dommages(), { zone: '', element: 'Nouveau dommage', type: '' }]; await sauver({ dommages: d.dommages }); rendre(); racine.querySelector('.ds-dom-l:last-child [data-element]').select(); };
+            $('#dsEquip').onchange = e => sauver({ equipements: e.target.value.split('\n').map(s => s.trim()).filter(Boolean) }, e.target);
+            $('#dsDesc').onchange = e => sauver({ description: e.target.value }, e.target);
+            $('#dsPousser').onclick = async () => {
+                if (await demander({ titre: d.pousse_le ? 'Renvoyer la fiche sur remarkauto ?' : 'Envoyer la fiche sur remarkauto ?', texte: `${v.libelle} : ${d.photos.length} photo(s)${d.video ? ', la vidéo moteur' : ''}, ${d.documents.length} document(s), ${d.dommages.length} dommage(s). Le prix se fixe ensuite sur remarkauto.`, boutons: [['ok', 'Envoyer'], ['', 'Annuler']] }) !== 'ok') return;
+                $('#dsPousser').disabled = true; toast('Envoi vers remarkauto…');
+                try { const r = await api(url + '/pousser', { method: 'POST', body: '{}' }); d.pousse_le = r.pousse_le; d.remarkauto_id = r.id; rendre(); toast(`Fiche envoyée (${r.medias} fichiers)`); }
+                catch (e) { toast(e.message); rendre(); }
+            };
+        }
+
+        api(url).then(x => { d = x; remarkUrl = x.remarkauto_url || ""; etat(); rendre(); }).catch(e => { $('#dsIn').innerHTML = `<p class="vide neg">${esc(e.message)}</p>`; });
+    }
+    // « Ford Fiesta 2016 » → marque / modèle (même découpe que la passerelle serveur), pour les champs vides.
+    function remarkDecoupe(libelle) {
+        const mots = String(libelle || '').replace(/\b(19|20)\d{2}\b/g, '').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+        if (!mots.length) return null;
+        const deux = (mots[0] + ' ' + (mots[1] || '')).toLowerCase(), n = ['land rover', 'alfa romeo', 'aston martin', 'rolls royce', 'ds automobiles', 'mg rover'].includes(deux) ? 2 : 1;
+        return { marque: mots.slice(0, n).join(' '), modele: mots.slice(n).join(' ') };
+    }
+    let remarkUrl = '';
+
+    // Outil de floutage : on dessine un ou plusieurs rectangles au doigt sur la photo, la zone est pixelisée
+    // puis la photo est réenregistrée. Taille d'origine conservée (la compression serveur fait le reste).
+    function flouterPhoto(photo, apres) {
+        const voile = document.createElement('div'); voile.className = 'ds-flou';
+        voile.innerHTML = `<div class="ds-flou-in"><div class="ds-flou-top"><b>Flouter la plaque</b><span>Dessinez un rectangle sur chaque plaque, puis enregistrez.</span></div>
+            <div class="ds-flou-zone"><canvas></canvas></div>
+            <div class="ds-flou-btns"><button class="btn" type="button" data-f="annuler">Annuler</button><button class="btn" type="button" data-f="retour" disabled>Retirer le dernier</button><button class="btn btn-g" type="button" data-f="ok" disabled>Enregistrer la photo floutée</button></div></div>`;
+        document.body.appendChild(voile);
+        const canvas = voile.querySelector('canvas'), ctx = canvas.getContext('2d'), img = new Image();
+        const zones = []; let dessin = null, base = null;
+        const bRetour = voile.querySelector('[data-f=retour]'), bOk = voile.querySelector('[data-f=ok]');
+        const fermer = () => voile.remove();
+        const pixeliser = (x, y, w, h) => {
+            if (w < 4 || h < 4) return;
+            const pas = Math.max(8, Math.round(Math.max(w, h) / 6));
+            const petit = document.createElement('canvas'); petit.width = Math.max(1, Math.round(w / pas)); petit.height = Math.max(1, Math.round(h / pas));
+            const pc = petit.getContext('2d'); pc.imageSmoothingEnabled = true; pc.drawImage(base, x, y, w, h, 0, 0, petit.width, petit.height);
+            ctx.imageSmoothingEnabled = false; ctx.drawImage(petit, 0, 0, petit.width, petit.height, x, y, w, h); ctx.imageSmoothingEnabled = true;
+        };
+        const redessiner = () => {
+            ctx.drawImage(base, 0, 0);
+            zones.forEach(z => pixeliser(...z));
+            if (dessin) { ctx.save(); ctx.strokeStyle = '#B8923A'; ctx.lineWidth = Math.max(2, canvas.width / 400); ctx.setLineDash([8, 6]); ctx.strokeRect(...norm(dessin)); ctx.restore(); }
+            bRetour.disabled = !zones.length; bOk.disabled = !zones.length;
+        };
+        const norm = ([x1, y1, x2, y2]) => [Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1)];
+        const pos = ev => { const r = canvas.getBoundingClientRect(); return [(ev.clientX - r.left) * canvas.width / r.width, (ev.clientY - r.top) * canvas.height / r.height]; };
+        img.onload = () => {
+            canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
+            base = document.createElement('canvas'); base.width = canvas.width; base.height = canvas.height; base.getContext('2d').drawImage(img, 0, 0);
+            redessiner();
+        };
+        img.onerror = () => { toast('Photo illisible'); fermer(); };
+        img.src = photoUrl(photo.path);
+        canvas.onpointerdown = ev => { canvas.setPointerCapture(ev.pointerId); const [x, y] = pos(ev); dessin = [x, y, x, y]; ev.preventDefault(); };
+        canvas.onpointermove = ev => { if (!dessin) return; const [x, y] = pos(ev); dessin[2] = x; dessin[3] = y; redessiner(); ev.preventDefault(); };
+        canvas.onpointerup = ev => { if (!dessin) return; const [x, y] = pos(ev); dessin[2] = x; dessin[3] = y; const z = norm(dessin).map(Math.round); dessin = null; if (z[2] >= 4 && z[3] >= 4) zones.push(z); redessiner(); };
+        voile.onclick = e => {
+            const b = e.target.closest('[data-f]'); if (!b) return;
+            if (b.dataset.f === 'annuler') return fermer();
+            if (b.dataset.f === 'retour') { zones.pop(); return redessiner(); }
+            dessin = null; redessiner();
+            canvas.toBlob(blob => { fermer(); if (blob) apres(blob); }, 'image/jpeg', 0.9);
+        };
     }
     async function ecranCession(v) {
         let c;
