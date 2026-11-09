@@ -3928,14 +3928,14 @@ body.modal-ouvert { overflow: hidden; }
                 <span class="${d.description ? 'ok' : ''}">${d.description ? '✓' : '○'} Description</span>
             </div>
 
-            <h4>Photos <small>tour de la voiture, intérieur, compteur, moteur · chaque plaque doit être floutée avant l'envoi</small></h4>
+            <h4>Photos <small>tour de la voiture, intérieur, compteur, moteur · les plaques sont floutées automatiquement à l'arrivée ; vérifiez, et corrigez au doigt si besoin</small></h4>
             <div class="doc-act">
                 <label class="btn btn-p">Prendre une photo<input type="file" accept="image/*" capture="environment" data-ds="photo" hidden></label>
                 <label class="btn">Ajouter des photos<input type="file" accept="image/*" multiple data-ds="photo" hidden></label>
             </div>
             ${d.photos.length ? `<div class="ds-photos">${d.photos.map((p, i) => `<figure class="ds-ph${p.floutee ? '' : ' nf'}" data-i="${i}">
                 <a href="${photoUrl(p.path)}" target="_blank" rel="noopener">${vignette(p.path)}</a>
-                <span class="ds-badge">${p.floutee ? 'Floutée' : 'À flouter'}</span>
+                <span class="ds-badge">${p.floutee ? (p.auto && p.auto.plaques ? `Floutée auto · ${p.auto.plaques} plaque${p.auto.plaques > 1 ? 's' : ''}` : p.auto && p.auto.certitude === 'haute' && !p.auto.plaques ? 'Sans plaque (vérifié)' : 'Floutée') : (p.auto && p.auto.certitude === 'moyenne' ? 'À vérifier' : 'À flouter')}</span>
                 <select class="in" data-legende="${i}">${opt(L.legendes, p.legende, 'Légende…')}</select>
                 <div class="ds-ph-act">
                     <button class="btn btn-s btn-p" type="button" data-flouter="${i}">Flouter</button>
@@ -3949,14 +3949,14 @@ body.modal-ouvert { overflow: hidden; }
             ${d.video ? `<div class="ds-video"><video controls playsinline preload="metadata" src="${photoUrl(d.video)}"></video><button class="btn btn-s btn-ghost btn-d" type="button" data-del="${esc(d.video)}">Supprimer la vidéo</button></div>`
                 : `<div class="doc-act"><label class="btn btn-p">Filmer le moteur<input type="file" accept="video/*" capture="environment" data-ds="video" hidden></label><label class="btn">Choisir une vidéo<input type="file" accept="video/*" data-ds="video" hidden></label></div>`}
 
-            <h4>Documents <small>carte grise, contrôle technique, carnet, factures · les noms du précédent propriétaire doivent être masqués</small></h4>
+            <h4>Documents <small>carte grise, contrôle technique, carnet, factures · nom, adresse, naissance, signature et immatriculation sont masqués automatiquement à l'arrivée</small></h4>
             <div class="doc-act">
                 <select class="in" id="dsDocType">${L.types_document.map(t => `<option value="${esc(t)}">${esc(t)}</option>`).join('')}</select>
                 <label class="btn btn-p">Photographier<input type="file" accept="image/*" capture="environment" data-ds="document" hidden></label>
                 <label class="btn">Ajouter<input type="file" accept="image/*,application/pdf" multiple data-ds="document" hidden></label>
             </div>
             ${d.documents.length ? `<div class="ds-photos ds-docs">${d.documents.map((x, i) => `<figure class="ds-ph"><a href="${photoUrl(x.path)}" target="_blank" rel="noopener">${vignette(x.path)}</a>
-                <select class="in" data-doctype="${i}">${L.types_document.map(t => `<option value="${esc(t)}"${t === x.type ? ' selected' : ''}>${esc(t)}</option>`).join('')}</select>
+                ${x.anonymisee ? `<span class="ds-badge" style="background:var(--green)">${x.zones ? `${x.zones} zone${x.zones > 1 ? 's' : ''} masquée${x.zones > 1 ? 's' : ''}` : 'Rien à masquer'}</span>` : ''}<select class="in" data-doctype="${i}">${L.types_document.map(t => `<option value="${esc(t)}"${t === x.type ? ' selected' : ''}>${esc(t)}</option>`).join('')}</select>
                 <div class="ds-ph-act"><button class="btn btn-s btn-ghost btn-d" type="button" data-del="${esc(x.path)}" aria-label="Supprimer">✕</button></div></figure>`).join('')}</div>` : ''}
 
             <h4>Points forts <small>un détail qui fait vendre, en photo : jantes, sellerie cuir, écran, pneus neufs…</small></h4>
