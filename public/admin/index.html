@@ -3907,6 +3907,17 @@ body.modal-ouvert { overflow: hidden; }
             const manques = [];
             if (!d.photos.length) manques.push('au moins une photo');
             const aFlouter = d.photos.filter(p => !p.floutee).length; if (aFlouter) manques.push(`${aFlouter} photo${aFlouter > 1 ? 's' : ''} à flouter`);
+            // Ce qui n'empêche pas l'envoi mais affaiblit la fiche côté acheteurs (la complétude est aussi affichée dans l'admin remarkauto).
+            const avertissements = [
+                d.photos.length && d.photos.length < 6 && `${d.photos.length} photo${d.photos.length > 1 ? 's' : ''} seulement (6 minimum conseillées : 4 angles, tableau de bord, compteur)`,
+                !d.video && 'pas de vidéo du moteur',
+                !e.fait && 'essai routier non renseigné',
+                !(f.carburant && f.boite) && 'carburant ou boîte manquants',
+                !f.puissance_ch && 'puissance manquante',
+                !(f.vin || v.vin) && 'VIN manquant',
+                !d.documents.length && 'aucun document (carte grise, CT)',
+                !d.description && 'pas de description',
+            ].filter(Boolean);
             $('#dsIn').innerHTML = `
             <div class="doc-check">
                 <span class="${d.photos.length && !aFlouter ? 'ok' : ''}">${d.photos.length && !aFlouter ? '✓' : '○'} Photos ${d.photos.length ? `${d.photos.length - aFlouter}/${d.photos.length} floutées` : ''}</span>
@@ -4014,6 +4025,7 @@ body.modal-ouvert { overflow: hidden; }
 
             <div class="ds-envoi">
                 ${manques.length ? `<p class="vide">Avant d'envoyer : ${esc(manques.join(' ; '))}.</p>` : d.pousse_le ? `<p class="vide">Envoyé le ${date(d.pousse_le, true)}. Un nouvel envoi remplace la fiche sur remarkauto (le prix et la vente y restent).</p>` : '<p class="vide">La fiche partira sans prix : il se fixe sur remarkauto au moment de la mise en vente.</p>'}
+                ${!manques.length && avertissements.length ? `<p class="vide" style="color:var(--orange)">Fiche envoyable mais incomplète : ${esc(avertissements.join(' · '))}.</p>` : ''}
                 <button class="btn btn-g" type="button" id="dsPousser"${manques.length ? ' disabled' : ''}>${d.pousse_le ? 'Renvoyer vers remarkauto' : 'Envoyer vers remarkauto'}</button>
                 ${d.remarkauto_id && remarkUrl ? `<a class="btn" href="${esc(remarkUrl)}/admin/vehicules/${d.remarkauto_id}" target="_blank" rel="noopener">Ouvrir sur remarkauto</a>` : ''}
             </div>`;
