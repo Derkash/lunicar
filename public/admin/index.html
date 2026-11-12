@@ -3774,6 +3774,7 @@ body.modal-ouvert { overflow: hidden; }
             <div class="doc-check">${[...DOCS_ACHAT, ...(v.statut === 'vendu' ? ['cession_vente'] : [])].map(t => `<span class="${docs.some(d => d.type === t) ? 'ok' : ''}">${docs.some(d => d.type === t) ? '✓' : '○'} ${esc(T[t] || t)}</span>`).join('')}</div>
             <div class="doc-act">
                 <button class="btn btn-g" id="vCession" type="button">Générer le certificat de cession</button>
+                <button class="btn btn-g" id="vBonCmd" type="button">Bon de commande (acheteur)</button>
                 <button class="btn btn-p" id="vAvis" type="button">${v.remerciement_le ? 'Demander un avis · envoyé le ' + date(v.remerciement_le, false) : 'Demander un avis'}</button>
                 <button class="btn" id="vMerci" type="button">Mail avec les documents</button>
                 <select class="in" id="vDocType">${Object.entries(T).map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select>
@@ -3866,6 +3867,7 @@ body.modal-ouvert { overflow: hidden; }
             try { await api('/api/admin/compta/vehicules/' + v.id + '/documents?path=' + encodeURIComponent(b.dataset.docdel), { method: 'DELETE' }); await chargerCompta(); afficherVehicule(v.id); } catch (err) { toast(err.message); }
         });
         $('#vCession').onclick = () => ecranCession(v);
+        $('#vBonCmd').onclick = () => ecranBonCommande(v);
     }
 
     // ---------------- Dossier de vente (fiche remarkauto) : photos floutées, vidéo moteur, documents, essai, dommages…
@@ -4197,6 +4199,54 @@ body.modal-ouvert { overflow: hidden; }
                 toast('Certificat de cession généré');
                 window.open(photoUrl(r.document.path), '_blank');
             } catch (err) { $('#cesOk').disabled = false; $('#cesOk').textContent = 'Générer le PDF'; toast(err.message); }
+        };
+    }
+
+    // Bon de commande remis à l'acheteur : vendeur + RIB pré-remplis (gardés pour la suite), véhicule repris de la fiche,
+    // acheteur facultatif (lignes vides sinon), prix toujours laissé en blanc pour être écrit à la main.
+    async function ecranBonCommande(v) {
+        let c;
+        try { c = await api('/api/admin/compta/vehicules/' + v.id + '/bon-commande'); } catch (e) { return toast(e.message); }
+        const ch = (g, k, l, attrs = '') => `<label class="f">${l}<input class="in" name="${g}.${k}" value="${esc((c[g] || {})[k] == null ? '' : c[g][k])}" ${attrs}></label>`;
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>Bon de commande</h3><button class="close" type="button" id="bcX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <p class="sub">Pour l'acheteur du véhicule. Le prix est laissé en blanc, à écrire à la main. Les champs acheteur vides deviennent des lignes à remplir.</p>
+            <form id="bcF" class="ces-form" autocomplete="off">
+                <fieldset><legend>Le document</legend>
+                    <label class="f">Numéro<input class="in" name="numero" value="${esc(c.numero)}"></label><label class="f">Date<input class="in" name="date" value="${esc(c.date)}"></label>
+                </fieldset>
+                <fieldset><legend>L'acheteur</legend>
+                    ${ch('acheteur', 'societe', 'Société')}${ch('acheteur', 'siret', 'SIRET', 'inputmode="numeric"')}${ch('acheteur', 'nom', 'Nom')}${ch('acheteur', 'prenom', 'Prénom')}
+                    ${ch('acheteur', 'adresse', 'Adresse')}${ch('acheteur', 'cp_ville', 'Code postal et ville')}${ch('acheteur', 'telephone', 'Téléphone', 'type="tel"')}${ch('acheteur', 'email', 'E-mail', 'type="email"')}
+                </fieldset>
+                <fieldset><legend>Le véhicule</legend>
+                    ${ch('vehicule', 'marque', 'Marque')}${ch('vehicule', 'modele', 'Modèle')}${ch('vehicule', 'version', 'Version')}${ch('vehicule', 'immatriculation', 'Immatriculation', 'autocapitalize="characters"')}
+                    ${ch('vehicule', 'vin', 'N° de série (VIN)', 'autocapitalize="characters"')}${ch('vehicule', 'mise_circulation', '1re mise en circulation')}${ch('vehicule', 'kilometrage', 'Kilométrage', 'inputmode="numeric"')}
+                    ${ch('vehicule', 'energie', 'Énergie')}${ch('vehicule', 'boite', 'Boîte')}${ch('vehicule', 'couleur', 'Couleur')}${ch('vehicule', 'puissance', 'Puissance')}${ch('vehicule', 'numero_formule', 'N° de formule')}
+                    ${ch('vehicule', 'observations', 'Observations (facultatif)')}
+                </fieldset>
+                <fieldset><legend>Le vendeur et le RIB (gardés pour les prochaines fois)</legend>
+                    ${ch('vendeur', 'raison', 'Raison sociale')}${ch('vendeur', 'siret', 'SIRET')}${ch('vendeur', 'representant', 'Représenté par (prénom, nom)')}
+                    ${ch('vendeur', 'adresse', 'Adresse')}${ch('vendeur', 'cp_ville', 'Code postal et ville')}${ch('vendeur', 'email', 'E-mail')}${ch('vendeur', 'telephone', 'Téléphone (facultatif)')}
+                    ${ch('vendeur', 'titulaire', 'Titulaire du compte')}${ch('vendeur', 'iban', 'IBAN')}${ch('vendeur', 'bic', 'BIC')}${ch('vendeur', 'banque', 'Banque')}
+                    <label class="f">Conditions<textarea class="in" name="vendeur.conditions" rows="3">${esc(c.vendeur.conditions || '')}</textarea></label>
+                </fieldset>
+                <div class="cr-btns"><button type="button" class="btn" id="bcAnnul">Annuler</button><button class="btn btn-p" id="bcOk">Générer le PDF</button></div>
+            </form>`;
+        const fermerB = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        $('#bcX').onclick = $('#bcAnnul').onclick = fermerB;
+        $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermerB(); };
+        $('#bcF').onsubmit = async e => {
+            e.preventDefault();
+            const b = { vendeur: {}, acheteur: {}, vehicule: {} };
+            for (const [k, val] of new FormData(e.target)) { const [g, f] = k.split('.'); if (f) b[g][f] = val; else b[g] = val; }
+            $('#bcOk').disabled = true; $('#bcOk').innerHTML = '<span class="spin"></span> Génération…';
+            try {
+                const r = await api('/api/admin/compta/vehicules/' + v.id + '/bon-commande', { method: 'POST', body: JSON.stringify(b) });
+                fermerB(); await chargerCompta(); afficherVehicule(v.id);
+                toast('Bon de commande généré');
+                window.open(photoUrl(r.document.path), '_blank');
+            } catch (err) { $('#bcOk').disabled = false; $('#bcOk').textContent = 'Générer le PDF'; toast(err.message); }
         };
     }
 
