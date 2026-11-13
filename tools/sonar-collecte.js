@@ -11,6 +11,8 @@
     const API = 'https://lunicar.fr/api/marche';
     const GRILLE = [50000, 100000, 150000, 200000, 250000];
     const pause = ms => new Promise(r => setTimeout(r, ms));
+    // Rythme d'une personne qui consulte Sonar : délais variables, jamais en rafale (Leboncoin repère les robots).
+    const humain = (min, max) => pause(min + Math.random() * (max - min));
 
     // Journal des réponses chargées par la page (fetch + XHR), filtré sur les données Sonar.
     if (!window.__sonarLog) {
@@ -131,7 +133,7 @@
                 liste: gardes.slice(0, 40).map(o => [o.a.price[0], Number(o.x.mileage) || 0, Number(o.x.regdate) || 0, Math.round((Date.now() - new Date(String(o.a.first_publication_date).replace(' ', 'T'))) / 864e5) || 0, (o.a.owner || {}).type === 'pro' ? 1 : 0])
             };
             if (t.length >= 8) return dernier;
-            await pause(800);
+            await humain(2500, 5000);
         }
         return dernier;
     }
@@ -174,7 +176,7 @@
                             const r = await resultat(v.id, lic, k, false);
                             if (!r.moyenne && !points.length) break;
                             if (r.moyenne) points.push({ km: k, moyenne: r.moyenne, fiabilite: r.fiabilite, tranches: r.tranches });
-                            await pause(600);
+                            await humain(3000, 6000);
                         }
                         if (points.length) {
                             const autres = (lic.trims || []).flatMap(t => (t.versions || []).map(x => ({ ...x, trim: t.label }))).filter(x => x.id !== v.id).slice(0, 10);
@@ -182,7 +184,7 @@
                                 if (!E.actif) break;
                                 const r = await resultat(x.id, lic, km, false);
                                 variantes.push([x.id, x.label, x.trim, r.moyenne || 0, r.fiabilite || 0]);
-                                await pause(600);
+                                await humain(3000, 6000);
                             }
                         }
                         await envoyer({ plaque: dm.plaque, ref: dm.ref, grille: true, points, variantes, variantes_km: km });
@@ -194,7 +196,9 @@
                     }
                     E.faits++; E.i++; E.dernier = `${dm.plaque} · ${v.label}`; freins = 0;
                     window.__sonarLog.splice(0, Math.max(0, window.__sonarLog.length - 60));
-                    await pause(900 + Math.random() * 900);
+                    // Entre deux voitures 8 à 15 s, et une vraie pause de 2 à 4 min toutes les 12 voitures.
+                    await humain(8000, 15000);
+                    if (E.faits % 12 === 0) await humain(120000, 240000);
                 } catch (e) {
                     E.derniereErreur = `${dm.plaque} : ${e.message}`;
                     if (e.frein) { freins++; if (freins >= 4) { E.actif = false; E.derniereErreur += ' — arrêt (Leboncoin freine)'; break; } await pause(60000 * freins); continue; }
