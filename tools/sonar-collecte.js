@@ -5,7 +5,7 @@
 // réponses que la page charge elle-même ; il n'appelle aucune API Leboncoin de son côté.
 //
 // Lancement : __collecte.lancer({ mode: 'principal' })  — un relevé par plaque au km de la demande
-//             __collecte.lancer({ mode: 'grille' })     — mêmes plaques, prix à 50/100/150/200/250 000 km
+//             __collecte.lancer({ mode: 'grille' })     — plaques déjà relevées : prix à 50/100/150/200/250 000 km + autres versions
 // Suivi : __collecte.etat()   Arrêt : __collecte.stop()
 (() => {
     const API = 'https://lunicar.fr/api/marche';
@@ -147,7 +147,8 @@
     E.stop = () => { E.actif = false; return 'arrêt demandé'; };
     E.lancer = async ({ mode = 'principal', limite = 0, depart = 0 } = {}) => {
         if (E.actif) return 'déjà en cours';
-        const f = await fetch(API + '/file' + (mode === 'grille' ? '?tout=1' : ''), { headers: { 'X-Cle': window.__CLE } });
+        // grille : seulement les plaques qui n'ont pas encore leur courbe prix / km ni leurs versions.
+        const f = await fetch(API + '/file' + (mode === 'grille' ? '?grille=1' : ''), { headers: { 'X-Cle': window.__CLE } });
         if (!f.ok) return 'file LUNICAR : ' + f.status;
         E.file = await f.json(); E.i = depart; E.mode = mode; E.faits = 0; E.erreurs = 0; E.actif = true;
         (async () => {
