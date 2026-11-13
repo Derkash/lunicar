@@ -961,15 +961,42 @@ app.get('/api/marche/file', corsLbc, async (req, res) => {
     // Ordre : véhicules achetés / RDV d'abord (marges), puis offres et contacts, demandes en cours, archivées en dernier.
     const prio = { achetee: 0, rdv: 1, offre: 2, contactee: 3, nouvelle: 4 };
     const parRef = new Map((await store.listerDemandes()).map(d => [d.ref, d]));
-    const rang = f => { const d = parRef.get(f.ref) || {}; return ((d.suivi || {}).archivee ? 10 : 0) + (prio[d.statut] != null ? prio[d.statut] : 6); };
+    // Demande de moins de 48 h : tout en tête (analyse en temps réel par le Mac mini).
+    const rang = f => { const d = parRef.get(f.ref) || {}; if (Date.now() - new Date(d.created_at) < 48 * 3600e3) return -1; return ((d.suivi || {}).archivee ? 10 : 0) + (prio[d.statut] != null ? prio[d.statut] : 6); };
     file.sort((a, b) => rang(a) - rang(b));
+    // ?grille=1 : plaques avec un prix Sonar mais sans courbe prix / km (moins de 3 points) ni versions.
+    if (req.query.grille) return res.json(file.filter(f => { const r = marche.releve(f.plaque); return r && r.moyenne && ((r.points || []).length < 3 || !(r.variantes || []).length); }));
     res.json(req.query.tout ? file : file.filter(f => !f.fait));
 });
 // Le script de collecte lui-même (tools/sonar-collecte.js), rechargé par l'onglet Leboncoin après chaque amélioration.
 app.get('/api/marche/script', corsLbc, (req, res) => res.type('text/plain').send(fs.readFileSync(path.join(__dirname, 'tools', 'sonar-collecte.js'), 'utf8')));
-app.post('/api/marche/releve', corsLbc, express.json({ limit: '200kb' }), (req, res) => {
-    try { const r = marche.enregistrer(req.body || {}); res.json({ ok: true, plaque: r.plaque, total: marche.tous().length }); }
-    catch (e) { res.status(e.status || 500).json({ error: e.message }); }
+app.post('/api/marche/releve', corsLbc, express.json({ limit: '200kb' }), async (req, res) => {
+    try {
+        const deja = !!marche.releve((req.body || {}).plaque);
+        const r = marche.enregistrer(req.body || {});
+        res.json({ ok: true, plaque: r.plaque, total: marche.tous().length });
+        // Première analyse d'une demande de moins de 24 h : 2e notification avec le verdict.
+        if (!deja && !req.body.grille && r.ref) {
+            const d = await store.lireDemande(r.ref);
+            if (d && Date.now() - new Date(d.created_at) < 24 * 3600e3) {
+                const MA = require('./lib/marche-analyse'), a = MA.analyser(d, await MA.reglages()), x = d.data || {};
+                if (a.prix) push.notifier({
+                    titre: `💶 ${[x.vehicule, x.annee].filter(Boolean).join(' ')} · ${a.demande ? { acheter: 'Achetable', negocier: 'À négocier', trop_cher: 'Trop cher' }[a.demande.verdict] : 'achat max ' + a.achat_max.toLocaleString('fr-FR') + ' €'}`,
+                    texte: [`Leboncoin ${a.prix.toLocaleString('fr-FR')} €`, `achat max ${a.achat_max.toLocaleString('fr-FR')} €`, a.demande ? `il demande ${a.demande.prix.toLocaleString('fr-FR')} €` : '', `revente ${a.revente_score}/100`].filter(Boolean).join(' · '),
+                    ref: d.ref, fil: 'marche-' + d.ref }).catch(() => {});
+            }
+        }
+    } catch (e) { if (!res.headersSent) res.status(e.status || 500).json({ error: e.message }); }
+});
+// Alerte du collecteur (Mac mini) : session Leboncoin perdue, Chrome bloqué… Une notification au plus toutes les 3 h par type.
+const alertesMarche = new Map();
+app.post('/api/marche/alerte', corsLbc, (req, res) => {
+    const t = String((req.body || {}).type || 'autre').slice(0, 40), texte = String((req.body || {}).texte || '').slice(0, 200);
+    if (Date.now() - (alertesMarche.get(t) || 0) > 3 * 3600e3) {
+        alertesMarche.set(t, Date.now());
+        push.notifier({ titre: t === 'deconnecte' ? '⚠️ Mac mini : reconnectez Leboncoin' : '⚠️ Mac mini · collecte Sonar', texte: texte || 'La collecte Sonar est arrêtée.', onglet: 'marche' }).catch(() => {});
+    }
+    res.json({ ok: true });
 });
 
 app.use(adminRouter(authAdmin));
