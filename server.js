@@ -745,6 +745,7 @@ app.post('/api/contact', async (req, res) => {
         }
 
         try { await store.ajouterMessage(message); } catch (e) { console.error('🚨 Message non enregistré :', e.message); }
+        boite.depuisFormulaire({ id: message.id, created_at: message.createdAt, lu: false, data: message }).catch(e => console.error('Boîte, formulaire :', e.message));
 
         try {
             await sendEmail({
@@ -1462,6 +1463,7 @@ const releverBoite = async () => {
     } catch (e) { console.error('Boîte planifiée :', e.message); }
 };
 setTimeout(releverBoite, 60 * 1000).unref();
+setTimeout(() => boite.importerFormulaires().then(n => n && console.log(`📧 Boîte : ${n} message(s) du formulaire repris`)).catch(e => console.error('Boîte, reprise formulaire :', e.message)), 30 * 1000).unref();
 setInterval(releverBoite, 3 * 60 * 1000).unref();
 
 // Import Gmail demandé hors interface : fichier DATA_DIR/import.todo (créé depuis le shell Render).

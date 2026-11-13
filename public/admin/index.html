@@ -484,6 +484,24 @@ ul.plain li { margin: 3px 0; }
 .bx-pjs li { display: flex; gap: 6px; align-items: center; overflow-wrap: anywhere; }
 .bx-pjs svg { width: 14px; height: 14px; flex: none; color: var(--ink-4); }
 .bx-pjs small { color: var(--ink-4); }
+.bx-pjs a { color: var(--marine); font-weight: 550; }
+.bx-rep-choix { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.mail-dest { display: grid; gap: 6px; }
+.mail-dest .ligne { display: grid; grid-template-columns: 44px 1fr; gap: 8px; align-items: center; font-size: .84rem; color: var(--ink-5); }
+.mail-dest .plus-dest { justify-self: start; background: none; border: 0; padding: 0; font: inherit; font-size: .8rem; color: var(--marine); font-weight: 550; cursor: pointer; }
+.mail-opts { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.mail-opts .chk { height: auto; }
+.mail-pj { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.mail-pj .pj { display: inline-flex; gap: 6px; align-items: center; max-width: 100%; padding: 4px 6px 4px 10px; border: 1px solid var(--line-2); border-radius: 999px; font-size: .8rem; color: var(--ink-7); }
+.mail-pj .pj span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
+.mail-pj .pj small { color: var(--ink-4); }
+.mail-pj .pj button { border: 0; background: none; padding: 0 4px; font-size: 1rem; line-height: 1; color: var(--ink-5); cursor: pointer; }
+.mail-pj label.btn input { display: none; }
+.bx-ia { display: grid; gap: 10px; }
+.bx-ia .resume { margin: 0; font-size: .92rem; color: var(--ink-7); }
+.bx-ia .grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px 10px; }
+.bx-ia .grille .f { margin: 0; }
+.bx-ia .vide-ia { color: var(--ink-4); }
 .bx-corps { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line-2); }
 .bx-img { display: flex; gap: 8px 12px; flex-wrap: wrap; align-items: center; font-size: .8rem; color: var(--ink-5); margin: 0 0 10px; }
 .bx-img button { border: 0; background: none; padding: 0; color: var(--marine-6); font-weight: 600; font-size: .8rem; cursor: pointer; }
@@ -616,7 +634,30 @@ ul.plain li { margin: 3px 0; }
 .ap-f b { display: block; font-size: 1.02rem; font-weight: 650; margin: 3px 0 2px; letter-spacing: -.01em; overflow: hidden; text-overflow: ellipsis; }
 .ap-f small { display: block; font-size: .74rem; color: var(--ink-4); line-height: 1.35; }
 .ap-f .pt { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 6px; vertical-align: 0; }
-.ap-msg { grid-column: 1 / -1; margin: 0; padding: 10px 14px; border-left: 3px solid var(--gold, #B8923A); background: #FAF7F0; border-radius: 0 10px 10px 0; font-size: .92rem; line-height: 1.5; color: var(--ink-7); white-space: pre-wrap; }
+.ap-blocs { min-width: 0; display: grid; }
+.ap-bloc { padding: 12px 0; border-top: 1px solid var(--line-2); min-width: 0; }
+.ap-bloc:first-child { border-top: 0; padding-top: 0; }
+.ap-bloc h4 { margin: 0 0 8px; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-5); font-weight: 650; }
+.ap-l { display: block; font-size: .72rem; color: var(--ink-5); font-weight: 600; }
+.ap-voit { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.ap-voit b { font-size: 1.22rem; font-weight: 700; letter-spacing: -.015em; }
+.ap-voit span { font-size: 1rem; font-weight: 600; color: var(--ink-7); font-variant-numeric: tabular-nums; }
+.ap-tech { margin: 3px 0 0; font-size: .82rem; color: var(--ink-5); }
+.ap-pb { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 10px; margin-top: 10px; }
+.ap-pb .ap-l { padding-top: 3px; }
+.ap-pb p { margin: 0 0 4px; font-size: .9rem; color: var(--ink-7); }
+.ap-pb .ap-meca { font-weight: 600; }
+.ap-pb .ap-rien { color: var(--ink-4); }
+.ap-kv { margin: 0; display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 5px 10px; font-size: .9rem; }
+.ap-kv dt { color: var(--ink-5); font-size: .78rem; font-weight: 600; padding-top: 2px; }
+.ap-kv dd { margin: 0; min-width: 0; overflow-wrap: anywhere; color: var(--ink-8, #121826); }
+.ap-kv a { color: var(--marine); font-weight: 600; text-decoration: none; }
+.ap-kv small { color: var(--ink-4); }
+.ap-kv .pt { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 6px; }
+.ap-chiffres { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ap-chiffres b { display: block; font-size: 1.15rem; font-weight: 700; margin: 2px 0; }
+.ap-chiffres small { display: block; font-size: .76rem; color: var(--ink-4); line-height: 1.35; }
+.ap-msg { grid-column: 1 / -1; margin: 6px 0 0; padding: 8px 12px; border-left: 3px solid var(--gold, #B8923A); background: #FAF7F0; border-radius: 0 10px 10px 0; font-size: .92rem; line-height: 1.5; color: var(--ink-7); white-space: pre-wrap; }
 .ap-appel { grid-column: 1 / -1; margin: 0; font-size: .86rem; color: var(--ink-7); line-height: 1.45; }
 @media (min-width: 760px) { .apercu { grid-template-columns: minmax(0, 300px) minmax(0, 1fr); } .ap-photo { aspect-ratio: 4 / 3; } }
 
@@ -1359,7 +1400,6 @@ body.modal-ouvert { overflow: hidden; }
             <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
             <button data-tab="analyses"><svg><use href="#i-ana"/></svg>Analyses</button>
             <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
-            <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
             <button data-tab="boite"><svg><use href="#i-boite"/></svg>Boîte mail<span class="count" data-count="boite"></span></button>
             <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
             <button data-tab="annonces"><svg><use href="#i-annonce"/></svg>Annonces<span class="count discret" data-count="annonces"></span></button>
@@ -1529,11 +1569,6 @@ body.modal-ouvert { overflow: hidden; }
             <div class="folders" id="folders"></div>
         </section>
 
-        <section data-view="messages" hidden>
-            <div class="page-h"><h1>Messages</h1><span>formulaire de contact</span></div>
-            <div class="card" id="messages"></div>
-        </section>
-
         <section data-view="boite" hidden>
             <div id="bxTete">
                 <div class="page-h"><h1>Boîte mail</h1><span id="bxSous">e-mails reçus sur la boîte contact</span></div>
@@ -1642,7 +1677,6 @@ body.modal-ouvert { overflow: hidden; }
     <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
     <button data-tab="analyses"><svg><use href="#i-ana"/></svg>Analyses du site</button>
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
-    <button data-tab="messages"><svg><use href="#i-msg"/></svg>Messages<span class="count" data-count="msg"></span></button>
     <button data-tab="boite"><svg><use href="#i-boite"/></svg>Boîte mail<span class="count" data-count="boite"></span></button>
     <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
     <button data-tab="annonces"><svg><use href="#i-annonce"/></svg>Annonces<span class="count discret" data-count="annonces"></span></button>
@@ -1826,14 +1860,13 @@ body.modal-ouvert { overflow: hidden; }
     function allerOnglet(tab) {
         $('#plusSheet').hidden = true;
         if (!$('#sheet').hidden || !$('#vpage').hidden) { history.pushState({}, '', BASE); quitterFiche(); quitterVehicule(); }
-        const dansPlus = ['stats', 'analyses', 'photos', 'messages', 'boite', 'forums', 'annonces', 'reglages'].includes(tab);
+        const dansPlus = ['stats', 'analyses', 'photos', 'boite', 'forums', 'annonces', 'reglages'].includes(tab);
         document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
         document.querySelectorAll('#navbas button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab || (dansPlus && x.dataset.tab === 'plus')));
         document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== tab);
         window.scrollTo(0, 0);
         if (tab === 'photos') dossiers();
         if (tab === 'reglages') reglages();
-        if (tab === 'messages') rendreMessages();
         if (tab === 'vehicules') vueVehicules();
         if (tab === 'depenses') vueDepenses();
         if (tab === 'stats') tableau();
@@ -1855,8 +1888,8 @@ body.modal-ouvert { overflow: hidden; }
     const compter = (k, n) => {
         nbs[k] = n || 0;
         document.querySelectorAll(`[data-count="${k}"]`).forEach(c => c.textContent = n || '');
-        // Le bouton « Plus » du bas additionne ce qu'il contient : messages et e-mails non lus + discussions et annonces à traiter.
-        if (['msg', 'boite', 'veille', 'annonces'].includes(k)) document.querySelectorAll('[data-count="plus"]').forEach(c => c.textContent = ((nbs.msg || 0) + (nbs.boite || 0) + (nbs.veille || 0) + (nbs.annonces || 0)) || '');
+        // Le bouton « Plus » du bas additionne ce qu'il contient : e-mails non lus (formulaire de contact compris) + discussions et annonces à traiter.
+        if (['boite', 'veille', 'annonces'].includes(k)) document.querySelectorAll('[data-count="plus"]').forEach(c => c.textContent = ((nbs.boite || 0) + (nbs.veille || 0) + (nbs.annonces || 0)) || '');
     };
 
 
@@ -2194,7 +2227,7 @@ body.modal-ouvert { overflow: hidden; }
                 <div class="car"><b>${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}${saisieDiff(x)}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${badgeInteret(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
-                <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
+                <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}${d.statut === 'nouvelle' ? '' : `<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>`}${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
                 <div class="ph num">${(d.photos || []).length || ''}</div>
                 <div class="quand-m">${date(d.created_at, false)}</div>
             </div></div>`;
@@ -4652,16 +4685,41 @@ body.modal-ouvert { overflow: hidden; }
                 const cl = CANAUX.find(c => c[0] === canalFiche) || CANAUX[4];
                 const f = fourchette(d), pm = prixMax(d), souh = Number(x.prix_souhaite) || 0;
                 const dernier = (s.appels || [])[0];
-                const etatTxt = [x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : ''), x.controle_technique ? 'CT ' + x.controle_technique.toLowerCase() : '', x.carrosserie ? 'carrosserie ' + x.carrosserie.toLowerCase() : ''].filter(Boolean);
+                // 1. la voiture (modèle, km, problème) · 2. le client · 3. l'estimation
+                const km = x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : '';
+                const techn = [x.energie_siv, x.boite_siv, x.puissance_siv, x.controle_technique && 'CT ' + x.controle_technique.toLowerCase()].filter(Boolean);
+                const pb = [x.nature_panne && 'panne ' + x.nature_panne.toLowerCase(), x.organes_defaillants && 'organes : ' + x.organes_defaillants.toLowerCase(),
+                    x.voyant === 'Oui' && 'voyant allumé', /^Non/.test(x.deplacable || '') && 'dépanneuse nécessaire', x.degats && 'dégâts : ' + String(x.degats).toLowerCase(),
+                    x.carrosserie && 'carrosserie ' + x.carrosserie.toLowerCase()].filter(Boolean);
+                const lieu = [x.code_postal, x.ville].filter(Boolean).join(' '), dist = geo(x.code_postal) && geo(x.code_postal).km;
+                const meca = badgeMeca(x) || (x.mecanique ? esc(x.mecanique) : '');
                 return `<section class="sec apercu">
                 <div class="ap-col"><div class="ap-photo${!ph && !photoModele ? ' vide' : ''}">${photoModele ? `<img class="modele" src="${esc(photoModele)}" alt="Photo du modèle" referrerpolicy="no-referrer" onerror="this.parentElement.innerHTML='<span>Pas de photo</span>'"><small>photo du modèle, pas la voiture</small>` : ph ? `<img src="${photoUrl(ph.path)}" alt="Photo du vendeur" data-ap-photo="${(d.photos || []).indexOf(ph)}">` : '<span>Pas de photo du vendeur</span>'}</div>${(() => { const imgs = (d.photos || []).map((p, i) => ({ p, i })).filter(o => !/\.pdf$/i.test(o.p.name)); return imgs.length > (photoModele ? 0 : 1) ? `<div class="ap-vign">${imgs.slice(0, 8).map(o => `<img src="${photoUrl(o.p.path)}" alt="" data-ap-photo="${o.i}">`).join('')}${imgs.length > 8 ? `<span>+${imgs.length - 8}</span>` : ''}</div>` : ''; })()}</div>
-                <div class="ap-faits">
-                    <div class="ap-f"><span>D'où il vient</span><b><i class="pt" style="background:${cl[2]}"></i>${esc(cl[1])}</b><small>${esc(d.origine_txt || x.origine || '—')}</small></div>
-                    <div class="ap-f"><span>État annoncé</span><b>${badgeMeca(x) || esc(etatTxt[0] || '—')}</b><small>${esc(etatTxt.slice(1).join(' · ') || [x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.annee].filter(Boolean).join(' · '))}</small></div>
-                    <div class="ap-f"><span>Notre estimation</span><b class="num">${enCours ? '<span class="spin"></span>' : f ? `${eur(f.min)} – ${eur(f.max)}` : pm ? eur(pm) : '—'}</b><small>${f ? `prix max ${eur(pm)} · engagement ${eur(f.min)} si les infos sont exactes` : pm ? 'prix max d\'achat' : 'pas encore estimée'}</small></div>
-                    <div class="ap-f"><span>Il demande</span><b class="num">${souh ? eur(souh) : '—'}</b><small>${souh && pm ? (souh > pm ? `${eur(souh - pm)} au-dessus de notre max` : `dans notre fourchette`) : souh ? 'à comparer après estimation' : 'pas de prix en tête'}</small></div>
+                <div class="ap-blocs">
+                    <div class="ap-bloc">
+                        <h4>La voiture</h4>
+                        <p class="ap-voit"><b>${esc(x.annee ? nomVeh(x).replace(new RegExp('\\s+' + x.annee + '$'), '') : nomVeh(x))}</b>${[x.annee, km].filter(Boolean).map(t => `<span>${esc(String(t))}</span>`).join('')}</p>
+                        ${techn.length ? `<p class="ap-tech">${techn.map(esc).join(' · ')}</p>` : ''}
+                        <div class="ap-pb"><span class="ap-l">Problème</span><div>${meca ? `<p class="ap-meca">${meca}</p>` : ''}${pb.length ? `<p>${esc(pb.join(' · '))}</p>` : ''}${x.message ? `<blockquote class="ap-msg">« ${esc(x.message)} »</blockquote>` : ''}${!meca && !pb.length && !x.message ? '<p class="ap-rien">rien de signalé</p>' : ''}</div></div>
+                    </div>
+                    <div class="ap-bloc">
+                        <h4>Le client</h4>
+                        <dl class="ap-kv">
+                            <dt>Nom</dt><dd>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || '—')}</dd>
+                            ${x.telephone ? `<dt>Téléphone</dt><dd><a href="tel:+${esc(tel)}">${esc(x.telephone)}</a></dd>` : ''}
+                            ${x.email ? `<dt>E-mail</dt><dd><button type="button" class="mi-lien" data-vers-mail>${esc(x.email)}</button></dd>` : ''}
+                            ${lieu ? `<dt>Lieu</dt><dd>${esc(lieu)}${dist ? ` <small>· ${dist} km</small>` : ''}</dd>` : ''}
+                            <dt>Origine</dt><dd><i class="pt" style="background:${cl[2]}"></i>${esc(cl[1])}${d.origine_txt && d.origine_txt !== cl[1] ? ` <small>· ${esc(d.origine_txt)}</small>` : ''}</dd>
+                        </dl>
+                    </div>
+                    <div class="ap-bloc ap-est">
+                        <h4>L'estimation</h4>
+                        <div class="ap-chiffres">
+                            <div><span class="ap-l">Notre fourchette</span><b class="num">${enCours ? '<span class="spin"></span>' : f ? `${eur(f.min)} – ${eur(f.max)}` : pm ? eur(pm) : '—'}</b><small>${f ? `prix max ${eur(pm)} · engagement ${eur(f.min)} si les infos sont exactes` : pm ? 'prix max d\'achat' : 'pas encore estimée'}</small></div>
+                            <div><span class="ap-l">Il demande</span><b class="num">${souh ? eur(souh) : '—'}</b><small>${souh && pm ? (souh > pm ? `${eur(souh - pm)} au-dessus de notre max` : `dans notre fourchette`) : souh ? 'à comparer après estimation' : 'pas de prix en tête'}</small></div>
+                        </div>
+                    </div>
                 </div>
-                ${x.message ? `<blockquote class="ap-msg">« ${esc(x.message)} »</blockquote>` : ''}
                 ${dernier ? `<p class="ap-appel"><b>Dernier appel</b> · ${date(dernier.date)} · ${esc(dernier.libelle || dernier.resultat)}${dernier.texte ? ` — ${esc(dernier.texte)}` : ''}</p>` : ''}
             </section>`;
             })()}
@@ -4929,7 +4987,10 @@ body.modal-ouvert { overflow: hidden; }
         const I = mailInfo.chargement ? null : mailInfo, E = (I && I.etat) || {};
         const fil = filMail(d);
         const valide = I ? I.email_valide : !!x.email;
-        if (!mailBrouillon || mailBrouillon.ref !== ref) mailBrouillon = { ref, objet: '', texte: '' };
+        if (!mailBrouillon || mailBrouillon.ref !== ref) mailBrouillon = { ref, objet: '', texte: '', cc: '', fichiers: [] };
+        // Message vide : « Bonjour, » + signature de Kevin dès que la signature est connue.
+        const debut = I && I.signature ? debutMail(I.signature) : '';
+        if (!mailBrouillon.texte && debut) mailBrouillon.texte = debut;
         const objet = mailBrouillon.objet || (I && I.objet) || `Votre demande LUNICAR ${ref}${x.vehicule ? ' – ' + x.vehicule : ''}`;
         const nonRetenue = d.statut === 'sans_suite' && (d.suivi || {}).motif_fin === 'non_retenue';
         sec.innerHTML = `
@@ -4946,7 +5007,9 @@ body.modal-ouvert { overflow: hidden; }
                 <label class="f">Objet<input class="in" id="mailObjet" maxlength="${(I && I.limites || {}).objet || 200}" value="${esc(objet)}"></label>
                 <div class="mail-modeles"><span>Modèles</span>${I && I.modeles ? I.modeles.map(m => `<button type="button" class="cr-chip" data-modele="${esc(m.id)}">${esc(m.titre)}</button>`).join('') : '<span class="spin"></span>'}</div>
                 <label class="f">Message<textarea class="in" id="mailTxt" rows="9" maxlength="${(I && I.limites || {}).texte || 10000}" placeholder="Votre message au client…">${esc(mailBrouillon.texte)}</textarea></label>
+                <div class="mail-dest"><label class="ligne">Cc<input class="in" id="mailCc" value="${esc(mailBrouillon.cc || '')}" placeholder="copie visible (facultatif)"></label></div>
                 <div class="mail-cci"><label class="chk"><input type="checkbox" id="mailCci"> Copie cachée à</label><input class="in" id="mailCciA" type="email" value="abdoul.guirassy@gmail.com" autocomplete="email"></div>
+                ${pjHtml('mailPj', mailBrouillon.fichiers)}
                 <p class="err" id="mailErr"></p>
                 <div class="mail-pied"><small>${E.from ? 'De : ' + esc(E.from) + (E.reply_to ? ' · réponses à ' + esc(E.reply_to) : '') : ''}</small>
                     <div class="btns"><button type="button" class="btn" id="mailApercu"${I && E.envoi ? '' : ' disabled'}>Envoyer un aperçu…</button><button class="btn btn-p" id="mailEnv"${I && E.envoi ? '' : ' disabled'}><svg><use href="#i-envoi"/></svg>Envoyer au client</button></div></div>
@@ -4960,18 +5023,19 @@ body.modal-ouvert { overflow: hidden; }
         sec.querySelectorAll('[data-renvoi]').forEach(b => b.onclick = () => {
             const m = fil.find(z => z.id === b.dataset.renvoi); if (!m || !$('#mailForm')) return;
             $('#mailObjet').value = m.objet || ''; $('#mailTxt').value = m.texte || ''; $('#mailCci').checked = true;
-            mailBrouillon = { ref, objet: m.objet || '', texte: m.texte || '' };
+            mailBrouillon = { ...mailBrouillon, ref, objet: m.objet || '', texte: m.texte || '' };
             $('#mailForm').scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(() => $('#mailTxt').focus(), 400);
             toast('E-mail repris : modifiez-le puis « Envoyer au client »');
         });
         const f = $('#mailForm');
         if (f) {
-            const garder = () => { mailBrouillon = { ref, objet: $('#mailObjet').value, texte: $('#mailTxt').value }; };
-            $('#mailObjet').oninput = $('#mailTxt').oninput = garder;
+            const garder = () => { mailBrouillon = { ...mailBrouillon, ref, objet: $('#mailObjet').value, texte: $('#mailTxt').value, cc: $('#mailCc').value }; };
+            $('#mailObjet').oninput = $('#mailTxt').oninput = $('#mailCc').oninput = garder;
+            pjBrancher('mailPj', mailBrouillon.fichiers, () => { garder(); rendreMail(); });
             sec.querySelectorAll('[data-modele]').forEach(b => b.onclick = async () => {
                 const m = I.modeles.find(z => z.id === b.dataset.modele); if (!m) return;
                 const t = $('#mailTxt');
-                if (t.value.trim() && !I.modeles.some(z => z.texte === t.value)) {
+                if (t.value.trim() && t.value !== debut && !I.modeles.some(z => z.texte === t.value)) {
                     if (await demander({ titre: 'Remplacer le message en cours ?', texte: 'Le texte déjà saisi sera remplacé par le modèle « ' + m.titre + ' ».', boutons: [['', 'Annuler'], ['ok', 'Remplacer', 'btn-p']] }) !== 'ok') return;
                 }
                 t.value = m.texte; garder();
@@ -4986,10 +5050,11 @@ body.modal-ouvert { overflow: hidden; }
                 if (!objet || !texte) { $('#mailErr').textContent = 'Objet et message obligatoires.'; return; }
                 const rep = texte.match(/\[(montant|date|heure|lieu)[^\]]*\]/i);
                 if (rep) { $('#mailErr').textContent = 'Il reste un repère à compléter : ' + rep[0]; return; }
-                if (await demander({ titre: 'Envoyer cet e-mail ?', texte: 'À ' + x.email + ' · « ' + objet + ' »' + ($('#mailCci').checked ? ' · copie cachée à ' + $('#mailCciA').value.trim() : ''), boutons: [['', 'Annuler'], ['ok', 'Envoyer', 'btn-p']] }) !== 'ok') return;
+                const cc = $('#mailCc').value.trim(), nPj = mailBrouillon.fichiers.length;
+                if (await demander({ titre: 'Envoyer cet e-mail ?', texte: 'À ' + x.email + (cc ? ' · cc ' + cc : '') + ' · « ' + objet + ' »' + ($('#mailCci').checked ? ' · copie cachée à ' + $('#mailCciA').value.trim() : '') + (nPj ? ' · ' + nPj + ' pièce' + (nPj > 1 ? 's' : '') + ' jointe' + (nPj > 1 ? 's' : '') : ''), boutons: [['', 'Annuler'], ['ok', 'Envoyer', 'btn-p']] }) !== 'ok') return;
                 const b = $('#mailEnv'); b.disabled = true; b.innerHTML = '<span class="spin"></span> Envoi…';
                 try {
-                    courant = await api('/api/admin/demandes/' + ref + '/email', { method: 'POST', body: JSON.stringify({ objet, texte, cci: $('#mailCci').checked ? $('#mailCciA').value.trim() : '' }) });
+                    courant = await api('/api/admin/demandes/' + ref + '/email', { method: 'POST', body: formMail({ objet, texte, cc, cci: $('#mailCci').checked ? $('#mailCciA').value.trim() : '' }, mailBrouillon.fichiers) });
                     mailBrouillon = null; fiche(); maj(courant); toast('E-mail envoyé au client');
                 } catch (e) {
                     b.disabled = false; b.innerHTML = '<svg><use href="#i-envoi"/></svg>Envoyer au client';
@@ -5007,7 +5072,7 @@ body.modal-ouvert { overflow: hidden; }
             if (!a || !a.trim()) return;
             try { localStorage.setItem('lunicar-apercu', a.trim()); } catch (e) {}
             const b = $('#mailApercu'); b.disabled = true; b.textContent = 'Envoi…';
-            try { const r = await api('/api/admin/demandes/' + ref + '/email/apercu', { method: 'POST', body: JSON.stringify({ objet, texte, a }) }); toast('Aperçu envoyé à ' + r.envoye_a.join(', ')); }
+            try { const r = await api('/api/admin/demandes/' + ref + '/email/apercu', { method: 'POST', body: formMail({ objet, texte, a }, mailBrouillon.fichiers) }); toast('Aperçu envoyé à ' + r.envoye_a.join(', ')); }
             catch (e) { $('#mailErr').textContent = e.message; toast('Aperçu non envoyé'); }
             b.disabled = false; b.textContent = 'Envoyer un aperçu…';
         };
@@ -5124,24 +5189,9 @@ body.modal-ouvert { overflow: hidden; }
     $('#qPhotos').addEventListener('input', dossiers);
     $('#folders').addEventListener('click', e => { const f = e.target.closest('.folder'); if (f) ouvrir(f.dataset.ref); });
 
-    // ---------------- Messages
+    // ---------------- Messages du formulaire de contact : affichés dans la Boîte mail ; gardés ici pour le fil de la fiche.
     async function chargerMessages() {
         messages = await api('/api/admin/messages').catch(() => []);
-        compter('msg', messages.filter(m => !m.lu).length);
-    }
-    function rendreMessages() {
-        $('#messages').innerHTML = messages.length ? messages.map(m => {
-            const x = m.data || {};
-            // Même adresse qu'une demande : lien vers sa fiche, où le message apparaît dans le fil des e-mails.
-            const dem = x.email ? demandes.find(dd => minus((dd.data || {}).email) === minus(x.email)) : null;
-            return `<div class="m ${m.lu ? '' : 'unread'}"><div class="h"><b class="n">${esc(x.nom)}</b>${x.email ? `<a href="mailto:${esc(x.email)}">${esc(x.email)}</a>` : ''}${dem ? `<a class="lien-dem" href="${BASE}/demande/${esc(dem.ref)}" data-ouvrir="${esc(dem.ref)}">Demande ${esc(dem.ref)} · répondre →</a>` : ''}${x.telephone ? `<a href="tel:${esc(x.telephone)}">${esc(x.telephone)}</a>` : ''}<span>${date(m.created_at)}</span>
-                <button class="btn btn-s" data-lu="${esc(m.id)}" data-v="${m.lu ? '' : '1'}" style="margin-left:auto">${m.lu ? 'Marquer non lu' : 'Marquer lu'}</button></div><p>${esc(x.message)}</p></div>`;
-        }).join('') : '<div class="empty">Aucun message.</div>';
-        $('#messages').querySelectorAll('[data-ouvrir]').forEach(a => a.onclick = ev => { ev.preventDefault(); ouvrir(a.dataset.ouvrir); });
-        $('#messages').querySelectorAll('[data-lu]').forEach(b => b.onclick = async () => {
-            await api('/api/admin/messages/' + b.dataset.lu, { method: 'PATCH', body: JSON.stringify({ lu: !!b.dataset.v }) });
-            await chargerMessages(); rendreMessages();
-        });
     }
 
     // ---------------- Forums : veille des discussions, réponses proposées à poster à la main
@@ -5443,6 +5493,25 @@ body.modal-ouvert { overflow: hidden; }
         catch (e) { $('#bxRelever').disabled = false; toast(e.message); }
     });
     const bxLocal = m => { const i = boiteE.messages.findIndex(x => x.id === m.id); if (i >= 0) { const { texte, ...sans } = m; boiteE.messages[i] = sans; } compter('boite', bxNonLus()); };
+    // Pièces jointes à envoyer (fiche demande et boîte) : liste de File gardée dans l'état du brouillon.
+    const pjHtml = (id, fichiers) => `<div class="mail-pj" id="${id}">${fichiers.map((f, i) => `<span class="pj"><svg width="13" height="13"><use href="#i-pj"/></svg><span>${esc(f.name)}</span><small>${bxTaille(f.size)}</small><button type="button" data-pj-x="${i}" aria-label="Retirer">×</button></span>`).join('')}
+        <label class="btn btn-s btn-ghost"><svg><use href="#i-pj"/></svg>Joindre des fichiers<input type="file" multiple></label></div>`;
+    function pjBrancher(id, fichiers, rendre) {
+        const z = $('#' + id); if (!z) return;
+        z.querySelector('input[type=file]').onchange = e => {
+            const ajout = [...e.target.files];
+            const total = [...fichiers, ...ajout].reduce((t, f) => t + f.size, 0);
+            if (fichiers.length + ajout.length > 10) return toast('10 pièces jointes au maximum');
+            if (total > 20 * 1048576) return toast('20 Mo au total au maximum');
+            fichiers.push(...ajout); rendre();
+        };
+        z.querySelectorAll('[data-pj-x]').forEach(b => b.onclick = () => { fichiers.splice(Number(b.dataset.pjX), 1); rendre(); });
+    }
+    // Corps multipart : champs texte + pièces jointes (le serveur lit les deux).
+    const formMail = (champs, fichiers) => { const fd = new FormData(); Object.entries(champs).forEach(([k, v]) => { if (v != null && v !== '') fd.append(k, typeof v === 'boolean' ? (v ? '1' : '') : v); }); (fichiers || []).forEach(f => fd.append('pieces', f, f.name)); return fd; };
+    // Message pré-rempli : « Bonjour, » + ligne vide pour écrire + signature de Kevin.
+    const debutMail = (sig, p) => `${p ? 'Bonjour ' + p + ',' : 'Bonjour,'}\n\n\n\n${sig || ''}`.trimEnd();
+    const placerCurseur = t => { const i = t.value.indexOf('\n\n') + 2; t.focus(); t.setSelectionRange(i, i); };
     async function ouvrirMail(id) {
         bxOuvert = id; bxImages = false; bxTexte = false; bxRep = null;
         $('#bxTete').hidden = true; $('#bxListe').hidden = true; $('#bxLecture').hidden = false;
@@ -5476,14 +5545,15 @@ body.modal-ouvert { overflow: hidden; }
                 <div class="bx-meta"><b>${esc(m.nom || m.de)}</b>${m.nom ? ` &lt;${esc(m.de)}&gt;` : ''}<br>${esc(new Date(m.date).toLocaleString('fr-FR', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }))}${m.a ? ` · à ${esc(m.a)}` : ''}${m.reply_to ? `<br>Répondre à : ${esc(m.reply_to)}` : ''}${!utile && m.raison ? `<br>Classé dans Autres : ${esc(m.raison)}` : ''}</div>
                 <div class="bx-lien">${D ? `<a class="bx-dem" href="${BASE}/demande/${esc(D.ref)}" data-ouvrir="${esc(D.ref)}">Demande ${esc(D.ref)}${D.nom ? ' · ' + esc(D.nom) : ''}${D.vehicule ? ' · ' + esc(D.vehicule) : ''} →</a><span class="sub">l'e-mail figure dans les échanges de la fiche</span>`
                     : utile ? `<button class="btn btn-s" type="button" id="bxCreer"><svg><use href="#i-dem"/></svg>Créer une demande</button><span class="sub">aucune demande avec cette adresse</span>` : ''}</div>
-                ${(m.pieces || []).length ? `<ul class="bx-pjs">${m.pieces.map(p => `<li><svg><use href="#i-pj"/></svg>${esc(p.nom)} <small>${esc(bxTaille(p.taille || 0))}</small></li>`).join('')}<li><small>Pièces jointes à ouvrir dans la messagerie.</small></li></ul>` : ''}
+                ${(m.pieces || []).length ? `<ul class="bx-pjs">${m.pieces.map((p, i) => `<li><svg><use href="#i-pj"/></svg>${m.uid ? `<a href="${lien('/api/admin/boite/' + encodeURIComponent(m.id) + '/pieces/' + i)}" target="_blank" rel="noopener">${esc(p.nom)}</a>` : esc(p.nom)} <small>${esc(bxTaille(p.taille || 0))}</small></li>`).join('')}</ul>` : ''}
                 <div class="bx-corps">
                     ${L.html ? `<div class="bx-img">${formeHtml && distantes ? (bxImages ? '<span>Images distantes affichées</span>' : '<span>Images distantes bloquées</span><button type="button" id="bxImg">Afficher les images</button>') : ''}<button type="button" id="bxVT">${formeHtml ? 'Version texte' : 'Version mise en forme'}</button></div>` : ''}
                     ${formeHtml ? '<iframe class="bx-frame" id="bxFrame" title="Contenu de l\'e-mail" sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer"></iframe>' : `<p class="bx-texte">${esc(m.texte || '')}</p>`}
                 </div>
             </div>
-            ${(m.reponses || []).length ? `<div class="card"><h3>Réponses envoyées</h3><ol class="conv" style="margin:10px 0 0">${m.reponses.map(r => `<li class="envoye"><div class="t"><b>LUNICAR</b><span>${date(r.date)}</span><span>à ${esc(r.a || '')}</span></div><p class="o">${esc(r.objet)}</p><p class="x">${esc(r.texte)}</p></li>`).join('')}</ol></div>` : ''}
-            <div class="card" id="bxRepondre">${bxRep ? formReponse(L) : `<button class="btn btn-p" type="button" id="bxRep"${E.envoi ? '' : ' disabled'}><svg><use href="#i-envoi"/></svg>Répondre</button>${E.envoi ? '' : ' <span class="sub">Envoi non configuré sur le serveur.</span>'}`}</div>`;
+            ${(m.reponses || []).length ? `<div class="card"><h3>Réponses envoyées</h3><ol class="conv" style="margin:10px 0 0">${m.reponses.map(r => `<li class="envoye"><div class="t"><b>LUNICAR</b><span>${date(r.date)}</span>${r.mode === 'transferer' ? '<span>transfert</span>' : ''}<span>à ${esc(r.a || '')}</span>${(r.copie || []).length ? `<span>cc ${esc(r.copie.join(', '))}</span>` : ''}${(r.fichiers_joints || []).length ? `<span>${r.fichiers_joints.length} pièce${r.fichiers_joints.length > 1 ? 's' : ''} jointe${r.fichiers_joints.length > 1 ? 's' : ''}</span>` : ''}</div><p class="o">${esc(r.objet)}</p><p class="x">${esc(r.texte)}</p></li>`).join('')}</ol></div>` : ''}
+            ${utile ? `<div class="card bx-ia" id="bxIa">${blocIa(L)}</div>` : ''}
+            <div class="card" id="bxRepondre">${bxRep ? formReponse(L) : `<div class="bx-rep-choix"><button class="btn btn-p" type="button" data-bx-mode="repondre"${E.envoi ? '' : ' disabled'}><svg><use href="#i-envoi"/></svg>Répondre</button>${(L.tous || []).length ? `<button class="btn" type="button" data-bx-mode="tous"${E.envoi ? '' : ' disabled'}>Répondre à tous</button>` : ''}<button class="btn" type="button" data-bx-mode="transferer"${E.envoi ? '' : ' disabled'}>Transférer</button>${E.envoi ? '' : ' <span class="sub">Envoi non configuré sur le serveur.</span>'}</div>`}</div>`;
         const f = $('#bxFrame');
         if (f) {
             const ajuster = () => { try { f.style.height = Math.min(Math.max(f.contentDocument.documentElement.scrollHeight + 6, 160), 6000) + 'px'; } catch (e) {} };
@@ -5506,30 +5576,84 @@ body.modal-ouvert { overflow: hidden; }
             try { const r = await api('/api/admin/boite/' + encodeURIComponent(m.id) + '/demande', { method: 'POST' }); toast(r.existante ? 'Relié à la demande ' + r.ref : 'Demande ' + r.ref + ' créée'); charger().catch(() => {}); await chargerBoite().catch(() => {}); ouvrirMail(m.id); }
             catch (e) { b.disabled = false; toast(e.message); }
         };
-        if ($('#bxRep')) $('#bxRep').onclick = () => { bxRep = { objet: L.objet_re, texte: '' }; rendreLecture(); $('#bxTxt').focus(); };
+        $('#bxLecture').querySelectorAll('[data-bx-mode]').forEach(b => b.onclick = () => {
+            const mode = b.dataset.bxMode, tr = mode === 'transferer';
+            const p = (L.demande && L.demande.nom ? L.demande.nom : m.nom || '').trim().split(/\s+/)[0];
+            bxRep = { mode, a: tr ? '' : L.a, cc: mode === 'tous' ? L.tous.join(', ') : '', cci: '', voirCc: mode === 'tous',
+                objet: tr ? ('TR : ' + (m.objet || '')).slice(0, 200) : L.objet_re, texte: tr ? `Bonjour,\n\n\n\n${L.signature || ''}`.trimEnd() : debutMail(L.signature, /^[A-ZÀ-Ý][a-zà-ÿ'-]{1,30}$/.test(p) ? p : ''),
+                citer: true, joindre: tr && (m.pieces || []).length > 0, fichiers: [] };
+            rendreLecture();
+            if (tr) $('#bxA').focus(); else placerCurseur($('#bxTxt'));
+            $('#bxRepondre').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
         if ($('#bxForm')) brancherReponse(L);
+        if ($('#bxIa')) brancherIa(L);
+    }
+    // ---- Analyse IA de l'e-mail : vendeur + véhicule, relus puis fiche créée ou complétée.
+    const IA_INTENTION = { vente: 'Propose un véhicule', suivi: 'Relance ou complément sur une demande', question: 'Question', autre: 'Sans rapport avec un rachat' };
+    function blocIa(L) {
+        const m = L.message, A = m.analyse, C = L.champs_ia || {}, LI = L.listes_ia || {};
+        if (!L.ia) return '<h3>Analyse IA</h3><p class="sub">Analyse indisponible : clé ANTHROPIC_API_KEY absente du serveur.</p>';
+        if (!A) return `<div class="bx-rep-choix"><button class="btn" type="button" id="bxIaGo"><svg><use href="#i-dem"/></svg>Analyser l'e-mail et préparer la fiche véhicule</button><span class="sub">L'IA relève le vendeur et le véhicule ; vous relisez avant de créer la fiche.</span></div>`;
+        const sel = (k, opts) => `<select class="in" name="${k}"><option value=""></option>${opts.map(o => `<option${A.champs[k] === o ? ' selected' : ''}>${esc(o)}</option>`).join('')}</select>`;
+        const cible = L.demande ? `Compléter la fiche ${esc(L.demande.ref)}` : 'Créer la fiche véhicule';
+        return `<h3 style="margin:0">Analyse IA <small>${esc(IA_INTENTION[A.intention] || '')}</small></h3>
+            ${A.resume ? `<p class="resume">${esc(A.resume)}</p>` : ''}
+            <form id="bxIaForm" class="bx-ia"><div class="grille">${Object.entries(C).map(([k, lib]) => `<label class="f">${esc(lib)}${k === 'mecanique' ? sel(k, LI.mecanique || []) : k === 'carrosserie' ? sel(k, LI.carrosserie || []) : `<input class="in" name="${k}" value="${esc(A.champs[k] || '')}">`}</label>`).join('')}</div>
+            <label class="f">Défauts cités<textarea class="in" name="defauts" rows="2">${esc(A.defauts || '')}</textarea></label>
+            <div class="bx-rep-choix"><button class="btn btn-p" type="submit">${cible}</button><button class="btn btn-ghost btn-s" type="button" id="bxIaGo">Relancer l'analyse</button>
+            <span class="sub">${L.demande ? 'Seuls les champs vides de la fiche sont remplis.' : 'Photos et PDF du mail rangés dans la fiche, carte grise lue.'}</span></div></form>`;
+    }
+    function brancherIa(L) {
+        const m = L.message;
+        if ($('#bxIaGo')) $('#bxIaGo').onclick = async () => {
+            const b = $('#bxIaGo'); b.disabled = true; b.innerHTML = '<span class="spin"></span> Analyse…';
+            try { const r = await api('/api/admin/boite/' + encodeURIComponent(m.id) + '/analyse', { method: 'POST' }); bxLu.message = { ...m, ...r.message }; $('#bxIa').innerHTML = blocIa(bxLu); brancherIa(bxLu); }
+            catch (e) { b.disabled = false; b.textContent = 'Analyser l\'e-mail'; toast(e.message); }
+        };
+        if ($('#bxIaForm')) $('#bxIaForm').onsubmit = async ev => {
+            ev.preventDefault();
+            const f = Object.fromEntries(new FormData(ev.target)), { defauts, ...champs } = f;
+            const b = ev.target.querySelector('[type=submit]'); b.disabled = true; b.innerHTML = '<span class="spin"></span> Enregistrement…';
+            try {
+                const r = await api('/api/admin/boite/' + encodeURIComponent(m.id) + '/fiche', { method: 'POST', body: JSON.stringify({ champs, defauts }) });
+                toast((r.creee ? 'Fiche ' + r.ref + ' créée' : 'Fiche ' + r.ref + ' complétée') + (r.pieces ? ' · ' + r.pieces + ' pièce' + (r.pieces > 1 ? 's' : '') + ' rangée' + (r.pieces > 1 ? 's' : '') : ''));
+                await charger().catch(() => {}); ouvrir(r.ref);
+            } catch (e) { b.disabled = false; b.textContent = 'Réessayer'; toast(e.message); }
+        };
     }
     function formReponse(L) {
-        const E = L.etat || {}, lim = L.limites || {};
+        const E = L.etat || {}, lim = L.limites || {}, R0 = bxRep, tr = R0.mode === 'transferer', nbPj = (L.message.pieces || []).length;
         return `<form class="mail-form" id="bxForm" novalidate style="border-top:0;padding-top:0">
-            <h3 style="margin:0">Répondre</h3>
-            <p class="bx-a">À : ${esc(L.a)}${L.demande ? ` · copie dans la fiche ${esc(L.demande.ref)}` : ''}</p>
-            <label class="f">Objet<input class="in" id="bxObjet" maxlength="${lim.objet || 200}" value="${esc(bxRep.objet)}"></label>
-            <div class="mail-modeles"><span>Modèles</span>${(L.modeles || []).map(m => `<button type="button" class="cr-chip" data-bx-modele="${esc(m.id)}">${esc(m.titre)}</button>`).join('')}</div>
-            <label class="f">Message<textarea class="in" id="bxTxt" rows="10" maxlength="${lim.texte || 10000}" placeholder="Votre réponse…">${esc(bxRep.texte)}</textarea></label>
+            <h3 style="margin:0">${tr ? 'Transférer' : R0.mode === 'tous' ? 'Répondre à tous' : 'Répondre'}${L.demande && !tr ? ` <small>copie dans la fiche ${esc(L.demande.ref)}</small>` : ''}</h3>
+            <div class="mail-dest">
+                <label class="ligne">À<input class="in" id="bxA" value="${esc(R0.a)}" placeholder="adresse@exemple.fr, …" autocomplete="email"></label>
+                ${R0.voirCc ? `<label class="ligne">Cc<input class="in" id="bxCc" value="${esc(R0.cc)}" placeholder="copie visible"></label>
+                <label class="ligne">Cci<input class="in" id="bxCci" value="${esc(R0.cci)}" placeholder="copie cachée"></label>` : '<button type="button" class="plus-dest" id="bxVoirCc">+ Cc / Cci</button>'}
+            </div>
+            <label class="f">Objet<input class="in" id="bxObjet" maxlength="${lim.objet || 200}" value="${esc(R0.objet)}"></label>
+            ${tr ? '' : `<div class="mail-modeles"><span>Modèles</span>${(L.modeles || []).map(m => `<button type="button" class="cr-chip" data-bx-modele="${esc(m.id)}">${esc(m.titre)}</button>`).join('')}</div>`}
+            <label class="f">Message<textarea class="in" id="bxTxt" rows="10" maxlength="${lim.texte || 10000}">${esc(R0.texte)}</textarea></label>
+            ${pjHtml('bxPj', R0.fichiers)}
+            <div class="mail-opts">${tr ? (nbPj ? `<label class="chk"><input type="checkbox" id="bxJoindre"${R0.joindre ? ' checked' : ''}> Joindre les ${nbPj} pièce${nbPj > 1 ? 's' : ''} jointe${nbPj > 1 ? 's' : ''} reçue${nbPj > 1 ? 's' : ''}</label>` : '') : `<label class="chk"><input type="checkbox" id="bxCiter"${R0.citer ? ' checked' : ''}> Inclure le message d'origine</label>`}</div>
             <p class="err" id="bxErr"></p>
-            <div class="mail-pied"><small>${E.from ? 'De : ' + esc(E.from) + (E.reply_to ? ' · réponses à ' + esc(E.reply_to) : '') : ''} · gabarit LUNICAR</small>
+            <div class="mail-pied"><small>${E.from ? 'De : ' + esc(E.from) + (E.reply_to ? ' · réponses à ' + esc(E.reply_to) : '') : ''} · gabarit LUNICAR, signé ${esc((L.signature || '').split('\n')[1] || '')}</small>
                 <div class="btns bx-rep-b"><button type="button" class="btn btn-ghost" id="bxAnnuler">Annuler</button><button type="button" class="btn" id="bxApercu">Envoyer un aperçu…</button><button class="btn btn-p" id="bxEnv"><svg><use href="#i-envoi"/></svg>Envoyer</button></div></div>
         </form>`;
     }
     function brancherReponse(L) {
-        const garder = () => { bxRep = { objet: $('#bxObjet').value, texte: $('#bxTxt').value }; };
-        $('#bxObjet').oninput = $('#bxTxt').oninput = garder;
+        const val = id => $(id) ? $(id).value : undefined;
+        const garder = () => Object.assign(bxRep, { a: val('#bxA'), objet: val('#bxObjet'), texte: val('#bxTxt'), ...(bxRep.voirCc ? { cc: val('#bxCc'), cci: val('#bxCci') } : {}),
+            citer: $('#bxCiter') ? $('#bxCiter').checked : bxRep.citer, joindre: $('#bxJoindre') ? $('#bxJoindre').checked : bxRep.joindre });
+        $('#bxForm').querySelectorAll('input:not([type=file]), textarea').forEach(x => { x.oninput = garder; x.onchange = garder; });
+        if ($('#bxVoirCc')) $('#bxVoirCc').onclick = () => { garder(); bxRep.voirCc = true; rendreLecture(); $('#bxCc').focus(); };
+        pjBrancher('bxPj', bxRep.fichiers, () => { garder(); rendreLecture(); });
         $('#bxAnnuler').onclick = () => { bxRep = null; rendreLecture(); };
+        const initial = bxRep.texte;
         $('#bxForm').querySelectorAll('[data-bx-modele]').forEach(b => b.onclick = async () => {
             const m = L.modeles.find(z => z.id === b.dataset.bxModele); if (!m) return;
             const t = $('#bxTxt');
-            if (t.value.trim() && !L.modeles.some(z => z.texte === t.value)) {
+            if (t.value.trim() && t.value !== initial && !L.modeles.some(z => z.texte === t.value)) {
                 if (await demander({ titre: 'Remplacer le message en cours ?', texte: 'Le texte déjà saisi sera remplacé par le modèle « ' + m.titre + ' ».', boutons: [['', 'Annuler'], ['ok', 'Remplacer', 'btn-p']] }) !== 'ok') return;
             }
             t.value = m.texte; garder();
@@ -5537,13 +5661,16 @@ body.modal-ouvert { overflow: hidden; }
             t.focus(); if (i >= 0) t.setSelectionRange(i, m.texte.indexOf(']', i) + 1); else t.setSelectionRange(0, 0);
         });
         const lire = () => {
-            const objet = $('#bxObjet').value.trim(), texte = $('#bxTxt').value.trim();
+            garder();
+            const v = { mode: bxRep.mode, a: (bxRep.a || '').trim(), cc: (bxRep.cc || '').trim(), cci: (bxRep.cci || '').trim(), objet: (bxRep.objet || '').trim(), texte: (bxRep.texte || '').trim(), citer: !!bxRep.citer, joindre_origine: !!bxRep.joindre };
             $('#bxErr').textContent = '';
-            if (!objet || !texte) { $('#bxErr').textContent = 'Objet et message obligatoires.'; return null; }
-            const rep = texte.match(/\[(montant|date|heure|lieu|à compléter)[^\]]*\]/i);
+            if (!v.a) { $('#bxErr').textContent = 'Indiquez au moins un destinataire.'; return null; }
+            if (!v.objet || !v.texte) { $('#bxErr').textContent = 'Objet et message obligatoires.'; return null; }
+            const rep = v.texte.match(/\[(montant|date|heure|lieu|à compléter)[^\]]*\]/i);
             if (rep) { $('#bxErr').textContent = 'Il reste un repère à compléter : ' + rep[0]; return null; }
-            return { objet, texte };
+            return v;
         };
+        const url = fin => '/api/admin/boite/' + encodeURIComponent(L.message.id) + fin;
         $('#bxApercu').onclick = async () => {
             const v = lire(); if (!v) return;
             let dernier = ''; try { dernier = localStorage.getItem('lunicar-apercu') || ''; } catch (e) {}
@@ -5551,23 +5678,24 @@ body.modal-ouvert { overflow: hidden; }
             if (!a || !a.trim()) return;
             try { localStorage.setItem('lunicar-apercu', a.trim()); } catch (e) {}
             const b = $('#bxApercu'); b.disabled = true; b.textContent = 'Envoi…';
-            try { const r = await api('/api/admin/boite/' + encodeURIComponent(L.message.id) + '/apercu', { method: 'POST', body: JSON.stringify({ ...v, a }) }); toast('Aperçu envoyé à ' + r.envoye_a.join(', ')); }
+            try { const r = await api(url('/apercu'), { method: 'POST', body: formMail({ ...v, a_apercu: a }, bxRep.fichiers) }); toast('Aperçu envoyé à ' + r.envoye_a.join(', ')); }
             catch (e) { $('#bxErr').textContent = e.message; toast('Aperçu non envoyé'); }
             b.disabled = false; b.textContent = 'Envoyer un aperçu…';
         };
         $('#bxForm').onsubmit = async ev => {
             ev.preventDefault();
             const v = lire(); if (!v) return;
-            if (await demander({ titre: 'Envoyer cette réponse ?', texte: 'À ' + L.a + ' · « ' + v.objet + ' »', boutons: [['', 'Annuler'], ['ok', 'Envoyer', 'btn-p']] }) !== 'ok') return;
+            const n = bxRep.fichiers.length;
+            if (await demander({ titre: v.mode === 'transferer' ? 'Transférer cet e-mail ?' : 'Envoyer cette réponse ?', texte: 'À ' + v.a + (v.cc ? ' · cc ' + v.cc : '') + (v.cci ? ' · cci ' + v.cci : '') + ' · « ' + v.objet + ' »' + (n ? ' · ' + n + ' pièce' + (n > 1 ? 's' : '') + ' jointe' + (n > 1 ? 's' : '') : ''), boutons: [['', 'Annuler'], ['ok', 'Envoyer', 'btn-p']] }) !== 'ok') return;
             const b = $('#bxEnv'); b.disabled = true; b.innerHTML = '<span class="spin"></span> Envoi…';
             try {
-                const r = await api('/api/admin/boite/' + encodeURIComponent(L.message.id) + '/repondre', { method: 'POST', body: JSON.stringify(v) });
+                const r = await api(url('/repondre'), { method: 'POST', body: formMail(v, bxRep.fichiers) });
                 bxRep = null; bxLu.message = r.message; bxLocal(r.message); rendreLecture();
                 if (r.demande) charger().catch(() => {});
-                toast('Réponse envoyée' + (r.demande ? ' · copiée dans la fiche ' + r.demande.ref : ''));
+                toast((v.mode === 'transferer' ? 'E-mail transféré' : 'Réponse envoyée') + (r.demande ? ' · copiée dans la fiche ' + r.demande.ref : ''));
             } catch (e) {
                 b.disabled = false; b.innerHTML = '<svg><use href="#i-envoi"/></svg>Envoyer';
-                $('#bxErr').textContent = e.message; toast('Réponse non envoyée');
+                $('#bxErr').textContent = e.message; toast('E-mail non envoyé');
             }
         };
     }
