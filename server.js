@@ -933,6 +933,38 @@ app.get('/api/admin/analyses', authAdmin, async (req, res) => {
 });
 
 // Demandes, estimations, photos, import Gmail, réglages : lib/admin.js
+// Collecte Sonar Pricing (lib/marche.js) : appelée depuis un onglet Leboncoin connecté au compte pro,
+// avec la clé de collecte temporaire créée dans l'admin. CORS limité à leboncoin.fr, et à ces deux routes.
+const marche = require('./lib/marche');
+const corsLbc = (req, res, next) => {
+    if (req.headers.origin === 'https://www.leboncoin.fr') {
+        res.set('Access-Control-Allow-Origin', 'https://www.leboncoin.fr');
+        res.set('Access-Control-Allow-Headers', 'Content-Type, X-Cle');
+        res.set('Access-Control-Allow-Methods', 'GET, POST');
+        res.set('Vary', 'Origin');
+    }
+    if (req.method === 'OPTIONS') return res.status(204).end();
+    if (!marche.cleValide(String(req.headers['x-cle'] || ''))) return res.status(401).json({ error: 'Clé de collecte absente ou expirée' });
+    next();
+};
+app.options('/api/marche/*', corsLbc);
+// File : une ligne par plaque (la demande la plus récente), celles sans relevé d'abord. ?tout=1 : toutes.
+app.get('/api/marche/file', corsLbc, async (req, res) => {
+    const vus = new Set(), file = [];
+    for (const d of await store.listerDemandes()) {
+        const x = d.data || {}, p = marche.plaqueCle(x.plaque);
+        if (!p || p.length < 6 || vus.has(p)) continue;
+        vus.add(p);
+        const km = Number(String(x.kilometrage || '').replace(/\D/g, '')) || 0;
+        file.push({ ref: d.ref, plaque: p, km, vehicule: String(x.vehicule || '').slice(0, 60), annee: x.annee || '', energie: x.energie_siv || '', fait: !!marche.releve(p) });
+    }
+    res.json(req.query.tout ? file : file.filter(f => !f.fait));
+});
+app.post('/api/marche/releve', corsLbc, express.json({ limit: '200kb' }), (req, res) => {
+    try { const r = marche.enregistrer(req.body || {}); res.json({ ok: true, plaque: r.plaque, total: marche.tous().length }); }
+    catch (e) { res.status(e.status || 500).json({ error: e.message }); }
+});
+
 app.use(adminRouter(authAdmin));
 
 // Liste articles admin
