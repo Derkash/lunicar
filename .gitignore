@@ -45,3 +45,4 @@ data/crm.json
 
 # Jetons locaux (jamais dans le dépôt public)
 secrets/
+data/marche-sonar.*
