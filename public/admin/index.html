@@ -142,6 +142,8 @@ button.kpi:hover { border-color: #CFCAC0; }
 .row .price { font-weight: 650; color: var(--ink); text-align: right; }
 .row .price small { display: block; font-weight: 400; color: var(--ink-4); font-size: .74rem; }
 .row .ph { font-size: .8rem; color: var(--ink-4); text-align: right; }
+.row .car .a-photos, .a-photos { display: inline-flex; align-items: center; gap: 3px; margin-right: 7px; vertical-align: 1px; font-size: .74rem; font-weight: 650; color: var(--marine); font-variant-numeric: tabular-nums; }
+.row .car .a-photos svg, .a-photos svg { width: 15px; height: 15px; }
 .row .quand-m { display: none; }
 .pill { display: inline-flex; align-items: center; gap: 6px; font-size: .76rem; font-weight: 600; padding: 3px 9px 3px 8px; border-radius: 99px; white-space: nowrap; background: #F1EFEA; color: var(--ink-7); }
 .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .8; }
@@ -2221,14 +2223,17 @@ body.modal-ouvert { overflow: hidden; }
             const lieu = [x.ville || x.code_postal, g && g.km ? g.km + ' km' : ''].filter(Boolean).join(' · ');
             const archivee = !!(d.suivi || {}).archivee, estDu = du(d), estDrap = drapeau(d);
             const clos = CLOS.includes(d.statut);
+            // Photos envoyées par le vendeur (les PDF — carte grise, documents — ne comptent pas).
+            const nPh = (d.photos || []).filter(p => !/\.pdf$/i.test(p.name || p.path || '')).length;
+            const icPh = nPh ? `<span class="a-photos" title="${nPh} photo${nPh > 1 ? 's' : ''} du vendeur"><svg><use href="#i-pho"/></svg>${nPh}</span>` : '';
             return `${entete}<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}${clos ? ' clos' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
-                <div class="car"><b>${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}${saisieDiff(x)}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
+                <div class="car"><b>${icPh}${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}${saisieDiff(x)}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${badgeInteret(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}${d.statut === 'nouvelle' ? '' : `<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>`}${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
-                <div class="ph num">${(d.photos || []).length || ''}</div>
+                <div class="ph num">${nPh || ''}</div>
                 <div class="quand-m">${date(d.created_at, false)}</div>
             </div></div>`;
         }).join('') : '<div class="empty">Aucune demande ne correspond.</div>');
