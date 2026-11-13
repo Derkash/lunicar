@@ -76,6 +76,8 @@ async function tour() {
         const etat = JSON.stringify(E);
         if (etat !== dernierEtat) { log('état', etat); dernierEtat = etat; }
         if (E.en_cours) return;
+        // Collecte arrêtée sur une page de recherche (repli annonces) : retour sur Sonar avant le lot suivant.
+        if (!/leboncoin\.fr\/compte\/pro\/donnees-auto/.test(href)) { await s.appel('Page.navigate', { url: SONAR }); return; }
         if (/Leboncoin freine/.test(E.derniereErreur || '')) {
             pauseJusqua = Date.now() + 3600e3;
             await evaluer(s, `window.__collecte.derniereErreur = ''`);

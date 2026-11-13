@@ -153,8 +153,10 @@
         E.file = await f.json(); E.i = depart; E.mode = mode; E.faits = 0; E.erreurs = 0; E.actif = true;
         (async () => {
             let freins = 0;
-            while (E.actif && E.i < E.file.length && (!limite || E.faits < limite)) {
+            while (E.actif && E.i < E.file.length && (!limite || E.faits + E.erreurs < limite)) {
                 const dm = E.file[E.i];
+                // Page rechargée hors de l'appli Leboncoin (plus de routeur) : on s'arrête, la veille du Mac mini ramène l'onglet sur Sonar.
+                if (!(window.next && window.next.router)) { E.actif = false; E.derniereErreur = 'page Sonar perdue'; break; }
                 try {
                     const lic = await plaque(dm.plaque);
                     if (!lic || !lic.make) { await envoyer({ plaque: dm.plaque, ref: dm.ref, erreur: 'plaque inconnue de Sonar' }); E.erreurs++; E.i++; continue; }
