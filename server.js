@@ -956,7 +956,7 @@ app.get('/api/marche/file', corsLbc, async (req, res) => {
         if (!p || p.length < 6 || vus.has(p)) continue;
         vus.add(p);
         const km = Number(String(x.kilometrage || '').replace(/\D/g, '')) || 0;
-        file.push({ ref: d.ref, plaque: p, km, vehicule: String(x.vehicule || '').slice(0, 60), annee: x.annee || '', energie: x.energie_siv || '', fait: !!marche.releve(p) });
+        file.push({ ref: d.ref, plaque: p, km, vehicule: String(x.vehicule || '').slice(0, 60), annee: x.annee || '', energie: x.energie_siv || '', fait: !!(marche.releve(p) && !marche.releve(p).erreur) });
     }
     res.json(req.query.tout ? file : file.filter(f => !f.fait));
 });
