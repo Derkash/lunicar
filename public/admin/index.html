@@ -2826,12 +2826,17 @@ body.modal-ouvert { overflow: hidden; }
         const immob = actifs.reduce((t, v) => t + v.bilan.cout, 0), ca = vendus.reduce((t, v) => t + (Number(v.prix_vente) || 0), 0);
         const marge = vendus.reduce((t, v) => t + (v.bilan.marge || 0), 0), fraisPerdus = perdus.reduce((t, v) => t + v.bilan.frais, 0);
         const delais = vendus.map(v => v.bilan.jours).filter(j => j != null);
+        // Marge prévue du stock : chaque voiture revendue au haut de « Très bonne affaire » (Leboncoin), frais par défaut compris.
+        const prevueStock = actifs.reduce((t, v) => t + (v.bilan.marge_prevue || 0), 0), sansPrix = actifs.filter(v => v.bilan.marge_prevue == null).length;
+        const fraisDef = (compta.marges || {}).frais_defaut || 0;
         // Règle : l'onglet Véhicules ne montre QUE les voitures effectivement achetées (les RDV pris sont dans « Rendez-vous »).
         if (!['actifs', 'vendus', 'tous'].includes(vhSeg)) vhSeg = 'actifs';
         $('#vhKpis').innerHTML = [
             [actifs.length, 'en stock', `<span class="delta">${euro(immob)} immobilisés</span>`],
             [vendus.length, 'vendus', `<span class="delta">${euro(ca)} de CA</span>`],
             [signe(marge), 'marge réalisée', `<span class="delta">${delais.length ? 'revente en ' + Math.round(delais.reduce((a, b) => a + b, 0) / delais.length) + ' j en moyenne' : '&nbsp;'}</span>`, marge < 0 ? 'alerte' : ''],
+            [signe(prevueStock), 'marge prévue sur le stock', `<span class="delta">vendu au prix « Très bonne affaire »${sansPrix ? ` · ${sansPrix} sans prix` : ''}</span>`, prevueStock < 0 ? 'alerte' : ''],
+            [signe(marge + prevueStock), 'marge globale', `<span class="delta">réalisée + prévue · frais par défaut ${euro(fraisDef)} / véhicule</span>`, marge + prevueStock < 0 ? 'alerte' : '']
         ].map(([v, l, d, c]) => `<div class="kpi ${c || ''}"><b class="num">${v}</b><span>${l}</span>${d}</div>`).join('');
         $('#vhSous').textContent = `voitures effectivement achetées`;
         $('#vhSegs').innerHTML = [['actifs', 'En stock', actifs.length], ['vendus', 'Vendus', vendus.length], ['tous', 'Tous', actifs.length + vendus.length]]
@@ -2847,7 +2852,7 @@ body.modal-ouvert { overflow: hidden; }
             return `<button class="vh" data-vh="${esc(v.id)}">
                 <div class="vh-t"><b>${esc(v.libelle || 'Véhicule')}</b>${v.plaque ? `<span class="mono">${esc(v.plaque)}</span>` : ''}</div>
                 <div class="vh-st"><span class="pill vh-${esc(v.statut)}">${esc(compta.statuts[v.statut] || v.statut)}</span>${b.jours != null ? `<small>${vendu ? `revendu en ${b.jours} j` : `J+${b.jours}`}</small>` : ''}</div>
-                <div class="vh-c"><span>Coût de revient<b class="num">${euro(b.cout)}</b></span><span>${vendu ? 'Vendu' : 'Vente estimée'}<b class="num">${vendu ? euro(v.prix_vente) : v.estimation_vente ? euro(v.estimation_vente) : '—'}</b></span><span>${vendu ? 'Marge' : 'Marge prévue'}<b class="num ${(vendu ? b.marge : b.marge_prevue) < 0 ? 'neg' : 'pos'}">${signe(vendu ? b.marge : b.marge_prevue)}</b></span></div>
+                <div class="vh-c"><span>Coût de revient<b class="num">${euro(b.cout)}</b></span><span>${vendu ? 'Vendu' : b.vente_source === 'tba' ? 'Très bonne affaire' : 'Vente estimée'}<b class="num">${vendu ? euro(v.prix_vente) : b.vente_prevue ? euro(b.vente_prevue) : '—'}</b></span><span>${vendu ? 'Marge' : 'Marge prévue'}<b class="num ${(vendu ? b.marge : b.marge_prevue) < 0 ? 'neg' : 'pos'}">${signe(vendu ? b.marge : b.marge_prevue)}</b></span></div>
             </button>`;
         }).join('') : `<div class="empty">${{ prospects: 'Aucun rendez-vous pris. Fixez-en un depuis la fiche d\'une demande : le véhicule arrive ici.', vendus: 'Aucun véhicule vendu pour l\'instant.', perdus: 'Aucun rendez-vous sans suite.', actifs: 'Aucun véhicule en stock.' }[vhSeg] || 'Aucun véhicule.'}</div>`;
     }
@@ -3007,8 +3012,8 @@ body.modal-ouvert { overflow: hidden; }
         const m = vendu ? b.marge : b.marge_prevue;
         return `<div class="pr"><span>${pros ? 'Fourchette annoncée' : 'Prix d\'achat'}</span><b class="num">${pros ? (fourchetteRdv(v.rdv) || euro(v.prix_convenu)) : euro(v.prix_achat)}</b><small>${pros ? 'au rendez-vous (haut de fourchette compté)' : v.prix_achat ? 'payé par ' + PAYCOURT[v.payeur_achat || 'societe'] : 'à renseigner ci-dessous'}</small></div>
             <div class="pr"><span>Dépenses</span><b class="num">${euro(b.frais)}</b><small>${b.nb_depenses} ligne${b.nb_depenses > 1 ? 's' : ''}</small></div>
-            <div class="pr main"><span>${pros ? 'Coût prévu' : 'Coût de revient'}</span><b class="num">${euro(b.cout)}</b><small>${pros ? 'prix convenu + frais' : 'achat + dépenses' + ((b.travaux || {}).faits ? ' + travaux ' + euro(b.travaux.faits) : '')}</small></div>
-            <div class="pr"><span>${vendu ? 'Marge réalisée' : 'Marge prévue'}</span><b class="num ${m < 0 ? 'neg' : 'pos'}">${signe(m)}</b><small>${vendu ? 'vendu ' + euro(v.prix_vente) : v.estimation_vente ? 'si vendu ' + euro(v.estimation_vente) : 'renseigner la vente estimée'}</small></div>`;
+            <div class="pr main"><span>${pros ? 'Coût prévu' : 'Coût de revient'}</span><b class="num">${euro(b.cout)}</b><small>${pros ? 'prix convenu + frais' : 'achat + dépenses' + ((b.travaux || {}).faits ? ' + travaux ' + euro(b.travaux.faits) : '') + ((b.frais_defaut || {}).total ? ' + frais par défaut ' + euro(b.frais_defaut.total) : '')}</small></div>
+            <div class="pr"><span>${vendu ? 'Marge réalisée' : 'Marge prévue'}</span><b class="num ${m < 0 ? 'neg' : 'pos'}">${signe(m)}</b><small>${vendu ? 'vendu ' + euro(v.prix_vente) : b.vente_source === 'tba' ? 'vendu ' + euro(b.vente_prevue) + ' (« Très bonne affaire » Leboncoin)' : b.vente_prevue ? 'si vendu ' + euro(b.vente_prevue) + ' (vente estimée)' : 'pas de prix Leboncoin : renseigner la vente estimée'}</small></div>`;
     }
     function quitterVehicule() { if ($('#vpage').hidden) return; $('#vpage').hidden = true; if ($('#sheet').hidden) document.body.classList.remove('page-fiche'); document.title = 'Admin · LUNICAR'; if (!document.querySelector('[data-view="vehicules"]').hidden) vueVehicules(); }
 
