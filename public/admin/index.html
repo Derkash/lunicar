@@ -618,6 +618,8 @@ ul.plain li { margin: 3px 0; }
 .bq-sug { border-style: dashed; }
 .bq-aff { grid-column: 1 / -1; font-size: .8rem; color: var(--green); font-weight: 600; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .bq-aff .zef { color: var(--orange); font-weight: 600; }
+.bq-expl { grid-column: 1 / -1; width: 100%; height: 34px; font-size: .84rem; }
+.bq-expl.ok { border-color: var(--green); }
 .bq-form { grid-column: 1 / -1; display: grid; gap: 8px; background: var(--marine-1); border-radius: 10px; padding: 10px; margin-top: 4px; }
 .bq-form .in { width: 100%; }
 
@@ -3091,17 +3093,22 @@ body.modal-ouvert { overflow: hidden; }
         const T = B.transactions, aFaire = T.filter(t => !t.affectation), faites = T.filter(t => t.affectation);
         const depuis = B.sync_le ? new Date(B.sync_le).toLocaleString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : 'jamais';
         const liste = bqSeg === 'a_faire' ? aFaire : faites;
-        el.innerHTML = `<div class="bq-h"><h3>Banque Qonto</h3><span class="bq-comptes">${B.comptes.map(c => `${esc(c.nom)} <b>${euro(c.solde)}</b>`).join(' · ')} · lu le ${depuis}</span><button class="btn btn-s" id="bqSync">Actualiser</button></div>
+        el.innerHTML = `<div class="bq-h"><h3>Banque Qonto</h3><span class="bq-comptes">${B.comptes.map(c => `${esc(c.nom)} <b>${euro(c.solde)}</b>`).join(' · ')} · lu le ${depuis}</span><span style="display:flex;gap:6px"><button class="btn btn-s" id="bqCsv">Relevé expliqué (CSV)</button><button class="btn btn-s" id="bqSync">Actualiser</button></span></div>
+            <p class="sub" style="margin:4px 0 0">Écrivez sous chaque opération ce qu'elle est et pourquoi : l'explication suit dans « À saisir dans Zefyr » et dans le relevé expliqué.</p>
             ${B.erreur ? `<p class="zef-m" style="color:var(--red);font-size:.84rem">${esc(B.erreur)}</p>` : ''}
             <div class="segs" style="margin:10px 0 4px"><button class="seg${bqSeg === 'a_faire' ? ' on' : ''}" data-bqseg="a_faire">À attribuer <b>${aFaire.length}</b></button><button class="seg${bqSeg === 'faites' ? ' on' : ''}" data-bqseg="faites">Attribuées <b>${faites.length}</b></button><button class="seg${bqSeg === 'regles' ? ' on' : ''}" data-bqseg="regles">Habituelles <b>${B.regles.length}</b></button></div>
             <div id="bqListe">${bqSeg === 'regles' ? (B.regles.length ? B.regles.map(r => `<div class="bq-l"><div><b>« ${esc(r.motif)} »</b><span>${r.sens === 'credit' ? 'Entrée' : 'Sortie'} → ${r.type === 'gestion' ? 'Frais de gestion · ' + esc(r.categorie) : 'Mise de côté · ' + esc(r.motif_cote)}</span></div><button class="btn btn-s" data-bqregle="${esc(r.id)}">Supprimer</button></div>`).join('') : '<p class="vide">Aucune attribution habituelle. Cochez « Toujours » en attribuant un abonnement, le téléphone, les frais bancaires… : les suivants seront rangés seuls.</p>')
                 : liste.length ? liste.slice(0, 150).map(ligneBanque).join('') : `<p class="vide">${bqSeg === 'a_faire' ? 'Tout est attribué.' : 'Rien d\'attribué pour l\'instant.'}</p>`}</div>`;
+        $('#bqCsv').onclick = () => { location.href = lien('/api/admin/banque/export.csv'); };
+        el.querySelectorAll('.bq-expl').forEach(i => i.onchange = async () => {
+            try { banqueE = await api('/api/admin/banque/' + i.dataset.id, { method: 'PATCH', body: JSON.stringify({ explication: i.value }) }); i.classList.add('ok'); if (compta) { await chargerCompta(); blocZefyr(); } toast('Explication enregistrée'); } catch (e) { toast(e.message); }
+        });
         $('#bqSync').onclick = async () => { $('#bqSync').disabled = true; try { await lireBanque(true); toast('Compte Qonto relu'); } catch (e) { toast(e.message); } };
         el.querySelectorAll('[data-bqseg]').forEach(b => b.onclick = () => { bqSeg = b.dataset.bqseg; bqOuvert = null; rendreBanque(); });
         el.querySelectorAll('[data-bqregle]').forEach(b => b.onclick = async () => { try { banqueE = await api('/api/admin/banque/regles/' + b.dataset.bqregle, { method: 'DELETE' }); rendreBanque(); } catch (e) { toast(e.message); } });
         el.querySelectorAll('[data-bqouvre]').forEach(b => b.onclick = () => { const [id, mode] = b.dataset.bqouvre.split('|'); bqOuvert = bqOuvert && bqOuvert.id === id && bqOuvert.mode === mode ? null : { id, mode }; rendreBanque(); });
         el.querySelectorAll('[data-bqsug]').forEach(b => b.onclick = () => { const [id, i] = b.dataset.bqsug.split('|'), t = T.find(x => x.id === id), s = t.suggestions[+i];
-            if (s.type === 'frais') { bqOuvert = { id, mode: 'voiture', vehicule_id: s.vehicule_id }; rendreBanque(); } else attribuerBanque(id, s); });
+            if (s.type === 'frais') { bqOuvert = { id, mode: 'voiture', vehicule_id: s.vehicule_id }; rendreBanque(); } else attribuerBanque(id, { ...s }); });
         el.querySelectorAll('[data-bqretire]').forEach(b => b.onclick = async () => { try { banqueE = await api('/api/admin/banque/' + b.dataset.bqretire + '/attribuer', { method: 'DELETE' }); await apresBanque(); toast('Attribution retirée'); } catch (e) { toast(e.message); } });
         const F = el.querySelector('.bq-form');
         if (F) {
@@ -3114,25 +3121,27 @@ body.modal-ouvert { overflow: hidden; }
         const cr = t.sens === 'credit', a = t.affectation, o = bqOuvert && bqOuvert.id === t.id ? bqOuvert : null;
         const NAT = { achat: 'Achat', vente: 'Vente', frais: 'Frais', gestion: 'Frais de gestion', depense: 'Dépense déjà saisie', cote: 'Mis de côté' };
         let h = `<div class="bq-l"><div><b>${dateCourte(t.date)} · ${esc(t.libelle || t.type)}</b>${t.statut === 'pending' ? ' <span class="tag">en attente</span>' : ''}<span>${esc(t.detail || t.type)}${t.pieces.length ? ' · justificatif dans Qonto' : ''}</span></div><div class="bq-mt${cr ? ' cr' : ''}">${cr ? '+' : '−'} ${euro(t.montant)}</div>`;
-        if (a) return h + `<div class="bq-aff">→ ${esc([a.vehicule, a.type === 'cote' ? a.motif : a.categorie].filter(Boolean).join(' · ') || NAT[a.type])} <small>(${NAT[a.type] || a.type})</small>${a.zefyr === false ? '<span class="zef">à saisir dans Zefyr</span>' : a.zefyr ? '<span>saisi dans Zefyr</span>' : ''}<button class="btn btn-s btn-ghost" data-bqretire="${esc(t.id)}">Retirer</button></div></div>`;
-        h += `<div class="bq-act">${(t.suggestions || []).map((s, i) => `<button class="btn btn-s bq-sug" data-bqsug="${esc(t.id)}|${i}">${esc(s.texte)}</button>`).join('')}
+        const expl = `<input class="in bq-expl" data-id="${esc(t.id)}" value="${esc(t.explication || '')}" placeholder="Explication pour le comptable : ce que c'est, pourquoi…" maxlength="1000">`;
+        if (a) return h + expl + `<div class="bq-aff">→ ${esc([a.vehicule, a.type === 'cote' ? a.motif : a.categorie].filter(Boolean).join(' · ') || NAT[a.type])} <small>(${NAT[a.type] || a.type})</small>${a.zefyr === false ? '<span class="zef">à saisir dans Zefyr</span>' : a.zefyr ? '<span>saisi dans Zefyr</span>' : ''}<button class="btn btn-s btn-ghost" data-bqretire="${esc(t.id)}">Retirer</button></div></div>`;
+        h += expl + `<div class="bq-act">${(t.suggestions || []).map((s, i) => `<button class="btn btn-s bq-sug" data-bqsug="${esc(t.id)}|${i}">${esc(s.texte)}</button>`).join('')}
             <button class="btn btn-s${o && o.mode === 'voiture' ? ' btn-p' : ''}" data-bqouvre="${esc(t.id)}|voiture">Une voiture</button>
             ${cr ? '' : `<button class="btn btn-s${o && o.mode === 'gestion' ? ' btn-p' : ''}" data-bqouvre="${esc(t.id)}|gestion">Frais de gestion</button>`}
             <button class="btn btn-s btn-ghost${o && o.mode === 'cote' ? ' btn-p' : ''}" data-bqouvre="${esc(t.id)}|cote">Mettre de côté</button></div>`;
         if (o) {
             const motif = `<label class="chk"><input type="checkbox" name="habituel"> Toujours ranger « ${esc(t.libelle)} » ainsi</label>`;
-            const expl = `<textarea class="in" name="explication" rows="2" placeholder="Explication pour le comptable (facultatif)" style="height:auto;padding:8px 12px"></textarea>`;
             const V = (compta ? compta.vehicules : []).filter(v => v.statut !== 'perdu');
             h += `<form class="bq-form" data-id="${esc(t.id)}">${o.mode === 'voiture' ? `<select class="in" name="vehicule_id" required><option value="">Quelle voiture ?</option>${V.map(v => `<option value="${esc(v.id)}"${v.id === o.vehicule_id ? ' selected' : ''}>${esc(v.libelle)}${v.plaque ? ' · ' + esc(v.plaque) : ''} (${esc(compta.statuts[v.statut] || v.statut)})</option>`).join('')}</select>
                 ${cr ? '<input type="hidden" name="type" value="vente"><p class="sub" style="margin:0">Encaissement de la vente : le prix de vente et la marge seront mis à jour.</p>'
-                    : `<select class="in" name="type"><option value="frais">Frais sur la voiture</option><option value="achat">Paiement du prix d'achat</option></select><select class="in bq-cat" name="categorie">${compta.categories.vehicule.map(c => `<option>${esc(c)}</option>`).join('')}</select>`}${cr ? '' : expl}`
-                : o.mode === 'gestion' ? `<input type="hidden" name="type" value="gestion"><select class="in" name="categorie">${compta.categories.generales.filter(c => c !== compta.remboursement).map(c => `<option>${esc(c)}</option>`).join('')}</select>${expl}${motif}`
+                    : `<select class="in" name="type"><option value="frais">Frais sur la voiture</option><option value="achat">Paiement du prix d'achat</option></select><select class="in bq-cat" name="categorie">${compta.categories.vehicule.map(c => `<option>${esc(c)}</option>`).join('')}</select>`}`
+                : o.mode === 'gestion' ? `<input type="hidden" name="type" value="gestion"><select class="in" name="categorie">${compta.categories.generales.filter(c => c !== compta.remboursement).map(c => `<option>${esc(c)}</option>`).join('')}</select>${motif}`
                 : `<input type="hidden" name="type" value="cote"><select class="in" name="motif">${banqueE.mises_de_cote.map(m => `<option>${esc(m)}</option>`).join('')}</select>${motif}`}
                 <button class="btn btn-p">Attribuer</button></form>`;
         }
         return h + '</div>';
     }
     async function attribuerBanque(id, corps) {
+        // L'explication tapée sous l'opération (même pas encore enregistrée) part avec l'attribution.
+        const ex = document.querySelector(`.bq-expl[data-id="${CSS.escape(id)}"]`); if (ex) corps.explication = ex.value;
         try {
             const r = await api('/api/admin/banque/' + id + '/attribuer', { method: 'POST', body: JSON.stringify(corps) });
             banqueE = r; bqOuvert = null; await apresBanque();
