@@ -965,9 +965,11 @@ app.get('/api/marche/file', corsLbc, async (req, res) => {
     // Ordre : véhicules achetés / RDV d'abord (marges), puis offres et contacts, demandes en cours, archivées en dernier.
     const prio = { achetee: 0, rdv: 1, offre: 2, contactee: 3, nouvelle: 4 };
     const parRef = new Map((await store.listerDemandes()).map(d => [d.ref, d]));
-    // Demande de moins de 48 h : tout en tête (analyse en temps réel par le Mac mini).
-    const rang = f => { const d = parRef.get(f.ref) || {}; if (Date.now() - new Date(d.created_at) < 48 * 3600e3) return -1; return ((d.suivi || {}).archivee ? 10 : 0) + (prio[d.statut] != null ? prio[d.statut] : 6); };
+    // Véhicules achetés en tout premier (marges), puis demande de moins de 48 h (analyse en temps réel par le Mac mini).
+    const rang = f => { const d = parRef.get(f.ref) || {}; if (d.statut === 'achetee') return -2; if (Date.now() - new Date(d.created_at) < 48 * 3600e3) return -1; return ((d.suivi || {}).archivee ? 10 : 0) + (prio[d.statut] != null ? prio[d.statut] : 6); };
     file.sort((a, b) => rang(a) - rang(b));
+    // ?statut=achetee : ces véhicules seulement, même déjà relevés (travail prioritaire relancé à la main).
+    if (req.query.statut) { const st = String(req.query.statut); const sel = file.filter(f => (parRef.get(f.ref) || {}).statut === st); if (!req.query.grille) return res.json(sel); file.splice(0, file.length, ...sel); }
     // ?grille=1 : plaques avec un prix Sonar mais sans courbe prix / km (moins de 3 points) ni versions.
     if (req.query.grille) return res.json(file.filter(f => { const r = marche.releve(f.plaque); return r && r.moyenne && ((r.points || []).length < 3 || !(r.variantes || []).length); }));
     res.json(req.query.tout ? file : file.filter(f => !f.fait));

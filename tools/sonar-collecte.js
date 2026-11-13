@@ -145,10 +145,11 @@
     const E = window.__collecte = window.__collecte || {};
     E.etat = () => ({ mode: E.mode, faits: E.faits, erreurs: E.erreurs, reste: E.file ? E.file.length - E.i : 0, en_cours: !!E.actif, dernier: E.dernier, derniereErreur: E.derniereErreur });
     E.stop = () => { E.actif = false; return 'arrêt demandé'; };
-    E.lancer = async ({ mode = 'principal', limite = 0, depart = 0 } = {}) => {
+    E.lancer = async ({ mode = 'principal', limite = 0, depart = 0, statut = '' } = {}) => {
         if (E.actif) return 'déjà en cours';
         // grille : seulement les plaques qui n'ont pas encore leur courbe prix / km ni leurs versions.
-        const f = await fetch(API + '/file' + (mode === 'grille' ? '?grille=1' : ''), { headers: { 'X-Cle': window.__CLE } });
+        const q = [mode === 'grille' ? 'grille=1' : '', statut ? 'statut=' + encodeURIComponent(statut) : ''].filter(Boolean).join('&');
+        const f = await fetch(API + '/file' + (q ? '?' + q : ''), { headers: { 'X-Cle': window.__CLE } });
         if (!f.ok) return 'file LUNICAR : ' + f.status;
         E.file = await f.json(); E.i = depart; E.mode = mode; E.faits = 0; E.erreurs = 0; E.actif = true;
         (async () => {
