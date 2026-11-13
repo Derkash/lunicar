@@ -949,6 +949,10 @@ const corsLbc = (req, res, next) => {
 };
 app.options('/api/marche/*', corsLbc);
 // File : une ligne par plaque (la demande la plus récente), celles sans relevé d'abord. ?tout=1 : toutes.
+// Plaque déjà passée : prix relevé, ou réponse définitive de Leboncoin (plaque inconnue, rien de comparable) de moins de 30 jours.
+// Seuls les échecs techniques (page perdue, réseau) repassent tout de suite : sinon la file reprend les mêmes plaques en boucle.
+const REPONSES_DEFINITIVES = ['plaque inconnue de Sonar', 'aucune version proposée', 'ni prix Sonar ni annonces comparables'];
+const dejaFait = r => !!r && (!r.erreur || (REPONSES_DEFINITIVES.includes(r.erreur) && Date.now() - new Date(r.date) < 30 * 864e5));
 app.get('/api/marche/file', corsLbc, async (req, res) => {
     const vus = new Set(), file = [];
     for (const d of await store.listerDemandes()) {
@@ -956,7 +960,7 @@ app.get('/api/marche/file', corsLbc, async (req, res) => {
         if (!p || p.length < 6 || vus.has(p)) continue;
         vus.add(p);
         const km = Number(String(x.kilometrage || '').replace(/\D/g, '')) || 0;
-        file.push({ ref: d.ref, plaque: p, km, vehicule: String(x.vehicule || '').slice(0, 60), annee: x.annee || '', energie: x.energie_siv || '', fait: !!(marche.releve(p) && !marche.releve(p).erreur) });
+        file.push({ ref: d.ref, plaque: p, km, vehicule: String(x.vehicule || '').slice(0, 60), annee: x.annee || '', energie: x.energie_siv || '', fait: dejaFait(marche.releve(p)) });
     }
     // Ordre : véhicules achetés / RDV d'abord (marges), puis offres et contacts, demandes en cours, archivées en dernier.
     const prio = { achetee: 0, rdv: 1, offre: 2, contactee: 3, nouvelle: 4 };
