@@ -604,6 +604,23 @@ ul.plain li { margin: 3px 0; }
 .hbar b small { font-weight: 500; color: var(--ink-4); margin-left: 4px; }
 .vide { color: var(--ink-4); font-size: .86rem; padding: 8px 0; }
 
+/* ---------- Comptabilité : banque Qonto ---------- */
+.bq-h { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; justify-content: space-between; }
+.bq-comptes { font-size: .84rem; color: var(--ink-5); }
+.bq-comptes b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.bq-l { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 10px 0; border-bottom: 1px solid var(--line-2); }
+.bq-l:last-child { border-bottom: 0; }
+.bq-l b { font-size: .9rem; overflow-wrap: anywhere; }
+.bq-l span { display: block; font-size: .78rem; color: var(--ink-5); margin-top: 2px; overflow-wrap: anywhere; }
+.bq-mt { font-weight: 650; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.bq-mt.cr { color: var(--green); }
+.bq-act { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.bq-sug { border-style: dashed; }
+.bq-aff { grid-column: 1 / -1; font-size: .8rem; color: var(--green); font-weight: 600; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.bq-aff .zef { color: var(--orange); font-weight: 600; }
+.bq-form { grid-column: 1 / -1; display: grid; gap: 8px; background: var(--marine-1); border-radius: 10px; padding: 10px; margin-top: 4px; }
+.bq-form .in { width: 100%; }
+
 /* ---------- Comptabilité : Zefyr ---------- */
 .zef-liste { display: grid; gap: 8px; }
 .zef-l { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line-2); }
@@ -1441,7 +1458,7 @@ body.modal-ouvert { overflow: hidden; }
             <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
             <button data-tab="planning"><svg><use href="#i-cal"/></svg>Rendez-vous</button>
             <button data-tab="vehicules"><svg><use href="#i-cle"/></svg>Nos véhicules</button>
-            <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Comptabilité</button>
+            <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Comptabilité<span class="count" data-count="banque"></span></button>
             <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
             <button data-tab="analyses"><svg><use href="#i-ana"/></svg>Analyses</button>
             <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
@@ -1531,6 +1548,7 @@ body.modal-ouvert { overflow: hidden; }
 
         <section data-view="depenses" hidden>
             <div class="page-h"><h1>Comptabilité</h1><span>dépenses, justificatifs, et ce qu'il reste à saisir dans Zefyr</span></div>
+            <div class="tb-card" id="banque" style="margin:0 0 14px"></div>
             <div class="soldes" id="soldes"></div>
             <div class="tb-card" id="depForm" style="margin:0 0 14px"></div>
             <div class="toolbar">
@@ -1736,7 +1754,7 @@ body.modal-ouvert { overflow: hidden; }
     <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
     <button data-tab="planning"><svg><use href="#i-cal"/></svg>Rendez-vous<span class="count" data-count="rdv"></span></button>
     <button data-tab="vehicules"><svg><use href="#i-cle"/></svg>Véhicules</button>
-    <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Compta</button>
+    <button data-tab="depenses"><svg><use href="#i-euro"/></svg>Compta<span class="count" data-count="banque"></span></button>
     <button data-tab="plus"><svg><use href="#i-plus"/></svg>Plus<span class="count" data-count="plus"></span></button>
 </nav>
 <div class="plus-sheet" id="plusSheet" hidden><div class="plus-in">
@@ -1825,6 +1843,7 @@ body.modal-ouvert { overflow: hidden; }
         chargerVeille().catch(() => {});
         chargerAnnonces().catch(() => {});
         chargerBoite().catch(() => {});
+        lireBanque(false).catch(() => {});
         ouvrirDepuisHash();
         activerPush();
         nettoyerContacts();
@@ -3047,6 +3066,82 @@ body.modal-ouvert { overflow: hidden; }
         formDepense();
         listeDepenses();
         blocZefyr();
+        if (banqueE) rendreBanque(); else $('#banque').innerHTML = '<p class="vide">Lecture du compte Qonto…</p>';
+        lireBanque(false).catch(e => { $('#banque').innerHTML = `<h3>Banque Qonto</h3><p class="vide">${esc(e.message)}</p>`; });
+    }
+
+    // Banque Qonto : opérations lues au démarrage de l'appli (au plus toutes les 10 min) ou sur demande,
+    // puis attribuées à une voiture (achat, frais, vente), aux frais de gestion, ou mises de côté.
+    let banqueE = null, bqSeg = 'a_faire', bqOuvert = null;
+    async function lireBanque(force) {
+        banqueE = await api('/api/admin/banque/sync', { method: 'POST', body: JSON.stringify({ force }) }).catch(async e => { const b = await api('/api/admin/banque'); b.erreur = e.message; return b; });
+        compter('banque', banqueE.a_attribuer);
+        if (banqueE.nouvelles && compta) await chargerCompta();
+        if (!$('[data-view="depenses"]').hidden) { if (banqueE.auto) { await chargerCompta(); listeDepenses(); blocZefyr(); } rendreBanque(); }
+        return banqueE;
+    }
+    function rendreBanque() {
+        const B = banqueE, el = $('#banque');
+        if (!B.configure) {
+            el.innerHTML = `<h3>Banque Qonto</h3><p class="sub">Collez l'identifiant et la clé secrète (Qonto › Paramètres › Intégrations › Clé API). Accès en lecture seule : aucun virement ne peut être fait avec.</p>
+                <form class="bq-form" id="bqCle"><input class="in" name="login" placeholder="Identifiant (ex. societe-1234)" autocomplete="off" required><input class="in" name="cle" placeholder="Clé secrète" autocomplete="off" required><button class="btn btn-p">Connecter Qonto</button></form>`;
+            $('#bqCle').onsubmit = async e => { e.preventDefault(); try { await api('/api/admin/banque/identifiants', { method: 'PUT', body: JSON.stringify(Object.fromEntries(new FormData(e.target))) }); toast('Qonto connecté : lecture des opérations…'); await lireBanque(true); } catch (err) { toast(err.message); } };
+            return;
+        }
+        const T = B.transactions, aFaire = T.filter(t => !t.affectation), faites = T.filter(t => t.affectation);
+        const depuis = B.sync_le ? new Date(B.sync_le).toLocaleString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : 'jamais';
+        const liste = bqSeg === 'a_faire' ? aFaire : faites;
+        el.innerHTML = `<div class="bq-h"><h3>Banque Qonto</h3><span class="bq-comptes">${B.comptes.map(c => `${esc(c.nom)} <b>${euro(c.solde)}</b>`).join(' · ')} · lu le ${depuis}</span><button class="btn btn-s" id="bqSync">Actualiser</button></div>
+            ${B.erreur ? `<p class="zef-m" style="color:var(--red);font-size:.84rem">${esc(B.erreur)}</p>` : ''}
+            <div class="segs" style="margin:10px 0 4px"><button class="seg${bqSeg === 'a_faire' ? ' on' : ''}" data-bqseg="a_faire">À attribuer <b>${aFaire.length}</b></button><button class="seg${bqSeg === 'faites' ? ' on' : ''}" data-bqseg="faites">Attribuées <b>${faites.length}</b></button><button class="seg${bqSeg === 'regles' ? ' on' : ''}" data-bqseg="regles">Habituelles <b>${B.regles.length}</b></button></div>
+            <div id="bqListe">${bqSeg === 'regles' ? (B.regles.length ? B.regles.map(r => `<div class="bq-l"><div><b>« ${esc(r.motif)} »</b><span>${r.sens === 'credit' ? 'Entrée' : 'Sortie'} → ${r.type === 'gestion' ? 'Frais de gestion · ' + esc(r.categorie) : 'Mise de côté · ' + esc(r.motif_cote)}</span></div><button class="btn btn-s" data-bqregle="${esc(r.id)}">Supprimer</button></div>`).join('') : '<p class="vide">Aucune attribution habituelle. Cochez « Toujours » en attribuant un abonnement, le téléphone, les frais bancaires… : les suivants seront rangés seuls.</p>')
+                : liste.length ? liste.slice(0, 150).map(ligneBanque).join('') : `<p class="vide">${bqSeg === 'a_faire' ? 'Tout est attribué.' : 'Rien d\'attribué pour l\'instant.'}</p>`}</div>`;
+        $('#bqSync').onclick = async () => { $('#bqSync').disabled = true; try { await lireBanque(true); toast('Compte Qonto relu'); } catch (e) { toast(e.message); } };
+        el.querySelectorAll('[data-bqseg]').forEach(b => b.onclick = () => { bqSeg = b.dataset.bqseg; bqOuvert = null; rendreBanque(); });
+        el.querySelectorAll('[data-bqregle]').forEach(b => b.onclick = async () => { try { banqueE = await api('/api/admin/banque/regles/' + b.dataset.bqregle, { method: 'DELETE' }); rendreBanque(); } catch (e) { toast(e.message); } });
+        el.querySelectorAll('[data-bqouvre]').forEach(b => b.onclick = () => { const [id, mode] = b.dataset.bqouvre.split('|'); bqOuvert = bqOuvert && bqOuvert.id === id && bqOuvert.mode === mode ? null : { id, mode }; rendreBanque(); });
+        el.querySelectorAll('[data-bqsug]').forEach(b => b.onclick = () => { const [id, i] = b.dataset.bqsug.split('|'), t = T.find(x => x.id === id), s = t.suggestions[+i];
+            if (s.type === 'frais') { bqOuvert = { id, mode: 'voiture', vehicule_id: s.vehicule_id }; rendreBanque(); } else attribuerBanque(id, s); });
+        el.querySelectorAll('[data-bqretire]').forEach(b => b.onclick = async () => { try { banqueE = await api('/api/admin/banque/' + b.dataset.bqretire + '/attribuer', { method: 'DELETE' }); await apresBanque(); toast('Attribution retirée'); } catch (e) { toast(e.message); } });
+        const F = el.querySelector('.bq-form');
+        if (F) {
+            const nat = F.querySelector('[name=type]'), cat = F.querySelector('.bq-cat');
+            if (nat && cat) nat.onchange = () => { cat.hidden = nat.value !== 'frais'; };
+            F.onsubmit = e => { e.preventDefault(); const o = Object.fromEntries(new FormData(F)); o.habituel = !!o.habituel; attribuerBanque(F.dataset.id, o); };
+        }
+    }
+    function ligneBanque(t) {
+        const cr = t.sens === 'credit', a = t.affectation, o = bqOuvert && bqOuvert.id === t.id ? bqOuvert : null;
+        const NAT = { achat: 'Achat', vente: 'Vente', frais: 'Frais', gestion: 'Frais de gestion', depense: 'Dépense déjà saisie', cote: 'Mis de côté' };
+        let h = `<div class="bq-l"><div><b>${dateCourte(t.date)} · ${esc(t.libelle || t.type)}</b>${t.statut === 'pending' ? ' <span class="tag">en attente</span>' : ''}<span>${esc(t.detail || t.type)}${t.pieces.length ? ' · justificatif dans Qonto' : ''}</span></div><div class="bq-mt${cr ? ' cr' : ''}">${cr ? '+' : '−'} ${euro(t.montant)}</div>`;
+        if (a) return h + `<div class="bq-aff">→ ${esc([a.vehicule, a.type === 'cote' ? a.motif : a.categorie].filter(Boolean).join(' · ') || NAT[a.type])} <small>(${NAT[a.type] || a.type})</small>${a.zefyr === false ? '<span class="zef">à saisir dans Zefyr</span>' : a.zefyr ? '<span>saisi dans Zefyr</span>' : ''}<button class="btn btn-s btn-ghost" data-bqretire="${esc(t.id)}">Retirer</button></div></div>`;
+        h += `<div class="bq-act">${(t.suggestions || []).map((s, i) => `<button class="btn btn-s bq-sug" data-bqsug="${esc(t.id)}|${i}">${esc(s.texte)}</button>`).join('')}
+            <button class="btn btn-s${o && o.mode === 'voiture' ? ' btn-p' : ''}" data-bqouvre="${esc(t.id)}|voiture">Une voiture</button>
+            ${cr ? '' : `<button class="btn btn-s${o && o.mode === 'gestion' ? ' btn-p' : ''}" data-bqouvre="${esc(t.id)}|gestion">Frais de gestion</button>`}
+            <button class="btn btn-s btn-ghost${o && o.mode === 'cote' ? ' btn-p' : ''}" data-bqouvre="${esc(t.id)}|cote">Mettre de côté</button></div>`;
+        if (o) {
+            const motif = `<label class="chk"><input type="checkbox" name="habituel"> Toujours ranger « ${esc(t.libelle)} » ainsi</label>`;
+            const expl = `<textarea class="in" name="explication" rows="2" placeholder="Explication pour le comptable (facultatif)" style="height:auto;padding:8px 12px"></textarea>`;
+            const V = (compta ? compta.vehicules : []).filter(v => v.statut !== 'perdu');
+            h += `<form class="bq-form" data-id="${esc(t.id)}">${o.mode === 'voiture' ? `<select class="in" name="vehicule_id" required><option value="">Quelle voiture ?</option>${V.map(v => `<option value="${esc(v.id)}"${v.id === o.vehicule_id ? ' selected' : ''}>${esc(v.libelle)}${v.plaque ? ' · ' + esc(v.plaque) : ''} (${esc(compta.statuts[v.statut] || v.statut)})</option>`).join('')}</select>
+                ${cr ? '<input type="hidden" name="type" value="vente"><p class="sub" style="margin:0">Encaissement de la vente : le prix de vente et la marge seront mis à jour.</p>'
+                    : `<select class="in" name="type"><option value="frais">Frais sur la voiture</option><option value="achat">Paiement du prix d'achat</option></select><select class="in bq-cat" name="categorie">${compta.categories.vehicule.map(c => `<option>${esc(c)}</option>`).join('')}</select>`}${cr ? '' : expl}`
+                : o.mode === 'gestion' ? `<input type="hidden" name="type" value="gestion"><select class="in" name="categorie">${compta.categories.generales.filter(c => c !== compta.remboursement).map(c => `<option>${esc(c)}</option>`).join('')}</select>${expl}${motif}`
+                : `<input type="hidden" name="type" value="cote"><select class="in" name="motif">${banqueE.mises_de_cote.map(m => `<option>${esc(m)}</option>`).join('')}</select>${motif}`}
+                <button class="btn btn-p">Attribuer</button></form>`;
+        }
+        return h + '</div>';
+    }
+    async function attribuerBanque(id, corps) {
+        try {
+            const r = await api('/api/admin/banque/' + id + '/attribuer', { method: 'POST', body: JSON.stringify(corps) });
+            banqueE = r; bqOuvert = null; await apresBanque();
+            toast(r.avertissement || 'Opération attribuée');
+        } catch (e) { toast(e.message); }
+    }
+    async function apresBanque() {
+        compter('banque', banqueE.a_attribuer);
+        await chargerCompta(); listeDepenses(); blocZefyr(); rendreBanque();
     }
     // Préparation de la saisie dans Zefyr : ce qui manque (justificatif, HT/TVA, explication), lignes prêtes à copier, et pointage.
     function blocZefyr() {
