@@ -958,6 +958,11 @@ app.get('/api/marche/file', corsLbc, async (req, res) => {
         const km = Number(String(x.kilometrage || '').replace(/\D/g, '')) || 0;
         file.push({ ref: d.ref, plaque: p, km, vehicule: String(x.vehicule || '').slice(0, 60), annee: x.annee || '', energie: x.energie_siv || '', fait: !!(marche.releve(p) && !marche.releve(p).erreur) });
     }
+    // Ordre : véhicules achetés / RDV d'abord (marges), puis offres et contacts, demandes en cours, archivées en dernier.
+    const prio = { achetee: 0, rdv: 1, offre: 2, contactee: 3, nouvelle: 4 };
+    const parRef = new Map((await store.listerDemandes()).map(d => [d.ref, d]));
+    const rang = f => { const d = parRef.get(f.ref) || {}; return ((d.suivi || {}).archivee ? 10 : 0) + (prio[d.statut] != null ? prio[d.statut] : 6); };
+    file.sort((a, b) => rang(a) - rang(b));
     res.json(req.query.tout ? file : file.filter(f => !f.fait));
 });
 // Le script de collecte lui-même (tools/sonar-collecte.js), rechargé par l'onglet Leboncoin après chaque amélioration.
