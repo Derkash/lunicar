@@ -1010,6 +1010,7 @@ ul.plain li { margin: 3px 0; }
 .mk-p { display: inline-block; padding: 1px 7px; border-radius: 99px; font-weight: 650; font-size: .8rem; }
 .mk-p small { font-weight: 500; opacity: .7; }
 .mk-p.mk-v { background: var(--green-1); color: var(--green); } .mk-p.mk-o { background: #FFF3DA; color: #8A5A00; } .mk-p.mk-r { background: #F8E1DE; color: var(--red); }
+.mk-ret td { font-weight: 650; } .mk-ret small { color: var(--green); font-weight: 600; }
 .mk-av { margin: 10px 0 0; padding-left: 18px; font-size: .8rem; color: var(--ink-5); }
 .marche details { margin-top: 10px; font-size: .86rem; }
 details.ancienne > summary { cursor: pointer; font-weight: 600; color: var(--ink-5); }
@@ -4697,6 +4698,7 @@ body.modal-ouvert { overflow: hidden; }
                 <div><span>Revente</span><b class="num"><span class="score s-${classeScore(sc)} grand">${sc}<small>/100</small></span></b><small>${esc(a.revente_verdict || '')}</small></div>
             </div>
             ${a.tranches.length ? `<div class="sonar-bandes">${a.tranches.map((t, i) => `<div class="${MK_TR[t[0]] || ''}${i === iDem ? ' ici' : ''}"><b>${esc(t[0])}</b>${eur(t[1])} – ${eur(t[2])}${i === iDem ? '<i>son prix</i>' : ''}${i === iRev && i !== iDem ? '<i class="rv">notre revente</i>' : ''}</div>`).join('')}</div>` : ''}
+            ${a.versions ? `<details class="mk-vers"><summary>Selon la version : ${eur(a.versions.min)} – ${eur(a.versions.max)} (${a.versions.n} versions de cette plaque)</summary><table class="mk-l">${a.versions.liste.map(t => `<tr${t[3] ? ' class="mk-ret"' : ''}><td>${esc(t[0] || '')}${t[3] ? ' <small>retenue</small>' : ''}</td><td>${esc(t[1] || '')}</td><td class="num">${eur(t[2])}</td></tr>`).join('')}</table></details>` : ''}
             ${dm ? `<p class="mk-verdict mk-${MK_VERDICT[dm.verdict][0]}"><b>${MK_VERDICT[dm.verdict][1]}</b> · il demande ${eur(dm.prix)}${dm.position_lbc ? ` (« ${esc(dm.position_lbc)} » sur Leboncoin)` : ''} · ${esc(dm.texte)}</p>` : `<p class="mk-verdict"><b>Pas de prix demandé</b> · proposer au plus ${eur(a.achat_max)}</p>`}
             <div class="mk-cols">
                 <div><h4>Pourquoi ${sc}/100 en revente</h4><table class="mk-crit">${(a.criteres || []).map(c => `<tr><td>${esc(c.l)}<small>${esc(c.v)}</small></td><td class="num">${c.poids} %</td><td><span class="mk-barre"><i style="width:${c.note}%"></i></span><b class="num">${c.note}</b></td></tr>`).join('')}</table></div>

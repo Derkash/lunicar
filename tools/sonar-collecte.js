@@ -162,14 +162,26 @@
                     const km = dm.km >= 1000 && dm.km < 600000 ? dm.km : 150000;
                     const version = { id: v.id, label: v.label, trim: v.trim, make: (lic.make || {}).label, model: (lic.model || {}).label, annee: lic.year, mec: lic.registration_date, suggeree: v.suggeree, choix: v.choix + (km !== dm.km ? ' · km de la demande absent ou aberrant, calcul à 150 000 km' : '') };
                     if (mode === 'grille') {
-                        const points = [];
+                        // Courbe prix / km de la version retenue, puis le prix de chaque autre version au km de la demande
+                        // (écart dû à la finition / motorisation). Rien si Sonar n'a pas de prix (véhicule de plus de 20 ans).
+                        const points = [], variantes = [];
                         for (const k of GRILLE) {
                             if (!E.actif) break;
                             const r = await resultat(v.id, lic, k, false);
+                            if (!r.moyenne && !points.length) break;
                             if (r.moyenne) points.push({ km: k, moyenne: r.moyenne, fiabilite: r.fiabilite, tranches: r.tranches });
-                            await pause(700);
+                            await pause(600);
                         }
-                        await envoyer({ plaque: dm.plaque, ref: dm.ref, grille: true, points });
+                        if (points.length) {
+                            const autres = (lic.trims || []).flatMap(t => (t.versions || []).map(x => ({ ...x, trim: t.label }))).filter(x => x.id !== v.id).slice(0, 10);
+                            for (const x of autres) {
+                                if (!E.actif) break;
+                                const r = await resultat(x.id, lic, km, false);
+                                variantes.push([x.id, x.label, x.trim, r.moyenne || 0, r.fiabilite || 0]);
+                                await pause(600);
+                            }
+                        }
+                        await envoyer({ plaque: dm.plaque, ref: dm.ref, grille: true, points, variantes, variantes_km: km });
                     } else {
                         const r = await resultat(v.id, lic, km, true), vh = r.veh || {};
                         if (!r.moyenne) { try { r.annonces = await annonces(vh, lic, km); } catch (e) { r.annonces = null; } }
