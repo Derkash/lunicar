@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Collecteur Sonar LUNICAR (Mac mini) : lancé à l'ouverture de session, relancé s'il s'arrête. Chrome reste ouvert (AbandonProcessGroup). -->
+<plist version="1.0"><dict>
+  <key>Label</key><string>fr.lunicar.sonar</string>
+  <key>ProgramArguments</key><array><string>/Users/derka/lunicar-sonar/node/bin/node</string><string>/Users/derka/lunicar-sonar/veille.js</string></array>
+  <key>WorkingDirectory</key><string>/Users/derka/lunicar-sonar</string>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>ThrottleInterval</key><integer>30</integer>
+  <key>AbandonProcessGroup</key><true/>
+  <key>ProcessType</key><string>Interactive</string>
+  <key>StandardOutPath</key><string>/Users/derka/lunicar-sonar/veille.log</string>
+  <key>StandardErrorPath</key><string>/Users/derka/lunicar-sonar/veille.log</string>
+</dict></plist>
