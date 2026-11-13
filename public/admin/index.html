@@ -656,7 +656,7 @@ ul.plain li { margin: 3px 0; }
 .ap-kv a { color: var(--marine); font-weight: 600; text-decoration: none; }
 .ap-kv small { color: var(--ink-4); }
 .ap-kv .pt { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 6px; }
-.ap-chiffres { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ap-chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
 .ap-chiffres b { display: block; font-size: 1.15rem; font-weight: 700; margin: 2px 0; }
 .ap-chiffres small { display: block; font-size: .76rem; color: var(--ink-4); line-height: 1.35; }
 .ap-msg { grid-column: 1 / -1; margin: 6px 0 0; padding: 8px 12px; border-left: 3px solid var(--gold, #B8923A); background: #FAF7F0; border-radius: 0 10px 10px 0; font-size: .92rem; line-height: 1.5; color: var(--ink-7); white-space: pre-wrap; }
@@ -972,6 +972,48 @@ ul.plain li { margin: 3px 0; }
 .sonar-bandes .tba { background: #DCEFE3; } .sonar-bandes .ba { background: #E8F4EC; } .sonar-bandes .eq { background: #EEF1F5; }
 .sonar-bandes .ls { background: #FBF0DD; } .sonar-bandes .ad { background: #F8E1DE; }
 .sonar-bandes .ici { outline: 2px solid var(--marine); }
+.sonar-bandes i { display: block; font-style: normal; font-size: .66rem; font-weight: 700; color: var(--marine); margin-top: 2px; }
+.sonar-bandes i.rv { color: var(--green); }
+.marche h3 small { font-weight: 500; color: var(--ink-4); font-size: .78rem; }
+.mk-tete { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 12px 0 0; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
+.mk-tete > div { padding: 10px 12px; border-left: 1px solid var(--line-2); min-width: 0; }
+.mk-tete > div:first-child { border-left: 0; padding-left: 0; }
+.mk-tete span { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-5); font-weight: 600; }
+.mk-tete b { display: block; font-size: 1.25rem; font-weight: 700; margin: 3px 0; }
+.mk-tete small { display: block; font-size: .74rem; color: var(--ink-4); line-height: 1.35; }
+.mk-tete .mk-max b { color: var(--marine); }
+.mk-verdict { margin: 12px 0 0; padding: 9px 12px; border-radius: 10px; background: #F1EFEA; font-size: .9rem; }
+.mk-verdict.mk-v { background: var(--green-1); } .mk-verdict.mk-o { background: #FFF3DA; } .mk-verdict.mk-r { background: #F8E1DE; }
+.mk-cols { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; margin-top: 14px; }
+.mk-cols h4 { margin: 0 0 6px; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-5); }
+.mk-crit { width: 100%; border-collapse: collapse; font-size: .86rem; }
+.mk-crit td { padding: 5px 6px 5px 0; border-top: 1px solid var(--line-2); vertical-align: top; }
+.mk-crit td small { display: block; color: var(--ink-4); font-size: .76rem; }
+.mk-crit td:nth-child(2) { color: var(--ink-4); width: 42px; }
+.mk-crit td:last-child { width: 120px; white-space: nowrap; }
+.mk-barre { display: inline-block; width: 70px; height: 6px; border-radius: 3px; background: var(--line-2); vertical-align: middle; margin-right: 6px; overflow: hidden; }
+.mk-barre i { display: block; height: 100%; background: var(--marine); }
+.mk-spark { width: 100%; height: 56px; display: block; }
+.mk-spark .mk-v { fill: #C9D3E3; } .mk-spark .mk-a { fill: none; stroke: var(--gold, #B8923A); stroke-width: 2; }
+.mk-l { width: 100%; border-collapse: collapse; font-size: .82rem; margin-top: 6px; }
+.mk-l th { text-align: left; font-weight: 600; color: var(--ink-5); padding: 4px 6px 4px 0; }
+.mk-l td { padding: 4px 6px 4px 0; border-top: 1px solid var(--line-2); }
+.mk-reg h3 small { font-weight: 500; color: var(--ink-4); font-size: .8rem; }
+.mk-reg-g { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px 10px; align-items: end; }
+.mk-mat { overflow-x: auto; padding: 0; }
+.mk-mat table { width: 100%; border-collapse: collapse; font-size: .86rem; min-width: 820px; }
+.mk-mat th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-5); padding: 10px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.mk-mat th[data-mk-tri] { cursor: pointer; text-decoration: underline dotted; } .mk-mat th.on { color: var(--marine); }
+.mk-mat td { padding: 8px 10px; border-top: 1px solid var(--line-2); }
+.mk-mat td small { display: block; color: var(--ink-4); font-size: .74rem; }
+.mk-mat .num { text-align: right; }
+.mk-p { display: inline-block; padding: 1px 7px; border-radius: 99px; font-weight: 650; font-size: .8rem; }
+.mk-p small { font-weight: 500; opacity: .7; }
+.mk-p.mk-v { background: var(--green-1); color: var(--green); } .mk-p.mk-o { background: #FFF3DA; color: #8A5A00; } .mk-p.mk-r { background: #F8E1DE; color: var(--red); }
+.mk-av { margin: 10px 0 0; padding-left: 18px; font-size: .8rem; color: var(--ink-5); }
+.marche details { margin-top: 10px; font-size: .86rem; }
+details.ancienne > summary { cursor: pointer; font-weight: 600; color: var(--ink-5); }
+@media (max-width: 720px) { .mk-tete { grid-template-columns: 1fr 1fr; } .mk-tete > div:nth-child(3) { border-left: 0; padding-left: 0; } .mk-cols { grid-template-columns: 1fr; } }
 .sonar .lecture { margin: 12px 0 0; padding-left: 18px; font-size: .88rem; }
 .sonar .lecture li { margin: 3px 0; }
 .sonar details { margin-top: 10px; font-size: .86rem; }
@@ -1404,6 +1446,7 @@ body.modal-ouvert { overflow: hidden; }
             <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
             <button data-tab="boite"><svg><use href="#i-boite"/></svg>Boîte mail<span class="count" data-count="boite"></span></button>
             <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
+            <button data-tab="marche"><svg><use href="#i-stat"/></svg>Marché Leboncoin</button>
             <button data-tab="annonces"><svg><use href="#i-annonce"/></svg>Annonces<span class="count discret" data-count="annonces"></span></button>
             <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
             <a href="/admino/articles"><svg><use href="#i-art"/></svg>Articles</a>
@@ -1591,6 +1634,26 @@ body.modal-ouvert { overflow: hidden; }
             <p class="sub vl-pied">Le robot ne poste rien : relisez, adaptez à votre voix et postez vous-même depuis votre compte. 2 à 3 réponses par jour au maximum.</p>
         </section>
 
+        <section data-view="marche" hidden>
+            <div class="page-h"><h1>Marché Leboncoin</h1><span>base Sonar Pricing de toutes nos demandes : prix au km, délai de vente, demande</span></div>
+            <p class="sub" id="mkEtat"></p>
+            <form class="card mk-reg" id="mkReg">
+                <h3 style="margin:0 0 8px">Calcul de l'achat max <small id="mkFrais"></small></h3>
+                <div class="mk-reg-g">
+                    <label class="f">Frais divers (€ TTC)<input class="in num" name="frais_ttc" inputmode="decimal"></label>
+                    <label class="f">Annonce Leboncoin (€ HT)<input class="in num" name="annonce_ht" inputmode="decimal"></label>
+                    <label class="f">TVA (%)<input class="in num" name="tva" inputmode="decimal"></label>
+                    <label class="f">Marge minimale (€)<input class="in num" name="marge_min" inputmode="decimal"></label>
+                    <label class="f">Marge en % de la revente<input class="in num" name="marge_pct" inputmode="decimal"></label>
+                    <button class="btn btn-p" type="submit">Enregistrer</button>
+                </div>
+                <p class="sub" style="margin:8px 0 0">Achat max = revente visée (haut de « Très bonne affaire » sur Leboncoin) − frais − marge (la plus grande des deux). L'état du véhicule n'est jamais déduit : la remise en état se juge à la main.
+                Revente /100 = délai réel de vente (40 %) + demande, l'indice de visites comparé aux autres modèles (35 %) + volume de ventes (15 %) + fiabilité du prix (10 %).</p>
+            </form>
+            <div class="filters"><input class="in grow" id="mkQ" type="search" placeholder="Filtrer : marque, modèle, énergie, années"></div>
+            <div id="mkListe"></div>
+        </section>
+
         <section data-view="annonces" hidden>
             <div class="page-h"><h1>Annonces</h1><span>petites citadines repérées dans vos alertes Leboncoin</span></div>
             <div id="anAvis"></div>
@@ -1681,6 +1744,7 @@ body.modal-ouvert { overflow: hidden; }
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
     <button data-tab="boite"><svg><use href="#i-boite"/></svg>Boîte mail<span class="count" data-count="boite"></span></button>
     <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
+    <button data-tab="marche"><svg><use href="#i-stat"/></svg>Marché Leboncoin</button>
     <button data-tab="annonces"><svg><use href="#i-annonce"/></svg>Annonces<span class="count discret" data-count="annonces"></span></button>
     <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
     <a href="/admino/articles"><svg><use href="#i-art"/></svg>Articles du blog</a>
@@ -1718,6 +1782,7 @@ body.modal-ouvert { overflow: hidden; }
     const choisies = new Set();
     let affichees = [];
     let etat = { statuts: {} }, demandes = [], messages = [], courant = null, poll = null, catalogue = null;
+    let marcheA = {}, marcheR = null; // analyses marché Leboncoin par réf. + réglages (frais, marge)
 
     const toast = t => { document.querySelectorAll('.toast:not([data-garde])').forEach(x => x.remove()); const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
     async function api(url, opts = {}) {
@@ -1862,7 +1927,7 @@ body.modal-ouvert { overflow: hidden; }
     function allerOnglet(tab) {
         $('#plusSheet').hidden = true;
         if (!$('#sheet').hidden || !$('#vpage').hidden) { history.pushState({}, '', BASE); quitterFiche(); quitterVehicule(); }
-        const dansPlus = ['stats', 'analyses', 'photos', 'boite', 'forums', 'annonces', 'reglages'].includes(tab);
+        const dansPlus = ['stats', 'analyses', 'photos', 'boite', 'marche', 'forums', 'annonces', 'reglages'].includes(tab);
         document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
         document.querySelectorAll('#navbas button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab || (dansPlus && x.dataset.tab === 'plus')));
         document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== tab);
@@ -1876,6 +1941,7 @@ body.modal-ouvert { overflow: hidden; }
         if (tab === 'planning') vuePlanning();
         if (tab === 'forums') vueForums();
         if (tab === 'annonces') vueAnnonces();
+        if (tab === 'marche') vueMarche();
         if (tab === 'boite') vueBoite();
     }
     const onglet = e => {
@@ -1961,7 +2027,8 @@ body.modal-ouvert { overflow: hidden; }
     }
     // ---------------- Demandes
     async function charger() {
-        [demandes] = await Promise.all([api('/api/admin/demandes'), catalogue ? null : api('/api/admin/catalogue/marques').then(c => { catalogue = c; }).catch(() => {})]);
+        [demandes] = await Promise.all([api('/api/admin/demandes'), catalogue ? null : api('/api/admin/catalogue/marques').then(c => { catalogue = c; }).catch(() => {}),
+            api('/api/admin/marche/analyses').then(r => { marcheA = r.analyses || {}; marcheR = r.reglages; }).catch(() => {})]);
         // Même téléphone déjà reçu plus tôt : le vendeur revient (ou s'est trompé de formulaire).
         const vus = new Map();
         [...demandes].sort((p, q) => p.created_at.localeCompare(q.created_at)).forEach(d => {
@@ -2031,7 +2098,13 @@ body.modal-ouvert { overflow: hidden; }
         const arr = Math.max(1, Number(r.arrondi) || 50);
         return Math.max(0, Math.floor(brut / arr) * arr);
     }
-    const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || maxRecalcule(d) || ((d.estimation || {}).prix || {}).max_achat || 0;
+    // Achat max (marché Leboncoin) avec un prix de revente retenu à la main : même règle que lib/marche-analyse.js.
+    function maxMarche(d) {
+        const v = Number((d.suivi || {}).prix_manuel_vente), R = marcheR;
+        if (v && R) { const marge = Math.max(Number(R.marge_min) || 0, v * (Number(R.marge_pct) || 0) / 100), arr = Math.max(1, Number(R.arrondi) || 50); return Math.max(0, Math.floor((v - R.frais - marge) / arr) * arr); }
+        return (marcheA[d.ref] || {}).achat_max || 0;
+    }
+    const prixMax = d => Number((d.suivi || {}).prix_manuel_max) || maxMarche(d) || maxRecalcule(d) || ((d.estimation || {}).prix || {}).max_achat || 0;
     // Fourchette annoncée au client (même règle que lib/fourchette.js) : bas = prix max d'achat retenu.
     function fourchette(d) {
         // Même règle que lib/fourchette.js : le haut = notre prix max (jamais au-dessus), le bas = max − écart.
@@ -2044,9 +2117,10 @@ body.modal-ouvert { overflow: hidden; }
         return { min: Math.min(min, max), max, base, ajustee, souhaite };
     }
     const texteFourchette = f => `Notre estimation pour votre voiture : entre ${eur(f.min)} et ${eur(f.max)}.\n\nSous réserve que les informations que vous nous avez transmises soient exactes, nous nous engageons à vous proposer au moins ${eur(f.min)}.\n\nL'écart entre ces deux montants dépend de l'état général de la voiture, que notre technicien vérifie lors de l'inspection à votre adresse : entretien, carrosserie, intérieur, pneus et fonctionnement mécanique. Plus la voiture est soignée, plus le prix se rapproche du haut de la fourchette.`;
-    const origineMax = d => Number((d.suivi || {}).prix_manuel_max) ? 'retenu à la main' : maxRecalcule(d) ? 'recalculé avec votre prix de vente' : 'calculé par l\'estimation';
+    const origineMax = d => Number((d.suivi || {}).prix_manuel_max) ? 'retenu à la main' : maxMarche(d) ? (Number((d.suivi || {}).prix_manuel_vente) ? 'marché Leboncoin, avec votre prix de vente' : 'marché Leboncoin') : maxRecalcule(d) ? 'recalculé avec votre prix de vente' : 'calculé par l\'estimation';
     // Score d'attractivité à la revente (0-100) : vert ≥ 75, orange 50-74, rouge < 50.
-    const scoreDe = d => { const a = (d.estimation || {}).attractivite; return a && a.score != null ? Number(a.score) : null; };
+    // Facilité de revente (0-100) : marché Leboncoin d'abord (délai réel, visites, volume), sinon l'ancienne estimation IA.
+    const scoreDe = d => { const m = marcheA[d.ref]; if (m && m.revente_score != null) return m.revente_score; const a = (d.estimation || {}).attractivite; return a && a.score != null ? Number(a.score) : null; };
     const classeScore = n => n == null ? '' : n >= 75 ? 'v' : n >= 50 ? 'o' : 'r';
     // ---- Intérêt d'une demande (0-100) : le tri par défaut, pour appeler d'abord les meilleures affaires.
     // Prix demandé vs notre prix max (30) · attractivité à la revente (15) · urgence du vendeur (17) · remplaçante déjà achetée (12)
@@ -4597,6 +4671,43 @@ body.modal-ouvert { overflow: hidden; }
 
     // Attractivité à la revente : score, verdict, délai, raisons (issus de l'estimation).
     // Analyse Sonar Pricing + annonces filtrées à la main (suivi.sonar), sous l'analyse de prix existante.
+    // ---------------- Estimation Leboncoin (lib/marche-analyse.js) : prix du marché, revente visée, achat max, facilité de revente.
+    const MK_TR = { 'Très bonne affaire': 'tba', 'Bonne affaire': 'ba', 'Prix équitable': 'eq', 'Légèrement supérieur': 'ls', 'Au-dessus du marché': 'ad' };
+    const MK_SRC = { sonar: 'Sonar Pricing (moyenne des annonces Leboncoin)', annonces: 'annonces Leboncoin comparables', similaires: 'modèles proches de la base' };
+    const MK_VERDICT = { acheter: ['v', 'Achetable'], negocier: ['o', 'À négocier'], trop_cher: ['r', 'Trop cher'] };
+    function sparkMarche(mois) {
+        if (!(mois || []).length) return '';
+        const mv = Math.max(...mois.map(m => m[2]), 1), ma = Math.max(...mois.map(m => m[1]), 1), w = 12, h = 46;
+        const barres = mois.map((m, i) => `<rect x="${i * (w + 3)}" y="${h - Math.round(m[2] / mv * h)}" width="${w}" height="${Math.round(m[2] / mv * h)}" rx="2" class="mk-v"><title>${esc(m[0])} : indice de visites ${m[2]}, ${m[1]} annonces</title></rect>`).join('');
+        const ligne = mois.map((m, i) => `${i * (w + 3) + w / 2},${h - Math.round(m[1] / ma * (h - 4)) - 2}`).join(' ');
+        return `<svg class="mk-spark" viewBox="0 0 ${mois.length * (w + 3)} ${h}" preserveAspectRatio="none" role="img" aria-label="Visites et annonces sur 12 mois">${barres}<polyline points="${ligne}" class="mk-a"/></svg>`;
+    }
+    function blocMarche(d) {
+        const a = marcheA[d.ref];
+        if (!a || a.source === 'aucune' || !a.prix) return `<section class="sec marche"><h3>Estimation Leboncoin</h3><p class="sub">${a && a.source === 'aucune' ? 'Aucune donnée de marché pour ce véhicule (plaque inconnue de Sonar, pas d\'annonce comparable).' : 'Pas encore de relevé Leboncoin pour cette plaque : la collecte Sonar la traitera.'}</p></section>`;
+        const v = a.version || {}, dm = a.demande, sc = a.revente_score, od = a.offre_demande;
+        const marque = p => { if (!p) return ''; return a.tranches.map(t => p >= t[1] && p <= t[2] ? 1 : 0).indexOf(1); };
+        const iDem = dm ? marque(dm.prix) : -1, iRev = marque(a.revente);
+        return `<section class="sec marche">
+            <h3>Estimation Leboncoin <small>${esc(MK_SRC[a.source] || a.source)}${a.releve_le ? ' · relevé le ' + date(a.releve_le, false) : ''}${v.label ? ' · ' + esc(v.label) + (v.annee ? ' ' + v.annee : '') : ''} · ${a.km ? Number(a.km).toLocaleString('fr-FR') + ' km' : 'km inconnu'}</small></h3>
+            <div class="mk-tete">
+                <div><span>Prix Leboncoin</span><b class="num">${eur(a.prix)}</b><small>${a.source === 'sonar' ? 'moyenne des annonces au km' : a.source === 'annonces' ? 'médiane des annonces' : 'médiane des modèles proches'} · fiabilité ${a.fiabilite}/5</small></div>
+                <div><span>Revente visée</span><b class="num">${eur(a.revente)}</b><small>haut de « Très bonne affaire » : part vite</small></div>
+                <div class="mk-max"><span>Achat max</span><b class="num">${eur(a.achat_max)}</b><small>revente − ${eur(a.frais)} de frais − ${eur(a.marge_cible)} de marge</small></div>
+                <div><span>Revente</span><b class="num"><span class="score s-${classeScore(sc)} grand">${sc}<small>/100</small></span></b><small>${esc(a.revente_verdict || '')}</small></div>
+            </div>
+            ${a.tranches.length ? `<div class="sonar-bandes">${a.tranches.map((t, i) => `<div class="${MK_TR[t[0]] || ''}${i === iDem ? ' ici' : ''}"><b>${esc(t[0])}</b>${eur(t[1])} – ${eur(t[2])}${i === iDem ? '<i>son prix</i>' : ''}${i === iRev && i !== iDem ? '<i class="rv">notre revente</i>' : ''}</div>`).join('')}</div>` : ''}
+            ${dm ? `<p class="mk-verdict mk-${MK_VERDICT[dm.verdict][0]}"><b>${MK_VERDICT[dm.verdict][1]}</b> · il demande ${eur(dm.prix)}${dm.position_lbc ? ` (« ${esc(dm.position_lbc)} » sur Leboncoin)` : ''} · ${esc(dm.texte)}</p>` : `<p class="mk-verdict"><b>Pas de prix demandé</b> · proposer au plus ${eur(a.achat_max)}</p>`}
+            <div class="mk-cols">
+                <div><h4>Pourquoi ${sc}/100 en revente</h4><table class="mk-crit">${(a.criteres || []).map(c => `<tr><td>${esc(c.l)}<small>${esc(c.v)}</small></td><td class="num">${c.poids} %</td><td><span class="mk-barre"><i style="width:${c.note}%"></i></span><b class="num">${c.note}</b></td></tr>`).join('')}</table></div>
+                ${od ? `<div><h4>Offre et demande sur 12 mois</h4>${sparkMarche(od.mois)}<p class="sub">Barres : indice de visites (demande) ${od.visites}${od.tendance_visites ? ` (${od.tendance_visites > 0 ? '+' : ''}${od.tendance_visites} % sur 3 mois)` : ''} · trait : ${od.annonces} annonces en ligne${od.tendance_annonces ? ` (${od.tendance_annonces > 0 ? '+' : ''}${od.tendance_annonces} %)` : ''}</p></div>` : ''}
+            </div>
+            ${a.ventes && (a.ventes.liste || []).length ? `<details><summary>${a.ventes.nb} ventes relevées par Leboncoin · ${eur(a.ventes.prix)} en moyenne · ${a.ventes.jours} j pour vendre</summary><table class="mk-l"><tr><th>Km</th><th>Prix</th><th>Vendu en</th><th>Le</th><th>Où</th><th>Version</th></tr>${a.ventes.liste.map(t => `<tr><td class="num">${Number(t[0]).toLocaleString('fr-FR')}</td><td class="num">${eur(t[4])}</td><td class="num">${t[2]} j</td><td>${esc(t[3])}</td><td>${esc(t[5])}</td><td>${esc(t[6])}</td></tr>`).join('')}</table></details>` : ''}
+            ${a.annonces ? `<details><summary>${a.annonces.nb} annonces comparables · médiane ${eur(a.prix)} (${eur(a.annonces.p25)} – ${eur(a.annonces.p75)}) · ${a.annonces.part} particuliers, ${a.annonces.pro} pros · en ligne depuis ${a.annonces.age_median} j</summary><p class="sub">${esc(a.annonces.filtre || '')}</p><table class="mk-l"><tr><th>Prix</th><th>Km</th><th>Année</th><th>En ligne</th><th></th></tr>${(a.annonces.liste || []).map(t => `<tr><td class="num">${eur(t[0])}</td><td class="num">${Number(t[1]).toLocaleString('fr-FR')}</td><td>${t[2] || ''}</td><td class="num">${t[3]} j</td><td>${t[4] ? 'pro' : 'particulier'}</td></tr>`).join('')}</table></details>` : ''}
+            ${(a.avertissements || []).length ? `<ul class="mk-av">${a.avertissements.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+        </section>`;
+    }
+
     function blocSonar(d) {
         const z = (d.suivi || {}).sonar;
         if (!z) return '';
@@ -4720,6 +4831,7 @@ body.modal-ouvert { overflow: hidden; }
                     <div class="ap-bloc ap-est">
                         <h4>L'estimation</h4>
                         <div class="ap-chiffres">
+                            ${marcheA[d.ref] && marcheA[d.ref].prix ? `<div><span class="ap-l">Prix Leboncoin</span><b class="num">${eur(marcheA[d.ref].prix)}</b><small>revente visée ${eur(marcheA[d.ref].revente)} · revente ${marcheA[d.ref].revente_score}/100</small></div>` : ''}
                             <div><span class="ap-l">Notre fourchette</span><b class="num">${enCours ? '<span class="spin"></span>' : f ? `${eur(f.min)} – ${eur(f.max)}` : pm ? eur(pm) : '—'}</b><small>${f ? `prix max ${eur(pm)} · engagement ${eur(f.min)} si les infos sont exactes` : pm ? 'prix max d\'achat' : 'pas encore estimée'}</small></div>
                             <div><span class="ap-l">Il demande</span><b class="num">${souh ? eur(souh) : '—'}</b><small>${souh && pm ? (souh > pm ? `${eur(souh - pm)} au-dessus de notre max` : `dans notre fourchette`) : souh ? 'à comparer après estimation' : 'pas de prix en tête'}</small></div>
                         </div>
@@ -4728,12 +4840,14 @@ body.modal-ouvert { overflow: hidden; }
                 ${dernier ? `<p class="ap-appel"><b>Dernier appel</b> · ${date(dernier.date)} · ${esc(dernier.libelle || dernier.resultat)}${dernier.texte ? ` — ${esc(dernier.texte)}` : ''}</p>` : ''}
             </section>`;
             })()}
+            ${blocMarche(d)}
             ${blocSonar(d)}
             ${blocRdv(d)}
+            <details class="sec ancienne"><summary>Ancienne estimation IA (pour mémoire)</summary>
             <section class="sec decision">
                 <div class="dec-tete">
                     <div class="dec-max"><span>Prix max d'achat</span><b class="num">${enCours ? '<span class="spin"></span>' : prixMax(d) ? eur(prixMax(d)) : '—'}</b><small>${enCours ? 'estimation en cours (' + ESTIM_DUREE + ')' : prixMax(d) ? origineMax(d) : 'pas encore estimé'}</small></div>
-                    ${scoreDe(d) != null ? `<div class="dec-score">${badgeScore(d, true)}<small>${esc({ acheter: 'à acheter', prix_serre: 'à prix serré', eviter: 'à éviter' }[(e.attractivite || {}).verdict] || '')}${(e.attractivite || {}).delai_revente ? ' · revente ' + esc({ rapide: 'rapide', moyen: 'moyenne', lent: 'lente' }[e.attractivite.delai_revente] || '') : ''}</small></div>` : ''}
+                    ${e && e.attractivite && scoreDe(d) != null ? `<div class="dec-score">${badgeScore(d, true)}<small>${esc({ acheter: 'à acheter', prix_serre: 'à prix serré', eviter: 'à éviter' }[(e.attractivite || {}).verdict] || '')}${(e.attractivite || {}).delai_revente ? ' · revente ' + esc({ rapide: 'rapide', moyen: 'moyenne', lent: 'lente' }[e.attractivite.delai_revente] || '') : ''}</small></div>` : ''}
                 </div>
                 ${fourchette(d) ? (f => `<div class="fourchette"><div><span>Fourchette client</span><b class="num">${eur(f.min)} – ${eur(f.max)}</b><small>engagement : au moins ${eur(f.min)} si les infos sont exactes${f.ajustee ? ` · plafonnée à son prix demandé (notre max ${eur(f.base)})` : ` · haut = notre prix max`}</small></div><button class="btn btn-s" type="button" id="copieFourchette">Copier le texte client</button></div>`)(fourchette(d)) : ''}
                 <div class="dec-grille">
@@ -4750,7 +4864,7 @@ body.modal-ouvert { overflow: hidden; }
                     <button class="btn btn-s ${e ? '' : 'btn-g'}" id="estBtn" ${enCours || !etat.estimation.actif ? 'disabled' : ''}>${enCours ? '<span class="spin"></span> Estimation en cours' : e ? 'Relancer l\'estimation' : 'Estimer maintenant'}</button>
                     ${s.estimation_statut === 'erreur' ? `<span style="color:var(--red)">Échec : ${esc(s.estimation_erreur)}</span>` : ''}
                 </div>
-            </section>
+            </section></details>
             <button type="button" class="btn mail-ouvrir" data-vers-mail>Échanges par e-mail${(((d.suivi || {}).emails || []).length) ? ` <b>${d.suivi.emails.length}</b>` : ''}</button>
             <div class="mail-layer" id="mailLayer" hidden><div class="ml-in"><button class="close ml-x" type="button" id="mailLayerX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button><section class="sec mail-sec" id="secEmail"></section></div></div>
             <section class="sec" hidden>
@@ -5193,6 +5307,39 @@ body.modal-ouvert { overflow: hidden; }
     }
     $('#qPhotos').addEventListener('input', dossiers);
     $('#folders').addEventListener('click', e => { const f = e.target.closest('.folder'); if (f) ouvrir(f.dataset.ref); });
+
+    // ---------------- Marché Leboncoin : matrice par modèle (prix au km, délai de vente, demande), réglages frais / marge
+    let mkMat = null, mkTri = 'n';
+    async function vueMarche() {
+        $('#mkListe').innerHTML = '<div class="card"><span class="spin"></span> Chargement…</div>';
+        try {
+            const [m, e] = await Promise.all([api('/api/admin/marche/matrice'), api('/api/admin/marche/etat')]);
+            mkMat = m;
+            $('#mkEtat').textContent = `${e.releves} plaques relevées · ${e.avec_prix} avec un prix · ${e.avec_ventes} avec des ventes réelles · ${e.points_km} points prix/km${e.erreurs ? ` · ${e.erreurs} sans donnée` : ''}${e.maj ? ' · dernier relevé ' + date(e.maj) : ''}`;
+            const f = $('#mkReg'); Object.entries(m.reglages).forEach(([k, v]) => { if (f.elements[k]) f.elements[k].value = v; });
+            $('#mkFrais').textContent = `Frais par véhicule : ${eur(m.reglages.frais)} (${eur(m.reglages.frais_ttc)} TTC + annonce ${eur(m.reglages.annonce_ht)} HT)`;
+            rendreMarche();
+        } catch (er) { $('#mkListe').innerHTML = `<div class="card">${esc(er.message)}</div>`; }
+    }
+    function rendreMarche() {
+        if (!mkMat) return;
+        const q = minus($('#mkQ').value || '');
+        const tri = { n: (a, b) => b.n - a.n, demande: (a, b) => (b.demande_rang || 0) - (a.demande_rang || 0), delai: (a, b) => (a.delai_jours || 999) - (b.delai_jours || 999), prix: (a, b) => (b.prix_150k || 0) - (a.prix_150k || 0) }[mkTri];
+        const l = mkMat.lignes.filter(x => !q || minus([x.marque, x.modele, x.energie, x.annees].join(' ')).includes(q)).sort(tri);
+        const cl = r => r == null ? '' : r >= 66 ? 'v' : r >= 33 ? 'o' : 'r';
+        const dl = j => !j ? '' : j <= 45 ? 'v' : j <= 90 ? 'o' : 'r';
+        $('#mkListe').innerHTML = `<div class="card mk-mat"><table><thead><tr><th>Modèle</th><th>Années</th><th class="num" data-mk-tri="n">Plaques</th><th class="num">Prix à 100 000 km</th><th class="num" data-mk-tri="prix">à 150 000 km</th><th class="num">à 200 000 km</th><th class="num" data-mk-tri="delai">Délai de vente</th><th class="num">Ventes</th><th class="num" data-mk-tri="demande">Demande</th><th class="num">Annonces</th></tr></thead><tbody>
+            ${l.map(x => `<tr><td><b>${esc(x.marque)} ${esc(x.modele)}</b><small>${esc(x.energie)}</small></td><td>${esc(x.annees)}</td><td class="num">${x.n}</td><td class="num">${x.prix_100k ? eur(x.prix_100k) : '—'}</td><td class="num">${x.prix_150k ? eur(x.prix_150k) : '—'}</td><td class="num">${x.prix_200k ? eur(x.prix_200k) : '—'}</td>
+                <td class="num"><span class="mk-p mk-${dl(x.delai_jours)}">${x.delai_jours ? x.delai_jours + ' j' : '—'}</span></td><td class="num">${x.ventes || '—'}</td><td class="num">${x.demande_rang != null ? `<span class="mk-p mk-${cl(x.demande_rang)}">${x.demande_rang}<small>/100</small></span>` : '—'}</td><td class="num">${x.annonces || '—'}</td></tr>`).join('') || '<tr><td colspan="10" class="sub">Aucun modèle.</td></tr>'}
+        </tbody></table></div>`;
+        $('#mkListe').querySelectorAll('[data-mk-tri]').forEach(th => { th.classList.toggle('on', th.dataset.mkTri === mkTri); th.onclick = () => { mkTri = th.dataset.mkTri; rendreMarche(); }; });
+    }
+    $('#mkQ').addEventListener('input', rendreMarche);
+    $('#mkReg').addEventListener('submit', async ev => {
+        ev.preventDefault();
+        try { marcheR = await api('/api/admin/marche/reglages', { method: 'PUT', body: JSON.stringify(Object.fromEntries(new FormData(ev.target))) }); toast('Réglages enregistrés : achats max recalculés'); await charger(); vueMarche(); }
+        catch (er) { toast(er.message); }
+    });
 
     // ---------------- Messages du formulaire de contact : affichés dans la Boîte mail ; gardés ici pour le fil de la fiche.
     async function chargerMessages() {

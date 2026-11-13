@@ -89,10 +89,12 @@
         const d = String(lic.registration_date || `${lic.year}-06-15`).split('-');
         const t0 = Date.now();
         window.next.router.push(`/compte/pro/donnees-auto?version_id=${versionId}&year=${lic.year}&month=${Number(d[1]) || 6}&day=${Number(d[2]) || 15}&mileage=${km}`);
-        const g = await attendre(t0, avecTout ? ['classified-ad-and-resale-values', 'car-price-positioning-list', 'supply-and-demand', 'transactions'] : ['classified-ad-and-resale-values', 'car-price-positioning-list'], 15000);
+        // On attend le prix (et l'offre/demande) ; sans prix (véhicule trop ancien), les tranches ne viendront pas.
+        const g = await attendre(t0, avecTout ? ['classified-ad-and-resale-values', 'supply-and-demand'] : ['classified-ad-and-resale-values'], 12000);
         const v = g('classified-ad-and-resale-values');
         if (v && (v.status === 429 || v.status === 403)) throw Object.assign(new Error('freinage ' + v.status), { frein: true });
-        if (avecTout) await pause(800); // dernières réponses (ventes, offre/demande)
+        if (v && v.status === 200) await attendre(t0, avecTout ? ['car-price-positioning-list', 'transactions'] : ['car-price-positioning-list'], 5000);
+        else await pause(600); // dernières réponses (ventes, offre/demande)
         return lireResultat(depuis(t0));
     }
 
