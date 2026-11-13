@@ -96,6 +96,44 @@
         return lireResultat(depuis(t0));
     }
 
+    // Repli sans prix Sonar (plus de 20 ans, version rare) : annonces Leboncoin comparables, lues dans la page de recherche.
+    // On écarte les voitures en panne / pour pièces / accidentées : on veut le prix d'une voiture qui roule.
+    const HS = /(panne|\bhs\b|pour pi[eè]ces|moteur (cass|mort|hs)|accident|ne d[ée]marre|joint de culasse|[ée]pave|export|bo[iî]te (hs|cass))/i;
+    const quantile = (t, q) => { if (!t.length) return 0; const i = (t.length - 1) * q, b = Math.floor(i); return Math.round(t[b] + (t[Math.min(b + 1, t.length - 1)] - t[b]) * (i - b)); };
+    async function annonces(vh, lic, km) {
+        const brand = (vh.make || {}).key || (lic.make || {}).key, mm = vh.make_model || `${brand}_${(lic.model || {}).label}`;
+        const y = Number(lic.year), fuel = (vh.energy || {}).id, gb = (vh.gearbox || {}).id;
+        const essais = [{ ry: 1, dk: 40000, gb: true }, { ry: 2, dk: 70000, gb: false }, { ry: 3, dk: 110000, gb: false }];
+        let dernier = null;
+        for (const e of essais) {
+            const q = new URLSearchParams({ category: '2', u_car_brand: brand, u_car_model: mm, regdate: `${y - e.ry}-${y + e.ry}`, mileage: `${Math.max(0, km - e.dk)}-${km + e.dk}` });
+            if (fuel) q.set('fuel', fuel);
+            if (e.gb && gb) q.set('gearbox', gb);
+            const avant = ((window.next.router.components['/recherche'] || {}).props || {}).pageProps;
+            window.next.router.push('/recherche?' + q.toString());
+            const fin = Date.now() + 12000; let pp = null;
+            while (Date.now() < fin) { await pause(300); const c = ((window.next.router.components['/recherche'] || {}).props || {}).pageProps; if (c && c !== avant && c.searchData) { pp = c; break; } }
+            if (!pp) continue;
+            const sd = pp.searchData, att = a => Object.fromEntries((a.attributes || []).map(x => [x.key, x.value]));
+            const ads = (sd.ads || []).map(a => ({ a, x: att(a) })).filter(o => o.a.price && o.a.price[0] >= 300);
+            const bons = ads.filter(o => !HS.test((o.a.subject || '') + ' ' + (o.a.body || '')));
+            const prix = bons.map(o => o.a.price[0]).sort((p1, p2) => p1 - p2), med = quantile(prix, 0.5);
+            const gardes = bons.filter(o => o.a.price[0] >= med * 0.35 && o.a.price[0] <= med * 2.5);
+            const t = gardes.map(o => o.a.price[0]).sort((p1, p2) => p1 - p2);
+            const jours = gardes.map(o => Math.round((Date.now() - new Date(String(o.a.first_publication_date).replace(' ', 'T'))) / 864e5)).filter(Number.isFinite).sort((j1, j2) => j1 - j2);
+            dernier = {
+                nb: t.length, total: sd.total || 0, ecartees: ads.length - gardes.length, mediane: quantile(t, 0.5), p25: quantile(t, 0.25), p75: quantile(t, 0.75),
+                part: gardes.filter(o => (o.a.owner || {}).type !== 'pro').length, pro: gardes.filter(o => (o.a.owner || {}).type === 'pro').length, age_median: quantile(jours, 0.5),
+                filtre: `${mm} · ${y - e.ry}-${y + e.ry} · ${Math.max(0, km - e.dk)}-${km + e.dk} km${fuel ? ' · énergie ' + fuel : ''}${e.gb && gb ? ' · boîte ' + gb : ''}`,
+                tranches: t.length >= 5 ? [['badge_key_5_5', 'Très bonne affaire', quantile(t, 0.05), quantile(t, 0.2)], ['badge_key_4_5', 'Bonne affaire', quantile(t, 0.2), quantile(t, 0.4)], ['badge_key_3_5', 'Prix équitable', quantile(t, 0.4), quantile(t, 0.6)], ['badge_key_2_5', 'Légèrement supérieur', quantile(t, 0.6), quantile(t, 0.8)], ['badge_key_1_5', 'Au-dessus du marché', quantile(t, 0.8), quantile(t, 0.95)]] : [],
+                liste: gardes.slice(0, 40).map(o => [o.a.price[0], Number(o.x.mileage) || 0, Number(o.x.regdate) || 0, Math.round((Date.now() - new Date(String(o.a.first_publication_date).replace(' ', 'T'))) / 864e5) || 0, (o.a.owner || {}).type === 'pro' ? 1 : 0])
+            };
+            if (t.length >= 8) return dernier;
+            await pause(800);
+        }
+        return dernier;
+    }
+
     async function envoyer(r) {
         const x = await fetch(API + '/releve', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Cle': window.__CLE }, body: JSON.stringify(r) });
         if (!x.ok) throw new Error('envoi LUNICAR ' + x.status);
@@ -132,8 +170,9 @@
                         await envoyer({ plaque: dm.plaque, ref: dm.ref, grille: true, points });
                     } else {
                         const r = await resultat(v.id, lic, km, true), vh = r.veh || {};
+                        if (!r.moyenne) { try { r.annonces = await annonces(vh, lic, km); } catch (e) { r.annonces = null; } }
                         Object.assign(version, { make_model: vh.make_model, submodel: vh.avs_submodel, energy: (vh.energy || {}).label, power: vh.commercial_power, gearbox: (vh.gearbox || {}).label, car_type: vh.car_type, seats: vh.seats });
-                        await envoyer({ plaque: dm.plaque, ref: dm.ref, km, version, moyenne: r.moyenne, fiabilite: r.fiabilite, tranches: r.tranches, ventes: r.ventes, offre_demande: r.offre_demande, points: r.moyenne ? [{ km, moyenne: r.moyenne, fiabilite: r.fiabilite, tranches: r.tranches }] : [], erreur: r.moyenne ? '' : 'pas de prix Sonar pour cette version' });
+                        await envoyer({ plaque: dm.plaque, ref: dm.ref, km, version, moyenne: r.moyenne, fiabilite: r.fiabilite, tranches: r.tranches, ventes: r.ventes, offre_demande: r.offre_demande, annonces: r.annonces || null, points: r.moyenne ? [{ km, moyenne: r.moyenne, fiabilite: r.fiabilite, tranches: r.tranches }] : [], erreur: r.moyenne || (r.annonces && r.annonces.nb) ? '' : 'ni prix Sonar ni annonces comparables' });
                     }
                     E.faits++; E.i++; E.dernier = `${dm.plaque} · ${v.label}`; freins = 0;
                     window.__sonarLog.splice(0, Math.max(0, window.__sonarLog.length - 60));

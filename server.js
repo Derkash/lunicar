@@ -960,6 +960,8 @@ app.get('/api/marche/file', corsLbc, async (req, res) => {
     }
     res.json(req.query.tout ? file : file.filter(f => !f.fait));
 });
+// Le script de collecte lui-même (tools/sonar-collecte.js), rechargé par l'onglet Leboncoin après chaque amélioration.
+app.get('/api/marche/script', corsLbc, (req, res) => res.type('text/plain').send(fs.readFileSync(path.join(__dirname, 'tools', 'sonar-collecte.js'), 'utf8')));
 app.post('/api/marche/releve', corsLbc, express.json({ limit: '200kb' }), (req, res) => {
     try { const r = marche.enregistrer(req.body || {}); res.json({ ok: true, plaque: r.plaque, total: marche.tous().length }); }
     catch (e) { res.status(e.status || 500).json({ error: e.message }); }
