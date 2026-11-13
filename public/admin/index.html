@@ -619,6 +619,9 @@ ul.plain li { margin: 3px 0; }
 .bq-aff { grid-column: 1 / -1; font-size: .8rem; color: var(--green); font-weight: 600; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .bq-aff .zef { color: var(--orange); font-weight: 600; }
 .bq-expl { grid-column: 1 / -1; width: 100%; height: 34px; font-size: .84rem; }
+.bq-fic { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: .8rem; }
+.bq-fic a { color: var(--marine-6); text-decoration: underline; overflow-wrap: anywhere; }
+.bq-fic button.x { border: 0; background: none; color: var(--ink-4); cursor: pointer; padding: 0 2px; }
 .bq-expl.ok { border-color: var(--green); }
 .bq-form { grid-column: 1 / -1; display: grid; gap: 8px; background: var(--marine-1); border-radius: 10px; padding: 10px; margin-top: 4px; }
 .bq-form .in { width: 100%; }
@@ -3093,15 +3096,35 @@ body.modal-ouvert { overflow: hidden; }
         const T = B.transactions, aFaire = T.filter(t => !t.affectation), faites = T.filter(t => t.affectation);
         const depuis = B.sync_le ? new Date(B.sync_le).toLocaleString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : 'jamais';
         const liste = bqSeg === 'a_faire' ? aFaire : faites;
-        el.innerHTML = `<div class="bq-h"><h3>Banque Qonto</h3><span class="bq-comptes">${B.comptes.map(c => `${esc(c.nom)} <b>${euro(c.solde)}</b>`).join(' · ')} · lu le ${depuis}</span><span style="display:flex;gap:6px"><button class="btn btn-s" id="bqCsv">Relevé expliqué (CSV)</button><button class="btn btn-s" id="bqSync">Actualiser</button></span></div>
+        el.innerHTML = `<div class="bq-h"><h3>Banque Qonto</h3><span class="bq-comptes">${B.comptes.map(c => `${esc(c.nom)} <b>${euro(c.solde)}</b>`).join(' · ')} · lu le ${depuis}</span><span style="display:flex;gap:6px"><button class="btn btn-s" id="bqRappr">Relier à ma saisie</button><button class="btn btn-s" id="bqCsv">Relevé expliqué (CSV)</button><button class="btn btn-s" id="bqSync">Actualiser</button></span></div>
             <p class="sub" style="margin:4px 0 0">Écrivez sous chaque opération ce qu'elle est et pourquoi : l'explication suit dans « À saisir dans Zefyr » et dans le relevé expliqué.</p>
             ${B.erreur ? `<p class="zef-m" style="color:var(--red);font-size:.84rem">${esc(B.erreur)}</p>` : ''}
             <div class="segs" style="margin:10px 0 4px"><button class="seg${bqSeg === 'a_faire' ? ' on' : ''}" data-bqseg="a_faire">À attribuer <b>${aFaire.length}</b></button><button class="seg${bqSeg === 'faites' ? ' on' : ''}" data-bqseg="faites">Attribuées <b>${faites.length}</b></button><button class="seg${bqSeg === 'regles' ? ' on' : ''}" data-bqseg="regles">Habituelles <b>${B.regles.length}</b></button></div>
             <div id="bqListe">${bqSeg === 'regles' ? (B.regles.length ? B.regles.map(r => `<div class="bq-l"><div><b>« ${esc(r.motif)} »</b><span>${r.sens === 'credit' ? 'Entrée' : 'Sortie'} → ${r.type === 'gestion' ? 'Frais de gestion · ' + esc(r.categorie) : 'Mise de côté · ' + esc(r.motif_cote)}</span></div><button class="btn btn-s" data-bqregle="${esc(r.id)}">Supprimer</button></div>`).join('') : '<p class="vide">Aucune attribution habituelle. Cochez « Toujours » en attribuant un abonnement, le téléphone, les frais bancaires… : les suivants seront rangés seuls.</p>')
                 : liste.length ? liste.slice(0, 150).map(ligneBanque).join('') : `<p class="vide">${bqSeg === 'a_faire' ? 'Tout est attribué.' : 'Rien d\'attribué pour l\'instant.'}</p>`}</div>`;
+        // Rapprochement avec ce qui a été saisi à la main : aperçu, puis confirmation.
+        $('#bqRappr').onclick = async () => {
+            try {
+                const r = await api('/api/admin/banque/rapprocher', { method: 'POST', body: '{}' });
+                if (!r.liens.length) return toast('Aucune opération à relier à la saisie manuelle');
+                const ok = await demander({ titre: `Relier ${r.liens.length} opération${r.liens.length > 1 ? 's' : ''} ?`, texte: `${r.achats} achat(s) de voiture et ${r.depenses} dépense(s) déjà saisis (payés par la société) retrouvés sur le relevé, même montant et date proche. Rien n'est créé ni modifié, seul le lien est posé ; chaque lien peut être retiré.${r.ambigus.length ? '\n\nÀ faire à la main : ' + r.ambigus.join(' ; ') : ''}`, boutons: [['ok', 'Relier', 'btn-p'], ['', 'Annuler']] });
+                if (ok !== 'ok') return;
+                const a = await api('/api/admin/banque/rapprocher', { method: 'POST', body: JSON.stringify({ appliquer: true }) });
+                banqueE = a.etat; bqSeg = 'faites'; await apresBanque(); toast(`${a.liens.length} opérations reliées`);
+            } catch (e) { toast(e.message); }
+        };
         $('#bqCsv').onclick = () => { location.href = lien('/api/admin/banque/export.csv'); };
         el.querySelectorAll('.bq-expl').forEach(i => i.onchange = async () => {
             try { banqueE = await api('/api/admin/banque/' + i.dataset.id, { method: 'PATCH', body: JSON.stringify({ explication: i.value }) }); i.classList.add('ok'); if (compta) { await chargerCompta(); blocZefyr(); } toast('Explication enregistrée'); } catch (e) { toast(e.message); }
+        });
+        el.querySelectorAll('[data-bqfic]').forEach(i => i.onchange = async () => {
+            const f = i.files[0]; if (!f) return;
+            const fd = new FormData(); fd.set('justificatif', f); toast('Envoi du fichier…');
+            try { banqueE = await api('/api/admin/banque/' + i.dataset.bqfic + '/fichiers', { method: 'POST', body: fd }); await apresBanque(); toast('Fichier joint'); } catch (e) { toast(e.message); }
+        });
+        el.querySelectorAll('[data-bqficdel]').forEach(b => b.onclick = async () => {
+            const [id, p] = b.dataset.bqficdel.split('|');
+            try { banqueE = await api('/api/admin/banque/' + id + '/fichiers?path=' + encodeURIComponent(p), { method: 'DELETE' }); rendreBanque(); toast('Fichier retiré'); } catch (e) { toast(e.message); }
         });
         $('#bqSync').onclick = async () => { $('#bqSync').disabled = true; try { await lireBanque(true); toast('Compte Qonto relu'); } catch (e) { toast(e.message); } };
         el.querySelectorAll('[data-bqseg]').forEach(b => b.onclick = () => { bqSeg = b.dataset.bqseg; bqOuvert = null; rendreBanque(); });
@@ -3122,8 +3145,10 @@ body.modal-ouvert { overflow: hidden; }
         const NAT = { achat: 'Achat', vente: 'Vente', frais: 'Frais', gestion: 'Frais de gestion', depense: 'Dépense déjà saisie', cote: 'Mis de côté' };
         let h = `<div class="bq-l"><div><b>${dateCourte(t.date)} · ${esc(t.libelle || t.type)}</b>${t.statut === 'pending' ? ' <span class="tag">en attente</span>' : ''}<span>${esc(t.detail || t.type)}${t.pieces.length ? ' · justificatif dans Qonto' : ''}</span></div><div class="bq-mt${cr ? ' cr' : ''}">${cr ? '+' : '−'} ${euro(t.montant)}</div>`;
         const expl = `<input class="in bq-expl" data-id="${esc(t.id)}" value="${esc(t.explication || '')}" placeholder="Explication pour le comptable : ce que c'est, pourquoi…" maxlength="1000">`;
-        if (a) return h + expl + `<div class="bq-aff">→ ${esc([a.vehicule, a.type === 'cote' ? a.motif : a.categorie].filter(Boolean).join(' · ') || NAT[a.type])} <small>(${NAT[a.type] || a.type})</small>${a.zefyr === false ? '<span class="zef">à saisir dans Zefyr</span>' : a.zefyr ? '<span>saisi dans Zefyr</span>' : ''}<button class="btn btn-s btn-ghost" data-bqretire="${esc(t.id)}">Retirer</button></div></div>`;
-        h += expl + `<div class="bq-act">${(t.suggestions || []).map((s, i) => `<button class="btn btn-s bq-sug" data-bqsug="${esc(t.id)}|${i}">${esc(s.texte)}</button>`).join('')}
+        const fic = `<div class="bq-fic">${(t.fichiers || []).map(f => `<span><a href="${photoUrl(f.path)}" target="_blank" rel="noopener">${esc(f.name)}</a><button class="x" data-bqficdel="${esc(t.id)}|${esc(f.path)}" aria-label="Retirer ${esc(f.name)}">✕</button></span>`).join('')}
+            <label class="btn btn-s btn-ghost">${(t.fichiers || []).length ? '+ Autre fichier' : 'Joindre un fichier'}<input type="file" accept="image/*,application/pdf" data-bqfic="${esc(t.id)}" hidden></label></div>`;
+        if (a) return h + expl + fic + `<div class="bq-aff">→ ${esc([a.vehicule, a.type === 'cote' ? a.motif : a.categorie].filter(Boolean).join(' · ') || NAT[a.type])} <small>(${NAT[a.type] || a.type})</small>${a.zefyr === false ? '<span class="zef">à saisir dans Zefyr</span>' : a.zefyr ? '<span>saisi dans Zefyr</span>' : ''}<button class="btn btn-s btn-ghost" data-bqretire="${esc(t.id)}">Retirer</button></div></div>`;
+        h += expl + fic + `<div class="bq-act">${(t.suggestions || []).map((s, i) => `<button class="btn btn-s bq-sug" data-bqsug="${esc(t.id)}|${i}">${esc(s.texte)}</button>`).join('')}
             <button class="btn btn-s${o && o.mode === 'voiture' ? ' btn-p' : ''}" data-bqouvre="${esc(t.id)}|voiture">Une voiture</button>
             ${cr ? '' : `<button class="btn btn-s${o && o.mode === 'gestion' ? ' btn-p' : ''}" data-bqouvre="${esc(t.id)}|gestion">Frais de gestion</button>`}
             <button class="btn btn-s btn-ghost${o && o.mode === 'cote' ? ' btn-p' : ''}" data-bqouvre="${esc(t.id)}|cote">Mettre de côté</button></div>`;
