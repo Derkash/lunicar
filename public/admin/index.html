@@ -1690,6 +1690,16 @@ body.modal-ouvert { overflow: hidden; }
         <section data-view="reglages" hidden>
             <div class="page-h"><h1>Réglages et import</h1></div>
             <div class="card">
+                <h3>Appels depuis cet appareil</h3>
+                <p class="sub">Avec SoftCall, l'appel part de la ligne OVH : le client voit le numéro en 01. Réglage propre à cet appareil.</p>
+                <form id="apForm" class="form-grid">
+                    <label class="f">Appeler avec<select class="in" name="app"><option value="softcall">SoftCall (ligne 01)</option><option value="tel">Téléphone de l'iPhone</option></select></label>
+                    <label class="f">Lien d'appel SoftCall<input class="in" name="modele" autocapitalize="off" autocorrect="off" spellcheck="false"></label>
+                    <p class="sub" style="grid-column:1/-1;margin:0">{numero} = +33612345678, {national} = 0612345678. Si SoftCall ne s'ouvre pas, essayez <code>softcall:{numero}</code> ou <code>sip:{national}</code>.</p>
+                    <div style="grid-column:1/-1"><button class="btn btn-p">Enregistrer</button></div>
+                </form>
+            </div>
+            <div class="card">
                 <h3>Calcul du prix maximum d'achat</h3>
                 <p class="sub"><b>Mode marchand</b> (LUNICAR revend aux professionnels) : cote marchand calée sur vendezvotrevoiture.fr (annonces de particuliers × âge × kilométrage × état), offre = cote + prime, plafonnée pour garder la marge minimale sur la revente aux pros. <b>Mode particulier</b> : prix de vente estimé − remise en état − frais fixes − déplacement − marge.</p>
                 <form id="regForm" class="form-grid">
@@ -1899,15 +1909,31 @@ body.modal-ouvert { overflow: hidden; }
             }
         } catch (e) { console.warn('Contacts :', e && e.message); }
     }
-    // Liens « Appeler » / WhatsApp de l'app : la fiche contact est créée juste avant l'appel.
+    // Appli d'appel de cet appareil : SoftCall (ligne OVH, le client voit le 01) ou le téléphone de l'iPhone.
+    // SoftCall ne documente pas de lien d'appel : le modèle est réglable dans Réglages ({numero} = +33…, {national} = 06…).
+    const APPEL_DEFAUT = { app: 'softcall', modele: 'sip:{numero}' };
+    const reglageAppel = () => { try { return { ...APPEL_DEFAUT, ...JSON.parse(localStorage.getItem('lunicarAppelApp') || '{}') }; } catch (e) { return APPEL_DEFAUT; } };
+    const lienAppel = href => {
+        const R = reglageAppel(), num = telNorm(decodeURIComponent(String(href).replace(/^tel:/, '')));
+        if (R.app !== 'softcall' || !num) return href;
+        return R.modele.replace(/\{numero\}/g, num).replace(/\{national\}/g, num.replace(/^\+33/, '0'));
+    };
+    // Liens « Appeler » / WhatsApp : appel lancé dans SoftCall ; dans l'app, la fiche contact est créée juste avant.
     document.addEventListener('click', e => {
         const a = e.target.closest('a[href^="tel:"], a[href^="https://wa.me/"]');
-        if (!a || !CT()) return;
+        if (!a) return;
+        const appel = /^tel:/.test(a.href), cible = appel ? lienAppel(a.href) : a.href;
         const ref = (courant && courant.ref) || (a.closest('[data-ref]') || {}).dataset?.ref || (a.closest('[data-plref]') || {}).dataset?.plref;
-        const d = ref && (courant && courant.ref === ref ? courant : demandes.find(x => x.ref === ref));
-        if (!d) return;
+        const d = CT() && ref && (courant && courant.ref === ref ? courant : demandes.find(x => x.ref === ref));
+        if (!d && cible === a.href) return;
         e.preventDefault();
-        const href = a.href, aller = () => { if (/^tel:/.test(href)) location.href = href; else window.open(href, '_blank'); };
+        const aller = () => {
+            if (!appel) return window.open(cible, '_blank');
+            location.href = cible;
+            // SoftCall ne s'est pas ouvert (lien non reconnu) : numéro copié, pour le composer à la main.
+            if (cible !== a.href) setTimeout(() => { if (document.visibilityState === 'visible') { navigator.clipboard && navigator.clipboard.writeText(telNorm(a.href.replace(/^tel:/, ''))).catch(() => {}); toast('SoftCall ne s\'est pas ouvert : numéro copié. Vérifiez le lien d\'appel dans Réglages'); } }, 2000);
+        };
+        if (!d) return aller();
         Promise.race([contactVendeur(d), new Promise(r => setTimeout(r, 2500))]).then(aller, aller);
     }, true);
 
@@ -4601,6 +4627,8 @@ body.modal-ouvert { overflow: hidden; }
             setTimeout(() => $('#paPrix').select(), 50);
         });
     }
+    // Lieu du rendez-vous, le même pour l'e-mail et le SMS : celui du RDV, sinon l'adresse de la fiche.
+    const lieuRdv = (d, r) => { const x = d.data || {}; return (String((r || {}).lieu || '').trim() || [x.adresse, [x.code_postal, x.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ')).replace(/\s+/g, ' '); };
     // Message de confirmation du rendez-vous : pré-rempli, modifiable, à envoyer par SMS, WhatsApp ou e-mail.
     function texteConfirmation(d) {
         const x = d.data || {}, r = rdvPrevu(d) || {}, f = x.fiche_api || {};
@@ -4610,18 +4638,17 @@ body.modal-ouvert { overflow: hidden; }
         const [h, m] = String(r.heure || '14:00').split(':').map(Number), fin = new Date(Date.UTC(2000, 0, 1, h, m + (r.duree || 45)));
         const heureFin = String(fin.getUTCHours()).padStart(2, '0') + ':' + String(fin.getUTCMinutes()).padStart(2, '0');
         const hh = t => t.replace(':', ' h ').replace(/ h 00$/, ' h');
-        const lieu = String(r.lieu || '').trim(), adresseConnue = /\d/.test(lieu) && /[a-zé]{3,}/i.test(lieu.replace(/\d{5}.*/, '')) && lieu.replace(/\d{5}/, '').trim().split(/\s+/).length >= 3;
+        const lieu = lieuRdv(d, r);
         const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0;
         const T = etat.technicien || {}, C = etat.conseiller || {};
         return ['Bonjour,', '',
-            `Suite à votre demande concernant votre ${veh}${annee ? ' ' + annee : ''}, nous vous proposons un rendez-vous ${jourLong(r.date)}, entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}, ${adresseConnue ? `à l'adresse suivante : ${lieu}.` : `${x.ville ? 'à ' + x.ville : 'à votre adresse'}.`}`, '',
+            `Suite à votre demande concernant votre ${veh}${annee ? ' ' + annee : ''}, nous vous proposons un rendez-vous ${jourLong(r.date)}, entre ${hh(r.heure || '14:00')} et ${hh(heureFin)}, ${lieu ? `à l'adresse suivante : ${lieu}.` : 'à votre adresse.'}`, '',
             mn ? `Notre technicien examinera le véhicule sur place et vous fera une proposition d'achat ${mn === mx ? `d'environ ${mn.toLocaleString('fr-FR')} €` : `entre ${mn.toLocaleString('fr-FR')} € et ${mx.toLocaleString('fr-FR')} €`}, selon l'état constaté.` : `Notre technicien examinera le véhicule sur place et vous fera une proposition d'achat selon l'état constaté.`,
-            ...(adresseConnue ? [] : ['', 'Pouvez-vous me communiquer l\'adresse exacte du rendez-vous ?']), '',
-            'Pour préparer les documents de cession, pourriez-vous nous envoyer une photo de votre carte grise en répondant à cet e-mail ?', '',
+            '',
             `Si vous avez une question avant le rendez-vous, n\'hésitez pas à joindre ${[C.tel && 'votre conseiller au ' + C.tel, T.tel && 'le technicien au ' + T.tel].filter(Boolean).join(' ou ') || 'notre équipe'}.`, '',
             'Cordialement,', 'L\'équipe LUNICAR'].join('\n');
     }
-    // Version courte pour le SMS (2 à 3 segments) : jour, créneau, lieu, fourchette, carte grise, numéro LUNICAR.
+    // Version courte pour le SMS (2 à 3 segments) : jour, créneau, lieu, fourchette, numéro LUNICAR.
     // Segments facturés d'un SMS (alphabet GSM : 160 caractères, puis 153 ; caractères hors alphabet : 70 / 67).
     const segmentsSMS = t => { const gsm = /^[A-Za-z0-9@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&'()*+,\-./:;<=>?¡ÄÖÑÜ§¿äöñüà\n\r^{}\\[~\]|€]*$/.test(t); const n = t.length + (gsm ? (t.match(/[\^{}\\[~\]|€]/g) || []).length : 0); return { n, seg: n <= (gsm ? 160 : 70) ? 1 : Math.ceil(n / (gsm ? 153 : 67)), gsm }; };
     const propreSMS = t => t.replace(/[\u202F\u00A0]/g, ' ').replace(/\s+\n/g, '\n').trim();   // espaces insécables des nombres : hors alphabet SMS
@@ -4636,7 +4663,7 @@ body.modal-ouvert { overflow: hidden; }
         const prix = mn ? (mn === mx ? `Estimation env. ${E(mn)} €` : `Estimation ${E(mn)}-${E(mx)} €`) : '';
         const tech = T.tel ? `Technicien : ${T.tel}.` : '';
         const quand = `${jourCourt(r.date)} ${hh(r.heure || '14:00')}-${hh(heureFin)}`;
-        const lieu = (String(r.lieu || '').trim() || [x.adresse, [x.code_postal, x.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ')).replace(/\s+/g, ' ');
+        const lieu = lieuRdv(d, r);
         const L = (...p) => p.filter(Boolean).join('\n');
         const coupe = (t, n) => t.length <= n ? t : t.slice(0, n).replace(/\s+\S*$/, '');   // coupe entre deux mots
         // Lieu et formule de politesse toujours présents ; on raccourcit le reste jusqu'à tenir en un SMS.
@@ -4653,7 +4680,7 @@ body.modal-ouvert { overflow: hidden; }
     function texteSMSTechnicien(d) {
         const x = d.data || {}, r = rdvPrevu(d) || {}, f = x.fiche_api || {}, E = v => v.toLocaleString('fr-FR');
         const veh = [f.marque ? [f.marque, f.modele].filter(Boolean).join(' ') : x.vehicule, x.annee].filter(Boolean).join(' ');
-        const lieu = String(r.lieu || '').trim() || [x.adresse, [x.code_postal, x.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
+        const lieu = lieuRdv(d, r);
         const mn = Number(r.prix_min || r.prix) || 0, mx = Number(r.prix_max || r.prix) || 0, e = etatMeca(x);
         const quand = `RDV ${jourCourt(r.date).replace(/\.$/, '')} ${String(r.heure || '').replace(':', 'h')}`;
         const client = [x.prenom, x.nom].filter(Boolean).join(' ') + (x.telephone ? ' ' + x.telephone : '');
@@ -4707,6 +4734,35 @@ body.modal-ouvert { overflow: hidden; }
                 if (!ko.length) { fermer(); toast('Envoyé : ' + ok.join(' + ')); }
                 else { $('#mcTout').disabled = false; await demander({ titre: ok.length ? 'Envoi partiel' : 'Rien n\'est parti', texte: (ok.length ? 'Parti : ' + ok.join(', ') + '. ' : '') + 'Échec — ' + ko.join(' ; '), boutons: [['', 'OK']] }); if (ok.length) fermer(); else $('#crModal').hidden = false; }
             } catch (e) { $('#mcTout').disabled = false; toast(e.message); $('#crModal').hidden = false; }
+        };
+    }
+    // SMS au client avec son lien personnel : photo de la carte grise ou photos de la voiture.
+    // Ce qu'il envoie arrive dans la fiche (carte grise lue et reportée, photos rangées) avec une notification.
+    async function smsPiece(d, type) {
+        const x = d.data || {}, veh = String(x.vehicule || '').trim();
+        let L; try { L = await api('/api/admin/demandes/' + d.ref + '/liens'); } catch (e) { return toast(e.message); }
+        const lien = L[type], quoi = type === 'carte_grise' ? 'une photo de votre carte grise' : 'quelques photos de votre voiture (extérieur, intérieur, compteur, défauts éventuels)';
+        const texte = propreSMS(`Bonjour${x.prenom ? ' ' + x.prenom : ''},\nPour avancer sur ${veh ? 'votre ' + veh : 'votre demande'}, pouvez-vous nous envoyer ${quoi} via ce lien :\n${lien}\nMerci, l'équipe LUNICAR`);
+        const titre = type === 'carte_grise' ? 'Demander la carte grise' : 'Demander des photos';
+        const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>${titre}</h3><button class="close" type="button" id="spX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <p class="sub">SMS à ${esc(x.telephone)} · via OVH${smsOk ? '' : ' — clés OVH absentes sur Render : l\'envoi échouera'}. Le lien est propre à cette demande : ${type === 'carte_grise' ? 'la carte grise reçue est lue et complète la fiche' : 'les photos reçues sont rangées dans la fiche'}.</p>
+            <textarea class="in" id="spTxt" rows="6">${esc(texte)}</textarea><p class="sub mc-cpt" id="spCpt"></p>
+            <div class="cr-btns"><button type="button" class="btn" id="spCopie">Copier le lien</button><button type="button" class="btn btn-g" id="spOk">Envoyer le SMS</button></div>`;
+        const fermer = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        $('#spX').onclick = fermer; $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermer(); };
+        const compter = () => { const c = segmentsSMS($('#spTxt').value.trim()); $('#spCpt').textContent = `${c.n} caractères · ${c.seg} SMS`; };
+        $('#spTxt').addEventListener('input', compter); compter();
+        $('#spCopie').onclick = async () => { try { await navigator.clipboard.writeText(lien); toast('Lien copié'); } catch (e) { toast(lien); } };
+        $('#spOk').onclick = async () => {
+            const t = $('#spTxt').value.trim(); if (!t) return;
+            $('#spOk').disabled = true;
+            try {
+                const m = await api('/api/admin/demandes/' + d.ref + '/sms', { method: 'POST', body: JSON.stringify({ texte: t, type: type === 'carte_grise' ? 'demande_carte_grise' : 'demande_photos' }) });
+                maj(m); if (courant && courant.ref === d.ref) { courant = m; fiche(); }
+                fermer(); toast('SMS envoyé');
+            } catch (e) { $('#spOk').disabled = false; toast(e.message); }
         };
     }
     // Certificat de cession dès le rendez-vous pris : on retrouve (ou crée) le véhicule de la demande.
@@ -4919,6 +4975,7 @@ body.modal-ouvert { overflow: hidden; }
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
                 <button class="btn" type="button" data-vers-mail>E-mail</button>
+                ${x.telephone ? `<button class="btn" type="button" data-sms-piece="carte_grise">SMS carte grise</button><button class="btn" type="button" data-sms-piece="photos">SMS photos</button>` : ''}
                 <button class="btn" type="button" data-partager="${esc(BASE + '/demande/' + d.ref)}" data-partager-texte="${esc([nomVeh(x), x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.ville].filter(Boolean).join(' · '))}">Partager</button>
             </div>
             <select class="in" id="stSel"${d.statut === 'achetee' ? ' disabled title="Véhicule acheté : le suivi continue dans Nos véhicules"' : ''}>${Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}"${k === d.statut ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>
@@ -5144,6 +5201,7 @@ body.modal-ouvert { overflow: hidden; }
         $('#closeSheet').onclick = fermer;
         $('#sheetIn').querySelectorAll('[data-infos]').forEach(b => b.onclick = () => modifierInfos(d));
         $('#sheetIn').querySelectorAll('[data-cg]').forEach(b => b.onclick = () => scannerCarteGrise(d));
+        $('#sheetIn').querySelectorAll('[data-sms-piece]').forEach(b => b.onclick = () => smsPiece(d, b.dataset.smsPiece));
         $('#sheetIn').querySelectorAll('.kv-ed').forEach(b => b.onclick = () => editerEnPlace(d, b));
         rendreMail();
         $('#sheetIn').querySelectorAll('[data-ap-photo]').forEach(im => im.onclick = () => { lbSource = null; lbOuvrir(+im.dataset.apPhoto); });
@@ -5151,7 +5209,6 @@ body.modal-ouvert { overflow: hidden; }
         const fermerMail = () => { $('#mailLayer').hidden = true; document.body.classList.remove('modal-ouvert'); };
         $('#mailLayerX').onclick = fermerMail; $('#mailLayer').onclick = e => { if (e.target.id === 'mailLayer') fermerMail(); };
         // Appeler : l'appel part et le panneau d'appel s'ouvre aussitôt (prêt au retour dans l'app).
-        if ($('#basAppel')) $('#basAppel').addEventListener('click', () => ouvrirDock(d));
         $('#basPanneau').onclick = () => ouvrirDock(d);
         if ($('#ditNote')) $('#ditNote').onsubmit = async e => {
             e.preventDefault(); const texte = $('#ditTxt').value.trim(); if (!texte) return;
@@ -5990,6 +6047,7 @@ body.modal-ouvert { overflow: hidden; }
 
     // ---------------- Réglages, import, estimation en masse
     async function reglages() {
+        const ra = reglageAppel(); $('#apForm').elements.app.value = ra.app; $('#apForm').elements.modele.value = ra.modele;
         const r = await api('/api/admin/reglages');
         const f = $('#regForm'); Object.entries(r).forEach(([k, v]) => { if (f.elements[k]) f.elements[k].value = v; });
         etat = await api('/api/admin/etat'); etatImport();
@@ -5998,6 +6056,12 @@ body.modal-ouvert { overflow: hidden; }
         e.preventDefault();
         await api('/api/admin/reglages', { method: 'PUT', body: JSON.stringify(Object.fromEntries(new FormData(e.target))) });
         toast('Réglages enregistrés');
+    });
+    $('#apForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const v = Object.fromEntries(new FormData(e.target));
+        if (v.app === 'softcall' && !/\{(numero|national)\}/.test(v.modele || '')) { toast('Le lien doit contenir {numero} ou {national}'); return; }
+        try { localStorage.setItem('lunicarAppelApp', JSON.stringify({ app: v.app, modele: (v.modele || '').trim() || APPEL_DEFAUT.modele })); toast('Appels : réglage enregistré'); } catch (er) { toast('Enregistrement impossible sur cet appareil'); }
     });
     function etatImport() {
         const i = etat.import_gmail || {}, b = i.dernier;

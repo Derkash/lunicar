@@ -1006,6 +1006,8 @@ app.post('/api/marche/alerte', corsLbc, (req, res) => {
 });
 
 app.use(adminRouter(authAdmin));
+// Liens d'envoi du vendeur (carte grise, photos de la voiture) : pages publiques signées, une par demande.
+require('./lib/envoi-client').routes(app, { tooManySends, ipClient });
 
 // Liste articles admin
 app.get('/api/admin/articles', authAdmin, (req, res) => {
