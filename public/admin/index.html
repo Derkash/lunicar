@@ -1064,6 +1064,13 @@ details.ancienne > summary { cursor: pointer; font-weight: 600; color: var(--ink
 .cr-res { display: flex; flex-wrap: wrap; gap: 6px; }
 .cr-chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 8px 12px; font-size: .86rem; font-weight: 550; color: var(--ink-7); text-align: left; }
 .cr-chip.on { background: var(--marine); border-color: var(--marine); color: #fff; }
+.mq-decl { margin: 0; font-size: .86rem; color: var(--ink-7); background: #F6F4EF; border-radius: var(--r-s); padding: 9px 11px; }
+.mq { display: grid; gap: 7px; padding-top: 12px; border-top: 1px solid var(--line-2); }
+.mq-t { margin: 0; font-size: 1rem; font-weight: 650; display: flex; align-items: baseline; gap: 8px; } .mq-t small { font-weight: 500; font-size: .76rem; color: var(--ink-5); }
+.mq-dire { margin: 0; font-size: .92rem; color: var(--marine-6); line-height: 1.4; }
+.mq-pq { margin: 0; font-size: .78rem; color: var(--ink-5); }
+.mq .in { width: 100%; }
+.mq-bas { position: sticky; bottom: calc(-24px - env(safe-area-inset-bottom)); background: var(--surface); padding: 10px 0 calc(14px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); align-items: center; } .mq-bas .mi-lien { margin-right: auto; }
 .cr-in label.f textarea { min-height: 110px; }
 .cr-corr summary { cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--marine-6); padding: 4px 0; }
 .cr-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 8px; }
@@ -1355,8 +1362,14 @@ body.modal-ouvert { overflow: hidden; }
     .danger .btn { width: 100%; justify-content: center; }
 
     .sh-bas { display: flex; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 4; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); }
-    .sh-bas .btn { height: 48px; flex: 1; justify-content: center; font-size: .92rem; border-radius: 10px; }
-    .sh-bas .btn-g { flex: 2; }
+    .sh-bas .btn { height: 48px; flex: 1; justify-content: center; font-size: .9rem; border-radius: 10px; padding: 0 8px; gap: 6px; }
+    .sh-bas > .btn { flex: 1 1 0; min-width: 0; }
+    .bas-plus { position: relative; display: flex; flex: 1 1 18px; min-width: 0; }   /* 18px = marges et bordure d'un bouton : trois largeurs égales */
+    .bas-menu { position: absolute; right: 0; bottom: calc(100% + 10px); width: min(270px, calc(100vw - 24px)); background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 14px 36px rgba(14,35,64,.2); padding: 6px; display: grid; }
+    .bas-menu[hidden] { display: none; }
+    .bas-menu button { display: block; text-align: left; padding: 14px 12px; border: 0; background: none; border-radius: 9px; font-size: .96rem; font-weight: 550; color: var(--ink); }
+    .bas-menu button + button { border-top: 1px solid var(--line-2); border-radius: 0; }
+    .bas-menu small { display: block; font-weight: 400; font-size: .78rem; color: var(--ink-5); margin-top: 2px; }
 
     .card { padding: 16px; }
     .folders { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -4765,6 +4778,70 @@ body.modal-ouvert { overflow: hidden; }
             } catch (e) { $('#spOk').disabled = false; toast(e.message); }
         };
     }
+    // État mécanique : les questions à poser pendant l'appel, réponses en un appui, résumé rangé en note dans la fiche.
+    // Les réponses sont gardées sur l'appareil (par demande) : on peut quitter l'écran pour SoftCall et revenir.
+    const MECA_Q = [
+        { k: 'distribution', t: 'Courroie de distribution', dire: 'La courroie de distribution a déjà été changée ? À quel kilométrage, en quelle année ? Vous avez la facture ?', pq: 'Sans facture, on la compte comme à refaire dans l\'offre.', rep: ['Faite, avec facture', 'Faite, sans facture', 'Jamais faite', 'Chaîne (pas de courroie)', 'Ne sait pas'], prec: 'Km et année du changement, garage…', sauf: 'elec' },
+        { k: 'entretien', t: 'Entretien', dire: 'La dernière vidange date de quand ? Vous avez le carnet d\'entretien et les factures ?', rep: ['Carnet et factures', 'Quelques factures', 'Aucun justificatif'], prec: 'Dernière vidange : date, km…' },
+        { k: 'voyants', t: 'Voyants au tableau de bord', dire: 'Est-ce qu\'un voyant est allumé au tableau de bord ? Lequel, depuis quand ?', rep: ['Aucun voyant', 'Voyant moteur', 'Autre voyant'], prec: 'Lequel, depuis quand…' },
+        { k: 'moteur', t: 'Moteur', dire: 'Elle démarre bien à froid ? Elle fume, elle consomme de l\'huile, elle chauffe, un bruit anormal ?', pq: 'Fumée blanche ou surchauffe : penser au joint de culasse.', rep: ['Rien à signaler', 'Démarre mal', 'Fume', 'Consomme ou perd de l\'huile', 'Chauffe', 'Bruit anormal'], multi: true, prec: 'Détail…' },
+        { k: 'boite', t: 'Embrayage et boîte', tAuto: 'Boîte automatique', dire: 'L\'embrayage patine ou a déjà été changé ? Les vitesses passent bien ?', direAuto: 'La boîte automatique passe bien les rapports, sans à-coups ? Sa vidange a été faite ?', rep: ['Rien à signaler', 'Embrayage qui patine', 'Embrayage changé', 'Vitesses qui craquent ou sautent'], repAuto: ['Rien à signaler', 'À-coups ou patinage', 'Vidange de boîte faite', 'Vidange jamais faite'], multi: true, prec: 'Km du changement, facture…', sauf: 'elec' },
+        { k: 'diesel', t: 'Spécifique diesel', dire: 'Le turbo, les injecteurs, le filtre à particules ou la vanne EGR ont déjà posé problème ? Elle perd de la puissance ?', rep: ['Rien à signaler', 'Turbo', 'Injecteurs', 'FAP ou vanne EGR', 'AdBlue', 'Perte de puissance'], multi: true, prec: 'Déjà réparé ? facture…', si: 'diesel' },
+        { k: 'ct', t: 'Contrôle technique', dire: 'Le contrôle technique date de quand ? Il y avait des défauts à corriger ?', rep: ['Moins de 6 mois', 'Plus de 6 mois, valide', 'Contre-visite à faire', 'Plus valide'], prec: 'Date, défauts notés…' },
+        { k: 'roulants', t: 'Pneus et freins', dire: 'Les pneus et les freins sont dans quel état ? Changés récemment ?', rep: ['Bon état', 'Pneus à changer', 'Freins à refaire'], multi: true, prec: 'Détail…' },
+        { k: 'accident', t: 'Accident et carrosserie', dire: 'La voiture a déjà eu un accident ou un gros choc ? Il a été réparé par un carrossier ?', rep: ['Jamais accidentée', 'Choc réparé', 'Choc non réparé'], prec: 'Où, quand, réparé par qui…' },
+        { k: 'clim', t: 'Climatisation et équipements', dire: 'La climatisation fonctionne ? Les vitres, la fermeture centralisée, tout marche ?', rep: ['Tout fonctionne', 'Clim à recharger ou en panne', 'Autre panne'], multi: true, prec: 'Ce qui ne marche pas…' },
+        { k: 'frais', t: 'Frais à prévoir', dire: 'D\'après vous ou votre garagiste, il y a des réparations à prévoir ? Vous avez un devis ?', rep: ['Aucun frais annoncé', 'Réparation à prévoir', 'Devis déjà fait'], prec: 'Quoi, montant du devis…' }
+    ];
+    function questionsMeca(d) {
+        const x = d.data || {}, cle = 'lunicar-meca-' + d.ref;
+        const carbu = String(x.carburant || x.energie_siv || ''), boiteTxt = String(x.boite || x.boite_siv || '');
+        const elec = /[ée]lectri/i.test(carbu) && !/hybrid/i.test(carbu), diesel = /diesel|gazole|\bgo\b/i.test(carbu), auto = /auto/i.test(boiteTxt);
+        // Question « diesel » : posée si la voiture est diesel, ou si le carburant n'est pas connu.
+        const Q = MECA_Q.filter(q => !(q.sauf === 'elec' && elec) && !(q.si === 'diesel' && carbu && !diesel));
+        let R = {}; try { R = JSON.parse(localStorage.getItem(cle) || '{}') || {}; } catch (e) { R = {}; }
+        const garder = () => { try { localStorage.setItem(cle, JSON.stringify(R)); } catch (e) {} };
+        const decl = [x.mecanique, x.controle_technique && 'CT ' + String(x.controle_technique).toLowerCase(), x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.annee, carbu, boiteTxt].filter(Boolean);
+        const fermerM = () => { $('#crModal').hidden = true; $('#crModal').classList.remove('cr-page'); document.body.classList.remove('modal-ouvert'); };
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>État mécanique</h3><button class="close" type="button" id="mqX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <p class="sub">${esc(nomVeh(x))} · les questions à poser, dans l'ordre. Un appui par réponse, tout est gardé si vous quittez l'écran.</p>
+            ${decl.length ? `<p class="mq-decl"><b>Déclaré par le vendeur :</b> ${esc(decl.join(' · '))}</p>` : ''}
+            ${Q.map(q => { const r = R[q.k] || {}, reps = (auto && q.repAuto) || q.rep; return `<div class="mq" data-q="${q.k}">
+                <p class="mq-t">${esc((auto && q.tAuto) || q.t)}${q.si === 'diesel' && !carbu ? '<small>si la voiture est diesel</small>' : ''}</p>
+                <p class="mq-dire">« ${esc((auto && q.direAuto) || q.dire)} »</p>
+                <div class="cr-res">${reps.map(o => `<button type="button" class="cr-chip${(r.v || []).includes(o) ? ' on' : ''}" data-rep="${esc(o)}">${esc(o)}</button>`).join('')}</div>
+                <input class="in" data-prec placeholder="${esc(q.prec || 'Précision…')}" value="${esc(r.p || '')}" autocomplete="off">
+                ${q.pq ? `<p class="mq-pq">${esc(q.pq)}</p>` : ''}</div>`; }).join('')}
+            <div class="cr-btns mq-bas"><button type="button" class="mi-lien" id="mqRaz">Tout effacer</button><button type="button" class="btn btn-p" id="mqOk">Enregistrer dans la fiche</button></div>`;
+        $('#crModal').hidden = false; $('#crModal').classList.add('cr-page'); document.body.classList.add('modal-ouvert'); $('#crModal').onclick = null;
+        $('#crIn').scrollTop = 0;
+        $('#mqX').onclick = fermerM;
+        $('#crIn').querySelectorAll('.mq').forEach(bloc => {
+            const q = Q.find(o => o.k === bloc.dataset.q), lire = () => { R[q.k] = { v: [...bloc.querySelectorAll('.cr-chip.on')].map(c => c.dataset.rep), p: bloc.querySelector('[data-prec]').value.trim() }; garder(); };
+            bloc.querySelectorAll('.cr-chip').forEach(c => c.onclick = () => {
+                const actif = !c.classList.contains('on'), neutre = bloc.querySelector('.cr-chip');
+                // Une seule réponse, sauf questions à choix multiples (la première réponse « rien à signaler » exclut les autres).
+                if (!q.multi || c === neutre) bloc.querySelectorAll('.cr-chip').forEach(o => o.classList.remove('on')); else neutre.classList.remove('on');
+                c.classList.toggle('on', actif); lire();
+            });
+            bloc.querySelector('[data-prec]').addEventListener('input', lire);
+        });
+        $('#mqRaz').onclick = async () => {
+            if (await demander({ titre: 'Effacer les réponses ?', texte: 'Les réponses saisies sur cet écran sont remises à zéro. Les notes déjà enregistrées dans la fiche ne bougent pas.', boutons: [['ok', 'Effacer', 'btn-rouge'], ['', 'Garder']] }) !== 'ok') return;
+            try { localStorage.removeItem(cle); } catch (e) {}
+            questionsMeca(d);
+        };
+        $('#mqOk').onclick = async () => {
+            const lignes = Q.map(q => { const r = R[q.k] || {}, v = (r.v || []).join(', '); return v || r.p ? `${(auto && q.tAuto) || q.t} : ${[v, r.p].filter(Boolean).join(' — ')}` : ''; }).filter(Boolean);
+            if (!lignes.length) { toast('Aucune réponse saisie'); return; }
+            $('#mqOk').disabled = true;
+            try {
+                const r = await api('/api/admin/demandes/' + d.ref + '/note', { method: 'POST', body: JSON.stringify({ texte: 'État mécanique (appel) · ' + lignes.join(' · ') }) });
+                maj(r); if (courant && courant.ref === d.ref) { courant = r; fiche(); }
+                fermerM(); toast(`État mécanique enregistré (${lignes.length} réponse${lignes.length > 1 ? 's' : ''})`);
+            } catch (e) { $('#mqOk').disabled = false; toast(e.message); }
+        };
+    }
     // Certificat de cession dès le rendez-vous pris : on retrouve (ou crée) le véhicule de la demande.
     async function cessionDepuisDemande(ref) {
         try {
@@ -4973,17 +5050,22 @@ body.modal-ouvert { overflow: hidden; }
             <div class="sh-titre">${x.plaque ? `<button type="button" class="plaque-fr" data-cg title="Carte grise"><i>F</i><span>${esc(x.plaque)}</span></button>` : ''}<h2>${esc(nomVeh(x))}${badgeMeca(x)}</h2>${saisieDiff(x)}
                 <small><button type="button" class="mi-lien" data-infos>Modifier</button> · <button type="button" class="mi-lien" data-cg>Carte grise</button> · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
             <div class="contact">
-                ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a><a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
+                ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a>` : ''}
                 <button class="btn" type="button" data-vers-mail>E-mail</button>
                 ${x.telephone ? `<button class="btn" type="button" data-sms-piece="carte_grise">SMS carte grise</button><button class="btn" type="button" data-sms-piece="photos">SMS photos</button>` : ''}
+                <button class="btn" type="button" data-meca>État mécanique</button>
                 <button class="btn" type="button" data-partager="${esc(BASE + '/demande/' + d.ref)}" data-partager-texte="${esc([nomVeh(x), x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.ville].filter(Boolean).join(' · '))}">Partager</button>
             </div>
             <select class="in" id="stSel"${d.statut === 'achetee' ? ' disabled title="Véhicule acheté : le suivi continue dans Nos véhicules"' : ''}>${Object.entries(etat.statuts).map(([k, v]) => `<option value="${k}"${k === d.statut ? ' selected' : ''}>${esc(v)}</option>`).join('')}</select>
         </div>
         <div class="sh-bas">
             ${x.telephone ? `<a class="btn btn-g" id="basAppel" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>Appeler</a>` : ''}
-            <button class="btn btn-p" type="button" id="basPanneau">Compte rendu</button>
-            ${x.telephone ? `<a class="btn" href="https://wa.me/${esc(tel)}" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-bulle"/></svg></a>` : ''}
+            <button class="btn btn-p" type="button" id="basRdv">Rendez-vous</button>
+            <div class="bas-plus"><button class="btn" type="button" id="basPlus" aria-haspopup="true" aria-expanded="false">Demander<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10l5 5 5-5"/></svg></button>
+                <div class="bas-menu" id="basMenu" hidden>
+                    ${x.telephone ? `<button type="button" data-bas="photos">Demande de photos<small>SMS avec le lien d'envoi</small></button><button type="button" data-bas="carte_grise">Demande de carte grise<small>SMS avec le lien d'envoi</small></button>` : ''}
+                    <button type="button" data-bas="meca">État mécanique de la voiture<small>les questions à poser pendant l'appel</small></button>
+                </div></div>
         </div>
         <div class="sh-body">
             ${d.statut === 'achetee' || rdvPrevu(d) ? `<button class="btn btn-g" id="versVehicule" style="justify-self:start">${d.statut === 'achetee' ? 'Véhicule acheté' : 'RDV pris'} : frais et suivi dans Nos véhicules →</button>` : ''}
@@ -5208,8 +5290,12 @@ body.modal-ouvert { overflow: hidden; }
         $('#sheetIn').querySelectorAll('[data-vers-mail]').forEach(b => b.onclick = () => { $('#mailLayer').hidden = false; document.body.classList.add('modal-ouvert'); const t = $('#mailTxt'); if (t) setTimeout(() => t.focus({ preventScroll: true }), 200); });
         const fermerMail = () => { $('#mailLayer').hidden = true; document.body.classList.remove('modal-ouvert'); };
         $('#mailLayerX').onclick = fermerMail; $('#mailLayer').onclick = e => { if (e.target.id === 'mailLayer') fermerMail(); };
-        // Appeler : l'appel part et le panneau d'appel s'ouvre aussitôt (prêt au retour dans l'app).
-        $('#basPanneau').onclick = () => ouvrirDock(d);
+        // Barre du bas : Appeler · Rendez-vous · Demander (photos, carte grise, état mécanique). Le compte rendu reste dans « Ce qui a été dit ».
+        $('#basRdv').onclick = () => { const b = $('#rdvBloc'); if (rdvPrevu(d) && b) b.scrollIntoView({ block: 'start' }); else planifierRdv(d); };
+        const menuBas = v => { if (!$('#basMenu')) return; $('#basMenu').hidden = !v; $('#basPlus').setAttribute('aria-expanded', v); if (v) document.addEventListener('click', () => menuBas(false), { once: true }); };
+        $('#basPlus').onclick = e => { e.stopPropagation(); menuBas($('#basMenu').hidden); };
+        $('#basMenu').querySelectorAll('[data-bas]').forEach(b => b.onclick = () => { menuBas(false); b.dataset.bas === 'meca' ? questionsMeca(d) : smsPiece(d, b.dataset.bas); });
+        $('#sheetIn').querySelectorAll('[data-meca]').forEach(b => b.onclick = () => questionsMeca(d));
         if ($('#ditNote')) $('#ditNote').onsubmit = async e => {
             e.preventDefault(); const texte = $('#ditTxt').value.trim(); if (!texte) return;
             try { courant = await api('/api/admin/demandes/' + d.ref + '/note', { method: 'POST', body: JSON.stringify({ texte }) }); fiche(); maj(courant); toast('Note ajoutée'); } catch (err) { toast(err.message); }
