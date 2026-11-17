@@ -4821,9 +4821,9 @@ body.modal-ouvert { overflow: hidden; }
         const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
         const tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
         $('#crIn').innerHTML = `<div class="cr-tete"><h3>Client injoignable</h3><button class="close" type="button" id="siX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
-            <p class="sub">SMS à ${esc(x.telephone)} · via OVH${smsOk ? (etat.sms.sender_valide ? '' : ' (numéro court en attendant la validation de LUNICAR)') : ' — clés OVH absentes sur Render : l\'envoi échouera'}. Le client est invité à rappeler le ${TEL_CONSEILLER}.</p>
+            <p class="sub">SMS à ${esc(x.telephone)} · via OVH${smsOk ? (etat.sms.sender_valide ? '' : '. ⚠️ Tant que l\'expéditeur LUNICAR n\'est pas validé, OVH refuse les SMS contenant un numéro de téléphone : utilisez « Envoyer depuis l\'iPhone »') : ' — clés OVH absentes sur Render : l\'envoi échouera'}. Le client est invité à rappeler le ${TEL_CONSEILLER}.</p>
             <textarea class="in" id="siTxt" rows="5">${esc(texte)}</textarea><p class="sub mc-cpt" id="siCpt"></p>
-            <div class="cr-btns">${smsOk ? '' : '<button type="button" class="btn" id="siIphone">Envoyer depuis l\'iPhone</button>'}<button type="button" class="btn btn-g" id="siOk">Envoyer le SMS</button></div>`;
+            <div class="cr-btns">${smsOk && etat.sms.sender_valide ? '' : '<button type="button" class="btn" id="siIphone">Envoyer depuis l\'iPhone</button>'}<button type="button" class="btn btn-g" id="siOk">Envoyer le SMS</button></div>`;
         const fermer = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
         $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
         $('#siX').onclick = fermer; $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermer(); };
@@ -4849,14 +4849,16 @@ body.modal-ouvert { overflow: hidden; }
         const titre = type === 'carte_grise' ? 'Demander la carte grise' : 'Demander des photos';
         const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
         $('#crIn').innerHTML = `<div class="cr-tete"><h3>${titre}</h3><button class="close" type="button" id="spX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
-            <p class="sub">SMS à ${esc(x.telephone)} · via OVH${smsOk ? '' : ' — clés OVH absentes sur Render : l\'envoi échouera'}. Le lien est propre à cette demande : ${type === 'carte_grise' ? 'la carte grise reçue est lue et complète la fiche' : 'les photos reçues sont rangées dans la fiche'}.</p>
+            <p class="sub">SMS à ${esc(x.telephone)} · via OVH${smsOk ? (etat.sms.sender_valide ? '' : '. ⚠️ Tant que l\'expéditeur LUNICAR n\'est pas validé, OVH refuse les SMS contenant un lien : utilisez « Envoyer depuis l\'iPhone »') : ' — clés OVH absentes sur Render : l\'envoi échouera'}. Le lien est propre à cette demande : ${type === 'carte_grise' ? 'la carte grise reçue est lue et complète la fiche' : 'les photos reçues sont rangées dans la fiche'}.</p>
             <textarea class="in" id="spTxt" rows="6">${esc(texte)}</textarea><p class="sub mc-cpt" id="spCpt"></p>
-            <div class="cr-btns"><button type="button" class="btn" id="spCopie">Copier le lien</button><button type="button" class="btn btn-g" id="spOk">Envoyer le SMS</button></div>`;
+            <div class="cr-btns"><button type="button" class="btn" id="spCopie">Copier le lien</button>${smsOk && etat.sms.sender_valide ? '' : '<button type="button" class="btn" id="spIphone">Envoyer depuis l\'iPhone</button>'}<button type="button" class="btn btn-g" id="spOk">Envoyer le SMS</button></div>`;
         const fermer = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
         $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
         $('#spX').onclick = fermer; $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermer(); };
         const compter = () => { const c = segmentsSMS($('#spTxt').value.trim()); $('#spCpt').textContent = `${c.n} caractères · ${c.seg} SMS`; };
         $('#spTxt').addEventListener('input', compter); compter();
+        const telSp = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
+        if ($('#spIphone')) $('#spIphone').onclick = () => { location.href = `sms:+${telSp}${/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?'}body=${encodeURIComponent($('#spTxt').value.trim())}`; };
         $('#spCopie').onclick = async () => { try { await navigator.clipboard.writeText(lien); toast('Lien copié'); } catch (e) { toast(lien); } };
         $('#spOk').onclick = async () => {
             const t = $('#spTxt').value.trim(); if (!t) return;
