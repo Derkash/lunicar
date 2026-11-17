@@ -559,6 +559,15 @@ ul.plain li { margin: 3px 0; }
 .lightbox .nav { position: absolute; top: 50%; transform: translateY(-50%); border: 0; background: rgba(255,255,255,.12); color: #fff; font-size: 2rem; width: 48px; height: 64px; border-radius: 10px; }
 .lightbox .prev { left: 12px; } .lightbox .next { right: 12px; }
 .lightbox .cap { position: absolute; bottom: calc(14px + env(safe-area-inset-bottom)); left: 0; right: 0; text-align: center; color: #C8D3E2; font-size: .84rem; padding: 0 16px; }
+.cg-table { display: grid; grid-template-columns: minmax(130px, 42%) 1fr; gap: 6px 12px; margin: 10px 0; font-size: .88rem; }
+.cg-table dt { color: var(--ink-5); }
+.cg-table dt i { font-style: normal; font-weight: 650; display: inline-block; min-width: 38px; color: var(--ink); }
+.cg-table dd { margin: 0; font-weight: 550; word-break: break-word; }
+.cg-photo { max-width: 100%; max-height: 320px; border-radius: 10px; }
+.sms-ok { margin: 4px 0 2px; font-weight: 650; color: #1E7A46; font-size: 1rem; }
+.sms-remise { margin: 14px 0 4px; padding: 12px 14px; border-radius: 10px; background: var(--line-2, #f1efe9); font-weight: 600; }
+.sms-remise[data-etat="recu"] { background: #E6F4EC; color: #1E7A46; }
+.sms-remise[data-etat="echec"] { background: #FBE9E7; color: #B3261E; }
 .toast { position: fixed; bottom: calc(24px + var(--nav) + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 11px 18px; border-radius: 10px; z-index: 80; font-size: .88rem; box-shadow: 0 10px 30px rgba(0,0,0,.2); max-width: calc(100vw - 32px); }
 .spin { display: inline-block; width: 14px; height: 14px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: s .8s linear infinite; vertical-align: -2px; }
 @keyframes s { to { transform: rotate(360deg); } }
@@ -3365,6 +3374,9 @@ body.modal-ouvert { overflow: hidden; }
         <div id="rdvCal" class="rdv-cal"><p class="sub"><span class="spin"></span> Chargement de l'agenda…</p></div>`;
     }
     // Carte grise : photo → lecture IA → écran de vérification → les champs cochés sont reportés dans la fiche.
+    // Toutes les rubriques de la carte grise, dans l'ordre du certificat.
+    const RUBRIQUES_CG = [['immatriculation','A','Immatriculation'],['date_premiere_immatriculation','B','1re immatriculation','date'],['titulaire','C.1','Titulaire'],['adresse_complete','C.3','Adresse du titulaire'],['proprietaire','C.4a','Propriétaire du véhicule'],['co_titulaire','C.4.1','Co-titulaire'],['marque','D.1','Marque'],['type_variante_version','D.2','Type, variante, version'],['cnit','D.2.1','CNIT'],['denomination_commerciale','D.3','Dénomination commerciale'],['vin','E','VIN'],['ptac_technique','F.1','Masse max. technique (kg)'],['ptac','F.2','PTAC (kg)'],['ptra','F.3','PTRA (kg)'],['masse_en_service','G','Masse en service (kg)'],['poids_vide','G.1','Poids à vide (kg)'],['periode_validite','H','Période de validité'],['date_certificat','I','Date du certificat','date'],['categorie_ce','J','Catégorie CE'],['genre','J.1','Genre national'],['carrosserie_ce','J.2','Carrosserie CE'],['carrosserie','J.3','Carrosserie nationale'],['reception','K','N° de réception'],['cylindree','P.1','Cylindrée (cm³)'],['puissance_kw','P.2','Puissance nette (kW)'],['energie','P.3','Énergie'],['puissance_fiscale','P.6','Puissance fiscale (CV)'],['rapport_puissance_masse','Q','Puissance/masse (kW/kg)'],['places_assises','S.1','Places assises'],['places_debout','S.2','Places debout'],['niveau_sonore','U.1','Niveau sonore (dB)'],['regime_moteur','U.2','Régime moteur'],['co2','V.7','CO2 (g/km)'],['classe_environnementale','V.9','Classe environnementale'],['date_controle_technique','X.1','Visite technique','date'],['taxe_regionale','Y.1','Taxe régionale (€)'],['taxe_formation','Y.2','Taxe formation (€)'],['taxe_co2','Y.3','Taxe CO2 (€)'],['taxe_gestion','Y.4','Taxe de gestion (€)'],['redevance_acheminement','Y.5','Acheminement (€)'],['taxes_total','Y.6','Total des taxes (€)'],['mentions','Z','Mentions'],['numero_formule','','N° de formule']];
+    const tableCg = g => { const l = RUBRIQUES_CG.filter(([k]) => g[k] !== undefined && String(g[k]).trim() !== ''); return l.length ? `<dl class="cg-table">${l.map(([k, c, lib, t]) => `<dt>${c ? `<i>${esc(c)}</i>` : ''}${esc(lib)}</dt><dd>${esc(t === 'date' ? String(g[k]).split('-').reverse().join('/') : g[k])}</dd>`).join('')}</dl>` : ''; };
     function scannerCarteGrise(d) {
         const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*,application/pdf';
         inp.onchange = async () => {
@@ -3376,30 +3388,15 @@ body.modal-ouvert { overflow: hidden; }
             const fd = new FormData(); fd.append('photo', fichier);
             let r; try { r = await api('/api/admin/demandes/' + d.ref + '/carte-grise', { method: 'POST', body: fd }); } catch (e) { $('#crIn').innerHTML = tete + `<p class="notice">${esc(e.message)}</p>`; $('#cgX').onclick = fermerG; return; }
             maj(r.demande); if (courant && courant.ref === d.ref) { courant = r.demande; fiche(); }
-            const g = r.lu, x = r.demande.data || {};
-            const adresse = [[g.numero, g.extension, g.type_voie, g.voie].filter(Boolean).join(' '), g.complement].filter(Boolean).join(', ');
-            const annee = (g.date_premiere_immatriculation || '').slice(0, 4);
-            // Champ de la fiche ← valeur lue. Coché d'office si la fiche est vide ou différente.
-            const L = [
-                ['nom_titulaire', 'Titulaire (C.1)', g.titulaire], ['adresse', 'Adresse (C.3)', adresse], ['code_postal', 'Code postal', g.code_postal], ['ville', 'Ville', g.commune],
-                ['numero_formule', 'N° de formule', g.numero_formule], ['plaque', 'Immatriculation (A)', g.immatriculation], ['vin', 'VIN (E)', g.vin], ['annee', 'Année (B)', annee],
-                ['nom', 'Nom du vendeur', !g.personne_morale ? g.titulaire_nom : ''], ['prenom', 'Prénom du vendeur', !g.personne_morale ? g.titulaire_prenom : '']
-            ].filter(([, , v]) => v);
-            const norm = v => String(v || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-            $('#crIn').innerHTML = tete + `${g.lisible ? '' : '<p class="notice">Photo difficile à lire : vérifiez bien chaque valeur.</p>'}
-                <p class="sub">Cochez ce qu'il faut reporter dans la fiche (modifiable). Tout est aussi gardé pour le certificat de cession${g.date_certificat ? ` · certificat du ${g.date_certificat.split('-').reverse().join('/')}` : ''}${g.co_titulaire ? ` · co-titulaire : ${esc(g.co_titulaire)}` : ''}.</p>
-                <form id="cgF" class="cg-liste">${L.map(([k, l, v]) => { const act = x[k] || ''; const diff = norm(act) !== norm(v); return `<label class="cg-l"><input type="checkbox" name="ok_${k}"${diff && !(k === 'prenom' || k === 'nom') || !act ? ' checked' : ''}>
-                    <span class="cg-n">${l}</span><input class="in" name="${k}" value="${esc(v)}">${act && diff ? `<small>dans la fiche : ${esc(act)}</small>` : act ? '<small>identique à la fiche</small>' : ''}</label>`; }).join('') || '<p class="vide">Rien de lisible sur cette photo.</p>'}
-                <p class="sub">${esc([g.marque, g.denomination_commerciale, g.type_variante_version, g.energie, g.puissance_fiscale && g.puissance_fiscale + ' CV'].filter(Boolean).join(' · '))}</p>
-                <div class="cr-btns"><button type="button" class="btn" id="cgNon">Fermer</button><button class="btn btn-p">Intégrer à la fiche</button></div></form>`;
+            const g = r.lu || {};
+            $('#crIn').innerHTML = tete + (r.reconnue ? `${g.lisible === false ? '<p class="notice">Photo difficile à lire : contrôlez les valeurs ci-dessous.</p>' : ''}
+                <p class="sms-ok">✓ Carte grise lue en entier, fiche mise à jour</p>
+                ${r.remplis.length ? `<p class="sub"><b>Mis à jour :</b> ${esc(r.remplis.join(' · '))}</p>` : '<p class="sub">La fiche était déjà conforme à la carte grise.</p>'}
+                ${r.ecarts.length ? `<p class="notice">À vérifier : ${esc(r.ecarts.join(' ; '))}</p>` : ''}
+                ${(g.illisibles || []).length ? `<p class="notice">Rubriques illisibles : ${esc(g.illisibles.join(', '))}</p>` : ''}
+                ${tableCg(g)}` : '<p class="notice">Ce document n\'a pas été reconnu comme une carte grise : rien n\'a été modifié. Reprenez une photo nette du recto, à plat et en entier.</p>')
+                + '<div class="cr-btns"><button type="button" class="btn btn-p" id="cgNon">Fermer</button></div>';
             $('#cgX').onclick = $('#cgNon').onclick = fermerG;
-            $('#cgF').onsubmit = async e => {
-                e.preventDefault(); const F = e.target, corps = {};
-                L.forEach(([k]) => { if (F['ok_' + k].checked) corps[k] = F[k].value; });
-                if (!Object.keys(corps).length) return fermerG();
-                try { const m = await api('/api/admin/demandes/' + d.ref + '/infos', { method: 'PATCH', body: JSON.stringify(corps) }); maj(m); if (courant && courant.ref === d.ref) { courant = m; fiche(); } fermerG(); toast('Carte grise intégrée à la fiche'); }
-                catch (err) { toast(err.message); }
-            };
         };
         inp.click();
     }
@@ -4785,6 +4782,36 @@ body.modal-ouvert { overflow: hidden; }
     // SMS au client avec son lien personnel : photo de la carte grise ou photos de la voiture.
     // Ce qu'il envoie arrive dans la fiche (carte grise lue et reportée, photos rangées) avec une notification.
     // Appel sans réponse : SMS au client pour qu'il rappelle son conseiller (texte modifiable, historisé dans la fiche).
+    // Après un envoi de SMS : la fenêtre reste ouverte et montre ce qu'OVH a accepté, puis le statut de remise
+    // (interrogé toutes les 5 s pendant 2 min) jusqu'à « reçu par le téléphone » ou un échec.
+    function suiviSms(ref, m, fermer) {
+        const s = ((m.suivi || {}).sms || [])[0] || {};
+        const h = s.date ? new Date(s.date).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) : '';
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>SMS envoyé</h3><button class="close" type="button" id="ssX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <p class="sms-ok">✓ Accepté par OVH à ${esc(h)} pour le ${esc(String(s.a || '').replace(/^\+33/, '0'))}</p>
+            <p class="sub">Expéditeur : ${esc(s.expediteur || '—')} · ${esc(String(s.credits || 1))} crédit${Number(s.credits) > 1 ? 's' : ''}${s.job ? ' · n° OVH ' + esc(String(s.job)) : ''}</p>
+            <p class="sms-remise" id="ssEtat" data-etat="attente"><span class="spin"></span> Remise au téléphone du client : vérification…</p>
+            <p class="sub" id="ssDet"></p>
+            <div class="cr-btns"><button type="button" class="btn btn-p" id="ssOk">Fermer</button></div>`;
+        let fini = false; const stop = () => { fini = true; fermer(); };
+        $('#ssX').onclick = $('#ssOk').onclick = stop;
+        if (!s.id || !s.job) { $('#ssEtat').textContent = 'OVH n\'a pas renvoyé de numéro de suivi : remise non vérifiable.'; return; }
+        const debut = Date.now();
+        const tour = async () => {
+            if (fini || !$('#ssEtat')) return;
+            let st; try { st = await api(`/api/admin/demandes/${ref}/sms/${s.id}/statut`); } catch (e) { st = { etat: 'inconnu', libelle: e.message }; }
+            if (fini || !$('#ssEtat')) return;
+            const icone = { recu: '✓', echec: '✕' }[st.etat];
+            $('#ssEtat').dataset.etat = st.etat;
+            $('#ssEtat').innerHTML = (icone ? icone + ' ' : st.etat === 'inconnu' ? '' : '<span class="spin"></span> ') + esc(st.libelle) + (st.recu_le ? ' · ' + esc(new Date(st.recu_le).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })) : '');
+            $('#ssDet').textContent = [st.detail, st.ptt != null && 'code ' + st.ptt, st.deliveryReceipt != null && 'accusé ' + st.deliveryReceipt].filter(Boolean).join(' · ');
+            if (st.etat === 'recu' || st.etat === 'echec') return;
+            if (Date.now() - debut > 120e3) { $('#ssEtat').innerHTML = esc(st.libelle) + ' — pas encore d\'accusé de réception (normal si le téléphone est éteint). Le statut se revoit dans l\'historique des SMS.'; return; }
+            setTimeout(tour, 5000);
+        };
+        setTimeout(tour, 2500);
+    }
+    const erreurSms = e => { document.querySelectorAll('#crIn .sms-err').forEach(x => x.remove()); const p = document.createElement('p'); p.className = 'notice sms-err'; p.textContent = 'SMS non envoyé : ' + e.message; const b = $('#crIn .cr-btns'); b ? b.before(p) : $('#crIn').append(p); };
     const TEL_CONSEILLER = '06 16 13 37 30';
     function smsInjoignable(d) {
         const x = d.data || {}, brut = String(x.vehicule || '').trim();
@@ -4805,12 +4832,12 @@ body.modal-ouvert { overflow: hidden; }
         if ($('#siIphone')) $('#siIphone').onclick = () => { location.href = `sms:+${tel}${/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?'}body=${encodeURIComponent($('#siTxt').value.trim())}`; };
         $('#siOk').onclick = async () => {
             const t = $('#siTxt').value.trim(); if (!t) return;
-            $('#siOk').disabled = true;
+            $('#siOk').disabled = true; $('#siOk').innerHTML = '<span class="spin"></span> Envoi…';
             try {
                 const m = await api('/api/admin/demandes/' + d.ref + '/sms', { method: 'POST', body: JSON.stringify({ texte: t, type: 'injoignable' }) });
                 maj(m); if (courant && courant.ref === d.ref) { courant = m; fiche(); }
-                fermer(); toast('SMS envoyé');
-            } catch (e) { $('#siOk').disabled = false; toast(e.message); }
+                suiviSms(d.ref, m, fermer);
+            } catch (e) { $('#siOk').disabled = false; $('#siOk').textContent = 'Envoyer le SMS'; erreurSms(e); }
         };
     }
     async function smsPiece(d, type) {
@@ -4833,12 +4860,12 @@ body.modal-ouvert { overflow: hidden; }
         $('#spCopie').onclick = async () => { try { await navigator.clipboard.writeText(lien); toast('Lien copié'); } catch (e) { toast(lien); } };
         $('#spOk').onclick = async () => {
             const t = $('#spTxt').value.trim(); if (!t) return;
-            $('#spOk').disabled = true;
+            $('#spOk').disabled = true; $('#spOk').innerHTML = '<span class="spin"></span> Envoi…';
             try {
                 const m = await api('/api/admin/demandes/' + d.ref + '/sms', { method: 'POST', body: JSON.stringify({ texte: t, type: type === 'carte_grise' ? 'demande_carte_grise' : 'demande_photos' }) });
                 maj(m); if (courant && courant.ref === d.ref) { courant = m; fiche(); }
-                fermer(); toast('SMS envoyé');
-            } catch (e) { $('#spOk').disabled = false; toast(e.message); }
+                suiviSms(d.ref, m, fermer);
+            } catch (e) { $('#spOk').disabled = false; $('#spOk').textContent = 'Envoyer le SMS'; erreurSms(e); }
         };
     }
     // État mécanique : les questions à poser pendant l'appel, réponses en un appui, résumé rangé en note dans la fiche.
@@ -5181,6 +5208,7 @@ body.modal-ouvert { overflow: hidden; }
             ${blocMarche(d)}
             ${blocSonar(d)}
             ${blocRdv(d)}
+            ${x.carte_grise && x.carte_grise.lue_le ? `<details class="sec"><summary><b>Carte grise</b> · lue le ${date(x.carte_grise.lue_le, false)}${x.carte_grise.titulaire ? ' · ' + esc(x.carte_grise.titulaire) : ''}</summary>${x.carte_grise.photo ? `<p><img class="cg-photo" src="${photoUrl(x.carte_grise.photo)}" alt="Carte grise"></p>` : ''}${tableCg(x.carte_grise)}</details>` : ''}
             <details class="sec ancienne"><summary>Ancienne estimation IA (pour mémoire)</summary>
             <section class="sec decision">
                 <div class="dec-tete">
