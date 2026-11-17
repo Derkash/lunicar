@@ -1706,7 +1706,7 @@ body.modal-ouvert { overflow: hidden; }
 
         <section data-view="reglages" hidden>
             <div class="page-h"><h1>Réglages et import</h1></div>
-            <div class="card">
+            <div class="card" hidden>
                 <h3>Appels depuis cet appareil</h3>
                 <p class="sub">Avec SoftCall, l'appel part de la ligne OVH : le client voit le numéro en 01. Réglage propre à cet appareil.</p>
                 <form id="apForm" class="form-grid">
@@ -1928,11 +1928,13 @@ body.modal-ouvert { overflow: hidden; }
     }
     // Appli d'appel de cet appareil : SoftCall (ligne OVH, le client voit le 01) ou le téléphone de l'iPhone.
     // SoftCall ne documente pas de lien d'appel : le modèle est réglable dans Réglages ({numero} = +33…, {national} = 06…).
+    // SoftCall désactivé (17/11/2026) : les appels partent du téléphone de l'iPhone. Repasser à true pour le réactiver.
+    const SOFTCALL_ACTIF = false;
     const APPEL_DEFAUT = { app: 'softcall', modele: 'sip:{numero}' };
     const reglageAppel = () => { try { return { ...APPEL_DEFAUT, ...JSON.parse(localStorage.getItem('lunicarAppelApp') || '{}') }; } catch (e) { return APPEL_DEFAUT; } };
     const lienAppel = href => {
         const R = reglageAppel(), num = telNorm(decodeURIComponent(String(href).replace(/^tel:/, '')));
-        if (R.app !== 'softcall' || !num) return href;
+        if (!SOFTCALL_ACTIF || R.app !== 'softcall' || !num) return href;
         return R.modele.replace(/\{numero\}/g, num).replace(/\{national\}/g, num.replace(/^\+33/, '0'));
     };
     // Liens « Appeler » / WhatsApp : appel lancé dans SoftCall ; dans l'app, la fiche contact est créée juste avant.
