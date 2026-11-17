@@ -4790,7 +4790,7 @@ body.modal-ouvert { overflow: hidden; }
         const x = d.data || {}, brut = String(x.vehicule || '').trim();
         // Un seul SMS (160 caractères) : nom du véhicule coupé au mot près au-delà de 26 caractères.
         const veh = brut.length > 26 ? brut.slice(0, 26).replace(/\s+\S*$/, '') : brut;
-        const texte = propreSMS(`Bonjour${x.prenom ? ' ' + x.prenom : ''}, nous avons tenté de vous joindre pour ${veh ? 'votre ' + veh : 'votre demande'}. Merci de rappeler votre conseiller LUNICAR au ${TEL_CONSEILLER}.`);
+        const texte = propreSMS(`Bonjour,\nnous avons tenté de vous joindre pour ${veh ? 'votre ' + veh : 'votre demande'}.\nMerci de rappeler votre conseiller LUNICAR au ${TEL_CONSEILLER}.`);
         const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
         const tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
         $('#crIn').innerHTML = `<div class="cr-tete"><h3>Client injoignable</h3><button class="close" type="button" id="siX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
