@@ -4784,7 +4784,37 @@ body.modal-ouvert { overflow: hidden; }
     }
     // SMS au client avec son lien personnel : photo de la carte grise ou photos de la voiture.
     // Ce qu'il envoie arrive dans la fiche (carte grise lue et reportée, photos rangées) avec une notification.
+    // Appel sans réponse : SMS au client pour qu'il rappelle son conseiller (texte modifiable, historisé dans la fiche).
+    const TEL_CONSEILLER = '06 16 13 37 30';
+    function smsInjoignable(d) {
+        const x = d.data || {}, brut = String(x.vehicule || '').trim();
+        // Un seul SMS (160 caractères) : nom du véhicule coupé au mot près au-delà de 26 caractères.
+        const veh = brut.length > 26 ? brut.slice(0, 26).replace(/\s+\S*$/, '') : brut;
+        const texte = propreSMS(`Bonjour${x.prenom ? ' ' + x.prenom : ''}, nous avons tenté de vous joindre pour ${veh ? 'votre ' + veh : 'votre demande'}. Merci de rappeler votre conseiller LUNICAR au ${TEL_CONSEILLER}.`);
+        const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
+        const tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>Client injoignable</h3><button class="close" type="button" id="siX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <p class="sub">SMS à ${esc(x.telephone)} · via OVH${smsOk ? (etat.sms.sender_valide ? '' : ' (numéro court en attendant la validation de LUNICAR)') : ' — clés OVH absentes sur Render : l\'envoi échouera'}. Le client est invité à rappeler le ${TEL_CONSEILLER}.</p>
+            <textarea class="in" id="siTxt" rows="5">${esc(texte)}</textarea><p class="sub mc-cpt" id="siCpt"></p>
+            <div class="cr-btns">${smsOk ? '' : '<button type="button" class="btn" id="siIphone">Envoyer depuis l\'iPhone</button>'}<button type="button" class="btn btn-g" id="siOk">Envoyer le SMS</button></div>`;
+        const fermer = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        $('#siX').onclick = fermer; $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermer(); };
+        const compter = () => { const c = segmentsSMS($('#siTxt').value.trim()); $('#siCpt').textContent = `${c.n} caractères · ${c.seg} SMS`; };
+        $('#siTxt').addEventListener('input', compter); compter();
+        if ($('#siIphone')) $('#siIphone').onclick = () => { location.href = `sms:+${tel}${/iPhone|iPad|Mac/.test(navigator.userAgent) ? '&' : '?'}body=${encodeURIComponent($('#siTxt').value.trim())}`; };
+        $('#siOk').onclick = async () => {
+            const t = $('#siTxt').value.trim(); if (!t) return;
+            $('#siOk').disabled = true;
+            try {
+                const m = await api('/api/admin/demandes/' + d.ref + '/sms', { method: 'POST', body: JSON.stringify({ texte: t, type: 'injoignable' }) });
+                maj(m); if (courant && courant.ref === d.ref) { courant = m; fiche(); }
+                fermer(); toast('SMS envoyé');
+            } catch (e) { $('#siOk').disabled = false; toast(e.message); }
+        };
+    }
     async function smsPiece(d, type) {
+        if (type === 'injoignable') return smsInjoignable(d);
         const x = d.data || {}, veh = String(x.vehicule || '').trim();
         let L; try { L = await api('/api/admin/demandes/' + d.ref + '/liens'); } catch (e) { return toast(e.message); }
         const lien = L[type], quoi = type === 'carte_grise' ? 'une photo de votre carte grise' : 'quelques photos de votre voiture (extérieur, intérieur, compteur, défauts éventuels)';
@@ -5085,7 +5115,7 @@ body.modal-ouvert { overflow: hidden; }
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a>` : ''}
                 <button class="btn" type="button" data-vers-mail>E-mail</button>
-                ${x.telephone ? `<button class="btn" type="button" data-sms-piece="carte_grise">SMS carte grise</button><button class="btn" type="button" data-sms-piece="photos">SMS photos</button>` : ''}
+                ${x.telephone ? `<button class="btn" type="button" data-sms-piece="carte_grise">SMS carte grise</button><button class="btn" type="button" data-sms-piece="photos">SMS photos</button><button class="btn" type="button" data-sms-piece="injoignable">SMS injoignable</button>` : ''}
                 <button class="btn" type="button" data-meca>État mécanique</button>
                 <button class="btn" type="button" data-partager="${esc(BASE + '/demande/' + d.ref)}" data-partager-texte="${esc([nomVeh(x), x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.ville].filter(Boolean).join(' · '))}">Partager</button>
             </div>
@@ -5096,7 +5126,7 @@ body.modal-ouvert { overflow: hidden; }
             <button class="btn btn-p" type="button" id="basRdv">Rendez-vous</button>
             <div class="bas-plus"><button class="btn" type="button" id="basPlus" aria-haspopup="true" aria-expanded="false">Demander<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10l5 5 5-5"/></svg></button>
                 <div class="bas-menu" id="basMenu" hidden>
-                    ${x.telephone ? `<button type="button" data-bas="photos">Demande de photos<small>SMS avec le lien d'envoi</small></button><button type="button" data-bas="carte_grise">Demande de carte grise<small>SMS avec le lien d'envoi</small></button>` : ''}
+                    ${x.telephone ? `<button type="button" data-bas="photos">Demande de photos<small>SMS avec le lien d'envoi</small></button><button type="button" data-bas="carte_grise">Demande de carte grise<small>SMS avec le lien d'envoi</small></button><button type="button" data-bas="injoignable">Client injoignable<small>SMS : rappeler le conseiller au 06 16 13 37 30</small></button>` : ''}
                     <button type="button" data-bas="meca">État mécanique de la voiture<small>les questions à poser pendant l'appel</small></button>
                 </div></div>
         </div>
