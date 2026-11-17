@@ -1115,6 +1115,10 @@ body.modal-ouvert { overflow: hidden; }
 .ces-form { display: grid; gap: 12px; }
 .ces-form fieldset { border: 1px solid var(--line); border-radius: var(--r-s); padding: 10px 12px 12px; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
 .ces-form legend { font-weight: 650; font-size: .9rem; padding: 0 4px; }
+.ces-form .ve-part, .ces-form .ve-soc { display: contents; }
+.ces-form .ve-part[hidden], .ces-form .ve-soc[hidden] { display: none; }
+.ces-form .ve-vendeur summary { cursor: pointer; font-weight: 650; font-size: .9rem; padding: 4px 0; }
+.ces-form .ve-vendeur fieldset { margin-top: 8px; }
 .ces-form .chk { grid-column: 1 / -1; height: auto; }
 
 /* ---------- Panneau d'appel et « Ce qui a été dit » ---------- */
@@ -4060,7 +4064,7 @@ body.modal-ouvert { overflow: hidden; }
             <div class="doc-check">${[...DOCS_ACHAT, ...(v.statut === 'vendu' ? ['cession_vente'] : [])].map(t => `<span class="${docs.some(d => d.type === t) ? 'ok' : ''}">${docs.some(d => d.type === t) ? '✓' : '○'} ${esc(T[t] || t)}</span>`).join('')}</div>
             <div class="doc-act">
                 <button class="btn btn-g" id="vCession" type="button">Générer le certificat de cession</button>
-                <button class="btn btn-g" id="vBonCmd" type="button">Bon de commande (acheteur)</button>
+                <button class="btn btn-p" id="vVente" type="button">Espace vente : bon de commande, cession, facture</button>
                 <button class="btn btn-p" id="vAvis" type="button">${v.remerciement_le ? 'Demander un avis · envoyé le ' + date(v.remerciement_le, false) : 'Demander un avis'}</button>
                 <button class="btn" id="vMerci" type="button">Mail avec les documents</button>
                 <select class="in" id="vDocType">${Object.entries(T).map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select>
@@ -4153,7 +4157,7 @@ body.modal-ouvert { overflow: hidden; }
             try { await api('/api/admin/compta/vehicules/' + v.id + '/documents?path=' + encodeURIComponent(b.dataset.docdel), { method: 'DELETE' }); await chargerCompta(); afficherVehicule(v.id); } catch (err) { toast(err.message); }
         });
         $('#vCession').onclick = () => ecranCession(v);
-        $('#vBonCmd').onclick = () => ecranBonCommande(v);
+        $('#vVente').onclick = () => ecranVente(v);
     }
 
     // ---------------- Dossier de vente (fiche remarkauto) : photos floutées, vidéo moteur, documents, essai, dommages…
@@ -4488,51 +4492,78 @@ body.modal-ouvert { overflow: hidden; }
         };
     }
 
-    // Bon de commande remis à l'acheteur : vendeur + RIB pré-remplis (gardés pour la suite), véhicule repris de la fiche,
-    // acheteur facultatif (lignes vides sinon), prix toujours laissé en blanc pour être écrit à la main.
-    async function ecranBonCommande(v) {
+    // Espace vente : l'acheteur et la vente saisis une fois, puis bon de commande, certificat de cession (la société
+    // vend, modèle tamponné « ancien propriétaire ») et facture (régime de la marge par défaut) générés ensemble.
+    async function ecranVente(v) {
         let c;
-        try { c = await api('/api/admin/compta/vehicules/' + v.id + '/bon-commande'); } catch (e) { return toast(e.message); }
-        const ch = (g, k, l, attrs = '') => `<label class="f">${l}<input class="in" name="${g}.${k}" value="${esc((c[g] || {})[k] == null ? '' : c[g][k])}" ${attrs}></label>`;
-        $('#crIn').innerHTML = `<div class="cr-tete"><h3>Bon de commande</h3><button class="close" type="button" id="bcX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
-            <p class="sub">Pour l'acheteur du véhicule. Le prix est laissé en blanc, à écrire à la main. Les champs acheteur vides deviennent des lignes à remplir.</p>
-            <form id="bcF" class="ces-form" autocomplete="off">
-                <fieldset><legend>Le document</legend>
-                    <label class="f">Numéro<input class="in" name="numero" value="${esc(c.numero)}"></label><label class="f">Date<input class="in" name="date" value="${esc(c.date)}"></label>
-                </fieldset>
+        try { c = await api('/api/admin/compta/vehicules/' + v.id + '/vente'); } catch (e) { return toast(e.message); }
+        const val = (g, k) => { const x = (c[g] || {})[k]; return x == null ? '' : x; };
+        const ch = (g, k, l, attrs = '') => `<label class="f">${l}<input class="in" name="${g}.${k}" value="${esc(val(g, k))}" ${attrs}></label>`;
+        const sel = (g, k, l, opts) => `<label class="f">${l}<select class="in" name="${g}.${k}">${opts.map(([o, t]) => `<option value="${o}"${String(val(g, k)) === o ? ' selected' : ''}>${t}</option>`).join('')}</select></label>`;
+        const D = c.documents || {}, deja = Object.keys(D).length;
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>Espace vente</h3><button class="close" type="button" id="veX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <p class="sub">${esc(v.libelle || '')}${v.plaque ? ' · ' + esc(v.plaque) : ''}. Une saisie pour les trois documents de la vente : ils sont rangés dans les documents du véhicule et remplacés à chaque nouvelle génération${c.numero_facture ? ` (la facture garde son numéro ${esc(c.numero_facture)})` : ''}.</p>
+            ${deja ? `<p class="notice">Déjà générés : ${Object.keys(D).map(t => `<a href="${photoUrl(D[t])}" target="_blank" rel="noopener">${esc((compta.types_document || {})[t] || t)}</a>`).join(' · ')}</p>` : ''}
+            <form id="veF" class="ces-form" autocomplete="off">
                 <fieldset><legend>L'acheteur</legend>
-                    ${ch('acheteur', 'societe', 'Société')}${ch('acheteur', 'siret', 'SIRET', 'inputmode="numeric"')}${ch('acheteur', 'nom', 'Nom')}${ch('acheteur', 'prenom', 'Prénom')}
-                    ${ch('acheteur', 'adresse', 'Adresse')}${ch('acheteur', 'cp_ville', 'Code postal et ville')}${ch('acheteur', 'telephone', 'Téléphone', 'type="tel"')}${ch('acheteur', 'email', 'E-mail', 'type="email"')}
+                    ${sel('acheteur', 'type', 'Acheteur', [['particulier', 'Particulier'], ['societe', 'Société (professionnel)']])}
+                    <div class="ve-part">${sel('acheteur', 'sexe', 'Sexe (cession)', [['', '—'], ['M', 'M'], ['F', 'F']])}${ch('acheteur', 'nom', 'Nom')}${ch('acheteur', 'prenom', 'Prénom')}
+                        ${ch('acheteur', 'naissance', 'Né(e) le (cession, facultatif)', 'type="date"')}${ch('acheteur', 'lieu_naissance', 'À (facultatif)')}</div>
+                    <div class="ve-soc">${ch('acheteur', 'societe', 'Raison sociale')}${ch('acheteur', 'siret', 'SIRET', 'inputmode="numeric"')}${ch('acheteur', 'tva', 'N° TVA intracommunautaire')}</div>
+                    ${ch('acheteur', 'num', 'N° de voie')}${ch('acheteur', 'extension', 'Extension (bis, ter, A…)')}${ch('acheteur', 'type_voie', 'Type de voie (rue, allée…)')}${ch('acheteur', 'voie', 'Nom de la voie')}
+                    ${ch('acheteur', 'cp', 'Code postal', 'inputmode="numeric"')}${ch('acheteur', 'commune', 'Commune')}${ch('acheteur', 'telephone', 'Téléphone', 'type="tel"')}${ch('acheteur', 'email', 'E-mail', 'type="email"')}
+                </fieldset>
+                <fieldset><legend>La vente</legend>
+                    ${ch('vente', 'prix_ttc', 'Prix de vente TTC (€)', 'inputmode="decimal"')}${ch('vente', 'acompte', 'Acompte versé (€)', 'inputmode="decimal"')}
+                    ${ch('vente', 'mode_reglement', 'Mode de règlement')}
+                    ${sel('vente', 'regime', 'TVA', [['marge', 'Régime de la marge (biens d\'occasion)'], ['normal', 'Régime normal : TVA 20 % sur le prix']])}
+                    ${ch('vente', 'date', 'Date de la vente', 'type="date"')}${ch('vente', 'heure', 'Heure (vide = à la main)', 'type="time"')}${ch('vente', 'lieu', 'Fait à')}
+                    <label class="chk"><input type="checkbox" name="vente.payee"${val('vente', 'payee') ? ' checked' : ''}> Prix intégralement réglé (facture acquittée)</label>
+                    ${ch('vente', 'observations', 'Observations (facultatif)')}
                 </fieldset>
                 <fieldset><legend>Le véhicule</legend>
-                    ${ch('vehicule', 'marque', 'Marque')}${ch('vehicule', 'modele', 'Modèle')}${ch('vehicule', 'version', 'Version')}${ch('vehicule', 'immatriculation', 'Immatriculation', 'autocapitalize="characters"')}
-                    ${ch('vehicule', 'vin', 'N° de série (VIN)', 'autocapitalize="characters"')}${ch('vehicule', 'mise_circulation', '1re mise en circulation')}${ch('vehicule', 'kilometrage', 'Kilométrage', 'inputmode="numeric"')}
-                    ${ch('vehicule', 'energie', 'Énergie')}${ch('vehicule', 'boite', 'Boîte')}${ch('vehicule', 'couleur', 'Couleur')}${ch('vehicule', 'puissance', 'Puissance')}${ch('vehicule', 'numero_formule', 'N° de formule')}
-                    ${ch('vehicule', 'observations', 'Observations (facultatif)')}
+                    ${ch('vehicule', 'marque', 'Marque (D.1)')}${ch('vehicule', 'modele', 'Modèle')}${ch('vehicule', 'version', 'Version')}${ch('vehicule', 'denomination', 'Dénomination commerciale (D.3)')}
+                    ${ch('vehicule', 'type_version', 'Type, variante, version (D.2)')}${ch('vehicule', 'genre', 'Genre (J.1)')}
+                    ${ch('vehicule', 'immatriculation', 'Immatriculation', 'autocapitalize="characters"')}${ch('vehicule', 'vin', 'N° de série (VIN)', 'autocapitalize="characters"')}
+                    ${ch('vehicule', 'date_immatriculation', '1re immatriculation', 'type="date"')}${ch('vehicule', 'kilometrage', 'Kilométrage au compteur', 'inputmode="numeric"')}
+                    ${ch('vehicule', 'numero_formule', 'N° de formule (carte grise)', 'autocapitalize="characters"')}
+                    ${ch('vehicule', 'energie', 'Énergie')}${ch('vehicule', 'boite', 'Boîte')}${ch('vehicule', 'couleur', 'Couleur')}${ch('vehicule', 'puissance', 'Puissance')}
                 </fieldset>
-                <fieldset><legend>Le vendeur et le RIB (gardés pour les prochaines fois)</legend>
-                    ${ch('vendeur', 'raison', 'Raison sociale')}${ch('vendeur', 'siret', 'SIRET')}${ch('vendeur', 'representant', 'Représenté par (prénom, nom)')}
+                <details class="ve-vendeur"><summary>Le vendeur et le RIB (gardés pour les prochaines ventes)</summary><fieldset>
+                    ${ch('vendeur', 'raison', 'Raison sociale')}${ch('vendeur', 'forme', 'Forme')}${ch('vendeur', 'siret', 'SIRET')}${ch('vendeur', 'rcs', 'RCS')}${ch('vendeur', 'tva', 'N° TVA intracommunautaire')}${ch('vendeur', 'ape', 'Code APE')}
                     ${ch('vendeur', 'adresse', 'Adresse')}${ch('vendeur', 'cp_ville', 'Code postal et ville')}${ch('vendeur', 'email', 'E-mail')}${ch('vendeur', 'telephone', 'Téléphone (facultatif)')}
                     ${ch('vendeur', 'titulaire', 'Titulaire du compte')}${ch('vendeur', 'iban', 'IBAN')}${ch('vendeur', 'bic', 'BIC')}${ch('vendeur', 'banque', 'Banque')}
-                    <label class="f">Conditions<textarea class="in" name="vendeur.conditions" rows="3">${esc(c.vendeur.conditions || '')}</textarea></label>
+                    <label class="f">Conditions (bon de commande)<textarea class="in" name="vendeur.conditions" rows="3">${esc(c.vendeur.conditions || '')}</textarea></label>
+                </fieldset></details>
+                <fieldset><legend>Documents</legend>
+                    <label class="chk"><input type="checkbox" name="gen" value="bon_commande" checked> Bon de commande</label>
+                    <label class="chk"><input type="checkbox" name="gen" value="cession_vente" checked> Certificat de cession (2 exemplaires)</label>
+                    <label class="chk"><input type="checkbox" name="gen" value="facture" checked> Facture${c.numero_facture ? ' ' + esc(c.numero_facture) : ' (numéro attribué à la première génération)'}</label>
+                    ${v.statut !== 'vendu' ? '<label class="chk"><input type="checkbox" name="vendu"> Passer le véhicule en « Vendu » (prix et date ci-dessus)</label>' : ''}
                 </fieldset>
-                <div class="cr-btns"><button type="button" class="btn" id="bcAnnul">Annuler</button><button class="btn btn-p" id="bcOk">Générer le PDF</button></div>
+                <div class="cr-btns"><button type="button" class="btn" id="veAnnul">Fermer</button><button class="btn btn-p" id="veOk">Générer les documents</button></div>
             </form>`;
-        const fermerB = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        const F = $('#veF');
+        const typeActeur = () => { const soc = F.elements['acheteur.type'].value === 'societe'; F.querySelector('.ve-part').hidden = soc; F.querySelector('.ve-soc').hidden = !soc; };
+        F.elements['acheteur.type'].onchange = typeActeur; typeActeur();
+        const fermerV = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
         $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
-        $('#bcX').onclick = $('#bcAnnul').onclick = fermerB;
-        $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermerB(); };
-        $('#bcF').onsubmit = async e => {
+        $('#veX').onclick = $('#veAnnul').onclick = fermerV;
+        $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermerV(); };
+        F.onsubmit = async e => {
             e.preventDefault();
-            const b = { vendeur: {}, acheteur: {}, vehicule: {} };
-            for (const [k, val] of new FormData(e.target)) { const [g, f] = k.split('.'); if (f) b[g][f] = val; else b[g] = val; }
-            $('#bcOk').disabled = true; $('#bcOk').innerHTML = '<span class="spin"></span> Génération…';
+            const b = { vendeur: {}, acheteur: {}, vente: {}, vehicule: {}, generer: [] };
+            for (const [k, x] of new FormData(F)) { if (k === 'gen') { b.generer.push(x); continue; } const [g, f] = k.split('.'); if (f && b[g]) b[g][f] = x; }
+            b.vente.payee = F.elements['vente.payee'].checked;
+            b.marquer_vendu = !!(F.elements.vendu && F.elements.vendu.checked);
+            if (!b.generer.length) return toast('Cochez au moins un document');
+            $('#veOk').disabled = true; $('#veOk').innerHTML = '<span class="spin"></span> Génération…';
             try {
-                const r = await api('/api/admin/compta/vehicules/' + v.id + '/bon-commande', { method: 'POST', body: JSON.stringify(b) });
-                fermerB(); await chargerCompta(); afficherVehicule(v.id);
-                toast('Bon de commande généré');
-                window.open(photoUrl(r.document.path), '_blank');
-            } catch (err) { $('#bcOk').disabled = false; $('#bcOk').textContent = 'Générer le PDF'; toast(err.message); }
+                const r = await api('/api/admin/compta/vehicules/' + v.id + '/vente', { method: 'POST', body: JSON.stringify(b) });
+                await chargerCompta(); afficherVehicule(v.id);
+                toast('Documents de vente générés' + (r.numero_facture ? ' · facture ' + r.numero_facture : ''));
+                ecranVente(vehiculeDe(v.id) || v);
+            } catch (err) { $('#veOk').disabled = false; $('#veOk').textContent = 'Générer les documents'; toast(err.message); }
         };
     }
 
