@@ -461,6 +461,7 @@ function emailDemande(d, apiBrut, opts = {}) {
     <div style="font-size:22px;font-weight:700;margin-top:6px">${esc([d.prenom, d.nom].filter(Boolean).join(' ') || 'Sans nom')} · <a href="tel:+${d.telephone_intl}" style="color:#fff">${esc(d.telephone)}</a></div>
   </div>
   <div style="background:#fff;padding:20px 22px;border-radius:0 0 10px 10px">
+    ${(u => u ? `<p style="margin:0 0 14px;padding:10px 12px;background:#FFF1D6;border-radius:8px;color:#7A4A00;font-weight:700">🚐 ${esc(u.sur ? u.libelle.toUpperCase() : 'UTILITAIRE POSSIBLE')} <span style="font-weight:400">· ${esc(u.raison)}</span></p>` : '')(utilitaire.detecter({ ...d, fiche_api: apiBrut || d.fiche_api }))}
     ${opts.estimation ? blocEstimation(opts.estimation, ref) : opts.estimationEnAttente ? `<p style="margin:0 0 14px;padding:10px 12px;background:#EEF3F8;border-radius:8px;color:#0D2541">Estimation automatique en cours : elle apparaîtra dans <a href="${SITE.baseUrl}/admino/demande/${ref}">l'espace admin</a>.</p>` : d.type !== 'rappel' ? `<p style="margin:0 0 14px"><a href="${SITE.baseUrl}/admino/demande/${ref}" style="color:#B8923A;font-weight:700">Ouvrir la fiche et lancer l'estimation →</a></p>` : ''}
     ${opts.abandon ? `<p style="margin:0 0 14px;padding:10px 12px;background:#FCF3E8;border-radius:8px;color:#7A3B12">Le vendeur a quitté le formulaire à l'étape <strong>${esc(d.etape || 'inconnue')}</strong> sans l'envoyer. Voici tout ce qu'il avait rempli.</p>` : ''}
     <p style="margin:0 0 16px"><a href="tel:+${d.telephone_intl}" style="display:inline-block;background:#B8923A;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:8px">Appeler ${esc(d.telephone)}</a>
@@ -544,19 +545,26 @@ async function dejaRecue(d) {
     return (await store.listerDemandes()).some(x => x.id !== d.id && (p ? pl((x.data || {}).plaque) === p : tel((x.data || {}).telephone) === t));
 }
 
+const utilitaire = require('./lib/utilitaire');
+// Libellé court pour les alertes (notification, objet d'e-mail) : 🚐 UTILITAIRE, 🚐 MINIBUS, 🚐 UTILITAIRE ?
+const alerteUtilitaire = u => u ? '🚐 ' + u.libelle.replace(/\s*\(.*\)/, '').toUpperCase() : '';
+
 const ESTIMATION_ATTENTE = (parseFloat(process.env.ESTIMATION_ATTENTE_S) || 150) * 1000;
 
 // Une demande reçue : enregistrement durable, fiche plaque, estimation, puis e-mail.
 async function envoyerDemande(d, opts = {}) {
     // Alerte immédiate sur l'app iOS, avant la fiche plaque et l'e-mail.
     push.notifier({
-        titre: opts.abandon ? '⚠️ Demande abandonnée' : d.type === 'rappel' ? '📞 Demande de rappel' : '🚗 Nouvelle demande' + (/^Google Ads/.test(origine(d)) ? ' [PUB]' : ''),
+        titre: (opts.abandon ? '⚠️ Demande abandonnée' : d.type === 'rappel' ? '📞 Demande de rappel' : '🚗 Nouvelle demande' + (/^Google Ads/.test(origine(d)) ? ' [PUB]' : '')) + (utilitaire.detecter(d) ? ' · ' + alerteUtilitaire(utilitaire.detecter(d)) : ''),
         texte: [[d.vehicule || d.prenom || d.plaque, d.annee].filter(Boolean).join(' '), d.kilometrage ? `${Number(d.kilometrage).toLocaleString('fr-FR')} km` : '', [d.code_postal, d.ville].filter(Boolean).join(' ')].filter(Boolean).join(' · ') || d.telephone,
         ref: d.id.substring(0, 8).toUpperCase()
     }).catch(e => console.error('Push :', e.message));
     let apiBrut = null;
     if (d.plaque) { try { apiBrut = await fichePlaque.ficheComplete(d.plaque); } catch (e) { apiBrut = null; } }
     const ref = d.id.substring(0, 8).toUpperCase();
+    // La carte grise révèle un utilitaire que le nom saisi ne laissait pas voir (ou le confirme) : alerte dédiée.
+    const utilTexte = utilitaire.detecter(d), utilFiche = apiBrut ? utilitaire.detecter({ ...d, fiche_api: apiBrut }) : utilTexte;
+    if (utilFiche && !(utilTexte && utilTexte.sur)) push.notifier({ titre: `${alerteUtilitaire(utilFiche)} · ${d.vehicule || d.plaque}`, texte: `Confirmé par la carte grise (${apiBrut.genreVCGNGC}${apiBrut.carrosserie ? ', ' + apiBrut.carrosserie.toLowerCase() : ''})${d.ville ? ' · ' + d.ville : ''}`, ref }).catch(() => {});
     try {
         await store.enregistrerDemande(store.ligneDepuisDemande({ ...fichePlaque.enrichirNom(d, apiBrut), ...(apiBrut ? { fiche_api: apiBrut, vin: apiBrut.vin || '' } : {}) }, { origine: opts.abandon ? 'abandon' : 'site' }));
     } catch (e) {
@@ -585,7 +593,7 @@ async function envoyerDemande(d, opts = {}) {
             else opts = { ...opts, estimationEnAttente: true };
         }
     }
-    const prefixe = (opts.abandon ? '⚠️ Abandonnée' : d.type === 'rappel' ? '📞 Rappel' : '🚗 Estimation') + (/^Google Ads/.test(origine(d)) ? ' [PUB]' : '');
+    const prefixe = (opts.abandon ? '⚠️ Abandonnée' : d.type === 'rappel' ? '📞 Rappel' : '🚗 Estimation') + (/^Google Ads/.test(origine(d)) ? ' [PUB]' : '') + (utilFiche ? ' ' + alerteUtilitaire(utilFiche) : '');
     let emailed = false;
     try {
         const result = await sendEmail({
@@ -1419,6 +1427,7 @@ app.get(['/conversions/google-ads.csv', '/conversions/leads.csv'], async (req, r
 
 // Version de l'admin : l'app iOS (WebView restée ouverte) se recharge quand elle change.
 const ADMIN_VERSION = process.env.RENDER_GIT_COMMIT || String(Date.now());
+app.get('/admino/utilitaire.js', (req, res) => { res.set('Cache-Control', 'no-cache'); res.type('application/javascript').sendFile(path.join(__dirname, 'lib', 'utilitaire.js')); });
 app.get('/admino/version', (req, res) => { res.set('Cache-Control', 'no-store'); res.json({ v: ADMIN_VERSION }); });
 app.get(['/admino', '/admino/demande/:ref', '/admino/vehicule/:id', '/admino/annonce/:id'], (req, res) => {
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');

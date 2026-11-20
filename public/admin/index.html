@@ -178,6 +178,8 @@ button.kpi:hover { border-color: #CFCAC0; }
 .meca::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 .meca.r, .row .car span.meca.r { background: var(--red-1); color: var(--red); }
 .meca.o, .row .car span.meca.o { background: var(--orange-1); color: var(--orange); }
+.util, .row .car span.util { display: inline-flex; align-items: center; height: 21px; padding: 0 8px; border-radius: 99px; font-size: .72rem; font-weight: 750; white-space: nowrap; vertical-align: 1px; background: #F2A900; color: #2B1D00; letter-spacing: .02em; margin-left: 6px; }
+.util.peut, .row .car span.util.peut { background: #FFF1D6; color: #7A4A00; box-shadow: inset 0 0 0 1px #F2C46B; }
 .meca.v, .row .car span.meca.v { background: var(--green-1); color: var(--green); }
 .row .car > span { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; white-space: normal; overflow: visible; }
 .row .car span.meca { display: inline-flex; font-size: .72rem; }
@@ -1531,6 +1533,7 @@ body.modal-ouvert { overflow: hidden; }
                 </select></label>
                     <label class="f">Canal<select class="in" id="fCanal"><option value="">Tous les canaux</option><option value="pub">Publicité Google Ads</option><option value="google">Google (naturel)</option><option value="ia">ChatGPT et IA</option><option value="autres">Direct, liens, autres</option><option value="inconnu">Non renseigné</option></select></label>
                     <label class="f">État du véhicule<select class="in" id="fMeca"><option value="">Tous les états</option><option value="v">Roule bien</option><option value="o">Roule avec soucis</option><option value="r">En panne ou accidentée</option><option value="?">Non précisé</option></select></label>
+                    <label class="f">Type de véhicule<select class="in" id="fVeh"><option value="">Tous les véhicules</option><option value="util">Utilitaires (certains et possibles)</option><option value="sur">Utilitaires certains</option><option value="vp">Hors utilitaires</option></select></label>
                     <label class="f">Type<select class="in" id="fType"><option value="">Estimations et rappels</option><option value="estimation">Estimations</option><option value="rappel">Rappels</option></select></label>
                     <label class="f">Archives<select class="in" id="fArchive"><option value="">Non archivées</option><option value="oui">Archivées</option><option value="tout">Toutes</option></select></label>
                 </div>
@@ -1816,6 +1819,7 @@ body.modal-ouvert { overflow: hidden; }
 <div class="cr-modal" id="crModal" hidden><div class="cr-in" id="crIn" role="dialog" aria-modal="true"></div></div>
 <div class="confirm" id="confirm" hidden><div class="confirm-in" role="alertdialog" aria-modal="true" aria-labelledby="cfT"><h3 id="cfT"></h3><p id="cfP"></p><div class="confirm-btns" id="cfB"></div></div></div>
 
+<script src="/admino/utilitaire.js"></script>
 <script>
 (() => {
     const $ = s => document.querySelector(s);
@@ -2138,6 +2142,9 @@ body.modal-ouvert { overflow: hidden; }
         if (/roule/.test(t)) return { c: 'v', l: 'Roule bien' };
         return null;
     }
+    // Utilitaires : règle partagée avec le serveur (lib/utilitaire.js). Certain = carte grise CTTE… ou modèle 100 % utilitaire.
+    const utilDe = x => window.Utilitaire ? Utilitaire.detecter(x) : null;
+    const badgeUtil = x => { const u = utilDe(x); return u ? `<span class="util${u.sur ? '' : ' peut'}" title="${esc(u.raison)}">${esc(u.sur ? u.libelle.toUpperCase() : 'UTILITAIRE ?')}</span>` : ''; };
     const badgeMeca = x => { const e = etatMeca(x); return e ? `<span class="meca ${e.c}" title="${esc(x.mecanique || '')}">${e.l}</span>` : ''; };
     const priorite = d => du(d) ? 0 : drapeau(d) ? 1 : 2;
     // Jours ouvrés (week-ends et jours fériés français exclus), comme côté serveur.
@@ -2271,7 +2278,7 @@ body.modal-ouvert { overflow: hidden; }
         $('#kpis').innerHTML = k.map(([id, v, l, c]) => id ? `<button class="kpi ${c || ''}" data-kpi="${id}"><b class="num">${v}</b><span>${l}</span></button>` : `<div class="kpi"><b class="num">${v}</b><span>${l}</span></div>`).join('');
         $('#sousTitre').textContent = `${vivantes.length} en cours · ${demandes.length - vivantes.length} archivée${demandes.length - vivantes.length > 1 ? 's' : ''}`;
     }
-    const FILTRES = ['#fStatut', '#fCanal', '#fMeca', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fPeriode', '#fRegion', '#fDist'];
+    const FILTRES = ['#fStatut', '#fCanal', '#fMeca', '#fVeh', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fPeriode', '#fRegion', '#fDist'];
     function raz() { FILTRES.forEach(f => $(f).value = ''); $('#fPhotos').checked = $('#fSansEst').checked = false; }
     $('#kpis').addEventListener('click', e => {
         const b = e.target.closest('[data-kpi]'); if (!b) return;
@@ -2281,13 +2288,14 @@ body.modal-ouvert { overflow: hidden; }
         liste();
     });
     // Segments rapides : statut ou relance, un clic.
-    const SEGS = [['', 'Toutes'], ['r:appeler', 'À appeler'], ['nouvelle', 'Nouvelles'], ['contactee', 'Contactées'], ['offre', 'Offre faite'], ['a:archivees', 'Archivées'], ['v:nos', 'Rendez-vous →']];
+    const SEGS = [['', 'Toutes'], ['r:appeler', 'À appeler'], ['nouvelle', 'Nouvelles'], ['contactee', 'Contactées'], ['offre', 'Offre faite'], ['a:archivees', 'Archivées'], ['u:util', 'Utilitaires'], ['v:nos', 'Rendez-vous →']];
     // Une demande avec un rendez-vous pris (ou achetée) quitte la liste : elle vit dans « Nos véhicules ».
     const versVehicules = d => d.statut === 'achetee' || (d.statut === 'rdv' && rdvPrevu(d));
     function segments() {
         const vivantes = demandes.filter(d => !(d.suivi || {}).archivee), auj = jourIso();
-        const n = k => !k ? vivantes.filter(d => !versVehicules(d)).length : k === 'v:nos' ? vivantes.filter(d => rdvPrevu(d)).length : k === 'a:archivees' ? demandes.length - vivantes.length : k === 'r:appeler' ? vivantes.filter(aAppeler).length : vivantes.filter(d => d.statut === k).length;
-        const actif = $('#fArchive').value === 'oui' ? (!$('#fStatut').value && !$('#fRelance').value ? 'a:archivees' : null)
+        const n = k => !k ? vivantes.filter(d => !versVehicules(d)).length : k === 'v:nos' ? vivantes.filter(d => rdvPrevu(d)).length : k === 'a:archivees' ? demandes.length - vivantes.length : k === 'r:appeler' ? vivantes.filter(aAppeler).length : k === 'u:util' ? vivantes.filter(d => !versVehicules(d) && utilDe(d.data)).length : vivantes.filter(d => d.statut === k).length;
+        const actif = $('#fVeh').value ? ($('#fVeh').value === 'util' && !$('#fStatut').value && !$('#fRelance').value && !$('#fArchive').value ? 'u:util' : null)
+            : $('#fArchive').value === 'oui' ? (!$('#fStatut').value && !$('#fRelance').value ? 'a:archivees' : null)
             : $('#fArchive').value ? null
             : $('#fRelance').value === 'appeler' && !$('#fStatut').value ? 'r:appeler' : !$('#fRelance').value ? $('#fStatut').value : null;
         $('#segs').innerHTML = SEGS.map(([k, l]) => `<button class="seg${actif === k ? ' on' : ''}${k === 'r:appeler' && n(k) ? ' urgent' : ''}" data-seg="${k}">${l}<b class="num">${n(k)}</b></button>`).join('');
@@ -2300,7 +2308,8 @@ body.modal-ouvert { overflow: hidden; }
         const b = e.target.closest('[data-seg]'); if (!b) return;
         const k = b.dataset.seg;
         if (k === 'v:nos') { plVue = 'avenir'; plJour = null; return allerOnglet('planning'); }
-        $('#fStatut').value = /^[ra]:/.test(k) ? '' : k; $('#fRelance').value = k === 'r:appeler' ? 'appeler' : '';
+        $('#fVeh').value = k === 'u:util' ? 'util' : '';
+        $('#fStatut').value = /^[rau]:/.test(k) ? '' : k; $('#fRelance').value = k === 'r:appeler' ? 'appeler' : '';
         $('#fArchive').value = k === 'a:archivees' ? 'oui' : '';
         liste();
     });
@@ -2319,6 +2328,8 @@ body.modal-ouvert { overflow: hidden; }
             if (ty && d.type !== ty) return false;
             if ($('#fCanal').value && d.canal !== $('#fCanal').value) return false;
             if ($('#fMeca').value && (etatMeca(x) || { c: '?' }).c !== $('#fMeca').value) return false;
+            const fv = $('#fVeh').value, u = fv ? utilDe(x) : null;
+            if ((fv === 'util' && !u) || (fv === 'sur' && !(u && u.sur)) || (fv === 'vp' && u)) return false;
             const g = geo(x.code_postal), reg = $('#fRegion').value, dist = Number($('#fDist').value), per = Number($('#fPeriode').value);
             if (reg === 'hors-idf' ? (!g || g.region === 'IDF') : (reg && (!g || g.region !== reg))) return false;
             if (dist && (!g || g.km == null || g.km > dist)) return false;
@@ -2384,7 +2395,7 @@ body.modal-ouvert { overflow: hidden; }
             return `${entete}<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}${clos ? ' clos' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
-                <div class="car"><b>${icPh}${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}${saisieDiff(x)}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
+                <div class="car"><b>${icPh}${esc(nomVeh(x))}${badgeUtil(x)}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}${saisieDiff(x)}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${badgeInteret(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}${d.statut === 'nouvelle' ? '' : `<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>`}${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
@@ -2410,7 +2421,7 @@ body.modal-ouvert { overflow: hidden; }
         catch (er) { toast(er.message); }
     });
     $('#triRapide').addEventListener('click', e => { const b = e.target.closest('[data-tri]'); if (!b) return; $('#fTri').value = b.dataset.tri; try { localStorage.setItem('lunicarTri', b.dataset.tri); } catch (er) {} liste(); });
-    ['#q', '#fStatut', '#fCanal', '#fMeca', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
+    ['#q', '#fStatut', '#fCanal', '#fMeca', '#fVeh', '#fOrigine', '#fType', '#fArchive', '#fRelance', '#fTri', '#fPeriode', '#fRegion', '#fDist', '#fPhotos', '#fSansEst'].forEach(s => $(s).addEventListener('input', liste));
     $('#list').addEventListener('click', e => {
         if (e.target.id === 'toutCocher') { affichees.forEach(d => e.target.checked ? choisies.add(d.ref) : choisies.delete(d.ref)); liste(); return; }
         if (e.target.classList.contains('choix')) { e.target.checked ? choisies.add(e.target.dataset.ref) : choisies.delete(e.target.dataset.ref); e.target.closest('.row').classList.toggle('choisie', e.target.checked); barreLot(); return; }
@@ -5140,7 +5151,7 @@ body.modal-ouvert { overflow: hidden; }
         $('#sheetIn').innerHTML = `
         <div class="sh-top">
             <button class="retour" id="closeSheet" aria-label="Retour aux demandes"><svg><use href="#i-retour"/></svg><span>Demandes</span></button>
-            <div class="sh-titre">${x.plaque ? `<button type="button" class="plaque-fr" data-cg title="Carte grise"><i>F</i><span>${esc(x.plaque)}</span></button>` : ''}<h2>${esc(nomVeh(x))}${badgeMeca(x)}</h2>${saisieDiff(x)}
+            <div class="sh-titre">${x.plaque ? `<button type="button" class="plaque-fr" data-cg title="Carte grise"><i>F</i><span>${esc(x.plaque)}</span></button>` : ''}<h2>${esc(nomVeh(x))}${badgeMeca(x)}${badgeUtil(x)}</h2>${saisieDiff(x)}
                 <small><button type="button" class="mi-lien" data-infos>Modifier</button> · <button type="button" class="mi-lien" data-cg>Carte grise</button> · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a>` : ''}
