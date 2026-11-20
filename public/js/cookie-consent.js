@@ -48,6 +48,11 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         window.gtag = gtag;
+        // Consent Mode v2, mode basique : le tag n'est chargé qu'après un accord. On transmet à Google
+        // le détail de cet accord (mesure d'audience / publicité), tout est refusé par défaut.
+        const c = getConsent() || {};
+        gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+        majConsentement(c);
         gtag('js', new Date());
         // Jamais de plaque d'immatriculation dans les adresses envoyées à Google (donnée personnelle).
         const loc = new URL(location.href);
@@ -55,6 +60,20 @@
         gtag('config', GA_ID, { page_location: loc.toString() });
 
         window.gaLoaded = true;
+    }
+
+    // Transmet le choix du visiteur à Google (Consent Mode v2).
+    function majConsentement(c) {
+        if (typeof window.gtag !== 'function') return;
+        const v = ok => ok ? 'granted' : 'denied';
+        window.gtag('consent', 'update', { analytics_storage: v(c.analytics), ad_storage: v(c.ads), ad_user_data: v(c.ads), ad_personalization: v(c.ads) });
+    }
+
+    // Applique un choix : enregistré, transmis à Google, tag chargé si au moins une mesure est acceptée.
+    function appliquer(c) {
+        saveConsent(c);
+        if (c.analytics || c.ads) { if (window.gaLoaded) majConsentement(c); else loadGoogleAnalytics(); }
+        else majConsentement(c);
     }
 
     // Create and show the cookie banner
@@ -68,7 +87,7 @@
         banner.innerHTML = `
             <div class="cookie-banner-content">
                 <div class="cookie-banner-text">
-                    <p>Nous utilisons des cookies pour mesurer l'audience du site et améliorer votre expérience.
+                    <p>Nous utilisons des cookies pour mesurer l'audience du site et l'efficacité de nos annonces Google.
                     <a href="/politique-confidentialite">En savoir plus</a></p>
                 </div>
                 <div class="cookie-banner-actions">
@@ -90,6 +109,12 @@
                         <span class="cookie-option-text"><span>Cookies de mesure d'audience</span><small>Google Analytics : pages vues et parcours, sans donnée revendue</small></span>
                     </label>
                 </div>
+                <div class="cookie-option">
+                    <label>
+                        <input type="checkbox" id="cookieAds">
+                        <span class="cookie-option-text"><span>Cookies publicitaires</span><small>Google Ads : mesurer quelles annonces amènent une demande</small></span>
+                    </label>
+                </div>
                 <div class="cookie-customize-actions">
                     <button type="button" class="cookie-btn cookie-btn-save" id="cookieSavePrefs">Enregistrer mes choix</button>
                 </div>
@@ -100,13 +125,12 @@
 
         // Event listeners
         document.getElementById('cookieAcceptAll').addEventListener('click', function() {
-            saveConsent({ essential: true, analytics: true });
-            loadGoogleAnalytics();
+            appliquer({ essential: true, analytics: true, ads: true });
             hideBanner();
         });
 
         document.getElementById('cookieRefuse').addEventListener('click', function() {
-            saveConsent({ essential: true, analytics: false });
+            appliquer({ essential: true, analytics: false, ads: false });
             hideBanner();
         });
 
@@ -116,11 +140,7 @@
         });
 
         document.getElementById('cookieSavePrefs').addEventListener('click', function() {
-            const analytics = document.getElementById('cookieAnalytics').checked;
-            saveConsent({ essential: true, analytics: analytics });
-            if (analytics) {
-                loadGoogleAnalytics();
-            }
+            appliquer({ essential: true, analytics: document.getElementById('cookieAnalytics').checked, ads: document.getElementById('cookieAds').checked });
             hideBanner();
         });
 
@@ -145,10 +165,10 @@
     function init() {
         const consent = getConsent();
 
-        if (consent === null) {
-            // No consent yet, show banner
+        if (consent === null || !('ads' in consent)) {
+            // Pas encore de choix, ou choix d'avant l'option publicité (on redemande une fois)
             showBanner();
-        } else if (consent.analytics) {
+        } else if (consent.analytics || consent.ads) {
             // User accepted analytics, load GA
             loadGoogleAnalytics();
         }
