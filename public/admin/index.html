@@ -2196,6 +2196,8 @@ body.modal-ouvert { overflow: hidden; }
         return { min: Math.min(min, max), max, base, ajustee, souhaite };
     }
     const texteFourchette = f => `Notre estimation pour votre voiture : entre ${eur(f.min)} et ${eur(f.max)}.\n\nSous réserve que les informations que vous nous avez transmises soient exactes, nous nous engageons à vous proposer au moins ${eur(f.min)}.\n\nL'écart entre ces deux montants dépend de l'état général de la voiture, que notre technicien vérifie lors de l'inspection à votre adresse : entretien, carrosserie, intérieur, pneus et fonctionnement mécanique. Plus la voiture est soignée, plus le prix se rapproche du haut de la fourchette.`;
+    // Première page vue sur le site (« entree= » de la provenance), en lien cliquable.
+    const pageArrivee = x => { const m = String((x && x.provenance) || '').match(/entree=([^|\s]+)/); if (!m) return ''; const chemin = m[1].trim(); return `<a href="https://lunicar.fr${esc(chemin)}" target="_blank" rel="noopener">${esc(chemin === '/' ? 'Accueil (/)' : chemin)}</a>`; };
     const origineMax = d => Number((d.suivi || {}).prix_manuel_max) ? 'retenu à la main' : maxMarche(d) ? (Number((d.suivi || {}).prix_manuel_vente) ? 'marché Leboncoin, avec votre prix de vente' : 'marché Leboncoin') : maxRecalcule(d) ? 'recalculé avec votre prix de vente' : 'calculé par l\'estimation';
     // Score d'attractivité à la revente (0-100) : vert ≥ 75, orange 50-74, rouge < 50.
     // Facilité de revente (0-100) : marché Leboncoin d'abord (délai réel, visites, volume), sinon l'ancienne estimation IA.
@@ -5192,6 +5194,7 @@ body.modal-ouvert { overflow: hidden; }
                             ${x.email ? `<dt>E-mail</dt><dd><button type="button" class="mi-lien" data-vers-mail>${esc(x.email)}</button></dd>` : ''}
                             ${lieu ? `<dt>Lieu</dt><dd>${esc(lieu)}${dist ? ` <small>· ${dist} km</small>` : ''}</dd>` : ''}
                             <dt>Origine</dt><dd><i class="pt" style="background:${cl[2]}"></i>${esc(cl[1])}${d.origine_txt && d.origine_txt !== cl[1] ? ` <small>· ${esc(d.origine_txt)}</small>` : ''}</dd>
+                            ${pageArrivee(x) ? `<dt>Arrivée</dt><dd>${pageArrivee(x)}</dd>` : ''}
                         </dl>
                     </div>
                     <div class="ap-bloc ap-est">
@@ -5316,7 +5319,7 @@ body.modal-ouvert { overflow: hidden; }
                         ['Adresse', esc(x.adresse), 'adresse'], ['Code postal', esc(x.code_postal) + (idf(d) ? ' · Île-de-France' : '') + (geo(x.code_postal) && geo(x.code_postal).km ? ` · ${geo(x.code_postal).km} km de Paris` : ''), 'code_postal'], ['Ville', esc(x.ville), 'ville'],
                         ['Prix souhaité', x.prix_souhaite ? eur(x.prix_souhaite) : '', 'prix_souhaite'], ['Vendre quand', esc(x.delai), 'delai'], ['Autre voiture', esc(x.projet_achat), 'projet_achat'],
                         ['Titulaire de la carte grise', x.titulaire ? (x.titulaire === 'oui' ? 'Oui, le vendeur' : 'Non') : ''], ['Nom du titulaire', esc(x.nom_titulaire), 'nom_titulaire'], ['N° du certificat', esc(x.numero_formule), 'numero_formule'], ['Carte grise', x.carte_grise ? `scannée le ${date(x.carte_grise.lue_le, false)}` : ''],
-                        ['Origine', esc(d.origine_txt || x.origine)]
+                        ['Origine', esc(d.origine_txt || x.origine)], ['Page d\'arrivée', pageArrivee(x)]
                     ])}
                     <details><summary>Détail technique de la provenance</summary>${kv([['Page', esc(x.page)], ['Provenance', esc(x.provenance)], ['Clic Google Ads', x.clic_ads ? '<span class="pill st-achetee">oui</span>' : '']])}</details>
                     ${x.message ? `<p style="margin:12px 0 4px;font-weight:600">Message du vendeur</p><p class="msg">${esc(x.message)}</p>` : ''}
