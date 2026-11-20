@@ -4853,8 +4853,66 @@ body.modal-ouvert { overflow: hidden; }
             } catch (e) { $('#siOk').disabled = false; $('#siOk').textContent = 'Envoyer le SMS'; erreurSms(e); }
         };
     }
+    // Estimation de reprise envoyée au client après un échange : tranche proposée (fourchette calculée), modifiable,
+    // SMS (estimation + numéro du conseiller pour un rappel) et/ou e-mail, historisés dans la fiche.
+    const estEnvoyees = d => ((d.suivi || {}).estimations_envoyees || []);
+    function envoiEstimation(d) {
+        const x = d.data || {}, f = fourchette(d), pm = prixMax(d), avant = estEnvoyees(d);
+        const brut = String(x.vehicule || nomVeh(x) || '').trim(), veh = brut.length > 30 ? brut.slice(0, 30).replace(/\s+\S*$/, '') : brut;
+        const eurS = v => Math.round(v).toLocaleString('fr-FR').replace(/[  ]/g, ' ') + ' €';
+        const smsDe = (a, b) => propreSMS(`Bonjour${x.prenom ? ' ' + x.prenom : ''},\nsuite à notre échange, notre estimation pour ${veh ? 'votre ' + veh : 'votre voiture'} : entre ${eurS(a)} et ${eurS(b)}, prix définitif après inspection par notre technicien.\nPour en parler, rappelez votre conseiller LUNICAR au ${TEL_CONSEILLER}.`);
+        const mailDe = (a, b) => `Bonjour${x.prenom ? ' ' + x.prenom : ''},\n\nMerci pour notre échange au sujet de ${veh ? 'votre ' + veh : 'votre voiture'}.\n\n${texteFourchette({ min: a, max: b })}\n\nPour en discuter ou fixer le rendez-vous d'inspection, appelez-moi au ${TEL_CONSEILLER}. Si vous préférez que je vous rappelle, répondez simplement à ce message ou au SMS avec le moment qui vous arrange.`;
+        const ini = avant[0] || f || (pm ? { min: pm, max: pm } : { min: '', max: '' });
+        const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>Envoyer l'estimation</h3><button class="close" type="button" id="eeX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <p class="sub">${f ? `Tranche proposée : <b>${eur(f.min)} – ${eur(f.max)}</b> (haut = notre prix max ${eur(f.base)}${f.ajustee ? ', plafonné à son prix demandé' : ''}).` : pm ? `Prix max d'achat : <b>${eur(pm)}</b>.` : 'Pas encore estimée : saisissez la tranche à la main.'}</p>
+            ${avant.length ? `<p class="sub">Déjà envoyée : ${avant.slice(0, 3).map(a => `${date(a.date, false)} · ${eur(a.min)} – ${eur(a.max)} (${esc((a.canaux || []).join(' + '))})`).join(' ; ')}</p>` : ''}
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                <label class="f">De (€)<input class="in num" id="eeMin" inputmode="numeric" value="${ini.min || ''}"></label>
+                <label class="f">À (€)<input class="in num" id="eeMax" inputmode="numeric" value="${ini.max || ''}"></label>
+            </div>
+            ${f && avant.length ? `<button type="button" class="mi-lien" id="eeProp" style="justify-self:start">Reprendre la tranche proposée (${eur(f.min)} – ${eur(f.max)})</button>` : ''}
+            <label class="f"><span><input type="checkbox" id="eeSmsOn"${x.telephone ? ' checked' : ' disabled'}> SMS à ${esc(x.telephone || '— pas de téléphone')}</span></label>
+            <textarea class="in" id="eeSms" rows="5"></textarea><p class="sub mc-cpt" id="eeCpt"></p>
+            <label class="f"><span><input type="checkbox" id="eeMailOn"${x.email ? ' checked' : ' disabled'}> E-mail à ${esc(x.email || '— pas d\'adresse')}</span></label>
+            <input class="in" id="eeObj" value="${esc('Votre estimation LUNICAR' + (veh ? ' – ' + veh : ''))}">
+            <textarea class="in" id="eeMail" rows="9"></textarea>
+            ${smsOk ? '' : '<p class="notice">Clés OVH absentes sur Render : le SMS échouera.</p>'}
+            <div class="cr-btns"><button type="button" class="btn" id="eeAnnul">Annuler</button><button type="button" class="btn btn-g" id="eeOk">Envoyer l'estimation</button></div>`;
+        const fermer = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        $('#eeX').onclick = $('#eeAnnul').onclick = fermer; $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermer(); };
+        const val = id => Math.round(Number(String($(id).value).replace(/[^\d]/g, '')) || 0);
+        let touche = { sms: false, mail: false };
+        const regen = () => {
+            const a = val('#eeMin'), b = val('#eeMax');
+            if (a && b) { if (!touche.sms) $('#eeSms').value = smsDe(a, b); if (!touche.mail) $('#eeMail').value = mailDe(a, b); }
+            const c = segmentsSMS($('#eeSms').value.trim()); $('#eeCpt').textContent = `${c.n} caractères · ${c.seg} SMS`;
+        };
+        $('#eeMin').oninput = $('#eeMax').oninput = regen;
+        $('#eeSms').oninput = () => { touche.sms = true; regen(); };
+        $('#eeMail').oninput = () => { touche.mail = true; };
+        if ($('#eeProp')) $('#eeProp').onclick = () => { $('#eeMin').value = f.min; $('#eeMax').value = f.max; touche = { sms: false, mail: false }; regen(); };
+        regen();
+        $('#eeOk').onclick = async () => {
+            const a = val('#eeMin'), b = val('#eeMax'), avecSms = $('#eeSmsOn').checked, avecMail = $('#eeMailOn').checked;
+            if (!a || !b || a > b) return toast('Tranche invalide : « de » doit être inférieur ou égal à « à »');
+            if (!avecSms && !avecMail) return toast('Cochez le SMS, l\'e-mail ou les deux');
+            if (pm && b > pm && await demander({ titre: 'Au-dessus de notre max ?', texte: `Le haut de la tranche (${eur(b)}) dépasse notre prix max d'achat (${eur(pm)}).`, boutons: [['ok', 'Envoyer quand même', 'btn-p'], ['', 'Corriger']] }) !== 'ok') return;
+            $('#eeOk').disabled = true; $('#eeOk').innerHTML = '<span class="spin"></span> Envoi…';
+            try {
+                const r = await api('/api/admin/demandes/' + d.ref + '/estimation-envoi', { method: 'POST', body: JSON.stringify({ min: a, max: b, prix_max: pm, sms: avecSms ? $('#eeSms').value.trim() : '', mail: avecMail ? $('#eeMail').value.trim() : '', objet: $('#eeObj').value.trim() }) });
+                maj(r.demande); if (courant && courant.ref === d.ref) { courant = r.demande; fiche(); }
+                const R = r.resultats, ko = [avecSms && !R.sms.ok && 'SMS : ' + R.sms.erreur, avecMail && !R.mail.ok && 'E-mail : ' + R.mail.erreur].filter(Boolean);
+                if (ko.length) toast('Estimation envoyée en partie · ' + ko.join(' · '));
+                if (avecSms && R.sms.ok) suiviSms(d.ref, r.demande, fermer);
+                else { fermer(); if (!ko.length) toast('Estimation envoyée par e-mail'); }
+            } catch (e) { $('#eeOk').disabled = false; $('#eeOk').textContent = 'Envoyer l\'estimation'; toast(e.message); }
+        };
+    }
     async function smsPiece(d, type) {
         if (type === 'injoignable') return smsInjoignable(d);
+        if (type === 'estimation') return envoiEstimation(d);
         const x = d.data || {}, veh = String(x.vehicule || '').trim();
         let L; try { L = await api('/api/admin/demandes/' + d.ref + '/liens'); } catch (e) { return toast(e.message); }
         const lien = L[type], quoi = type === 'carte_grise' ? 'une photo de votre carte grise' : 'quelques photos de votre voiture (extérieur, intérieur, compteur, défauts éventuels)';
@@ -5157,6 +5215,7 @@ body.modal-ouvert { overflow: hidden; }
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a>` : ''}
                 <button class="btn" type="button" data-vers-mail>E-mail</button>
+                ${x.telephone || x.email ? `<button class="btn btn-p" type="button" data-sms-piece="estimation">Estimation</button>` : ''}
                 ${x.telephone ? `<button class="btn" type="button" data-sms-piece="carte_grise">SMS carte grise</button><button class="btn" type="button" data-sms-piece="photos">SMS photos</button><button class="btn" type="button" data-sms-piece="injoignable">SMS injoignable</button>` : ''}
                 <button class="btn" type="button" data-meca>État mécanique</button>
                 <button class="btn" type="button" data-partager="${esc(BASE + '/demande/' + d.ref)}" data-partager-texte="${esc([nomVeh(x), x.kilometrage && Number(x.kilometrage).toLocaleString('fr-FR') + ' km', x.ville].filter(Boolean).join(' · '))}">Partager</button>
@@ -5169,6 +5228,7 @@ body.modal-ouvert { overflow: hidden; }
             <div class="bas-plus"><button class="btn" type="button" id="basPlus" aria-haspopup="true" aria-expanded="false">Demander<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10l5 5 5-5"/></svg></button>
                 <div class="bas-menu" id="basMenu" hidden>
                     ${x.telephone ? `<button type="button" data-bas="photos">Demande de photos<small>SMS avec le lien d'envoi</small></button><button type="button" data-bas="carte_grise">Demande de carte grise<small>SMS avec le lien d'envoi</small></button><button type="button" data-bas="injoignable">Client injoignable<small>SMS : rappeler le conseiller au 06 16 13 37 30</small></button>` : ''}
+                    ${x.telephone || x.email ? `<button type="button" data-bas="estimation">Envoyer l'estimation<small>tranche de prix par SMS et e-mail, avec votre numéro pour un rappel</small></button>` : ''}
                     <button type="button" data-bas="meca">État mécanique de la voiture<small>les questions à poser pendant l'appel</small></button>
                 </div></div>
         </div>
@@ -5216,6 +5276,8 @@ body.modal-ouvert { overflow: hidden; }
                             <div><span class="ap-l">Notre fourchette</span><b class="num">${enCours ? '<span class="spin"></span>' : f ? `${eur(f.min)} – ${eur(f.max)}` : pm ? eur(pm) : '—'}</b><small>${f ? `prix max ${eur(pm)} · engagement ${eur(f.min)} si les infos sont exactes` : pm ? 'prix max d\'achat' : 'pas encore estimée'}</small></div>
                             <div><span class="ap-l">Il demande</span><b class="num">${souh ? eur(souh) : '—'}</b><small>${souh && pm ? (souh > pm ? `${eur(souh - pm)} au-dessus de notre max` : `dans notre fourchette`) : souh ? 'à comparer après estimation' : 'pas de prix en tête'}</small></div>
                         </div>
+                        ${(l => l.length ? `<p class="sub" style="margin:8px 0 0"><b>Envoyée au client</b> · ${l.slice(0, 3).map(a => `${date(a.date, false)} : ${eur(a.min)} – ${eur(a.max)} (${esc((a.canaux || []).join(' + '))})`).join(' · ')}</p>` : '')(estEnvoyees(d))}
+                        ${x.telephone || x.email ? `<button class="btn btn-s" type="button" data-sms-piece="estimation" style="margin-top:8px">${estEnvoyees(d).length ? 'Renvoyer une estimation' : 'Envoyer l\'estimation'}</button>` : ''}
                     </div>
                 </div>
                 ${dernier ? `<p class="ap-appel"><b>Dernier appel</b> · ${date(dernier.date)} · ${esc(dernier.libelle || dernier.resultat)}${dernier.texte ? ` — ${esc(dernier.texte)}` : ''}</p>` : ''}
