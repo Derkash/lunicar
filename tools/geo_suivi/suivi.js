@@ -8,6 +8,9 @@
  * Clé : OPENAI_API_KEY dans l'environnement, sinon dans .env ou .env.local à la racine
  * du projet, sinon dans tools/geo_suivi/.env. La clé n'est jamais affichée ni écrite.
  *
+ * En fin de relevé : visites et demandes venues des IA d'après GA4 (tools/geo_suivi/ga4_ia.js,
+ * lançable seul : node tools/geo_suivi/ga4_ia.js).
+ *
  * Pour chaque question : Lunicar cité ou non, rang parmi les sites cités, URL citée,
  * concurrents cités. Résultats datés dans
  *   ~/Library/Mobile Documents/com~apple~CloudDocs/Projects/work/lunicar-audit/geo-suivi/AAAA-MM-JJ.json (+ .md)
@@ -165,6 +168,9 @@ Les réponses de ChatGPT varient d'un appel à l'autre : lire les tendances d'un
     const rel = { date, methode: `API OpenAI Responses, outil ${outil}, localisation FR`, modele: MODELE, resultats, erreurs };
     fs.mkdirSync(SORTIE, { recursive: true });
     fs.writeFileSync(path.join(SORTIE, `${date}.json`), JSON.stringify(rel, null, 2));
-    fs.writeFileSync(path.join(SORTIE, `${date}.md`), resume(rel));
+    // Visites et demandes réellement venues des IA (GA4), ajoutées au même relevé.
+    try { rel.ga4 = await require('./ga4_ia').releve(); } catch (e) { rel.erreurs.push('GA4 : ' + e.message); }
+    fs.writeFileSync(path.join(SORTIE, `${date}.json`), JSON.stringify(rel, null, 2));
+    fs.writeFileSync(path.join(SORTIE, `${date}.md`), resume(rel) + (rel.ga4 ? '\n' + require('./ga4_ia').markdown(rel.ga4) : ''));
     console.log(`\nLUNICAR cité ${resultats.filter(x => x.lunicar_cite).length}/${resultats.length}. Relevé : ${path.join(SORTIE, date)}.json / .md`);
 })();
