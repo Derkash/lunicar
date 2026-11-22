@@ -179,7 +179,7 @@ button.kpi:hover { border-color: #CFCAC0; }
 .meca.r, .row .car span.meca.r { background: var(--red-1); color: var(--red); }
 .meca.o, .row .car span.meca.o { background: var(--orange-1); color: var(--orange); }
 .util, .row .car span.util { display: inline-flex; align-items: center; height: 21px; padding: 0 8px; border-radius: 99px; font-size: .72rem; font-weight: 750; white-space: nowrap; vertical-align: 1px; background: #F2A900; color: #2B1D00; letter-spacing: .02em; margin-left: 6px; }
-.row .car span.util { margin: 0 6px 0 0; }
+.row .car span.util, .vh-t span.util, .pl-c span.util { margin: 0 6px 0 0; }
 .util.peut, .row .car span.util.peut { background: #FFF1D6; color: #7A4A00; box-shadow: inset 0 0 0 1px #F2C46B; }
 .meca.v, .row .car span.meca.v { background: var(--green-1); color: var(--green); }
 .row .car > span { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; white-space: normal; overflow: visible; }
@@ -2334,8 +2334,9 @@ body.modal-ouvert { overflow: hidden; }
         return null;
     }
     // Utilitaires : règle partagée avec le serveur (lib/utilitaire.js). Certain = carte grise CTTE… ou modèle 100 % utilitaire.
-    const utilDe = x => window.Utilitaire ? Utilitaire.detecter(x) : null;
-    const badgeUtil = x => { const u = utilDe(x); return u ? `<span class="util${u.sur ? '' : ' peut'}" title="${esc(u.raison)}">${esc(u.sur ? u.libelle.toUpperCase() : 'UTILITAIRE ?')}</span>` : ''; };
+    const utilDe = (x, suivi) => window.Utilitaire ? Utilitaire.detecter(x, suivi) : null;
+    const badgeUtil = (x, suivi) => { const u = utilDe(x, suivi); return u ? `<span class="util${u.sur ? '' : ' peut'}" title="${esc(u.raison)}">${esc(u.sur ? u.libelle.toUpperCase() : 'UTILITAIRE ?')}</span>` : ''; };
+    const badgeUtilRef = ref => { const d = ref && demandes.find(x => x.ref === ref); return d ? badgeUtil(d.data || {}, d.suivi) : ''; };
     const badgeMeca = x => { const e = etatMeca(x); return e ? `<span class="meca ${e.c}" title="${esc(x.mecanique || '')}">${e.l}</span>` : ''; };
     const priorite = d => du(d) ? 0 : drapeau(d) ? 1 : 2;
     // Jours ouvrés (week-ends et jours fériés français exclus), comme côté serveur.
@@ -2478,7 +2479,7 @@ body.modal-ouvert { overflow: hidden; }
     const versVehicules = d => d.statut === 'achetee' || (d.statut === 'rdv' && rdvPrevu(d));
     function segments() {
         const vivantes = demandes.filter(d => !(d.suivi || {}).archivee), auj = jourIso();
-        const n = k => !k ? vivantes.filter(d => !versVehicules(d)).length : k === 'v:nos' ? vivantes.filter(d => rdvPrevu(d)).length : k === 'a:archivees' ? demandes.length - vivantes.length : k === 'r:appeler' ? vivantes.filter(aAppeler).length : k === 'u:util' ? vivantes.filter(d => !versVehicules(d) && utilDe(d.data)).length : vivantes.filter(d => d.statut === k).length;
+        const n = k => !k ? vivantes.filter(d => !versVehicules(d)).length : k === 'v:nos' ? vivantes.filter(d => rdvPrevu(d)).length : k === 'a:archivees' ? demandes.length - vivantes.length : k === 'r:appeler' ? vivantes.filter(aAppeler).length : k === 'u:util' ? vivantes.filter(d => !versVehicules(d) && utilDe(d.data, d.suivi)).length : vivantes.filter(d => d.statut === k).length;
         const actif = $('#fVeh').value ? ($('#fVeh').value === 'util' && !$('#fStatut').value && !$('#fRelance').value && !$('#fArchive').value ? 'u:util' : null)
             : $('#fArchive').value === 'oui' ? (!$('#fStatut').value && !$('#fRelance').value ? 'a:archivees' : null)
             : $('#fArchive').value ? null
@@ -2513,7 +2514,7 @@ body.modal-ouvert { overflow: hidden; }
             if (ty && d.type !== ty) return false;
             if ($('#fCanal').value && d.canal !== $('#fCanal').value) return false;
             if ($('#fMeca').value && (etatMeca(x) || { c: '?' }).c !== $('#fMeca').value) return false;
-            const fv = $('#fVeh').value, u = fv ? utilDe(x) : null;
+            const fv = $('#fVeh').value, u = fv ? utilDe(x, d.suivi) : null;
             if ((fv === 'util' && !u) || (fv === 'sur' && !(u && u.sur)) || (fv === 'vp' && u)) return false;
             const g = geo(x.code_postal), reg = $('#fRegion').value, dist = Number($('#fDist').value), per = Number($('#fPeriode').value);
             if (reg === 'hors-idf' ? (!g || g.region === 'IDF') : (reg && (!g || g.region !== reg))) return false;
@@ -2580,7 +2581,7 @@ body.modal-ouvert { overflow: hidden; }
             return `${entete}<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}${clos ? ' clos' : ''}${em ? ' etat-' + em.c : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
-                <div class="car"><b>${icPh}${badgeUtil(x)}${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
+                <div class="car"><b>${icPh}${badgeUtil(x, d.suivi)}${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${badgeInteret(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}${d.statut === 'nouvelle' ? '' : `<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>`}${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
@@ -2644,6 +2645,17 @@ body.modal-ouvert { overflow: hidden; }
     });
     $('#csv').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/export.csv'); });
     $('#csvAds').addEventListener('click', e => { e.preventDefault(); location.href = lien('/api/admin/conversions-ads.csv'); });
+
+    // ---------------- Utilitaire marqué à la main (prime sur la détection automatique)
+    async function marquerUtilitaire(ref) {
+        const d = demandes.find(x => x.ref === ref) || courant; if (!d) return;
+        const u = utilDe(d.data, d.suivi), v = !(u && (u.sur || (d.suivi || {}).utilitaire === true));
+        try {
+            const r = await api('/api/admin/demandes/' + ref, { method: 'PATCH', body: JSON.stringify({ utilitaire: v }) });
+            maj(r); if (courant && courant.ref === ref) { courant = r; fiche(); } liste();
+            toast(v ? 'Marquée utilitaire' : 'Marquée « pas un utilitaire »');
+        } catch (e) { toast(e.message); }
+    }
 
     // ---------------- Drapeau « À appeler »
     async function basculerDrapeau(ref) {
@@ -3114,12 +3126,12 @@ body.modal-ouvert { overflow: hidden; }
         $('#vhList').innerHTML = liste.length ? liste.map(v => {
             const b = v.bilan, vendu = v.statut === 'vendu', pros = v.statut === 'prospect', r = v.rdv || {};
             if (pros) return `<button class="vh vh-pros" data-vh="${esc(v.id)}">
-                <div class="vh-t"><b>${esc(v.libelle || 'Véhicule')}</b>${v.plaque ? `<span class="mono">${esc(v.plaque)}</span>` : ''}</div>
+                <div class="vh-t"><b>${badgeUtilRef(v.ref)}${esc(v.libelle || 'Véhicule')}</b>${v.plaque ? `<span class="mono">${esc(v.plaque)}</span>` : ''}</div>
                 <div class="vh-st"><span class="badge-rdv${r.date === jourIso() ? ' auj' : r.date < jourIso() ? ' passe' : ''}">RDV ${r.date ? (r.date === jourIso() ? "aujourd'hui" : jourCourt(r.date)) + ' · ' + r.heure : ''}</span><small>${esc(AVEC[r.avec] || '')}${r.lieu ? ' · ' + esc(r.lieu) : ''}</small></div>
                 <div class="vh-c"><span>Fourchette<b class="num">${fourchetteRdv(v.rdv) || (v.prix_convenu ? euro(v.prix_convenu) : '—')}</b></span><span>Frais engagés<b class="num">${euro(b.frais)}</b></span><span>Marge prévue<b class="num ${b.marge_prevue < 0 ? 'neg' : 'pos'}">${signe(b.marge_prevue)}</b></span></div>
             </button>`;
             return `<button class="vh" data-vh="${esc(v.id)}">
-                <div class="vh-t"><b>${esc(v.libelle || 'Véhicule')}</b>${v.plaque ? `<span class="mono">${esc(v.plaque)}</span>` : ''}</div>
+                <div class="vh-t"><b>${badgeUtilRef(v.ref)}${esc(v.libelle || 'Véhicule')}</b>${v.plaque ? `<span class="mono">${esc(v.plaque)}</span>` : ''}</div>
                 <div class="vh-st"><span class="pill vh-${esc(v.statut)}">${esc(compta.statuts[v.statut] || v.statut)}</span>${b.jours != null ? `<small>${vendu ? `revendu en ${b.jours} j` : `J+${b.jours}`}</small>` : ''}</div>
                 <div class="vh-c"><span>Coût de revient<b class="num">${euro(b.cout)}</b></span><span>${vendu ? 'Vendu' : b.vente_source === 'tba' ? 'Très bonne affaire' : 'Vente estimée'}<b class="num">${vendu ? euro(v.prix_vente) : b.vente_prevue ? euro(b.vente_prevue) : '—'}</b></span><span>${vendu ? 'Marge' : 'Marge prévue'}<b class="num ${(vendu ? b.marge : b.marge_prevue) < 0 ? 'neg' : 'pos'}">${signe(vendu ? b.marge : b.marge_prevue)}</b></span></div>
             </button>`;
@@ -4000,7 +4012,7 @@ body.modal-ouvert { overflow: hidden; }
             const r = rdvDe(d), x = d.data || {}, tel = x.telephone_intl || (x.telephone || '').replace(/\D/g, '').replace(/^0/, '33');
             return `<div class="pl-rdv${r.statut !== 'prevu' ? ' fini' : ''}${r.statut === 'prevu' && r.date < auj ? ' retard' : ''}" data-plref="${esc(d.ref)}">
                 <div class="pl-h"><b>${r.heure}</b><span>${r.duree || 45} min</span></div>
-                <div class="pl-c"><b>${esc(x.vehicule || 'Véhicule')} ${esc(x.annee || '')}</b>
+                <div class="pl-c"><b>${badgeUtil(x, d.suivi)}${esc(x.vehicule || 'Véhicule')} ${esc(x.annee || '')}</b>
                     <span>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Vendeur')} · ${AVEC[r.avec] || ''}</span>
                     <span class="pl-lieu">📍 ${esc(r.lieu || [x.code_postal, x.ville].filter(Boolean).join(' ') || 'Lieu à préciser')}</span>
                     ${r.statut !== 'prevu' ? `<span class="pill ${r.statut === 'fait' && d.statut === 'achetee' ? 'st-achetee' : r.statut === 'fait' ? 'st-contactee' : 'st-sans_suite'}">${r.statut === 'fait' ? (d.statut === 'achetee' ? 'Fait · achetée' : 'Fait · pas d\'achat') : 'Annulé'}</span>` : ''}</div>
@@ -5382,8 +5394,8 @@ body.modal-ouvert { overflow: hidden; }
         $('#sheetIn').innerHTML = `
         <div class="sh-top">
             <button class="retour" id="closeSheet" aria-label="Retour aux demandes"><svg><use href="#i-retour"/></svg><span>Demandes</span></button>
-            <div class="sh-titre">${x.plaque ? `<button type="button" class="plaque-fr" data-cg title="Carte grise"><i>F</i><span>${esc(x.plaque)}</span></button>` : ''}<h2>${esc(nomVeh(x))}${badgeMeca(x)}${badgeUtil(x)}</h2>
-                <small><button type="button" class="mi-lien" data-infos>Modifier</button> · <button type="button" class="mi-lien" data-cg>Carte grise</button> · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
+            <div class="sh-titre">${x.plaque ? `<button type="button" class="plaque-fr" data-cg title="Carte grise"><i>F</i><span>${esc(x.plaque)}</span></button>` : ''}<h2>${esc(nomVeh(x))}${badgeMeca(x)}${badgeUtil(x, d.suivi)}</h2>
+                <small><button type="button" class="mi-lien" data-infos>Modifier</button> · <button type="button" class="mi-lien" data-cg>Carte grise</button> · <button type="button" class="mi-lien" data-util>${utilDe(x, d.suivi) && (utilDe(x, d.suivi).sur || (d.suivi || {}).utilitaire === true) ? 'Pas un utilitaire' : 'C\'est un utilitaire'}</button> · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a>` : ''}
                 <button class="btn" type="button" data-vers-mail>E-mail</button>
@@ -5623,6 +5635,7 @@ body.modal-ouvert { overflow: hidden; }
         $('#closeSheet').onclick = fermer;
         $('#sheetIn').querySelectorAll('[data-infos]').forEach(b => b.onclick = () => modifierInfos(d));
         $('#sheetIn').querySelectorAll('[data-cg]').forEach(b => b.onclick = () => scannerCarteGrise(d));
+        $('#sheetIn').querySelectorAll('[data-util]').forEach(b => b.onclick = () => marquerUtilitaire(d.ref));
         $('#sheetIn').querySelectorAll('[data-sms-piece]').forEach(b => b.onclick = () => smsPiece(d, b.dataset.smsPiece));
         $('#sheetIn').querySelectorAll('.kv-ed').forEach(b => b.onclick = () => editerEnPlace(d, b));
         rendreMail();
