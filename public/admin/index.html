@@ -2649,12 +2649,14 @@ body.modal-ouvert { overflow: hidden; }
     // ---------------- Utilitaire marqué à la main (prime sur la détection automatique)
     async function marquerUtilitaire(ref) {
         const d = demandes.find(x => x.ref === ref) || courant; if (!d) return;
-        const u = utilDe(d.data, d.suivi), v = !(u && (u.sur || (d.suivi || {}).utilitaire === true));
+        const u = utilDe(d.data, d.suivi), v = !(u && (u.sur || (d.suivi || {}).utilitaire === true)), avant = (d.suivi || {}).utilitaire;
+        // Affichage immédiat, l'enregistrement suit (quelques secondes).
+        d.suivi = { ...(d.suivi || {}), utilitaire: v }; if (courant && courant.ref === ref) { courant.suivi = { ...(courant.suivi || {}), utilitaire: v }; fiche(); } liste();
         try {
             const r = await api('/api/admin/demandes/' + ref, { method: 'PATCH', body: JSON.stringify({ utilitaire: v }) });
             maj(r); if (courant && courant.ref === ref) { courant = r; fiche(); } liste();
             toast(v ? 'Marquée utilitaire' : 'Marquée « pas un utilitaire »');
-        } catch (e) { toast(e.message); }
+        } catch (e) { d.suivi.utilitaire = avant; if (courant && courant.ref === ref) { courant.suivi.utilitaire = avant; fiche(); } liste(); toast(e.message); }
     }
 
     // ---------------- Drapeau « À appeler »
