@@ -298,5 +298,45 @@
   "id": "q60",
   "type": "modele",
   "question": "Reprise Jeep Renegade : comment faire sans acheter une autre voiture ?"
+ },
+ {
+  "id": "q61",
+  "type": "famille",
+  "question": "Mon père est décédé, faut-il vendre sa voiture dans les 3 mois ?"
+ },
+ {
+  "id": "q62",
+  "type": "famille",
+  "question": "Comment vendre la voiture d'une personne décédée quand on est plusieurs héritiers ?"
+ },
+ {
+  "id": "q63",
+  "type": "famille",
+  "question": "Comment remplir le certificat de cession d'une voiture dont le propriétaire est décédé ?"
+ },
+ {
+  "id": "q64",
+  "type": "famille",
+  "question": "Vendre la voiture de ma mère décédée, est-ce que ça veut dire accepter la succession ?"
+ },
+ {
+  "id": "q65",
+  "type": "famille",
+  "question": "Peut-on conduire la voiture d'un parent décédé avant la fin de la succession ?"
+ },
+ {
+  "id": "q66",
+  "type": "famille",
+  "question": "Qui peut racheter la voiture d'un défunt qui ne roule plus, garée devant chez lui ?"
+ },
+ {
+  "id": "q67",
+  "type": "famille",
+  "question": "Comment vendre la voiture de mon père qui a Alzheimer ?"
+ },
+ {
+  "id": "q68",
+  "type": "famille",
+  "question": "Comment donner sa voiture à son fils ?"
  }
 ]

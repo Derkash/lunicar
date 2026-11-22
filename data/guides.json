@@ -913,9 +913,9 @@
     "slug": "reprise-voiture-succession",
     "image": "signature",
     "nav": "Voiture d'un proche décédé",
-    "title": "Vendre la voiture d'un proche décédé | LUNICAR",
+    "title": "Vendre la voiture d'une personne décédée | LUNICAR",
     "description": "Les héritiers peuvent vendre la voiture d’un défunt sans refaire la carte grise si le décès a moins de 3 mois ou si elle n’a pas roulé. Documents et délais.",
-    "h1": "Vendre la voiture d'un proche décédé, <em>simplement et sans précipitation</em>",
+    "h1": "Vendre la voiture d'une personne décédée, <em>simplement et sans précipitation</em>",
     "lede": "La voiture d’un parent décédé entre dans la succession : les héritiers décident de la garder, de la vendre ou de la donner. Si le décès date de moins de 3 mois, ou si la voiture n’a pas circulé depuis, ils peuvent la vendre sans refaire la carte grise, selon service-public.gouv.fr ; sinon, elle passe d’abord au nom d’un héritier. Chaque cohéritier signe le certificat de cession, déclarée à l’ANTS dans les 15 jours. LUNICAR étudie la voiture partout en France : un technicien vient à votre adresse, sans frais.",
     "points": [
       "Rendez-vous à l'adresse de votre choix",
@@ -958,12 +958,20 @@
         "html": "<p>Oui. Une voiture immobilisée plusieurs mois peut avoir une batterie déchargée, des pneus affaissés ou un contrôle technique dépassé. Cela n'empêche pas la vente. Signalez simplement l'immobilisation dans votre description : l'offre en tient compte, et LUNICAR prend en charge l'enlèvement partout en France, même si la voiture ne démarre plus.</p><p>Le contrôle technique n'est pas exigé pour une vente à LUNICAR. Inutile de faire réparer ou de remettre la voiture en route. Si elle se trouve dans un parking souterrain ou un garage fermé, l'enlèvement reste à notre charge. Voir aussi <a href=\"/rachat-voiture-en-panne-paris\">rachat de voiture en panne</a>.</p>"
       },
       {
+        "h2": "Toutes les situations après un décès : nos fiches détaillées",
+        "html": "<p>Chaque famille vit une situation différente. Ces fiches répondent aux questions qui se posent le plus souvent après un décès, règle par règle, avec leurs sources officielles. Rappel : le délai de 3 mois concerne la carte grise, il n'oblige pas à vendre la voiture dans ce délai.</p><h3>Délais et papiers</h3><ul class=\"ticks\"><li><a href=\"/article/vendre-voiture-defunt-delai-3-mois\">Voiture d'un défunt : faut-il la vendre dans les 3 mois ?</a></li><li><a href=\"/article/certificat-cession-voiture-personne-decedee\">Comment remplir le certificat de cession d'une voiture d'un défunt</a></li><li><a href=\"/article/carte-grise-perdue-voiture-personne-decedee\">Carte grise introuvable après un décès : comment vendre la voiture ?</a></li><li><a href=\"/article/conduire-voiture-parent-decede\">Peut-on conduire la voiture d'un parent décédé ?</a></li></ul><h3>Entre héritiers</h3><ul class=\"ticks\"><li><a href=\"/article/vendre-voiture-succession-desaccord-heritiers\">Vendre la voiture d'un défunt quand un héritier refuse ou ne répond pas</a></li><li><a href=\"/article/heritier-garder-voiture-defunt\">Un héritier veut garder la voiture du défunt : comment faire ?</a></li><li><a href=\"/article/vendre-voiture-succession-heritier-mineur-ou-eloigne\">Vendre la voiture d'une succession avec un héritier mineur ou éloigné</a></li><li><a href=\"/article/voiture-conjoint-decede\">La voiture est au nom de mon conjoint décédé : à qui appartient-elle ?</a></li></ul><h3>La succession</h3><ul class=\"ticks\"><li><a href=\"/article/vendre-voiture-defunt-accepter-succession\">Vendre la voiture d'un défunt, est-ce accepter la succession ?</a></li><li><a href=\"/article/voiture-succession-renonciation-heritiers\">Tous les héritiers renoncent à la succession : que devient la voiture ?</a></li><li><a href=\"/article/valeur-voiture-declaration-succession\">Quelle valeur déclarer pour la voiture dans la déclaration de succession ?</a></li><li><a href=\"/article/vendre-voiture-defunt-sans-notaire\">Peut-on vendre la voiture d'un défunt sans notaire ?</a></li></ul><h3>Contrats et suites</h3><ul class=\"ticks\"><li><a href=\"/article/voiture-defunt-credit-loa-lld\">La voiture du défunt était en crédit, en LOA ou en LLD : que faire ?</a></li><li><a href=\"/article/amendes-pv-voiture-apres-deces\">PV ou radar reçu après le décès du titulaire de la carte grise : que faire ?</a></li><li><a href=\"/article/assurance-voiture-apres-deces\">Assurance auto après le décès du titulaire : faut-il résilier ?</a></li><li><a href=\"/article/voiture-defunt-garee-dans-la-rue\">La voiture du défunt est garée dans la rue : que faire ?</a></li></ul>"
+      },
+      {
         "h2": "Comment LUNICAR vous accompagne ?",
         "html": "<p>Vous décrivez la voiture en ligne en 2 minutes, plaque facultative. Un conseiller vous rappelle rapidement avec une fourchette de prix indicative, ce qui laisse le temps aux héritiers d'en parler. Un technicien vient vérifier la voiture sans frais à votre adresse, partout en France, et, si la vente est conclue, le paiement se fait par virement instantané.</p><p>Le certificat de cession (Cerfa 15776) et la déclaration de cession sur l'ANTS sont préparés avec vous, au nom des héritiers. Pas de frais de dossier. Vous pouvez refuser le prix définitif, même le jour du rendez-vous, sans frais. Pour toute question avant de vous lancer, écrivez à contact@lunicar.fr.</p>"
       }
     ],
     "faqTitle": "Questions sur la vente de la voiture d'un proche décédé",
     "faq": [
+      {
+        "question": "Faut-il vendre la voiture d'un défunt dans les 3 mois ?",
+        "answer": "Non. Aucune règle n'oblige à vendre dans un délai. Les 3 mois concernent la carte grise : si le décès date de moins de 3 mois, ou si la voiture n'a pas circulé depuis, les héritiers peuvent la vendre sans la mettre à leur nom (Service-Public, fiche F1480). Au-delà, si elle a roulé, il faut d'abord l'immatriculer au nom d'un héritier."
+      },
       {
         "question": "Peut-on vendre la voiture sans refaire la carte grise ?",
         "answer": "Oui, si le titulaire est décédé depuis moins de 3 mois ou si le véhicule n'a pas circulé depuis le décès. Sinon, il faut d'abord l'immatriculer au nom d'un ou plusieurs héritiers. La fiche Service-Public détaille ces règles."
@@ -1035,7 +1043,7 @@
         "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2664"
       }
     ],
-    "updated": "2026-11-04"
+    "updated": "2026-11-22"
   },
   {
     "slug": "risques-vente-voiture-particulier",
