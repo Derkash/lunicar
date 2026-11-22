@@ -16,6 +16,8 @@ const store = require('./lib/store');
 const estimation = require('./lib/estimation');
 const adminRouter = require('./lib/admin');
 const push = require('./lib/push');
+const notifDemande = require('./lib/notif-demande');
+notifDemande.reprendre().catch(e => console.error('Notif, reprise :', e.message));
 const { origine } = require('./lib/origine');
 const crypto = require('crypto');
 
@@ -553,20 +555,20 @@ const ESTIMATION_ATTENTE = (parseFloat(process.env.ESTIMATION_ATTENTE_S) || 150)
 
 // Une demande reçue : enregistrement durable, fiche plaque, estimation, puis e-mail.
 async function envoyerDemande(d, opts = {}) {
-    // Alerte immédiate sur l'app iOS, avant la fiche plaque et l'e-mail.
-    push.notifier({
-        titre: (opts.abandon ? '⚠️ Demande abandonnée' : d.type === 'rappel' ? '📞 Demande de rappel' : '🚗 Nouvelle demande' + (/^Google Ads/.test(origine(d)) ? ' [PUB]' : '')) + (utilitaire.detecter(d) ? ' · ' + alerteUtilitaire(utilitaire.detecter(d)) : ''),
-        texte: [[d.vehicule || d.prenom || d.plaque, d.annee].filter(Boolean).join(' '), d.kilometrage ? `${Number(d.kilometrage).toLocaleString('fr-FR')} km` : '', [d.code_postal, d.ville].filter(Boolean).join(' ')].filter(Boolean).join(' · ') || d.telephone,
-        ref: d.id.substring(0, 8).toUpperCase()
-    }).catch(e => console.error('Push :', e.message));
     let apiBrut = null;
     if (d.plaque) { try { apiBrut = await fichePlaque.ficheComplete(d.plaque); } catch (e) { apiBrut = null; } }
     const ref = d.id.substring(0, 8).toUpperCase();
     // La carte grise révèle un utilitaire que le nom saisi ne laissait pas voir (ou le confirme) : alerte dédiée.
     const utilTexte = utilitaire.detecter(d), utilFiche = apiBrut ? utilitaire.detecter({ ...d, fiche_api: apiBrut }) : utilTexte;
-    if (utilFiche && !(utilTexte && utilTexte.sur)) push.notifier({ titre: `${alerteUtilitaire(utilFiche)} · ${d.vehicule || d.plaque}`, texte: `Confirmé par la carte grise (${apiBrut.genreVCGNGC}${apiBrut.carrosserie ? ', ' + apiBrut.carrosserie.toLowerCase() : ''})${d.ville ? ' · ' + d.ville : ''}`, ref }).catch(() => {});
+    // Une seule notification par demande, avec l'estimation (règle du 22/11/2026) : l'alerte utilitaire est dans le titre.
+    const notif = {
+        titre: (opts.abandon ? '⚠️ Demande abandonnée' : d.type === 'rappel' ? '📞 Demande de rappel' : '🚗 Nouvelle demande' + (/^Google Ads/.test(origine(d)) ? ' [PUB]' : '')) + (utilFiche ? ' · ' + alerteUtilitaire(utilFiche) : ''),
+        texte: [[d.vehicule || d.prenom || d.plaque, d.annee].filter(Boolean).join(' '), d.kilometrage ? `${Number(d.kilometrage).toLocaleString('fr-FR')} km` : '', [d.code_postal, d.ville].filter(Boolean).join(' ')].filter(Boolean).join(' · ') || d.telephone
+    };
+    let enregistree = false;
     try {
         await store.enregistrerDemande(store.ligneDepuisDemande({ ...fichePlaque.enrichirNom(d, apiBrut), ...(apiBrut ? { fiche_api: apiBrut, vin: apiBrut.vin || '' } : {}) }, { origine: opts.abandon ? 'abandon' : 'site' }));
+        enregistree = true;
     } catch (e) {
         console.error(`🚨 Demande ${ref} non enregistrée en base :`, e.message);
     }
@@ -593,6 +595,9 @@ async function envoyerDemande(d, opts = {}) {
             else opts = { ...opts, estimationEnAttente: true };
         }
     }
+    // Notification : rappel / abandon / sans plaque → maintenant (estimation IA faite) ; avec plaque → au relevé du Mac mini.
+    if (opts.abandon || d.type === 'rappel' || !d.plaque || !enregistree) notifDemande.maintenant(ref, notif).catch(() => {});
+    else notifDemande.attendre(ref, notif, d.plaque).catch(e => { console.error('Notif :', e.message); notifDemande.maintenant(ref, notif).catch(() => {}); });
     const prefixe = (opts.abandon ? '⚠️ Abandonnée' : d.type === 'rappel' ? '📞 Rappel' : '🚗 Estimation') + (/^Google Ads/.test(origine(d)) ? ' [PUB]' : '') + (utilFiche ? ' ' + alerteUtilitaire(utilFiche) : '');
     let emailed = false;
     try {
@@ -986,19 +991,14 @@ app.get('/api/marche/file', corsLbc, async (req, res) => {
 app.get('/api/marche/script', corsLbc, (req, res) => res.type('text/plain').send(fs.readFileSync(path.join(__dirname, 'tools', 'sonar-collecte.js'), 'utf8')));
 app.post('/api/marche/releve', corsLbc, express.json({ limit: '200kb' }), async (req, res) => {
     try {
-        const deja = !!marche.releve((req.body || {}).plaque);
         const r = marche.enregistrer(req.body || {});
         res.json({ ok: true, plaque: r.plaque, total: marche.tous().length });
-        // Première analyse d'une demande de moins de 24 h : 2e notification avec le verdict.
-        if (!deja && !req.body.grille && r.ref) {
-            const d = await store.lireDemande(r.ref);
-            if (d && Date.now() - new Date(d.created_at) < 24 * 3600e3) {
-                const MA = require('./lib/marche-analyse'), a = MA.analyser(d, await MA.reglages()), x = d.data || {};
-                if (a.prix) push.notifier({
-                    titre: `💶 ${[x.vehicule, x.annee].filter(Boolean).join(' ')} · ${a.demande ? { acheter: 'Achetable', negocier: 'À négocier', trop_cher: 'Trop cher' }[a.demande.verdict] : 'achat max ' + a.achat_max.toLocaleString('fr-FR') + ' €'}`,
-                    texte: [`Leboncoin ${a.prix.toLocaleString('fr-FR')} €`, `achat max ${a.achat_max.toLocaleString('fr-FR')} €`, a.demande ? `il demande ${a.demande.prix.toLocaleString('fr-FR')} €` : '', `revente ${a.revente_score}/100`].filter(Boolean).join(' · '),
-                    ref: d.ref, fil: 'marche-' + d.ref }).catch(() => {});
-            }
+        // Relevé principal : la finition / motorisation se remplit (Sonar si sûr, sinon recherche sur les sites),
+        // puis la notification de la demande part si elle attendait son estimation (plus de 2e notification).
+        if (!req.body.grille && r.ref) {
+            await require('./lib/finition').completer(r.ref, { releve: r, rechercheWeb: false }).catch(() => {});
+            await notifDemande.releveRecu(r.ref).catch(() => {});
+            require('./lib/finition').completer(r.ref, { releve: r }).catch(() => {});
         }
     } catch (e) { if (!res.headersSent) res.status(e.status || 500).json({ error: e.message }); }
 });

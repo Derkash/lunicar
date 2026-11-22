@@ -166,7 +166,7 @@
                     const v = choisir(lic, dm);
                     if (!v) { await envoyer({ plaque: dm.plaque, ref: dm.ref, erreur: 'aucune version proposée' }); E.erreurs++; E.i++; continue; }
                     const km = dm.km >= 1000 && dm.km < 600000 ? dm.km : 150000;
-                    const version = { id: v.id, label: v.label, trim: v.trim, make: (lic.make || {}).label, model: (lic.model || {}).label, annee: lic.year, mec: lic.registration_date, suggeree: v.suggeree, choix: v.choix + (km !== dm.km ? ' · km de la demande absent ou aberrant, calcul à 150 000 km' : '') };
+                    const version = { id: v.id, label: v.label, trim: v.trim, make: (lic.make || {}).label, model: (lic.model || {}).label, annee: lic.year, mec: lic.registration_date, suggeree: v.suggeree, candidats: v.suggeree ? [] : (lic.trims || []).flatMap(t => (t.versions || []).map(x => x.label + (t.label ? ' — ' + t.label : ''))).slice(0, 15), choix: v.choix + (km !== dm.km ? ' · km de la demande absent ou aberrant, calcul à 150 000 km' : '') };
                     if (mode === 'grille') {
                         // Courbe prix / km de la version retenue, puis le prix de chaque autre version au km de la demande
                         // (écart dû à la finition / motorisation). Rien si Sonar n'a pas de prix (véhicule de plus de 20 ans).

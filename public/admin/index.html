@@ -781,7 +781,11 @@ ul.plain li { margin: 3px 0; }
 .swipe > .row { position: relative; z-index: 1; background: var(--surface); }
 .swipe > .row:last-child { border-bottom: 1px solid var(--line-2); }
 .list > .swipe:last-child > .row { border-bottom: 0; }
-.swipe > .row.choisie { background: var(--marine-1); }
+/* Carte teintée selon l'état (22/11/2026) : vert = roule bien, orange = roule avec soucis, rouge = en panne/accidentée. Teinte à ~15 % pour rester lisible. */
+.row.etat-v, .swipe > .row.etat-v { background: color-mix(in srgb, var(--green) 14%, var(--surface)); }
+.row.etat-o, .swipe > .row.etat-o { background: color-mix(in srgb, var(--orange) 16%, var(--surface)); }
+.row.etat-r, .swipe > .row.etat-r { background: color-mix(in srgb, var(--red) 14%, var(--surface)); }
+.row.choisie, .swipe > .row.choisie { background: var(--marine-1); }
 .swipe > .row.anime { transition: transform .22s cubic-bezier(.2,.8,.2,1); }
 .swipe-bg { display: none; position: absolute; inset: 0; align-items: center; padding: 0 22px; font-weight: 650; font-size: .9rem; color: #fff; gap: 8px; }
 .swipe.glisse .swipe-bg { display: flex; }
@@ -2406,12 +2410,8 @@ body.modal-ouvert { overflow: hidden; }
         // 1. Prix demandé vs notre prix max (30)
         if (E && M) {
             const r = E / M;
-            if (r <= 0.8) { n += 30; m.push(['Prix ' + Math.round((r - 1) * 100) + ' % sous le max', 'v']); }
-            else if (r <= 0.9) { n += 26; m.push(['Prix sous le max', 'v']); }
-            else if (r <= 1) { n += 21; m.push(['Prix dans le max', 'v']); }
-            else if (r <= 1.1) { n += 12; m.push(['Prix négociable (+' + Math.round((r - 1) * 100) + ' %)', 'o']); }
-            else if (r <= 1.25) { n += 5; m.push(['Prix au-dessus (+' + Math.round((r - 1) * 100) + ' %)', 'r']); }
-            else { n += r > 1.5 ? -10 : 0; m.push(['Prix trop haut (+' + Math.round((r - 1) * 100) + ' %)', 'r']); }
+            // Pas de motif « Prix … % » affiché (inutile, retiré le 22/11/2026) : le prix ne joue que sur la note.
+            n += r <= 0.8 ? 30 : r <= 0.9 ? 26 : r <= 1 ? 21 : r <= 1.1 ? 12 : r <= 1.25 ? 5 : r > 1.5 ? -10 : 0;
         } else if (!E && M) n += 14; // pas de prix demandé : note neutre, sans motif affiché
         else if (E && !M) n += 10;
         else n += 8;
@@ -2429,9 +2429,7 @@ body.modal-ouvert { overflow: hidden; }
         // 5. État (13)
         const em = etatMeca(x);
         if (!em) n += 6;
-        else if (em.c === 'v') { n += 13; m.push(['Roule', 'v']); }
-        else if (em.c === 'o') { n += 9; m.push(['Roule avec soucis', 'o']); }
-        else { n -= 10; m.push([em.l, 'r']); }
+        else n += em.c === 'v' ? 13 : em.c === 'o' ? 9 : -10;   // l'état s'affiche déjà en badge à côté du km et en couleur de carte
         // 6. Petit budget (13)
         const P = E || M || (e && e.prix && e.prix.vente_estime ? Math.round(e.prix.vente_estime * 0.6) : 0);
         if (!P) n += 5;
@@ -2575,14 +2573,14 @@ body.modal-ouvert { overflow: hidden; }
             const g = geo(x.code_postal), r = rappel(d), auj = jourIso();
             const lieu = [x.ville || x.code_postal, g && g.km ? g.km + ' km' : ''].filter(Boolean).join(' · ');
             const archivee = !!(d.suivi || {}).archivee, estDu = du(d), estDrap = drapeau(d);
-            const clos = CLOS.includes(d.statut);
+            const clos = CLOS.includes(d.statut), em = etatMeca(x);
             // Photos envoyées par le vendeur (les PDF — carte grise, documents — ne comptent pas).
             const nPh = (d.photos || []).filter(p => !/\.pdf$/i.test(p.name || p.path || '')).length;
             const icPh = nPh ? `<span class="a-photos" title="${nPh} photo${nPh > 1 ? 's' : ''} du vendeur"><svg><use href="#i-pho"/></svg>${nPh}</span>` : '';
-            return `${entete}<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}${clos ? ' clos' : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
+            return `${entete}<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}${clos ? ' clos' : ''}${em ? ' etat-' + em.c : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
-                <div class="car"><b>${icPh}${badgeUtil(x)}${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}${saisieDiff(x)}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
+                <div class="car"><b>${icPh}${badgeUtil(x)}${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${badgeInteret(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}${d.statut === 'nouvelle' ? '' : `<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>`}${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
@@ -2755,12 +2753,6 @@ body.modal-ouvert { overflow: hidden; }
             const p = $('#cfB .btn:last-child'); if (p) p.focus();
         });
     }
-    // Nom tiré de la plaque : on signale la saisie du vendeur quand la marque ne correspond pas (« Opel » saisi, plaque Citroën).
-    const saisieDiff = x => {
-        const dec = String(x.vehicule_declare || '').trim(), m = dec.split(/\s+/)[0] || '';
-        const norm = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        return dec && m && !/^\d{4}$/.test(m) && !norm(x.vehicule || '').includes(norm(m)) ? `<span class="motifs" style="color:var(--rouge, #B3261E)">Saisi par le vendeur : ${esc(dec)} (plaque différente)</span>` : '';
-    };
     const nomDemande = d => { const x = d.data || {}; return [nomVeh(x), [x.prenom, x.nom].filter(Boolean).join(' ')].filter(Boolean).join(' · ') || d.ref; };
 
     // ---------------- Glisser une demande : à droite = archiver (annulable), à gauche = supprimer (avec confirmation)
@@ -3552,9 +3544,8 @@ body.modal-ouvert { overflow: hidden; }
         }
         const hist = r && r.statut !== 'prevu' ? `<p class="sub" style="margin:0 0 4px">Dernier rendez-vous : ${jourCourt(r.date)} à ${r.heure} · ${r.statut === 'fait' ? 'fait' : 'annulé'}${r.motif ? ' (' + esc(r.motif) + ')' : ''}</p>` : '';
         if (['achetee', 'vendue_ailleurs', 'refusee', 'sans_suite'].includes(d.statut)) return hist ? `<section class="sec rdv-bloc" id="rdvBloc"><h3>Rendez-vous</h3>${hist}</section>` : '';
-        return `<section class="sec rdv-bloc" id="rdvBloc"><h3>Fixer le rendez-vous <small>le véhicule passe dans « Nos véhicules »</small></h3>${hist}
-            <button type="button" class="btn btn-g pl-btn" data-rdv="planifier">Trouver le meilleur jour pour Youssouf</button>
-            <div id="rdvForm">${formRdv(d, true)}</div></section>`;
+        // Pas de bloc « Fixer le rendez-vous » dans la fiche : le bouton RDV de la barre du bas ouvre le planning (22/11/2026).
+        return hist ? `<section class="sec rdv-bloc" id="rdvBloc"><h3>Rendez-vous</h3>${hist}</section>` : '';
     }
     function formRdv(d, inline) {
         const r = rdvPrevu(d) || {}, x = d.data || {}, s = d.suivi || {};
@@ -4271,16 +4262,10 @@ body.modal-ouvert { overflow: hidden; }
             ${docs.length ? `<div class="doc-liste">${docs.slice().reverse().map(d => `<div class="doc"><a href="${photoUrl(d.path)}" target="_blank" rel="noopener"><b>${esc(d.libelle || T[d.type] || 'Document')}</b><span>${esc(d.name)}${d.genere ? ' · généré' : ''}</span></a><button class="btn btn-s btn-ghost" data-docdel="${esc(d.path)}" aria-label="Supprimer">✕</button></div>`).join('')}</div>` : ''}
         </section>`;
     }
-    // Civilité d'après le prénom (liste de prénoms courants + terminaisons nettement féminines). Inconnu : « Madame, Monsieur ».
-    const PRENOMS_F = new Set('marie anne sophie nathalie isabelle sylvie catherine christine sandrine valerie veronique stephanie celine caroline julie aurelie emilie laura sarah camille lea manon chloe emma ines jade louise alice lucie clara pauline marine audrey melanie elodie virginie laurence martine monique francoise brigitte nicole jacqueline danielle chantal patricia corinne karine sabrina nadia fatima fatou aminata aicha khadija mariam mariama samira leila yasmina amina salima nora hawa kadiatou fanta assia djamila malika zineb myriam jessica vanessa cindy amandine charlotte margaux mathilde juliette agathe zoe anais oceane morgane justine elise helene agnes beatrice claire florence genevieve josiane josette odile odette colette paulette ginette simone suzanne yvette yvonne denise annie evelyne mireille muriel nadine pascale regine solange therese viviane carole carine fabienne gaelle gwendoline ingrid jennifer johanna laetitia ludivine magali maud noemie oriane perrine raphaelle rebecca severine tiphaine sonia alexandra barbara cecile delphine estelle eve gisele huguette irene lydie marion michele nelly rose sabine yasmine naima houria ouarda rachida souad fatoumata aissatou oumou kadidiatou binta dalanda mariame ramatoulaye safiatou hadja nene adama souraya soraya maya kenza imane sanaa hanane'.split(' '));
-    const PRENOMS_M = new Set('jean pierre michel philippe alain nicolas christophe patrick daniel bernard eric frederic laurent stephane david olivier thierry pascal sebastien julien thomas alexandre antoine maxime romain kevin mathieu matthieu guillaume vincent francois jerome cedric arnaud benoit damien fabrice franck gilles herve jacques joel lionel marc mickael pascal regis serge sylvain xavier yann yannick mohamed mohammed ahmed ali karim mamadou moussa ibrahima abdoul abdou youssouf oumar amadou boubacar sekou lamine samir rachid said mehdi yacine bilal hamza adam lucas louis hugo leo gabriel raphael arthur jules nathan ethan paul noah tom enzo theo clement quentin florian anthony jordan dylan loic gael yves claude andre rene roger robert henri georges marcel lucien luc jose manuel carlos mathias baptiste adrien bastien jeremy jonathan ludovic mathis valentin william'.split(' '));
-    function civilite(x) {
-        const norm = t => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
-        const p = norm((String(x.prenom || '').split(/[\s-]+/)[0])), nom = String(x.nom || '').trim();
-        const nomPropre = nom ? nom.toLowerCase().replace(/(^|[\s'-])\S/g, c => c.toUpperCase()).replace(/(^|\s)(De|Du|Des|La|Le|D')(?=[\s'])/g, (m, a, b) => a + b.toLowerCase()).replace(/^(\S)/, c => c.toUpperCase()) : '';
-        let c = PRENOMS_F.has(p) ? 'Madame' : PRENOMS_M.has(p) ? 'Monsieur' : /(ette|elle|ine|ienne|ia)$/.test(p) ? 'Madame' : '';
-        return !c || !nomPropre ? (c && !nomPropre ? `Bonjour ${c},` : 'Bonjour Madame, Monsieur,') : `Bonjour ${c} ${nomPropre},`;
-    }
+    // Finition / motorisation remplies automatiquement (Mac mini Sonar ou recherche sur les sites) : origine en petit.
+    const autoFin = (x, k) => { const f = x.finition_auto; return f && f[k] && f[k] === x[k] ? `<br><span style="color:var(--ink-4);font-weight:400;font-size:.8rem">auto · ${esc(f.source)}${f.confiance && f.confiance !== 'haute' ? ' · à vérifier' : ''}</span>` : ''; };
+    // Toujours « Bonjour, » seul : jamais de prénom, de nom ni de civilité devinée (règle du 22/11/2026).
+    const civilite = () => 'Bonjour,';
     // Mail de remerciement : documents de cession signés en pièces jointes, rappel assurance, avis Google (Trustpilot en repli).
     const TRUSTPILOT_AVIS = 'https://fr.trustpilot.com/evaluate/lunicar.fr', GOOGLE_AVIS = 'https://g.page/r/CcBIBePt41KGEBM/review';
     const DOCS_MERCI = { cession_achat: 'le certificat de cession signé', carte_grise: 'la carte grise barrée et signée', declaration_achat: 'le récépissé de la déclaration d\'achat' };
@@ -5047,8 +5032,8 @@ body.modal-ouvert { overflow: hidden; }
         const x = d.data || {}, f = fourchette(d), pm = prixMax(d), avant = estEnvoyees(d);
         const brut = String(x.vehicule || nomVeh(x) || '').trim(), veh = brut.length > 30 ? brut.slice(0, 30).replace(/\s+\S*$/, '') : brut;
         const eurS = v => Math.round(v).toLocaleString('fr-FR').replace(/[  ]/g, ' ') + ' €';
-        const smsDe = (a, b) => propreSMS(`Bonjour${x.prenom ? ' ' + x.prenom : ''},\nsuite à notre échange, notre estimation pour ${veh ? 'votre ' + veh : 'votre voiture'} : entre ${eurS(a)} et ${eurS(b)}, prix définitif après inspection par notre technicien.\nPour en parler, rappelez votre conseiller LUNICAR au ${TEL_CONSEILLER}.`);
-        const mailDe = (a, b) => `Bonjour${x.prenom ? ' ' + x.prenom : ''},\n\nMerci pour notre échange au sujet de ${veh ? 'votre ' + veh : 'votre voiture'}.\n\n${texteFourchette({ min: a, max: b })}\n\nPour en discuter ou fixer le rendez-vous d'inspection, appelez-moi au ${TEL_CONSEILLER}. Si vous préférez que je vous rappelle, répondez simplement à ce message ou au SMS avec le moment qui vous arrange.`;
+        const smsDe = (a, b) => propreSMS(`Bonjour,\nsuite à notre échange, notre estimation pour ${veh ? 'votre ' + veh : 'votre voiture'} : entre ${eurS(a)} et ${eurS(b)}, prix définitif après inspection par notre technicien.\nPour en parler, rappelez votre conseiller LUNICAR au ${TEL_CONSEILLER}.`);
+        const mailDe = (a, b) => `Bonjour,\n\nMerci pour notre échange au sujet de ${veh ? 'votre ' + veh : 'votre voiture'}.\n\n${texteFourchette({ min: a, max: b })}\n\nPour en discuter ou fixer le rendez-vous d'inspection, appelez-moi au ${TEL_CONSEILLER}. Si vous préférez que je vous rappelle, répondez simplement à ce message ou au SMS avec le moment qui vous arrange.`;
         const ini = avant[0] || f || (pm ? { min: pm, max: pm } : { min: '', max: '' });
         const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
         $('#crIn').innerHTML = `<div class="cr-tete"><h3>Envoyer l'estimation</h3><button class="close" type="button" id="eeX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
@@ -5103,7 +5088,7 @@ body.modal-ouvert { overflow: hidden; }
         const x = d.data || {}, veh = String(x.vehicule || '').trim();
         let L; try { L = await api('/api/admin/demandes/' + d.ref + '/liens'); } catch (e) { return toast(e.message); }
         const lien = L[type], quoi = type === 'carte_grise' ? 'une photo de votre carte grise' : 'quelques photos de votre voiture (extérieur, intérieur, compteur, défauts éventuels)';
-        const texte = propreSMS(`Bonjour${x.prenom ? ' ' + x.prenom : ''},\nPour avancer sur ${veh ? 'votre ' + veh : 'votre demande'}, pouvez-vous nous envoyer ${quoi} via ce lien :\n${lien}\nMerci, l'équipe LUNICAR`);
+        const texte = propreSMS(`Bonjour,\nPour avancer sur ${veh ? 'votre ' + veh : 'votre demande'}, pouvez-vous nous envoyer ${quoi} via ce lien :\n${lien}\nMerci, l'équipe LUNICAR`);
         const titre = type === 'carte_grise' ? 'Demander la carte grise' : 'Demander des photos';
         const smsOk = etat.sms && etat.sms.actif && !etat.sms.erreur;
         $('#crIn').innerHTML = `<div class="cr-tete"><h3>${titre}</h3><button class="close" type="button" id="spX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
@@ -5397,7 +5382,7 @@ body.modal-ouvert { overflow: hidden; }
         $('#sheetIn').innerHTML = `
         <div class="sh-top">
             <button class="retour" id="closeSheet" aria-label="Retour aux demandes"><svg><use href="#i-retour"/></svg><span>Demandes</span></button>
-            <div class="sh-titre">${x.plaque ? `<button type="button" class="plaque-fr" data-cg title="Carte grise"><i>F</i><span>${esc(x.plaque)}</span></button>` : ''}<h2>${esc(nomVeh(x))}${badgeMeca(x)}${badgeUtil(x)}</h2>${saisieDiff(x)}
+            <div class="sh-titre">${x.plaque ? `<button type="button" class="plaque-fr" data-cg title="Carte grise"><i>F</i><span>${esc(x.plaque)}</span></button>` : ''}<h2>${esc(nomVeh(x))}${badgeMeca(x)}${badgeUtil(x)}</h2>
                 <small><button type="button" class="mi-lien" data-infos>Modifier</button> · <button type="button" class="mi-lien" data-cg>Carte grise</button> · ${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')} · <span class="mono">${esc(d.ref)}</span> · reçue le ${date(d.created_at, false)}${d.origine === 'abandon' ? ' · formulaire abandonné' + (x.etape ? ' à l\'étape « ' + esc(x.etape) + ' »' : '') : ''}</small></div>
             <div class="contact">
                 ${x.telephone ? `<a class="btn btn-g" href="tel:+${esc(tel)}"><svg><use href="#i-tel"/></svg>${esc(x.telephone)}</a>` : ''}
@@ -5544,7 +5529,6 @@ body.modal-ouvert { overflow: hidden; }
             <div class="cols">
                 <section class="sec">
                     <h3>Véhicule <button type="button" class="btn btn-s mi-btn" data-infos>Modifier</button><button type="button" class="btn btn-s mi-btn" data-cg>Scanner la carte grise</button></h3>
-                    ${photoModele ? `<img class="photo-modele" src="${esc(photoModele)}" alt="Photo du modèle" loading="lazy" referrerpolicy="no-referrer" onerror="this.nextElementSibling.remove();this.remove()"><small>Photo type du modèle (API plaque)</small>` : ''}
                     ${(() => {
                         const energieSiv = x.energie_siv || (siv && (siv.energieNGC || siv.energie_ngc || siv.carburant)) || '';
                         const cDecl = carburant(`${x.vehicule} ${x.fiche_confirmee || ''}`), cSiv = carburant(energieSiv);
@@ -5560,14 +5544,14 @@ body.modal-ouvert { overflow: hidden; }
                     })()}
                     ${(x.corrections || []).length ? `<p class="corr"><b>Corrigé au téléphone :</b> ${x.corrections.slice(-4).map(c => esc({ kilometrage: 'km', prix_souhaite: 'prix souhaité', mecanique: 'mécanique', controle_technique: 'CT', carrosserie: 'carrosserie', delai: 'délai', annee: 'année' }[c.champ] || c.champ) + ' ' + esc(c.avant || '—') + ' → <b>' + esc(c.apres) + '</b>').join(' · ')}</p>` : ''}
                     ${kv([
-                        ['Véhicule', esc(x.vehicule), 'vehicule'], ['Finition', esc(x.finition), 'finition'], ['Motorisation', esc(x.motorisation), 'motorisation'], ['Année', esc(x.annee), 'annee'], ['Kilométrage', x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : '', 'kilometrage'],
+                        ['Véhicule', esc(x.vehicule), 'vehicule'], ['Finition', esc(x.finition) + autoFin(x, 'finition'), 'finition'], ['Motorisation', esc(x.motorisation) + autoFin(x, 'motorisation'), 'motorisation'], ['Année', esc(x.annee), 'annee'], ['Kilométrage', x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : '', 'kilometrage'],
                         ['Plaque', esc(x.plaque) + (x.plaque_datation ? `<br><span style="color:var(--ink-4);font-weight:400">${esc(x.plaque_datation)}</span>` : ''), 'plaque'],
                         ['VIN', x.vin || (siv && siv.vin) ? `<code>${esc(x.vin || siv.vin)}</code>` : '', 'vin'], ['Fiche confirmée', esc(x.fiche_confirmee)],
                         ['État mécanique', esc(x.mecanique || (Array.isArray(x.etat) ? x.etat.join(', ') : '')), 'mecanique'], ['Organes en cause', esc(x.organes_defaillants)],
                         ['Nature de la panne', esc(x.nature_panne)], ['Sans dépanneuse', esc(x.deplacable)], ['Voyant allumé', esc(x.voyant)],
                         ['Carrosserie', esc(x.carrosserie), 'carrosserie'], ['Défauts carrosserie', esc(x.degats)],
-                        ['Contrôle technique', esc(x.controle_technique), 'controle_technique'], ['Clés', esc(x.cles), 'cles'], ['Carnet / factures', esc(x.carnet), 'carnet'],
-                        ['Première main', esc(x.premiere_main), 'premiere_main'], ['Importée', esc(x.importee)], ['Crédit / LOA / LLD', esc(x.financement)], ['Carburant', esc(x.carburant), 'carburant'], ['Boîte', esc(x.boite), 'boite'],
+                        ['Clés', esc(x.cles), 'cles'], ['Carnet / factures', esc(x.carnet), 'carnet'],
+                        ['Première main', esc(x.premiere_main), 'premiere_main'], ['Importée', esc(x.importee)], ['Crédit / LOA / LLD', esc(x.financement)],
                         ['Extérieur', esc(x.etat_exterieur)], ['Intérieur', esc(x.etat_interieur)]
                     ])}
                     ${siv ? `<details><summary>Fiche SIV complète</summary>${kv(Object.entries(siv).filter(([k, v]) => v !== null && v !== '' && typeof v !== 'object' && !['photo_modele', 'logo_marque'].includes(k)).map(([k, v]) => [k, esc(v)]))}</details>` : ''}
@@ -6297,7 +6281,7 @@ body.modal-ouvert { overflow: hidden; }
     // Corps multipart : champs texte + pièces jointes (le serveur lit les deux).
     const formMail = (champs, fichiers) => { const fd = new FormData(); Object.entries(champs).forEach(([k, v]) => { if (v != null && v !== '') fd.append(k, typeof v === 'boolean' ? (v ? '1' : '') : v); }); (fichiers || []).forEach(f => fd.append('pieces', f, f.name)); return fd; };
     // Message pré-rempli : « Bonjour, » + ligne vide pour écrire + signature de Kevin.
-    const debutMail = (sig, p) => `${p ? 'Bonjour ' + p + ',' : 'Bonjour,'}\n\n\n\n${sig || ''}`.trimEnd();
+    const debutMail = sig => `Bonjour,\n\n\n\n${sig || ''}`.trimEnd();
     const placerCurseur = t => { const i = t.value.indexOf('\n\n') + 2; t.focus(); t.setSelectionRange(i, i); };
     async function ouvrirMail(id) {
         bxOuvert = id; bxImages = false; bxTexte = false; bxRep = null;
@@ -6365,9 +6349,8 @@ body.modal-ouvert { overflow: hidden; }
         };
         $('#bxLecture').querySelectorAll('[data-bx-mode]').forEach(b => b.onclick = () => {
             const mode = b.dataset.bxMode, tr = mode === 'transferer';
-            const p = (L.demande && L.demande.nom ? L.demande.nom : m.nom || '').trim().split(/\s+/)[0];
             bxRep = { mode, a: tr ? '' : L.a, cc: mode === 'tous' ? L.tous.join(', ') : '', cci: '', voirCc: mode === 'tous',
-                objet: tr ? ('TR : ' + (m.objet || '')).slice(0, 200) : L.objet_re, texte: tr ? `Bonjour,\n\n\n\n${L.signature || ''}`.trimEnd() : debutMail(L.signature, /^[A-ZÀ-Ý][a-zà-ÿ'-]{1,30}$/.test(p) ? p : ''),
+                objet: tr ? ('TR : ' + (m.objet || '')).slice(0, 200) : L.objet_re, texte: tr ? `Bonjour,\n\n\n\n${L.signature || ''}`.trimEnd() : debutMail(L.signature),
                 citer: true, joindre: tr && (m.pieces || []).length > 0, fichiers: [] };
             rendreLecture();
             if (tr) $('#bxA').focus(); else placerCurseur($('#bxTxt'));
