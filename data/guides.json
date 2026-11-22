@@ -230,7 +230,7 @@
     "slug": "vendre-vieille-voiture",
     "image": "accueil",
     "nav": "Vieille voiture",
-    "title": "Vendre une vieille voiture : on vient chez vous | LUNICAR",
+    "title": "Rachat de vieille voiture ou ancienne, chez vous | LUNICAR",
     "description": "Voiture de plus de 15 ans, peu roulée ou qui dort au garage : fourchette indicative communiquée rapidement, vérification chez vous, virement instantané.",
     "h1": "Vendre une vieille voiture <em>sans vous déplacer</em>",
     "lede": "Votre voiture a quinze ou vingt ans, elle roule peu et vous ne voulez ni annonce ni visites ? Décrivez-la en ligne ou par téléphone : nous vous rappelons rapidement avec une fourchette de prix indicative, puis nous venons la chercher chez vous, à Paris, dans les Hauts-de-Seine, les Yvelines et partout en France.",
@@ -328,7 +328,7 @@
         "url": "https://immatriculation.ants.gouv.fr/"
       }
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-voiture-haut-kilometrage",
@@ -485,7 +485,7 @@
     "slug": "reprise-voiture-diesel",
     "image": "ile-de-france",
     "nav": "Voiture diesel",
-    "title": "Vendre sa voiture diesel en Île-de-France | LUNICAR",
+    "title": "Reprise de voiture diesel, récente ou ancienne | LUNICAR",
     "description": "Vous vendez un diesel en Île-de-France ? Crit'Air, état du FAP ou de l'EGR : fourchette indicative communiquée rapidement, virement instantané à la vente.",
     "h1": "Vendre sa voiture diesel en Île-de-France, <em>récente ou ancienne</em>",
     "lede": "Vignette Crit'Air, règles de circulation qui évoluent, pièces sensibles des diesels modernes : vendre un diesel en Île-de-France soulève des questions. Voici des repères clairs et la façon dont LUNICAR étudie votre voiture.",
@@ -563,13 +563,13 @@
         "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-voiture-electrique",
     "image": "accueil",
     "nav": "Électrique et hybride",
-    "title": "Vendre sa voiture électrique ou hybride | LUNICAR",
+    "title": "Reprise de voiture électrique ou hybride | LUNICAR",
     "description": "Électrique, hybride ou hybride rechargeable : état de la batterie, location de batterie, aides. Estimation indicative rapide, virement instantané à la vente.",
     "h1": "Vendre sa voiture électrique ou hybride, <em>batterie comprise</em>",
     "lede": "Pour une voiture électrique ou hybride, la batterie compte autant que le kilométrage. État de santé, contrat de location, garantie constructeur, aides perçues : voici ce qu'il faut vérifier avant de vendre, et comment LUNICAR procède.",
@@ -651,7 +651,7 @@
         "url": "https://histovec.interieur.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-voiture-leasing",
@@ -1266,7 +1266,7 @@
     "brand": "Renault",
     "image": "accueil",
     "nav": "Renault",
-    "title": "Reprise Renault : vendez sans achat imposé | LUNICAR",
+    "title": "Reprise Renault Clio, Mégane, Captur | LUNICAR",
     "description": "Reprise Renault en concession ou vente directe ? Vendez votre Clio, Captur ou Mégane sans racheter de voiture : estimation rapide, virement instantané.",
     "h1": "Reprise Renault : vendez votre Renault <em>sans achat imposé</em>",
     "lede": "Clio, Captur, Mégane, Zoe ou Kangoo : comparez la reprise en concession et la vente directe à un professionnel. Vous recevez une estimation, distincte de tout achat, et vous restez libre de la refuser.",
@@ -1340,14 +1340,14 @@
         "url": "https://ants.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-peugeot",
     "brand": "Peugeot",
     "image": "accueil",
     "nav": "Peugeot",
-    "title": "Reprise Peugeot : vendez sans achat imposé | LUNICAR",
+    "title": "Reprise Peugeot 208, 308, 2008, 3008 | LUNICAR",
     "description": "Reprise Peugeot sans racheter de voiture : 208, 2008, 308 ou 3008, même en panne : étude au cas par cas, virement instantané à la vente.",
     "h1": "Reprise Peugeot : vendez votre Peugeot <em>à un professionnel</em>",
     "lede": "Votre 208, 2008, 308 ou 3008 peut être reprise en concession lors d’un achat, ou vendue directement à un professionnel. Voici comment choisir, et ce qui compte vraiment dans la valeur d’une Peugeot d’occasion.",
@@ -1425,14 +1425,14 @@
         "url": "https://histovec.interieur.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-citroen",
     "brand": "Citroën",
     "image": "accueil",
     "nav": "Citroën",
-    "title": "Reprise Citroën : vendez sans achat imposé | LUNICAR",
+    "title": "Reprise Citroën C3, C4, Berlingo | LUNICAR",
     "description": "Reprise Citroën sans racheter de véhicule : C3, C4, C5 Aircross ou Berlingo, même en panne : étude au cas par cas, virement instantané à la vente.",
     "h1": "Reprise Citroën : vendez votre C3, C4 ou Berlingo <em>en toute liberté</em>",
     "lede": "Reprise en concession ou vente directe ? Pour une Citroën, le choix dépend de votre projet d’achat, de l’état du véhicule et de son historique. Voici les points à connaître avant de vendre.",
@@ -1510,14 +1510,14 @@
         "url": "https://ants.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-dacia",
     "brand": "Dacia",
     "image": "accueil",
     "nav": "Dacia",
-    "title": "Reprise Dacia : vendez sans achat imposé | LUNICAR",
+    "title": "Reprise Dacia Sandero, Logan, Duster | LUNICAR",
     "description": "Reprise Dacia sans achat imposé : Sandero, Duster, Jogger ou Spring, essence, GPL ou électrique. Estimation rapide, virement instantané à la vente.",
     "h1": "Reprise Dacia : vendez votre Sandero ou votre Duster <em>simplement</em>",
     "lede": "Les Dacia sont très demandées en occasion. Reprise en concession ou vente directe à un professionnel : voici comment choisir et ce qui influence la valeur d’une Sandero, d’un Duster ou d’une Spring.",
@@ -1587,14 +1587,14 @@
         "url": "https://www.certificat-air.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-volkswagen",
     "brand": "Volkswagen",
     "image": "accueil",
     "nav": "Volkswagen",
-    "title": "Reprise Volkswagen : vendez sans achat imposé | LUNICAR",
+    "title": "Reprise Volkswagen Polo, Golf, Tiguan | LUNICAR",
     "description": "Reprise Volkswagen sans racheter de voiture : Golf, Polo, T-Roc, Tiguan ou ID.3, même en panne : étude au cas par cas, virement instantané à la vente.",
     "h1": "Reprise Volkswagen : vendez votre Golf, Polo ou Tiguan <em>sans contrepartie</em>",
     "lede": "Une Volkswagen garde une forte demande en occasion, à condition que son historique soit clair. Comparez la reprise en concession et la vente directe, et préparez les documents qui comptent pour une Golf, un T-Roc ou une ID.3.",
@@ -1668,14 +1668,14 @@
         "url": "https://www.service-public.fr/particuliers/vosdroits/R20300"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-toyota",
     "brand": "Toyota",
     "image": "accueil",
     "nav": "Toyota",
-    "title": "Reprise Toyota : vendez votre hybride librement | LUNICAR",
+    "title": "Reprise Toyota hybride : Yaris, C-HR, RAV4 | LUNICAR",
     "description": "Reprise Toyota sans achat imposé : Yaris, C-HR, Corolla ou RAV4 hybride, même très kilométrée. Estimation indicative rapide, virement instantané à la vente.",
     "h1": "Reprise Toyota : vendez votre Yaris, C-HR ou RAV4 <em>hybride</em>",
     "lede": "Les Toyota hybrides sont parmi les voitures les plus suivies sur le marché de l’occasion. Voici comment choisir entre reprise en concession et vente directe, et ce qui compte pour la valeur d’une hybride.",
@@ -1749,14 +1749,14 @@
         "url": "https://ants.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-ford",
     "brand": "Ford",
     "image": "accueil",
     "nav": "Ford",
-    "title": "Reprise Ford : vendez sans achat imposé | LUNICAR",
+    "title": "Reprise Ford Fiesta, Kuga, Focus : estimation | LUNICAR",
     "description": "Reprise Ford sans racheter de voiture : Fiesta, Focus, Puma, Kuga ou Transit, même en panne : étude au cas par cas, virement instantané à la vente.",
     "h1": "Reprise Ford : vendez votre Fiesta, Focus ou Kuga <em>sans achat</em>",
     "lede": "Fiesta et Focus ne sont plus produites, mais elles restent très présentes en occasion. Reprise en concession ou vente directe : voici les repères pour vendre une Ford dans de bonnes conditions.",
@@ -1834,14 +1834,14 @@
         "url": "https://ants.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-mercedes",
     "brand": "Mercedes",
     "image": "accueil",
     "nav": "Mercedes",
-    "title": "Vendre sa Mercedes : reprise sans achat imposé | LUNICAR",
+    "title": "Reprise Mercedes Classe A, Classe C | LUNICAR",
     "description": "Vendre sa Mercedes sans racheter de voiture : Classe A, C, E, GLA ou GLC, même en panne : étude au cas par cas, virement instantané à la vente.",
     "h1": "Reprise Mercedes : vendez votre Mercedes <em>à un professionnel</em>",
     "lede": "Classe A, Classe C, GLC ou Vito : une Mercedes se vend bien quand son historique et ses options sont clairement présentés. Comparez la reprise en concession et la vente directe avant de décider.",
@@ -1915,14 +1915,14 @@
         "url": "https://www.service-public.fr/particuliers/vosdroits/R20300"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-bmw",
     "brand": "BMW",
     "image": "accueil",
     "nav": "BMW",
-    "title": "Reprise BMW : vendez votre BMW sans achat imposé | LUNICAR",
+    "title": "Reprise BMW Série 1, Série 3, X1 : estimation | LUNICAR",
     "description": "Reprise BMW sans racheter de voiture : Série 1, Série 3, X1, X3 ou 330e, même en panne : étude au cas par cas, virement instantané à la vente.",
     "h1": "Reprise BMW : vendez votre Série 1, Série 3 ou X1 <em>librement</em>",
     "lede": "Une BMW d’occasion se juge sur son entretien, sa motorisation et ses options. Voici comment choisir entre la reprise en concession et la vente directe, et comment présenter votre BMW pour obtenir une offre juste.",
@@ -2000,14 +2000,14 @@
         "url": "https://ants.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-audi",
     "brand": "Audi",
     "image": "accueil",
     "nav": "Audi",
-    "title": "Reprise Audi : vendez votre Audi sans achat imposé | LUNICAR",
+    "title": "Reprise Audi A1, A3, Q3, A4 : estimation | LUNICAR",
     "description": "Reprise Audi sans racheter de véhicule : A1, A3, A4, Q2, Q3 ou Q5, même en panne : étude au cas par cas, virement instantané à la vente.",
     "h1": "Reprise Audi : vendez votre A3, A4 ou Q3 <em>sans racheter</em>",
     "lede": "A3 Sportback, A4 Avant, Q3 ou Q5 : une Audi d’occasion se vend bien quand son entretien et ses équipements sont documentés. Comparez la reprise en concession et la vente directe à un professionnel.",
@@ -2085,14 +2085,14 @@
         "url": "https://ants.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-fiat",
     "brand": "Fiat",
     "image": "accueil",
     "nav": "Fiat",
-    "title": "Reprise Fiat : vendez votre Fiat sans achat imposé | LUNICAR",
+    "title": "Reprise Fiat 500, Panda, Tipo : estimation | LUNICAR",
     "description": "Reprise Fiat sans racheter de voiture : 500, Panda, Tipo, 500X ou Ducato, même en panne : étude au cas par cas, virement instantané à la vente.",
     "h1": "Reprise Fiat : vendez votre 500, Panda ou Tipo <em>simplement</em>",
     "lede": "Les Fiat 500 et Panda sont des citadines très répandues en Île-de-France. Voici comment choisir entre reprise en concession et vente directe, et ce qui compte pour la valeur d’une Fiat d’occasion.",
@@ -2166,14 +2166,14 @@
         "url": "https://ants.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "reprise-seat",
     "brand": "Seat",
     "image": "accueil",
     "nav": "Seat",
-    "title": "Reprise Seat : vendez votre Seat sans achat imposé | LUNICAR",
+    "title": "Reprise Seat Ibiza, Leon, Arona | LUNICAR",
     "description": "Reprise Seat ou Cupra sans racheter de voiture : Ibiza, Leon, Arona ou Ateca, même en panne : étude au cas par cas, virement instantané à la vente.",
     "h1": "Reprise Seat : vendez votre Ibiza, Leon ou Arona <em>sans achat</em>",
     "lede": "Ibiza, Leon, Arona, Ateca ou Cupra : les Seat partagent leurs moteurs avec le groupe Volkswagen et se revendent bien. Voici comment choisir entre reprise en concession et vente directe.",
@@ -2251,7 +2251,7 @@
         "url": "https://ants.gouv.fr/"
       }
     ],
-    "updated": "2026-10-22"
+    "updated": "2026-11-22"
   },
   {
     "slug": "rachat-voiture-en-panne",
@@ -2537,7 +2537,7 @@
     "slug": "rachat-voiture-sans-controle-technique",
     "image": "sans-ct",
     "nav": "Sans contrôle technique",
-    "title": "Vendre sa voiture sans contrôle technique | LUNICAR",
+    "title": "Vendre sa voiture sans contrôle technique (CT) | LUNICAR",
     "description": "Sans contrôle technique, une voiture de plus de 4 ans ne se vend pas à un particulier, mais peut être vendue à un professionnel. Règles, délais, chiffres 2025.",
     "h1": "Vendre sa voiture sans contrôle technique, <em>partout en France</em>",
     "lede": "Oui, vous pouvez vendre une voiture sans contrôle technique, mais seulement à un professionnel. Pour vendre à un particulier une voiture de plus de 4 ans, le procès-verbal doit dater de moins de 6 mois ; après une contre-visite, la vente en l’état reste possible pendant 2 mois. En 2025, 18,24 % des voitures particulières contrôlées ont été recalées (bilan UTAC-OTC relayé par L’argus). LUNICAR étudie les voitures sans contrôle valable partout en France : fourchette de prix indicative, puis prix définitif après vérification par un technicien, sans frais.",
@@ -2681,13 +2681,13 @@
         "url": "https://prix.conso.gouv.fr/controle-technique"
       }
     ],
-    "updated": "2026-11-04"
+    "updated": "2026-11-22"
   },
   {
     "slug": "rachat-voiture-rapide",
     "image": "cash",
     "nav": "Vente rapide",
-    "title": "Nouvelle voiture achetée : vendre l'ancienne vite | LUNICAR",
+    "title": "Rachat de voiture rapide, à la date qui vous va | LUNICAR",
     "description": "Nouvelle voiture achetée ou commandée ? Gardez l'ancienne jusqu'à la livraison, choisissez la date du rendez-vous, évitez la double assurance. Sans annonce.",
     "h1": "Nouvelle voiture achetée ou commandée : <em>vendre l'ancienne vite, à la bonne date</em>",
     "lede": "Si vous avez déjà acheté ou commandé votre prochaine voiture, faites étudier l'ancienne dès maintenant, gardez-la jusqu'à la livraison et fixez le rendez-vous de vente à la date qui vous arrange. Vous évitez de rester sans voiture, de payer deux assurances trop longtemps ou de dépendre d'acheteurs particuliers. Décrivez votre voiture en ligne : un conseiller vous rappelle rapidement avec une fourchette de prix indicative, gratuite et sans engagement.",
@@ -2809,7 +2809,7 @@
         "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2664"
       }
     ],
-    "updated": "2026-11-06"
+    "updated": "2026-11-22"
   },
   {
     "slug": "rachat-vehicule-utilitaire",
@@ -3177,6 +3177,608 @@
       }
     ],
     "updated": "2026-10-27"
+  },
+  {
+    "slug": "reprise-skoda",
+    "brand": "Skoda",
+    "image": "accueil",
+    "nav": "Skoda",
+    "title": "Reprise Skoda : Fabia, Octavia, Kodiaq | LUNICAR",
+    "description": "Reprise Skoda sans achat imposé : Fabia, Octavia, Superb, Kodiaq ou Karoq, même très kilométrée. Fourchette indicative rapide, virement instantané.",
+    "h1": "Reprise Skoda : vendez votre Fabia, Octavia ou Kodiaq <em>sans rien racheter</em>",
+    "lede": "Les Skoda d’occasion se revendent bien, de la Fabia citadine à l’Octavia break et au Kodiaq sept places. Voici comment choisir entre reprise en concession et vente directe, ce qui compte pour la valeur d’une Skoda et les points signalés par les sources sur chaque modèle.",
+    "points": [
+      "Prix définitif après vérification par un technicien",
+      "Skoda TSI, TDI ou hybride à fort kilométrage acceptées",
+      "Aucun achat de véhicule imposé",
+      "Virement bancaire instantané à la vente"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Reprise Skoda en concession ou vente directe ?",
+        "html": "<p>La reprise en concession Skoda est pratique si vous remplacez votre voiture par un modèle neuf de la marque : un seul rendez-vous suffit et la reprise vient en déduction de la commande. La vente directe à un professionnel convient si vous ne rachetez rien, si votre Skoda a beaucoup roulé, si elle présente un défaut connu, ou si vous voulez connaître sa valeur indépendamment d’une remise commerciale.</p><p>LUNICAR vous transmet une fourchette de prix indicative communiquée rapidement, sans lien avec un achat. Vous pouvez la comparer avec la reprise proposée par la concession avant de décider. Un technicien vient ensuite à votre adresse, sans frais, où que vous soyez en France, et le prix définitif est fixé après vérification du véhicule : vous pouvez le refuser sans frais. Notre <a href=\"/comparatif-reprise-auto\">comparatif</a> présente les autres voies de vente.</p>"
+      },
+      {
+        "h2": "Fabia, Octavia, Superb, Kodiaq, Karoq : quels modèles circulent le plus ?",
+        "html": "<p>Le parc Skoda en France repose surtout sur la Fabia et l’Octavia, complétées par la grande Superb et les SUV Kodiaq et Karoq. Tous partagent leurs moteurs avec le groupe Volkswagen : essence TSI, diesel TDI, boîte manuelle ou DSG à double embrayage selon les versions.</p><ul class=\"ticks\"><li><strong>Fabia</strong> : quatre générations (1999-2007, 2007-2014, 2014-2021, puis depuis 2021). Les trois premières existent en Combi ; la quatrième est uniquement proposée en cinq portes, en essence 1.0 MPI, 1.0 TSI et 1.5 TSI.</li><li><strong>Octavia</strong> : Octavia I lancée en 1996, Octavia II de 2004 à 2013 (restylée en 2008), Octavia III de 2013 à 2020 (restylée début 2017), Octavia IV depuis 2020 avec des versions eTSI à hybridation légère, eHybrid rechargeable, TDI et GNV G-TEC. Voir notre fiche <a href=\"/reprise-skoda-octavia\">reprise Skoda Octavia</a>.</li><li><strong>Superb</strong> : Superb I (2001-2008), II (2008-2015, Combi ajoutée fin 2009), III (2015-2023, avec une hybride rechargeable iV de 218 ch), IV depuis fin 2023.</li><li><strong>Kodiaq</strong> : SUV de 2017 à 2023, restylé en 2021, en cinq ou sept places, deux ou quatre roues motrices ; seconde génération vendue depuis 2024.</li><li><strong>Karoq</strong> : SUV compact commercialisé fin 2017, restylé en 2022, en 1.0 TSI, 1.5 TSI, 1.6 TDI ou 2.0 TDI.</li></ul>"
+      },
+      {
+        "h2": "Qu’est-ce qui pèse sur la valeur d’une Skoda à l’estimation ?",
+        "html": "<p>Pour une Skoda, trois éléments pèsent surtout : la génération, la motorisation et l’historique d’entretien. Une Octavia ou une Superb Combi diesel intéresse des acheteurs qui roulent beaucoup ; une Fabia essence vise une clientèle urbaine ; un Kodiaq sept places ou en quatre roues motrices est recherché par les familles. La carrosserie (berline ou Combi), la finition et la boîte (manuelle ou DSG) entrent aussi en compte.</p><p>Sur les TSI à chaîne de distribution, une facture de remplacement de la chaîne et de son tendeur rassure l’acheteur. Sur les TDI, les factures d’injecteurs, de vanne EGR, de filtre à particules ou de volant moteur ont la même valeur. Pour une boîte DSG, précisez si les vidanges prévues ont été faites. Sur une Octavia eHybrid ou une Superb iV, le câble de recharge et le bon fonctionnement de la charge comptent aussi. Voir notre page <a href=\"/reprise-voiture-diesel\">reprise de voiture diesel</a>.</p>"
+      },
+      {
+        "h2": "Défauts connus et rappels signalés sur les Skoda",
+        "html": "<p>Plusieurs points reviennent dans les sources consultées. Sur la Fabia de deuxième génération (2007-2014), Fiches-Auto signale une distribution par chaîne fragile sur le 1.2 atmosphérique 60 et 70 ch (chaîne qui se détend et calage qui se décale) et sur le 1.2 TSI 85 et 105 ch, avec aussi une consommation d’huile et une pompe à eau fragile. Sur les 1.6 TDI, les injecteurs, la vanne EGR et le filtre à particules sont les éléments les plus cités. Sur les boîtes DSG, les à-coups proviennent souvent du mécatronique ou des embrayages pilotés.</p><p>Côté rappels, Fiches-Auto recense pour l’Octavia une reprogrammation de la boîte DSG sur des modèles fabriqués en 2008 et 2009, ainsi qu’une campagne de 2024 sur l’airbag conducteur Takata (code 69KH), également listée pour la Fabia de deuxième génération. Vous pouvez vérifier les campagnes en cours sur <a href=\"https://rappel.conso.gouv.fr/\" rel=\"noopener\" target=\"_blank\">rappel.conso.gouv.fr</a> ou auprès d’un réparateur Skoda avec votre numéro de série.</p><p>Ces points ne rendent pas une Skoda invendable. Indiquez simplement dans votre demande si le rappel a été effectué ou si une réparation a été faite : l’offre en tient compte de façon transparente.</p>"
+      },
+      {
+        "h2": "Que préparer avant de vendre sa Skoda ?",
+        "html": "<p>Préparez la carte grise à votre nom, les deux clés, le carnet ou les factures d’entretien, les justificatifs des rappels effectués et un rapport Histovec. Pour une Octavia eHybrid ou une Superb iV, ajoutez le câble de recharge. Pour un Kodiaq, précisez s’il s’agit d’une version cinq ou sept places et s’il est en quatre roues motrices.</p><ul class=\"ticks\"><li><strong>Entretien</strong> : factures de vidange, de distribution (chaîne ou courroie selon le moteur), de vidange DSG, d’embrayage, avec dates et kilométrages.</li><li><strong>Rappels</strong> : attestation ou facture d’atelier mentionnant l’opération réalisée.</li><li><strong>Rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a></strong> : il retrace les propriétaires successifs et l’historique administratif.</li><li><strong>Équipements</strong> : finition (Ambition, Style, Scout, RS…), carrosserie Combi, attelage, toit ouvrant, aides à la conduite.</li></ul>"
+      },
+      {
+        "h2": "Une Skoda en panne ou à très fort kilométrage peut-elle être étudiée ?",
+        "html": "<p>Oui. Une Fabia avec un bruit de chaîne au démarrage, une Octavia TDI à plus de 250 000 km ou un Kodiaq dont la boîte DSG donne des à-coups peuvent être étudiés. L’offre tient compte de la réparation à prévoir. Nous venons à votre adresse sans frais, où que vous soyez en France, et l’enlèvement est à notre charge, même pour un véhicule non roulant. L’étude ne vaut pas promesse de rachat : vous restez libre jusqu’à la signature.</p><p>Lors du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Si la vente est conclue, le paiement se fait par virement instantané. Voir <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a> et <a href=\"/vendre-voiture-en-l-etat\">vendre sa voiture en l’état</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la reprise d’une Skoda",
+    "faq": [
+      {
+        "question": "Faut-il acheter une Skoda neuve pour bénéficier d’une reprise ?",
+        "answer": "En concession, la reprise accompagne en général une commande. Avec LUNICAR, vous vendez votre Skoda sans rien acheter, avec une fourchette de prix indicative communiquée rapidement et un paiement par virement instantané si la vente est conclue."
+      },
+      {
+        "question": "Combien vaut ma Skoda Octavia ou ma Fabia ?",
+        "answer": "Cela dépend de chaque voiture : génération, moteur, kilométrage, entretien et état. Décrivez la vôtre dans le formulaire pour recevoir une fourchette indicative gratuite, puis le prix définitif après vérification par un technicien."
+      },
+      {
+        "question": "Ma Fabia 1.2 TSI fait un bruit de chaîne au démarrage, est-elle étudiée ?",
+        "answer": "Oui. Indiquez si la chaîne et son tendeur ont déjà été remplacés et joignez la facture. Si le bruit est toujours présent, décrivez-le : l’offre tient compte de la réparation à prévoir."
+      },
+      {
+        "question": "Le rappel airbag de ma Skoda n’a pas été fait, puis-je vendre ?",
+        "answer": "Oui. Précisez-le dans votre demande. Vous pouvez aussi faire réaliser le rappel chez un réparateur Skoda avant la vente : les campagnes de rappel sont prises en charge par le constructeur. Le technicien vérifie le véhicule lors du rendez-vous."
+      },
+      {
+        "question": "Un Kodiaq sept places est-il estimé différemment ?",
+        "answer": "Le nombre de places, la transmission intégrale, la boîte DSG et la finition entrent dans l’estimation, en plus du kilométrage et de l’entretien. Précisez-les dans votre demande pour une fourchette plus juste."
+      },
+      {
+        "question": "Le contrôle technique est-il exigé pour vendre ma Skoda à LUNICAR ?",
+        "answer": "Non. Le contrôle technique de moins de six mois n’est obligatoire que pour une vente entre particuliers. LUNICAR étudie aussi les Skoda sans contrôle technique valide ou avec une contre-visite."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Škoda Octavia sur Wikipédia (générations, motorisations)",
+        "url": "https://fr.wikipedia.org/wiki/Škoda_Octavia"
+      },
+      {
+        "label": "Škoda Fabia sur Wikipédia (générations, motorisations)",
+        "url": "https://fr.wikipedia.org/wiki/Škoda_Fabia"
+      },
+      {
+        "label": "Škoda Superb sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Škoda_Superb"
+      },
+      {
+        "label": "Škoda Kodiaq sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Škoda_Kodiaq"
+      },
+      {
+        "label": "Škoda Karoq sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Škoda_Karoq"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité et pannes de la Skoda Fabia 2",
+        "url": "https://www.fiches-auto.fr/fiabilite-skoda/fiabilite-199-pannes-skoda-fabia-2.php"
+      },
+      {
+        "label": "Fiches-Auto : rappels de la Skoda Octavia",
+        "url": "https://www.fiches-auto.fr/rappels-skoda/r-132-rappels-skoda-octavia.php"
+      }
+    ],
+    "updated": "2026-11-22"
+  },
+  {
+    "slug": "reprise-mini",
+    "brand": "Mini",
+    "image": "accueil",
+    "nav": "Mini",
+    "title": "Reprise Mini : Cooper, Clubman, Countryman | LUNICAR",
+    "description": "Reprise Mini sans achat imposé : Cooper 3 ou 5 portes, Cabrio, Clubman ou Countryman, même kilométrée. Fourchette indicative rapide, virement instantané.",
+    "h1": "Reprise Mini : vendez votre Cooper, Clubman ou Countryman <em>sans rien racheter</em>",
+    "lede": "Les Mini d’occasion gardent un public fidèle, de la Cooper trois portes au Countryman ALL4. Voici comment choisir entre reprise en concession et vente directe, ce qui compte pour la valeur d’une Mini et les points signalés par les sources sur chaque génération.",
+    "points": [
+      "Prix définitif après vérification par un technicien",
+      "Mini essence, diesel ou électrique à fort kilométrage acceptées",
+      "Aucun achat de véhicule imposé",
+      "Virement bancaire instantané à la vente"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Reprise Mini en concession ou vente directe ?",
+        "html": "<p>La reprise en concession Mini est pratique si vous remplacez votre voiture par un modèle neuf de la marque : un seul rendez-vous suffit et la reprise vient en déduction de la commande. La vente directe à un professionnel convient si vous ne rachetez rien, si votre Mini a beaucoup roulé, si elle présente un défaut connu, ou si vous voulez connaître sa valeur indépendamment d’une remise commerciale.</p><p>LUNICAR vous transmet une fourchette de prix indicative communiquée rapidement, sans lien avec un achat. Vous pouvez la comparer avec la reprise proposée par la concession avant de décider. Un technicien vient ensuite à votre adresse, sans frais, où que vous soyez en France, et le prix définitif est fixé après vérification du véhicule : vous pouvez le refuser sans frais. Notre <a href=\"/comparatif-reprise-auto\">comparatif</a> présente les autres voies de vente.</p>"
+      },
+      {
+        "h2": "Cooper, 5 portes, Cabrio, Clubman, Countryman : quelle Mini avez-vous ?",
+        "html": "<p>La Mini moderne se décline en plusieurs générations, et c’est la première information à préciser dans votre demande, car moteurs et points de vigilance changent de l’une à l’autre.</p><ul class=\"ticks\"><li><strong>Mini R50/R53 (2001-2006)</strong> : moteurs 1.4 et 1.6 Tritec, Cooper S à compresseur, One D diesel d’origine Toyota. Le Cabrio R52 est produit jusqu’en 2008.</li><li><strong>Mini R56 (2006-2013)</strong> : moteurs essence Prince 1.4 et 1.6, atmosphériques ou turbo (Cooper S), développés avec PSA ; diesel 1.6 d’origine PSA puis diesels BMW. Cabrio R57 de 2009 à 2015.</li><li><strong>Mini F56 trois portes, F55 cinq portes et F57 Cabrio (2014-2024)</strong> : trois cylindres BMW 1.2 et 1.5, quatre cylindres 2.0 (Cooper S, JCW), diesels 1.5 et 2.0 ; Cooper SE électrique à partir de 2020.</li><li><strong>Clubman</strong> : R55 (2007-2015) avec porte latérale Clubdoor et portes arrière battantes, puis F54 (2015-2024) à quatre portes classiques, toujours avec portes de coffre battantes. Production arrêtée en février 2024.</li><li><strong>Countryman</strong> : R60 (2010-2017), F60 (2017-2023) avec une hybride rechargeable Cooper SE ALL4, puis U25 depuis 2023, aussi en électrique.</li><li><strong>Nouvelle génération</strong> : Cooper électrique produite en Chine depuis fin 2023, Cooper thermique F66 produite à Oxford depuis 2024.</li></ul>"
+      },
+      {
+        "h2": "Qu’est-ce qui pèse sur la valeur d’une Mini à l’estimation ?",
+        "html": "<p>Pour une Mini, la génération, la motorisation et l’historique d’entretien pèsent le plus, suivis de la finition et des options : une Cooper S, une John Cooper Works ou une série spéciale n’intéressent pas la même clientèle qu’une One. La carrosserie compte aussi : une Cabrio est jugée sur l’état de sa capote, une Clubman sur ses portes battantes, un Countryman ALL4 sur sa transmission intégrale.</p><p>Sur les R56 essence, les factures de remplacement de la chaîne de distribution et de son tendeur, de la pompe à eau ou de l’embrayage rassurent l’acheteur. Le suivi de la consommation d’huile est aussi un bon signe. Sur une Cooper SE ou un Countryman hybride rechargeable, l’état de la batterie, le câble de recharge et le bon fonctionnement de la charge comptent autant que le kilométrage. Voir aussi <a href=\"/reprise-voiture-electrique\">reprise de voiture électrique</a>.</p>"
+      },
+      {
+        "h2": "Défauts connus et rappels signalés sur les Mini",
+        "html": "<p>Sur la Mini de deuxième génération (R56), Caradisiac désigne la distribution comme le principal point faible : sur les moteurs essence, le tendeur de chaîne compense mal l’allongement de la chaîne, avec voyant moteur, perte de puissance ou bruit anormal, et un risque de casse moteur. Les diesels 1.6 d’origine BMW ont aussi un tendeur jugé insuffisant. Caradisiac cite également une consommation d’huile sur les essence (Cooper S 175 ch en tête), des fuites de pompe à eau et une usure prématurée de l’embrayage, souvent remplacé avec le volant moteur.</p><p>Toujours selon Caradisiac, deux rappels ont touché la R56 en 2012 : la pompe à eau de Cooper S et JCW fabriquées entre mars 2006 et janvier 2011, puis une sonde de température sur des Mini essence produites entre septembre 2010 et avril 2012. Sur la génération 2014-2024, les avis recueillis par Fiches-Auto sont moins nombreux ; ils évoquent notamment une boîte manuelle qui siffle sur le 1.5 de 136 ch. Vérifiez les campagnes en cours sur <a href=\"https://rappel.conso.gouv.fr/\" rel=\"noopener\" target=\"_blank\">rappel.conso.gouv.fr</a>.</p><p>Ces points ne rendent pas une Mini invendable. Indiquez simplement dans votre demande si une réparation a été faite : l’offre en tient compte de façon transparente.</p>"
+      },
+      {
+        "h2": "Que préparer avant de vendre sa Mini ?",
+        "html": "<p>Préparez la carte grise à votre nom, les deux clés, le carnet ou les factures d’entretien, les justificatifs des rappels effectués et un rapport Histovec. Pour une Cooper SE ou un Countryman hybride rechargeable, ajoutez le câble de recharge. Pour une Cabrio, signalez l’état de la capote et son fonctionnement.</p><ul class=\"ticks\"><li><strong>Entretien</strong> : factures de vidange, de chaîne de distribution, de pompe à eau, d’embrayage, avec dates et kilométrages.</li><li><strong>Rappels</strong> : attestation ou facture d’atelier mentionnant l’opération réalisée.</li><li><strong>Rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a></strong> : il retrace les propriétaires successifs et l’historique administratif.</li><li><strong>Équipements</strong> : finition, pack John Cooper Works, toit ouvrant, boîte automatique, transmission ALL4.</li></ul>"
+      },
+      {
+        "h2": "Une Mini en panne ou à très fort kilométrage peut-elle être étudiée ?",
+        "html": "<p>Oui. Une Cooper R56 avec un bruit de chaîne, une Clubman diesel à plus de 250 000 km ou un Countryman qui consomme de l’huile peuvent être étudiés. L’offre tient compte de la réparation à prévoir. Nous venons à votre adresse sans frais, où que vous soyez en France, et l’enlèvement est à notre charge, même pour un véhicule non roulant. L’étude ne vaut pas promesse de rachat : vous restez libre jusqu’à la signature.</p><p>Lors du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Si la vente est conclue, le paiement se fait par virement instantané. Voir <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a> et <a href=\"/vendre-vieille-voiture\">vendre une vieille voiture</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la reprise d’une Mini",
+    "faq": [
+      {
+        "question": "Faut-il acheter une Mini neuve pour bénéficier d’une reprise ?",
+        "answer": "En concession, la reprise accompagne en général une commande. Avec LUNICAR, vous vendez votre Mini sans rien acheter, avec une fourchette de prix indicative communiquée rapidement et un paiement par virement instantané si la vente est conclue."
+      },
+      {
+        "question": "Combien vaut ma Mini Clubman ou mon Countryman ?",
+        "answer": "Cela dépend de chaque voiture : génération, moteur, kilométrage, entretien, finition et état. Décrivez la vôtre dans le formulaire pour recevoir une fourchette indicative gratuite, puis le prix définitif après vérification par un technicien."
+      },
+      {
+        "question": "Ma Mini R56 a eu un problème de chaîne de distribution, est-elle étudiée ?",
+        "answer": "Oui. Indiquez si la chaîne et le tendeur ont été remplacés et joignez la facture : une réparation documentée est prise en compte. Si le défaut est toujours présent, décrivez les symptômes et l’offre tiendra compte de la réparation à prévoir."
+      },
+      {
+        "question": "Comment savoir quelle génération de Mini j’ai ?",
+        "answer": "La date de première mise en circulation sur la carte grise donne une première indication : R50/R53 jusqu’en 2006, R56 de 2006 à 2013, F56 ou F55 à partir de 2014. Le technicien confirme la version lors du rendez-vous."
+      },
+      {
+        "question": "Une Mini Cooper SE électrique est-elle estimée comme une thermique ?",
+        "answer": "Non. L’état de la batterie, la présence du câble de recharge et le bon fonctionnement de la charge entrent dans l’estimation, en plus du kilométrage et de l’entretien."
+      },
+      {
+        "question": "Le contrôle technique est-il exigé pour vendre ma Mini à LUNICAR ?",
+        "answer": "Non. Le contrôle technique de moins de six mois n’est obligatoire que pour une vente entre particuliers. LUNICAR étudie aussi les Mini sans contrôle technique valide ou avec une contre-visite."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Mini (BMW) sur Wikipédia (générations et années de production)",
+        "url": "https://fr.wikipedia.org/wiki/Mini_(BMW)"
+      },
+      {
+        "label": "Mini Hatch sur Wikipedia (moteurs par génération)",
+        "url": "https://en.wikipedia.org/wiki/Mini_Hatch"
+      },
+      {
+        "label": "Mini Clubman sur Wikipédia (R55, F54, fin de production)",
+        "url": "https://fr.wikipedia.org/wiki/Mini_Clubman"
+      },
+      {
+        "label": "Mini Countryman sur Wikipédia (R60, F60, U25)",
+        "url": "https://fr.wikipedia.org/wiki/Mini_Countryman"
+      },
+      {
+        "label": "Caradisiac : maxi-fiche fiabilité de la Mini II",
+        "url": "https://www.caradisiac.com/maxi-fiche-fiabilite-mini-ii-fruits-a-pepins-203638.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité et pannes de la Mini 2014-2024",
+        "url": "https://www.fiches-auto.fr/fiabilite-mini/fiabilite-493-pannes-mini-mini.php"
+      }
+    ],
+    "updated": "2026-11-22"
+  },
+  {
+    "slug": "reprise-hyundai",
+    "brand": "Hyundai",
+    "image": "accueil",
+    "nav": "Hyundai",
+    "title": "Reprise Hyundai : i10, i20, i30, Tucson | LUNICAR",
+    "description": "Reprise et estimation Hyundai sans achat imposé : i10, i20, i30, Tucson ou Kona, même kilométré. Fourchette indicative rapide, virement instantané.",
+    "h1": "Reprise Hyundai : vendez votre i20, Tucson ou Kona <em>sans rien racheter</em>",
+    "lede": "Les Hyundai d’occasion sont nombreuses, de la petite i10 au Tucson familial et au Kona électrique. Voici comment obtenir une estimation, choisir entre reprise en concession et vente directe, et ce que les sources signalent sur chaque modèle.",
+    "points": [
+      "Prix définitif après vérification par un technicien",
+      "Hyundai essence, diesel, hybride ou électrique acceptées",
+      "Aucun achat de véhicule imposé",
+      "Virement bancaire instantané à la vente"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Reprise Hyundai en concession ou vente directe ?",
+        "html": "<p>La reprise en concession Hyundai est pratique si vous remplacez votre voiture par un modèle neuf de la marque : un seul rendez-vous suffit et la reprise vient en déduction de la commande. La vente directe à un professionnel convient si vous ne rachetez rien, si votre Hyundai a beaucoup roulé, si elle présente un défaut connu, ou si vous voulez connaître sa valeur indépendamment d’une remise commerciale. Pour une simple estimation de votre Hyundai, sans projet d’achat, la vente directe est la voie la plus simple.</p><p>LUNICAR vous transmet une fourchette de prix indicative communiquée rapidement, sans lien avec un achat. Vous pouvez la comparer avec la reprise proposée par la concession avant de décider. Un technicien vient ensuite à votre adresse, sans frais, où que vous soyez en France, et le prix définitif est fixé après vérification du véhicule : vous pouvez le refuser sans frais. Notre <a href=\"/comparatif-reprise-auto\">comparatif</a> présente les autres voies de vente.</p>"
+      },
+      {
+        "h2": "i10, i20, i30, Tucson, Kona : quels modèles circulent le plus ?",
+        "html": "<p>La gamme Hyundai vendue en France va de la citadine au SUV familial, avec des motorisations essence, diesel CRDi, hybrides et électriques selon les générations.</p><ul class=\"ticks\"><li><strong>i10</strong> : trois générations (2007-2013, 2013-2019, depuis 2020). La troisième est proposée en 1.0, 1.0 T-GDi turbo et 1.2, restylée en 2023.</li><li><strong>i20</strong> : première génération de 2009 à 2014, deuxième de 2015 à 2020 (avec l’i20 Active), troisième depuis 2020, en 1.0 T-GDi avec hybridation légère 48 V sur certaines versions, et l’i20 N de 204 ch.</li><li><strong>i30</strong> : i30 I de 2007 à 2012, i30 II de 2012 à 2017 (trois ou cinq portes et break), i30 III depuis 2017 en berline, SW, Fastback et i30 N. Le diesel a disparu du catalogue français en 2022.</li><li><strong>Tucson</strong> : Tucson I (2004-2009), ix35 (2010-2015), Tucson III (2015-2021, restylé en 2018) en 1.6 GDi, 1.6 T-GDi, 1.6, 1.7 et 2.0 CRDi, puis Tucson IV depuis 2021, uniquement hybride ou hybride rechargeable après le restylage de fin 2023.</li><li><strong>Kona</strong> : première génération de 2017 à 2022 en 1.0 et 1.6 T-GDi, 1.6 CRDi, hybride et électrique (batterie de 39,2 ou 64 kWh), puis Kona II dévoilé fin 2022.</li></ul>"
+      },
+      {
+        "h2": "Estimation Hyundai : qu’est-ce qui pèse sur la valeur ?",
+        "html": "<p>Pour estimer une Hyundai, trois éléments pèsent surtout : la génération, la motorisation et l’historique d’entretien. Une i10 ou une i20 essence vise une clientèle urbaine ; un Tucson diesel ou hybride intéresse les familles et les gros rouleurs ; un Kona électrique est jugé d’abord sur sa batterie. La boîte (manuelle, automatique ou double embrayage DCT) et la transmission intégrale entrent aussi en compte.</p><p>La garantie constructeur peut aussi jouer : Hyundai annonce sur ses sites européens une garantie de cinq ans kilométrage illimité qui suit le véhicule si l’entretien a été fait régulièrement. Les conditions exactes figurent dans le livret de garantie de votre voiture : joignez le carnet tamponné ou les factures. Sur un Kona électrique, le câble de recharge et un relevé d’état de batterie sont utiles. Voir aussi <a href=\"/reprise-voiture-electrique\">reprise de voiture électrique</a>.</p>"
+      },
+      {
+        "h2": "Défauts connus et rappels signalés sur les Hyundai",
+        "html": "<p>Sur le Tucson de troisième génération (2015-2021), Fiches-Auto désigne la boîte à double embrayage DCT7 comme un point faible important, surtout associée au 1.7 CRDi 141 ch : à-coups au démarrage, rapports manquants, patinage. Le 1.7 CRDi 115 ch est surtout cité pour l’usure de l’embrayage, des synchros de boîte et de la rouille dans le réservoir qui pollue l’injection ; le 1.6 GDi pour une consommation d’huile. Fiches-Auto recense aussi des rappels sur ce Tucson : ABS (mars 2021, véhicules de février 2017 à août 2020), volant (juillet 2018, véhicules de juin 2017 à janvier 2018) et préfiltre de pompe tandem (2023).</p><p>Sur le Kona électrique, Hyundai a lancé fin 2020 une campagne de contrôle de la batterie haute tension et de mise à jour du calculateur ; un peu plus de 3 000 véhicules étaient concernés en France selon Automobile Propre, les Kona assemblés en Tchéquie n’étant pas visés. Vérifiez votre véhicule sur <a href=\"https://rappel.conso.gouv.fr/\" rel=\"noopener\" target=\"_blank\">rappel.conso.gouv.fr</a>.</p><p>Ces points ne rendent pas une Hyundai invendable. Indiquez simplement dans votre demande si le rappel a été effectué ou si une réparation a été faite : l’offre en tient compte de façon transparente.</p>"
+      },
+      {
+        "h2": "Que préparer avant de vendre sa Hyundai ?",
+        "html": "<p>Préparez la carte grise à votre nom, les deux clés, le carnet ou les factures d’entretien, les justificatifs des rappels effectués et un rapport Histovec. Pour un Kona électrique ou un Tucson hybride rechargeable, ajoutez le câble de recharge et, si vous en avez un, un relevé de l’état de la batterie.</p><ul class=\"ticks\"><li><strong>Entretien</strong> : factures de vidange, d’embrayage, de boîte DCT, de filtre à particules, avec dates et kilométrages.</li><li><strong>Rappels</strong> : attestation ou facture d’atelier mentionnant l’opération réalisée.</li><li><strong>Rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a></strong> : il retrace les propriétaires successifs et l’historique administratif.</li><li><strong>Équipements</strong> : finition (Intuitive, Creative, Executive, N Line…), boîte automatique, quatre roues motrices, toit ouvrant.</li></ul>"
+      },
+      {
+        "h2": "Une Hyundai en panne ou à très fort kilométrage peut-elle être étudiée ?",
+        "html": "<p>Oui. Un Tucson dont la boîte DCT donne des à-coups, une i30 diesel à plus de 250 000 km ou une i10 ancienne peuvent être étudiés. L’offre tient compte de la réparation à prévoir. Nous venons à votre adresse sans frais, où que vous soyez en France, et l’enlèvement est à notre charge, même pour un véhicule non roulant. L’étude ne vaut pas promesse de rachat : vous restez libre jusqu’à la signature.</p><p>Lors du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Si la vente est conclue, le paiement se fait par virement instantané. Voir <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a> et <a href=\"/vendre-voiture-en-l-etat\">vendre sa voiture en l’état</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la reprise d’une Hyundai",
+    "faq": [
+      {
+        "question": "Faut-il acheter une Hyundai neuve pour bénéficier d’une reprise ?",
+        "answer": "En concession, la reprise accompagne en général une commande. Avec LUNICAR, vous vendez votre Hyundai sans rien acheter, avec une fourchette de prix indicative communiquée rapidement et un paiement par virement instantané si la vente est conclue."
+      },
+      {
+        "question": "Comment obtenir une estimation de ma Hyundai ?",
+        "answer": "Décrivez votre voiture dans le formulaire : modèle, génération, moteur, kilométrage, entretien et état. Un conseiller vous rappelle rapidement avec une fourchette indicative gratuite, puis un technicien fixe le prix définitif après vérification, que vous pouvez refuser sans frais."
+      },
+      {
+        "question": "La garantie constructeur restante est-elle prise en compte ?",
+        "answer": "Oui, c’est un élément de l’estimation. Hyundai indique que sa garantie suit le véhicule si l’entretien a été fait régulièrement : joignez le carnet tamponné ou les factures pour le démontrer."
+      },
+      {
+        "question": "Mon Tucson DCT donne des à-coups, est-il étudié ?",
+        "answer": "Oui. Décrivez les symptômes et indiquez si une intervention a déjà été faite sur la boîte. L’offre tient compte de la réparation à prévoir, et le technicien vérifie le véhicule lors du rendez-vous."
+      },
+      {
+        "question": "Le rappel batterie de mon Kona électrique a-t-il une incidence ?",
+        "answer": "Précisez si la campagne a été réalisée, avec la facture ou l’attestation de l’atelier. Si elle ne l’a pas été, vous pouvez la faire réaliser chez un réparateur Hyundai avant la vente. L’état de la batterie entre dans l’estimation."
+      },
+      {
+        "question": "Le contrôle technique est-il exigé pour vendre ma Hyundai à LUNICAR ?",
+        "answer": "Non. Le contrôle technique de moins de six mois n’est obligatoire que pour une vente entre particuliers. LUNICAR étudie aussi les Hyundai sans contrôle technique valide ou avec une contre-visite."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Hyundai Tucson sur Wikipédia (générations, motorisations)",
+        "url": "https://fr.wikipedia.org/wiki/Hyundai_Tucson"
+      },
+      {
+        "label": "Hyundai Kona sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Hyundai_Kona"
+      },
+      {
+        "label": "Hyundai i10 sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Hyundai_i10"
+      },
+      {
+        "label": "Hyundai i20 sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Hyundai_i20"
+      },
+      {
+        "label": "Hyundai i30 sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Hyundai_i30"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité et rappels du Hyundai Tucson 2015-2021",
+        "url": "https://www.fiches-auto.fr/fiabilite-hyundai/fiabilite-528-pannes-hyundai-tucson.php"
+      },
+      {
+        "label": "BeVolt : Hyundai Kona électrique",
+        "url": "https://www.bevolt.com/fr-fr/automobile/actualites/voitures-electriques/102757-le-hyundai-kona-electrique-debute-sa-campagne-de-rappel-en-france/"
+      },
+      {
+        "label": "Hyundai : garantie 5 ans kilométrage illimité (site Belgique)",
+        "url": "https://www.hyundai.com/be/fr/service/conduite-sans-souci/garantie-5-ans.html"
+      }
+    ],
+    "updated": "2026-11-22"
+  },
+  {
+    "slug": "reprise-kia",
+    "brand": "Kia",
+    "image": "accueil",
+    "nav": "Kia",
+    "title": "Reprise Kia : Picanto, Ceed, Sportage | LUNICAR",
+    "description": "Reprise Kia sans achat imposé : Picanto, Rio, Ceed, Sportage ou Niro, même très kilométrée. Fourchette indicative rapide, virement instantané.",
+    "h1": "Reprise Kia : vendez votre Picanto, Sportage ou Niro <em>sans rien racheter</em>",
+    "lede": "Les Kia d’occasion sont nombreuses en France, de la Picanto au Sportage et au Niro hybride ou électrique. Voici comment choisir entre reprise en concession et vente directe, le rôle de la garantie Kia dans l’estimation et les points signalés par les sources.",
+    "points": [
+      "Prix définitif après vérification par un technicien",
+      "Kia essence, diesel, hybride ou électrique acceptées",
+      "Aucun achat de véhicule imposé",
+      "Virement bancaire instantané à la vente"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Reprise Kia en concession ou vente directe ?",
+        "html": "<p>La reprise en concession Kia est pratique si vous remplacez votre voiture par un modèle neuf de la marque : un seul rendez-vous suffit et la reprise vient en déduction de la commande. La vente directe à un professionnel convient si vous ne rachetez rien, si votre Kia a beaucoup roulé, si elle présente un défaut connu, ou si vous voulez connaître sa valeur indépendamment d’une remise commerciale.</p><p>LUNICAR vous transmet une fourchette de prix indicative communiquée rapidement, sans lien avec un achat. Vous pouvez la comparer avec la reprise proposée par la concession avant de décider. Un technicien vient ensuite à votre adresse, sans frais, où que vous soyez en France, et le prix définitif est fixé après vérification du véhicule : vous pouvez le refuser sans frais. Notre <a href=\"/comparatif-reprise-auto\">comparatif</a> présente les autres voies de vente.</p>"
+      },
+      {
+        "h2": "Picanto, Rio, Ceed, Sportage, Niro : quels modèles circulent le plus ?",
+        "html": "<p>Le parc Kia en France couvre la citadine, la compacte et le SUV, avec des motorisations essence, diesel CRDi, hybrides et électriques selon les générations. Plusieurs modèles partagent leur base technique avec Hyundai.</p><ul class=\"ticks\"><li><strong>Picanto</strong> : première génération de 2004 à 2011, deuxième de 2011 à 2017 en 1.0 et 1.2, troisième depuis 2017 en 1.0, 1.2 et 1.0 T-GDi turbo, restylée en 2020 puis en 2023.</li><li><strong>Rio</strong> : troisième génération de 2011 à 2016, quatrième de 2017 à 2023 ; le modèle a quitté le marché européen en 2024 sans remplaçant direct.</li><li><strong>Ceed</strong> : cee’d I (2007-2012) et II (2012-2018) assemblées en Slovaquie, avec les variantes SW et pro_cee’d ; Ceed III depuis 2018.</li><li><strong>Sportage</strong> : Sportage III (2010-2015) en 1.6 GDi, 1.7 et 2.0 CRDi, Sportage IV (2016-2021) en 1.6 GDi, 1.6 T-GDi et diesels CRDi, avec hybridation légère 48 V après le restylage de 2018, Sportage V depuis 2021, aussi en hybride et hybride rechargeable.</li><li><strong>Niro</strong> : première génération de 2016 à 2021 en hybride, hybride rechargeable et électrique e-Niro (batterie de 39 ou 64 kWh), seconde génération ensuite.</li></ul>"
+      },
+      {
+        "h2": "Qu’est-ce qui pèse sur la valeur d’une Kia à l’estimation ?",
+        "html": "<p>Pour une Kia, la génération, la motorisation et l’historique d’entretien pèsent le plus. La garantie restante est aussi un argument : Kia France indique une garantie de sept ans ou 150 000 km à compter de la première immatriculation, transférable au propriétaire suivant si le véhicule a été entretenu régulièrement selon le plan constructeur. Un carnet complet, tamponné en réseau ou hors réseau dans le respect des préconisations, garde donc tout son intérêt à la revente.</p><p>Sur un Niro hybride rechargeable ou un e-Niro, la batterie haute tension a sa propre couverture, liée à un niveau minimal de capacité défini par le livret de garantie. L’état de la batterie, le câble de recharge et le bon fonctionnement de la charge comptent autant que le kilométrage. Voir aussi <a href=\"/reprise-voiture-electrique\">reprise de voiture électrique</a>.</p>"
+      },
+      {
+        "h2": "Défauts connus et rappels signalés sur les Kia",
+        "html": "<p>Sur le Sportage de quatrième génération (2016-2021), Caradisiac signale une casse prématurée de l’embrayage sur le 1.7 CRDi 115 ch, de rares casses de vilebrequin sur le 1.6 CRDi 136 ch à hybridation légère, possiblement liées aux tendeurs de courroie, et des cas de casse ou d’usure des actionneurs et du double embrayage sur la boîte DCT7. La peinture qui s’écaille facilement aux gravillons est aussi citée.</p><p>Toujours selon Caradisiac, un rappel de mars 2021 concerne un risque de court-circuit du boîtier ABS/ESP pouvant provoquer un incendie, sur plus de 40 000 Sportage fabriqués entre mars 2015 et octobre 2020. Le Sportage étant le jumeau technique du Tucson, plusieurs points se recoupent avec ceux signalés sur le Hyundai. Vérifiez les campagnes en cours sur <a href=\"https://rappel.conso.gouv.fr/\" rel=\"noopener\" target=\"_blank\">rappel.conso.gouv.fr</a>.</p><p>Ces points ne rendent pas une Kia invendable. Indiquez simplement dans votre demande si le rappel a été effectué ou si une réparation a été faite : l’offre en tient compte de façon transparente.</p>"
+      },
+      {
+        "h2": "Que préparer avant de vendre sa Kia ?",
+        "html": "<p>Préparez la carte grise à votre nom, les deux clés, le carnet ou les factures d’entretien, les justificatifs des rappels effectués et un rapport Histovec. Pour un Niro électrique ou hybride rechargeable, ajoutez le câble de recharge et, si vous en avez un, un relevé de l’état de la batterie.</p><ul class=\"ticks\"><li><strong>Entretien</strong> : factures de vidange, d’embrayage, de boîte DCT, de filtre à particules, avec dates et kilométrages, utiles aussi pour la garantie restante.</li><li><strong>Rappels</strong> : attestation ou facture d’atelier mentionnant l’opération réalisée.</li><li><strong>Rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a></strong> : il retrace les propriétaires successifs et l’historique administratif.</li><li><strong>Équipements</strong> : finition (Active, Design, GT Line…), boîte automatique, quatre roues motrices, attelage.</li></ul>"
+      },
+      {
+        "h2": "Une Kia en panne ou à très fort kilométrage peut-elle être étudiée ?",
+        "html": "<p>Oui. Un Sportage dont l’embrayage patine, une Ceed diesel à plus de 250 000 km ou une Picanto ancienne peuvent être étudiés. L’offre tient compte de la réparation à prévoir. Nous venons à votre adresse sans frais, où que vous soyez en France, et l’enlèvement est à notre charge, même pour un véhicule non roulant. L’étude ne vaut pas promesse de rachat : vous restez libre jusqu’à la signature.</p><p>Lors du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Si la vente est conclue, le paiement se fait par virement instantané. Voir <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a> et <a href=\"/vendre-vieille-voiture\">vendre une vieille voiture</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la reprise d’une Kia",
+    "faq": [
+      {
+        "question": "Faut-il acheter une Kia neuve pour bénéficier d’une reprise ?",
+        "answer": "En concession, la reprise accompagne en général une commande. Avec LUNICAR, vous vendez votre Kia sans rien acheter, avec une fourchette de prix indicative communiquée rapidement et un paiement par virement instantané si la vente est conclue."
+      },
+      {
+        "question": "Combien vaut mon Kia Sportage ?",
+        "answer": "Cela dépend de chaque voiture : génération, moteur, boîte, kilométrage, entretien et état. Décrivez la vôtre dans le formulaire pour recevoir une fourchette indicative gratuite, puis le prix définitif après vérification par un technicien."
+      },
+      {
+        "question": "La garantie Kia de sept ans est-elle transmise si je vends ?",
+        "answer": "Selon Kia France, la garantie reste attachée au véhicule et passe au propriétaire suivant pour la durée restante, à condition que l’entretien ait été fait régulièrement. Joignez le carnet ou les factures pour le démontrer."
+      },
+      {
+        "question": "Mon Sportage a eu un problème d’embrayage ou de boîte DCT, est-il étudié ?",
+        "answer": "Oui. Indiquez si la réparation a été faite et joignez la facture. Si le défaut est toujours présent, décrivez les symptômes : l’offre tient compte de la réparation à prévoir."
+      },
+      {
+        "question": "Un Kia e-Niro électrique est-il estimé comme une thermique ?",
+        "answer": "Non. La capacité de la batterie (39 ou 64 kWh), son état, la présence du câble de recharge et le bon fonctionnement de la charge entrent dans l’estimation, en plus du kilométrage et de l’entretien."
+      },
+      {
+        "question": "Le contrôle technique est-il exigé pour vendre ma Kia à LUNICAR ?",
+        "answer": "Non. Le contrôle technique de moins de six mois n’est obligatoire que pour une vente entre particuliers. LUNICAR étudie aussi les Kia sans contrôle technique valide ou avec une contre-visite."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Kia Sportage sur Wikipédia (générations, motorisations)",
+        "url": "https://fr.wikipedia.org/wiki/Kia_Sportage"
+      },
+      {
+        "label": "Kia Picanto sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Kia_Picanto"
+      },
+      {
+        "label": "Kia Rio sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Kia_Rio"
+      },
+      {
+        "label": "Kia Ceed sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Kia_Ceed"
+      },
+      {
+        "label": "Kia Niro sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Kia_Niro"
+      },
+      {
+        "label": "Kia France : 7 ans de garantie (durée, transfert, batterie)",
+        "url": "https://www.kia.com/fr/services/garantie/7-ans-de-garantie/"
+      },
+      {
+        "label": "Caradisiac : fiabilité du Kia Sportage 4, maxi-fiche occasion",
+        "url": "https://www.caradisiac.com/fiabilite-du-kia-sportage-4-la-maxi-fiche-occasion-de-caradisiac-194333.htm"
+      }
+    ],
+    "updated": "2026-11-22"
+  },
+  {
+    "slug": "reprise-alfa-romeo",
+    "brand": "Alfa Romeo",
+    "image": "accueil",
+    "nav": "Alfa Romeo",
+    "title": "Reprise Alfa Romeo : Giulietta, MiTo, Giulia | LUNICAR",
+    "description": "Reprise et estimation Alfa Romeo sans achat imposé : MiTo, Giulietta, Giulia, Stelvio ou Tonale, même kilométrée. Fourchette rapide, virement instantané.",
+    "h1": "Reprise Alfa Romeo : vendez votre Giulietta, MiTo ou Giulia <em>sans rien racheter</em>",
+    "lede": "Les Alfa Romeo d’occasion ont un public de passionnés, de la MiTo à la Giulia et au Stelvio. Voici comment obtenir une estimation, choisir entre reprise en concession et vente directe, et ce que les sources signalent sur chaque modèle.",
+    "points": [
+      "Prix définitif après vérification par un technicien",
+      "Alfa Romeo essence, diesel ou hybride à fort kilométrage acceptées",
+      "Aucun achat de véhicule imposé",
+      "Virement bancaire instantané à la vente"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "Reprise Alfa Romeo en concession ou vente directe ?",
+        "html": "<p>La reprise en concession Alfa Romeo est pratique si vous remplacez votre voiture par un modèle neuf de la marque : un seul rendez-vous suffit et la reprise vient en déduction de la commande. La vente directe à un professionnel convient si vous ne rachetez rien, si votre Alfa Romeo a beaucoup roulé, si elle présente un défaut connu, ou si vous voulez connaître sa valeur indépendamment d’une remise commerciale. C’est souvent le cas des MiTo et Giulietta, dont la production est arrêtée et qui n’ont pas de remplaçante directe dans la gamme.</p><p>LUNICAR vous transmet une fourchette de prix indicative communiquée rapidement, sans lien avec un achat. Vous pouvez la comparer avec la reprise proposée par la concession avant de décider. Un technicien vient ensuite à votre adresse, sans frais, où que vous soyez en France, et le prix définitif est fixé après vérification du véhicule : vous pouvez le refuser sans frais. Notre <a href=\"/comparatif-reprise-auto\">comparatif</a> présente les autres voies de vente.</p>"
+      },
+      {
+        "h2": "MiTo, Giulietta, Giulia, Stelvio, Tonale : quels modèles circulent le plus ?",
+        "html": "<p>Le parc Alfa Romeo en France repose surtout sur la MiTo et la Giulietta, deux tractions aujourd’hui arrêtées, puis sur les propulsions Giulia et Stelvio et sur le SUV Tonale.</p><ul class=\"ticks\"><li><strong>MiTo</strong> : citadine trois portes produite de 2008 à 2018 à Turin, restylée en 2013 et 2016, en 0.9 TwinAir, 1.4 (MultiAir, T-Jet…) et diesels 1.3 et 1.6 JTDm, avec une boîte double embrayage TCT sur certaines versions.</li><li><strong>Giulietta</strong> : compacte cinq portes produite à Cassino de 2010 à 2020, restylée en 2013 et 2016, en 1.4 TB et 1.4 MultiAir, 1750 TBi (Quadrifoglio Verde) et diesels 1.6 et 2.0 JTDm, boîte manuelle six rapports ou TCT.</li><li><strong>Giulia</strong> : berline propulsion ou Q4 produite depuis 2016, restylée fin 2019 et en 2022, en 2.0 turbo essence, 2.2 diesel de 136 à 210 ch et V6 2.9 Quadrifoglio, boîte automatique huit rapports.</li><li><strong>Stelvio</strong> : premier SUV de la marque, vendu depuis 2017, mêmes moteurs que la Giulia, transmission intégrale Q4.</li><li><strong>Tonale</strong> : SUV compact produit depuis 2022 à Pomigliano d’Arco, en 1.5 hybride 48 V, 1.6 diesel ou hybride rechargeable Q4.</li></ul>"
+      },
+      {
+        "h2": "Estimation Alfa Romeo : qu’est-ce qui pèse sur la valeur ?",
+        "html": "<p>Pour estimer une Alfa Romeo, la motorisation, la finition et l’historique d’entretien pèsent le plus. Une Giulietta Quadrifoglio Verde, une Giulia Veloce ou une Quadrifoglio n’intéressent pas la même clientèle qu’une MiTo 1.4 d’entrée de gamme. Un carnet suivi est particulièrement regardé sur cette marque : les acheteurs veulent savoir si les interventions courantes ont été faites à temps.</p><p>Sur une Giulietta ou une MiTo, les factures de distribution, de pompe à eau, d’embrayage ou de volant moteur rassurent l’acheteur. Sur une Giulia ou un Stelvio 2.2 diesel, les vidanges régulières et le suivi du niveau d’huile comptent. Les rappels constructeur réalisés, mentionnés sur les factures d’atelier, sont un point positif. Voir aussi notre page <a href=\"/reprise-voiture-diesel\">reprise de voiture diesel</a>.</p>"
+      },
+      {
+        "h2": "Défauts connus et rappels signalés sur les Alfa Romeo",
+        "html": "<p>Sur la Giulietta, Caradisiac signale des fuites de liquide de refroidissement par la pompe à eau sur les essence 1.4 et 1750 TBi, et, sur le 2.0 JTDm, des fuites liées au refroidisseur EGR ou à la boîte à eau ainsi que des casses de volant moteur sur les 140 et 170 ch, sans que ce soit généralisé. L’électronique est souvent citée : batterie d’origine faible, Stop & Start capricieux, faisceau de hayon qui casse. Deux rappels sont mentionnés : triangles de suspension avant sur des voitures de février à mai 2010 (avril 2011), puis faisceau de la pompe à huile de boîte sur les 2.0 JTDm TCT fabriquées entre juin 2010 et mai 2015 (juillet 2015).</p><p>Sur la Giulia, les avis recueillis par Fiches-Auto évoquent sur le 2.2 diesel des défauts de pompe à huile avec limaille, et de nombreux soucis électroniques. Fiches-Auto recense aussi des rappels, dont une reprogrammation du calculateur de régulateur de vitesse (modèles de mars 2016 à mars 2019) et le module de freinage intégré IBS (modèles de janvier 2019 à février 2021). Vérifiez les campagnes en cours sur <a href=\"https://rappel.conso.gouv.fr/\" rel=\"noopener\" target=\"_blank\">rappel.conso.gouv.fr</a>.</p><p>Ces points ne rendent pas une Alfa Romeo invendable. Indiquez simplement dans votre demande si le rappel a été effectué ou si une réparation a été faite : l’offre en tient compte de façon transparente.</p>"
+      },
+      {
+        "h2": "Que préparer avant de vendre son Alfa Romeo ?",
+        "html": "<p>Préparez la carte grise à votre nom, les deux clés, le carnet ou les factures d’entretien, les justificatifs des rappels effectués et un rapport Histovec. Pour un Tonale hybride rechargeable, ajoutez le câble de recharge.</p><ul class=\"ticks\"><li><strong>Entretien</strong> : factures de vidange, de distribution, de pompe à eau, d’embrayage ou de volant moteur, avec dates et kilométrages.</li><li><strong>Rappels</strong> : attestation ou facture d’atelier mentionnant l’opération réalisée.</li><li><strong>Rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a></strong> : il retrace les propriétaires successifs et l’historique administratif.</li><li><strong>Équipements</strong> : finition (Distinctive, Super, Veloce, Quadrifoglio…), boîte TCT ou automatique, transmission Q4, toit ouvrant.</li></ul>"
+      },
+      {
+        "h2": "Une Alfa Romeo en panne ou à très fort kilométrage peut-elle être étudiée ?",
+        "html": "<p>Oui. Une Giulietta 2.0 JTDm avec un volant moteur fatigué, une MiTo ancienne ou une Giulia diesel à plus de 200 000 km peuvent être étudiées. L’offre tient compte de la réparation à prévoir. Nous venons à votre adresse sans frais, où que vous soyez en France, et l’enlèvement est à notre charge, même pour un véhicule non roulant. L’étude ne vaut pas promesse de rachat : vous restez libre jusqu’à la signature.</p><p>Lors du rendez-vous, le véhicule est vérifié, puis le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous. Si la vente est conclue, le paiement se fait par virement instantané. Voir <a href=\"/reprise-voiture-haut-kilometrage\">fort kilométrage</a> et <a href=\"/vendre-voiture-en-l-etat\">vendre sa voiture en l’état</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la reprise d’une Alfa Romeo",
+    "faq": [
+      {
+        "question": "Faut-il acheter une Alfa Romeo neuve pour bénéficier d’une reprise ?",
+        "answer": "En concession, la reprise accompagne en général une commande. Avec LUNICAR, vous vendez votre Alfa Romeo sans rien acheter, avec une fourchette de prix indicative communiquée rapidement et un paiement par virement instantané si la vente est conclue."
+      },
+      {
+        "question": "Comment obtenir une estimation de mon Alfa Romeo Giulietta ?",
+        "answer": "Décrivez votre Giulietta dans le formulaire : année, moteur (1.4, 1750 TBi, 1.6 ou 2.0 JTDm), boîte, kilométrage, entretien et état. Un conseiller vous rappelle rapidement avec une fourchette indicative gratuite, puis un technicien fixe le prix définitif après vérification."
+      },
+      {
+        "question": "La Giulietta et la MiTo ne sont plus produites, sont-elles encore reprises ?",
+        "answer": "Oui. LUNICAR étudie les voitures de tous âges, y compris les modèles arrêtés. Leur valeur dépend de chaque voiture : moteur, kilométrage, entretien et état."
+      },
+      {
+        "question": "Le rappel du faisceau de boîte TCT de ma Giulietta n’a pas été fait, puis-je vendre ?",
+        "answer": "Oui. Précisez-le dans votre demande. Vous pouvez aussi faire réaliser le rappel chez un réparateur de la marque avant la vente : les campagnes de rappel sont prises en charge par le constructeur."
+      },
+      {
+        "question": "Ma Giulia 2.2 diesel a eu un souci de pompe à huile, est-elle étudiée ?",
+        "answer": "Oui. Indiquez si la réparation a été faite et joignez la facture. Si le défaut est toujours présent, décrivez les symptômes : l’offre tient compte de la réparation à prévoir."
+      },
+      {
+        "question": "Le contrôle technique est-il exigé pour vendre ma Alfa Romeo à LUNICAR ?",
+        "answer": "Non. Le contrôle technique de moins de six mois n’est obligatoire que pour une vente entre particuliers. LUNICAR étudie aussi les Alfa Romeo sans contrôle technique valide ou avec une contre-visite."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Alfa Romeo Giulietta (2010) sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_Giulietta_(2010)"
+      },
+      {
+        "label": "Alfa Romeo MiTo sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_MiTo"
+      },
+      {
+        "label": "Alfa Romeo Giulia (2015) sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_Giulia_(2015)"
+      },
+      {
+        "label": "Alfa Romeo Stelvio sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_Stelvio"
+      },
+      {
+        "label": "Alfa Romeo Tonale sur Wikipédia",
+        "url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_Tonale"
+      },
+      {
+        "label": "Caradisiac : fiabilité de l’Alfa Romeo Giulietta, maxi-fiche occasion",
+        "url": "https://www.caradisiac.com/fiabilite-de-l-alfa-romeo-giulietta-3-la-maxi-fiche-occasion-de-caradisiac-173910.htm"
+      },
+      {
+        "label": "Fiches-Auto : fiabilité, pannes et rappels de l’Alfa Romeo Giulia",
+        "url": "https://www.fiches-auto.fr/fiabilite-alfa-romeo/fiabilite-567-pannes-alfa-romeo-giulia.php"
+      }
+    ],
+    "updated": "2026-11-22"
+  },
+  {
+    "slug": "reprise-byd",
+    "brand": "BYD",
+    "image": "accueil",
+    "nav": "BYD",
+    "title": "Reprise BYD : Atto 3, Dolphin, Seal U | LUNICAR",
+    "description": "Reprise BYD sans achat imposé : Atto 3, Dolphin, Seal ou Seal U, électrique ou hybride rechargeable. Fourchette indicative rapide, virement instantané.",
+    "h1": "Reprise BYD : vendez votre Atto 3, Dolphin ou Seal U <em>sans rien racheter</em>",
+    "lede": "BYD est arrivé en France récemment, avec des électriques à batterie Blade et des hybrides rechargeables DM-i. Voici ce que l’on sait de la reprise dans le réseau, ce qui compte pour la valeur d’une BYD d’occasion (batterie, garantie, recharge) et comment la vendre sans rien racheter.",
+    "points": [
+      "Prix définitif après vérification par un technicien",
+      "BYD électriques et hybrides rechargeables étudiées",
+      "Aucun achat de véhicule imposé",
+      "Virement bancaire instantané à la vente"
+    ],
+    "etat": [],
+    "sections": [
+      {
+        "h2": "BYD reprend-il votre ancienne voiture ?",
+        "html": "<p>Les pages officielles de BYD France consultées ne présentent pas de programme national de reprise de l’ancienne voiture des acheteurs : la reprise se négocie avec le distributeur BYD, au cas par cas, en général lors de la commande d’un véhicule neuf. Renseignez-vous directement auprès du point de vente pour connaître ses conditions. Côté occasion, BYD a lancé en mai 2026 le label BYD Certified, qui concerne la revente dans son réseau de véhicules issus de retours de leasing, pas la reprise du véhicule d’un particulier.</p><p>Si vous ne rachetez rien, ou si vous voulez comparer, la vente directe est une alternative. LUNICAR vous transmet une fourchette de prix indicative communiquée rapidement, sans lien avec un achat, pour votre BYD comme pour une voiture d’une autre marque. Un technicien vient ensuite à votre adresse, sans frais, où que vous soyez en France, et le prix définitif est fixé après vérification du véhicule : vous pouvez le refuser sans frais. Voir aussi <a href=\"/reprise-voiture-sans-achat\">reprise sans achat</a> et notre <a href=\"/comparatif-reprise-auto\">comparatif</a>.</p>"
+      },
+      {
+        "h2": "Atto 3, Dolphin, Seal, Seal U : quels modèles circulent en France ?",
+        "html": "<p>Les BYD d’occasion en France sont récentes : la marque a lancé l’Atto 3 en Europe fin 2022, puis la Dolphin et la Seal en 2023 et le Seal U en 2024. Les électriques utilisent une batterie Blade à la chimie lithium fer phosphate (LFP).</p><ul class=\"ticks\"><li><strong>Atto 3</strong> : SUV compact électrique sur la plateforme e-Platform 3.0, moteur de 150 kW (204 ch), batterie de 60,48 kWh sur la version la plus diffusée. Une évolution Atto 3 Evo, avec une batterie plus grande, a été présentée pour l’Europe en 2026.</li><li><strong>Dolphin</strong> : compacte électrique introduite en Europe en avril 2023, batterie de 44,9 ou 60,4 kWh selon les versions, charge rapide jusqu’à 88 kW et recharge en courant alternatif jusqu’à 11 kW sur la plupart des versions.</li><li><strong>Seal</strong> : berline électrique vendue en Europe depuis 2023, batterie de 82 kWh, propulsion de 313 ch ou transmission intégrale de 530 ch.</li><li><strong>Seal U</strong> : SUV familial vendu en Europe en électrique depuis début 2024 (batterie de 71,8 ou 87 kWh) et en hybride rechargeable DM-i associant un moteur 1.5 et une batterie Blade.</li></ul>"
+      },
+      {
+        "h2": "Batterie, garantie, recharge : ce qui pèse sur la valeur d’une BYD",
+        "html": "<p>Sur une BYD électrique, la batterie est le premier critère : sa capacité d’origine, son état de santé et l’historique de recharge. Le kilométrage, l’entretien suivi et la finition viennent ensuite. Sur un Seal U DM-i, le fonctionnement du mode électrique et de la recharge compte autant que l’état du moteur thermique.</p><p>La garantie constructeur restante joue aussi. BYD France annonce six ans ou 150 000 km pour le véhicule, huit ans ou 150 000 km pour le groupe motopropulseur et huit ans ou 250 000 km pour la batterie, au premier des deux termes échu, avec des conditions qui varient selon le modèle. Les modalités de transfert au propriétaire suivant figurent dans le livret de garantie remis à la livraison : gardez-le avec le carnet d’entretien. Joignez aussi les câbles de recharge fournis et, si vous en avez un, un relevé de l’état de la batterie. Voir notre page <a href=\"/reprise-voiture-electrique\">reprise de voiture électrique</a>.</p>"
+      },
+      {
+        "h2": "Vendre une BYD en leasing ou en crédit",
+        "html": "<p>Beaucoup de BYD récentes circulent en location longue durée ou en location avec option d’achat. Dans ce cas, la voiture appartient à l’organisme de financement : il faut d’abord lever l’option d’achat ou obtenir un accord de l’organisme avant de vendre. Avec un crédit classique, la voiture vous appartient et le solde est remboursé au moment de la vente.</p><p>Indiquez votre situation dans la demande : la fourchette indicative et les démarches sont adaptées. Nos pages <a href=\"/reprise-voiture-leasing\">reprise d’une voiture en leasing</a> et <a href=\"/vendre-voiture-credit\">vendre une voiture en crédit</a> détaillent les étapes.</p>"
+      },
+      {
+        "h2": "Que préparer avant de vendre sa BYD ?",
+        "html": "<p>Préparez la carte grise à votre nom, les deux clés ou cartes, le carnet ou les factures d’entretien, le livret de garantie et un rapport Histovec. BYD est une marque récente en France : vérifiez sur <a href=\"https://rappel.conso.gouv.fr/\" rel=\"noopener\" target=\"_blank\">rappel.conso.gouv.fr</a> ou auprès d’un distributeur si une campagne concerne votre véhicule, et gardez la trace des mises à jour réalisées.</p><ul class=\"ticks\"><li><strong>Recharge</strong> : câbles fournis à la livraison, adaptateur éventuel, relevé de l’état de la batterie si vous en avez un.</li><li><strong>Garantie</strong> : livret de garantie, dates de première mise en circulation et d’entretien.</li><li><strong>Rapport <a href=\"https://histovec.interieur.gouv.fr/\" rel=\"noopener\" target=\"_blank\">Histovec</a></strong> : il retrace les propriétaires successifs et l’historique administratif.</li><li><strong>Équipements</strong> : finition (Comfort, Design, Excellence…), capacité de batterie, transmission intégrale, toit panoramique.</li></ul>"
+      },
+      {
+        "h2": "Comment se passe la vente de votre BYD avec LUNICAR ?",
+        "html": "<p>Décrivez votre BYD dans le formulaire : modèle, capacité de batterie, kilométrage, entretien, état et situation (achat comptant, crédit ou leasing). Un conseiller vous rappelle rapidement avec une fourchette de prix indicative. Toute voiture peut être étudiée, sans promesse de rachat : vous restez libre jusqu’à la signature.</p><p>Un technicien LUNICAR vient ensuite vérifier la voiture à votre adresse, sans frais, partout en France. Si vous acceptez le prix définitif, le <a href=\"https://www.service-public.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession (Cerfa 15776)</a> et la déclaration de cession sur le <a href=\"https://ants.gouv.fr/\" rel=\"noopener\" target=\"_blank\">site de l’ANTS</a> sont préparés avec vous, le paiement se fait par virement instantané et l’enlèvement est gratuit. Voir <a href=\"/fourchette-et-prix-definitif\">fourchette et prix définitif</a> et <a href=\"/expertise-voiture-a-domicile\">expertise à domicile</a>.</p>"
+      }
+    ],
+    "faqTitle": "Questions fréquentes sur la reprise d’une BYD",
+    "faq": [
+      {
+        "question": "Est-ce que BYD fait des reprises ?",
+        "answer": "La reprise se négocie avec le distributeur BYD, en général lors de l’achat d’un véhicule neuf, et ses conditions dépendent du point de vente. Les pages officielles consultées ne décrivent pas de programme national de reprise. Avec LUNICAR, vous pouvez vendre votre voiture sans rien acheter."
+      },
+      {
+        "question": "LUNICAR reprend-il une BYD même si je n’achète rien ?",
+        "answer": "Oui. Aucun achat n’est imposé : vous recevez une fourchette de prix indicative, un technicien vérifie la voiture à votre adresse, et vous restez libre de refuser le prix définitif sans frais."
+      },
+      {
+        "question": "Combien vaut ma BYD Atto 3 ou ma Dolphin ?",
+        "answer": "Cela dépend de chaque voiture : capacité et état de la batterie, kilométrage, entretien, finition et état général. Décrivez la vôtre dans le formulaire pour recevoir une fourchette indicative gratuite."
+      },
+      {
+        "question": "La garantie batterie BYD est-elle prise en compte ?",
+        "answer": "Oui, la garantie restante est un élément de l’estimation. BYD France annonce huit ans ou 250 000 km pour la batterie, au premier terme échu. Joignez le livret de garantie et le carnet d’entretien."
+      },
+      {
+        "question": "Ma BYD est en leasing, puis-je la vendre ?",
+        "answer": "En location, la voiture appartient à l’organisme de financement : il faut lever l’option d’achat ou obtenir son accord avant la vente. Indiquez votre situation dans la demande, les démarches sont adaptées."
+      },
+      {
+        "question": "Le contrôle technique est-il exigé pour vendre ma BYD à LUNICAR ?",
+        "answer": "Non. Le contrôle technique de moins de six mois n’est obligatoire que pour une vente entre particuliers. LUNICAR étudie aussi les BYD sans contrôle technique valide ou avec une contre-visite."
+      }
+    ],
+    "sources": [
+      {
+        "label": "BYD France : garanties constructeur (véhicule, groupe motopropulseur, batterie)",
+        "url": "https://www.byd.com/fr/entretien-et-reparation/Garantie-constructeur"
+      },
+      {
+        "label": "BYD France : lancement du label BYD Certified pour l’occasion (mai 2026)",
+        "url": "https://www.byd.com/fr/news-list/byd-accelere-sur-le-marche-de-loccasion-en-france-grace-a-son-label-byd-certified"
+      },
+      {
+        "label": "BYD Atto 3 sur Wikipedia (lancement européen, batterie, puissance)",
+        "url": "https://en.wikipedia.org/wiki/BYD_Atto_3"
+      },
+      {
+        "label": "BYD Dolphin sur Wikipedia (lancement européen, recharge)",
+        "url": "https://en.wikipedia.org/wiki/BYD_Dolphin"
+      },
+      {
+        "label": "BYD Seal sur Wikipédia (batterie, transmission)",
+        "url": "https://fr.wikipedia.org/wiki/BYD_Seal"
+      },
+      {
+        "label": "BYD Song Plus / Seal U sur Wikipedia (électrique et DM-i)",
+        "url": "https://en.wikipedia.org/wiki/BYD_Song_Plus"
+      }
+    ],
+    "updated": "2026-11-22"
   },
   {
     "slug": "vendre-sa-voiture-guide-complet",
