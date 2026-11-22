@@ -1532,6 +1532,20 @@ const releverAnnonces = async () => {
         await annonces.notifier(j.interessantes || 0);
     } catch (e) { console.error('Annonces planifiées :', e.message); }
 };
+// Fiche Google Business : nouveaux avis relevés toutes les 2 h → notification sur l'app (réponse proposée dans l'admin).
+// Silencieux tant que l'accès API n'est pas accordé ou le jeton absent (GBP_AUTO=0 pour couper).
+const gbp = require('./lib/gbp');
+const releverAvisGoogle = async () => {
+    try {
+        if (process.env.GBP_AUTO === '0' || !gbp.configure()) return;
+        for (const a of await gbp.nouveauxAvis()) {
+            push.notifier({ titre: `${'★'.repeat(a.note)} Nouvel avis Google`, texte: (a.texte || 'Note sans commentaire').slice(0, 140) + ' — réponse proposée dans l\'admin.', onglet: 'avis', fil: 'avis' }).catch(() => {});
+        }
+    } catch (e) { if (!['en_attente', 'non_configure'].includes(e.code)) console.error('Avis Google :', e.message); }
+};
+setTimeout(releverAvisGoogle, 2 * 60 * 1000).unref();
+setInterval(releverAvisGoogle, 2 * 3600 * 1000).unref();
+
 setTimeout(releverAnnonces, 90 * 1000).unref();
 setInterval(releverAnnonces, 30 * 60 * 1000).unref();
 

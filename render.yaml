@@ -39,6 +39,15 @@ services:
         sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
+      # Fiche Google Business (node tools/gbp/auth.js)
+      - key: GBP_CLIENT_ID
+        sync: false
+      - key: GBP_CLIENT_SECRET
+        sync: false
+      - key: GBP_REFRESH_TOKEN
+        sync: false
+      - key: GBP_MOTS_INTERDITS
+        sync: false
       - key: ESTIMATION_MODEL
         value: claude-sonnet-5-5
       - key: SITE_URL

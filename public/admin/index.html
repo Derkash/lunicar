@@ -1447,6 +1447,26 @@ body.modal-ouvert { overflow: hidden; }
 .qr-avis .qr-btns { display: flex; gap: 10px; margin-top: 14px; }
 .qr-avis .qr-btns .btn { flex: 1; justify-content: center; }
 .qr-avis .sub { margin-top: 14px; }
+/* Google Business : état API, statistiques, avis avec réponse relue, publications. */
+.gb-bloc { max-width: 760px; margin: 22px auto 0; }
+.gb-bloc h2 { font-size: 1.1rem; font-weight: 650; margin: 0 0 10px; color: var(--ink, #0C223B); }
+.gb-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0; border-top: 1px solid var(--line, #E7E4DD); border-bottom: 1px solid var(--line, #E7E4DD); }
+.gb-kpis div { padding: 12px 10px; }
+.gb-kpis b { display: block; font-size: 1.3rem; font-weight: 650; color: #0C223B; }
+.gb-kpis span { font-size: .85rem; color: var(--ink-5, #6B7180); }
+.gb-avis { border-bottom: 1px solid var(--line, #E7E4DD); padding: 14px 0; }
+.gb-avis .gb-tete { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.gb-avis .gb-et { color: #C99A2E; letter-spacing: 1px; }
+.gb-avis .gb-et.bas { color: #B4442E; }
+.gb-avis p { margin: 6px 0; }
+.gb-avis .gb-rep { margin: 8px 0 0 14px; padding-left: 12px; border-left: 2px solid var(--line, #E7E4DD); color: var(--ink-5, #6B7180); }
+.gb-avis textarea, .gb-pub textarea { width: 100%; min-height: 96px; margin: 8px 0; font: inherit; padding: 10px; border: 1px solid var(--line, #E7E4DD); border-radius: 10px; box-sizing: border-box; }
+.gb-pub input { width: 100%; font: inherit; padding: 9px 10px; border: 1px solid var(--line, #E7E4DD); border-radius: 10px; box-sizing: border-box; }
+.gb-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.gb-filtre { display: flex; gap: 8px; margin: 0 0 6px; }
+.gb-attente { border: 1px solid var(--line, #E7E4DD); border-radius: 14px; padding: 16px 18px; background: var(--surface, #fff); }
+.gb-attente ol { margin: 8px 0 0; padding-left: 20px; }
+.gb-attente li { margin: 4px 0; }
 .qr-plein { position: fixed; inset: 0; z-index: 90; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; }
 .qr-plein svg { width: min(86vw, 70vh); height: auto; }
 .qr-plein p { margin: 18px 0 0; font-size: 1.15rem; font-weight: 600; color: #0C223B; }
@@ -1514,7 +1534,7 @@ body.modal-ouvert { overflow: hidden; }
             <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
             <button data-tab="marche"><svg><use href="#i-stat"/></svg>Marché Leboncoin</button>
             <button data-tab="annonces"><svg><use href="#i-annonce"/></svg>Annonces<span class="count discret" data-count="annonces"></span></button>
-            <button data-tab="avis"><svg><use href="#i-avis"/></svg>Avis Google</button>
+            <button data-tab="avis"><svg><use href="#i-avis"/></svg>Google Business</button>
             <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
             <a href="/admino/articles"><svg><use href="#i-art"/></svg>Articles</a>
         </nav>
@@ -1695,7 +1715,7 @@ body.modal-ouvert { overflow: hidden; }
         </section>
 
         <section data-view="avis" hidden>
-            <div class="page-h"><h1>Avis Google</h1><span>à montrer au client juste après le virement</span></div>
+            <div class="page-h"><h1>Google Business</h1><span>QR d'avis à montrer au client juste après le virement, puis avis, statistiques et publications de la fiche</span></div>
             <div class="qr-avis">
                 <div class="qr-carte" id="qrAvisCarte">
                     <h2>Votre avis compte</h2>
@@ -1708,6 +1728,11 @@ body.modal-ouvert { overflow: hidden; }
                 </div>
                 <p class="sub">Lien : <a href="https://g.page/r/CcBIBePt41KGEBM/review" target="_blank" rel="noopener">g.page/r/CcBIBePt41KGEBM/review</a>. Il faut un compte Google pour noter ; à défaut, proposer Trustpilot. À demander à tous les clients, sans contrepartie.</p>
             </div>
+            <div class="gb-bloc" id="gbEtat"></div>
+            <div class="gb-bloc" id="gbStats" hidden></div>
+            <div class="gb-bloc" id="gbAvis" hidden></div>
+            <div class="gb-bloc gb-pub" id="gbPub" hidden></div>
+            <div class="gb-bloc" id="gbInfos" hidden></div>
         </section>
 
         <section data-view="forums" hidden>
@@ -1834,7 +1859,7 @@ body.modal-ouvert { overflow: hidden; }
     <button data-tab="plus"><svg><use href="#i-plus"/></svg>Plus<span class="count" data-count="plus"></span></button>
 </nav>
 <div class="plus-sheet" id="plusSheet" hidden><div class="plus-in">
-    <button data-tab="avis"><svg><use href="#i-avis"/></svg>Avis Google (QR code)</button>
+    <button data-tab="avis"><svg><use href="#i-avis"/></svg>Google Business (avis, QR code)</button>
     <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
     <button data-tab="analyses"><svg><use href="#i-ana"/></svg>Analyses du site</button>
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
@@ -2059,6 +2084,7 @@ body.modal-ouvert { overflow: hidden; }
         if (tab === 'annonces') vueAnnonces();
         if (tab === 'marche') vueMarche();
         if (tab === 'boite') vueBoite();
+        if (tab === 'avis') vueGoogle();
     }
     const onglet = e => {
         const b = e.target.closest('button[data-tab]'); if (!b) return;
@@ -2082,6 +2108,120 @@ body.modal-ouvert { overflow: hidden; }
         try { await navigator.clipboard.writeText(texte + '\n' + AVIS_GOOGLE); toast('Lien copié : collez-le dans un SMS ou WhatsApp'); }
         catch (er) { window.open('https://wa.me/?text=' + encodeURIComponent(texte + '\n' + AVIS_GOOGLE), '_blank'); }
     };
+    // ---------------- Google Business : état de l'accès API, statistiques, avis (réponse proposée, relue, publiée), publications, infos.
+    // Rien n'est publié sans un clic « Publier » confirmé.
+    let gbAvisListe = [], gbFiltre = 'sans';
+    const gbDate = s => s ? new Date(s).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+    const gbNb = n => typeof n === 'number' ? n.toLocaleString('fr-FR') : (n || '0');
+    async function vueGoogle() {
+        ['#gbStats', '#gbAvis', '#gbPub', '#gbInfos'].forEach(s => $(s).hidden = true);
+        $('#gbEtat').innerHTML = '<p class="sub">Connexion à la fiche Google…</p>';
+        let e; try { e = await api('/api/admin/gbp/etat'); } catch (er) { $('#gbEtat').innerHTML = `<p class="sub">${esc(er.message)}</p>`; return; }
+        if (e.acces !== 'ok') {
+            const date = new Date(e.demande_acces_des + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+            const pourquoi = { non_configure: 'La connexion à Google n\'est pas encore faite.', en_attente: 'Connexion faite, mais Google n\'a pas encore ouvert l\'accès API.', jeton_invalide: 'La connexion à Google a expiré.' }[e.acces] || esc(e.message || 'Erreur Google.');
+            $('#gbEtat').innerHTML = `<div class="gb-attente"><h2>Gestion depuis l'admin : bientôt</h2>
+                <p class="sub" style="margin:0">${pourquoi} Google n'ouvre son API qu'aux fiches validées depuis 60 jours : demande possible à partir du <b>${date}</b>.</p>
+                <ol>${e.acces === 'non_configure' || e.acces === 'jeton_invalide' ? '<li>Sur le Mac : <code>node tools/gbp/auth.js</code>, se connecter avec le compte de la fiche, puis copier les 3 variables GBP_* sur Render.</li>' : ''}
+                <li>À partir du ${date} : remplir le <a href="${esc(e.formulaire)}" target="_blank" rel="noopener">formulaire d'accès API</a> (projet Cloud seo-tracker-487515).</li>
+                <li>Dès l'accord : avis, réponses, statistiques et publications s'affichent ici, et chaque nouvel avis arrive en notification.</li></ol>
+                <p class="sub" style="margin:10px 0 0">En attendant : <a href="${esc(e.gestionnaire)}" target="_blank" rel="noopener">gérer la fiche sur Google</a>.</p></div>`;
+            return;
+        }
+        $('#gbEtat').innerHTML = `<p class="sub">Fiche connectée : <b>${esc(e.fiche || 'LUNICAR')}</b> · <a href="${esc(e.gestionnaire)}" target="_blank" rel="noopener">ouvrir sur Google</a></p>`;
+        gbChargerStats(); gbChargerAvis(); gbChargerPub(); gbChargerInfos();
+    }
+    async function gbChargerStats() {
+        const z = $('#gbStats'); z.hidden = false; z.innerHTML = '<h2>28 derniers jours</h2><p class="sub">Chargement…</p>';
+        try {
+            const s = await api('/api/admin/gbp/stats?jours=28'), t = s.totaux || {};
+            z.innerHTML = `<h2>28 derniers jours <small class="sub">du ${gbDate(s.du)} au ${gbDate(s.au)}</small></h2>
+                <div class="gb-kpis">${[['vues_recherche', 'vues dans la recherche'], ['vues_maps', 'vues sur Maps'], ['clics_site', 'clics vers le site'], ['appels', 'appels']].map(([k, l]) => `<div><b>${gbNb(t[k] || 0)}</b><span>${l}</span></div>`).join('')}</div>
+                ${(s.recherches || []).length ? `<p class="sub" style="margin:10px 0 4px">Recherches qui ont affiché la fiche :</p><p style="margin:0">${s.recherches.map(r => `${esc(r.terme)} <span class="sub">(${esc(String(r.vues))})</span>`).join(' · ')}</p>` : ''}`;
+        } catch (er) { z.innerHTML = `<h2>Statistiques</h2><p class="sub">${esc(er.message)}</p>`; }
+    }
+    async function gbChargerAvis() {
+        const z = $('#gbAvis'); z.hidden = false; z.innerHTML = '<h2>Avis</h2><p class="sub">Chargement…</p>';
+        try { const a = await api('/api/admin/gbp/avis'); gbAvisListe = a.avis || []; gbRendreAvis(a); }
+        catch (er) { z.innerHTML = `<h2>Avis</h2><p class="sub">${esc(er.message)}</p>`; }
+    }
+    function gbRendreAvis(a) {
+        const z = $('#gbAvis'), sans = gbAvisListe.filter(x => !x.reponse).length;
+        const liste = gbFiltre === 'sans' ? gbAvisListe.filter(x => !x.reponse) : gbAvisListe;
+        z.innerHTML = `<h2>Avis <small class="sub">${a ? `${(a.moyenne || 0).toFixed(1).replace('.', ',')} ★ · ${a.total} avis` : ''}</small></h2>
+            <div class="gb-filtre"><button type="button" class="btn btn-s ${gbFiltre === 'sans' ? 'btn-p' : ''}" data-gbf="sans">Sans réponse (${sans})</button><button type="button" class="btn btn-s ${gbFiltre === 'tous' ? 'btn-p' : ''}" data-gbf="tous">Tous (${gbAvisListe.length})</button></div>
+            ${liste.length ? liste.map(x => `<div class="gb-avis" data-gbid="${esc(x.id)}">
+                <div class="gb-tete"><span class="gb-et ${x.note <= 3 ? 'bas' : ''}">${'★'.repeat(x.note)}${'☆'.repeat(5 - x.note)}</span><b>${esc(x.auteur)}</b><span class="sub">${gbDate(x.date)}</span></div>
+                ${x.texte ? `<p>${esc(x.texte)}</p>` : '<p class="sub">Note sans commentaire</p>'}
+                ${x.reponse ? `<div class="gb-rep">Votre réponse (${gbDate(x.reponse.date)}) : ${esc(x.reponse.texte)}</div>
+                    <div class="gb-btns" style="margin-top:8px"><button type="button" class="btn btn-s" data-gbmod>Modifier la réponse</button></div>`
+                : `<textarea placeholder="Votre réponse publique…"></textarea>
+                    <div class="gb-btns"><button type="button" class="btn btn-s" data-gbprop>Proposer une réponse</button><button type="button" class="btn btn-s btn-p" data-gbpub>Publier la réponse</button></div>`}
+            </div>`).join('') : `<p class="sub">${gbFiltre === 'sans' ? 'Tous les avis ont une réponse.' : 'Aucun avis pour l\'instant : montrez le QR code à chaque client.'}</p>`}`;
+    }
+    $('#gbAvis').addEventListener('click', async ev => {
+        const f = ev.target.closest('[data-gbf]'); if (f) { gbFiltre = f.dataset.gbf; gbRendreAvis(null); return; }
+        const bloc = ev.target.closest('[data-gbid]'); if (!bloc) return;
+        const av = gbAvisListe.find(x => x.id === bloc.dataset.gbid); if (!av) return;
+        if (ev.target.closest('[data-gbmod]')) {
+            bloc.querySelector('.gb-btns').outerHTML = `<textarea>${esc(av.reponse.texte)}</textarea><div class="gb-btns"><button type="button" class="btn btn-s" data-gbprop>Proposer une réponse</button><button type="button" class="btn btn-s btn-p" data-gbpub>Publier la réponse</button></div>`;
+            return;
+        }
+        const ta = bloc.querySelector('textarea');
+        const b = ev.target.closest('[data-gbprop],[data-gbpub]'); if (!b || !ta) return;
+        b.disabled = true;
+        try {
+            if (b.hasAttribute('data-gbprop')) {
+                b.textContent = 'Rédaction…';
+                ta.value = (await api('/api/admin/gbp/avis/proposition', { method: 'POST', body: JSON.stringify(av) })).texte;
+                toast('Proposition prête : relisez et adaptez avant de publier');
+            } else {
+                const t = ta.value.trim(); if (!t) { toast('Réponse vide'); return; }
+                if (!confirm('Publier cette réponse sous l\'avis ? Elle sera visible par tous sur Google.')) return;
+                await api(`/api/admin/gbp/avis/${encodeURIComponent(av.id)}/reponse`, { method: 'PUT', body: JSON.stringify({ texte: t }) });
+                av.reponse = { texte: t, date: new Date().toISOString() }; toast('Réponse publiée'); gbRendreAvis(null);
+            }
+        } catch (er) { toast(er.message); }
+        finally { b.disabled = false; if (b.hasAttribute('data-gbprop')) b.textContent = 'Proposer une réponse'; }
+    });
+    async function gbChargerPub() {
+        const z = $('#gbPub'); z.hidden = false;
+        z.innerHTML = `<h2>Publier une nouveauté</h2>
+            <p class="sub" style="margin:0 0 8px">Une publication par semaine garde la fiche active. Pas de prix ni de cote.</p>
+            <input id="gbSujet" placeholder="Sujet (facultatif) : ex. vendre une voiture avec le contrôle technique expiré">
+            <textarea id="gbTexte" placeholder="Texte de la publication (1 500 caractères maximum)"></textarea>
+            <div class="gb-btns"><button type="button" class="btn btn-s" id="gbProposer">Proposer un texte</button><button type="button" class="btn btn-s btn-p" id="gbPublier">Publier sur la fiche</button></div>
+            <div id="gbPubListe"><p class="sub">Chargement des publications…</p></div>`;
+        $('#gbProposer').onclick = async ev => {
+            const b = ev.currentTarget; b.disabled = true; b.textContent = 'Rédaction…';
+            try { $('#gbTexte').value = (await api('/api/admin/gbp/publications/proposition', { method: 'POST', body: JSON.stringify({ sujet: $('#gbSujet').value.trim() }) })).texte; toast('Proposition prête : relisez avant de publier'); }
+            catch (er) { toast(er.message); } finally { b.disabled = false; b.textContent = 'Proposer un texte'; }
+        };
+        $('#gbPublier').onclick = async ev => {
+            const t = $('#gbTexte').value.trim(); if (!t) { toast('Texte vide'); return; }
+            if (!confirm('Publier ce texte sur la fiche Google LUNICAR ? Il sera visible par tous.')) return;
+            const b = ev.currentTarget; b.disabled = true;
+            try { await api('/api/admin/gbp/publications', { method: 'POST', body: JSON.stringify({ texte: t }) }); $('#gbTexte').value = ''; toast('Publié (Google peut mettre quelques minutes à l\'afficher)'); gbListePub(); }
+            catch (er) { toast(er.message); } finally { b.disabled = false; }
+        };
+        gbListePub();
+    }
+    async function gbListePub() {
+        try {
+            const l = await api('/api/admin/gbp/publications');
+            $('#gbPubListe').innerHTML = l.length ? `<p class="sub" style="margin:12px 0 4px">Dernières publications :</p>${l.slice(0, 5).map(p => `<div class="gb-avis"><span class="sub">${gbDate(p.date)}${p.etat && p.etat !== 'LIVE' ? ' · ' + esc(p.etat) : ''}</span><p>${esc((p.texte || '').slice(0, 220))}${(p.texte || '').length > 220 ? '…' : ''}</p></div>`).join('')}` : '<p class="sub" style="margin-top:10px">Aucune publication pour l\'instant.</p>';
+        } catch (er) { $('#gbPubListe').innerHTML = `<p class="sub">${esc(er.message)}</p>`; }
+    }
+    async function gbChargerInfos() {
+        const z = $('#gbInfos'); z.hidden = false; z.innerHTML = '<h2>Infos de la fiche</h2><p class="sub">Chargement…</p>';
+        try {
+            const i = await api('/api/admin/gbp/infos');
+            z.innerHTML = `<h2>Infos de la fiche</h2>
+                ${i.ecarts.length ? `<p style="color:#B4442E;margin:0 0 6px">À corriger : ${i.ecarts.map(esc).join(' · ')}</p>` : '<p class="sub" style="margin:0 0 6px">Cohérente avec le site.</p>'}
+                <p class="sub" style="margin:0">${esc(i.categorie || '')} · ${esc(i.telephone || 'pas de téléphone')} · ${esc(i.site || 'pas de site')}<br>Horaires : ${esc(i.horaires.join(', ') || 'non renseignés')}<br>Zones : ${esc(i.zones.join(', ') || 'non renseignées')}</p>`;
+        } catch (er) { z.innerHTML = `<h2>Infos de la fiche</h2><p class="sub">${esc(er.message)}</p>`; }
+    }
+
     const nbs = {};
     const compter = (k, n) => {
         nbs[k] = n || 0;
@@ -4141,8 +4281,8 @@ body.modal-ouvert { overflow: hidden; }
         let c = PRENOMS_F.has(p) ? 'Madame' : PRENOMS_M.has(p) ? 'Monsieur' : /(ette|elle|ine|ienne|ia)$/.test(p) ? 'Madame' : '';
         return !c || !nomPropre ? (c && !nomPropre ? `Bonjour ${c},` : 'Bonjour Madame, Monsieur,') : `Bonjour ${c} ${nomPropre},`;
     }
-    // Mail de remerciement : documents de cession signés en pièces jointes, rappel assurance, avis Trustpilot.
-    const TRUSTPILOT_AVIS = 'https://fr.trustpilot.com/evaluate/lunicar.fr';
+    // Mail de remerciement : documents de cession signés en pièces jointes, rappel assurance, avis Google (Trustpilot en repli).
+    const TRUSTPILOT_AVIS = 'https://fr.trustpilot.com/evaluate/lunicar.fr', GOOGLE_AVIS = 'https://g.page/r/CcBIBePt41KGEBM/review';
     const DOCS_MERCI = { cession_achat: 'le certificat de cession signé', carte_grise: 'la carte grise barrée et signée', declaration_achat: 'le récépissé de la déclaration d\'achat' };
     function texteRemerciement(v, docs) {
         const d = demandes.find(x => x.ref === v.ref), x = (d && d.data) || {};
@@ -4152,12 +4292,13 @@ body.modal-ouvert { overflow: hidden; }
             `Toute l'équipe LUNICAR vous remercie chaleureusement pour votre confiance. La vente de votre ${veh}${v.plaque ? ' (' + v.plaque + ')' : ''} est désormais finalisée.`, '',
             ...(liste.length ? ['Vous trouverez en pièces jointes les documents de la vente :', ...liste.map(l => '- ' + l), '',
                 'Pensez à transmettre le certificat de cession à votre assurance, si ce n\'est pas déjà fait, afin qu\'elle résilie votre contrat. Conservez précieusement ces documents : ils attestent que le véhicule n\'est plus sous votre responsabilité depuis la date de la vente.', ''] : []),
-            'Votre avis compte énormément pour nous. Si vous avez apprécié notre service, quelques mots sur Trustpilot nous aideraient beaucoup à nous faire connaître et à accompagner d\'autres vendeurs comme vous :', '',
-            `[[bouton:Laisser un avis sur Trustpilot|${TRUSTPILOT_AVIS}]]`, '',
+            'Votre avis compte énormément pour nous. Si vous avez apprécié notre service, quelques mots sur Google nous aideraient beaucoup à nous faire connaître et à accompagner d\'autres vendeurs comme vous :', '',
+            `[[bouton:Laisser un avis sur Google|${GOOGLE_AVIS}]]`, '',
+            `Pas de compte Google ? Vous pouvez aussi laisser votre avis sur Trustpilot : ${TRUSTPILOT_AVIS}`, '',
             'N\'hésitez pas à revenir vers nous en cas de besoin, nous restons à votre disposition. En espérant que vous ayez eu une excellente expérience avec nous.', '',
             'Cordialement,', 'L\'équipe LUNICAR'].join('\n');
     }
-    // mode « avis » : mail court (merci + Trustpilot), sans pièce jointe par défaut ; mode « documents » : cession, carte grise, récépissé joints.
+    // mode « avis » : mail court (merci + avis Google), sans pièce jointe par défaut ; mode « documents » : cession, carte grise, récépissé joints.
     function mailRemerciement(v, mode = 'avis') {
         const d = demandes.find(x => x.ref === v.ref), x = (d && d.data) || {};
         if (!d) { toast('Pas de demande liée à ce véhicule : e-mail du client inconnu'); return; }
@@ -4171,12 +4312,12 @@ body.modal-ouvert { overflow: hidden; }
         $('#crIn').innerHTML = `<div class="cr-tete"><h3>${mode === 'documents' ? 'Mail avec les documents' : 'Demander un avis'}</h3><button class="close" type="button" id="mrX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
             <div class="mr-wrap"><p class="sub">À ${esc(x.email)} · de LUNICAR · objet « ${esc(objet)} »${v.remerciement_le ? ` · déjà envoyé le ${date(v.remerciement_le)}` : ''}</p>
             ${manquants.length ? `<p class="notice">Pas encore dans les documents : ${manquants.map(t => esc(T[t] || t)).join(', ')}. Ajoutez-les (« Ajouter un document ») ou envoyez sans.</p>` : ''}
-            ${mode === 'avis' ? '<p class="sub">Mail court : merci, bouton Trustpilot, invitation « avis vérifié » envoyée par Trustpilot 7 jours après. Cochez un document ci-dessous seulement si le client le redemande.</p>' : ''}
+            ${mode === 'avis' ? '<p class="sub">Mail court : merci, bouton avis Google (lien Trustpilot en repli), invitation « avis vérifié » envoyée par Trustpilot 7 jours après. Cochez un document ci-dessous seulement si le client le redemande.</p>' : ''}
             <p class="cr-l">Pièces jointes</p>
             <div class="mr-docs">${docs.length ? docs.map(z => `<label class="mr-doc"><input type="checkbox" data-mrdoc="${esc(z.path)}"${defaut.has(z.path) ? ' checked' : ''}><span>${esc(z.libelle || T[z.type] || 'Document')}<small>${esc(String(z.name || '').replace(/^\d{4}-\d{2}-\d{2}_[a-z_]+_\d+_/, ''))}</small></span></label>`).join('') : '<p class="vide">Aucun document importé pour ce véhicule.</p>'}</div>
             <p class="cr-l">Message</p>
             <textarea class="in" id="mrTxt" rows="16"></textarea>
-            <p class="sub">La ligne [[bouton:…]] devient un bouton doré « Laisser un avis sur Trustpilot ».</p>
+            <p class="sub">La ligne [[bouton:…]] devient un bouton doré « Laisser un avis sur Google ».</p>
             <div class="cr-btns"><button type="button" class="btn" id="mrNon">Annuler</button><button type="button" class="btn" id="mrApercu">Aperçu à…</button><button type="button" class="btn btn-g" id="mrOk">Envoyer le mail</button></div></div>`;
         $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
         $('#mrX').onclick = $('#mrNon').onclick = fermerM;
