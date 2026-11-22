@@ -1438,6 +1438,19 @@ body.modal-ouvert { overflow: hidden; }
     .ds-dom-l [data-element] { grid-column: 1 / -1; }
     .ds-flou-btns .btn { flex: 1; justify-content: center; }
 }
+/* Avis Google : QR code à montrer au client sur le téléphone, à la remise des clés. */
+.qr-avis { max-width: 420px; margin: 0 auto; text-align: center; }
+.qr-avis .qr-carte { background: #fff; border: 1px solid var(--line, #E7E4DD); border-radius: 18px; padding: 22px 22px 18px; }
+.qr-avis .qr-carte h2 { margin: 0 0 4px; font-size: 1.35rem; font-weight: 650; letter-spacing: -.02em; color: #0C223B; }
+.qr-avis .qr-carte p { margin: 0 0 16px; color: var(--ink-5, #6B7180); font-size: .95rem; }
+.qr-avis .qr-carte svg { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.qr-avis .qr-btns { display: flex; gap: 10px; margin-top: 14px; }
+.qr-avis .qr-btns .btn { flex: 1; justify-content: center; }
+.qr-avis .sub { margin-top: 14px; }
+.qr-plein { position: fixed; inset: 0; z-index: 90; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; }
+.qr-plein svg { width: min(86vw, 70vh); height: auto; }
+.qr-plein p { margin: 18px 0 0; font-size: 1.15rem; font-weight: 600; color: #0C223B; }
+.qr-plein small { margin-top: 6px; color: #6B7180; }
 </style>
 </head>
 <body>
@@ -1453,6 +1466,7 @@ body.modal-ouvert { overflow: hidden; }
     <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/><path d="M8 14h2M14 14h2M8 17h2"/></symbol>
     <symbol id="i-cle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></symbol>
     <symbol id="i-euro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 6.5A7 7 0 1 0 17.5 17.5"/><path d="M4.5 10.5h9M4.5 13.5h9"/></symbol>
+    <symbol id="i-avis" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3.8l2.4 5 5.4.7-4 3.8 1 5.4L12 16.1l-4.8 2.6 1-5.4-4-3.8 5.4-.7z"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18.5" cy="12" r="1.7"/></symbol>
     <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4"/><path d="M6 4.5c3.5-1.8 6.5 1.8 12 0v8c-5.5 1.8-8.5-1.8-12 0"/></symbol>
     <symbol id="i-forum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.5A1.5 1.5 0 0 1 5 4h9a1.5 1.5 0 0 1 1.5 1.5v6A1.5 1.5 0 0 1 14 13H8.5L5 16v-3a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M18.5 8.5h.5A1.5 1.5 0 0 1 20.5 10v6a1.5 1.5 0 0 1-1.5 1.5v3l-3.5-3H11a1.5 1.5 0 0 1-1.5-1.5v-.5"/><path d="M7 7.5h5M7 10h3"/></symbol>
@@ -1500,6 +1514,7 @@ body.modal-ouvert { overflow: hidden; }
             <button data-tab="forums"><svg><use href="#i-forum"/></svg>Forums<span class="count discret" data-count="veille"></span></button>
             <button data-tab="marche"><svg><use href="#i-stat"/></svg>Marché Leboncoin</button>
             <button data-tab="annonces"><svg><use href="#i-annonce"/></svg>Annonces<span class="count discret" data-count="annonces"></span></button>
+            <button data-tab="avis"><svg><use href="#i-avis"/></svg>Avis Google</button>
             <button data-tab="reglages"><svg><use href="#i-reg"/></svg>Réglages et import</button>
             <a href="/admino/articles"><svg><use href="#i-art"/></svg>Articles</a>
         </nav>
@@ -1679,6 +1694,22 @@ body.modal-ouvert { overflow: hidden; }
             <div id="bxLecture" hidden></div>
         </section>
 
+        <section data-view="avis" hidden>
+            <div class="page-h"><h1>Avis Google</h1><span>à montrer au client juste après le virement</span></div>
+            <div class="qr-avis">
+                <div class="qr-carte" id="qrAvisCarte">
+                    <h2>Votre avis compte</h2>
+                    <p>Scannez avec l'appareil photo de votre téléphone : la page de notation LUNICAR s'ouvre directement.</p>
+                    <svg viewBox="0 0 33 33" shape-rendering="crispEdges" role="img" aria-label="QR code : laisser un avis Google à LUNICAR"><path fill="#fff" d="M0 0h33v33h-33z"/><path class="qrline" stroke="#0c223b" d="M2 2.5h7m2 0h1m1 0h2m1 0h1m2 0h2m3 0h7m-29 1h1m5 0h1m1 0h3m1 0h1m9 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m1 0h4m6 0h1m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m5 0h1m3 0h1m1 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h2m1 0h1m2 0h1m1 0h1m1 0h1m-19 1h1m5 0h1m1 0h8m1 0h1m1 0h1m1 0h2m2 0h3m-28 1h2m2 0h1m2 0h1m1 0h2m1 0h1m2 0h1m7 0h2m1 0h2m-28 1h10m3 0h3m7 0h2m-25 1h5m2 0h1m1 0h1m2 0h1m1 0h2m2 0h2m1 0h2m1 0h2m-26 1h1m3 0h1m1 0h1m3 0h1m2 0h3m2 0h3m1 0h2m4 0h1m-29 1h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h1m2 0h2m3 0h1m1 0h3m2 0h2m-28 1h1m2 0h1m1 0h1m1 0h1m2 0h2m2 0h2m3 0h1m3 0h3m-24 1h1m1 0h1m1 0h3m2 0h1m1 0h2m2 0h5m1 0h1m1 0h1m1 0h1m-29 1h1m1 0h1m1 0h3m2 0h1m7 0h2m2 0h1m1 0h1m1 0h2m-27 1h4m4 0h2m3 0h1m1 0h1m3 0h2m1 0h3m1 0h3m-29 1h3m1 0h1m1 0h1m1 0h3m4 0h1m1 0h3m3 0h1m1 0h1m2 0h1m-29 1h1m1 0h4m1 0h1m2 0h1m1 0h2m2 0h1m2 0h1m1 0h3m-24 1h1m2 0h1m2 0h6m2 0h1m5 0h5m1 0h3m-21 1h1m1 0h3m1 0h1m2 0h2m1 0h1m3 0h2m-26 1h7m3 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h3m-27 1h1m5 0h1m2 0h3m2 0h2m3 0h2m3 0h1m2 0h2m-29 1h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h5m1 0h7m2 0h1m-29 1h1m1 0h3m1 0h1m4 0h1m2 0h1m1 0h1m1 0h4m3 0h2m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m4 0h3m1 0h2m1 0h1m1 0h4m-28 1h1m5 0h1m2 0h1m2 0h2m8 0h2m1 0h2m1 0h1m-29 1h7m1 0h3m2 0h3m5 0h4m1 0h1"/></svg>
+                </div>
+                <div class="qr-btns">
+                    <button class="btn btn-p" type="button" id="qrAvisPlein">Plein écran</button>
+                    <button class="btn" type="button" id="qrAvisEnvoyer">Envoyer le lien</button>
+                </div>
+                <p class="sub">Lien : <a href="https://g.page/r/CcBIBePt41KGEBM/review" target="_blank" rel="noopener">g.page/r/CcBIBePt41KGEBM/review</a>. Il faut un compte Google pour noter ; à défaut, proposer Trustpilot. À demander à tous les clients, sans contrepartie.</p>
+            </div>
+        </section>
+
         <section data-view="forums" hidden>
             <div class="page-h"><h1>Forums</h1><span>discussions où un particulier demande comment vendre sa voiture</span></div>
             <div id="vlAvis"></div>
@@ -1803,6 +1834,7 @@ body.modal-ouvert { overflow: hidden; }
     <button data-tab="plus"><svg><use href="#i-plus"/></svg>Plus<span class="count" data-count="plus"></span></button>
 </nav>
 <div class="plus-sheet" id="plusSheet" hidden><div class="plus-in">
+    <button data-tab="avis"><svg><use href="#i-avis"/></svg>Avis Google (QR code)</button>
     <button data-tab="stats"><svg><use href="#i-stat"/></svg>Tableau de bord</button>
     <button data-tab="analyses"><svg><use href="#i-ana"/></svg>Analyses du site</button>
     <button data-tab="photos"><svg><use href="#i-pho"/></svg>Photos</button>
@@ -2011,7 +2043,7 @@ body.modal-ouvert { overflow: hidden; }
     function allerOnglet(tab) {
         $('#plusSheet').hidden = true;
         if (!$('#sheet').hidden || !$('#vpage').hidden) { history.pushState({}, '', BASE); quitterFiche(); quitterVehicule(); }
-        const dansPlus = ['stats', 'analyses', 'photos', 'boite', 'marche', 'forums', 'annonces', 'reglages'].includes(tab);
+        const dansPlus = ['stats', 'analyses', 'photos', 'boite', 'marche', 'forums', 'annonces', 'reglages', 'avis'].includes(tab);
         document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
         document.querySelectorAll('#navbas button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab || (dansPlus && x.dataset.tab === 'plus')));
         document.querySelectorAll('[data-view]').forEach(v => v.hidden = v.dataset.view !== tab);
@@ -2036,6 +2068,20 @@ body.modal-ouvert { overflow: hidden; }
     $('#tabs').addEventListener('click', onglet);
     $('#navbas').addEventListener('click', onglet);
     $('#plusSheet').addEventListener('click', e => { if (e.target.id === 'plusSheet') $('#plusSheet').hidden = true; else onglet(e); });
+
+    // ---------------- Avis Google : QR plein écran (touché n'importe où pour fermer) et envoi du lien par SMS / WhatsApp.
+    const AVIS_GOOGLE = 'https://g.page/r/CcBIBePt41KGEBM/review';
+    $('#qrAvisPlein').onclick = () => {
+        const d = document.createElement('div'); d.className = 'qr-plein';
+        d.innerHTML = $('#qrAvisCarte svg').outerHTML + '<p>Laissez un avis à LUNICAR</p><small>Touchez l\'écran pour fermer</small>';
+        d.onclick = () => d.remove(); document.body.appendChild(d);
+    };
+    $('#qrAvisEnvoyer').onclick = async () => {
+        const texte = 'Merci pour votre confiance ! Votre avis sur LUNICAR nous aide beaucoup :';
+        if (navigator.share) { try { await navigator.share({ title: 'Avis LUNICAR', text: texte, url: AVIS_GOOGLE }); return; } catch (er) { if (er.name === 'AbortError') return; } }
+        try { await navigator.clipboard.writeText(texte + '\n' + AVIS_GOOGLE); toast('Lien copié : collez-le dans un SMS ou WhatsApp'); }
+        catch (er) { window.open('https://wa.me/?text=' + encodeURIComponent(texte + '\n' + AVIS_GOOGLE), '_blank'); }
+    };
     const nbs = {};
     const compter = (k, n) => {
         nbs[k] = n || 0;
