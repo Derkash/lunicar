@@ -82,7 +82,9 @@ const upload = multer({
 });
 
 // Middleware
-app.use(express.json());
+// Les rapports d'analyse du Mac mini (annonces Leboncoin avec descriptions) dépassent 100 Ko : limite propre à leur route.
+const jsonGeneral = express.json();
+app.use((req, res, next) => /^\/api\/marche\/analyse\/[0-9A-Za-z]{8}$/.test(req.path) && req.method === 'POST' ? next() : jsonGeneral(req, res, next));
 app.use(express.urlencoded({ extended: true }));
 
 // Security headers (SEO best practices + Lighthouse)
