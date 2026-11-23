@@ -8,10 +8,10 @@ set -euo pipefail
 HOTE="${MACMINI:-derka@Mac-mini-de-Derka.local}"
 CLE_SSH="${MACMINI_CLE:-$HOME/.ssh/id_macmini}"
 ICI="$(cd "$(dirname "$0")" && pwd)"
-SSH=(ssh -i "$CLE_SSH" -o ConnectTimeout=8 "$HOTE")
+SSH=(ssh -i "$CLE_SSH" -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new "$HOTE")
 
 echo "→ Copie de veille.js et analyse.js"
-scp -i "$CLE_SSH" -o ConnectTimeout=8 "$ICI/veille.js" "$ICI/analyse.js" "$HOTE:lunicar-sonar/"
+scp -i "$CLE_SSH" -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new "$ICI/veille.js" "$ICI/analyse.js" "$HOTE:lunicar-sonar/"
 
 echo "→ SDK Claude (@anthropic-ai/sdk) dans ~/lunicar-sonar"
 "${SSH[@]}" 'cd ~/lunicar-sonar && export PATH="$HOME/lunicar-sonar/node/bin:$PATH" && { [ -f package.json ] || npm init -y >/dev/null; } && npm install --no-audit --no-fund @anthropic-ai/sdk@latest >/dev/null && node -e "require(\"@anthropic-ai/sdk\"); console.log(\"  SDK OK\")"'
