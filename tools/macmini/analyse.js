@@ -12,14 +12,15 @@ const path = require('path');
 
 const DIR = __dirname;
 const MODELE = process.env.ANALYSE_MODEL || 'claude-sonnet-5-5';   // même choix de coût que l'estimation (17/10/2026)
-let client = null;
+// La clé est relue tant qu'elle manque : une clé ajoutée après le démarrage est prise sans redémarrer le service.
+let client = null, cleUtilisee = '';
 function claude() {
-    if (client !== null) return client;
     let cle = process.env.ANTHROPIC_API_KEY || '';
     try { cle = cle || fs.readFileSync(path.join(DIR, 'anthropic.txt'), 'utf8').trim(); } catch (e) { /* pas de clé */ }
-    if (!cle) return (client = false);
-    try { const Anthropic = require('@anthropic-ai/sdk'); client = new Anthropic({ apiKey: cle, timeout: 4 * 60 * 1000, maxRetries: 2 }); }
-    catch (e) { client = false; }
+    if (!cle) return false;
+    if (client && cle === cleUtilisee) return client;
+    try { const Anthropic = require('@anthropic-ai/sdk'); client = new Anthropic({ apiKey: cle, timeout: 4 * 60 * 1000, maxRetries: 2 }); cleUtilisee = cle; }
+    catch (e) { return false; }
     return client;
 }
 const pause = ms => new Promise(r => setTimeout(r, ms));

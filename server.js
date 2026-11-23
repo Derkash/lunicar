@@ -1020,6 +1020,18 @@ const analyseV = require('./lib/analyse-vehicule');
 // Battement du Mac mini (lib/macmini.js) : état affiché dans l'admin, notification s'il se tait plus de 15 min.
 const macmini = require('./lib/macmini');
 macmini.planifier();
+// Relance en lot déclenchée depuis le Mac mini (même clé que la collecte) : véhicules achetés, RDV à venir.
+// Détail du calcul d'une demande (diagnostic depuis le Mac mini, même clé) : sans nom, téléphone ni e-mail.
+app.get('/api/marche/analyse/:ref/detail', corsLbc, async (req, res) => {
+    try {
+        const d = await store.lireDemande(req.params.ref);
+        if (!d) return res.status(404).json({ error: 'Demande introuvable' });
+        res.json(await analyseV.calculer(d));
+    } catch (e) { res.status(500).json({ error: e.message }); }
+});
+app.post('/api/marche/analyse/relancer-lot', corsLbc, express.json({ limit: '20kb' }), async (req, res) => {
+    try { res.json(await analyseV.relancerLot(req.body || {})); } catch (e) { res.status(500).json({ error: e.message }); }
+});
 app.post('/api/marche/battement', corsLbc, express.json({ limit: '20kb' }), async (req, res) => {
     try { await macmini.battement(req.body || {}); res.json({ ok: true }); } catch (e) { res.status(500).json({ error: e.message }); }
 });
