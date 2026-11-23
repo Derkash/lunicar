@@ -157,6 +157,20 @@ PORT=3123 node server.js &  node tools/check_seo.js http://localhost:3123
 - Événements : `lead_form_start`, `form_step2`, `plaque_saisie`, `plaque_reconnue`, `generate_lead` (demande envoyée, à déclarer comme événement clé dans GA4), `contact_*`.
 - Aucune plaque d'immatriculation n'est envoyée à Google : `?immat=` et `?plaque=` sont retirés de l'URL.
 
+## Analyse approfondie par le Mac mini (2026-11-23)
+
+Chaque demande avec plaque est analysée par le Mac mini avant la notification. **La notification ne part qu'à la fin de l'analyse**, avec l'offre conseillée (filet de sécurité : 45 min sans réponse du Mac mini, elle part quand même en le disant). Si le Mac mini ne fait pas l'analyse (pas passé dans la file depuis 30 min), le fonctionnement précédent s'applique.
+
+1. **Sonar** (inchangé) : prix au km exact, 5 tranches, ventes réelles, offre et demande.
+2. **Recherches Leboncoin du Mac mini** (`tools/sonar-collecte.js`, `lbcLancer`) : même modèle, année ± 1, même énergie et boîte, en 5 tranches de km (−60 000 à +60 000 km) partout en France, puis le même modèle autour du vendeur (son département, ou l'Île-de-France) avec la description des annonces.
+3. **Lecture des textes** par Claude sur le Mac mini (`tools/macmini/analyse.js`) : message du formulaire, e-mails reçus, notes d'appel, description des annonces qui pourraient être la sienne → faits avec la phrase d'origine, contradictions avec ses réponses.
+4. **Fiche moteur** (`data/fiches-moteur.json` + fiches rédigées par le Mac mini avec recherche web) : distribution (chaîne, courroie, courroie dans l'huile), points connus, questions. Une fiche en **brouillon** informe l'appel mais ne bouge pas le prix ; on la valide dans la fiche demande.
+5. **Calcul** (`lib/analyse-vehicule.js`) : courbe prix / km (régression sur les annonces, doublons / pannes / autre énergie / autre boîte / autre motorisation / prix aberrants écartés), particuliers et pros séparés, ventes réelles Sonar ramenées au km → prix de marché retenu (pondéré, sources affichées) ; revente visée − frais − marge = achat max d'une voiture saine ; − provisions (barème réglable `analyse_bareme`) = **offre conseillée** ; fourchette selon la confiance (10 / 15 / 25 / 30 %) ; questions d'appel dans l'ordre ; **annonce Leboncoin du vendeur** (km, mise en circulation, couleur, distance, particulier) → badge `LBC` dans la liste.
+
+Admin : bloc « Avant d'appeler » en tête de la fiche demande. API : `GET /api/admin/demandes/:ref/analyse`, `POST …/analyse/relancer`, `POST …/analyse/annonce` (`{id, decision: oui|non}`), `GET|PUT /api/admin/fiches-moteur[/:id]`, `GET|PUT /api/admin/analyse/bareme`. Mac mini : `GET /api/marche/analyse/file`, `POST /api/marche/analyse/:ref` (clé de collecte). Stockage : `DATA_DIR/analyses-vehicules.json` (hors CRM).
+
+Installation sur le Mac mini : `tools/macmini/installer-analyse.sh` (copie `veille.js` + `analyse.js`, SDK Claude, redémarrage launchd). Clé Claude dans `~/lunicar-sonar/anthropic.txt` sur le Mac mini, jamais dans le dépôt. Modèle : `ANALYSE_MODEL` (défaut `claude-sonnet-5-5`). Tests : `node tools/analyse/test.js` (données fictives).
+
 ## Formulaire de demande
 
 Questions progressives avec jauge : véhicule (plaque facultative qui remplit le reste, modèle, année, km), état mécanique, carrosserie (si elle roule), contrôle technique, délai, projet d'achat, prix (facultatif), identité, téléphone et code postal (commune via geo.api.gouv.fr), titulaire de la carte grise (nom facultatif si non), n° du certificat (facultatif, photo d'aide), e-mail (facultatif). Puis étape photos facultative (prise ou import, réduites à 1600 px dans le navigateur), puis confirmation.

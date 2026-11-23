@@ -46,3 +46,6 @@ data/crm.json
 # Jetons locaux (jamais dans le dépôt public)
 secrets/
 data/marche-sonar.*
+
+# Analyses du Mac mini (production : disque Render)
+data/analyses-vehicules.json

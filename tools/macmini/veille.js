@@ -12,6 +12,9 @@ const API = 'https://lunicar.fr/api/marche', SONAR = 'https://www.leboncoin.fr/c
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const CLE = fs.readFileSync(path.join(DIR, 'cle.txt'), 'utf8').trim();
 const log = (...a) => console.log(new Date().toISOString(), ...a);
+// Analyse approfondie (tools/macmini/analyse.js, copié à côté de ce fichier). Absente : seul Sonar tourne.
+let analyse = null;
+try { analyse = require('./analyse'); } catch (e) { console.log('analyse approfondie indisponible :', e.message); }
 const pause = ms => new Promise(r => setTimeout(r, ms));
 
 async function alerte(type, texte) {
@@ -67,7 +70,7 @@ async function tour() {
             if (!/leboncoin\.fr\/compte\/pro\/donnees-auto/.test(href)) return alerte('deconnecte', 'Leboncoin a déconnecté le Mac mini : reconnectez le compte pro dans le Chrome « Sonar » du Mac mini.');
         }
         // Script de collecte présent ? (il disparaît si la page a été rechargée)
-        const charge = await evaluer(s, `!!(window.__collecte && window.__collecte.lancer && window.__CLE)`);
+        const charge = await evaluer(s, `!!(window.__collecte && window.__collecte.lancer && window.__collecte.lbcLancer && window.__CLE)`);
         if (!charge) {
             await evaluer(s, `(async () => { window.__CLE = ${JSON.stringify(CLE)}; const r = await fetch(${JSON.stringify(API + '/script')}, { headers: { 'X-Cle': window.__CLE } }); if (!r.ok) throw new Error('script ' + r.status); (0, eval)(await r.text()); return true; })()`);
             log('script de collecte chargé');
@@ -86,7 +89,13 @@ async function tour() {
         if (Date.now() < pauseJusqua) return;
         // Un passage Sonar par demande au km exact : les nouvelles d'abord (file triée par le serveur), par lots de 10.
         const r1 = await evaluer(s, `window.__collecte.lancer({ mode: 'principal', limite: 10 })`);
-        if (!/lancé : 0 plaque/.test(r1)) log(r1);
+        if (!/lancé : 0 plaque/.test(r1)) { log(r1); return; }
+        // Plus rien à relever dans Sonar : analyse approfondie des demandes (recherches Leboncoin, textes, fiche moteur).
+        // La notification de la demande ne part qu'à la fin de cette analyse (lib/notif-demande.js).
+        if (analyse && (await evaluer(s, 'typeof window.__collecte.lbcLancer')) === 'function') {
+            const n = await analyse.tour({ evaluer: expr => evaluer(s, expr), API, CLE, log });
+            if (n) await s.appel('Page.navigate', { url: SONAR });   // retour sur Sonar pour la prochaine demande
+        }
     } finally { s.fermer(); }
 }
 

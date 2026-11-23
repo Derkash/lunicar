@@ -1475,6 +1475,32 @@ body.modal-ouvert { overflow: hidden; }
 .qr-plein svg { width: min(86vw, 70vh); height: auto; }
 .qr-plein p { margin: 18px 0 0; font-size: 1.15rem; font-weight: 600; color: #0C223B; }
 .qr-plein small { margin-top: 6px; color: #6B7180; }
+/* Avant d'appeler : analyse approfondie du Mac mini (lib/analyse-vehicule.js) */
+.av { border-top: 3px solid var(--gold); }
+.av h3 small { font-weight: 400; color: var(--ink-5); font-size: .78rem; }
+.av-offre { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 12px 0 0; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
+.av-offre > div { padding: 10px 12px; border-left: 1px solid var(--line-2); min-width: 0; }
+.av-offre > div:first-child { border-left: 0; padding-left: 0; }
+.av-offre span { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-5); }
+.av-offre b { display: block; font-size: 1.25rem; line-height: 1.25; }
+.av-offre small { display: block; color: var(--ink-5); font-size: .76rem; }
+.av-offre .av-prix b { color: var(--marine); font-size: 1.5rem; }
+@media (max-width: 640px) { .av-offre { grid-template-columns: repeat(2, minmax(0, 1fr)); } .av-offre > div:nth-child(3) { border-left: 0; padding-left: 0; } }
+.av-q { margin: 14px 0 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 7px; }
+.av-q li b { color: var(--ink); } .av-q li small { display: block; color: var(--ink-5); }
+.av-r { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.av-r li { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; font-size: .9rem; }
+.av-r li i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.av-r li i.rouge { background: var(--red); } .av-r li i.orange { background: var(--orange); } .av-r li i.vert { background: var(--green); }
+.av-r li small { display: block; color: var(--ink-5); }
+.av-lbc { margin: 12px 0 0; padding: 10px 12px; border-radius: var(--r-s); background: var(--gold-1); }
+.av-lbc p { margin: 2px 0; }
+.av-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.av-tab { width: 100%; border-collapse: collapse; font-size: .86rem; margin-top: 6px; }
+.av-tab td, .av-tab th { padding: 4px 8px 4px 0; border-bottom: 1px solid var(--line-2); text-align: left; vertical-align: top; }
+.av-tab td.num, .av-tab th.num { text-align: right; }
+.lbc-badge { display: inline-block; font-size: .64rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 1px 6px; border-radius: 4px; vertical-align: 1px; background: var(--gold-1); color: var(--gold); margin-left: 4px; }
+.lbc-badge.sure, .lbc-badge.confirmee { background: var(--gold); color: #fff; }
 </style>
 </head>
 <body>
@@ -1908,6 +1934,7 @@ body.modal-ouvert { overflow: hidden; }
     const choisies = new Set();
     let affichees = [];
     let etat = { statuts: {} }, demandes = [], messages = [], courant = null, poll = null, catalogue = null;
+    let analysesV = {}, analyseD = {}, analyseCharge = {}; // analyse approfondie du Mac mini : résumés (liste) et détail (fiche)
     let marcheA = {}, marcheR = null; // analyses marché Leboncoin par réf. + réglages (frais, marge)
 
     const toast = t => { document.querySelectorAll('.toast:not([data-garde])').forEach(x => x.remove()); const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
@@ -2302,7 +2329,8 @@ body.modal-ouvert { overflow: hidden; }
     // ---------------- Demandes
     async function charger() {
         [demandes] = await Promise.all([api('/api/admin/demandes'), catalogue ? null : api('/api/admin/catalogue/marques').then(c => { catalogue = c; }).catch(() => {}),
-            api('/api/admin/marche/analyses').then(r => { marcheA = r.analyses || {}; marcheR = r.reglages; }).catch(() => {})]);
+            api('/api/admin/marche/analyses').then(r => { marcheA = r.analyses || {}; marcheR = r.reglages; }).catch(() => {}),
+            api('/api/admin/analyses-vehicules').then(r => { analysesV = r || {}; }).catch(() => {})]);
         // Même téléphone déjà reçu plus tôt : le vendeur revient (ou s'est trompé de formulaire).
         const vus = new Map();
         [...demandes].sort((p, q) => p.created_at.localeCompare(q.created_at)).forEach(d => {
@@ -2581,7 +2609,7 @@ body.modal-ouvert { overflow: hidden; }
             return `${entete}<div class="swipe" data-ref="${esc(d.ref)}"><div class="swipe-bg"><span class="arc">${archivee ? 'Désarchiver' : 'Archiver'}</span><span class="sup">Supprimer</span></div><div class="row${choisies.has(d.ref) ? ' choisie' : ''}${estDu ? ' du' : estDrap ? ' drapeau' : ''}${clos ? ' clos' : ''}${em ? ' etat-' + em.c : ''}" data-ref="${esc(d.ref)}"><div class="sel"><input type="checkbox" class="choix" data-ref="${esc(d.ref)}" ${choisies.has(d.ref) ? 'checked' : ''} aria-label="Sélectionner"></div>
                 <div class="d"><b>${date(d.created_at, false)}</b><span class="mono">${esc(d.ref)}</span></div>
                 <div class="who"><b>${esc([x.prenom, x.nom].filter(Boolean).join(' ') || 'Sans nom')}</b><span class="num">${esc(x.telephone || x.email || '')}</span>${lieu ? `<span class="lieu" hidden>· ${esc(lieu)}</span>` : ''}</div>
-                <div class="car"><b>${icPh}${badgeUtil(x, d.suivi)}${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}</span><span class="motifs">${motifsInteret(d)}</span></div>
+                <div class="car"><b>${icPh}${badgeUtil(x, d.suivi)}${esc(nomVeh(x))}</b>${x.plaque ? `<span class="plaque-mini mono">${esc(x.plaque)}</span>` : ''}<span>${x.kilometrage ? Number(x.kilometrage).toLocaleString('fr-FR') + ' km' : ''}${badgeMeca(x) || (x.mecanique ? (x.kilometrage ? ' · ' : '') + esc(x.mecanique) : '')} ${tag}${pub}${badgeLbc(d.ref)}</span><span class="motifs">${motifsInteret(d)}</span></div>
                 <div class="ville"><span>${esc([x.code_postal, x.ville].filter(Boolean).join(' '))}</span>${g ? `<small>${g.region === 'IDF' ? 'Île-de-France' : esc(REG[g.region])}${g.km != null && g.km > 0 ? ` · ${g.km} km` : ''}</small>` : ''}</div>
                 <div class="price num">${badgeInteret(d)}${est}${x.prix_souhaite ? `<small>souhaite ${eur(x.prix_souhaite)}</small>` : ''}</div>
                 <div class="st">${badgeRdv(d)}${estDu ? `<span class="badge-du">À rappeler${r < auj ? ' · retard ' + jj(r) : ''}</span>` : ''}${d.statut === 'nouvelle' ? '' : `<span class="pill st-${esc(d.statut)}">${esc(etat.statuts[d.statut] || d.statut)}</span>`}${r && !estDu ? `<small class="rappel">Rappel ${jj(r)}</small>` : ''}${!archivee ? `<button class="flag${estDrap ? ' on' : ''}" data-flag="${esc(d.ref)}" aria-pressed="${estDrap}" title="${estDrap ? 'Retirer « À appeler »' : 'Marquer « À appeler »'}"><svg><use href="#i-flag"/></svg>À appeler</button>` : ''}</div>
@@ -5299,6 +5327,77 @@ body.modal-ouvert { overflow: hidden; }
         const ligne = mois.map((m, i) => `${i * (w + 3) + w / 2},${h - Math.round(m[1] / ma * (h - 4)) - 2}`).join(' ');
         return `<svg class="mk-spark" viewBox="0 0 ${mois.length * (w + 3)} ${h}" preserveAspectRatio="none" role="img" aria-label="Visites et annonces sur 12 mois">${barres}<polyline points="${ligne}" class="mk-a"/></svg>`;
     }
+    // ---------------- Avant d'appeler : analyse approfondie du Mac mini (lib/analyse-vehicule.js)
+    const badgeLbc = ref => { const a = (analysesV[ref] || {}).annonce; return a ? `<span class="lbc-badge ${esc(a.niveau)}" title="Annonce Leboncoin ${a.niveau === 'probable' ? 'peut-être ' : ''}du vendeur : ${eur(a.prix)}, en ligne depuis ${a.jours} j">LBC${a.niveau === 'probable' ? ' ?' : ''}</span>` : ''; };
+    const AV_NIV = { rouge: 'Risque fort', orange: 'À vérifier', vert: 'OK' };
+    const AV_VERDICT = { acheter: 'son prix tient dans l\'offre', negocier: 'à négocier', trop_cher: 'trop cher' };
+    const lbcUrl = u => 'https://www.leboncoin.fr' + String(u || '').replace(/^https:\/\/www\.leboncoin\.fr/, '');
+    async function chargerAnalyse(ref, force) {
+        if (analyseCharge[ref] && !force) return;
+        analyseCharge[ref] = true;
+        try { analyseD[ref] = await api('/api/admin/demandes/' + ref + '/analyse'); }
+        catch (e) { analyseD[ref] = { erreur: e.message }; }
+        if (courant && courant.ref === ref && !$('#sheet').hidden) fiche();
+    }
+    function blocAnalyse(d) {
+        const c = analyseD[d.ref];
+        if (!c) { chargerAnalyse(d.ref); return `<section class="sec av"><h3>Avant d'appeler</h3><p class="sub"><span class="spin"></span> Chargement de l'analyse…</p></section>`; }
+        if (c.erreur) return `<section class="sec av"><h3>Avant d'appeler</h3><p class="sub">Analyse indisponible : ${esc(c.erreur)}</p></section>`;
+        const o = c.offre, m = c.marche || {}, A = m.annonces, av = c.annonce_vendeur, T = c.textes || {}, fm = c.fiche_moteur;
+        const etat = c.etat === 'terminee' ? `analysée par le Mac mini le ${date(c.analyse_le)}` : c.etat === 'en_cours' ? 'analyse en cours sur le Mac mini…' : c.etat === 'a_refaire' ? 'analyse relancée, en attente du Mac mini' : 'pas encore analysée par le Mac mini (marché Sonar seul)';
+        const nb = v => Number(v || 0).toLocaleString('fr-FR');
+        return `<section class="sec av">
+            <h3>Avant d'appeler <small>${esc(etat)}</small></h3>
+            ${o ? `<div class="av-offre">
+                <div class="av-prix"><span>Offre conseillée</span><b class="num">${eur(o.offre)}</b><small>fourchette ${eur(o.fourchette.min)} – ${eur(o.fourchette.max)}</small></div>
+                <div><span>Confiance</span><b>${esc(c.confiance.niveau)}</b><small>${c.confiance.score}/100</small></div>
+                <div><span>Marché retenu</span><b class="num">${eur(o.prix_marche)}</b><small>${o.prix_particuliers ? 'part. ' + eur(o.prix_particuliers) : ''}${o.prix_pros ? ' · pros ' + eur(o.prix_pros) : ''}&nbsp;</small></div>
+                <div><span>Il demande</span><b class="num">${o.prix_souhaite ? eur(o.prix_souhaite) : '—'}</b><small>${o.verdict ? esc(AV_VERDICT[o.verdict]) : '&nbsp;'}${o.annonce ? ' · ' + esc(o.annonce.lecture) : ''}</small></div>
+            </div>
+            ${!o.envoyer_sans_relecture ? `<p class="mk-verdict mk-o"><b>À relire avant d'envoyer une fourchette</b> · ${c.confiance.niveau === 'insuffisante' ? 'données insuffisantes' : 'point bloquant (financement)'}</p>` : ''}` : `<p class="sub">${esc((c.avertissements || [])[0] || 'Pas d\'offre calculable')}</p>`}
+            ${(c.questions || []).length ? `<h4 style="margin:16px 0 0">Questions à poser, dans l'ordre</h4><ol class="av-q">${c.questions.slice(0, 9).map(q => `<li><b>${esc(q.texte)}</b><small>${esc(q.pourquoi)}</small></li>`).join('')}</ol>` : ''}
+            ${av ? `<div class="av-lbc">
+                <p><b>Son annonce Leboncoin ${av.niveau === 'confirmee' ? '(confirmée)' : av.niveau === 'sure' ? '(très probable)' : '(possible)'}</b> · ${eur(av.annonce.prix)}${av.annonce.ancien_prix > av.annonce.prix ? ` (baissée, avant ${eur(av.annonce.ancien_prix)})` : ''} · en ligne depuis ${av.annonce.jours} j · ${nb(av.annonce.km)} km · ${esc(av.annonce.ville || '')}${av.annonce.photos ? ' · ' + av.annonce.photos + ' photos' : ''}</p>
+                <p class="sub">${esc(av.preuves.join(' · '))}${av.ecarts.length ? ' · <b>Écarts :</b> ' + esc(av.ecarts.join(' · ')) : ''}</p>
+                ${av.annonce.texte ? `<details><summary>Description de l'annonce</summary><p class="sub" style="white-space:pre-line">${esc(av.annonce.texte)}</p></details>` : ''}
+                <div class="av-btns">${av.annonce.url ? `<a class="btn btn-s" href="${esc(lbcUrl(av.annonce.url))}" target="_blank" rel="noopener">Ouvrir l'annonce</a>` : ''}${av.niveau !== 'confirmee' ? `<button class="btn btn-s" type="button" data-an-act="annonce-oui" data-an-id="${esc(av.annonce.id)}">C'est la sienne</button>` : ''}<button class="btn btn-s" type="button" data-an-act="annonce-non" data-an-id="${esc(av.annonce.id)}">Pas la sienne</button></div>
+            </div>` : ''}
+            ${(c.risques || []).length ? `<h4 style="margin:16px 0 0">Risques et provisions</h4><ul class="av-r">${c.risques.map(r => `<li><i class="${esc(r.niveau)}" title="${AV_NIV[r.niveau] || ''}"></i><span>${esc(r.titre)}${r.detail ? `<small>${esc(r.detail)}</small>` : ''}</span><b class="num">${r.provision ? '− ' + eur(r.provision) : ''}</b></li>`).join('')}</ul>` : ''}
+            ${T.resume || (T.contradictions || []).length || (T.faits || []).length ? `<h4 style="margin:16px 0 0">Ce qu'il a écrit</h4>${T.resume ? `<p class="sub">${esc(T.resume)}</p>` : ''}
+                ${(T.contradictions || []).map(x => `<p class="mk-verdict mk-r"><b>Contradiction · ${esc(x.sujet)}</b> · réponse « ${esc(x.reponse)} », écrit « ${esc(x.citation)} »</p>`).join('')}
+                ${(T.faits || []).length ? `<table class="av-tab">${T.faits.map(f => `<tr><td>${esc(f.libelle)}${f.km ? ' · ' + nb(f.km) + ' km' : ''}${f.annee ? ' · ' + f.annee : ''}${f.facture ? ' · facture' : ''}<br><small class="sub">« ${esc(f.citation)} » (${esc(f.source)})</small></td></tr>`).join('')}</table>` : ''}` : T.erreur ? `<p class="sub">Textes non lus : ${esc(T.erreur)}</p>` : ''}
+            <details style="margin-top:14px"><summary><b>Marché</b> · ${(m.composantes || []).map(x => `${esc(x.source)} ${eur(x.prix)}`).join(' · ') || 'aucune donnée'}</summary>
+                ${(m.composantes || []).length ? `<table class="av-tab"><tr><th>Source</th><th class="num">Prix au km</th><th class="num">Poids</th></tr>${m.composantes.map(x => `<tr><td>${esc(x.source)}</td><td class="num">${eur(x.prix)}</td><td class="num">${x.poids} %</td></tr>`).join('')}<tr><td><b>Retenu</b></td><td class="num"><b>${eur(m.prix_retenu)}</b></td><td></td></tr></table>` : ''}
+                ${m.ecart_sonar_annonces != null ? `<p class="sub">Écart entre Sonar et nos annonces : ${m.ecart_sonar_annonces > 0 ? '+' : ''}${m.ecart_sonar_annonces} %</p>` : ''}
+                ${A ? `<p class="sub">${A.n} annonces retenues sur ${A.n + A.ecartees}${A.motifs_ecart.length ? ' (écartées : ' + esc(A.motifs_ecart.join(', ')) + ')' : ''} · ${A.part_pct} % de particuliers · en ligne depuis ${A.jours_median} j (médiane), ${A.anciennes_pct} % depuis plus de 5 semaines · ${A.baisses_pct} % ont baissé leur prix · dispersion ${A.dispersion != null ? Math.round(A.dispersion * 100) + ' %' : '—'}${A.pente_10000km != null ? ' · ' + (A.pente_ignoree ? 'pente non retenue (trop peu d\'annonces)' : `${eur(A.pente_10000km)} par 10 000 km`) : ''}</p>
+                <table class="av-tab"><tr><th>Tranche de km</th><th class="num">Annonces</th><th class="num">Médiane</th></tr>${A.tranches.map(t => `<tr><td>${nb(t.de)} – ${nb(t.a)} km</td><td class="num">${t.n}</td><td class="num">${t.n ? eur(t.mediane) : '—'}</td></tr>`).join('')}</table>
+                ${A.part || A.pro ? `<table class="av-tab"><tr><th></th><th class="num">Nb</th><th class="num">1er quartile</th><th class="num">Médiane</th><th class="num">3e quartile</th></tr>${[['Particuliers', A.part], ['Pros', A.pro]].filter(z => z[1]).map(([l, z]) => `<tr><td>${l}</td><td class="num">${z.n}</td><td class="num">${eur(z.q1)}</td><td class="num">${eur(z.mediane)}</td><td class="num">${eur(z.q3)}</td></tr>`).join('')}</table><p class="sub">Prix ramenés au km et à l'année de la demande.</p>` : ''}
+                <table class="av-tab"><tr><th>Annonces les plus proches</th><th class="num">Km</th><th class="num">Prix</th><th class="num">Au km</th></tr>${A.exemples.map(e => `<tr><td>${e.url ? `<a href="${esc(lbcUrl(e.url))}" target="_blank" rel="noopener">${esc(e.version || 'annonce')}</a>` : esc(e.version || '')} <small class="sub">${e.an || ''} · ${e.pro ? 'pro' : 'particulier'} · ${e.jours} j · ${esc(e.ville || '')}</small></td><td class="num">${nb(e.km)}</td><td class="num">${eur(e.prix)}</td><td class="num">${eur(e.prix_ajuste)}</td></tr>`).join('')}</table>` : '<p class="sub">Pas encore de recherche Leboncoin du Mac mini.</p>'}
+                ${m.ventes_reelles ? `<p class="sub">${m.ventes_reelles.n} ventes réelles Sonar : ${eur(m.ventes_reelles.mediane_ajustee)} au km de la demande, vendues en ${m.ventes_reelles.jours_median} j (médiane).</p>` : ''}
+            </details>
+            ${o ? `<details><summary><b>Détail du calcul de l'offre</b></summary><table class="av-tab">${o.etapes.map(e => `<tr><td>${esc(e.libelle)}</td><td class="num">${e.valeur < 0 ? '− ' + eur(-e.valeur) : eur(e.valeur)}</td></tr>`).join('')}</table></details>` : ''}
+            ${fm ? `<details><summary><b>Fiche moteur</b> · ${esc(fm.libelle)} · ${fm.statut === 'valide' ? 'validée' : 'brouillon (ne bouge pas le prix)'}</summary>
+                <p class="sub">Reconnue par ${esc(fm.par)} · distribution : ${esc({ courroie: 'courroie', courroie_huile: 'courroie dans l\'huile', chaine: 'chaîne' }[fm.distribution.organe] || 'inconnue')}${fm.distribution.intervalle_km ? ' · ' + nb(fm.distribution.intervalle_km) + ' km' : ''}${fm.distribution.intervalle_ans ? ' / ' + fm.distribution.intervalle_ans + ' ans' : ''} (${fm.fiabilite === 'constructeur' ? 'donnée constructeur' : 'à vérifier'})${fm.distribution.note ? ' · ' + esc(fm.distribution.note) : ''}</p>
+                ${(fm.points || []).map(p => `<p class="sub"><b>${esc(p.titre)}</b> · ${esc(p.detail)}</p>`).join('')}
+                ${(fm.sources || []).length ? `<p class="sub">Sources : ${fm.sources.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.titre || x.url)}</a>`).join(' · ')}</p>` : ''}
+                ${fm.statut !== 'valide' ? `<div class="av-btns"><button class="btn btn-s" type="button" data-an-act="fiche-valider" data-an-id="${esc(fm.id)}">Valider la fiche (elle entre dans le prix)</button></div>` : ''}
+            </details>` : ''}
+            ${(c.ecarts_identite || []).length || (c.avertissements || []).length ? `<ul class="mk-av">${[...(c.ecarts_identite || []), ...(c.avertissements || [])].map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+            <div class="av-btns"><button class="btn btn-s" type="button" data-an-act="relancer">Relancer l'analyse du Mac mini</button></div>
+        </section>`;
+    }
+    document.addEventListener('click', async e => {
+        const b = e.target.closest('[data-an-act]');
+        if (!b || !courant) return;
+        const ref = courant.ref, act = b.dataset.anAct, id = b.dataset.anId;
+        b.disabled = true;
+        try {
+            if (act === 'relancer') { await api('/api/admin/demandes/' + ref + '/analyse/relancer', { method: 'POST' }); toast('Analyse relancée : le Mac mini la reprend au prochain tour'); await chargerAnalyse(ref, true); }
+            else if (act === 'annonce-oui' || act === 'annonce-non') { analyseD[ref] = await api('/api/admin/demandes/' + ref + '/analyse/annonce', { method: 'POST', body: JSON.stringify({ id, decision: act === 'annonce-oui' ? 'oui' : 'non' }) }); analysesV = await api('/api/admin/analyses-vehicules').catch(() => analysesV); fiche(); toast(act === 'annonce-oui' ? 'Annonce rattachée à la demande' : 'Annonce écartée'); }
+            else if (act === 'fiche-valider') { await api('/api/admin/fiches-moteur/' + encodeURIComponent(id), { method: 'PUT', body: JSON.stringify({ statut: 'valide' }) }); toast('Fiche moteur validée : elle entre dans le prix'); await chargerAnalyse(ref, true); }
+        } catch (err) { toast(err.message); b.disabled = false; }
+    });
+
     function blocMarche(d) {
         const a = marcheA[d.ref];
         if (!a || a.source === 'aucune' || !a.prix) return `<section class="sec marche"><h3>Estimation Leboncoin</h3><p class="sub">${a && a.source === 'aucune' ? 'Aucune donnée de marché pour ce véhicule (plaque inconnue de Sonar, pas d\'annonce comparable).' : 'Pas encore de relevé Leboncoin pour cette plaque : la collecte Sonar la traitera.'}</p></section>`;
@@ -5469,6 +5568,7 @@ body.modal-ouvert { overflow: hidden; }
                 ${dernier ? `<p class="ap-appel"><b>Dernier appel</b> · ${date(dernier.date)} · ${esc(dernier.libelle || dernier.resultat)}${dernier.texte ? ` — ${esc(dernier.texte)}` : ''}</p>` : ''}
             </section>`;
             })()}
+            ${blocAnalyse(d)}
             ${blocMarche(d)}
             ${blocSonar(d)}
             ${blocRdv(d)}

@@ -219,4 +219,92 @@
         })();
         return `lancé : ${E.file.length - E.i} plaques (${mode})`;
     };
+
+    // ---------------------------------------------------------------- Analyse approfondie (23/11/2026)
+    // Pour une demande (job venu de /api/marche/analyse/file, transmis par le Mac mini), le Mac mini cherche lui-même
+    // sur Leboncoin, au rythme d'une personne :
+    //   - bandes : même modèle, année ± 1, même énergie et même boîte, par tranches de km autour de la demande
+    //     (−60 000 à +60 000 km), toute la France → courbe prix / km, particuliers et pros séparés ;
+    //   - local : même modèle autour du vendeur (son département, ou l'Île-de-France), km ± 25 % → son annonce s'il en a une.
+    // Lecture des pages de recherche que la page charge elle-même (aucune API Leboncoin appelée directement).
+    // Lancement : __collecte.lbcLancer(job) ; suivi : __collecte.lbcEtat(ref) → { fini, resultat }.
+    const FUEL = { essence: '1', diesel: '2' }, BOITE = { manuelle: '1', automatique: '2' };
+    const attr = a => Object.fromEntries((a.attributes || []).map(x => [x.key, x]));
+    const val = (t, k) => (t[k] || {}).value;
+    const lab = (t, k) => (t[k] || {}).value_label || (t[k] || {}).value || '';
+    function compacte(a, avecTexte) {
+        const t = attr(a), L = a.location || {};
+        const mec = String(val(t, 'issuance_date') || '').match(/^(\d{2})\/(\d{4})/);
+        return {
+            id: String(a.list_id || ''), prix: (a.price || [])[0] || 0, km: Number(val(t, 'mileage')) || 0, an: Number(val(t, 'regdate')) || 0, mec: mec ? `${mec[1]}/${mec[2]}` : '',
+            pro: (a.owner || {}).type === 'pro' ? 1 : 0, jours: Math.round((Date.now() - new Date(String(a.first_publication_date || '').replace(' ', 'T'))) / 864e5) || 0,
+            cp: L.zipcode || '', ville: L.city_label || L.city || '', lat: L.lat || 0, lng: L.lng || 0,
+            couleur: lab(t, 'vehicule_color'), version: lab(t, 'u_car_version'), finition: lab(t, 'u_car_finition'), positionnement: lab(t, 'car_price_positioning'),
+            ancien_prix: Number(val(t, 'old_price')) || 0, energie: lab(t, 'fuel'), boite: lab(t, 'gearbox'), ch: Number(val(t, 'horse_power_din')) || 0,
+            titre: String(a.subject || '').slice(0, 120), texte: avecTexte ? String(a.body || '').slice(0, 900) : '', photos: ((a.images || {}).nb_images) || 0,
+            url: String(a.url || '').replace(/^https:\/\/www\.leboncoin\.fr/, ''), hs: HS.test((a.subject || '') + ' ' + (a.body || '')) ? 1 : 0
+        };
+    }
+    async function rechercher(q) {
+        const avant = ((window.next.router.components['/recherche'] || {}).props || {}).pageProps;
+        window.next.router.push('/recherche?' + q.toString());
+        const fin = Date.now() + 15000;
+        while (Date.now() < fin) {
+            await pause(300);
+            const c = ((window.next.router.components['/recherche'] || {}).props || {}).pageProps;
+            if (c && c !== avant && c.searchData) return c.searchData;
+        }
+        throw new Error('page de recherche sans réponse');
+    }
+    function base(job, an, ecartAn) {
+        const q = new URLSearchParams({ category: '2', u_car_brand: job.lbc.marque });
+        if (job.lbc.modele) q.set('u_car_model', job.lbc.modele); else if (job.lbc.texte) q.set('text', job.lbc.texte);
+        if (an) q.set('regdate', `${an - ecartAn}-${an + ecartAn}`);
+        return q;
+    }
+    async function lbcAnalyse(job) {
+        const km = job.km >= 1000 && job.km < 600000 ? job.km : 150000, an = job.annee || 0, out = { bandes: [], local: null, erreurs: [] };
+        const vus = new Set(), garder = (sd, avecTexte) => (sd.ads || []).filter(a => { const k = String(a.list_id); if (vus.has(k + (avecTexte ? 't' : ''))) return false; vus.add(k + (avecTexte ? 't' : '')); return true; }).map(a => compacte(a, avecTexte));
+        // 1. Annonces autour du vendeur (avec leur description) : c'est là qu'on retrouve la sienne.
+        if (job.lbc.zone) {
+            try {
+                const q = base(job, an, 1);
+                q.set('locations', job.lbc.zone);
+                q.set('mileage', `${Math.round(km * 0.75)}-${Math.round(km * 1.25)}`);
+                const sd = await rechercher(q);
+                // La zone est-elle vraiment appliquée ? (sinon on garde quand même : le serveur trie par distance)
+                out.local = { filtre: q.toString(), total: sd.total || 0, ads: garder(sd, true) };
+                if ((sd.total || 0) > 35) { await humain(3000, 6000); q.set('page', '2'); out.local.ads.push(...garder(await rechercher(q), true)); }
+            } catch (e) { out.erreurs.push('recherche locale : ' + e.message); }
+            await humain(3000, 6000);
+        }
+        // 2. Tranches de kilométrage, toute la France : en dessous, autour et au-dessus du km de la demande.
+        const pas = [[-60000, -30000], [-30000, -10000], [-10000, 10000], [10000, 30000], [30000, 60000]];
+        for (const [a, b] of pas) {
+            const min = Math.max(0, km + a), max = km + b;
+            if (max <= 0) continue;
+            try {
+                const q = base(job, an, 1);
+                q.set('mileage', `${min}-${max}`);
+                if (FUEL[job.energie]) q.set('fuel', FUEL[job.energie]);
+                if (BOITE[job.boite]) q.set('gearbox', BOITE[job.boite]);
+                const sd = await rechercher(q);
+                const bande = { min, max, total: sd.total || 0, filtre: q.toString(), ads: garder(sd, false) };
+                // Bande centrale bien fournie : 2e page pour plus de comparables.
+                if (a === -10000 && (sd.total || 0) > 35) { await humain(3000, 6000); q.set('page', '2'); bande.ads.push(...garder(await rechercher(q), false)); }
+                out.bandes.push(bande);
+            } catch (e) { out.erreurs.push(`tranche ${min}-${max} km : ${e.message}`); }
+            await humain(3500, 7000);
+        }
+        return out;
+    }
+    E.lbc = E.lbc || {};
+    E.lbcLancer = job => {
+        if (!(window.next && window.next.router)) return 'page Leboncoin sans routeur';
+        if (!job || !job.lbc || !job.lbc.marque) return 'job sans modèle Leboncoin';
+        E.lbc[job.ref] = { fini: false, debut: Date.now() };
+        lbcAnalyse(job).then(r => { E.lbc[job.ref] = { fini: true, resultat: r }; }, e => { E.lbc[job.ref] = { fini: true, resultat: { erreur: e.message, bandes: [], local: null, erreurs: [e.message] } }; });
+        return 'lancé';
+    };
+    E.lbcEtat = ref => E.lbc[ref] || null;
 })();

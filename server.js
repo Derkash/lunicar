@@ -1013,6 +1013,21 @@ app.post('/api/marche/alerte', corsLbc, (req, res) => {
     res.json({ ok: true });
 });
 
+// Analyse approfondie par le Mac mini (lib/analyse-vehicule.js) : il vient chercher les demandes (file), fait ses
+// recherches Leboncoin et sa lecture des textes, puis renvoie le résultat ; la notification part à ce moment-là.
+const analyseV = require('./lib/analyse-vehicule');
+app.get('/api/marche/analyse/file', corsLbc, async (req, res) => {
+    try { res.json(await analyseV.file({ limite: Math.min(10, Number(req.query.limite) || 3) })); }
+    catch (e) { res.status(500).json({ error: e.message }); }
+});
+app.post('/api/marche/analyse/:ref', corsLbc, express.json({ limit: '1mb' }), async (req, res) => {
+    try {
+        const c = await analyseV.recevoir(req.params.ref, req.body || {});
+        res.json({ ok: true, offre: c.offre ? c.offre.offre : null, confiance: c.confiance && c.confiance.niveau });
+        notifDemande.analyseRecue(req.params.ref).catch(e => console.error('Notif analyse :', e.message));
+    } catch (e) { if (!res.headersSent) res.status(e.status || 500).json({ error: e.message }); }
+});
+
 app.use(adminRouter(authAdmin));
 // Liens d'envoi du vendeur (carte grise, photos de la voiture) : pages publiques signées, une par demande.
 require('./lib/envoi-client').routes(app, { tooManySends, ipClient });

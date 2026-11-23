@@ -1,0 +1,74 @@
+{
+  "_lisezmoi": "Fiches moteur LUNICAR (lib/analyse-vehicule.js). Une fiche = un moteur : distribution, points de vigilance, questions d'appel. statut 'brouillon' = informe l'appel mais ne bouge pas le prix ; 'valide' = validée dans l'admin, ses intervalles et coûts entrent dans l'offre. fiabilite : 'constructeur' (vérifié sur un document constructeur, source jointe), 'a_verifier' (couramment cité, pas vérifié), 'prudence'. Les coûts sont des ordres de grandeur internes, à recaler sur nos factures. Le Mac mini ajoute des fiches en brouillon pour les moteurs absents ; celles validées dans l'admin sont gardées sur le disque (DATA_DIR/analyses-vehicules.json) et l'emportent sur ce fichier.",
+  "maj": "2026-11-23",
+  "fiches": [
+    {
+      "id": "fiat-1.6-multijet", "libelle": "Fiat 1.6 MultiJet", "marque": "fiat|alfa|lancia|jeep|suzuki|opel", "motorisation": "1[.,]6.*(multijet|mjt|jtd)|(multijet|mjt|jtd).*1[.,]6", "code_moteur": "", "energie": "diesel",
+      "distribution": { "organe": "courroie", "intervalle_km": 120000, "intervalle_ans": 5, "cout_min": 450, "cout_max": 800, "note": "Kit + pompe à eau. Intervalle couramment cité, non vérifié sur le plan d'entretien Fiat." },
+      "points": [
+        { "titre": "FAP et vanne EGR", "detail": "Diesel récent : colmatage du FAP en usage urbain, encrassement de l'EGR.", "organe": "fap", "cout_min": 300, "cout_max": 1500, "question": "Voyant FAP ou préchauffage déjà allumé ? Roule surtout en ville ?" },
+        { "titre": "Volant moteur bimasse", "detail": "À gros kilométrage, claquements au ralenti ou vibrations à l'embrayage.", "organe": "embrayage", "cout_min": 800, "cout_max": 1600, "question": "Embrayage d'origine ? Vibrations ou claquement au ralenti ?" }
+      ],
+      "questions": ["Distribution faite ? À quel km ? Facture ?"],
+      "sources": [], "fiabilite": "a_verifier", "statut": "brouillon", "origine": "base"
+    },
+    {
+      "id": "fiat-1.3-multijet", "libelle": "Fiat 1.3 MultiJet", "marque": "fiat|alfa|lancia|opel|suzuki", "motorisation": "1[.,]3.*(multijet|mjt|jtd|cdti|ddis)|(multijet|mjt).*1[.,]3", "code_moteur": "", "energie": "diesel",
+      "distribution": { "organe": "chaine", "intervalle_km": null, "intervalle_ans": null, "cout_min": 600, "cout_max": 1200, "note": "Chaîne, pas de remplacement périodique annoncé. Non vérifié." },
+      "points": [ { "titre": "Chaîne qui s'allonge", "detail": "Bruit de cliquetis au démarrage à froid sur les gros kilométrages.", "organe": "distribution", "cout_min": 600, "cout_max": 1200, "question": "Bruit de cliquetis au démarrage à froid ?" } ],
+      "questions": [], "sources": [], "fiabilite": "a_verifier", "statut": "brouillon", "origine": "base"
+    },
+    {
+      "id": "ford-1.0-ecoboost", "libelle": "Ford 1.0 EcoBoost", "marque": "ford", "motorisation": "1[.,]0.*eco ?boost|eco ?boost.*1[.,]0", "code_moteur": "SFJ|M1J|M2D|B7J", "energie": "essence",
+      "distribution": { "organe": "courroie_huile", "intervalle_km": 240000, "intervalle_ans": 10, "cout_min": 700, "cout_max": 1300, "note": "Courroie qui baigne dans l'huile. Intervalle couramment cité, non vérifié sur le plan d'entretien Ford. Huile à la norme Ford WSS-M2C948-B obligatoire." },
+      "points": [
+        { "titre": "Courroie humide abîmée par une huile non conforme", "detail": "Une huile hors norme Ford dégrade la courroie ; ses débris peuvent colmater la crépine de la pompe à huile (risque de casse moteur). Le risque vient des vidanges plus que du kilométrage.", "organe": "distribution", "cout_min": 700, "cout_max": 4000, "question": "Factures de vidange avec la référence de l'huile ? Vidanges faites où ?" },
+        { "titre": "Surchauffe sur les premières années", "detail": "Point de vigilance signalé sur le refroidissement des premiers millésimes, à sourcer.", "organe": "moteur", "cout_min": 300, "cout_max": 2500, "question": "Le moteur a-t-il déjà chauffé ou perdu du liquide de refroidissement ?" }
+      ],
+      "questions": ["Voyant de pression d'huile déjà allumé ?"],
+      "sources": [], "fiabilite": "a_verifier", "statut": "brouillon", "origine": "base"
+    },
+    {
+      "id": "psa-1.2-puretech", "libelle": "PSA 1.2 PureTech (EB2)", "marque": "peugeot|citroen|ds|opel", "motorisation": "1[.,]2.*(puretech|thp|vti)|puretech", "code_moteur": "EB2|HN|HM", "energie": "essence",
+      "distribution": { "organe": "courroie_huile", "intervalle_km": 100000, "intervalle_ans": 6, "cout_min": 700, "cout_max": 1400, "note": "Courroie dans l'huile, intervalle abaissé par le constructeur selon la presse spécialisée ; dépend de l'année. À vérifier sur le carnet." },
+      "points": [
+        { "titre": "Usure prématurée de la courroie", "detail": "Point de vigilance connu sur ce moteur : la courroie se dégrade et ses débris bouchent la crépine.", "organe": "distribution", "cout_min": 700, "cout_max": 4000, "question": "Distribution faite ? Facture ? Contrôle de la courroie déjà fait ?" },
+        { "titre": "Consommation d'huile", "detail": "Rajouts d'huile entre deux vidanges signalés sur ce moteur.", "organe": "moteur", "cout_min": 0, "cout_max": 3000, "question": "Avez-vous dû rajouter de l'huile entre deux vidanges ?" }
+      ],
+      "questions": [], "sources": [], "fiabilite": "a_verifier", "statut": "brouillon", "origine": "base"
+    },
+    {
+      "id": "psa-1.6-hdi", "libelle": "PSA / Ford 1.6 HDi - TDCi (DV6)", "marque": "peugeot|citroen|ds|ford|mini|volvo|mazda|toyota", "motorisation": "1[.,]6.*(hdi|e-hdi|bluehdi|tdci|d4d)|(hdi|tdci).*1[.,]6", "code_moteur": "DV6|9H|BH|T1|XW", "energie": "diesel",
+      "distribution": { "organe": "courroie", "intervalle_km": 180000, "intervalle_ans": 10, "cout_min": 450, "cout_max": 850, "note": "Intervalle couramment cité pour le DV6, plus court sur les premières années. Non vérifié." },
+      "points": [
+        { "titre": "Turbo et encrassement", "detail": "Turbo sensible à la qualité de l'huile et à l'encrassement (crépine d'aspiration).", "organe": "turbo", "cout_min": 600, "cout_max": 1500, "question": "Sifflement ou perte de puissance ? Fumée à l'accélération ?" },
+        { "titre": "Injecteurs", "detail": "Fuites aux joints d'injecteurs (odeur, claquement) à gros kilométrage.", "organe": "injection", "cout_min": 200, "cout_max": 1200, "question": "Odeur de gazole ou claquement moteur ?" }
+      ],
+      "questions": ["Distribution faite ? À quel km ? Facture ?"], "sources": [], "fiabilite": "a_verifier", "statut": "brouillon", "origine": "base"
+    },
+    {
+      "id": "renault-1.5-dci", "libelle": "Renault 1.5 dCi (K9K)", "marque": "renault|dacia|nissan|mercedes", "motorisation": "1[.,]5.*(dci|blue ?dci)|(dci).*1[.,]5", "code_moteur": "K9K", "energie": "diesel",
+      "distribution": { "organe": "courroie", "intervalle_km": 120000, "intervalle_ans": 5, "cout_min": 400, "cout_max": 750, "note": "Intervalle couramment cité, allongé sur les versions récentes. Non vérifié." },
+      "points": [ { "titre": "Coussinets de bielle et injecteurs", "detail": "À gros kilométrage, vigilance sur les coussinets (bruit) et les injecteurs.", "organe": "moteur", "cout_min": 500, "cout_max": 3000, "question": "Bruit moteur au ralenti ? Vidanges régulières ?" } ],
+      "questions": ["Distribution faite ? À quel km ? Facture ?"], "sources": [], "fiabilite": "a_verifier", "statut": "brouillon", "origine": "base"
+    },
+    {
+      "id": "vw-ea211-tsi", "libelle": "VW 1.0 / 1.2 / 1.4 / 1.5 TSI (EA211)", "marque": "volkswagen|vw|audi|seat|skoda", "motorisation": "(1[.,]0|1[.,]2|1[.,]4|1[.,]5).*tsi|tsi.*(1[.,]0|1[.,]2|1[.,]4|1[.,]5)", "code_moteur": "CJZ|CHY|CZC|CZD|DAD|DPC|CHZ", "energie": "essence",
+      "distribution": { "organe": "courroie", "intervalle_km": 210000, "intervalle_ans": null, "cout_min": 500, "cout_max": 900, "note": "Contrôle à environ 210 000 km cité pour les EA211. Les 1.2/1.4 TSI d'avant ~2013 (EA111) sont à chaîne. Non vérifié." },
+      "points": [ { "titre": "Ancienne génération à chaîne (EA111)", "detail": "Avant ~2013, chaîne connue pour s'allonger : l'année et le code moteur décident.", "organe": "distribution", "cout_min": 800, "cout_max": 1500, "question": "Bruit de chaîne au démarrage à froid ?" } ],
+      "questions": [], "sources": [], "fiabilite": "a_verifier", "statut": "brouillon", "origine": "base"
+    },
+    {
+      "id": "vw-tdi", "libelle": "VW 1.6 / 2.0 TDI", "marque": "volkswagen|vw|audi|seat|skoda", "motorisation": "(1[.,]6|2[.,]0).*tdi|tdi.*(1[.,]6|2[.,]0)", "code_moteur": "", "energie": "diesel",
+      "distribution": { "organe": "courroie", "intervalle_km": 210000, "intervalle_ans": null, "cout_min": 550, "cout_max": 1000, "note": "Intervalle couramment cité pour les TDI récents, plus court sur les anciens. Non vérifié." },
+      "points": [ { "titre": "FAP et EGR", "detail": "Diesel : colmatage en usage urbain.", "organe": "fap", "cout_min": 300, "cout_max": 1500, "question": "Voyant FAP déjà allumé ?" } ],
+      "questions": ["Distribution faite ? À quel km ? Facture ?"], "sources": [], "fiabilite": "a_verifier", "statut": "brouillon", "origine": "base"
+    },
+    {
+      "id": "toyota-hybride", "libelle": "Toyota / Lexus hybride", "marque": "toyota|lexus", "motorisation": "hybrid|hybride|\\d{2,3}h\\b", "code_moteur": "", "energie": "hybride",
+      "distribution": { "organe": "chaine", "intervalle_km": null, "intervalle_ans": null, "cout_min": null, "cout_max": null, "note": "Moteurs hybrides Toyota à chaîne. Non vérifié." },
+      "points": [ { "titre": "Batterie hybride", "detail": "Coût élevé si elle est à remplacer ; contrôle annuel de la batterie hybride proposé par le réseau selon conditions.", "organe": "batterie", "cout_min": 1500, "cout_max": 3500, "question": "Batterie hybride contrôlée récemment ? Voyant ou message d'alerte ?" } ],
+      "questions": [], "sources": [], "fiabilite": "a_verifier", "statut": "brouillon", "origine": "base"
+    }
+  ]
+}
