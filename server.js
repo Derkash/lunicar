@@ -976,7 +976,9 @@ app.get('/api/marche/file', corsLbc, async (req, res) => {
         if (!p || p.length < 6 || vus.has(p)) continue;
         vus.add(p);
         const km = Number(String(x.kilometrage || '').replace(/\D/g, '')) || 0;
-        file.push({ ref: d.ref, plaque: p, km, vehicule: String(x.vehicule || '').slice(0, 60), annee: x.annee || '', energie: x.energie_siv || '', fait: dejaFait(marche.releve(p)) });
+        // Relevé neuf demandé (relance en lot : véhicules achetés, RDV à venir) : repasse dans Sonar au km exact.
+        const force = !!(analyseV.analyse(d.ref) || {}).relancer_sonar;
+        file.push({ ref: d.ref, plaque: p, km, vehicule: String(x.vehicule || '').slice(0, 60), annee: x.annee || '', energie: x.energie_siv || '', fait: !force && dejaFait(marche.releve(p)), recente: Date.now() - new Date(d.created_at) < 48 * 3600e3, force });
     }
     // Ordre : véhicules achetés / RDV d'abord (marges), puis offres et contacts, demandes en cours, archivées en dernier.
     const prio = { achetee: 0, rdv: 1, offre: 2, contactee: 3, nouvelle: 4 };
@@ -988,7 +990,8 @@ app.get('/api/marche/file', corsLbc, async (req, res) => {
     if (req.query.statut) { const st = String(req.query.statut); const sel = file.filter(f => (parRef.get(f.ref) || {}).statut === st); if (!req.query.grille) return res.json(sel); file.splice(0, file.length, ...sel); }
     // ?grille=1 : plaques avec un prix Sonar mais sans courbe prix / km (moins de 3 points) ni versions.
     if (req.query.grille) return res.json(file.filter(f => { const r = marche.releve(f.plaque); return r && r.moyenne && ((r.points || []).length < 3 || !(r.variantes || []).length); }));
-    res.json(req.query.tout ? file : file.filter(f => !f.fait));
+    // Par défaut : les demandes de moins de 48 h pas encore relevées, plus les relevés neufs demandés. Les anciennes ne repassent plus.
+    res.json(req.query.tout ? file : file.filter(f => f.force || (!f.fait && f.recente)));
 });
 // Le script de collecte lui-même (tools/sonar-collecte.js), rechargé par l'onglet Leboncoin après chaque amélioration.
 app.get('/api/marche/script', corsLbc, (req, res) => res.type('text/plain').send(fs.readFileSync(path.join(__dirname, 'tools', 'sonar-collecte.js'), 'utf8')));
@@ -996,6 +999,8 @@ app.post('/api/marche/releve', corsLbc, express.json({ limit: '200kb' }), async 
     try {
         const r = marche.enregistrer(req.body || {});
         res.json({ ok: true, plaque: r.plaque, total: marche.tous().length });
+        // Relevé neuf reçu : la demande relancée (et les autres de la même plaque) peut passer à l'analyse approfondie.
+        if (!req.body.grille && r.plaque) for (const d of await store.listerDemandes()) if (marche.plaqueCle((d.data || {}).plaque) === r.plaque && (analyseV.analyse(d.ref) || {}).relancer_sonar) analyseV.majAnalyse(d.ref, { relancer_sonar: null });
         // Relevé principal : la finition / motorisation se remplit (Sonar si sûr, sinon recherche sur les sites),
         // puis la notification de la demande part si elle attendait son estimation (plus de 2e notification).
         if (!req.body.grille && r.ref) {

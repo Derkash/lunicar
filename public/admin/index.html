@@ -5405,15 +5405,24 @@ a.lbc-badge { text-decoration: none; }
         const o = c.offre, m = c.marche || {}, A = m.annonces, av = c.annonce_vendeur, T = c.textes || {}, fm = c.fiche_moteur;
         const etat = c.etat === 'terminee' ? `analysée par le Mac mini le ${date(c.analyse_le)}` : c.etat === 'en_cours' ? 'analyse en cours sur le Mac mini…' : c.etat === 'a_refaire' ? 'analyse relancée, en attente du Mac mini' : 'pas encore analysée par le Mac mini (marché Sonar seul)';
         const nb = v => Number(v || 0).toLocaleString('fr-FR');
+        // Véhicule acheté ou RDV à venir : le prix « Très bonne affaire » exact de Leboncoin (et le meilleur prix au RDV).
+        const tb = c.tba, achetee = d.statut === 'achetee', rdvP = (d.suivi || {}).rdv, rdvAv = rdvP && rdvP.statut === 'prevu' && String(rdvP.date || '') >= new Date().toISOString().slice(0, 10);
+        const blocTba = (achetee || rdvAv) && (tb || o) ? `<div class="av-offre">
+                ${tb ? `<div class="av-prix"><span>Prix d'annonce « Très bonne affaire »</span><b class="num">${eur(tb.prix_annonce)}</b><small>tranche Leboncoin ${eur(tb.min)} – ${eur(tb.max)} à ${nb(tb.km)} km${tb.source === 'sonar' ? (tb.exact ? ' · Sonar au km exact' : ' · Sonar recalé') : ' · estimé sur annonces'}</small></div>` : ''}
+                ${achetee && tb ? `<div><span>Marge à ce prix</span><b class="num">${tb.marge != null ? eur(tb.marge) : '—'}</b><small>${tb.achat ? 'acheté ' + eur(tb.achat) + ' · frais ' + eur(tb.frais) : 'prix d\'achat non saisi'}</small></div>` : ''}
+                ${rdvAv && o ? `<div><span>Meilleur prix au RDV ${esc(String(rdvP.date || '').slice(8, 10) + '/' + String(rdvP.date || '').slice(5, 7))}</span><b class="num">${eur(o.fourchette.min)}</b><small>ouvrir à ce prix · plafond ${eur(o.offre)}${tb ? ' · marge au plafond ' + eur(tb.prix_annonce - o.offre - tb.frais) : ''}</small></div>` : ''}
+            </div>
+            ${tb ? `<table class="av-tab">${tb.tranches.map(t => `<tr><td>${esc(t.libelle)}</td><td class="num">${eur(t.min)} – ${eur(t.max)}</td></tr>`).join('')}</table>` : ''}` : '';
         return `<section class="sec av">
-            <h3>Avant d'appeler <small>${esc(etat)}</small></h3>
-            ${o ? `<div class="av-offre">
+            <h3>${achetee ? 'Revente' : 'Avant d\'appeler'} <small>${esc(etat)}</small></h3>
+            ${blocTba}
+            ${o && !achetee ? `<div class="av-offre">
                 <div class="av-prix"><span>Offre conseillée</span><b class="num">${eur(o.offre)}</b><small>fourchette ${eur(o.fourchette.min)} – ${eur(o.fourchette.max)}</small></div>
                 <div><span>Confiance</span><b>${esc(c.confiance.niveau)}</b><small>${c.confiance.score}/100</small></div>
                 <div><span>Marché retenu</span><b class="num">${eur(o.prix_marche)}</b><small>${o.prix_particuliers ? 'part. ' + eur(o.prix_particuliers) : ''}${o.prix_pros ? ' · pros ' + eur(o.prix_pros) : ''}&nbsp;</small></div>
                 <div><span>Il demande</span><b class="num">${o.prix_souhaite ? eur(o.prix_souhaite) : '—'}</b><small>${o.verdict ? esc(AV_VERDICT[o.verdict]) : '&nbsp;'}${o.annonce ? ' · ' + esc(o.annonce.lecture) : ''}</small></div>
             </div>
-            ${!o.envoyer_sans_relecture ? `<p class="mk-verdict mk-o"><b>À relire avant d'envoyer une fourchette</b> · ${c.confiance.niveau === 'insuffisante' ? 'données insuffisantes' : o.au_plancher ? 'frais estimés au-dessus de la valeur : au cas par cas' : 'point bloquant (financement)'}</p>` : ''}` : `<p class="sub">${esc((c.avertissements || [])[0] || 'Pas d\'offre calculable')}</p>`}
+            ${!o.envoyer_sans_relecture ? `<p class="mk-verdict mk-o"><b>À relire avant d'envoyer une fourchette</b> · ${c.confiance.niveau === 'insuffisante' ? 'données insuffisantes' : o.au_plancher ? 'frais estimés au-dessus de la valeur : au cas par cas' : 'point bloquant (financement)'}</p>` : ''}` : achetee ? '' : `<p class="sub">${esc((c.avertissements || [])[0] || 'Pas d\'offre calculable')}</p>`}
             ${(c.questions || []).length ? `<h4 style="margin:16px 0 0">Questions à poser, dans l'ordre</h4><ol class="av-q">${c.questions.slice(0, 9).map(q => `<li><b>${esc(q.texte)}</b><small>${esc(q.pourquoi)}</small></li>`).join('')}</ol>` : ''}
             ${av ? `<div class="av-lbc">
                 <p><b>Son annonce Leboncoin ${av.niveau === 'confirmee' ? '(confirmée)' : av.niveau === 'sure' ? '(très probable)' : '(possible)'}</b> · ${eur(av.annonce.prix)}${av.annonce.ancien_prix > av.annonce.prix ? ` (baissée, avant ${eur(av.annonce.ancien_prix)})` : ''} · en ligne depuis ${av.annonce.jours} j · ${nb(av.annonce.km)} km · ${esc(av.annonce.ville || '')}${av.annonce.photos ? ' · ' + av.annonce.photos + ' photos' : ''}</p>
