@@ -967,6 +967,7 @@ app.options('/api/marche/*', corsLbc);
 const REPONSES_DEFINITIVES = ['plaque inconnue de Sonar', 'aucune version proposée', 'ni prix Sonar ni annonces comparables'];
 const dejaFait = r => !!r && (!r.erreur || (REPONSES_DEFINITIVES.includes(r.erreur) && Date.now() - new Date(r.date) < 30 * 864e5));
 app.get('/api/marche/file', corsLbc, async (req, res) => {
+    require('./lib/macmini').toucher().catch(() => {});
     const vus = new Set(), file = [];
     for (const d of await store.listerDemandes()) {
         const x = d.data || {}, p = marche.plaqueCle(x.plaque);
@@ -1016,7 +1017,14 @@ app.post('/api/marche/alerte', corsLbc, (req, res) => {
 // Analyse approfondie par le Mac mini (lib/analyse-vehicule.js) : il vient chercher les demandes (file), fait ses
 // recherches Leboncoin et sa lecture des textes, puis renvoie le résultat ; la notification part à ce moment-là.
 const analyseV = require('./lib/analyse-vehicule');
+// Battement du Mac mini (lib/macmini.js) : état affiché dans l'admin, notification s'il se tait plus de 15 min.
+const macmini = require('./lib/macmini');
+macmini.planifier();
+app.post('/api/marche/battement', corsLbc, express.json({ limit: '20kb' }), async (req, res) => {
+    try { await macmini.battement(req.body || {}); res.json({ ok: true }); } catch (e) { res.status(500).json({ error: e.message }); }
+});
 app.get('/api/marche/analyse/file', corsLbc, async (req, res) => {
+    macmini.toucher().catch(() => {});
     try { res.json(await analyseV.file({ limite: Math.min(10, Number(req.query.limite) || 3) })); }
     catch (e) { res.status(500).json({ error: e.message }); }
 });

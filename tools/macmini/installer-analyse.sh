@@ -4,7 +4,8 @@
 # Copie veille.js + analyse.js dans ~/lunicar-sonar du Mac mini, installe le SDK Claude, vérifie la clé Claude
 # (~/lunicar-sonar/anthropic.txt, à créer une fois) et redémarre le service launchd fr.lunicar.sonar.
 set -euo pipefail
-HOTE="${MACMINI:-derka@192.168.1.184}"
+# Nom Bonjour du Mac mini : son adresse IP change selon la box (192.168.1.184 puis .59 le 23/11/2026).
+HOTE="${MACMINI:-derka@Mac-mini-de-Derka.local}"
 CLE_SSH="${MACMINI_CLE:-$HOME/.ssh/id_macmini}"
 ICI="$(cd "$(dirname "$0")" && pwd)"
 SSH=(ssh -i "$CLE_SSH" -o ConnectTimeout=8 "$HOTE")

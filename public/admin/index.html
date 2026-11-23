@@ -1475,6 +1475,20 @@ body.modal-ouvert { overflow: hidden; }
 .qr-plein svg { width: min(86vw, 70vh); height: auto; }
 .qr-plein p { margin: 18px 0 0; font-size: 1.15rem; font-weight: 600; color: #0C223B; }
 .qr-plein small { margin-top: 6px; color: #6B7180; }
+/* Voyant du Mac mini (lib/macmini.js) */
+.mac { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); color: #fff; border-radius: 999px; padding: 4px 11px 4px 9px; font-size: .78rem; font-weight: 600; white-space: nowrap; }
+.mac i { width: 9px; height: 9px; border-radius: 50%; background: #8C909A; box-shadow: 0 0 0 3px rgba(140,144,154,.25); }
+.mac.ok i { background: #3FB872; box-shadow: 0 0 0 3px rgba(63,184,114,.25); }
+.mac.retard i { background: #E59A3C; box-shadow: 0 0 0 3px rgba(229,154,60,.3); }
+.mac.hors_ligne i, .mac.jamais i, .mac.probleme i { background: #E2554A; box-shadow: 0 0 0 3px rgba(226,85,74,.3); }
+.mac-panneau { position: absolute; top: calc(var(--top) - 4px); left: 20px; z-index: 40; width: min(380px, calc(100vw - 32px)); background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: var(--r); box-shadow: 0 10px 30px rgba(14,35,64,.18); padding: 14px 16px; font-size: .88rem; }
+.mac-panneau h4 { margin: 0 0 6px; font-size: .95rem; }
+.mac-panneau dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; margin: 8px 0 0; }
+.mac-panneau dt { color: var(--ink-5); } .mac-panneau dd { margin: 0; overflow-wrap: anywhere; }
+.mac-panneau .pb { margin: 6px 0 0; padding: 8px 10px; border-radius: var(--r-s); background: var(--red-1); color: var(--red); }
+.mac-panneau .pb.av-pb { background: var(--orange-1); color: var(--orange); }
+.mac-panneau .bon { margin: 6px 0 0; padding: 8px 10px; border-radius: var(--r-s); background: var(--green-1); color: var(--green); }
+.top-in { position: relative; }
 /* Avant d'appeler : analyse approfondie du Mac mini (lib/analyse-vehicule.js) */
 .av { border-top: 3px solid var(--gold); }
 .av h3 small { font-weight: 400; color: var(--ink-5); font-size: .78rem; }
@@ -1552,6 +1566,8 @@ body.modal-ouvert { overflow: hidden; }
 <div id="app" hidden>
     <header class="top"><div class="top-in">
         <div class="brand"><img src="/images/logo-lunicar-blanc.webp" width="556" height="120" alt="LUNICAR"><small>ADMIN</small></div>
+        <button class="mac" id="macEtat" type="button" aria-expanded="false" aria-controls="macPanneau" title="État du Mac mini"><i></i><span>Mac mini</span></button>
+        <div class="mac-panneau" id="macPanneau" hidden></div>
         <nav class="tabs" id="tabs">
             <button data-tab="demandes" class="on"><svg><use href="#i-dem"/></svg>Demandes<span class="count" data-count="dem"></span></button>
             <button data-tab="planning"><svg><use href="#i-cal"/></svg>Rendez-vous</button>
@@ -2328,6 +2344,7 @@ body.modal-ouvert { overflow: hidden; }
     }
     // ---------------- Demandes
     async function charger() {
+        majMac();
         [demandes] = await Promise.all([api('/api/admin/demandes'), catalogue ? null : api('/api/admin/catalogue/marques').then(c => { catalogue = c; }).catch(() => {}),
             api('/api/admin/marche/analyses').then(r => { marcheA = r.analyses || {}; marcheR = r.reglages; }).catch(() => {}),
             api('/api/admin/analyses-vehicules').then(r => { analysesV = r || {}; }).catch(() => {})]);
@@ -5327,6 +5344,44 @@ body.modal-ouvert { overflow: hidden; }
         const ligne = mois.map((m, i) => `${i * (w + 3) + w / 2},${h - Math.round(m[1] / ma * (h - 4)) - 2}`).join(' ');
         return `<svg class="mk-spark" viewBox="0 0 ${mois.length * (w + 3)} ${h}" preserveAspectRatio="none" role="img" aria-label="Visites et annonces sur 12 mois">${barres}<polyline points="${ligne}" class="mk-a"/></svg>`;
     }
+
+    // ---------------- Voyant du Mac mini (lib/macmini.js) : vert = signal il y a moins de 3 min et tout fonctionne.
+    let macStatut = null;
+    const MAC_LIB = { ok: 'Connecté', retard: 'Signal en retard', hors_ligne: 'Hors ligne', jamais: 'Jamais vu' };
+    async function majMac() {
+        try { macStatut = await api('/api/admin/macmini'); } catch (e) { return; }
+        const b = $('#macEtat'); if (!b) return;
+        const pb = macStatut.problemes, cls = macStatut.niveau !== 'ok' ? macStatut.niveau : pb.some(p => /Leboncoin déconnecté|Chrome/.test(p)) ? 'probleme' : pb.length ? 'retard' : 'ok';
+        b.className = 'mac ' + cls;
+        b.title = 'Mac mini : ' + (MAC_LIB[macStatut.niveau] || macStatut.niveau) + (macStatut.problemes.length ? ' · ' + macStatut.problemes.join(' · ') : '');
+        if (!$('#macPanneau').hidden) rendreMac();
+    }
+    function rendreMac() {
+        const m = macStatut, i = (m && m.info) || {};
+        if (!m) { $('#macPanneau').innerHTML = '<p class="sub">Chargement…</p>'; return; }
+        const age = m.age_s == null ? 'jamais' : m.age_s < 90 ? `il y a ${m.age_s} s` : `il y a ${Math.round(m.age_s / 60)} min`;
+        $('#macPanneau').innerHTML = `<h4>Mac mini · ${esc(MAC_LIB[m.niveau] || m.niveau)}</h4>
+            ${m.problemes.length ? m.problemes.map(p => `<p class="${m.niveau === 'ok' && !/Leboncoin déconnecté|Chrome/.test(p) ? 'pb av-pb' : 'pb'}">${esc(p)}</p>`).join('') : '<p class="bon">Tout fonctionne : Sonar, recherches Leboncoin et analyse des demandes.</p>'}
+            <dl>
+                <dt>Dernier signal</dt><dd>${esc(age)}${m.dernier ? ' · ' + esc(date(m.dernier)) : ''}</dd>
+                <dt>Leboncoin</dt><dd>${esc({ connecte: 'connecté (compte pro)', deconnecte: 'déconnecté', inconnu: 'inconnu' }[i.lbc] || '—')}</dd>
+                <dt>Collecte Sonar</dt><dd>${esc(i.collecte || '—')}</dd>
+                <dt>Analyse</dt><dd>${i.analyse ? 'installée' : 'non installée'}${i.analyse ? (i.cle_claude ? ' · clé Claude OK' : ' · sans clé Claude') : ''}</dd>
+                ${i.derniere_analyse ? `<dt>Dernière analyse</dt><dd>${esc(i.derniere_analyse)}</dd>` : ''}
+                <dt>En attente</dt><dd>${m.notifications_en_attente ? `${m.notifications_en_attente} demande${m.notifications_en_attente > 1 ? 's attendent leur' : ' attend son'} analyse` : 'aucune demande en attente'}</dd>
+                ${i.derniere_erreur ? `<dt>Dernière erreur</dt><dd>${esc(i.derniere_erreur)}${i.derniere_erreur_le ? ' · ' + esc(date(i.derniere_erreur_le)) : ''}</dd>` : ''}
+                <dt>Démarré</dt><dd>${i.depuis ? esc(date(i.depuis)) : '—'}${i.version ? ' · version ' + esc(i.version) : ''}</dd>
+            </dl>`;
+    }
+    $('#macEtat').addEventListener('click', e => {
+        e.stopPropagation();
+        const p = $('#macPanneau'); p.hidden = !p.hidden; $('#macEtat').setAttribute('aria-expanded', String(!p.hidden));
+        if (!p.hidden) { rendreMac(); majMac(); }
+    });
+    document.addEventListener('click', e => { const p = $('#macPanneau'); if (p && !p.hidden && !e.target.closest('#macPanneau')) { p.hidden = true; $('#macEtat').setAttribute('aria-expanded', 'false'); } });
+    setInterval(() => { if (token && document.visibilityState === 'visible') majMac(); }, 60000);
+    document.addEventListener('visibilitychange', () => { if (token && document.visibilityState === 'visible') majMac(); });
+
     // ---------------- Avant d'appeler : analyse approfondie du Mac mini (lib/analyse-vehicule.js)
     const badgeLbc = ref => { const a = (analysesV[ref] || {}).annonce; return a ? `<span class="lbc-badge ${esc(a.niveau)}" title="Annonce Leboncoin ${a.niveau === 'probable' ? 'peut-être ' : ''}du vendeur : ${eur(a.prix)}, en ligne depuis ${a.jours} j">LBC${a.niveau === 'probable' ? ' ?' : ''}</span>` : ''; };
     const AV_NIV = { rouge: 'Risque fort', orange: 'À vérifier', vert: 'OK' };

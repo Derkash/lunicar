@@ -57,8 +57,17 @@ async function evaluer(s, expr) {
 
 // ---------------------------------------------------------------- Boucle
 let pauseJusqua = 0, dernierEtat = '';
+// État envoyé à lunicar.fr à chaque tour (voyant « Mac mini » de l'admin, alerte s'il se tait).
+const VERSION = '2026-11-23';
+const etatMac = { lbc: 'inconnu', chrome: false, collecte: '', derniere_erreur: '', derniere_erreur_le: '', derniere_analyse: '', depuis: new Date().toISOString(), machine: require('os').hostname() };
+async function battement() {
+    let cleClaude = false;
+    try { cleClaude = !!(process.env.ANTHROPIC_API_KEY || fs.readFileSync(path.join(DIR, 'anthropic.txt'), 'utf8').trim()); } catch (e) { /* pas de clé */ }
+    try { await fetch(API + '/battement', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Cle': CLE }, body: JSON.stringify({ ...etatMac, analyse: !!analyse, cle_claude: cleClaude, version: VERSION }), signal: AbortSignal.timeout(10000) }); } catch (e) { /* réseau : le silence sera remarqué côté serveur */ }
+}
 async function tour() {
     const t = await assurerChrome();
+    etatMac.chrome = true;
     let page = t.find(x => x.type === 'page' && /leboncoin\.fr/.test(x.url)) || t.find(x => x.type === 'page');
     if (!page) { await fetch(`http://127.0.0.1:${PORT}/json/new?${encodeURIComponent(SONAR)}`, { method: 'PUT' }); await pause(5000); return; }
     const s = await session(page.webSocketDebuggerUrl);
@@ -67,7 +76,7 @@ async function tour() {
         if (!/leboncoin\.fr\/(compte\/pro\/donnees-auto|recherche)/.test(href)) {
             await s.appel('Page.navigate', { url: SONAR }); await pause(8000);
             href = await evaluer(s, 'location.href');
-            if (!/leboncoin\.fr\/compte\/pro\/donnees-auto/.test(href)) return alerte('deconnecte', 'Leboncoin a déconnecté le Mac mini : reconnectez le compte pro dans le Chrome « Sonar » du Mac mini.');
+            if (!/leboncoin\.fr\/compte\/pro\/donnees-auto/.test(href)) { etatMac.lbc = 'deconnecte'; return alerte('deconnecte', 'Leboncoin a déconnecté le Mac mini : reconnectez le compte pro dans le Chrome « Sonar » du Mac mini.'); }
         }
         // Script de collecte présent ? (il disparaît si la page a été rechargée)
         const charge = await evaluer(s, `!!(window.__collecte && window.__collecte.lancer && window.__collecte.lbcLancer && window.__CLE)`);
@@ -75,7 +84,9 @@ async function tour() {
             await evaluer(s, `(async () => { window.__CLE = ${JSON.stringify(CLE)}; const r = await fetch(${JSON.stringify(API + '/script')}, { headers: { 'X-Cle': window.__CLE } }); if (!r.ok) throw new Error('script ' + r.status); (0, eval)(await r.text()); return true; })()`);
             log('script de collecte chargé');
         }
+        etatMac.lbc = 'connecte';
         const E = await evaluer(s, 'window.__collecte.etat()');
+        etatMac.collecte = E.en_cours ? `relevé Sonar en cours (${E.reste} restantes)` : E.dernier ? `dernier relevé : ${E.dernier}` : 'en attente';
         const etat = JSON.stringify(E);
         if (etat !== dernierEtat) { log('état', etat); dernierEtat = etat; }
         if (E.en_cours) return;
@@ -93,7 +104,7 @@ async function tour() {
         // Plus rien à relever dans Sonar : analyse approfondie des demandes (recherches Leboncoin, textes, fiche moteur).
         // La notification de la demande ne part qu'à la fin de cette analyse (lib/notif-demande.js).
         if (analyse && (await evaluer(s, 'typeof window.__collecte.lbcLancer')) === 'function') {
-            const n = await analyse.tour({ evaluer: expr => evaluer(s, expr), API, CLE, log });
+            const n = await analyse.tour({ evaluer: expr => evaluer(s, expr), API, CLE, log: (...a) => { log(...a); if (/^analyse /.test(String(a[0]))) etatMac.derniere_analyse = `${new Date().toISOString().slice(11, 16)} UTC · ${String(a[0]).slice(8, 120)}`; } });
             if (n) await s.appel('Page.navigate', { url: SONAR });   // retour sur Sonar pour la prochaine demande
         }
     } finally { s.fermer(); }
@@ -103,8 +114,10 @@ async function tour() {
     log('démarrage du collecteur Sonar');
     let echecs = 0;
     for (;;) {
+        await battement();
         try { await tour(); echecs = 0; }
-        catch (e) { echecs++; log('erreur', e.message); if (echecs === 5) await alerte('panne', `Collecteur Sonar en échec : ${e.message}`); }
+        catch (e) { echecs++; log('erreur', e.message); etatMac.derniere_erreur = e.message; etatMac.derniere_erreur_le = new Date().toISOString(); if (/Chrome ne répond/.test(e.message)) etatMac.chrome = false; if (echecs === 5) await alerte('panne', `Collecteur Sonar en échec : ${e.message}`); }
+        await battement();
         await pause(60000);
     }
 })();
