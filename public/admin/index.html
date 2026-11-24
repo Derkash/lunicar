@@ -3244,7 +3244,8 @@ a.lbc-badge { text-decoration: none; }
         const d = derLbc(an), j = joursDepuis(an[1].publiee) || 1, contacts = d.messages + d.appels;
         const vj = d.vues / j, fav = d.vues ? d.favoris / d.vues * 100 : 0, conv = d.vues ? contacts / d.vues * 100 : 0;
         let signal, ton;
-        if (d.vues < 60 && vj < 6) { signal = 'Peu vue : elle ne sort pas dans les recherches (titre, photos, remontée, prix d\'appel).'; ton = 'o'; }
+        if (j < 5 && !contacts) { signal = `En ligne depuis ${j} j : trop tôt pour juger, regarder à J+7.`; ton = 'o'; }
+        else if (d.vues < 60 && vj < 6) { signal = 'Peu vue : elle ne sort pas dans les recherches (titre, photos, remontée, prix d\'appel).'; ton = 'o'; }
         else if (!contacts) { signal = 'Vue mais aucun contact : le prix ou l\'annonce bloque.'; ton = 'r'; }
         else if (conv >= 2.5 || fav >= 9 || contacts / j * 7 >= 5) { signal = `Forte demande (${Math.round(contacts / j * 7 * 10) / 10} contacts/semaine) : ne pas baisser, tenir le prix et rappeler chaque appel.`; ton = 'v'; }
         else if (conv < 1.2) { signal = 'Intérêt faible pour le nombre de vues : regarder le prix face aux concurrentes.'; ton = 'o'; }
