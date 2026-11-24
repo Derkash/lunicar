@@ -3212,6 +3212,7 @@ a.lbc-badge { text-decoration: none; }
             <select class="in" id="vStatut"${v.statut === 'vendu' ? ' disabled title="Véhicule vendu : statut définitif"' : ''}>${Object.entries(compta.statuts).filter(([k]) => statutPossible(v.statut, k)).map(([k, l]) => `<option value="${k}"${k === v.statut ? ' selected' : ''}>${esc(l)}</option>`).join('')}</select>
         </div>
         <div class="sh-body">
+            <div id="vAnalyse"></div>
             <div id="vSonar"></div>
             ${pros || (v.statut === 'perdu' && r.date) ? `<section class="sec rdv-bloc"><h3>${pros ? 'Rendez-vous pris' : 'Rendez-vous sans suite'}</h3>
                 <div class="rdv-quand"><b>${r.date ? libJour(r.date) : ''}</b><span>${r.heure || ''} · ${esc(AVEC[r.avec] || '')}</span></div>
@@ -3250,6 +3251,13 @@ a.lbc-badge { text-decoration: none; }
             </section>
             <div class="danger">${v.ref ? `<button class="btn" id="vDemande">Voir la demande ${esc(v.ref)}</button>` : ''}${ORDRE_ACHETE.includes(v.statut) ? `<button class="btn btn-d" id="vAnnulAchat">${v.statut === 'vendu' ? 'Annuler la vente (erreur)' : 'Annuler l\'achat (erreur)'}</button>` : ''}<button class="btn btn-d" id="vSuppr">Supprimer le véhicule</button></div>
         </div>`;
+        // Analyse complète du Mac mini (Très bonne affaire, voitures concurrentes, risques, fiche moteur), marge sur le coût engagé à jour.
+        if (v.ref) Promise.all([api('/api/admin/demandes/' + v.ref), api('/api/admin/demandes/' + v.ref + '/analyse')]).then(([d, c]) => {
+            analyseD[v.ref] = c; analyseCharge[v.ref] = true;
+            const dd = { ...d, statut: ORDRE_ACHETE.includes(v.statut) ? 'achetee' : d.statut };
+            window.__rendreAnalyseV = () => { const z = $('#vAnalyse'); if (z) z.innerHTML = blocAnalyse(dd, { cout: ORDRE_ACHETE.includes(v.statut) ? Math.round((v.bilan || {}).cout || 0) : 0 }); };
+            window.__rendreAnalyseV();
+        }).catch(() => {});
         // Analyse Sonar de la demande d'origine, avec le coût engagé à jour (achat + dépenses saisies).
         if (v.ref) api('/api/admin/demandes/' + v.ref).then(d => {
             const z = d && d.suivi && d.suivi.sonar; if (!z || !$('#vSonar')) return;
@@ -5398,7 +5406,7 @@ a.lbc-badge { text-decoration: none; }
         catch (e) { analyseD[ref] = { erreur: e.message }; }
         if (courant && courant.ref === ref && !$('#sheet').hidden) fiche();
     }
-    function blocAnalyse(d) {
+    function blocAnalyse(d, opt = {}) {
         const c = analyseD[d.ref];
         if (!c) { chargerAnalyse(d.ref); return `<section class="sec av"><h3>Avant d'appeler</h3><p class="sub"><span class="spin"></span> Chargement de l'analyse…</p></section>`; }
         if (c.erreur) return `<section class="sec av"><h3>Avant d'appeler</h3><p class="sub">Analyse indisponible : ${esc(c.erreur)}</p></section>`;
@@ -5409,11 +5417,11 @@ a.lbc-badge { text-decoration: none; }
         const tb = c.tba, achetee = d.statut === 'achetee', rdvP = (d.suivi || {}).rdv, rdvAv = rdvP && rdvP.statut === 'prevu' && String(rdvP.date || '') >= new Date().toISOString().slice(0, 10);
         const blocTba = (achetee || rdvAv) && (tb || o) ? `<div class="av-offre">
                 ${tb ? `<div class="av-prix"><span>Prix d'annonce « Très bonne affaire »</span><b class="num">${eur(tb.prix_annonce)}</b><small>tranche Leboncoin ${eur(tb.min)} – ${eur(tb.max)} à ${nb(tb.km)} km${tb.source === 'sonar' ? (tb.exact ? ' · Sonar au km exact' : ' · Sonar recalé') : ' · estimé sur annonces'}</small></div>` : ''}
-                ${achetee && tb ? `<div><span>Marge à ce prix</span><b class="num">${tb.marge != null ? eur(tb.marge) : '—'}</b><small>${tb.achat ? 'acheté ' + eur(tb.achat) + ' · frais ' + eur(tb.frais) : 'prix d\'achat non saisi'}</small></div>` : ''}
+                ${achetee && tb ? (opt.cout ? `<div><span>Marge à ce prix</span><b class="num">${eur(tb.prix_annonce - opt.cout - tb.frais)}</b><small>coût engagé ${eur(opt.cout)} (achat + dépenses) · frais de vente ${eur(tb.frais)}</small></div>` : `<div><span>Marge à ce prix</span><b class="num">${tb.marge != null ? eur(tb.marge) : '—'}</b><small>${tb.achat ? 'acheté ' + eur(tb.achat) + ' · frais ' + eur(tb.frais) : 'prix d\'achat non saisi'}</small></div>`) : ''}
                 ${rdvAv && o ? `<div><span>Meilleur prix au RDV ${esc(String(rdvP.date || '').slice(8, 10) + '/' + String(rdvP.date || '').slice(5, 7))}</span><b class="num">${eur(o.fourchette.min)}</b><small>ouvrir à ce prix · plafond ${eur(o.offre)}${tb ? ' · marge au plafond ' + eur(tb.prix_annonce - o.offre - tb.frais) : ''}</small></div>` : ''}
             </div>
             ${tb ? `<table class="av-tab">${tb.tranches.map(t => `<tr><td>${esc(t.libelle)}</td><td class="num">${eur(t.min)} – ${eur(t.max)}</td></tr>`).join('')}</table>` : ''}` : '';
-        return `<section class="sec av">
+        return `<section class="sec av" data-an-ref="${esc(d.ref)}">
             <h3>${achetee ? 'Revente' : 'Avant d\'appeler'} <small>${esc(etat)}</small></h3>
             ${blocTba}
             ${o && !achetee ? `<div class="av-offre">
@@ -5423,7 +5431,7 @@ a.lbc-badge { text-decoration: none; }
                 <div><span>Il demande</span><b class="num">${o.prix_souhaite ? eur(o.prix_souhaite) : '—'}</b><small>${o.verdict ? esc(AV_VERDICT[o.verdict]) : '&nbsp;'}${o.annonce ? ' · ' + esc(o.annonce.lecture) : ''}</small></div>
             </div>
             ${!o.envoyer_sans_relecture ? `<p class="mk-verdict mk-o"><b>À relire avant d'envoyer une fourchette</b> · ${c.confiance.niveau === 'insuffisante' ? 'données insuffisantes' : o.au_plancher ? 'frais estimés au-dessus de la valeur : au cas par cas' : 'point bloquant (financement)'}</p>` : ''}` : achetee ? '' : `<p class="sub">${esc((c.avertissements || [])[0] || 'Pas d\'offre calculable')}</p>`}
-            ${(c.questions || []).length ? `<h4 style="margin:16px 0 0">Questions à poser, dans l'ordre</h4><ol class="av-q">${c.questions.slice(0, 9).map(q => `<li><b>${esc(q.texte)}</b><small>${esc(q.pourquoi)}</small></li>`).join('')}</ol>` : ''}
+            ${(c.questions || []).length && !achetee ? `<h4 style="margin:16px 0 0">Questions à poser, dans l'ordre</h4><ol class="av-q">${c.questions.slice(0, 9).map(q => `<li><b>${esc(q.texte)}</b><small>${esc(q.pourquoi)}</small></li>`).join('')}</ol>` : ''}
             ${av ? `<div class="av-lbc">
                 <p><b>Son annonce Leboncoin ${av.niveau === 'confirmee' ? '(confirmée)' : av.niveau === 'sure' ? '(très probable)' : '(possible)'}</b> · ${eur(av.annonce.prix)}${av.annonce.ancien_prix > av.annonce.prix ? ` (baissée, avant ${eur(av.annonce.ancien_prix)})` : ''} · en ligne depuis ${av.annonce.jours} j · ${nb(av.annonce.km)} km · ${esc(av.annonce.ville || '')}${av.annonce.photos ? ' · ' + av.annonce.photos + ' photos' : ''}</p>
                 <p class="sub">${esc(av.preuves.join(' · '))}${av.ecarts.length ? ' · <b>Écarts :</b> ' + esc(av.ecarts.join(' · ')) : ''}</p>
@@ -5434,7 +5442,7 @@ a.lbc-badge { text-decoration: none; }
             ${T.resume || (T.contradictions || []).length || (T.faits || []).length ? `<h4 style="margin:16px 0 0">Ce qu'il a écrit</h4>${T.resume ? `<p class="sub">${esc(T.resume)}</p>` : ''}
                 ${(T.contradictions || []).map(x => `<p class="mk-verdict mk-r"><b>Contradiction · ${esc(x.sujet)}</b> · réponse « ${esc(x.reponse)} », écrit « ${esc(x.citation)} »</p>`).join('')}
                 ${(T.faits || []).length ? `<table class="av-tab">${T.faits.map(f => `<tr><td>${esc(f.libelle)}${f.km ? ' · ' + nb(f.km) + ' km' : ''}${f.annee ? ' · ' + f.annee : ''}${f.facture ? ' · facture' : ''}<br><small class="sub">« ${esc(f.citation)} » (${esc(f.source)})</small></td></tr>`).join('')}</table>` : ''}` : T.erreur ? `<p class="sub">Textes non lus : ${esc(T.erreur)}</p>` : ''}
-            <details style="margin-top:14px"><summary><b>Marché</b> · ${(m.composantes || []).map(x => `${esc(x.source)} ${eur(x.prix)}`).join(' · ') || 'aucune donnée'}</summary>
+            <details style="margin-top:14px"${achetee ? ' open' : ''}><summary><b>Marché et voitures concurrentes</b> · ${(m.composantes || []).map(x => `${esc(x.source)} ${eur(x.prix)}`).join(' · ') || 'aucune donnée'}</summary>
                 ${(m.composantes || []).length ? `<table class="av-tab"><tr><th>Source</th><th class="num">Prix au km</th><th class="num">Poids</th></tr>${m.composantes.map(x => `<tr><td>${esc(x.source)}</td><td class="num">${eur(x.prix)}</td><td class="num">${x.poids} %</td></tr>`).join('')}<tr><td><b>Retenu</b></td><td class="num"><b>${eur(m.prix_retenu)}</b></td><td></td></tr></table>` : ''}
                 ${m.ecart_sonar_annonces != null ? `<p class="sub">Écart entre Sonar et nos annonces : ${m.ecart_sonar_annonces > 0 ? '+' : ''}${m.ecart_sonar_annonces} %</p>` : ''}
                 ${A ? `<p class="sub">${A.n} annonces retenues sur ${A.n + A.ecartees}${A.motifs_ecart.length ? ' (écartées : ' + esc(A.motifs_ecart.join(', ')) + ')' : ''} · ${A.part_pct} % de particuliers · en ligne depuis ${A.jours_median} j (médiane), ${A.anciennes_pct} % depuis plus de 5 semaines · ${A.baisses_pct} % ont baissé leur prix · dispersion ${A.dispersion != null ? Math.round(A.dispersion * 100) + ' %' : '—'}${A.pente_10000km != null ? ' · ' + (A.pente_ignoree ? 'pente non retenue (trop peu d\'annonces)' : `${eur(A.pente_10000km)} par 10 000 km`) : ''}</p>
@@ -5456,13 +5464,16 @@ a.lbc-badge { text-decoration: none; }
     }
     document.addEventListener('click', async e => {
         const b = e.target.closest('[data-an-act]');
-        if (!b || !courant) return;
-        const ref = courant.ref, act = b.dataset.anAct, id = b.dataset.anId;
+        const zone = b && b.closest('[data-an-ref]');
+        if (!b || (!courant && !zone)) return;
+        const ref = zone ? zone.dataset.anRef : courant.ref, act = b.dataset.anAct, id = b.dataset.anId;
+        // Page « Nos véhicules » : on redessine son bloc d'analyse (pas la fiche demande).
+        const surVehicule = !!b.closest('#vAnalyse'), redessiner = () => surVehicule ? (window.__rendreAnalyseV && window.__rendreAnalyseV()) : fiche();
         b.disabled = true;
         try {
-            if (act === 'relancer') { await api('/api/admin/demandes/' + ref + '/analyse/relancer', { method: 'POST' }); toast('Analyse relancée : le Mac mini la reprend au prochain tour'); await chargerAnalyse(ref, true); }
-            else if (act === 'annonce-oui' || act === 'annonce-non') { analyseD[ref] = await api('/api/admin/demandes/' + ref + '/analyse/annonce', { method: 'POST', body: JSON.stringify({ id, decision: act === 'annonce-oui' ? 'oui' : 'non' }) }); analysesV = await api('/api/admin/analyses-vehicules').catch(() => analysesV); fiche(); toast(act === 'annonce-oui' ? 'Annonce rattachée à la demande' : 'Annonce écartée'); }
-            else if (act === 'fiche-valider') { await api('/api/admin/fiches-moteur/' + encodeURIComponent(id), { method: 'PUT', body: JSON.stringify({ statut: 'valide' }) }); toast('Fiche moteur validée : elle entre dans le prix'); await chargerAnalyse(ref, true); }
+            if (act === 'relancer') { await api('/api/admin/demandes/' + ref + '/analyse/relancer', { method: 'POST' }); toast('Analyse relancée : le Mac mini la reprend au prochain tour'); await chargerAnalyse(ref, true); if (surVehicule) redessiner(); }
+            else if (act === 'annonce-oui' || act === 'annonce-non') { analyseD[ref] = await api('/api/admin/demandes/' + ref + '/analyse/annonce', { method: 'POST', body: JSON.stringify({ id, decision: act === 'annonce-oui' ? 'oui' : 'non' }) }); analysesV = await api('/api/admin/analyses-vehicules').catch(() => analysesV); redessiner(); toast(act === 'annonce-oui' ? 'Annonce rattachée à la demande' : 'Annonce écartée'); }
+            else if (act === 'fiche-valider') { await api('/api/admin/fiches-moteur/' + encodeURIComponent(id), { method: 'PUT', body: JSON.stringify({ statut: 'valide' }) }); toast('Fiche moteur validée : elle entre dans le prix'); await chargerAnalyse(ref, true); if (surVehicule) redessiner(); }
         } catch (err) { toast(err.message); b.disabled = false; }
     });
 
