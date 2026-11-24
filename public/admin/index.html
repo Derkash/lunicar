@@ -820,6 +820,29 @@ ul.plain li { margin: 3px 0; }
 .pill.vh-stock { background: var(--orange-1); color: var(--orange); }
 .pill.vh-preparation { background: var(--marine-1); color: var(--marine-6); }
 .pill.vh-en_vente { background: var(--gold-1); color: #7A5A12; }
+.vh-lbc { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px; font-size: .8rem; color: var(--ink-6); }
+.vh-lbc b { color: var(--ink-9, #0D2541); margin-right: 3px; }
+.vh-lbc .neg { color: var(--red); font-weight: 600; }
+.lbc-tot { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 12px 0 6px; }
+.lbc-tot div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px; text-align: center; }
+.lbc-tot b { display: block; font-size: 1.25rem; }
+.lbc-tot span { font-size: .75rem; color: var(--ink-6); }
+.lbc-liste { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 10px; margin-top: 10px; }
+.lbc-c { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; display: block; width: 100%; font: inherit; color: inherit; cursor: pointer; }
+.lbc-t { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.lbc-t b { font-size: .95rem; line-height: 1.25; }
+.lbc-t .num { font-weight: 700; white-space: nowrap; }
+.lbc-m { font-size: .76rem; color: var(--ink-6); margin-top: 3px; }
+.lbc-k { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 10px; }
+.lbc-k span { font-size: .72rem; color: var(--ink-6); display: flex; flex-direction: column; }
+.lbc-k b { font-size: 1.05rem; color: var(--ink-9, #0D2541); }
+.lbc-k small { font-size: .68rem; color: var(--ink-5, #8a8f98); }
+.lbc-c .mk-verdict { margin: 10px 0 0; font-size: .8rem; }
+.lbc-conseil { margin: 8px 0 0; font-size: .82rem; line-height: 1.4; }
+.lbc-a { margin: 6px 0 0; padding-left: 18px; font-size: .8rem; line-height: 1.4; }
+#vhSegs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+#vhSegs::-webkit-scrollbar { display: none; }
+.pill.vh-pret { background: var(--green-1, #E6F2EA); color: var(--green, #2F6B45); }
 .pill.vh-vendu { background: var(--green-1); color: var(--green); }
 .soldes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 14px; }
 .solde { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; box-shadow: var(--shadow); }
@@ -1660,8 +1683,8 @@ a.lbc-badge { text-decoration: none; }
         <section data-view="vehicules" hidden>
             <div class="page-h"><h1>Nos véhicules</h1><span id="vhSous"></span></div>
             <div class="kpis" id="vhKpis"></div>
+            <div class="toolbar"><div class="segs" id="vhSegs" style="margin:0;flex:1;min-width:0"></div><button class="btn btn-p" id="vhAjout" type="button">+ Ajouter un véhicule</button></div>
             <div id="vhPlan"></div>
-            <div class="toolbar"><div class="segs" id="vhSegs" style="margin:0;flex:1"></div><button class="btn btn-p" id="vhAjout" type="button">+ Ajouter un véhicule</button></div>
             <div class="vh-list" id="vhList"></div>
         </section>
 
@@ -3138,7 +3161,7 @@ a.lbc-badge { text-decoration: none; }
     });
 
     // ---------------- Compta : véhicules achetés et dépenses entre associés
-    let compta = null, vhSeg = 'actifs', depEdit = null;
+    let compta = null, vhSeg = 'en_vente', depEdit = null;
     const PAYCOURT = { abdoul: 'Abdoul-Khader', youssouf: 'Youssouf', societe: 'Société' };
     const euro = v => (Number(v) || 0).toLocaleString('fr-FR', { minimumFractionDigits: Number(v) % 1 ? 2 : 0, maximumFractionDigits: 2 }) + ' €';
     const signe = v => v == null ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') + euro(Math.abs(v));
@@ -3153,7 +3176,8 @@ a.lbc-badge { text-decoration: none; }
     // Liste des véhicules
     async function vueVehicules() {
         try { await chargerCompta(); } catch (e) { return toast(e.message); }
-        const V = compta.vehicules, prospects = V.filter(v => v.statut === 'prospect'), actifs = V.filter(v => ['stock', 'preparation', 'en_vente'].includes(v.statut));
+        try { await chargerParc(); } catch (e) { /* relevé Leboncoin indisponible : classement par statut seul */ }
+        const V = compta.vehicules, prospects = V.filter(v => v.statut === 'prospect'), actifs = V.filter(v => ['stock', 'preparation', 'pret', 'en_vente'].includes(v.statut));
         const vendus = V.filter(v => v.statut === 'vendu'), perdus = V.filter(v => v.statut === 'perdu');
         const immob = actifs.reduce((t, v) => t + v.bilan.cout, 0), ca = vendus.reduce((t, v) => t + (Number(v.prix_vente) || 0), 0);
         const marge = vendus.reduce((t, v) => t + (v.bilan.marge || 0), 0), fraisPerdus = perdus.reduce((t, v) => t + v.bilan.frais, 0);
@@ -3161,7 +3185,8 @@ a.lbc-badge { text-decoration: none; }
         // Marge prévue du stock : chaque voiture revendue au haut de « Très bonne affaire » (Leboncoin), frais par défaut compris.
         const prevueStock = actifs.reduce((t, v) => t + (v.bilan.marge_prevue || 0), 0), sansPrix = actifs.filter(v => v.bilan.marge_prevue == null).length;
         // Règle : l'onglet Véhicules ne montre QUE les voitures effectivement achetées (les RDV pris sont dans « Rendez-vous »).
-        if (!['actifs', 'vendus', 'tous'].includes(vhSeg)) vhSeg = 'actifs';
+        if (!SECTIONS_VH.some(([k]) => k === vhSeg) && vhSeg !== 'tous') vhSeg = 'en_vente';
+        const parSection = Object.fromEntries(SECTIONS_VH.map(([k]) => [k, []])); V.forEach(v => { const k = sectionVh(v); if (parSection[k]) parSection[k].push(v); });
         $('#vhKpis').innerHTML = [
             [actifs.length, 'en stock', `<span class="delta">${euro(immob)} immobilisés</span>`],
             [vendus.length, 'vendus', `<span class="delta">${euro(ca)} de CA</span>`],
@@ -3170,10 +3195,10 @@ a.lbc-badge { text-decoration: none; }
             [signe(marge + prevueStock), 'marge globale', `<span class="delta">réalisée + prévue</span>`, marge + prevueStock < 0 ? 'alerte' : '']
         ].map(([v, l, d, c]) => `<div class="kpi ${c || ''}"><b class="num">${v}</b><span>${l}</span>${d}</div>`).join('');
         $('#vhSous').textContent = `voitures effectivement achetées`;
-        chargerParc().then(() => { const z = $('#vhPlan'); if (z) z.innerHTML = blocPlan(actifs); }).catch(() => {});
-        $('#vhSegs').innerHTML = [['actifs', 'En stock', actifs.length], ['vendus', 'Vendus', vendus.length], ['tous', 'Tous', actifs.length + vendus.length]]
+        { const z = $('#vhPlan'); if (z) z.innerHTML = vhSeg === 'en_vente' ? blocAnalyseLbc(parSection.en_vente) + blocPlan(actifs) : ''; }
+        $('#vhSegs').innerHTML = [...SECTIONS_VH.map(([k, l]) => [k, l, parSection[k].length]), ['tous', 'Tous', actifs.length + vendus.length]]
             .map(([k, l, n]) => `<button class="seg${vhSeg === k ? ' on' : ''}" data-vhseg="${k}">${l}<b class="num">${n}</b></button>`).join('');
-        const liste = (vhSeg === 'vendus' ? vendus : vhSeg === 'tous' ? [...actifs, ...vendus] : actifs).slice();
+        const liste = (vhSeg === 'tous' ? [...actifs, ...vendus] : parSection[vhSeg] || []).slice();
         $('#vhList').innerHTML = liste.length ? liste.map(v => {
             const b = v.bilan, vendu = v.statut === 'vendu', pros = v.statut === 'prospect', r = v.rdv || {};
             if (pros) return `<button class="vh vh-pros" data-vh="${esc(v.id)}">
@@ -3183,10 +3208,68 @@ a.lbc-badge { text-decoration: none; }
             </button>`;
             return `<button class="vh" data-vh="${esc(v.id)}">
                 <div class="vh-t"><b>${badgeUtilRef(v.ref)}${esc(v.libelle || 'Véhicule')}</b>${v.plaque ? `<span class="mono">${esc(v.plaque)}</span>` : ''}</div>
-                <div class="vh-st"><span class="pill vh-${esc(v.statut)}">${esc(compta.statuts[v.statut] || v.statut)}</span>${b.jours != null ? `<small>${vendu ? `revendu en ${b.jours} j` : `J+${b.jours}`}</small>` : ''}</div>
+                <div class="vh-st">${pilleVh(v)}${b.jours != null ? `<small>${vendu ? `revendu en ${b.jours} j` : `J+${b.jours}`}</small>` : ''}</div>
+                ${statsLbcCarte(v)}
                 <div class="vh-c"><span>Coût de revient<b class="num">${euro(b.cout)}</b></span><span>${vendu ? 'Vendu' : b.vente_source === 'tba' ? 'Très bonne affaire' : 'Vente estimée'}<b class="num">${vendu ? euro(v.prix_vente) : b.vente_prevue ? euro(b.vente_prevue) : '—'}</b></span><span>${vendu ? 'Marge' : 'Marge prévue'}<b class="num ${(vendu ? b.marge : b.marge_prevue) < 0 ? 'neg' : 'pos'}">${signe(vendu ? b.marge : b.marge_prevue)}</b></span></div>
             </button>`;
-        }).join('') : `<div class="empty">${{ prospects: 'Aucun rendez-vous pris. Fixez-en un depuis la fiche d\'une demande : le véhicule arrive ici.', vendus: 'Aucun véhicule vendu pour l\'instant.', perdus: 'Aucun rendez-vous sans suite.', actifs: 'Aucun véhicule en stock.' }[vhSeg] || 'Aucun véhicule.'}</div>`;
+        }).join('') : `<div class="empty">${{ prospects: 'Aucun rendez-vous pris. Fixez-en un depuis la fiche d\'une demande : le véhicule arrive ici.', vendus: 'Aucun véhicule vendu pour l\'instant.', perdus: 'Aucun rendez-vous sans suite.', actifs: 'Aucun véhicule en stock.' }[vhSeg] || ({ achetes: 'Aucune voiture achetée en attente de récupération.', preparation: 'Aucune voiture en préparation.', prets: 'Aucune voiture prête à publier.', en_vente: 'Aucune annonce Leboncoin en ligne (selon le dernier relevé).' }[vhSeg]) || 'Aucun véhicule.'}</div>`;
+    }
+    // Sections de l'onglet Véhicules. « En vente » = une annonce Leboncoin ACTIVE (dernier relevé), quel que soit le statut saisi ;
+    // un véhicule « En vente » dont l'annonce a été retirée revient dans « Prêts ».
+    const SECTIONS_VH = [['achetes', 'Achetés'], ['preparation', 'En préparation'], ['prets', 'Prêts'], ['en_vente', 'En vente'], ['vendus', 'Vendus']];
+    const annonceEnLigne = vid => { const an = annonceParc(vid); return an && an[1].en_ligne ? an : null; };
+    function sectionVh(v) {
+        if (v.statut === 'vendu') return 'vendus';
+        if (!['stock', 'preparation', 'pret', 'en_vente'].includes(v.statut)) return null;
+        if (annonceEnLigne(v.id)) return 'en_vente';
+        if (v.statut === 'en_vente' || v.statut === 'pret') return 'prets';
+        return v.statut === 'preparation' ? 'preparation' : 'achetes';
+    }
+    function pilleVh(v) {
+        const k = sectionVh(v);
+        if (k === 'en_vente') return `<span class="pill vh-en_vente">En ligne sur Leboncoin</span>`;
+        if (k === 'prets' && v.statut === 'en_vente') return `<span class="pill vh-pret">Annonce retirée</span>`;
+        return `<span class="pill vh-${esc(v.statut)}">${esc(compta.statuts[v.statut] || v.statut)}</span>`;
+    }
+    const derLbc = an => { const s = (an && an[1].serie) || []; return s[s.length - 1] || null; };
+    const joursDepuis = iso => iso ? Math.max(1, Math.round((Date.parse(jourIso()) - Date.parse(String(iso).slice(0, 10))) / 864e5)) : null;
+    function statsLbcCarte(v) {
+        const an = annonceEnLigne(v.id), d = derLbc(an); if (!d) return '';
+        const contacts = (d.messages || 0) + (d.appels || 0);
+        return `<div class="vh-lbc"><span><b class="num">${d.vues}</b> vues</span><span><b class="num">${d.favoris}</b> favoris</span><span><b class="num">${d.messages}</b> messages</span><span><b class="num">${d.appels}</b> appels</span>${contacts ? '' : '<span class="neg">aucun contact</span>'}</div>`;
+    }
+    // Lecture d'une annonce : rythme (vues/jour), intérêt (favoris / 100 vues), conversion (contacts / 100 vues).
+    function lectureLbc(v, an) {
+        const d = derLbc(an), j = joursDepuis(an[1].publiee) || 1, contacts = d.messages + d.appels;
+        const vj = d.vues / j, fav = d.vues ? d.favoris / d.vues * 100 : 0, conv = d.vues ? contacts / d.vues * 100 : 0;
+        let signal, ton;
+        if (d.vues < 60 && vj < 6) { signal = 'Peu vue : elle ne sort pas dans les recherches (titre, photos, remontée, prix d\'appel).'; ton = 'o'; }
+        else if (!contacts) { signal = 'Vue mais aucun contact : le prix ou l\'annonce bloque.'; ton = 'r'; }
+        else if (conv >= 2.5 || fav >= 9) { signal = 'Forte demande : ne pas baisser, tenir le prix et filtrer les appels.'; ton = 'v'; }
+        else if (conv < 1.2) { signal = 'Intérêt faible pour le nombre de vues : regarder le prix face aux concurrentes.'; ton = 'o'; }
+        else { signal = 'Rythme normal.'; ton = 'v'; }
+        return { d, j, contacts, vj, fav, conv, signal, ton };
+    }
+    function blocAnalyseLbc(liste) {
+        const P = parcS || {};
+        if (!P.annonces_le) return `<section class="sec av"><h3>Analyse Leboncoin <small>aucun relevé de nos annonces pour l'instant</small></h3></section>`;
+        const lignes = liste.map(v => { const an = annonceEnLigne(v.id); return an ? { v, an, L: lectureLbc(v, an), st: (P.strategies || {})[v.id] } : null; }).filter(Boolean)
+            .sort((a, b) => b.L.contacts - a.L.contacts || b.L.d.vues - a.L.d.vues);
+        const tot = lignes.reduce((t, x) => ({ vues: t.vues + x.L.d.vues, fav: t.fav + x.L.d.favoris, msg: t.msg + x.L.d.messages, app: t.app + x.L.d.appels }), { vues: 0, fav: 0, msg: 0, app: 0 });
+        const F = (P.forfait || [])[0], opt = F ? F.options.filter(o => ['NEW_ADS', 'ADS_EDIT', 'SINGLE_BUMP_UP'].includes(o.code)) : [];
+        const pc = x => (Math.round(x * 10) / 10).toLocaleString('fr-FR') + ' %';
+        return `<section class="sec av lbc">
+            <h3>Analyse Leboncoin <small>relevé du ${date(P.annonces_le)} · ${lignes.length} annonce${lignes.length > 1 ? 's' : ''} en ligne</small></h3>
+            <div class="lbc-tot"><div><b class="num">${tot.vues}</b><span>vues</span></div><div><b class="num">${tot.fav}</b><span>favoris</span></div><div><b class="num">${tot.msg}</b><span>messages</span></div><div><b class="num">${tot.app}</b><span>appels</span></div></div>
+            ${opt.length ? `<p class="sub">Forfait : ${opt.map(o => `${esc(o.libelle)} <b>${Math.max(0, o.prevu - o.utilise)}</b> restant${o.prevu - o.utilise > 1 ? 's' : ''} sur ${o.prevu}`).join(' · ')}</p>` : ''}
+            <div class="lbc-liste">${lignes.map(({ v, an, L, st }) => `<button class="lbc-c" data-vh="${esc(v.id)}">
+                <div class="lbc-t"><b>${esc(v.libelle)}</b><span class="num">${eur(L.d.prix)}</span></div>
+                <div class="lbc-m">${esc(an[1].ref_yak || '')}${L.d.badge ? ' · ' + esc(L.d.badge) : ''} · en ligne depuis ${L.j} j${L.d.remontee ? ' · ' + esc(L.d.remontee) : ''}${L.d.qualite ? ' · annonce ' + esc(L.d.qualite.toLowerCase()) : ''}</div>
+                <div class="lbc-k"><span><b class="num">${L.d.vues}</b>vues<small>${Math.round(L.vj)} / jour</small></span><span><b class="num">${L.d.favoris}</b>favoris<small>${pc(L.fav)} des vues</small></span><span><b class="num">${L.d.messages}</b>messages</span><span><b class="num">${L.d.appels}</b>appels<small>${pc(L.conv)} de contact</small></span></div>
+                <p class="mk-verdict mk-${L.ton}">${esc(L.signal)}</p>
+                ${st ? `<p class="lbc-conseil"><b>Conseil${st.prix_conseille ? ' · prix ' + eur(st.prix_conseille) : ''} :</b> ${esc(st.synthese || '')}</p>${(st.actions || []).length ? `<ol class="lbc-a">${[...st.actions].sort((a, b) => (a.priorite || 9) - (b.priorite || 9)).slice(0, 3).map(a => `<li>${esc(a.titre)}${a.quand ? ' <small>· ' + esc(a.quand) + '</small>' : ''}</li>`).join('')}</ol>` : ''}` : ''}
+            </button>`).join('')}</div>
+        </section>`;
     }
     $('#vhSegs').addEventListener('click', e => { const b = e.target.closest('[data-vhseg]'); if (b) { vhSeg = b.dataset.vhseg; vueVehicules(); } });
     $('#vhList').addEventListener('click', e => { const b = e.target.closest('[data-vh]'); if (b) ouvrirVehicule(b.dataset.vh); });
@@ -3330,7 +3413,7 @@ a.lbc-badge { text-decoration: none; }
         window.scrollTo(0, 0);
     }
     // Acheté → en préparation → en vente → vendu : jamais de retour en arrière (ni vers « RDV pris » / « Sans suite »).
-    const ORDRE_ACHETE = ['stock', 'preparation', 'en_vente', 'vendu'];
+    const ORDRE_ACHETE = ['stock', 'preparation', 'pret', 'en_vente', 'vendu'];
     function statutPossible(avant, k) {
         const i = ORDRE_ACHETE.indexOf(avant);
         if (i < 0) return true;
@@ -3556,7 +3639,7 @@ a.lbc-badge { text-decoration: none; }
             return { vendus: vendus.length, marge, ca, generales, pub, achetes, resultat: marge - generales };
         };
         const p = calc(debut, ''), q = calc(prec, debut);
-        const stock = V.filter(v => ['stock', 'preparation', 'en_vente'].includes(v.statut)), perdus = V.filter(v => v.statut === 'perdu');
+        const stock = V.filter(v => ['stock', 'preparation', 'pret', 'en_vente'].includes(v.statut)), perdus = V.filter(v => v.statut === 'perdu');
         const evol = (a, b) => b ? `<span class="delta ${a > b ? 'up' : a < b ? 'down' : ''}">${signe(a - b)} vs période préc.</span>` : '<span class="delta">—</span>';
         if ($('#tbAchats')) {
             $('#tbAchats').textContent = p.achetes; $('#tbAchatsD').outerHTML = p.achetes - q.achetes ? `<span class="delta ${p.achetes > q.achetes ? 'up' : 'down'}" id="tbAchatsD">${p.achetes > q.achetes ? '+' : ''}${p.achetes - q.achetes} vs période préc.</span>` : '<span class="delta" id="tbAchatsD">&nbsp;</span>';
