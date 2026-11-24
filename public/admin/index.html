@@ -3199,6 +3199,7 @@ a.lbc-badge { text-decoration: none; }
         $('#vhSegs').innerHTML = [...SECTIONS_VH.map(([k, l]) => [k, l, parSection[k].length]), ['tous', 'Tous', actifs.length + vendus.length]]
             .map(([k, l, n]) => `<button class="seg${vhSeg === k ? ' on' : ''}" data-vhseg="${k}">${l}<b class="num">${n}</b></button>`).join('');
         const liste = (vhSeg === 'tous' ? [...actifs, ...vendus] : parSection[vhSeg] || []).slice();
+        { const on = $('#vhSegs .seg.on'); if (on) $('#vhSegs').scrollLeft = Math.max(0, on.offsetLeft - 40); }
         $('#vhList').innerHTML = liste.length ? liste.map(v => {
             const b = v.bilan, vendu = v.statut === 'vendu', pros = v.statut === 'prospect', r = v.rdv || {};
             if (pros) return `<button class="vh vh-pros" data-vh="${esc(v.id)}">
@@ -3245,7 +3246,7 @@ a.lbc-badge { text-decoration: none; }
         let signal, ton;
         if (d.vues < 60 && vj < 6) { signal = 'Peu vue : elle ne sort pas dans les recherches (titre, photos, remontée, prix d\'appel).'; ton = 'o'; }
         else if (!contacts) { signal = 'Vue mais aucun contact : le prix ou l\'annonce bloque.'; ton = 'r'; }
-        else if (conv >= 2.5 || fav >= 9) { signal = 'Forte demande : ne pas baisser, tenir le prix et filtrer les appels.'; ton = 'v'; }
+        else if (conv >= 2.5 || fav >= 9 || contacts / j * 7 >= 5) { signal = `Forte demande (${Math.round(contacts / j * 7 * 10) / 10} contacts/semaine) : ne pas baisser, tenir le prix et rappeler chaque appel.`; ton = 'v'; }
         else if (conv < 1.2) { signal = 'Intérêt faible pour le nombre de vues : regarder le prix face aux concurrentes.'; ton = 'o'; }
         else { signal = 'Rythme normal.'; ton = 'v'; }
         return { d, j, contacts, vj, fav, conv, signal, ton };
