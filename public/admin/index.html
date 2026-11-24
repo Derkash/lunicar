@@ -5555,7 +5555,7 @@ a.lbc-badge { text-decoration: none; }
             ${pl.tresorerie ? `<details><summary><b>Trésorerie</b></summary><p class="sub">${esc(pl.tresorerie)}</p></details>` : ''}
             ${(pl.lecons || []).length ? `<details><summary><b>Leçons des ventes passées</b></summary><ul class="mk-av">${pl.lecons.map(t => `<li>${esc(t)}</li>`).join('')}</ul></details>` : ''}
             ${(pl.a_surveiller || []).length ? `<details><summary><b>À surveiller</b></summary><ul class="mk-av">${pl.a_surveiller.map(t => `<li>${esc(t)}</li>`).join('')}</ul></details>` : ''}
-            <div class="av-btns"><button class="btn btn-s" type="button" data-parc-relancer="">Tout refaire au prochain passage</button></div>
+            <div class="av-btns"><button class="btn btn-s" type="button" data-parc-relancer="">Tout refaire maintenant (relevé + analyses)</button></div>
         </section>`;
     }
     document.addEventListener('change', async e => {
@@ -5565,7 +5565,7 @@ a.lbc-badge { text-decoration: none; }
     document.addEventListener('click', async e => {
         const b = e.target.closest('[data-parc-relancer]'); if (!b) return;
         b.disabled = true;
-        try { await api('/api/admin/parc/relancer', { method: 'POST', body: JSON.stringify({ vid: b.dataset.parcRelancer || null }) }); toast('Le Mac mini refera la stratégie à son prochain passage'); } catch (err) { toast(err.message); b.disabled = false; }
+        try { await api('/api/admin/parc/relancer', { method: 'POST', body: JSON.stringify({ vid: b.dataset.parcRelancer || null, tout: !b.dataset.parcRelancer }) }); toast('Le Mac mini refera la stratégie à son prochain passage'); } catch (err) { toast(err.message); b.disabled = false; }
     });
 
     function blocAnalyse(d, opt = {}) {
