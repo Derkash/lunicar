@@ -3217,14 +3217,14 @@ a.lbc-badge { text-decoration: none; }
     }
     // Sections de l'onglet Véhicules. « En vente » = une annonce Leboncoin ACTIVE (dernier relevé), quel que soit le statut saisi ;
     // un véhicule « En vente » dont l'annonce a été retirée revient dans « Prêts ».
-    const SECTIONS_VH = [['achetes', 'Achetés'], ['preparation', 'En préparation'], ['prets', 'Prêts'], ['en_vente', 'En vente'], ['vendus', 'Vendus']];
+    const SECTIONS_VH = [['preparation', 'En préparation'], ['prets', 'Prêts'], ['en_vente', 'En vente'], ['vendus', 'Vendus']];
     const annonceEnLigne = vid => { const an = annonceParc(vid); return an && an[1].en_ligne ? an : null; };
     function sectionVh(v) {
         if (v.statut === 'vendu') return 'vendus';
         if (!['stock', 'preparation', 'pret', 'en_vente'].includes(v.statut)) return null;
         if (annonceEnLigne(v.id)) return 'en_vente';
         if (v.statut === 'en_vente' || v.statut === 'pret') return 'prets';
-        return v.statut === 'preparation' ? 'preparation' : 'achetes';
+        return 'preparation';
     }
     function pilleVh(v) {
         const k = sectionVh(v);
