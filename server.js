@@ -1055,6 +1055,8 @@ app.post('/api/marche/analyse/:ref', corsLbc, express.json({ limit: '1mb' }), as
     } catch (e) { if (!res.headersSent) res.status(e.status || 500).json({ error: e.message }); }
 });
 
+// Suivi de vente du parc (nos annonces Leboncoin, concurrentes, stratégie de Claude sur le Mac mini) : lib/parc-routes.js
+require('./lib/parc-routes')(app, { cors: corsLbc, authAdmin });
 app.use(adminRouter(authAdmin));
 // Liens d'envoi du vendeur (carte grise, photos de la voiture) : pages publiques signées, une par demande.
 require('./lib/envoi-client').routes(app, { tooManySends, ipClient });

@@ -17,7 +17,7 @@
     // Journal des réponses chargées par la page (fetch + XHR), filtré sur les données Sonar.
     if (!window.__sonarLog) {
         window.__sonarLog = [];
-        const garder = u => /data-product-api|lbc-values-api/.test(u);
+        const garder = u => /data-product-api|lbc-values-api|usage-consumption-bff\/v2\/users\/me\/packages|morning_routine/.test(u);
         const of = window.fetch;
         window.fetch = async function (input, init) {
             const url = typeof input === 'string' ? input : input.url;
@@ -307,4 +307,60 @@
         return 'lancé';
     };
     E.lbcEtat = ref => E.lbc[ref] || null;
+
+    // ---------------------------------------------------------------- Nos annonces (suivi de vente du parc, lib/parc.js)
+    // Lit la page « Annonces » du compte pro (prix, badge, remontée, vues, favoris, messages, intentions d'appel, qualité),
+    // le forfait (réponse « packages » que la page charge) et le résumé du matin, puis relit chaque annonce publique
+    // (description, km, photos). Rien n'est modifié sur Leboncoin.
+    const nombre = t => Number(String(t || '').replace(/[^\d]/g, '')) || 0;
+    async function lireNotreAnnonce(id) {
+        const r = await fetch('/ad/voitures/' + id, { credentials: 'include' });
+        if (!r.ok) return null;
+        const h = await r.text(), m = h.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/);
+        if (!m) return null;
+        const ad = ((JSON.parse(m[1]).props || {}).pageProps || {}).ad;
+        if (!ad) return null;
+        const t = attr(ad);
+        return { km: Number(val(t, 'mileage')) || 0, an: Number(val(t, 'regdate')) || 0, photos: ((ad.images || {}).nb_images) || 0, texte: String(ad.body || '').slice(0, 4000),
+            positionnement: lab(t, 'car_price_positioning'), ancien_prix: Number(val(t, 'old_price')) || 0, publiee_le: ad.first_publication_date || '', indexee_le: ad.index_date || '' };
+    }
+    E.nosAnnonces = async () => {
+        if (!(window.next && window.next.router)) throw new Error('page Leboncoin sans routeur');
+        const t0 = Date.now();
+        window.next.router.push('/compte/pro/accueil');
+        await attendre(t0, ['morning_routine'], 10000);
+        await humain(2000, 4000);
+        window.next.router.push('/compte/pro/mon-activite');
+        let rows = [], fin = Date.now() + 20000, avant = -1;
+        while (Date.now() < fin) {
+            await pause(800);
+            rows = [...document.querySelectorAll('tr')].filter(r => /\bVues?\b/.test(r.innerText));
+            const total = nombre((document.body.innerText.match(/(\d+) annonces?\n/) || [])[1]);
+            if (rows.length && rows.length === avant && (!total || rows.length >= total)) break;
+            avant = rows.length;
+        }
+        const annonces = rows.map(r => {
+            const td = [...r.querySelectorAll('td')].map(x => x.innerText.replace(/\s+/g, ' ').trim());
+            const titreRef = td[2] || '', ref = (titreRef.match(/\bYAK-\d+\b/) || [])[0] || '';
+            const prixBadge = td[3] || '', pub = td[4] || '';
+            return { id: (r.outerHTML.match(/\b(\d{10})\b/) || [])[1] || '', titre: titreRef.replace(ref, '').trim(), ref_yak: ref,
+                prix: nombre((prixBadge.match(/^[\d\s\u202f\u00a0]+€/) || [])[0]), badge: prixBadge.replace(/^[\d\s\u202f\u00a0]+€/, '').trim(),
+                publiee: ((pub.match(/(\d{2})\/(\d{2})\/(\d{4})/) || []).slice(1).reverse().join('-')), remontee: (pub.match(/(Remontée.*|Jamais remontée)$/) || [])[1] || '',
+                vues: nombre((td[5] || '').split(' ')[0]), favoris: nombre((td[6] || '').split(' ')[0]), messages: nombre((td[7] || '').split(' ')[0]), appels: nombre((td[8] || '').split(' ')[0]), qualite: td[9] || '' };
+        });
+        const g = depuis(t0), pk = json(g('v2/users/me/packages')), mr = json(g('morning_routine'));
+        let forfait = null;
+        if (pk && pk.channels) {
+            const p = (pk.channels.find(c => c.name === 'FourWheels') || pk.channels[0] || {}).packs || [];
+            forfait = p.map(x => ({ offre: x.label, debut: x.validity_start_date, fin: x.validity_end_date,
+                options: (x.features || []).filter(f => f.consumption && (f.consumption.subscribed || f.consumption.consumed)).map(f => ({ code: f.name, libelle: f.label, prevu: f.consumption.subscribed, utilise: f.consumption.consumed, reste: f.consumption.remaining, hors_forfait: f.consumption.out_of_bundle_consumed, hors_forfait_cts: f.consumption.out_of_bundle_amount, illimite: !!f.unlimited })) }));
+        }
+        // Chaque annonce publique : description, km réel affiché, nombre de photos (rythme d'une personne).
+        for (const a of annonces) {
+            if (!a.id) continue;
+            try { Object.assign(a, await lireNotreAnnonce(a.id) || {}); } catch (e) { /* annonce illisible */ }
+            await humain(2500, 5000);
+        }
+        return { annonces, forfait, resume: mr && mr.Summary || '', critiques: mr && (mr.CriticalAds || []).map(c => ({ id: c.Id, titre: c.Title, appreciation: c.Appreciation, positionnement: c.PricePositioning })) };
+    };
 })();

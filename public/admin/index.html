@@ -1660,6 +1660,7 @@ a.lbc-badge { text-decoration: none; }
         <section data-view="vehicules" hidden>
             <div class="page-h"><h1>Nos véhicules</h1><span id="vhSous"></span></div>
             <div class="kpis" id="vhKpis"></div>
+            <div id="vhPlan"></div>
             <div class="toolbar"><div class="segs" id="vhSegs" style="margin:0;flex:1"></div><button class="btn btn-p" id="vhAjout" type="button">+ Ajouter un véhicule</button></div>
             <div class="vh-list" id="vhList"></div>
         </section>
@@ -3169,6 +3170,7 @@ a.lbc-badge { text-decoration: none; }
             [signe(marge + prevueStock), 'marge globale', `<span class="delta">réalisée + prévue</span>`, marge + prevueStock < 0 ? 'alerte' : '']
         ].map(([v, l, d, c]) => `<div class="kpi ${c || ''}"><b class="num">${v}</b><span>${l}</span>${d}</div>`).join('');
         $('#vhSous').textContent = `voitures effectivement achetées`;
+        chargerParc().then(() => { const z = $('#vhPlan'); if (z) z.innerHTML = blocPlan(actifs); }).catch(() => {});
         $('#vhSegs').innerHTML = [['actifs', 'En stock', actifs.length], ['vendus', 'Vendus', vendus.length], ['tous', 'Tous', actifs.length + vendus.length]]
             .map(([k, l, n]) => `<button class="seg${vhSeg === k ? ' on' : ''}" data-vhseg="${k}">${l}<b class="num">${n}</b></button>`).join('');
         const liste = (vhSeg === 'vendus' ? vendus : vhSeg === 'tous' ? [...actifs, ...vendus] : actifs).slice();
@@ -3212,6 +3214,7 @@ a.lbc-badge { text-decoration: none; }
             <select class="in" id="vStatut"${v.statut === 'vendu' ? ' disabled title="Véhicule vendu : statut définitif"' : ''}>${Object.entries(compta.statuts).filter(([k]) => statutPossible(v.statut, k)).map(([k, l]) => `<option value="${k}"${k === v.statut ? ' selected' : ''}>${esc(l)}</option>`).join('')}</select>
         </div>
         <div class="sh-body">
+            <div id="vStrategie"></div>
             <div id="vAnalyse"></div>
             <div id="vSonar"></div>
             ${pros || (v.statut === 'perdu' && r.date) ? `<section class="sec rdv-bloc"><h3>${pros ? 'Rendez-vous pris' : 'Rendez-vous sans suite'}</h3>
@@ -3251,6 +3254,8 @@ a.lbc-badge { text-decoration: none; }
             </section>
             <div class="danger">${v.ref ? `<button class="btn" id="vDemande">Voir la demande ${esc(v.ref)}</button>` : ''}${ORDRE_ACHETE.includes(v.statut) ? `<button class="btn btn-d" id="vAnnulAchat">${v.statut === 'vendu' ? 'Annuler la vente (erreur)' : 'Annuler l\'achat (erreur)'}</button>` : ''}<button class="btn btn-d" id="vSuppr">Supprimer le véhicule</button></div>
         </div>`;
+        // Stratégie de vente de Claude sur le Mac mini (nos annonces, concurrentes, saison, diagnostic, forfait).
+        if (ORDRE_ACHETE.includes(v.statut) && v.statut !== 'vendu') chargerParc().then(() => { const z = $('#vStrategie'); if (z) z.innerHTML = blocStrategie(v); }).catch(() => {});
         // Analyse complète du Mac mini (Très bonne affaire, voitures concurrentes, risques, fiche moteur), marge sur le coût engagé à jour.
         if (v.ref) Promise.all([api('/api/admin/demandes/' + v.ref), api('/api/admin/demandes/' + v.ref + '/analyse')]).then(([d, c]) => {
             analyseD[v.ref] = c; analyseCharge[v.ref] = true;
@@ -5406,6 +5411,77 @@ a.lbc-badge { text-decoration: none; }
         catch (e) { analyseD[ref] = { erreur: e.message }; }
         if (courant && courant.ref === ref && !$('#sheet').hidden) fiche();
     }
+    // ---------------------------------------------------------------- Suivi de vente du parc (lib/parc.js, Mac mini)
+    let parcS = null, parcT = 0;
+    async function chargerParc(force) { if (!force && parcS && Date.now() - parcT < 60e3) return parcS; parcS = await api('/api/admin/parc'); parcT = Date.now(); return parcS; }
+    const pctP = v => v == null ? '—' : Math.round(v) + ' %';
+    const NIV_DEM = { faible: 'faible', moyenne: 'moyenne', forte: 'forte', tres_forte: 'très forte' };
+    const annonceParc = vid => Object.entries((parcS || {}).annonces || {}).filter(([, e]) => e.vid === vid).sort((a, b) => (b[1].en_ligne ? 1 : 0) - (a[1].en_ligne ? 1 : 0))[0];
+    function blocStrategie(v) {
+        const P = parcS || {}, st = (P.strategies || {})[v.id], an = annonceParc(v.id);
+        const libres = Object.entries(P.annonces || {}).filter(([, e]) => e.en_ligne && !e.vid);
+        const lier = !an ? `<p class="sub">Annonce Leboncoin de cette voiture : <select class="in" data-parc-lier="${esc(v.id)}" style="max-width:100%"><option value="">— choisir —</option>${libres.map(([k, e]) => `<option value="${esc(k)}">${esc((e.ref_yak ? e.ref_yak + ' · ' : '') + e.titre)}</option>`).join('')}</select></p>` : '';
+        const serie = an ? an[1].serie || [] : [], der = serie[serie.length - 1];
+        const ann = an ? `<div class="av-offre">
+                <div class="av-prix"><span>Notre annonce ${an[1].en_ligne ? 'en ligne' : 'retirée'}</span><b class="num">${der ? eur(der.prix) : '—'}</b><small>${esc((der && der.badge) || 'pas de badge')} · publiée le ${esc(an[1].publiee || '?')}${der && der.remontee ? ' · ' + esc(der.remontee) : ''}</small></div>
+                <div><span>Vues</span><b class="num">${der ? der.vues : '—'}</b><small>${der && der.vues_jour != null ? '+' + der.vues_jour + ' depuis hier' : '&nbsp;'}</small></div>
+                <div><span>Favoris</span><b class="num">${der ? der.favoris : '—'}</b><small>qualité ${esc((der && der.qualite) || '—')}</small></div>
+                <div><span>Messages · appels</span><b class="num">${der ? der.messages + ' · ' + der.appels : '—'}</b><small>${der && der.contacts_jour ? '+' + der.contacts_jour + ' depuis hier' : '&nbsp;'}</small></div>
+            </div>` : '';
+        if (!st) return `<section class="sec av"><h3>Stratégie de vente <small>en attente du Mac mini (chaque matin, après le relevé de nos annonces)</small></h3>${ann}${lier}</section>`;
+        const pr = st.probabilite || {}, co = st.cote || {}, sa = st.saison || {}, de = st.demande || {}, A = st.annonce || {};
+        return `<section class="sec av">
+            <h3>Stratégie de vente <small>Claude sur le Mac mini · ${date(st.recu_le)} · confiance ${esc(st.confiance || '—')}</small></h3>
+            <p style="margin:10px 0 0">${esc(st.synthese || '')}</p>
+            <div class="av-offre">
+                <div class="av-prix"><span>Prix conseillé</span><b class="num">${eur(st.prix_conseille)}</b><small>${esc(st.badge_vise || '')}${st.prix_plancher ? ' · plancher ' + eur(st.prix_plancher) : ''}</small></div>
+                <div><span>Vente estimée</span><b class="num">${st.delai_estime_jours != null ? st.delai_estime_jours + ' j' : '—'}</b><small>7 j ${pctP(pr.j7)} · 14 j ${pctP(pr.j14)} · 30 j ${pctP(pr.j30)} · 60 j ${pctP(pr.j60)}</small></div>
+                <div><span>Demande</span><b>${esc(NIV_DEM[de.niveau] || '—')}</b><small>${de.vues_par_jour != null ? de.vues_par_jour + ' vues/j' : ''}${de.contacts_par_semaine != null ? ' · ' + de.contacts_par_semaine + ' contacts/sem.' : ''}</small></div>
+                <div><span>Marge au prix conseillé</span><b class="num">${eur(st.marge_au_prix_conseille)}</b><small>${st.marge_au_plancher != null ? 'au plancher ' + eur(st.marge_au_plancher) : '&nbsp;'}</small></div>
+            </div>
+            ${(st.actions || []).length ? `<h4 style="margin:16px 0 0">À faire</h4><ol class="av-q">${[...st.actions].sort((a, b) => (a.priorite || 9) - (b.priorite || 9)).map(a => `<li><b>${esc(a.titre)}</b><small>${esc(a.detail)}${a.quand ? ' · ' + esc(a.quand) : ''}${a.cout_forfait ? ' · ' + esc(a.cout_forfait) : ''}${a.gain_attendu ? ' · ' + esc(a.gain_attendu) : ''}</small></li>`).join('')}</ol>` : ''}
+            ${(st.alertes || []).length ? st.alertes.map(t => `<p class="mk-verdict mk-o">${esc(t)}</p>`).join('') : ''}
+            ${ann}${lier}
+            <details style="margin-top:14px" open><summary><b>Cote et demande</b></summary>
+                <table class="av-tab"><tr><td>Très bonne affaire</td><td class="num">${eur(co.tres_bonne_affaire_min)} – ${eur(co.tres_bonne_affaire_max)}</td></tr><tr><td>Bonne affaire jusqu'à</td><td class="num">${eur(co.bonne_affaire_max)}</td></tr><tr><td>Prix équitable jusqu'à</td><td class="num">${eur(co.prix_equitable_max)}</td></tr><tr><td><b>Prix juste</b></td><td class="num"><b>${eur(co.prix_juste)}</b></td></tr></table>
+                <p class="sub">${esc(co.lecture || '')}</p><p class="sub">${esc(de.lecture || '')}</p>
+            </details>
+            <details><summary><b>Saison</b> · tendance 30 jours : ${esc({ baisse: 'en baisse', stable: 'stable', hausse: 'en hausse', inconnue: 'inconnue' }[sa.tendance_30j] || '—')}</summary><p class="sub">${esc(sa.lecture || '')}${(sa.mois_favorables || []).length ? ' · Mois favorables : ' + esc(sa.mois_favorables.join(', ')) : ''}</p></details>
+            ${(st.problemes || []).length ? `<details open><summary><b>Problèmes connus</b> · ${st.problemes.length}</summary><ul class="av-r">${st.problemes.map(p => `<li><i class="${p.gravite === 'forte' ? 'rouge' : p.gravite === 'moyenne' ? 'orange' : 'vert'}"></i><span>${esc(p.titre)}<small>${esc(p.impact_vente)} · ${esc(p.a_faire)}${p.a_declarer ? ' · à déclarer dans l\'annonce' : ''} · source : ${esc(p.source)}</small></span><b class="num">${p.cout_estime ? eur(p.cout_estime) : ''}</b></li>`).join('')}</ul></details>` : ''}
+            ${A.diagnostic ? `<details><summary><b>Notre annonce : ce qu'il faut changer</b></summary><p class="sub">${esc(A.diagnostic)}</p>${A.titre_propose ? `<p class="sub"><b>Titre proposé :</b> ${esc(A.titre_propose)}</p>` : ''}${(A.a_mettre_en_avant || []).length ? `<p class="sub"><b>À mettre en avant :</b> ${esc(A.a_mettre_en_avant.join(' · '))}</p>` : ''}${A.photos ? `<p class="sub"><b>Photos :</b> ${esc(A.photos)}</p>` : ''}${A.a_eviter ? `<p class="sub"><b>À éviter :</b> ${esc(A.a_eviter)}</p>` : ''}</details>` : ''}
+            ${serie.length > 1 ? `<details><summary><b>Notre annonce jour par jour</b></summary><table class="av-tab"><tr><th>Jour</th><th class="num">Prix</th><th>Badge</th><th class="num">Vues</th><th class="num">+ vues</th><th class="num">Favoris</th><th class="num">Contacts</th></tr>${serie.slice(-14).reverse().map(x => `<tr><td>${esc(x.jour.slice(8, 10) + '/' + x.jour.slice(5, 7))}</td><td class="num">${eur(x.prix)}</td><td>${esc(x.badge || '')}</td><td class="num">${x.vues}</td><td class="num">${x.vues_jour != null ? x.vues_jour : ''}</td><td class="num">${x.favoris}</td><td class="num">${x.messages + x.appels}</td></tr>`).join('')}</table></details>` : ''}
+            ${(st.donnees_manquantes || []).length ? `<ul class="mk-av">${st.donnees_manquantes.map(t => `<li>Manque : ${esc(t)}</li>`).join('')}</ul>` : ''}
+            <div class="av-btns"><button class="btn btn-s" type="button" data-parc-relancer="${esc(v.id)}">Refaire la stratégie</button></div>
+        </section>`;
+    }
+    function blocPlan(actifs) {
+        const P = parcS || {}, pl = P.plan, F = (P.forfait || [])[0];
+        const opt = F ? F.options.filter(o => ['NEW_ADS', 'ADS_EDIT', 'SINGLE_BUMP_UP'].includes(o.code)) : [];
+        const forfait = F ? `<p class="sub">Forfait ${esc(F.offre)} : ${opt.map(o => `${esc(o.libelle)} ${o.utilise}/${o.prevu}${o.hors_forfait ? ` (${o.hors_forfait} hors forfait, ${eur(Math.round(o.hors_forfait_cts / 100))})` : ''}`).join(' · ')}</p>` : '';
+        if (!pl) return `<section class="sec av"><h3>Plan de vente du jour <small>${P.annonces_le ? 'annonces relevées le ' + date(P.annonces_le) + ', stratégies en cours sur le Mac mini' : 'en attente du premier relevé de nos annonces par le Mac mini'}</small></h3>${forfait}</section>`;
+        const nom = vid => (actifs.find(v => v.id === vid) || {}).libelle;
+        return `<section class="sec av">
+            <h3>Plan de vente du jour <small>Claude sur le Mac mini · ${date(pl.recu_le)}</small></h3>
+            <p style="margin:10px 0 0">${esc(pl.synthese || '')}</p>
+            ${(pl.priorites || []).length ? `<ol class="av-q">${pl.priorites.map(x => `<li><b>${esc(nom(x.vid) || x.libelle)} : ${esc(x.action)}</b><small>${esc(x.pourquoi)}</small></li>`).join('')}</ol>` : ''}
+            ${forfait}
+            ${pl.forfait ? `<details><summary><b>Forfait Leboncoin</b></summary><p class="sub">${esc(pl.forfait.lecture)}</p><p class="sub"><b>Remontées :</b> ${esc(pl.forfait.remontees)}</p><p class="sub"><b>Modifications :</b> ${esc(pl.forfait.modifications)}</p><p class="sub"><b>Insertions :</b> ${esc(pl.forfait.insertions)}</p></details>` : ''}
+            ${pl.tresorerie ? `<details><summary><b>Trésorerie</b></summary><p class="sub">${esc(pl.tresorerie)}</p></details>` : ''}
+            ${(pl.lecons || []).length ? `<details><summary><b>Leçons des ventes passées</b></summary><ul class="mk-av">${pl.lecons.map(t => `<li>${esc(t)}</li>`).join('')}</ul></details>` : ''}
+            ${(pl.a_surveiller || []).length ? `<details><summary><b>À surveiller</b></summary><ul class="mk-av">${pl.a_surveiller.map(t => `<li>${esc(t)}</li>`).join('')}</ul></details>` : ''}
+            <div class="av-btns"><button class="btn btn-s" type="button" data-parc-relancer="">Tout refaire au prochain passage</button></div>
+        </section>`;
+    }
+    document.addEventListener('change', async e => {
+        const sel = e.target.closest('[data-parc-lier]'); if (!sel || !sel.value) return;
+        try { await api('/api/admin/parc/lier', { method: 'POST', body: JSON.stringify({ cle: sel.value, vid: sel.dataset.parcLier }) }); await chargerParc(true); toast('Annonce rattachée'); const v = vehiculeDe(sel.dataset.parcLier); const z = $('#vStrategie'); if (v && z) z.innerHTML = blocStrategie(v); } catch (err) { toast(err.message); }
+    });
+    document.addEventListener('click', async e => {
+        const b = e.target.closest('[data-parc-relancer]'); if (!b) return;
+        b.disabled = true;
+        try { await api('/api/admin/parc/relancer', { method: 'POST', body: JSON.stringify({ vid: b.dataset.parcRelancer || null }) }); toast('Le Mac mini refera la stratégie à son prochain passage'); } catch (err) { toast(err.message); b.disabled = false; }
+    });
+
     function blocAnalyse(d, opt = {}) {
         const c = analyseD[d.ref];
         if (!c) { chargerAnalyse(d.ref); return `<section class="sec av"><h3>Avant d'appeler</h3><p class="sub"><span class="spin"></span> Chargement de l'analyse…</p></section>`; }

@@ -15,6 +15,9 @@ const log = (...a) => console.log(new Date().toISOString(), ...a);
 // Analyse approfondie (tools/macmini/analyse.js, copié à côté de ce fichier). Absente : seul Sonar tourne.
 let analyse = null;
 try { analyse = require('./analyse'); } catch (e) { console.log('analyse approfondie indisponible :', e.message); }
+// Suivi de vente du parc (tools/macmini/parc.js) : nos annonces, stratégie de chaque véhicule acheté, plan du jour.
+let parc = null;
+try { parc = require('./parc'); } catch (e) { console.log('suivi du parc indisponible :', e.message); }
 const pause = ms => new Promise(r => setTimeout(r, ms));
 
 async function alerte(type, texte) {
@@ -58,7 +61,7 @@ async function evaluer(s, expr) {
 // ---------------------------------------------------------------- Boucle
 let pauseJusqua = 0, dernierEtat = '';
 // État envoyé à lunicar.fr à chaque tour (voyant « Mac mini » de l'admin, alerte s'il se tait).
-const VERSION = '2026-11-23';
+const VERSION = '2026-11-24';
 const etatMac = { lbc: 'inconnu', chrome: false, collecte: '', derniere_erreur: '', derniere_erreur_le: '', derniere_analyse: '', depuis: new Date().toISOString(), machine: require('os').hostname() };
 async function battement() {
     let cleClaude = false;
@@ -105,7 +108,12 @@ async function tour() {
         // La notification de la demande ne part qu'à la fin de cette analyse (lib/notif-demande.js).
         if (analyse && (await evaluer(s, 'typeof window.__collecte.lbcLancer')) === 'function') {
             const n = await analyse.tour({ evaluer: expr => evaluer(s, expr), API, CLE, log: (...a) => { log(...a); if (/^analyse /.test(String(a[0]))) etatMac.derniere_analyse = `${new Date().toISOString().slice(11, 16)} UTC · ${String(a[0]).slice(8, 120)}`; } });
-            if (n) await s.appel('Page.navigate', { url: SONAR });   // retour sur Sonar pour la prochaine demande
+            if (n) { await s.appel('Page.navigate', { url: SONAR }); return; }   // retour sur Sonar pour la prochaine demande
+        }
+        // Plus aucune demande à analyser : suivi de vente du parc (les nouvelles demandes passent toujours avant).
+        if (parc && (await evaluer(s, 'typeof window.__collecte.nosAnnonces')) === 'function') {
+            const fait = await parc.tour({ evaluer: expr => evaluer(s, expr), API, CLE, log });
+            if (fait === 'annonces') await s.appel('Page.navigate', { url: SONAR });
         }
     } finally { s.fermer(); }
 }

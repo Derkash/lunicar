@@ -1,7 +1,7 @@
 #!/bin/bash
 # Installe l'analyse approfondie LUNICAR sur le Mac mini (à lancer depuis le dépôt, sur le Mac de travail) :
 #   tools/macmini/installer-analyse.sh
-# Copie veille.js + analyse.js dans ~/lunicar-sonar du Mac mini, installe le SDK Claude, vérifie la clé Claude
+# Copie veille.js + analyse.js + parc.js (suivi de vente du parc) + les dossiers du diagnostic mécanique dans ~/lunicar-sonar du Mac mini, installe le SDK Claude, vérifie la clé Claude
 # (~/lunicar-sonar/anthropic.txt, à créer une fois) et redémarre le service launchd fr.lunicar.sonar.
 set -euo pipefail
 # Nom Bonjour du Mac mini : son adresse IP change selon la box (192.168.1.184 puis .59 le 23/11/2026).
@@ -10,8 +10,11 @@ CLE_SSH="${MACMINI_CLE:-$HOME/.ssh/id_macmini}"
 ICI="$(cd "$(dirname "$0")" && pwd)"
 SSH=(ssh -i "$CLE_SSH" -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new "$HOTE")
 
-echo "→ Copie de veille.js et analyse.js"
-scp -i "$CLE_SSH" -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new "$ICI/veille.js" "$ICI/analyse.js" "$HOTE:lunicar-sonar/"
+echo "→ Copie de veille.js, analyse.js et parc.js"
+scp -i "$CLE_SSH" -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new "$ICI/veille.js" "$ICI/analyse.js" "$ICI/parc.js" "$HOTE:lunicar-sonar/"
+
+echo "→ Dossiers du diagnostic mécanique"
+"$ICI/sync-diag.sh" || echo "  ⚠️  copie du diagnostic impossible (dépôt absent ?)"
 
 echo "→ SDK Claude (@anthropic-ai/sdk) dans ~/lunicar-sonar"
 "${SSH[@]}" 'cd ~/lunicar-sonar && export PATH="$HOME/lunicar-sonar/node/bin:$PATH" && { [ -f package.json ] || npm init -y >/dev/null; } && npm install --no-audit --no-fund @anthropic-ai/sdk@latest >/dev/null && node -e "require(\"@anthropic-ai/sdk\"); console.log(\"  SDK OK\")"'
