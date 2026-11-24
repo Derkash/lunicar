@@ -62,18 +62,21 @@
     function choisir(lic, demande) {
         const toutes = (lic.trims || []).flatMap(t => (t.versions || []).map(v => ({ ...v, trim: t.label })));
         if (!toutes.length) return null;
-        const s = toutes.find(v => v.suggested);
-        if (s) return { ...s, suggeree: true, choix: 'suggérée par Sonar' };
         const nous = new Set(mots(demande.vehicule));
+        // Véhicule acheté : notre nom exact fait foi (finition comprise) dès qu'une finition de la liste y figure.
+        const finitionConnue = demande.exact && toutes.some(v => v.trim && mots(v.trim).length && mots(v.trim).every(w => nous.has(w)));
+        const s = !finitionConnue && toutes.find(v => v.suggested);
+        if (s) return { ...s, suggeree: true, choix: 'suggérée par Sonar' };
         const diesel = /diesel/i.test(demande.energie), essence = /essence/i.test(demande.energie) && !/elec/i.test(demande.energie);
         const note = v => {
             const m = mots(v.label + ' ' + v.trim); let x = m.filter(w => nous.has(w)).length * 2;
+            if (finitionConnue && v.trim && mots(v.trim).every(w => nous.has(w))) x += 8;
             const d = /(hdi|dci|tdi|crdi|cdti|jtd|tdci|d4d|bluehdi|blue|multijet|mjt|\bd\b|\dd\b)/i.test(v.label);
             if (diesel && d) x += 3; if (essence && !d) x += 3; if ((diesel && !d) || (essence && d)) x -= 3;
             return x;
         };
         const best = toutes.map(v => ({ v, x: note(v) })).sort((a, b) => b.x - a.x)[0];
-        return { ...best.v, suggeree: false, choix: `la plus proche de « ${demande.vehicule} » (score ${best.x}) parmi ${toutes.length}` };
+        return { ...best.v, suggeree: false, choix: `${finitionConnue ? 'finition de notre fiche' : 'la plus proche'} de « ${demande.vehicule} » (score ${best.x}) parmi ${toutes.length}` };
     }
 
     function lireResultat(g) {

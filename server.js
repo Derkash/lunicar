@@ -971,6 +971,8 @@ const dejaFait = r => !!r && (!r.erreur || (REPONSES_DEFINITIVES.includes(r.erre
 app.get('/api/marche/file', corsLbc, async (req, res) => {
     require('./lib/macmini').toucher().catch(() => {});
     const vus = new Set(), file = [];
+    // Véhicules achetés : notre libellé exact (modèle, moteur, finition) guide le choix de la version Sonar.
+    const nomAchete = new Map((((await store.lireReglage('compta', null)) || {}).vehicules || []).filter(v => v.ref && v.libelle && !['prospect', 'perdu'].includes(v.statut)).map(v => [v.ref, v.libelle]));
     for (const d of await store.listerDemandes()) {
         const x = d.data || {}, p = marche.plaqueCle(x.plaque);
         if (!p || p.length < 6 || vus.has(p)) continue;
@@ -978,7 +980,8 @@ app.get('/api/marche/file', corsLbc, async (req, res) => {
         const km = Number(String(x.kilometrage || '').replace(/\D/g, '')) || 0;
         // Relevé neuf demandé (relance en lot : véhicules achetés, RDV à venir) : repasse dans Sonar au km exact.
         const force = !!(analyseV.analyse(d.ref) || {}).relancer_sonar;
-        file.push({ ref: d.ref, plaque: p, km, vehicule: String(x.vehicule || '').slice(0, 60), annee: x.annee || '', energie: x.energie_siv || '', fait: !force && dejaFait(marche.releve(p)), recente: Date.now() - new Date(d.created_at) < 48 * 3600e3, force });
+        const exact = nomAchete.get(d.ref);
+        file.push({ ref: d.ref, plaque: p, km, vehicule: String(exact || x.vehicule || '').slice(0, 90), exact: !!exact, annee: x.annee || '', energie: x.energie_siv || '', fait: !force && dejaFait(marche.releve(p)), recente: Date.now() - new Date(d.created_at) < 48 * 3600e3, force });
     }
     // Ordre : véhicules achetés / RDV d'abord (marges), puis offres et contacts, demandes en cours, archivées en dernier.
     const prio = { achetee: 0, rdv: 1, offre: 2, contactee: 3, nouvelle: 4 };
