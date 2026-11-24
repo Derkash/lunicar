@@ -4,8 +4,8 @@
 # Copie veille.js + analyse.js + parc.js (suivi de vente du parc) + les dossiers du diagnostic mécanique dans ~/lunicar-sonar du Mac mini, installe le SDK Claude, vérifie la clé Claude
 # (~/lunicar-sonar/anthropic.txt, à créer une fois) et redémarre le service launchd fr.lunicar.sonar.
 set -euo pipefail
-# Nom Bonjour du Mac mini : son adresse IP change selon la box (192.168.1.184 puis .59 le 23/11/2026).
-HOTE="${MACMINI:-derka@Mac-mini-de-Derka.local}"
+# Mac mini joint par Tailscale (nom MagicDNS) : plus besoin d être sur le réseau de la maison.
+HOTE="${MACMINI:-derka@mac-mini-de-derka}"   # nom Tailscale : marche à la maison comme dehors
 CLE_SSH="${MACMINI_CLE:-$HOME/.ssh/id_macmini}"
 ICI="$(cd "$(dirname "$0")" && pwd)"
 SSH=(ssh -i "$CLE_SSH" -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new "$HOTE")

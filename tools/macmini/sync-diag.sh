@@ -2,7 +2,7 @@
 # Copie les dossiers du diagnostic mécanique YAK (dépôt local yak-services/diagnostic) vers ~/lunicar-sonar/diagnostic
 # du Mac mini, où parc.js les lit pour la stratégie de vente. Lancé par l'installeur ; à relancer après un nouveau diagnostic.
 set -uo pipefail
-HOTE="${MACMINI:-derka@Mac-mini-de-Derka.local}"
+HOTE="${MACMINI:-derka@mac-mini-de-derka}"   # nom Tailscale : marche à la maison comme dehors
 CLE_SSH="${MACMINI_CLE:-$HOME/.ssh/id_macmini}"
 SRC="${DIAG_SRC:-$HOME/Library/Mobile Documents/com~apple~CloudDocs/Projects/work/yak-services/diagnostic}"
 [ -d "$SRC/parc" ] || { echo "dépôt diagnostic introuvable : $SRC"; exit 1; }
