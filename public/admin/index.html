@@ -3417,6 +3417,7 @@ a.lbc-badge { text-decoration: none; }
     // Acheté → en préparation → en vente → vendu : jamais de retour en arrière (ni vers « RDV pris » / « Sans suite »).
     const ORDRE_ACHETE = ['stock', 'preparation', 'pret', 'en_vente', 'vendu'];
     function statutPossible(avant, k) {
+        if (avant === 'pret' && k === 'preparation') return true;
         const i = ORDRE_ACHETE.indexOf(avant);
         if (i < 0) return true;
         return ORDRE_ACHETE.indexOf(k) >= i;
