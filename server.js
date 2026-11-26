@@ -1396,6 +1396,17 @@ async function pingIndexNow() {
 // (piliers, grandes villes de France, villes d'Île-de-France, autres communes), puis les plus anciennes
 // soumissions (> 30 jours). État mémorisé dans le réglage « bing » (loc → date), donc insensible aux redémarrages.
 const BING_API = 'https://ssl.bing.com/webmaster/api.svc/json';
+// Pages d'entrée des visiteurs ChatGPT (GA4, 28 j au 20/11/2026) puis toutes les pages régions.
+const PRIORITE_BING_DEPUIS = '2026-11-26';
+const PRIORITE_BING_ORDRE = [
+    '/vendre-vieille-voiture', '/rachat-voiture-corse', '/', '/rachat-voiture-en-panne', '/rachat-voiture-en-panne-paris',
+    '/reprise-voiture-sans-achat', '/reprise-voiture-occasion', '/reprise', '/vendre-voiture-importee',
+    '/reprise-auto-neuilly-sur-seine', '/reprise-auto-lyon', '/reprise-auto-nice', '/reprise-auto-nimes',
+    '/reprise-auto-montpellier', '/reprise-auto-caen', '/reprise-auto-frejus', '/reprise-auto-libourne',
+    '/rachat-voiture-accidentee', '/rachat-voiture-france', '/rachat-voiture-rapide', '/rachat-voiture-sans-controle-technique',
+    ...Object.values(LOCAL.regions || {}).map(r => `/${r.slug}`)
+];
+const PRIORITE_BING = new Set(PRIORITE_BING_ORDRE);
 function fileBing(etat) {
     const soumis = etat.soumis || {};
     const grandes = new Set(zones.FRANCE_CITIES.slice(0, 80).map(s => `/reprise-auto-${s}`));
@@ -1409,7 +1420,13 @@ function fileBing(etat) {
     const anciennes = pagesSite.filter(u => soumis[u.loc] && u.lastmod <= soumis[u.loc] && soumis[u.loc] < limite)
         .sort((a, b) => soumis[a.loc].localeCompare(soumis[b.loc]));
     const parRang = l => [...l].sort((a, b) => rang(a) - rang(b) || Number(b.priority) - Number(a.priority));
-    return [...parRang(modifiees), ...parRang(jamais), ...anciennes];
+    // Priorité du 26/11/2026 : ChatGPT répétait encore « 24 h / 7 jours / cash » (retiré le 22/10) car Bing n'avait
+    // jamais lu ou pas relu ses pages d'entrée. Ces pages repartent en tête une fois, puis reprennent la file normale.
+    const prio = pagesSite.filter(u => PRIORITE_BING.has(u.loc) && !(soumis[u.loc] >= PRIORITE_BING_DEPUIS))
+        .sort((a, b) => PRIORITE_BING_ORDRE.indexOf(a.loc) - PRIORITE_BING_ORDRE.indexOf(b.loc));
+    const dejaPrio = new Set(prio.map(u => u.loc));
+    const sauf = l => l.filter(u => !dejaPrio.has(u.loc));
+    return [...prio, ...parRang(sauf(modifiees)), ...parRang(sauf(jamais)), ...sauf(anciennes)];
 }
 async function quotaBing(cle) {
     try {
