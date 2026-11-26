@@ -42,20 +42,24 @@ async function demander({ systeme, contenu, schema, recherche = 0 }) {
     throw new Error('recherche trop longue');
 }
 
-const S = { type: 'string' }, N = { type: ['number', 'null'] }, B = { type: 'boolean' };
+const S = { type: 'string' }, N = { type: ['number', 'null'] }, B = { type: 'boolean' }, NB = { type: 'number' };
+// Avec la recherche web, l'API refuse les schémas à plusieurs « number|null » (grammaire trop grosse) :
+// nombres simples, -1 = inconnu, remis à null par inconnusANull avant l'envoi au site.
+const INCONNU_OK = /^(marge_|cout_estime$)/;
+const inconnusANull = o => { if (Array.isArray(o)) return o.map(inconnusANull); if (o && typeof o === 'object') { for (const k of Object.keys(o)) o[k] = (o[k] === -1 && !INCONNU_OK.test(k)) ? null : inconnusANull(o[k]); } return o; };
 const L = items => ({ type: 'array', items });
 const objet = (props, req = Object.keys(props)) => ({ type: 'object', properties: props, required: req, additionalProperties: false });
 const E = (...v) => ({ type: 'string', enum: v });
 const SCHEMA_VEHICULE = objet({
     synthese: S,
-    cote: objet({ tres_bonne_affaire_min: N, tres_bonne_affaire_max: N, bonne_affaire_max: N, prix_equitable_max: N, prix_juste: N, lecture: S }),
-    demande: objet({ niveau: E('faible', 'moyenne', 'forte', 'tres_forte'), vues_par_jour: N, contacts_par_semaine: N, lecture: S }),
+    cote: objet({ tres_bonne_affaire_min: NB, tres_bonne_affaire_max: NB, bonne_affaire_max: NB, prix_equitable_max: NB, prix_juste: NB, lecture: S }),
+    demande: objet({ niveau: E('faible', 'moyenne', 'forte', 'tres_forte'), vues_par_jour: NB, contacts_par_semaine: NB, lecture: S }),
     saison: objet({ tendance_30j: E('baisse', 'stable', 'hausse', 'inconnue'), mois_favorables: L(S), lecture: S }),
-    probabilite: objet({ j7: N, j14: N, j30: N, j60: N }),
-    delai_estime_jours: N,
-    prix_conseille: N, prix_plancher: N, badge_vise: S, marge_au_prix_conseille: N, marge_au_plancher: N,
+    probabilite: objet({ j7: NB, j14: NB, j30: NB, j60: NB }),
+    delai_estime_jours: NB,
+    prix_conseille: NB, prix_plancher: NB, badge_vise: S, marge_au_prix_conseille: NB, marge_au_plancher: NB,
     problemes: L(objet({ titre: S, gravite: E('faible', 'moyenne', 'forte'), source: S, impact_vente: S, a_faire: S, cout_estime: N, a_declarer: B })),
-    actions: L(objet({ priorite: N, titre: S, detail: S, quand: S, cout_forfait: S, gain_attendu: S })),
+    actions: L(objet({ priorite: NB, titre: S, detail: S, quand: S, cout_forfait: S, gain_attendu: S })),
     annonce: objet({ diagnostic: S, titre_propose: S, a_mettre_en_avant: L(S), photos: S, a_eviter: S }),
     alertes: L(S),
     confiance: E('elevee', 'moyenne', 'faible'),
@@ -83,7 +87,8 @@ Règles de lecture :
 - Marges : marge = prix de vente − coût engagé (achat + dépenses + travaux faits) − frais de vente (~60 € + annonce). Le capital immobilisé coûte : une voiture qui dort 60 jours coûte plus qu'une baisse de 200 €.
 - Probabilités de vente à 7, 14, 30 et 60 jours en %, cohérentes avec le prix conseillé, la demande et la saison. Délai estimé en jours.
 - Actions concrètes, datées (« aujourd'hui », « si 0 contact d'ici vendredi »…), avec le coût forfait (« dans le forfait », « hors forfait ~X € »), 1 à 5 actions par ordre de priorité.
-- Français simple, sans jargon, chiffres en euros arrondis. Pas d'invention : une donnée absente va dans donnees_manquantes.`;
+- Français simple, sans jargon, chiffres en euros arrondis. Pas d'invention : une donnée absente va dans donnees_manquantes.
+- Nombre inconnu : écris -1 (sauf les marges, toujours chiffrées, et cout_estime, à null si inconnu).`;
 
 const SYSTEME_VEHICULE = REGLES + `
 Tâche : stratégie de vente d'UN véhicule à partir de son dossier JSON. Synthèse en 3 ou 4 phrases : où on en est, ce qu'il faut faire et pourquoi.`;
@@ -134,7 +139,7 @@ async function tour(ctx) {
         try {
             const D = await api(ctx, '/parc/dossier/' + encodeURIComponent(v.vid));
             const r = await demander({ systeme: SYSTEME_VEHICULE, schema: SCHEMA_VEHICULE, recherche: 4, contenu: 'Dossier du véhicule (JSON) :\n' + JSON.stringify(D) });
-            await api(ctx, '/parc/strategie/' + encodeURIComponent(v.vid), { ...r.json, sources: r.sources, modele: MODELE, empreinte: crypto.createHash('sha1').update(JSON.stringify(D)).digest('hex').slice(0, 12), duree_s: Math.round((Date.now() - t0) / 1000) });
+            await api(ctx, '/parc/strategie/' + encodeURIComponent(v.vid), { ...inconnusANull(r.json), sources: r.sources, modele: MODELE, empreinte: crypto.createHash('sha1').update(JSON.stringify(D)).digest('hex').slice(0, 12), duree_s: Math.round((Date.now() - t0) / 1000) });
             ctx.log(`parc : stratégie ${v.libelle} · ${r.json.prix_conseille || '—'} € · vente à 30 j ${r.json.probabilite ? r.json.probabilite.j30 : '—'} % · ${Math.round((Date.now() - t0) / 1000)} s`);
         } catch (e) { ctx.log('parc : stratégie en échec', v.libelle, e.message); }
     }
