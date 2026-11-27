@@ -1,0 +1,114 @@
+{
+  "_doc": "Plan des liens achetés et groupes de mesure. statut : prevu | commande | publie. date_publication au format AAAA-MM-JJ quand l'article est en ligne.",
+  "reference": {
+    "debut": "2026-10-29",
+    "fin": "2026-11-25"
+  },
+  "pages_test": [
+    "/",
+    "/reprise-auto-paris",
+    "/vendre-voiture-sans-controle-technique-paris",
+    "/vendre-vieille-voiture"
+  ],
+  "pages_temoin": [
+    "/reprise-auto-lyon",
+    "/reprise-auto-bordeaux",
+    "/rachat-voiture-accidentee",
+    "/reprise-toyota"
+  ],
+  "requetes": [
+    "rachat voiture paris",
+    "reprise voiture paris",
+    "vendre sa voiture à paris",
+    "reprise vehicule paris",
+    "vendre voiture paris",
+    "vendre vieille voiture",
+    "rachat voiture",
+    "reprise voiture",
+    "rachat voiture lyon",
+    "reprise voiture lyon",
+    "vendre sa voiture à bordeaux",
+    "rachat voiture accidentée",
+    "vendre sa voiture sans controle technique",
+    "vendre voiture sans ct paris"
+  ],
+  "liens": [
+    {
+      "site": "motorsactu.com",
+      "type": "insertion dans l'article « La revente rapide s'impose… » (où figure rachat-cash-voiture)",
+      "page_cible": "/",
+      "ancre": "Lunicar",
+      "prix": 60,
+      "semaine": 1,
+      "statut": "prevu",
+      "url_article": "https://motorsactu.com/voiture-doccasion-la-revente-rapide-simpose-comme-une-nouvelle-norme-du-marche/",
+      "date_publication": null
+    },
+    {
+      "site": "planete-auto.fr",
+      "type": "article rédigé par eux",
+      "page_cible": "/",
+      "ancre": "Lunicar",
+      "prix": 110,
+      "semaine": 1,
+      "statut": "prevu",
+      "url_article": null,
+      "date_publication": null
+    },
+    {
+      "site": "dimension-auto.fr",
+      "type": "insertion dans le comparatif rachat sans CT",
+      "page_cible": "/vendre-voiture-sans-controle-technique-paris",
+      "ancre": "Lunicar",
+      "prix": 50,
+      "semaine": 2,
+      "statut": "prevu",
+      "url_article": null,
+      "date_publication": null
+    },
+    {
+      "site": "automotohebdo.fr",
+      "type": "article",
+      "page_cible": "/vendre-vieille-voiture",
+      "ancre": "vendre une vieille voiture",
+      "prix": 60,
+      "semaine": 3,
+      "statut": "prevu",
+      "url_article": null,
+      "date_publication": null
+    },
+    {
+      "site": "motorsactu.com",
+      "type": "article rédigé par eux (vendre sa voiture à Paris)",
+      "page_cible": "/reprise-auto-paris",
+      "ancre": "Lunicar",
+      "prix": 125,
+      "semaine": 4,
+      "statut": "prevu",
+      "url_article": null,
+      "date_publication": null
+    },
+    {
+      "site": "roulez-serein.fr",
+      "type": "article",
+      "page_cible": "/",
+      "ancre": "lunicar.fr",
+      "prix": 65,
+      "semaine": 4,
+      "statut": "prevu",
+      "url_article": null,
+      "date_publication": null
+    },
+    {
+      "site": "euromotor.fr",
+      "type": "article rédigé par eux",
+      "page_cible": "/reprise-auto-paris",
+      "ancre": "rachat de voiture à Paris",
+      "prix": 120,
+      "semaine": 5,
+      "statut": "prevu",
+      "url_article": null,
+      "date_publication": null
+    }
+  ]
+}
