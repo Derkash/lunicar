@@ -67,7 +67,7 @@
       },
       {
         "question": "Comment suis-je payé ?",
-        "answer": "Par virement bancaire instantané, à la conclusion de la vente, une fois le véhicule vérifié et le certificat de cession signé. LUNICAR ne paie jamais en espèces ni par chèque et ne facture aucun frais de dossier."
+        "answer": "Par virement bancaire instantané, à la conclusion de la vente, une fois le véhicule vérifié ; le certificat de cession n'est signé qu'après réception du virement. LUNICAR ne paie jamais en espèces ni par chèque et ne facture aucun frais de dossier."
       },
       {
         "question": "Le prix peut-il être renégocié au dernier moment ?",
@@ -726,7 +726,7 @@
       },
       {
         "question": "Comment se passe le paiement ?",
-        "answer": "Par virement bancaire instantané, à la conclusion de la vente, une fois le certificat de cession signé. LUNICAR ne paie jamais en espèces ni par chèque, et ne facture aucun frais de dossier."
+        "answer": "Par virement bancaire instantané, à la conclusion de la vente, avant la signature du certificat de cession. LUNICAR ne paie jamais en espèces ni par chèque, et ne facture aucun frais de dossier."
       },
       {
         "question": "Peut-on transférer un contrat de LOA à une autre personne ?",
@@ -1412,7 +1412,7 @@
       },
       {
         "question": "Comment suis-je payé pour ma Peugeot ?",
-        "answer": "Par virement bancaire instantané, à la conclusion de la vente, après la vérification du véhicule et la signature du certificat de cession. LUNICAR ne paie jamais en espèces ni par chèque."
+        "answer": "Par virement bancaire instantané, à la conclusion de la vente, après la vérification du véhicule et avant la signature du certificat de cession. LUNICAR ne paie jamais en espèces ni par chèque."
       }
     ],
     "sources": [
@@ -1570,7 +1570,7 @@
       },
       {
         "question": "Comment se passe le paiement de ma Dacia ?",
-        "answer": "Le paiement est effectué par virement bancaire instantané à la conclusion de la vente, après la vérification du véhicule et la signature du certificat de cession. LUNICAR ne paie jamais en espèces ni par chèque."
+        "answer": "Le paiement est effectué par virement bancaire instantané à la conclusion de la vente, après la vérification du véhicule et avant la signature du certificat de cession. LUNICAR ne paie jamais en espèces ni par chèque."
       },
       {
         "question": "Le contrôle technique est-il nécessaire pour vendre ma Dacia ?",
@@ -1813,7 +1813,7 @@
       },
       {
         "question": "Comment suis-je payé pour ma Ford ?",
-        "answer": "Par virement bancaire instantané, à la conclusion de la vente, une fois le véhicule vérifié et le certificat de cession signé. LUNICAR ne paie jamais en espèces ni par chèque."
+        "answer": "Par virement bancaire instantané, à la conclusion de la vente, une fois le véhicule vérifié ; le certificat de cession n'est signé qu'après réception du virement. LUNICAR ne paie jamais en espèces ni par chèque."
       }
     ],
     "sources": [
@@ -1979,7 +1979,7 @@
       },
       {
         "question": "Comment est payée ma BMW ?",
-        "answer": "Par virement bancaire instantané, à la conclusion de la vente, après la vérification du véhicule et la signature du certificat de cession. LUNICAR ne paie jamais en espèces ni par chèque, et ne facture aucun frais de dossier."
+        "answer": "Par virement bancaire instantané, à la conclusion de la vente, après la vérification du véhicule et avant la signature du certificat de cession. LUNICAR ne paie jamais en espèces ni par chèque, et ne facture aucun frais de dossier."
       }
     ],
     "sources": [
@@ -2149,7 +2149,7 @@
       },
       {
         "question": "Comment suis-je payé pour ma Fiat ?",
-        "answer": "Par virement bancaire instantané, à la conclusion de la vente, une fois le véhicule vérifié et le certificat de cession signé. LUNICAR ne paie jamais en espèces ni par chèque."
+        "answer": "Par virement bancaire instantané, à la conclusion de la vente, une fois le véhicule vérifié ; le certificat de cession n'est signé qu'après réception du virement. LUNICAR ne paie jamais en espèces ni par chèque."
       }
     ],
     "sources": [
@@ -2744,7 +2744,7 @@
       },
       {
         "question": "Quand suis-je payé ?",
-        "answer": "À la conclusion de la vente, par virement bancaire instantané, une fois le prix définitif accepté et le certificat de cession signé. LUNICAR ne paie jamais en espèces ni par chèque, et aucun frais de dossier n'est déduit."
+        "answer": "À la conclusion de la vente, par virement bancaire instantané, une fois le prix définitif accepté et avant la signature du certificat de cession. LUNICAR ne paie jamais en espèces ni par chèque, et aucun frais de dossier n'est déduit."
       },
       {
         "question": "Le prix peut-il être renégocié au dernier moment ?",
@@ -3818,7 +3818,7 @@
       },
       {
         "h2": "Comment se passent la vente et la déclaration de cession ?",
-        "html": "<p>La vente se conclut par la signature du certificat de cession en deux exemplaires, la remise de la carte grise barrée et la constatation du paiement sur votre compte ; la cession doit ensuite être déclarée sur le site de l'ANTS dans les 15 jours suivant la signature. La déclaration fournit un code de cession à remettre à l'acheteur pour qu'il immatricule la voiture à son nom.</p><ul class=\"ticks\"><li><strong>Signature</strong> : les deux parties signent le <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession</a>, y compris pour un don.</li><li><strong>Carte grise</strong> : barrée, mention « vendu le » avec date, heure et signature.</li><li><strong>Paiement</strong> : à constater sur votre propre compte ; voir <a href=\"/virement-instantane-vente-voiture\">le paiement par virement instantané</a>.</li><li><strong>Déclaration</strong> : sur le site de l'<a href=\"https://ants.gouv.fr/vendre-ou-donner-mon-vehicule\" rel=\"noopener\" target=\"_blank\">ANTS</a>, dans les 15 jours.</li><li><strong>Votre exemplaire</strong> : à conserver, il prouve la date et le prix de la vente.</li></ul><p>Source : fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a>. Avec LUNICAR, le certificat de cession est rempli ensemble et l'enlèvement est offert si la vente est conclue.</p>"
+        "html": "<p>La vente se conclut par la constatation du paiement sur votre compte, puis la signature du certificat de cession en deux exemplaires et la remise de la carte grise barrée ; la cession doit ensuite être déclarée sur le site de l'ANTS dans les 15 jours suivant la signature. La déclaration fournit un code de cession à remettre à l'acheteur pour qu'il immatricule la voiture à son nom.</p><ul class=\"ticks\"><li><strong>Signature</strong> : les deux parties signent le <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/R20300\" rel=\"noopener\" target=\"_blank\">certificat de cession</a>, y compris pour un don.</li><li><strong>Carte grise</strong> : barrée, mention « vendu le » avec date, heure et signature.</li><li><strong>Paiement</strong> : à constater sur votre propre compte ; voir <a href=\"/virement-instantane-vente-voiture\">le paiement par virement instantané</a>.</li><li><strong>Déclaration</strong> : sur le site de l'<a href=\"https://ants.gouv.fr/vendre-ou-donner-mon-vehicule\" rel=\"noopener\" target=\"_blank\">ANTS</a>, dans les 15 jours.</li><li><strong>Votre exemplaire</strong> : à conserver, il prouve la date et le prix de la vente.</li></ul><p>Source : fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a>. Avec LUNICAR, le certificat de cession est rempli ensemble et l'enlèvement est offert si la vente est conclue.</p>"
       },
       {
         "h2": "Que faire pour l'assurance après la vente ?",
@@ -4142,7 +4142,7 @@
     "sections": [
       {
         "h2": "Comment est payée une voiture vendue à un professionnel ?",
-        "html": "<p>Une voiture vendue à LUNICAR est payée par virement bancaire instantané, émis le jour de la vente, une fois le prix définitif accepté et les documents de cession signés. Vous constatez le crédit sur votre propre compte avant de remettre les clés et la carte grise ; aucun autre moyen de paiement n'est proposé.</p><p>Le virement instantané présente trois avantages pour un vendeur : le montant est crédité en quelques secondes, l'opération est irrévocable une fois exécutée, et la trace figure sur votre relevé bancaire. Vous n'avez ni espèces à transporter ni chèque à faire encaisser. Pour un professionnel, c'est aussi le moyen de paiement le plus simple à justifier en comptabilité.</p><p>Le paiement intervient à la conclusion de la vente, le jour du rendez-vous, sous réserve des conditions de votre banque pour la réception des virements instantanés. Le déroulement du rendez-vous est détaillé sur la page <a href=\"/expertise-voiture-a-domicile\">que vérifie le technicien lors du rendez-vous</a>.</p>"
+        "html": "<p>Une voiture vendue à LUNICAR est payée par virement bancaire instantané, émis le jour de la vente, une fois le prix définitif accepté et avant la signature des documents de cession. Vous constatez le crédit sur votre propre compte avant de remettre les clés et la carte grise ; aucun autre moyen de paiement n'est proposé.</p><p>Le virement instantané présente trois avantages pour un vendeur : le montant est crédité en quelques secondes, l'opération est irrévocable une fois exécutée, et la trace figure sur votre relevé bancaire. Vous n'avez ni espèces à transporter ni chèque à faire encaisser. Pour un professionnel, c'est aussi le moyen de paiement le plus simple à justifier en comptabilité.</p><p>Le paiement intervient à la conclusion de la vente, le jour du rendez-vous, sous réserve des conditions de votre banque pour la réception des virements instantanés. Le déroulement du rendez-vous est détaillé sur la page <a href=\"/expertise-voiture-a-domicile\">que vérifie le technicien lors du rendez-vous</a>.</p>"
       },
       {
         "h2": "Qu'est-ce que le virement instantané et que prévoit le règlement européen ?",
@@ -4169,7 +4169,7 @@
     "faq": [
       {
         "question": "Comment LUNICAR paie-t-il ma voiture ?",
-        "answer": "Par virement bancaire instantané, émis le jour de la vente une fois le prix définitif accepté et le certificat de cession signé. Vous vérifiez le crédit sur votre propre compte avant de remettre les clés et la carte grise."
+        "answer": "Par virement bancaire instantané, émis le jour de la vente une fois le prix définitif accepté et avant la signature du certificat de cession. Vous vérifiez le crédit sur votre propre compte avant de remettre les clés et la carte grise."
       },
       {
         "question": "Le virement instantané est-il disponible dans toutes les banques ?",
@@ -4258,7 +4258,7 @@
       },
       {
         "h2": "Quels documents pour vendre à un professionnel sans achat ?",
-        "html": "<p>Les documents de toute cession, listés par Service-public.gouv.fr. La carte grise barrée avec la mention « vendu le », la date, l'heure et votre signature ; le certificat de cession Cerfa 15776 rempli et signé en deux exemplaires le jour de la vente ; le certificat de situation administrative de moins de 15 jours, généré gratuitement sur Histovec par le titulaire de la carte grise. Le coupon détachable de la carte grise n'est pas à remplir en cas de vente à un professionnel de l'automobile.</p><ul class=\"ticks\"><li><strong>Contrôle technique</strong> : non exigé pour une vente à un garage ou à un négociant, même pour une voiture de plus de 4 ans.</li><li><strong>Déclaration de cession</strong> : sur le site de l'ANTS dans les 15 jours suivant la signature.</li><li><strong>Assurance</strong> : le contrat est suspendu le soir de la vente à minuit ; déclarez la vente à l'assureur par lettre recommandée.</li><li><strong>Pièce d'identité et relevé d'identité bancaire</strong> : pour la signature et le virement.</li></ul>"
+        "html": "<p>Les documents de toute cession, listés par Service-public.gouv.fr. La carte grise barrée avec la mention « vendu le », la date, l'heure et votre signature ; le certificat de cession Cerfa 15776 rempli et signé en deux exemplaires le jour de la vente ; le certificat de situation administrative de moins de 15 jours, généré gratuitement sur Histovec par le titulaire de la carte grise. Le coupon détachable de la carte grise n'est pas à remplir en cas de vente à un professionnel de l'automobile.</p><ul class=\"ticks\"><li><strong>Contrôle technique</strong> : non exigé pour une vente à un garage ou à un négociant, même pour une voiture de plus de 4 ans.</li><li><strong>Déclaration de cession</strong> : sur le site de l'ANTS dans les 15 jours suivant la signature.</li><li><strong>Assurance</strong> : le contrat est suspendu le soir de la vente à minuit ; déclarez la vente à l'assureur par lettre recommandée.</li><li><strong>Pièce d'identité et relevé d'identité bancaire</strong> : pour le virement, puis pour la signature.</li></ul>"
       },
       {
         "h2": "Comment LUNICAR procède pour une vente sans achat ?",
@@ -5082,7 +5082,7 @@
     "sections": [
       {
         "h2": "Peut-on vendre une voiture dont la carte grise est perdue ?",
-        "html": "<p>Non, pas avant d'avoir obtenu un duplicata. Service-public.gouv.fr est explicite dans sa fiche sur les véhicules hérités : « si la carte grise a été perdue, vous devez d'abord la faire refaire, comme si vous conserviez le véhicule, avant de le vendre ». La règle vaut pour tout vendeur, car la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> impose de remettre à l'acheteur le certificat d'immatriculation barré, portant la mention « vendu le » avec la date, l'heure et votre signature.</p>\n<p>Cela ne vous empêche pas de préparer la vente. Vous pouvez décrire votre voiture à LUNICAR, recevoir rapidement une fourchette de prix indicative et fixer le passage du technicien pendant que la demande de duplicata est en cours. La cession est signée et le virement instantané est effectué quand le certificat d'immatriculation est entre vos mains. Pour une voiture héritée, voyez aussi notre page <a href=\"/reprise-voiture-succession\">reprise d'une voiture en succession</a>.</p>"
+        "html": "<p>Non, pas avant d'avoir obtenu un duplicata. Service-public.gouv.fr est explicite dans sa fiche sur les véhicules hérités : « si la carte grise a été perdue, vous devez d'abord la faire refaire, comme si vous conserviez le véhicule, avant de le vendre ». La règle vaut pour tout vendeur, car la fiche <a href=\"https://www.service-public.gouv.fr/particuliers/vosdroits/F1707\" rel=\"noopener\" target=\"_blank\">vendre ou donner son véhicule</a> impose de remettre à l'acheteur le certificat d'immatriculation barré, portant la mention « vendu le » avec la date, l'heure et votre signature.</p>\n<p>Cela ne vous empêche pas de préparer la vente. Vous pouvez décrire votre voiture à LUNICAR, recevoir rapidement une fourchette de prix indicative et fixer le passage du technicien pendant que la demande de duplicata est en cours. Quand le certificat d'immatriculation est entre vos mains, le virement instantané est effectué, puis la cession est signée une fois l'argent reçu. Pour une voiture héritée, voyez aussi notre page <a href=\"/reprise-voiture-succession\">reprise d'une voiture en succession</a>.</p>"
       },
       {
         "h2": "Les chiffres à connaître",
@@ -5141,7 +5141,7 @@
       },
       {
         "question": "LUNICAR peut-il estimer ma voiture avant que je reçoive le duplicata ?",
-        "answer": "Oui. La fourchette de prix indicative et la vérification par le technicien ne dépendent pas du document. Seule la signature du certificat de cession, le virement et l'enlèvement attendent le certificat d'immatriculation définitif."
+        "answer": "Oui. La fourchette de prix indicative et la vérification par le technicien ne dépendent pas du document. Seuls le virement, la signature du certificat de cession et l'enlèvement attendent le certificat d'immatriculation définitif."
       },
       {
         "question": "Combien de temps faut-il pour recevoir un duplicata de carte grise ?",

@@ -262,6 +262,7 @@ app.get('/', (req, res) => {
 
 app.get('/reprise', (req, res) => html(res, pages.reprise()));
 app.get(`/${pages.METHODE_SLUG}`, (req, res) => html(res, pages.methode()));
+app.get(`/${pages.SECURITE_SLUG}`, (req, res) => html(res, pages.securite()));
 
 // Île-de-France : région, départements, pages par situation
 app.get(`/${idf.HUB_SLUG}`, (req, res) => html(res, pages.hub(CITIES)));
@@ -1182,6 +1183,7 @@ function indexablePages() {
     add('/', '1.0');
     add('/reprise', '0.9', '2026-10-22');
     add(`/${pages.METHODE_SLUG}`, '0.9', pages.METHODE_UPDATED);
+    add(`/${pages.SECURITE_SLUG}`, '0.9', pages.SECURITE_UPDATED);
     add('/reprise-auto-paris', '0.9', (LOCAL.paris && LOCAL.paris.updated) || T);
     add(`/${idf.HUB_SLUG}`, '0.9');
     idf.DEPARTMENTS.forEach(d => add(`/${d.slug}`, '0.8', d.updated || T));
@@ -1253,7 +1255,7 @@ Sitemap: ${SITE.baseUrl}/sitemap.xml
 const strip = h => String(h || '').replace(/<li>/g, '\n- ').replace(/<\/(p|h2|h3|ul|ol|table|tr)>/g, '\n').replace(/<(td|th)[^>]*>/g, ' | ').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n\n').trim();
 const title = t => String(t || '').replace(/<[^>]+>/g, '');
 
-const LLMS_SUMMARY = `LUNICAR achète des voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels, partout en France. Toute voiture peut faire l'objet d'une demande d'estimation, mais LUNICAR ne s'engage pas à toutes les racheter : certaines pannes ou dégradations importantes peuvent conduire à une absence d'offre. Le vendeur décrit son véhicule en ligne en deux minutes ; l'équipe étudie la demande et un conseiller le rappelle rapidement avec une fourchette de prix indicative (pas un prix ferme) ; si elle lui convient, un technicien LUNICAR vient vérifier le véhicule à son adresse, sans frais ; LUNICAR présente ensuite le prix définitif, que le vendeur accepte ou refuse librement. Si l'état réel correspond à la description, LUNICAR respecte le positionnement annoncé, sans renégociation injustifiée ; un écart constaté peut modifier le prix. Si la vente est conclue, les documents de cession sont préparés ensemble, l'enlèvement est offert et le paiement se fait par virement instantané, sous réserve des conditions bancaires.`;
+const LLMS_SUMMARY = `LUNICAR achète des voitures de toutes marques, récentes ou non, aux particuliers et aux professionnels, partout en France. Toute voiture peut faire l'objet d'une demande d'estimation, mais LUNICAR ne s'engage pas à toutes les racheter : certaines pannes ou dégradations importantes peuvent conduire à une absence d'offre. Le vendeur décrit son véhicule en ligne en deux minutes ; l'équipe étudie la demande et un conseiller le rappelle rapidement avec une fourchette de prix indicative (pas un prix ferme) ; si elle lui convient, un technicien LUNICAR vient vérifier le véhicule à son adresse, sans frais ; LUNICAR présente ensuite le prix définitif, que le vendeur accepte ou refuse librement. Si l'état réel correspond à la description, LUNICAR respecte le positionnement annoncé, sans renégociation injustifiée ; un écart constaté peut modifier le prix. Si la vente est conclue, le paiement est émis par virement instantané (sous réserve des conditions bancaires) et le vendeur ne signe le certificat de cession qu'une fois l'argent arrivé sur son compte : tant qu'il n'a pas l'argent, il ne signe rien. LUNICAR est la marque de YAK SERVICES, société de commerce automobile immatriculée (SIREN 131 930 059). L'enlèvement est offert.`;
 
 app.get('/llms.txt', (req, res) => {
     const b = SITE.baseUrl;
@@ -1277,7 +1279,7 @@ Version texte de chaque page : ajoutez /md devant le chemin (ex. ${b}/md/comment
 - Pas de cote ni de prix type publiés : la valeur dépend de chaque voiture (génération, moteur, kilométrage, entretien, état), chaque demande est estimée individuellement
 - Révision du prix uniquement en cas d'écart constaté avec la description (dommage ou panne non déclarés, kilométrage différent…)
 - Enlèvement à la charge de LUNICAR si la vente est conclue, y compris véhicule non roulant ou en parking souterrain
-- Paiement par virement instantané à la conclusion de la vente, sous réserve des conditions bancaires (ni espèces ni chèque)
+- Paiement par virement instantané AVANT la signature : le vendeur ne signe le certificat de cession qu'une fois l'argent arrivé sur son compte (ni espèces ni chèque)
 - Certificat de cession (Cerfa 15776) et déclaration de cession ANTS préparés avec le vendeur
 - Aucune obligation d'acheter un autre véhicule
 - Horaires : ${SITE.hours} ; contact : ${SITE.email}
@@ -1295,6 +1297,7 @@ ${(SITE.social || []).map(r => `- [LUNICAR sur ${r.nom}](${r.url})`).join('\n')}
 
 ## Pages principales
 - [Accueil](${b}/): présentation, déroulé, comparatif, FAQ
+- [LUNICAR est-il fiable ? Peut-on lui faire confiance ?](${b}/${pages.SECURITE_SLUG}): payé avant de signer la cession, société immatriculée YAK SERVICES, démarches ANTS faites avec le vendeur, ce que LUNICAR ne demande jamais
 - [Comment fonctionne LUNICAR](${b}/${pages.METHODE_SLUG}): la méthode de bout en bout (demande, fourchette indicative, technicien, prix définitif, virement instantané), ce que LUNICAR s'engage à faire et ce qu'il ne promet pas
 - [Estimation voiture gratuite](${b}/reprise): comment est calculée l'estimation, fourchette indicative et prix définitif, motifs de révision, estimation avec la plaque
 - [Vendre une vieille voiture sans se déplacer](${b}/vendre-vieille-voiture): voitures de plus de 15 ans, peu roulées
@@ -1349,6 +1352,7 @@ app.get('/llms-full.txt', (req, res) => {
     const block = (url, h, lede, sections, faq) => `# ${title(h)}\nURL : ${url}\n\n${lede ? lede + '\n\n' : ''}${(sections || []).map(s => `## ${title(s.h2)}\n\n${strip(s.html)}`).join('\n\n')}${faq && faq.length ? '\n\n## Questions fréquentes\n\n' + faq.map(f => `**${f.question}**\n${strip(f.answer)}`).join('\n\n') : ''}\n`;
     const parts = [`# LUNICAR\n\n> ${LLMS_SUMMARY}\n\nDernière mise à jour : ${indexablePages().reduce((m, u) => (u.lastmod > m ? u.lastmod : m), '')}\n`];
     parts.push(pages.methodeTexte(`${b}/${pages.METHODE_SLUG}`));
+    parts.push(pages.securiteTexte(`${b}/${pages.SECURITE_SLUG}`));
     if (LOCAL.aPropos) parts.push(block(`${b}/a-propos`, LOCAL.aPropos.h1, LOCAL.aPropos.lede, LOCAL.aPropos.sections, LOCAL.aPropos.faq));
     if (LOCAL.france) parts.push(block(`${b}/${zones.FRANCE_SLUG}`, LOCAL.france.h1, LOCAL.france.lede, LOCAL.france.sections, LOCAL.france.faq));
     if (LOCAL.paris) parts.push(block(`${b}/reprise-auto-paris`, LOCAL.paris.h1, LOCAL.paris.lede, LOCAL.paris.sections, LOCAL.paris.faq));
@@ -1397,8 +1401,9 @@ async function pingIndexNow() {
 // soumissions (> 30 jours). État mémorisé dans le réglage « bing » (loc → date), donc insensible aux redémarrages.
 const BING_API = 'https://ssl.bing.com/webmaster/api.svc/json';
 // Pages d'entrée des visiteurs ChatGPT (GA4, 28 j au 20/11/2026) puis toutes les pages régions.
-const PRIORITE_BING_DEPUIS = '2026-11-26';
+const PRIORITE_BING_DEPUIS = '2026-11-27';
 const PRIORITE_BING_ORDRE = [
+    '/lunicar-fiable-vente-securisee', '/comment-ca-marche', '/garanties', '/mentions-legales',
     '/vendre-vieille-voiture', '/rachat-voiture-corse', '/', '/rachat-voiture-en-panne', '/rachat-voiture-en-panne-paris',
     '/reprise-voiture-sans-achat', '/reprise-voiture-occasion', '/reprise', '/vendre-voiture-importee',
     '/reprise-auto-neuilly-sur-seine', '/reprise-auto-lyon', '/reprise-auto-nice', '/reprise-auto-nimes',
