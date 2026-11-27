@@ -1643,7 +1643,7 @@ a.lbc-badge { text-decoration: none; }
                     <label class="f">Origine<select class="in" id="fOrigine">
                     <option value="">Toutes origines</option><option value="site">Formulaire</option><option value="abandon">Abandonnées</option><option value="gmail">Importées (Gmail)</option><option value="leboncoin">Leboncoin</option><option value="email">E-mail</option>
                 </select></label>
-                    <label class="f">Canal<select class="in" id="fCanal"><option value="">Tous les canaux</option><option value="pub">Publicité Google Ads</option><option value="google">Google (naturel)</option><option value="ia">ChatGPT et IA</option><option value="autres">Direct, liens, autres</option><option value="inconnu">Non renseigné</option></select></label>
+                    <label class="f">Canal<select class="in" id="fCanal"><option value="">Tous les canaux</option><option value="pub">Publicité Google Ads</option><option value="pub_ia">Publicité ChatGPT</option><option value="google">Google (naturel)</option><option value="ia">ChatGPT et IA</option><option value="autres">Direct, liens, autres</option><option value="inconnu">Non renseigné</option></select></label>
                     <label class="f">État du véhicule<select class="in" id="fMeca"><option value="">Tous les états</option><option value="v">Roule bien</option><option value="o">Roule avec soucis</option><option value="r">En panne ou accidentée</option><option value="?">Non précisé</option></select></label>
                     <label class="f">Type de véhicule<select class="in" id="fVeh"><option value="">Tous les véhicules</option><option value="util">Utilitaires (certains et possibles)</option><option value="sur">Utilitaires certains</option><option value="vp">Hors utilitaires</option></select></label>
                     <label class="f">Type<select class="in" id="fType"><option value="">Estimations et rappels</option><option value="estimation">Estimations</option><option value="rappel">Rappels</option></select></label>
@@ -2646,7 +2646,7 @@ a.lbc-badge { text-decoration: none; }
                 : g0 !== gPrec && nbGroupe.filter(Boolean).length > 1 ? `<div class="grp grp-${g0}"><b>${titres[g0]}</b><span>${nbGroupe[g0]}</span></div>` : '';
             gPrec = g0; jPrec = j0;
             const est = (d.suivi || {}).estimation_statut === 'en_cours' ? '<span class="spin"></span>' : (prixMax(d) ? eur(prixMax(d)) : '—');
-            const pub = (d.canal === 'pub' ? ' <span class="tag rappel">Pub</span>' : d.canal === 'ia' ? ' <span class="tag rappel">IA</span>' : '')
+            const pub = (d.canal === 'pub' ? ' <span class="tag rappel">Pub</span>' : d.canal === 'pub_ia' ? ' <span class="tag rappel">Pub ChatGPT</span>' : d.canal === 'ia' ? ' <span class="tag rappel">IA</span>' : '')
                 + (d.doublon ? ` <span class="tag" title="Même téléphone que ${esc(d.doublon)}">Déjà reçu</span>` : '');
             const tag = d.origine === 'abandon' ? '<span class="tag">Abandon</span>' : d.type === 'rappel' ? '<span class="tag rappel">Rappel</span>' : '';
             const g = geo(x.code_postal), r = rappel(d), auj = jourIso();
@@ -3008,7 +3008,7 @@ a.lbc-badge { text-decoration: none; }
 
     // ---------------- Tableau de bord
     // Couleurs validées (ordre fixe, sûr pour les daltoniens) ; « non renseignée » en gris neutre.
-    const CANAUX = [['pub', 'Publicité Google Ads', '#2a78d6'], ['google', 'Google (naturel)', '#eb6834'], ['ia', 'ChatGPT et IA', '#1baf7a'], ['autres', 'Direct, liens, autres', '#eda100'], ['inconnu', 'Non renseignée', '#CBC7BE']];
+    const CANAUX = [['pub', 'Publicité Google Ads', '#2a78d6'], ['pub_ia', 'Publicité ChatGPT', '#7a5af8'], ['google', 'Google (naturel)', '#eb6834'], ['ia', 'ChatGPT et IA', '#1baf7a'], ['autres', 'Direct, liens, autres', '#eda100'], ['inconnu', 'Non renseignée', '#CBC7BE']];
     const PERIODES = [[7, '7 jours'], [30, '30 jours'], [90, '3 mois'], [365, '12 mois']];
     let tbJours = 30;
     const jourParis = t => new Date(t).toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
@@ -5791,7 +5791,7 @@ a.lbc-badge { text-decoration: none; }
             ${(() => {
                 const ph = (d.photos || []).find(p => !/\.pdf$/i.test(p.name));
                 const oTxt = String(d.origine_txt || x.origine || '');
-                const canalFiche = d.canal || (/^Google Ads/i.test(oTxt) ? 'pub' : /^Google/i.test(oTxt) ? 'google' : /chatgpt|perplexity|openai|claude|gemini|copilot/i.test(oTxt) ? 'ia' : oTxt ? 'autres' : 'inconnu');
+                const canalFiche = d.canal || (/^Google Ads/i.test(oTxt) ? 'pub' : /^ChatGPT Ads/i.test(oTxt) ? 'pub_ia' : /^Google/i.test(oTxt) ? 'google' : /chatgpt|perplexity|openai|claude|gemini|copilot/i.test(oTxt) ? 'ia' : oTxt ? 'autres' : 'inconnu');
                 const cl = CANAUX.find(c => c[0] === canalFiche) || CANAUX[4];
                 const f = fourchette(d), pm = prixMax(d), souh = Number(x.prix_souhaite) || 0;
                 const dernier = (s.appels || [])[0];
