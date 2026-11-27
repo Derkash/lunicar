@@ -356,8 +356,11 @@
         };
         // Dès que le téléphone est connu, l'état du formulaire est gardé côté serveur :
         // une demande quittée en cours de route vous parvient comme « abandonnée ».
+        // Seulement si le vendeur a saisi quelque chose sur CETTE page : un onglet rouvert le
+        // lendemain (formulaire restauré par le navigateur sans la plaque ni le modèle, qui sont en
+        // autocomplete=off) créait sinon une fausse demande abandonnée, sans plaque, en double.
         function sauverBrouillon(beacon) {
-            if (envoyee || !phoneOk(form.elements.telephone.value)) return;
+            if (envoyee || !started || !form.elements.vehicule.value.trim() || !phoneOk(form.elements.telephone.value)) return;
             const body = JSON.stringify(collecte());
             if (beacon && navigator.sendBeacon) { navigator.sendBeacon('/api/reprise/brouillon', new Blob([body], { type: 'text/plain' })); return; }
             fetch('/api/reprise/brouillon', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, keepalive: true }).catch(() => {});
