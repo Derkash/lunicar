@@ -1784,7 +1784,7 @@ a.lbc-badge { text-decoration: none; }
             <div id="bxTete">
                 <div class="page-h"><h1>Boîte mail</h1><span id="bxSous">e-mails reçus sur la boîte contact</span></div>
                 <div id="bxAvis"></div>
-                <div class="toolbar"><div class="segs" id="bxSegs" style="margin:0;flex:1"></div><button class="btn btn-p" id="bxRelever" type="button"><svg><use href="#i-cherche"/></svg>Relever maintenant</button></div>
+                <div class="toolbar"><div class="segs" id="bxSegs" style="margin:0;flex:1"></div><button class="btn" id="bxNouveau" type="button">Nouveau message</button><button class="btn btn-p" id="bxRelever" type="button"><svg><use href="#i-cherche"/></svg>Relever maintenant</button></div>
                 <p class="sub vl-etat" id="bxEtat"></p>
             </div>
             <div id="bxListe"></div>
@@ -6601,7 +6601,7 @@ a.lbc-badge { text-decoration: none; }
     }
     async function vueBoite() {
         try { await chargerBoite(); } catch (e) { return toast(e.message); }
-        if (bxOuvert) return ouvrirMail(bxOuvert);
+        if (bxOuvert === 'nouveau') bxOuvert = null; if (bxOuvert) return ouvrirMail(bxOuvert);
         rendreBoite(); suivreBoite();
     }
     function suivreBoite() {
@@ -6644,6 +6644,34 @@ a.lbc-badge { text-decoration: none; }
         $('#bxRelever').disabled = true;
         try { await api('/api/admin/boite/relever', { method: 'POST' }); boiteE.etat = { ...boiteE.etat, en_cours: true }; rendreBoite(); suivreBoite(); }
         catch (e) { $('#bxRelever').disabled = false; toast(e.message); }
+    });
+    // Nouveau message libre (partenaires, médias…) depuis contact@lunicar.fr : hors CRM.
+    $('#bxNouveau').addEventListener('click', () => {
+        bxOuvert = 'nouveau';
+        $('#bxTete').hidden = true; $('#bxListe').hidden = true; $('#bxLecture').hidden = false;
+        $('#bxLecture').innerHTML = `
+            <div class="bx-nav"><button class="btn btn-ghost" type="button" id="bxNvRetour">← Boîte mail</button></div>
+            <div class="card"><h2 class="bx-titre">Nouveau message</h2>
+                <form class="mail-form" id="bxNvForm">
+                    <label class="f">À<input class="in" name="a" type="text" autocomplete="off" placeholder="adresse@site.fr" required></label>
+                    <label class="f">Copie cachée<input class="in" name="cci" type="text" autocomplete="off"></label>
+                    <label class="f">Objet<input class="in" name="objet" type="text" required></label>
+                    <label class="f">Message<textarea class="in" name="texte" required>Bonjour,\n\n</textarea></label>
+                    <p class="sub">La signature LUNICAR est ajoutée à l'envoi.</p>
+                    <p class="err" id="bxNvErr"></p>
+                    <button class="btn btn-p" type="submit">Envoyer</button>
+                </form></div>`;
+        $('#bxNvRetour').onclick = fermerMail;
+        $('#bxNvForm').onsubmit = async ev => {
+            ev.preventDefault();
+            const f = ev.target, bt = f.querySelector('[type=submit]');
+            bt.disabled = true; $('#bxNvErr').textContent = '';
+            try {
+                const r = await api('/api/admin/boite/nouveau', { method: 'POST', body: formMail({ a: f.a.value, cci: f.cci.value, objet: f.objet.value, texte: f.texte.value }, []) });
+                toast('Envoyé à ' + r.envoye.a); fermerMail();
+            } catch (e) { $('#bxNvErr').textContent = e.message; bt.disabled = false; }
+        };
+        window.scrollTo(0, 0);
     });
     const bxLocal = m => { const i = boiteE.messages.findIndex(x => x.id === m.id); if (i >= 0) { const { texte, ...sans } = m; boiteE.messages[i] = sans; } compter('boite', bxNonLus()); };
     // Pièces jointes à envoyer (fiche demande et boîte) : liste de File gardée dans l'état du brouillon.
