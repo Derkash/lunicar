@@ -811,7 +811,12 @@ ul.plain li { margin: 3px 0; }
 .vh-pros { border-color: #DCD3F2; }
 #vForm .in.ok { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-1); }
 .dep.edit { background: var(--gold-1); border-radius: 8px; }
-.vh { min-width: 0; overflow: hidden; }
+.vh { min-width: 0; overflow: hidden; cursor: pointer; font: inherit; color: inherit; }
+.lbc-c { overflow: visible; }
+.vh-c .pv { display: flex; flex-direction: column; font-size: .72rem; font-weight: 400; color: var(--ink-5); margin: 0; cursor: text; }
+.vh-c .pv small { font-size: .68rem; }
+.vh-c .pv .in { width: 100%; max-width: 130px; height: auto; min-height: 0; padding: 3px 8px; font-size: .95rem; font-weight: 650; color: var(--ink); margin-top: 2px; }
+.lbc-pv { margin-top: 10px; }
 .vh-st { min-width: 0; }
 .vh-st .badge-rdv { flex: none; }
 .vh-st small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1 1 auto; }
@@ -3191,7 +3196,7 @@ a.lbc-badge { text-decoration: none; }
             [actifs.length, 'en stock', `<span class="delta">${euro(immob)} immobilisés</span>`],
             [vendus.length, 'vendus', `<span class="delta">${euro(ca)} de CA</span>`],
             [signe(marge), 'marge réalisée', `<span class="delta">${delais.length ? 'revente en ' + Math.round(delais.reduce((a, b) => a + b, 0) / delais.length) + ' j en moyenne' : '&nbsp;'}</span>`, marge < 0 ? 'alerte' : ''],
-            [signe(prevueStock), 'marge prévue sur le stock', `<span class="delta">vendu au prix « Très bonne affaire »${sansPrix ? ` · ${sansPrix} sans prix` : ''}</span>`, prevueStock < 0 ? 'alerte' : ''],
+            [signe(prevueStock), 'marge prévue sur le stock', `<span class="delta">au prix visé (sinon « Très bonne affaire »)${sansPrix ? ` · ${sansPrix} sans prix` : ''}</span>`, prevueStock < 0 ? 'alerte' : ''],
             [signe(marge + prevueStock), 'marge globale', `<span class="delta">réalisée + prévue</span>`, marge + prevueStock < 0 ? 'alerte' : '']
         ].map(([v, l, d, c]) => `<div class="kpi ${c || ''}"><b class="num">${v}</b><span>${l}</span>${d}</div>`).join('');
         $('#vhSous').textContent = `voitures effectivement achetées`;
@@ -3207,12 +3212,12 @@ a.lbc-badge { text-decoration: none; }
                 <div class="vh-st"><span class="badge-rdv${r.date === jourIso() ? ' auj' : r.date < jourIso() ? ' passe' : ''}">RDV ${r.date ? (r.date === jourIso() ? "aujourd'hui" : jourCourt(r.date)) + ' · ' + r.heure : ''}</span><small>${esc(AVEC[r.avec] || '')}${r.lieu ? ' · ' + esc(r.lieu) : ''}</small></div>
                 <div class="vh-c"><span>Fourchette<b class="num">${fourchetteRdv(v.rdv) || (v.prix_convenu ? euro(v.prix_convenu) : '—')}</b></span><span>Frais engagés<b class="num">${euro(b.frais)}</b></span><span>Marge prévue<b class="num ${b.marge_prevue < 0 ? 'neg' : 'pos'}">${signe(b.marge_prevue)}</b></span></div>
             </button>`;
-            return `<button class="vh" data-vh="${esc(v.id)}">
+            return `<div class="vh" role="button" tabindex="0" data-vh="${esc(v.id)}">
                 <div class="vh-t"><b>${badgeUtilRef(v.ref)}${esc(v.libelle || 'Véhicule')}</b>${v.plaque ? `<span class="mono">${esc(v.plaque)}</span>` : ''}</div>
                 <div class="vh-st">${pilleVh(v)}${b.jours != null ? `<small>${vendu ? `revendu en ${b.jours} j` : `J+${b.jours}`}</small>` : ''}</div>
                 ${statsLbcCarte(v)}
-                <div class="vh-c"><span>Coût de revient<b class="num">${euro(b.cout)}</b></span><span>${vendu ? 'Vendu' : b.vente_source === 'tba' ? 'Très bonne affaire' : 'Vente estimée'}<b class="num">${vendu ? euro(v.prix_vente) : b.vente_prevue ? euro(b.vente_prevue) : '—'}</b></span><span>${vendu ? 'Marge' : 'Marge prévue'}<b class="num ${(vendu ? b.marge : b.marge_prevue) < 0 ? 'neg' : 'pos'}">${signe(vendu ? b.marge : b.marge_prevue)}</b></span></div>
-            </button>`;
+                ${vendu ? `<div class="vh-c"><span>Coût de revient<b class="num">${euro(b.cout)}</b></span><span>Vendu<b class="num">${euro(v.prix_vente)}</b></span><span>Marge<b class="num ${b.marge < 0 ? 'neg' : 'pos'}">${signe(b.marge)}</b></span></div>` : `<div class="vh-c"><span>Coût de revient<b class="num">${euro(b.cout)}</b></span>${champPrixVise(v)}</div>`}
+            </div>`;
         }).join('') : `<div class="empty">${{ prospects: 'Aucun rendez-vous pris. Fixez-en un depuis la fiche d\'une demande : le véhicule arrive ici.', vendus: 'Aucun véhicule vendu pour l\'instant.', perdus: 'Aucun rendez-vous sans suite.', actifs: 'Aucun véhicule en stock.' }[vhSeg] || ({ achetes: 'Aucune voiture achetée en attente de récupération.', preparation: 'Aucune voiture en préparation.', prets: 'Aucune voiture prête à publier.', en_vente: 'Aucune annonce Leboncoin en ligne (selon le dernier relevé).' }[vhSeg]) || 'Aucun véhicule.'}</div>`;
     }
     // Sections de l'onglet Véhicules. « En vente » = une annonce Leboncoin ACTIVE (dernier relevé), quel que soit le statut saisi ;
@@ -3264,17 +3269,38 @@ a.lbc-badge { text-decoration: none; }
             <h3>Analyse Leboncoin <small>relevé du ${date(P.annonces_le)} · ${lignes.length} annonce${lignes.length > 1 ? 's' : ''} en ligne</small></h3>
             <div class="lbc-tot"><div><b class="num">${tot.vues}</b><span>vues</span></div><div><b class="num">${tot.fav}</b><span>favoris</span></div><div><b class="num">${tot.msg}</b><span>messages</span></div><div><b class="num">${tot.app}</b><span>appels</span></div></div>
             ${opt.length ? `<p class="sub">Forfait : ${opt.map(o => `${esc(o.libelle)} <b>${Math.max(0, o.prevu - o.utilise)}</b> restant${o.prevu - o.utilise > 1 ? 's' : ''} sur ${o.prevu}`).join(' · ')}</p>` : ''}
-            <div class="lbc-liste">${lignes.map(({ v, an, L, st }) => `<button class="lbc-c" data-vh="${esc(v.id)}">
+            <div class="lbc-liste">${lignes.map(({ v, an, L, st }) => `<div class="lbc-c" role="button" tabindex="0" data-vh="${esc(v.id)}">
                 <div class="lbc-t"><b>${esc(v.libelle)}</b><span class="num">${eur(L.d.prix)}</span></div>
                 <div class="lbc-m">${esc(an[1].ref_yak || '')}${L.d.badge ? ' · ' + esc(L.d.badge) : ''} · en ligne depuis ${L.j} j${L.d.remontee ? ' · ' + esc(L.d.remontee) : ''}${L.d.qualite ? ' · annonce ' + esc(L.d.qualite.toLowerCase()) : ''}</div>
                 <div class="lbc-k"><span><b class="num">${L.d.vues}</b>vues<small>${Math.round(L.vj)} / jour</small></span><span><b class="num">${L.d.favoris}</b>favoris<small>${pc(L.fav)} des vues</small></span><span><b class="num">${L.d.messages}</b>messages</span><span><b class="num">${L.d.appels}</b>appels<small>${pc(L.conv)} de contact</small></span></div>
+                <div class="vh-c lbc-pv"><span>Coût de revient<b class="num">${euro(v.bilan.cout)}</b></span>${champPrixVise(v)}</div>
                 <p class="mk-verdict mk-${L.ton}">${esc(L.signal)}</p>
                 ${st ? `<p class="lbc-conseil"><b>Conseil${st.prix_conseille ? ' · prix ' + eur(st.prix_conseille) : ''} :</b> ${esc(st.synthese || '')}</p>${(st.actions || []).length ? `<ol class="lbc-a">${[...st.actions].sort((a, b) => (a.priorite || 9) - (b.priorite || 9)).slice(0, 3).map(a => `<li>${esc(a.titre)}${a.quand ? ' <small>· ' + esc(a.quand) + '</small>' : ''}</li>`).join('')}</ol>` : ''}` : ''}
-            </button>`).join('')}</div>
+            </div>`).join('')}</div>
         </section>`;
     }
     $('#vhSegs').addEventListener('click', e => { const b = e.target.closest('[data-vhseg]'); if (b) { vhSeg = b.dataset.vhseg; vueVehicules(); } });
-    $('#vhList').addEventListener('click', e => { const b = e.target.closest('[data-vh]'); if (b) ouvrirVehicule(b.dataset.vh); });
+    // Prix de vente visé : saisi sur la carte, marge recalculée à chaque frappe, enregistré (estimation_vente) en quittant le champ.
+    // Vide = retour au prix « Très bonne affaire » Leboncoin.
+    function champPrixVise(v) {
+        const b = v.bilan, pv = b.vente_prevue || '';
+        return `<label class="pv" data-pv-cout="${b.cout}">${b.vente_source === 'tba' ? 'Prix visé <small>(Très bonne affaire)</small>' : 'Prix de vente visé'}<input class="in num" data-prixvise="${esc(v.id)}" inputmode="numeric" value="${pv}" placeholder="${b.tba || ''}"></label><span>Marge prévue<b class="num ${b.marge_prevue < 0 ? 'neg' : 'pos'}" data-pv-marge>${b.marge_prevue != null ? signe(b.marge_prevue) : '—'}</b></span>`;
+    }
+    const ouvrirCarteVh = e => { if (e.target.closest('.pv')) return; const b = e.target.closest('[data-vh]'); if (b) ouvrirVehicule(b.dataset.vh); };
+    ['#vhList', '#vhPlan'].forEach(sel => { const z = $(sel); if (!z) return;
+        z.addEventListener('click', ouvrirCarteVh);
+        z.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.matches('[data-vh]')) ouvrirCarteVh(e); });
+        z.addEventListener('input', e => { const i = e.target.closest('[data-prixvise]'); if (!i) return;
+            const c = i.closest('.vh-c'), cout = Number(c.querySelector('[data-pv-cout]').dataset.pvCout) || 0, pv = Number(i.value.replace(/[^\d]/g, '')) || 0;
+            const m = c.querySelector('[data-pv-marge]'), mg = pv ? Math.round((pv - cout) * 100) / 100 : null;
+            m.textContent = mg == null ? '—' : signe(mg); m.classList.toggle('neg', mg < 0); m.classList.toggle('pos', mg != null && mg >= 0); });
+        z.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.closest('[data-prixvise]')) { e.preventDefault(); e.target.blur(); } });
+        z.addEventListener('change', async e => { const i = e.target.closest('[data-prixvise]'); if (!i) return;
+            const pv = Number(i.value.replace(/[^\d]/g, '')) || 0;
+            try { await api('/api/admin/compta/vehicules/' + i.dataset.prixvise, { method: 'PATCH', body: JSON.stringify({ estimation_vente: pv || 0 }) });
+                compta = null; const y = window.scrollY; await vueVehicules(); window.scrollTo(0, y); toast(pv ? 'Prix visé enregistré' : 'Retour au prix « Très bonne affaire »'); }
+            catch (err) { toast(err.message); } });
+    });
     $('#vhAjout').onclick = async () => {
         try { const v = await api('/api/admin/compta/vehicules', { method: 'POST', body: JSON.stringify({ libelle: 'Nouveau véhicule', payeur_achat: payeurDefaut() }) }); await chargerCompta(); ouvrirVehicule(v.id); }
         catch (e) { toast(e.message); }
