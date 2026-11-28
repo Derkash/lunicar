@@ -4857,15 +4857,28 @@ a.lbc-badge { text-decoration: none; }
             $('#cesOk').disabled = true; $('#cesOk').innerHTML = '<span class="spin"></span> Génération…';
             try {
                 const r = await api('/api/admin/compta/vehicules/' + v.id + '/cession', { method: 'POST', body: JSON.stringify(b) });
-                fermerC(); await chargerCompta(); afficherVehicule(v.id);
-                toast('Certificat de cession généré');
-                window.open(photoUrl(r.document.path), '_blank');
+                await chargerCompta(); afficherVehicule(v.id);
+                pdfPret('Certificat de cession prêt', [['Ouvrir le certificat de cession', r.document.path]]);
             } catch (err) { $('#cesOk').disabled = false; $('#cesOk').textContent = 'Générer le PDF'; toast(err.message); }
         };
     }
 
     // Espace vente : l'acheteur et la vente saisis une fois, puis bon de commande, certificat de cession (la société
     // vend, modèle tamponné « ancien propriétaire ») et facture (régime de la marge par défaut) générés ensemble.
+    // PDF générés : boutons à toucher pour les ouvrir. Une ouverture automatique après la génération est bloquée
+    // par iOS (Safari et l'app) car elle n'est plus liée au geste de l'utilisateur : on ne voyait jamais le PDF.
+    function pdfPret(titre, liens, retour) {
+        $('#crIn').innerHTML = `<div class="cr-tete"><h3>${esc(titre)}</h3><button class="close" type="button" id="pdfX" aria-label="Fermer"><svg><use href="#i-x"/></svg></button></div>
+            <p class="sub">Rangé dans les documents du véhicule.</p>
+            <div class="cr-btns" style="flex-direction:column;align-items:stretch">${liens.map(([l, p]) => `<a class="btn btn-p" href="${photoUrl(p)}" target="_blank" rel="noopener">${esc(l)}</a>`).join('')}
+            ${retour ? '<button type="button" class="btn" id="pdfRetour">Revenir à l\'espace vente</button>' : ''}<button type="button" class="btn" id="pdfFermer">Fermer</button></div>`;
+        const fermer = () => { $('#crModal').hidden = true; document.body.classList.remove('modal-ouvert'); };
+        $('#crModal').hidden = false; document.body.classList.add('modal-ouvert');
+        $('#pdfX').onclick = $('#pdfFermer').onclick = fermer;
+        if (retour) $('#pdfRetour').onclick = retour;
+        $('#crModal').onclick = e => { if (e.target.id === 'crModal') fermer(); };
+        $('#crIn').scrollTop = 0;
+    }
     async function ecranVente(v) {
         let c;
         try { c = await api('/api/admin/compta/vehicules/' + v.id + '/vente'); } catch (e) { return toast(e.message); }
@@ -4889,7 +4902,7 @@ a.lbc-badge { text-decoration: none; }
                     ${ch('vente', 'prix_ttc', 'Prix de vente TTC (€)', 'inputmode="decimal"')}${ch('vente', 'acompte', 'Acompte versé (€)', 'inputmode="decimal"')}
                     ${ch('vente', 'mode_reglement', 'Mode de règlement')}
                     ${sel('vente', 'regime', 'TVA', [['marge', 'Régime de la marge (biens d\'occasion)'], ['normal', 'Régime normal : TVA 20 % sur le prix']])}
-                    ${ch('vente', 'date', 'Date de la vente', 'type="date"')}${ch('vente', 'heure', 'Heure (vide = à la main)', 'type="time"')}${ch('vente', 'lieu', 'Fait à')}
+                    ${ch('vente', 'date', 'Date de la cession (vide = à la main)', 'type="date"')}${ch('vente', 'heure', 'Heure (vide = à la main)', 'type="time"')}${ch('vente', 'lieu', 'Fait à (vide = à la main)')}
                     <label class="chk"><input type="checkbox" name="vente.payee"${val('vente', 'payee') ? ' checked' : ''}> Prix intégralement réglé (facture acquittée)</label>
                     ${ch('vente', 'observations', 'Observations (facultatif)')}
                 </fieldset>
@@ -4933,8 +4946,8 @@ a.lbc-badge { text-decoration: none; }
             try {
                 const r = await api('/api/admin/compta/vehicules/' + v.id + '/vente', { method: 'POST', body: JSON.stringify(b) });
                 await chargerCompta(); afficherVehicule(v.id);
-                toast('Documents de vente générés' + (r.numero_facture ? ' · facture ' + r.numero_facture : ''));
-                ecranVente(vehiculeDe(v.id) || v);
+                const NOMS = { bon_commande: 'Ouvrir le bon de commande', cession_vente: 'Ouvrir le certificat de cession', facture: 'Ouvrir la facture' + (r.numero_facture ? ' ' + r.numero_facture : '') };
+                pdfPret('Documents de vente prêts', Object.entries(r.documents || {}).map(([t, d]) => [NOMS[t] || t, d.path]), () => ecranVente(vehiculeDe(v.id) || v));
             } catch (err) { $('#veOk').disabled = false; $('#veOk').textContent = 'Générer les documents'; toast(err.message); }
         };
     }
